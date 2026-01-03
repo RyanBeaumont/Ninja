@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4072350338451122983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1066531091817419896}
+  - component: {fileID: 3613004375938954790}
+  - component: {fileID: 4165134398127773951}
+  m_Layer: 0
+  m_Name: YourParty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1066531091817419896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072350338451122983}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.300273, y: 2.4108586, z: -1.8040603}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3613004375938954790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072350338451122983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf2b5be53f9b2dc45ab0bd98a83b5b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reserve:
+  - memberName: Spartan Jack
+    modelName: SpartanJack
+    level: 1
+    xp: 0
+    hpPercentage: 1
+    mainClass: 1
+    subClass: 2
+  - memberName: Stretch
+    modelName: Stretch
+    level: 1
+    xp: 0
+    hpPercentage: 0.8
+    mainClass: 3
+    subClass: 1
+  partyMembers:
+  - Spartan Jack
+  hpPerLevel: 10
+  speedPerLevel: 1
+  attackPerLevel: 2
+  defensePerLevel: 2
+  psychicPerLevel: 2
+  gold: 0
+--- !u!114 &4165134398127773951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072350338451122983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28c6b6ce22f6c2449d992dc35f46c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
