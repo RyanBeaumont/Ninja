@@ -9,6 +9,7 @@ public class QuestGate : ChainedInteractable
     public bool consume = true;
     public float xpReward = 0;
     public float goldReward = 0;
+    public bool giveQuestIfMissing = false;
     public bool completeEvenIfMissing = true;
     public List<Dialog> incompleteDialog = new List<Dialog>();
 
@@ -26,7 +27,16 @@ public class QuestGate : ChainedInteractable
         {
             
             d.StartDialog(incompleteDialog);
+            d.OnDialogFinished += GiveQuestIfMissing;
         }
+    }
+
+    public void GiveQuestIfMissing()
+    {
+        if(giveQuestIfMissing)
+            GameManager.Instance.AddQuest(questName);
+        DialogBox d = FindFirstObjectByType<DialogBox>();
+        d.OnDialogFinished -= GiveQuestIfMissing;
     }
 
     public void OnEnd()

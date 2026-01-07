@@ -41,6 +41,33 @@ public class CardDatabase : MonoBehaviour
     public static CardDatabase Instance;
     public List<Card> allCards = new List<Card>();
 
+    public Dictionary<string,string> itemDescriptions = new Dictionary<string,string>()
+    {
+        {"Coke", "Good for your HEALTH... You think. Can be used in combat"},
+        {"BANG", "Throw at an enemy to deal damage. Does not consume a turn."},
+        {"Lockpick", "You made this out of a hairpin! Perks of having long, luscious locks"}
+    };
+
+    public Card GetCardByName(string name)
+    {
+        return allCards.Find(card => card.cardName == name);
+    }
+
+    public List<Card> GetCardsByClass(CardClass cardClass, int level)
+    {
+        return allCards.FindAll(card => (card.cardClass == cardClass) && card.level <= level);
+    }
+
+    public List<Card> BuildDeckByClass(CardClass mainClass, CardClass subClass, int level)
+    {
+        print("AllCards contains " + allCards.Count + " cards.");
+        List<Card> deck = new List<Card>();
+        deck.AddRange(GetCardsByClass(mainClass, level));
+        deck.AddRange(GetCardsByClass(subClass, level - 4));
+        deck.AddRange(GetCardsByClass(CardClass.None, level)); //neutral cards
+        return deck;
+    }
+
     void Awake()
     {
         if (Instance == null)
@@ -52,30 +79,7 @@ public class CardDatabase : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    public Card GetCardByName(string name)
-    {
-        return allCards.Find(card => card.cardName == name);
-    }
-
-    public List<Card> GetCardsByClass(CardClass cardClass, int level)
-    {
-        return allCards.FindAll(card => (card.cardClass == cardClass || card.cardClass == CardClass.None) && card.level <= level);
-    }
-
-    public List<Card> BuildDeckByClass(CardClass mainClass, CardClass subClass, int level)
-    {
-        List<Card> deck = new List<Card>();
-        deck.AddRange(GetCardsByClass(mainClass, level));
-        deck.AddRange(GetCardsByClass(mainClass, level));
-        deck.AddRange(GetCardsByClass(subClass, level - 4));
-        deck.AddRange(GetCardsByClass(subClass, level - 4));
-        return deck;
-    }
-
-    void Start()
-    {
         allCards.Add(new Card()
         {
             cardName = "Basic Strike",

@@ -6,6 +6,7 @@ using UnityEngine;
 using System.Linq;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using UnityEngine.UI;
 
 [System.Serializable]public class StatusEffect
 {
@@ -168,6 +169,8 @@ public class BattleManager : MonoBehaviour
     public Combatant activeCombatant = null;
     public RectTransform TurnOrderUI;
     public RectTransform playerStats;
+    public Transform itemContainer;
+    public Transform buttonContainer;
     public int attacksRemaining = 1;
     public int hitsRemaining = 0;
     public bool canDodge = false;
@@ -221,7 +224,12 @@ public class BattleManager : MonoBehaviour
                 lootRewards.AddRange(enemy.lootDrops);
             }
         }
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        itemContainer.gameObject.SetActive(false);
     }
+
+
     public void StartBattle()
     {
         
@@ -366,6 +374,8 @@ public class BattleManager : MonoBehaviour
         DialogBox d = FindFirstObjectByType<DialogBox>();
         d.StartDialog(dialog);
         d.OnDialogFinished += OnDialogFinished;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     
     }
 
@@ -382,6 +392,16 @@ public class BattleManager : MonoBehaviour
     void Update()
     {
         if(canWin == false) return;
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(itemContainer.gameObject.activeInHierarchy)
+            {
+                itemContainer.gameObject.SetActive(false);
+                buttonContainer.gameObject.SetActive(true);
+                activePlayer.BonusTurn();
+            }
+        }
         //Check for win
         var enemies = combatants.Where(c => c.tag == "Enemy" && c.alive).ToList();
         
@@ -439,6 +459,7 @@ public class BattleManager : MonoBehaviour
             if(clock > 0f) clock -= Time.deltaTime;
             else if (actionQueue.Count > 0)
             {
+                buttonContainer.gameObject.SetActive(false);
                 executingActions = true;
                 handManager.SetHandActive(false);
                 var action = actionQueue[0];
@@ -542,6 +563,8 @@ public class BattleManager : MonoBehaviour
 
     public void NextTurn()
     {
+        itemContainer.gameObject.SetActive(false);
+        buttonContainer.gameObject.SetActive(false);
         foreach(Combatant combatant in combatants)
         {
             combatant.PlayAnimation("Fighting");
@@ -561,6 +584,7 @@ public class BattleManager : MonoBehaviour
         {
             activePlayer = (PlayerCombatant)current;
             SetPose(current.transform, "Idle", CameraAngle.behind, "Mad");
+            buttonContainer.gameObject.SetActive(true);
         }
         else
         {
@@ -569,6 +593,44 @@ public class BattleManager : MonoBehaviour
         }
         
         UpdateTurnOrderUI();
+    }
+
+    public void SkipTurn()
+    {
+        handManager.SetHandActive(false);
+        NextTurn();
+    }
+
+    public void UseCoke()
+    {
+        var action = new HealAction()
+        {
+            caller = activePlayer,
+            targetType = TargetType.SingleAlly,
+            animation = "Drink",
+            healAmount = "50"
+        };
+        var targetAction = new ChooseTargetsAction()
+        {
+            targetType = action.targetType,
+            prompt = "Who Will Drink the Coke?",
+            gameAction = action,
+            caller = activePlayer
+        };
+        GameManager.Instance.ShowMessage("Who Will Drink the Coke?");
+        actionQueue.Add(targetAction);
+        itemContainer.gameObject.SetActive(false);
+        buttonContainer.gameObject.SetActive(false);
+    }
+
+    public void ShowItemDisplay()
+    {
+        itemContainer.gameObject.SetActive(true);
+        var inventory = itemContainer.GetComponentInChildren<Inventory>();
+        inventory.UpdateInventoryImages(GameManager.Instance.inventory);
+        var activeCardDisplays = FindObjectsByType<CardDisplay>(FindObjectsSortMode.None);
+        buttonContainer.gameObject.SetActive(false);
+        handManager.SetHandActive(false);
     }
 
     public void PlayerHit()

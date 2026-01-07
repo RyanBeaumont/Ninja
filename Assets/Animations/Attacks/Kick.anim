@@ -43151,7 +43151,7 @@ AnimationClip:
   m_Events:
   - time: 0.53333336
     functionName: Hit
-    data: Duck
+    data: Dodge
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

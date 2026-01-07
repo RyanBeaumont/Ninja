@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Village of the Ninja.sln"
+    "dotnet.defaultSolution": "Village_of_the_Ninja.sln"
 }

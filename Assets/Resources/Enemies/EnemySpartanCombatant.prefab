@@ -61,11 +61,18 @@ MonoBehaviour:
   combatantName: Spartan No-Belt
   initiative: 0
   attackPatterns:
-  - attackPattern: PunchCombo
-    attackName: Punch Combo
+  - attackPattern: Slash
+    attackName: Slap
     damage: 10
     damageType: 1
     targetType: 1
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
     hits: 3
     mpCost: 0
     healthThreshold: 100
@@ -74,14 +81,13 @@ MonoBehaviour:
     damage: 10
     damageType: 1
     targetType: 3
-    hits: 1
-    mpCost: 0
-    healthThreshold: 100
-  - attackPattern: SwordHeavy
-    attackName: Powerslash
-    damage: 60
-    damageType: 0
-    targetType: 1
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100

@@ -29,13 +29,14 @@ public class GameManager : MonoBehaviour
     public int maxActiveBots = 2;
     [HideInInspector] public int cash = 0;
     [HideInInspector] public List<string> quests = new List<string>();
-    List<InventoryItem> inventory = new List<InventoryItem>();
+    public List<InventoryItem> inventory = new List<InventoryItem>();
     Transform battleHUD;
     GameObject ui;
     TMP_Text message;
     GameObject[] sceneVariants;
     float messageTimer = 0f;
     RectTransform inventoryUI;
+    Menu menu;
 
     public List<string> finishedEncounters = new List<string>();
 
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour
         ChangeSceneVariant();
         if(EventSystem.current == null)
             Object.Instantiate(Resources.Load<GameObject>("EventSystem"));
+        menu = FindFirstObjectByType<Menu>();
     }
 
     public IEnumerator Fade(bool toBlack)
@@ -115,11 +117,6 @@ public class GameManager : MonoBehaviour
         }
 
         UpdateBotActivation();
-
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
-        }
 
         if(messageTimer > 0f)
         {
@@ -233,7 +230,6 @@ public class GameManager : MonoBehaviour
         ui = Object.Instantiate(Resources.Load<GameObject>("MainCanvas"));
         ui.name = "MainCanvas";
         message = ui.transform.Find("OtherHUD/Message").GetComponent<TMP_Text>();
-        battleHUD = ui.transform.Find("BattleHUD");
         inventoryUI = ui.transform.Find("QuestHUD").GetComponent<RectTransform>();
         inventoryUI.gameObject.SetActive(false);
         var dialog = Object.Instantiate(Resources.Load<GameObject>("Dialog"));
@@ -299,15 +295,14 @@ public class GameManager : MonoBehaviour
             if(item.itemName == itemName)
             {
                 item.quantity += quantity;
-                UpdateInventoryImages();
                 return;
             }
         }
-        UpdateInventoryImages();
         inventory.Add(new InventoryItem(itemName, quantity));
     }
     public bool ConsumeInventoryItem(string itemName, bool consume, int quantity)
     {
+        if(itemName == "") return true;
         foreach(var item in inventory)
         {
             if(item.itemName == itemName && item.quantity >= quantity)
@@ -316,7 +311,6 @@ public class GameManager : MonoBehaviour
                     item.quantity -= quantity;
                     if(item.quantity < 0) inventory.Remove(item);
                     ShowMessage($"Consumed: {itemName}");
-                    UpdateInventoryImages();
                 }
                 return true;
 
@@ -324,29 +318,7 @@ public class GameManager : MonoBehaviour
         }
         return false; //fail to find
     }
-    public void UpdateInventoryImages()
-    {
-        var inventoryContainer = inventoryUI.Find("Items");
-        foreach(Transform child in inventoryContainer){Destroy(child.gameObject);}
-        foreach(var item in inventory)
-        {
-            var itemGO = Instantiate(Resources.Load<GameObject>("InventoryItem"), inventoryContainer);
-            var itemText = itemGO.GetComponentInChildren<TMPro.TMP_Text>();
-            if(itemText != null)
-            {
-                itemText.text = item.quantity.ToString();
-            }
-            var itemImage = itemGO.GetComponentInChildren<UnityEngine.UI.Image>();
-            if(itemImage != null)
-            {
-                var sprite = Resources.Load<Sprite>($"Items/{item.itemName}");
-                if(sprite != null)
-                {
-                    itemImage.sprite = sprite;
-                }
-            }
-        }
-    }
+    
 
     public void AddQuest(string questName)
     {

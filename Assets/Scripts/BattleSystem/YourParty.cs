@@ -40,7 +40,11 @@ public class YourParty : MonoBehaviour
 
     void Start()
     {
-        //StartEncounter(new List<GameObject>(){Resources.Load<GameObject>("Enemies/EnemySpartanCombatant"),Resources.Load<GameObject>("Enemies/EnemySpartanCombatant")});
+        //Give starting decks
+        foreach(var member in reserve)
+        {
+            member.deck = CardDatabase.Instance.BuildDeckByClass(member.mainClass, member.subClass, member.level);
+        }
     }
 
     public PartyMember GetPartyMember(string memberName)
@@ -79,7 +83,9 @@ public class YourParty : MonoBehaviour
             var combatantObject = Instantiate(Resources.Load<GameObject>("PlayerCombatant"), playerSpawn);
 
             //give cards
-            combatantObject.GetComponent<PlayerCombatant>().deck = CardDatabase.Instance.BuildDeckByClass(partyMember.mainClass, partyMember.subClass, partyMember.level);
+            var doubleDeck = new List<Card>(partyMember.deck);
+            doubleDeck.AddRange(partyMember.deck);
+            combatantObject.GetComponent<PlayerCombatant>().deck = doubleDeck;
             combatantObject.GetComponent<PlayerCombatant>().DrawCards(4);
 
             //spread out combatants centered around spawn point
@@ -133,11 +139,28 @@ public class YourParty : MonoBehaviour
         
     }
 
+    public void AddPartyMember(string memberName)
+    {
+        if(!partyMembers.Contains(memberName))
+        {
+            partyMembers.Add(memberName);
+        }
+    }
+
+    public void RemovePartyMember(string memberName)
+    {
+        if(partyMembers.Contains(memberName))
+        {
+            partyMembers.Remove(memberName);
+        }
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
             var dialog = LevelUp(50,50);
+            GameManager.Instance.AddInventoryItem("Coke", 1);
             var dialogBox = FindFirstObjectByType<DialogBox>();
             dialogBox.StartDialog(dialog);
         }

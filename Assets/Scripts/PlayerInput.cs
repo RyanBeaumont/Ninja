@@ -37,6 +37,7 @@ public class PlayerInput : MonoBehaviour
             character.SetInput(GameplayInput.Jump);
      
         }
+        /*
         if(Input.GetKey(KeyCode.LeftShift))
             character.SetInput(GameplayInput.Dash);
         if(Input.GetKey(KeyCode.Mouse1))
@@ -86,6 +87,7 @@ public class PlayerInput : MonoBehaviour
                 }
             }
         }
+        */
         
         
     }
