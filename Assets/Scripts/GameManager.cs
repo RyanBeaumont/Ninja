@@ -24,10 +24,9 @@ public class GameManager : MonoBehaviour
     
     GameplayState gameplayState;
     float freeze = 0f;
-    int currentSpawnPointIndex = 0;
-    int sceneVariant = 0;
+    public int currentSpawnPointIndex = 0;
+    public int sceneVariant = 0;
     public int maxActiveBots = 2;
-    [HideInInspector] public int cash = 0;
     [HideInInspector] public List<string> quests = new List<string>();
     public List<InventoryItem> inventory = new List<InventoryItem>();
     Transform battleHUD;
@@ -36,6 +35,7 @@ public class GameManager : MonoBehaviour
     GameObject[] sceneVariants;
     float messageTimer = 0f;
     RectTransform inventoryUI;
+    public float playTime = 0f;
     Menu menu;
 
     public List<string> finishedEncounters = new List<string>();
@@ -66,13 +66,15 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-           DestroyImmediate(gameObject);
+            DestroyImmediate(gameObject);
             return;
         }
+
 
         // Set the singleton reference
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+             Object.Instantiate(Resources.Load<GameObject>("AudioManager"));
     }
 
     void Start()
@@ -85,6 +87,7 @@ public class GameManager : MonoBehaviour
         if(EventSystem.current == null)
             Object.Instantiate(Resources.Load<GameObject>("EventSystem"));
         menu = FindFirstObjectByType<Menu>();
+   
     }
 
     public IEnumerator Fade(bool toBlack)
@@ -106,7 +109,6 @@ public class GameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
         GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
-        
     }
 
     void Update()
@@ -127,6 +129,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        playTime += Time.deltaTime;
+
     }
 
     public void ShowMessage(string msg)
@@ -135,11 +139,17 @@ public class GameManager : MonoBehaviour
         messageTimer = 3f;
     }
 
+    public void StartSceneTransition(string sceneName, int spawnPointIndex, int sceneVariant)
+    {
+        StartCoroutine(SceneTransition(sceneName, spawnPointIndex, sceneVariant));
+    }
+
     public IEnumerator SceneTransition(string sceneName, int spawnPointIndex, int newSceneVariant)
     {
         yield return StartCoroutine(Fade(true));
         ChangeScene(sceneName, spawnPointIndex, newSceneVariant);
         yield return new WaitForSeconds(0.1f);
+        Debug.Log("SceneTransition complete");
         yield return StartCoroutine(Fade(false));
     }
 
@@ -325,7 +335,7 @@ public class GameManager : MonoBehaviour
         if(!quests.Contains(questName))
         {
             quests.Add(questName);
-            ShowMessage($"New Quest: {questName} [Press I to view]");
+            ShowMessage($"New Quest: {questName} [Press ESCAPE to view]");
             UpdateQuests();
         }
     }
@@ -344,7 +354,7 @@ public class GameManager : MonoBehaviour
 
     void UpdateQuests()
     {
-        var questUI = inventoryUI.Find("Quests").GetComponent<TMP_Text>();
+        var questUI = inventoryUI.Find("CharacterContainer/Quests").GetComponent<TMP_Text>();
         questUI.text = "";
         foreach(var quest in quests)
         {

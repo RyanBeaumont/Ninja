@@ -62,7 +62,6 @@ MonoBehaviour:
     subClass: 1
   partyMembers:
   - Spartan Jack
-  - Stretch
   hpPerLevel: 10
   speedPerLevel: 1
   attackPerLevel: 2

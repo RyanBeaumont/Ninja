@@ -28,6 +28,7 @@ public class EnemyCombatant : Combatant
     public List<LootDrop> lootDrops = new List<LootDrop>();
     public float xpReward = 10f;
     public float goldReward = 10f;
+    public float attackSpeed = 0.25f;
 
     public void OnHit(string direction)
     {
@@ -45,6 +46,11 @@ public class EnemyCombatant : Combatant
 
     void Attack()
     {
+        if(HasStatusEffect("Stunned") != null)
+        {
+            GameManager.Instance.ShowMessage($"{combatantName} is stunned and cannot move!");
+            return;
+        }
         //select a random attack pattern that the enemy can afford and meets health threshold
         List<EnemyAttackData> availableAttacks = new List<EnemyAttackData>();
         foreach(var attack in attackPatterns)  
@@ -59,7 +65,21 @@ public class EnemyCombatant : Combatant
             //No available attacks, skip turn
             return;
         }
-        var selectedAttack = availableAttacks[UnityEngine.Random.Range(0, availableAttacks.Count)];
+        // choose the highest MP-cost attack that is affordable; if multiple share the same
+        // highest cost, pick one of them at random
+        float maxCost = 0f;
+        foreach (var a in availableAttacks)
+        {
+            if (a.mpCost > maxCost)
+                maxCost = a.mpCost;
+        }
+        List<EnemyAttackData> highestAttacks = new List<EnemyAttackData>();
+        foreach (var a in availableAttacks)
+        {
+            if (Mathf.Approximately(a.mpCost, maxCost))
+                highestAttacks.Add(a);
+        }
+        var selectedAttack = highestAttacks[UnityEngine.Random.Range(0, highestAttacks.Count)];
         mp -= selectedAttack.mpCost;
 
 
@@ -78,7 +98,8 @@ public class EnemyCombatant : Combatant
                 statusEffect = selectedAttack.statusEffect,
                 damage = selectedAttack.damage,
                 damageType = selectedAttack.damageType,
-                hits = selectedAttack.hits
+                hits = selectedAttack.hits,
+                timeScale = attackSpeed
             });
         }
     }

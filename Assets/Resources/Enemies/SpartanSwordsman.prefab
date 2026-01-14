@@ -66,6 +66,13 @@ MonoBehaviour:
     damage: 30
     damageType: 0
     targetType: 1
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
@@ -74,6 +81,13 @@ MonoBehaviour:
     damage: 10
     damageType: 1
     targetType: 3
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
@@ -82,6 +96,13 @@ MonoBehaviour:
     damage: 10
     damageType: 0
     targetType: 1
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
@@ -90,6 +111,7 @@ MonoBehaviour:
     dropChance: 50
   xpReward: 40
   goldReward: 40
+  attackSpeed: 0.25
 --- !u!1001 &224500113225208119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -259,84 +281,6 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8227785349284725193, guid: 7e9d023fa1186ec49af4942c19d6fafb, type: 3}
   m_PrefabInstance: {fileID: 224500113225208119}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &3069137963141360854
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 597684031381383722}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7357439
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7357436
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.735744
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-      propertyPath: m_Name
-      value: Katana - Textured Low Poly Asian Weapon Pack by Kickin It Studios
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
---- !u!4 &3250892812921178941 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c37d66555f1834149ad5c210e51d37ce, type: 3}
-  m_PrefabInstance: {fileID: 3069137963141360854}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7982947920912873377
 PrefabInstance:
@@ -752,17 +696,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7386544005072117131, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3250892812921178941}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
---- !u!4 &597684031381383722 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7386544005072117131, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
-  m_PrefabInstance: {fileID: 7982947920912873377}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1604428937954859616 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8686655644832132545, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}

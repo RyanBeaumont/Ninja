@@ -14,6 +14,7 @@ public class Menu : MonoBehaviour
     public Transform entireMenu;
     public GameObject cardPrefab;
     public TMP_Text deckText;
+    public Transform characterList;
     public string currentCharacter = "";
 
     void Start()
@@ -78,10 +79,10 @@ public class Menu : MonoBehaviour
 
     public void UpdateParty()
     {
-        foreach(Transform child in characterContainer) Destroy(child.gameObject);
+        foreach(Transform child in characterList) Destroy(child.gameObject);
         foreach(string p in YourParty.instance.partyMembers)
         {
-            var thisCharacter = Instantiate(Resources.Load<GameObject>("CharacterUI"),characterContainer);
+            var thisCharacter = Instantiate(Resources.Load<GameObject>("CharacterUI"),characterList);
             var partyMember = YourParty.instance.GetPartyMember(p);
             if(partyMember != null)
             {

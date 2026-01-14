@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable] public class PartyMember
 {
@@ -24,6 +26,7 @@ public class YourParty : MonoBehaviour
     public float attackPerLevel = 2f;
     public float defensePerLevel = 2f;
     public float psychicPerLevel = 2f;
+    public string currentSaveFileName = "savefile_1";
     public float gold;
     void Awake()
     {
@@ -38,7 +41,7 @@ public class YourParty : MonoBehaviour
         }
     }
 
-    void Start()
+    public void BuildStartingDeck()
     {
         //Give starting decks
         foreach(var member in reserve)
@@ -50,6 +53,78 @@ public class YourParty : MonoBehaviour
     public PartyMember GetPartyMember(string memberName)
     {
         return reserve.Find(member => member.memberName == memberName);
+    }
+
+    public SavePartyMember ConvertToSavePartyMember(PartyMember member)
+    {
+        SavePartyMember saveMember = new SavePartyMember();
+        saveMember.memberName = member.memberName;
+        saveMember.level = member.level;
+        saveMember.xp = member.xp;
+        saveMember.hpPercentage = member.hpPercentage;
+        saveMember.deck = new List<string>();
+        foreach (var card in member.deck)
+        {
+            saveMember.deck.Add(card.cardName); // Assuming Card has a cardName property
+        }
+        return saveMember;
+    }
+
+    public PartyMember ConvertFromSavePartyMember(SavePartyMember saveMember)
+    {
+        PartyMember member = GetPartyMember(saveMember.memberName);
+        if (member != null)
+        {
+            member.level = saveMember.level;
+            member.xp = saveMember.xp;
+            member.hpPercentage = saveMember.hpPercentage;
+            member.deck = new List<Card>();
+            foreach (var cardName in saveMember.deck)
+            {
+                Card card = CardDatabase.Instance.GetCardByName(cardName);
+                if (card != null)
+                {
+                    member.deck.Add(card);
+                }
+            }
+        }
+        return member;
+    }
+
+    public void LoadLastSave()
+    {
+        var data = SaveSystem.LoadGame(currentSaveFileName);
+        if(data != null)
+        {
+            LoadGame(data);
+        }
+        else
+        {
+            Debug.LogError("No save data found to load.");
+            SceneManager.LoadScene("TitleScene");
+        }
+    }
+
+    public void LoadGame(SaveData data)
+    {
+        partyMembers = data.playersInParty;
+        foreach(var saveMember in data.reserve)
+        {
+            var member = ConvertFromSavePartyMember(saveMember);
+        }
+        for(int i=0; i< data.items.Count; i++)
+        {
+            GameManager.Instance.AddInventoryItem(data.items[i], data.itemQuantities[i]);
+        }
+        gold = data.gold;
+        GameManager.Instance.finishedEncounters = data.finishedEncounters;
+        foreach(var quest in data.quests)
+        {
+            GameManager.Instance.AddQuest(quest);
+        }
+        GameManager.Instance.playTime = data.playTime;
+        GameManager.Instance.ChangeScene(data.sceneName, data.spawnPoint, data.sceneVariant);
+        currentSaveFileName = data.saveFileName;
     }
 
 
@@ -159,12 +234,20 @@ public class YourParty : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            var dialog = LevelUp(50,50);
+            var dialog = LevelUp(150,150);
             GameManager.Instance.AddInventoryItem("Coke", 1);
             var dialogBox = FindFirstObjectByType<DialogBox>();
             dialogBox.StartDialog(dialog);
         }
+
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            SaveSystem.SaveGame(currentSaveFileName);
+            GameManager.Instance.ShowMessage("Game Saved!");
+        }
     }
+
+    
 
 
     public List<Dialog> LevelUp(int xpAmount, int goldAmount)
@@ -206,6 +289,22 @@ public class YourParty : MonoBehaviour
                     pose = "ArmsCrossed",
                     character = null,
                 });
+
+                //Get new cards for level up
+                var newCards = CardDatabase.Instance.GetNewCardsForLevel(partyMember.mainClass, partyMember.subClass, partyMember.level);
+                foreach(var card in newCards)
+                {
+                    partyMember.deck.Add(card);
+                    dialog.Add(new Dialog()
+                    {
+                        name = player,
+                        text = $"{player} learned: {card.cardName}!",
+                        cameraAngle = CameraAngle.standard,
+                        face = "Happy",
+                        pose = "ArmsCrossed",
+                        character = null,
+                    });
+                }
             }
         }
         return dialog;

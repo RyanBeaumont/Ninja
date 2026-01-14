@@ -6,7 +6,7 @@ public static class Bootstrapper
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void EnsureGameController()
     {
-        if (GameManager.Instance == null)
+        if (GameManager.Instance == null && SceneManager.GetActiveScene().name != "TitleScene")
         {
             
             var GameManager = Object.Instantiate(Resources.Load<GameObject>("GameManager"));

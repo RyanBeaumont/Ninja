@@ -19,8 +19,12 @@ public class QuestGate : ChainedInteractable
         if(GameManager.Instance.ConsumeQuest(questName, consume) || completeEvenIfMissing)
         {
             Debug.Log("QuestGate: Quest " + questName + " completed.");
+            if(xpReward > 0 || goldReward > 0){
             d.StartDialog(YourParty.instance.LevelUp((int)xpReward,(int)goldReward));
             d.OnDialogFinished += OnEnd;
+            } else {
+                CallNext();
+            }
             return;
         }
         else

@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxActiveBots: 1
+  cash: 0
+  quests: []
+  finishedEncounters: []
 --- !u!114 &5284989611397509544
 MonoBehaviour:
   m_ObjectHideFlags: 0

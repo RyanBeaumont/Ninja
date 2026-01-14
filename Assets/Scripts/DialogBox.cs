@@ -86,13 +86,17 @@ public class DialogBox : MonoBehaviour
         cutsceneCamera.Priority = 10;
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         
     }
 
-    public void ShowChoiceButtons()
+    public void ShowChoiceButtons(string option1 = "Yes", string option2 = "No")
     {
         yesButton.gameObject.SetActive(true);
         noButton.gameObject.SetActive(true);
+        yesButton.GetComponentInChildren<TMP_Text>().text = option1;
+        noButton.GetComponentInChildren<TMP_Text>().text = option2;
         canAdvance = false;
     }
 
@@ -184,6 +188,8 @@ public class DialogBox : MonoBehaviour
         player.GetComponentInChildren<FaceChanger>().ChangeFace("Happy");
         GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
         OnDialogFinished?.Invoke();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private IEnumerator TypeLine()

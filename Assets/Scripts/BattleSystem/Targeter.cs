@@ -77,6 +77,7 @@ public class Targeter : MonoBehaviour
             if(targetType == TargetType.SingleEnemy)
             {
                 action.caller.SetTargetPosition(selectedTargets[0].transform.position + selectedTargets[0].transform.forward * 2f);
+                action.caller.PlayAnimation("FrontFlip");
             }
             BattleManager.Instance.SelectTargets(selectedTargets);
             BattleManager.Instance.actionQueue.Add(action);

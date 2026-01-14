@@ -49,10 +49,12 @@ public class RandomEncounter : MonoBehaviour
     {
         var player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false);
+        AudioManager.Instance.PlayEncounterTheme();
         while(FindObjectsByType<BattleManager>(FindObjectsSortMode.None).Length > 0)
         {
             yield return null;
         }
+        AudioManager.Instance.PlayMainTheme();
         player.SetActive(true);
     }
 }

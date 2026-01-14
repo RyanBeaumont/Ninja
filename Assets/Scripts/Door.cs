@@ -8,6 +8,6 @@ public class Door : ChainedInteractable
     public override void Interact()
     {
         if(active)
-        StartCoroutine(GameManager.Instance.SceneTransition(sceneName, spawnPointIndex, sceneVariant));
+        GameManager.Instance.StartSceneTransition(sceneName, spawnPointIndex, sceneVariant);
     }
 }

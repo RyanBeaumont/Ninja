@@ -128,6 +128,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2949345306626805892 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9040420190579322294, guid: 629bc4ed864e57642a5d7660d404decf, type: 3}
+  m_PrefabInstance: {fileID: 6167727715048439090}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4550436403466462334 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7691671394250447180, guid: 629bc4ed864e57642a5d7660d404decf, type: 3}
@@ -150,7 +161,13 @@ MonoBehaviour:
   descriptionText: {fileID: 7713790942841562879}
   costText: {fileID: 5734947912319003531}
   borderImage: {fileID: 4710136710679054289}
+  damageTypeImage: {fileID: 2949345306626805892}
   selectedBorder: {fileID: 829029049094627716}
+  targetLocalPos: {x: 0, y: 0, z: 0}
+  targetLocalRot: {x: 0, y: 0, z: 0, w: 0}
+  smoothFactor: 0.125
+  horOffset: 2
+  vertOffset: 0.5
 --- !u!114 &4710136710679054289 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1496866126951774947, guid: 629bc4ed864e57642a5d7660d404decf, type: 3}

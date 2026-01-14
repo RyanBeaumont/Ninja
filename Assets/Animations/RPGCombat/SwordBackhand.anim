@@ -16673,7 +16673,7 @@ AnimationClip:
   m_Events:
   - time: 0.26666668
     functionName: Hit
-    data: Left
+    data: Duck
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

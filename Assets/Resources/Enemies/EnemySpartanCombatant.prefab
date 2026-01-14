@@ -73,7 +73,7 @@ MonoBehaviour:
       additive: 1
       duration: -1
       removeOnHit: 0
-    hits: 3
+    hits: 1
     mpCost: 0
     healthThreshold: 100
   - attackPattern: Sweep
@@ -96,6 +96,7 @@ MonoBehaviour:
     dropChance: 25
   xpReward: 30
   goldReward: 30
+  attackSpeed: 0.25
 --- !u!1001 &224500113225208119
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,6 +9,37 @@ public class AnimationListener : MonoBehaviour
         
     }
 
+    void SpawnWeapon(string weapon)
+    {
+        //find WeaponR in skeleton (searches deep hierarchy)
+        var weaponHolder = FindTransformRecursive(transform, "WeaponR");
+        if(weaponHolder == null){print("WeaponR not found in skeleton");return;}
+        foreach(Transform child in weaponHolder)
+        {
+            Destroy(child.gameObject);
+        }
+        var weaponPrefab = Resources.Load<GameObject>($"Weapons/{weapon}");
+        if(weaponPrefab == null){print("Weapon model not found");return;}
+        var i = Instantiate(weaponPrefab, weaponHolder);
+        i.transform.localPosition = Vector3.zero;
+        i.transform.localRotation = Quaternion.identity;
+    }
+
+    Transform FindTransformRecursive(Transform root, string name)
+    {
+        if (root.name == name)
+            return root;
+        
+        foreach (Transform child in root)
+        {
+            var result = FindTransformRecursive(child, name);
+            if (result != null)
+                return result;
+        }
+        
+        return null;
+    }
+
     void Hit(string direction)
     {
         if(GetComponentInParent<EnemyCombatant>() != null)

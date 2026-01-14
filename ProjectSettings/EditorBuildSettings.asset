@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JackHouse.unity
     guid: e176fa516e936de468b46a688c3fc910
+  - enabled: 1
+    path: Assets/Scenes/TitleScene.unity
+    guid: c3da4c7d593e8414d8b6220b13233e5c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

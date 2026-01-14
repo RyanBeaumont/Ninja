@@ -60,13 +60,15 @@ public class EnemyAttackAction : GameAction
     public int hits;
     public DamageType damageType;
     public StatusEffect statusEffect = null;
+    public float timeScale = 0.25f;
 
     public override void Execute(BattleManager battleManager)
     {
+        AudioManager.Instance.PlaySoundEffect("s_dbz_jump",Random.Range(0.8f,1.2f));
         battleManager.waitingForInput = true; //wait for animation input
         battleManager.hitsRemaining = hits;
         battleManager.pendingDamage = caller.EvaluateStatFormula(damage);
-        Time.timeScale = 0.25f; //slow down time for dramatic effect
+        Time.timeScale = timeScale; //slow down time for dramatic effect
         battleManager.pendingDamageType = damageType;
         if(statusEffect != null && statusEffect.name != "")
             battleManager.pendingStatusEffect = statusEffect;
@@ -84,6 +86,7 @@ public class DamageAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
+        AudioManager.Instance.PlaySoundEffect("s_dbz_jump",Random.Range(0.8f,1.2f));
         battleManager.waitingForInput = true; //wait for animation input
         battleManager.hitsRemaining = hits;
         battleManager.pendingDamage = caller.EvaluateStatFormula(damage);
@@ -99,7 +102,7 @@ public class HealAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
-        battleManager.clock = caller.PlayAnimation(animation);
+        caller.PlayAnimation(animation);
         foreach(var t in battleManager.currentTargets)
         {
             t.Heal(caller.EvaluateStatFormula(healAmount));
@@ -136,7 +139,7 @@ public class DrawCardsAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
-         battleManager.clock = caller.PlayAnimation(animation);
+        caller.PlayAnimation(animation);
         if (caller is PlayerCombatant player)
         {
             player.DrawCards(cardCount);
@@ -150,7 +153,7 @@ public class GainMPAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
-         battleManager.clock = caller.PlayAnimation(animation);
+        caller.PlayAnimation(animation);
         caller.GainMP(caller.EvaluateStatFormula(mpAmount));
     }
 }
@@ -191,6 +194,7 @@ public class BattleManager : MonoBehaviour
     public bool lifestrike = false;
     float goldReward;
     float xpReward;
+    GameObject player;
     List<LootDrop> lootRewards = new List<LootDrop>();
 
     void Awake()
@@ -232,7 +236,6 @@ public class BattleManager : MonoBehaviour
 
     public void StartBattle()
     {
-        
     }
 
     public void SelectTargets(List<Combatant> targets)
@@ -376,7 +379,33 @@ public class BattleManager : MonoBehaviour
         d.OnDialogFinished += OnDialogFinished;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
     
+    }
+
+    void Lose()
+    {
+        DialogBox d = FindFirstObjectByType<DialogBox>();
+        d.StartDialog(new List<Dialog>()
+        {
+            new Dialog()
+            {
+                name = "",
+                text = "Your party has been defeated...",
+                cameraAngle = CameraAngle.highAngle,
+                face = "Mad",
+                pose = "Defeated",
+                character = null
+            }
+        });
+        d.OnDialogFinished += OnLoseDialogFinished;
+    }
+
+    void OnLoseDialogFinished()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        YourParty.instance.LoadLastSave();
     }
 
     void OnDialogFinished()
@@ -408,6 +437,15 @@ public class BattleManager : MonoBehaviour
         if (combatants.Count > 0 && enemies.Count == 0 && canWin)
         {
             Invoke("Win", 2f);
+            canWin = false;
+        }
+
+        var players = combatants.Where(c => c.tag == "PlayerCombatant" && c.alive).ToList();
+
+        if(combatants.Count > 0 && players.Count == 0)
+        {
+            GameManager.Instance.ShowMessage("Defeat...");
+            Invoke("Lose", 2f);
             canWin = false;
         }
 
@@ -446,6 +484,7 @@ public class BattleManager : MonoBehaviour
                             cameraAnimator.Play("Camera_Duck");
                         }
                     }
+                    AudioManager.Instance.PlaySoundEffect("Whoosh",Random.Range(0.8f,1.2f));
                     dodgeWindow = dodgeInputWindow;
                     dodgeCooldown = 0.5f;
                     foreach(var t in currentTargets) t.PlayAnimation(dodgeInput);
@@ -643,6 +682,12 @@ public class BattleManager : MonoBehaviour
             var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
             if(hitsRemaining == 0) t.PlayAnimation("Knockdown");
             else t.PlayAnimation("Stunned");
+            if(pendingDamageType == DamageType.Slashing)
+                AudioManager.Instance.PlaySoundEffect("HitSlash",Random.Range(0.8f,1.2f));
+            if(pendingDamageType == DamageType.Bludgeoning)
+                AudioManager.Instance.PlaySoundEffect("s_punch",Random.Range(0.8f,1.2f));
+            if(pendingDamageType == DamageType.Psychic)
+                AudioManager.Instance.PlaySoundEffect("Crackle",Random.Range(0.8f,1.2f));
             var d = t.TakeDamage(activeCombatant,(int)pendingDamage, pendingDamageType);
             if(lifestrike){lifestrike = false; activeCombatant.Heal(d);}
             if(activePlayer != null) activePlayer.tp += (int)(d / (activePlayer.level*0.75f)); //Gain TERROR points based on damage dealt
@@ -669,6 +714,7 @@ public class BattleManager : MonoBehaviour
             Debug.Log("Dodge successful!");
             dodgeCooldown = 0;
             dodgeInput = "";
+            //GameManager.Instance.SoundEffect("Parry");
             foreach(var t in currentTargets)
             {
                 var effect = Instantiate(Resources.Load<GameObject>("Particles/Block"), t.transform);
@@ -680,6 +726,7 @@ public class BattleManager : MonoBehaviour
             dodgeCooldown = 0;
             dodgeInput = "";
             perfectDodge = false;
+            AudioManager.Instance.PlaySoundEffect("SwordClang",Random.Range(0.8f,1.2f));
             foreach(var t in currentTargets)
             {
                 var effect = Instantiate(Resources.Load<GameObject>("Particles/Block"), t.transform);
@@ -695,6 +742,12 @@ public class BattleManager : MonoBehaviour
                 t.TakeDamage(activeCombatant,(int)pendingDamage, pendingDamageType);
                 if(hitsRemaining == 0) t.PlayAnimation("Knockdown");
                 else t.PlayAnimation("Stunned");
+                if(pendingDamageType == DamageType.Slashing)
+                AudioManager.Instance.PlaySoundEffect("HitSlash",Random.Range(0.8f,1.2f));
+                if(pendingDamageType == DamageType.Bludgeoning)
+                    AudioManager.Instance.PlaySoundEffect("s_punch",Random.Range(0.8f,1.2f));
+                if(pendingDamageType == DamageType.Psychic)
+                    AudioManager.Instance.PlaySoundEffect("Crackle",Random.Range(0.8f,1.2f));
             }
         }
         hitsRemaining --;
@@ -702,7 +755,8 @@ public class BattleManager : MonoBehaviour
         {
             if(perfectDodge && actionQueue.Count == 0) //you dodged perfectly and there are no more actions queued
             {
-                GameManager.Instance.ShowMessage($"Counter! {activeCombatant.combatantName}");
+                AudioManager.Instance.PlaySoundEffect("SwordClang",Random.Range(0.8f,1.2f));
+                GameManager.Instance.ShowMessage($"Counter!");
                 foreach(var t in currentTargets)
                 {
                     if(t is PlayerCombatant){

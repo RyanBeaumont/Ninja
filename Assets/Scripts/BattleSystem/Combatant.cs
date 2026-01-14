@@ -128,7 +128,7 @@ public class Combatant : MonoBehaviour
 
     public float PlayAnimation(string animationName)
     {
-        if(animator == null || string.IsNullOrEmpty(animationName)) return 1f;
+        if(animator == null || string.IsNullOrEmpty(animationName)) return 0.1f;
         animator.Play(animationName);
         return animator.GetCurrentAnimatorStateInfo(0).length;
     }
@@ -225,6 +225,12 @@ public class Combatant : MonoBehaviour
 
         return baseValue;
     }
+
+    public StatusEffect HasStatusEffect(string effectName)
+    {
+        return statusEffects.Find(e => e.name == effectName);
+    }
+
     public float EvaluateStatFormula(string statFormula)
     {
         statFormula = Regex.Replace(statFormula,@"\b[A-Z]+\b",match => GetStat(match.Value).ToString());

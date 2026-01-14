@@ -6,13 +6,15 @@ using UnityEngine;
 public class CombatEncounter : ChainedInteractable
 {
     public List<GameObject> enemies;
-    TMP_Text battleTitle;
+    public AudioClip battleMusic;
 
     GameObject player;
 
     IEnumerator StartBattle()
     {
         YourParty.instance.StartEncounter(enemies, transform);
+        AudioManager.Instance.PlaySoundEffect("Gong");
+        AudioManager.Instance.PlayMusic(battleMusic);
         transform.GetChild(0).gameObject.SetActive(false);
         GameManager.Instance.SetGameplayState(GameplayState.Combat);
         yield return new WaitForSeconds(2f);
@@ -26,6 +28,7 @@ public class CombatEncounter : ChainedInteractable
         GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
         transform.GetChild(0).gameObject.SetActive(true);
         player.SetActive(true);
+        AudioManager.Instance.PlayMainTheme();
         GetComponent<CapsuleCollider>().enabled = true;
         CallNext();  
     }
@@ -33,6 +36,7 @@ public class CombatEncounter : ChainedInteractable
     public override void Interact()
     {
         if(active){
+            SaveSystem.SaveGame(YourParty.instance.currentSaveFileName);
             print("Encounter Interact");
             player = GameObject.FindGameObjectWithTag("Player");
             player.SetActive(false);

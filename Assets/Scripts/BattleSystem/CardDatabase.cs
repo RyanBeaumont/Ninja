@@ -23,7 +23,7 @@ public class Card
     public string cardName;
     [TextArea(2, 4)]
     public string description;
-    public Sprite artwork;
+    public string artwork;
 
     [Header("Rules")]
     public CardClass cardClass;
@@ -68,6 +68,15 @@ public class CardDatabase : MonoBehaviour
         return deck;
     }
 
+    public List<Card> GetNewCardsForLevel(CardClass mainClass, CardClass subClass, int level)
+    {
+        List<Card> newCards = new List<Card>();
+        newCards.AddRange(allCards.FindAll(card => card.cardClass == mainClass && card.level == level));
+        newCards.AddRange(allCards.FindAll(card => card.cardClass == subClass && card.level == level-4));
+        newCards.AddRange(allCards.FindAll(card => card.cardClass == CardClass.None && card.level == level));
+        return newCards;
+    }
+
     void Awake()
     {
         if (Instance == null)
@@ -86,6 +95,7 @@ public class CardDatabase : MonoBehaviour
             description = "A basic physical attack.",
             cost = 0,
             level = 0,
+            artwork = "IconFist",
             effects = new List<GameAction>()
             {
                 new DamageAction()
@@ -103,6 +113,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "Quick Strike",
             description = "Play again",
             cost = 10,
+            artwork = "IconFist",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
@@ -122,6 +133,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "Smart Strike",
             description = "Draw a card",
             cost = 10,
+            artwork = "IconFist",
             cardClass = CardClass.Grappler,
             effects = new List<GameAction>()
             {
@@ -149,6 +161,7 @@ public class CardDatabase : MonoBehaviour
             description = "3 Hits",
             cost = 20,
             level = 3,
+            artwork = "IconMultiFist",
             effects = new List<GameAction>()
             {
                 new DamageAction()
@@ -166,6 +179,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Tornado Ass Kick",
             description = "Damages all opponents",
+            artwork = "IconKick",
             cost = 10,
             level = 1,
             effects = new List<GameAction>()
@@ -185,6 +199,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Chi Blade",
             description = "Deals damage based on your MP",
+            artwork = "IconSlash",
             cardClass = CardClass.Psychic,
             level = 1,
             cost = 10,
@@ -207,6 +222,7 @@ public class CardDatabase : MonoBehaviour
             description = "Ultimate attack",
             tpCost = 50,
             cardClass = CardClass.Warrior,
+            artwork = "IconSpartaKick",
             level = 2,
             effects = new List<GameAction>()
             {
@@ -226,6 +242,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "Lifestrike",
             description = "Heals equal to damage dealt",
             cardClass = CardClass.Warrior,
+            artwork = "IconKick",
             level = 3,
             cost = 30,
             effects = new List<GameAction>()
@@ -247,6 +264,7 @@ public class CardDatabase : MonoBehaviour
             description = "A powerful slash attack.",
             cost = 20,
             level = 1,
+            artwork = "IconSlash",
             effects = new List<GameAction>()
             {
                 new DamageAction()
@@ -260,10 +278,32 @@ public class CardDatabase : MonoBehaviour
             }
         });
 
+        allCards.Add(new Card()
+        {
+            cardName = "Uberslash",
+            description = "A powerful slash attack.",
+            cost = 40,
+            level = 3,
+            cardClass = CardClass.Warrior,
+            artwork = "IconSlash",
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "80",
+                    animation = "SwordWhirlwind",
+                    damageType = DamageType.Slashing,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1
+                }
+            }
+        });
+
          allCards.Add(new Card()
         {
             cardName = "Gather Chi",
-            description = "Gain MP and draw 2 cards",
+            description = "Gain MP and draw 1 card",
+            artwork = "IconSuperSaiyan",
             cost = 0,
             level = 1,
             effects = new List<GameAction>()
@@ -271,12 +311,12 @@ public class CardDatabase : MonoBehaviour
                 new GainMPAction()
                 {
                     mpAmount = "PSY * 2",
-                    animation = "",
+                    animation = "Burst",
                     targetType = TargetType.Self
                 }
                 ,new DrawCardsAction()
                 {
-                    cardCount = 2,
+                    cardCount = 1,
                     animation = "",
                     targetType = TargetType.Self
                 }
@@ -289,6 +329,7 @@ public class CardDatabase : MonoBehaviour
             description = "A small permanent attack boost",
             cost = 20,
             cardClass = CardClass.Warrior,
+            artwork = "IconSuperSaiyan",
             level = 2,
             effects = new List<GameAction>()
             {
@@ -314,6 +355,7 @@ public class CardDatabase : MonoBehaviour
             cost = 10,
             level = 1,
             cardClass = CardClass.Warrior,
+            artwork = "IconFist",
             effects = new List<GameAction>()
             {
                 new DamageAction()
@@ -326,7 +368,7 @@ public class CardDatabase : MonoBehaviour
                     {
                         name = "Concussed",
                         stat = "DEF",
-                        amount = -4,
+                        amount = -8,
                         duration = -1,
                         removeOnHit = true
                     },
