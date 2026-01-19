@@ -40,7 +40,8 @@ public class RandomEncounter : MonoBehaviour
         }
         if(validEncounters.Count == 0) return;
         var thisEncounter = validEncounters[UnityEngine.Random.Range(0, validEncounters.Count)];
-        YourParty.instance.StartEncounter(thisEncounter.enemyPrefabs, position);
+        var player = GameObject.FindGameObjectWithTag("Player");
+        YourParty.instance.StartEncounter(thisEncounter.enemyPrefabs, position, player);
         gracePeriod = 10;
         StartCoroutine(DisableTemporarily());
     }

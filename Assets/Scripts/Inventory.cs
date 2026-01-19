@@ -83,8 +83,12 @@ public class Inventory : MonoBehaviour
                         }
                     }
                     break;
-                case "BANG":
-                    //damage enemy
+                case "Bang":
+                    if(battleManager != null)
+                    {
+                        battleManager.UseBang();
+                        success = true;
+                    }
                     break;
                 default:
                     break;
@@ -92,6 +96,8 @@ public class Inventory : MonoBehaviour
                 if(success)
                 {
                     GameManager.Instance.ConsumeInventoryItem(itemName, true, 1);
+                    menu.UpdateParty();
+                    AudioManager.Instance.PlaySoundEffect("Save",1);
                     UpdateInventoryImages(GameManager.Instance.inventory);
                 }
             

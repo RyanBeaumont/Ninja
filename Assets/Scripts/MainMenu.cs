@@ -38,19 +38,5 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void LoadGame(SaveData data)
-    {
-        
-        if (data != null)
-        {
-            var GameManager = Object.Instantiate(Resources.Load<GameObject>("GameManager"));
-            GameManager.GetComponent<GameManager>().SpawnPlayer(0);
-            var YourParty = Object.Instantiate(Resources.Load<GameObject>("YourParty"));
-            YourParty.GetComponent<YourParty>().LoadGame(data);
-        }
-        else
-        {
-            Debug.Log("No save data found.");
-        }
-    }
+   
 }

@@ -13,6 +13,7 @@ public static class Bootstrapper
             var YourParty = Object.Instantiate(Resources.Load<GameObject>("YourParty"));
             Debug.Log("GameManager instantiated by Bootstrapper.");
             GameManager.GetComponent<GameManager>().SpawnPlayer(0);
+            YourParty.GetComponent<YourParty>().BuildStartingDeck();
         }
         
     }

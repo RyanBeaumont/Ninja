@@ -14,6 +14,8 @@ public class FadeToBlack : ChainedInteractable
     {
         if (active)
         {
+            var player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<Animator>().Play("ArmsCrossed");
             GameManager.Instance.SetGameplayState(GameplayState.Dialog);
             yield return StartCoroutine(GameManager.Instance.Fade(toBlack));
             GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);

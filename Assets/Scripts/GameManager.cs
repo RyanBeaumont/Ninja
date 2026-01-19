@@ -6,6 +6,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 public enum GameplayState{FreeMovement, RestrictedMovement, Dialog, Combat}
 public class InventoryItem
 {
@@ -108,7 +109,6 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(0.1f);
-        GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
     }
 
     void Update()
@@ -153,6 +153,11 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(Fade(false));
     }
 
+    public void SetSpawnPoint(int spawnPointIndex)
+    {
+        currentSpawnPointIndex = spawnPointIndex;
+    }
+
     public void ChangeScene(string sceneName, int spawnPointIndex, int newSceneVariant)
     {
         var currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
@@ -189,6 +194,7 @@ public class GameManager : MonoBehaviour
         sceneVariants = GameObject.FindGameObjectsWithTag("SceneVariant");
         print("found " + sceneVariants.Length + " scene variants");
         ChangeSceneVariant();
+        
         SpawnPlayer(currentSpawnPointIndex);
     }
 
@@ -214,6 +220,7 @@ public class GameManager : MonoBehaviour
         var DisableEncounterObjects = FindObjectsByType<DisableEncounter>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (var po in DisableEncounterObjects)
         {
+            po.enabled = true; //reset
             string poID = po.encounterID;
             if (finishedEncounters.Contains(poID))
             {
@@ -242,6 +249,7 @@ public class GameManager : MonoBehaviour
         message = ui.transform.Find("OtherHUD/Message").GetComponent<TMP_Text>();
         inventoryUI = ui.transform.Find("QuestHUD").GetComponent<RectTransform>();
         inventoryUI.gameObject.SetActive(false);
+        UpdateQuests();
         var dialog = Object.Instantiate(Resources.Load<GameObject>("Dialog"));
         var spawnPoints = Object.FindObjectsByType<SpawnPoint>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         Debug.Log("Found spawn points: " + spawnPoints.Length);

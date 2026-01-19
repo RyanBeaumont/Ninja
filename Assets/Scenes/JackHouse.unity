@@ -764,6 +764,7 @@ GameObject:
   - component: {fileID: 69174323}
   - component: {fileID: 69174322}
   - component: {fileID: 69174321}
+  - component: {fileID: 69174326}
   - component: {fileID: 69174320}
   - component: {fileID: 69174319}
   - component: {fileID: 69174325}
@@ -783,7 +784,7 @@ Transform:
   m_GameObject: {fileID: 69174316}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.28607625, z: -0, w: 0.9582069}
-  m_LocalPosition: {x: 4.728, y: 5.664, z: 6.47}
+  m_LocalPosition: {x: 4.282, y: 5.664, z: 6.47}
   m_LocalScale: {x: 0.3612362, y: 0.1281, z: 0.27769998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1053,6 +1054,24 @@ MonoBehaviour:
   additionalObjects: []
   endingPose: 
   endingFace: 
+--- !u!114 &69174326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69174316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc188127f6a42c46a49d02911cf03b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  encounterMusic: {fileID: 8300000, guid: a771b7d13abcec6479d2472603246269, type: 3}
+  fadeTime: 1.5
+  sfx: 
 --- !u!1001 &70025258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7885,6 +7904,9 @@ PrefabInstance:
       addedObject: {fileID: 668733827}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d291ef1d31d802b4a876eb709e62f00d, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 668733829}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d291ef1d31d802b4a876eb709e62f00d, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 668733817}
   m_SourcePrefab: {fileID: 100100000, guid: d291ef1d31d802b4a876eb709e62f00d, type: 3}
 --- !u!4 &668733815 stripped
@@ -7915,6 +7937,7 @@ MonoBehaviour:
   sceneName: Overworld
   spawnPointIndex: 1
   sceneVariant: 2
+  skybox: {fileID: 2100000, guid: ceb0a3ed2cb53a94fa21843cc958c52b, type: 2}
 --- !u!114 &668733818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8005,7 +8028,7 @@ MonoBehaviour:
   active: 1
   blockInteraction: 0
   questName: Sleep til Midnight
-  consume: 1
+  consume: 0
   xpReward: 0
   goldReward: 0
   giveQuestIfMissing: 0
@@ -8074,6 +8097,28 @@ MonoBehaviour:
   encounterMusic: {fileID: 8300000, guid: 5563344985e47444cb336f0971102dad, type: 3}
   fadeTime: 0.5
   sfx: 
+--- !u!114 &668733829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668733816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b5bf5e381673248b03fce9dbf3fef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  questName: Sleep til Midnight
+  consume: 1
+  xpReward: 0
+  goldReward: 0
+  giveQuestIfMissing: 1
+  completeEvenIfMissing: 1
+  incompleteDialog: []
 --- !u!1001 &673239204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11681,7 +11726,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 43b23610fe6c80d47915516dc8c01bbe, type: 2}
     - target: {fileID: 919132149155446097, guid: 8fe990bdd2f9f21438c54b9e029af2f9, type: 3}
       propertyPath: m_Name
-      value: cabinet_small_decorated
+      value: One Night Stand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11690,6 +11735,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8fe990bdd2f9f21438c54b9e029af2f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 990141605}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8fe990bdd2f9f21438c54b9e029af2f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 990141607}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8fe990bdd2f9f21438c54b9e029af2f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 990141608}
   m_SourcePrefab: {fileID: 100100000, guid: 8fe990bdd2f9f21438c54b9e029af2f9, type: 3}
 --- !u!1 &990141604 stripped
 GameObject:
@@ -11722,6 +11773,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8fe990bdd2f9f21438c54b9e029af2f9, type: 3}
   m_PrefabInstance: {fileID: 990141603}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &990141607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990141604}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  itemName: Coke
+--- !u!114 &990141608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990141604}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  hideObject: 0
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
 --- !u!1001 &1001349745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18422,6 +18508,7 @@ MonoBehaviour:
   sceneName: 
   spawnPointIndex: 1
   sceneVariant: 1
+  skybox: {fileID: 0}
 --- !u!114 &1638810724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19965,6 +20052,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f2bce31118c4c8a439ecb29ae7c1cd37, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1795118658}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f2bce31118c4c8a439ecb29ae7c1cd37, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1795118660}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f2bce31118c4c8a439ecb29ae7c1cd37, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1795118661}
   m_SourcePrefab: {fileID: 100100000, guid: f2bce31118c4c8a439ecb29ae7c1cd37, type: 3}
 --- !u!1 &1795118657 stripped
 GameObject:
@@ -19997,6 +20090,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f2bce31118c4c8a439ecb29ae7c1cd37, type: 3}
   m_PrefabInstance: {fileID: 1795118656}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1795118660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795118657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  itemName: Lockpick
+--- !u!114 &1795118661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795118657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  hideObject: 0
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
 --- !u!1001 &1827105342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20432,6 +20560,7 @@ MonoBehaviour:
   sceneName: Overworld
   spawnPointIndex: 1
   sceneVariant: 1
+  skybox: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
 --- !u!4 &1870965324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6347066284866395256, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}

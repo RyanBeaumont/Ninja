@@ -10,21 +10,19 @@ public class CombatEncounter : ChainedInteractable
 
     GameObject player;
 
-    IEnumerator StartBattle()
+    void StartBattle()
     {
-        YourParty.instance.StartEncounter(enemies, transform);
-        AudioManager.Instance.PlaySoundEffect("Gong");
+        YourParty.instance.StartEncounter(enemies, transform, player);
+        AudioManager.Instance.PlaySoundEffect("Battle");
         AudioManager.Instance.PlayMusic(battleMusic);
         transform.GetChild(0).gameObject.SetActive(false);
         GameManager.Instance.SetGameplayState(GameplayState.Combat);
-        yield return new WaitForSeconds(2f);
+        BattleManager.Instance.onWin += onWin; 
+    }
 
-
-        while(FindObjectsByType<BattleManager>(FindObjectsSortMode.None).Length > 0)
-        {
-            yield return null;
-        }
-
+    void onWin()
+    {
+        BattleManager.Instance.onWin -= onWin;
         GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
         transform.GetChild(0).gameObject.SetActive(true);
         player.SetActive(true);
@@ -33,14 +31,16 @@ public class CombatEncounter : ChainedInteractable
         CallNext();  
     }
 
+
+
     public override void Interact()
     {
         if(active){
-            SaveSystem.SaveGame(YourParty.instance.currentSaveFileName);
+            //SaveSystem.SaveGame(YourParty.instance.currentSaveFileName);
             print("Encounter Interact");
             player = GameObject.FindGameObjectWithTag("Player");
             player.SetActive(false);
-            StartCoroutine(StartBattle());
+            StartBattle();
         }
     }
 

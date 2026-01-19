@@ -73,6 +73,7 @@ public class Combatant : MonoBehaviour
             var skull = Instantiate(Resources.Load<GameObject>("Particles/Skull"), transform.position, Quaternion.identity);
             BattleManager.Instance.RemoveCombatant(this);
             GameManager.Instance.ShowMessage($"{combatantName} has been defeated!");
+            AudioManager.Instance.PlaySoundEffect("Explosion");
             alive = false;
             animator.Play("Death");
             OnDeath();

@@ -7,6 +7,8 @@ public static class SaveSystem
 {
     public static void SaveGame(string fname)
     {
+        AudioManager.Instance.PlaySoundEffect("Save");
+
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/" + fname + ".sav";
         FileStream stream = new FileStream(path, FileMode.Create);

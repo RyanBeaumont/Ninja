@@ -39,6 +39,7 @@ public class EnemyCombatant : Combatant
     {
         base.StartTurn();
         mp += 10f;
+        if(mp > maxMp) mp = maxMp;
         GameManager.Instance.ShowMessage($"{combatantName}'s turn!");
         Invoke("Attack", 2f);
     }

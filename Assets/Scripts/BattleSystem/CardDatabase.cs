@@ -44,7 +44,7 @@ public class CardDatabase : MonoBehaviour
     public Dictionary<string,string> itemDescriptions = new Dictionary<string,string>()
     {
         {"Coke", "Good for your HEALTH... You think. Can be used in combat"},
-        {"BANG", "Throw at an enemy to deal damage. Does not consume a turn."},
+        {"Bang", "Throw at an enemy to deal damage. Does not consume a turn."},
         {"Lockpick", "You made this out of a hairpin! Perks of having long, luscious locks"}
     };
 
@@ -159,14 +159,14 @@ public class CardDatabase : MonoBehaviour
             cardName = "C-C-Combo",
             cardClass = CardClass.Warrior,
             description = "3 Hits",
-            cost = 20,
+            cost = 25,
             level = 3,
             artwork = "IconMultiFist",
             effects = new List<GameAction>()
             {
                 new DamageAction()
                 {
-                    damage = "10",
+                    damage = "15",
                     animation = "PunchCombo",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
@@ -283,14 +283,14 @@ public class CardDatabase : MonoBehaviour
             cardName = "Uberslash",
             description = "A powerful slash attack.",
             cost = 40,
-            level = 3,
+            level = 4,
             cardClass = CardClass.Warrior,
             artwork = "IconSlash",
             effects = new List<GameAction>()
             {
                 new DamageAction()
                 {
-                    damage = "80",
+                    damage = "70",
                     animation = "SwordWhirlwind",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
@@ -310,7 +310,7 @@ public class CardDatabase : MonoBehaviour
             {
                 new GainMPAction()
                 {
-                    mpAmount = "PSY * 2",
+                    mpAmount = "PSY",
                     animation = "Burst",
                     targetType = TargetType.Self
                 }

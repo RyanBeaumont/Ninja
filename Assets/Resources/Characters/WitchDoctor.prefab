@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5346794940795992531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6673705435297511880}
+  m_Layer: 0
+  m_Name: WeaponR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6673705435297511880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5346794940795992531}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6963643, y: -0.6963643, z: 0.122787856, w: 0.122787856}
+  m_LocalPosition: {x: 0, y: 0.00077, z: -0.00028}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 8482442810732630492}
+  m_LocalEulerAnglesHint: {x: 160, y: 0, z: 90}
 --- !u!1001 &2760883214828327664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -107,8 +138,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 2100000, guid: 9db519702b86d18409d6373dd028291e, type: 2}
-  - {fileID: 2100000, guid: 7320494bb11800c409ceb9861acf90a8, type: 2}
+  - {fileID: 2100000, guid: 3bbea10982d8ccb469b4122d82f1daa0, type: 2}
+  - {fileID: 2100000, guid: d267f6ff9b218614f96aa38d48c17b54, type: 2}
+  - {fileID: 2100000, guid: a33f7b45e19328b45b8605044a23558d, type: 2}
+  - {fileID: 2100000, guid: 2de73de349f728d49b79d6bcadf6d453, type: 2}
+  - {fileID: 2100000, guid: c53a539ad46470145a40fb44600528f1, type: 2}
 --- !u!1001 &3039443247063800159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -180,6 +214,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6888806815857526915, guid: ce3d2743faba90046874148bcac73dbc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6673705435297511880}
     - targetCorrespondingSourceObject: {fileID: -1662616379218952914, guid: ce3d2743faba90046874148bcac73dbc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2439290574559458587}
@@ -250,5 +287,10 @@ MonoBehaviour:
 --- !u!4 &4810819333147780209 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1662616379218952914, guid: ce3d2743faba90046874148bcac73dbc, type: 3}
+  m_PrefabInstance: {fileID: 3039443247063800159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8482442810732630492 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6888806815857526915, guid: ce3d2743faba90046874148bcac73dbc, type: 3}
   m_PrefabInstance: {fileID: 3039443247063800159}
   m_PrefabAsset: {fileID: 0}

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3884378475592959613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8923661441813085781}
+  m_Layer: 0
+  m_Name: WeaponR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8923661441813085781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3884378475592959613}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6963643, y: -0.6963643, z: 0.122787856, w: 0.122787856}
+  m_LocalPosition: {x: 0, y: 0.00077, z: -0.00028}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 523924876090929492}
+  m_LocalEulerAnglesHint: {x: 160, y: 0, z: 90}
 --- !u!1 &4770549134393296884
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +230,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6888806815857526915, guid: fc2fde5b84547fb419e2bcd2e93a7a20, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8923661441813085781}
     - targetCorrespondingSourceObject: {fileID: -1662616379218952914, guid: fc2fde5b84547fb419e2bcd2e93a7a20, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5211646429215995366}
@@ -213,6 +247,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8992449917690472824}
   m_SourcePrefab: {fileID: 100100000, guid: fc2fde5b84547fb419e2bcd2e93a7a20, type: 3}
+--- !u!4 &523924876090929492 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6888806815857526915, guid: fc2fde5b84547fb419e2bcd2e93a7a20, type: 3}
+  m_PrefabInstance: {fileID: 6403185918401427927}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3472728984057398521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1662616379218952914, guid: fc2fde5b84547fb419e2bcd2e93a7a20, type: 3}

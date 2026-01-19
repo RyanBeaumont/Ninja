@@ -1145,6 +1145,37 @@ Transform:
   - {fileID: 6811853814086860989}
   m_Father: {fileID: 8610776357335420716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3340200042530206613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8070814788898838476}
+  m_Layer: 0
+  m_Name: WeaponR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8070814788898838476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3340200042530206613}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6963643, y: -0.6963643, z: 0.122787856, w: 0.122787856}
+  m_LocalPosition: {x: 0, y: 0.00077, z: -0.00028}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3098722848354664534}
+  m_LocalEulerAnglesHint: {x: 160, y: 0, z: 90}
 --- !u!1 &3643632281815364230
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,6 +2256,7 @@ Transform:
   - {fileID: 3841444518125443824}
   - {fileID: 3899491558416760443}
   - {fileID: 4379049654712558812}
+  - {fileID: 8070814788898838476}
   m_Father: {fileID: 2595581689606573603}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6749845657409606445

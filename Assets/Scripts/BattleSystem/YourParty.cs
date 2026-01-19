@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +24,7 @@ public class YourParty : MonoBehaviour
     public float attackPerLevel = 2f;
     public float defensePerLevel = 2f;
     public float psychicPerLevel = 2f;
+    public bool devTools = false;
     public string currentSaveFileName = "savefile_1";
     public float gold;
     void Awake()
@@ -112,6 +111,7 @@ public class YourParty : MonoBehaviour
         {
             var member = ConvertFromSavePartyMember(saveMember);
         }
+        GameManager.Instance.inventory.Clear();
         for(int i=0; i< data.items.Count; i++)
         {
             GameManager.Instance.AddInventoryItem(data.items[i], data.itemQuantities[i]);
@@ -128,7 +128,7 @@ public class YourParty : MonoBehaviour
     }
 
 
-    public void StartEncounter(List<GameObject> enemyPrefabs, Transform position)
+    public void StartEncounter(List<GameObject> enemyPrefabs, Transform position, GameObject newplayer)
     {
         //Find closest battle area
          var battleAreas = GameObject.FindGameObjectsWithTag("BattleArea");
@@ -180,6 +180,7 @@ public class YourParty : MonoBehaviour
             combatant.defense = defensePerLevel * levelBonus + 10f;
             levelBonus = (float)partyMember.level; levelBonus += partyMember.mainClass == CardClass.Psychic ? 2f : 0f; levelBonus += partyMember.subClass == CardClass.Psychic ? 1f : 0f;
             combatant.psychic = psychicPerLevel * levelBonus + 10f;
+            combatant.maxMp = 30f + combatant.psychic * partyMember.level;
             combatant.level = partyMember.level;
             var model = Instantiate(Resources.Load<GameObject>($"Characters/{partyMember.modelName}"), combatantObject.transform);
 
@@ -209,7 +210,7 @@ public class YourParty : MonoBehaviour
 
         
 
-        BattleManager.Instance.StartBattle();
+        BattleManager.Instance.StartBattle(newplayer);
 
         
     }
@@ -219,6 +220,7 @@ public class YourParty : MonoBehaviour
         if(!partyMembers.Contains(memberName))
         {
             partyMembers.Add(memberName);
+            UpdateLeader();
         }
     }
 
@@ -230,8 +232,42 @@ public class YourParty : MonoBehaviour
         }
     }
 
+    public void UpdateLeader()
+    {
+        var character = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Character>();
+        var anim = character.GetComponent<Animator>();
+        if(character == null) {print("Could not find player character"); return;}
+        anim.enabled = false;
+        if(partyMembers.Count > 0)
+        {
+            var leader = partyMembers[partyMembers.Count - 1];
+            var modelName = GetPartyMember(leader).modelName;
+            var model = character.ChangeModel(modelName);
+            if(model.GetComponent<Animator>() != null)
+            {
+                model.GetComponent<Animator>().enabled = false;
+            }
+            
+            var menu = FindFirstObjectByType<Menu>();
+            if(menu != null)
+            {
+                menu.UpdateParty();
+            }
+        }
+        Invoke("EnableAnim", 0.1f);
+    }
+
+    void EnableAnim()
+    {
+        var character = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Character>();
+        var anim = character.GetComponent<Animator>();
+        anim.enabled = true;
+        anim.Rebind();
+    }
+
     void Update()
     {
+        if(devTools){
         if (Input.GetKeyDown(KeyCode.L))
         {
             var dialog = LevelUp(150,150);
@@ -244,6 +280,13 @@ public class YourParty : MonoBehaviour
         {
             SaveSystem.SaveGame(currentSaveFileName);
             GameManager.Instance.ShowMessage("Game Saved!");
+        }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            devTools = !devTools;
+            GameManager.Instance.ShowMessage($"Developer Cheat Codes: {devTools}");
         }
     }
 

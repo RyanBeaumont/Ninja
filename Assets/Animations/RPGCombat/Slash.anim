@@ -23997,6 +23997,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.033333335
+    functionName: SpawnWeapon
+    data: Knife
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.23333333
     functionName: SlowMo
     data: 
@@ -24007,6 +24014,13 @@ AnimationClip:
   - time: 0.3
     functionName: Hit
     data: Duck
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.76666665
+    functionName: SpawnWeapon
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

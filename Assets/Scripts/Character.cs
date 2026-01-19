@@ -81,6 +81,21 @@ public class Character : MonoBehaviour
         hp = maxHp;
     }
 
+    public GameObject ChangeModel(string modelName)
+    {
+        var modelContainer = transform.Find("Model");
+        GameObject modelPrefab = Resources.Load<GameObject>("Characters/" + modelName);
+        if(modelPrefab != null)
+        {
+            foreach(Transform child in modelContainer) Destroy(child.gameObject);
+            GameObject modelInstance = Instantiate(modelPrefab, modelContainer);
+            modelInstance.transform.localPosition = new Vector3(0f,0.124f,0f);
+            modelInstance.transform.localRotation = Quaternion.identity;
+            modelInstance.transform.localScale = new Vector3(.75f,.75f,.75f);
+        }
+        return modelPrefab;
+    }
+
     public void TakeDamage(float damage, Transform caller, float knockbackDistance, State hitState, AttackType attackType, bool finalHit)
     {
         // If already dead, ignore further damage

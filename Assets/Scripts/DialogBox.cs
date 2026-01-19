@@ -52,6 +52,7 @@ public class DialogBox : MonoBehaviour
     {
         if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E)) && canvas.enabled)
         {
+            if(dialog.Count == 0) return;
             if (textComponent.text == dialog[0].text)
                 AdvanceDialog();
             else
@@ -178,6 +179,8 @@ public class DialogBox : MonoBehaviour
             cutsceneCamera.Priority = 0;
             anim.SetBool("DialogActive", false);
             Invoke("DisableCanvas", 0.3f);
+            Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         }
     }
 
@@ -188,8 +191,7 @@ public class DialogBox : MonoBehaviour
         player.GetComponentInChildren<FaceChanger>().ChangeFace("Happy");
         GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
         OnDialogFinished?.Invoke();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        
     }
 
     private IEnumerator TypeLine()

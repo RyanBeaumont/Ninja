@@ -1,65 +1,140 @@
 using UnityEngine;
 using System.Collections;
+using Unity.Cinemachine;
+
+[System.Serializable]
+public class Waypoint
+{
+    public Transform waypointTransform;
+    public string animation;
+    public float duration;
+    public string sound = "";
+}
 
 public class Cutscene : ChainedInteractable
 {
     public Transform model;
-    public Transform targetPosition;
-    public float moveTime = 5f;
-    public string pose = "Running";
+    public Waypoint[] waypoints;
     public bool waitForEnd = true;
+    public Transform cameraSource;
+    GameObject cameraRig;
+    CinemachineCamera cutsceneCamera;
+    Animator cameraAnimator;
     public override void Interact()
     {
         if (active)
         {
             GameManager.Instance.SetGameplayState(GameplayState.Dialog);
+            if(model == null) model = GameObject.FindGameObjectWithTag("Player").transform;
             var anim = model.GetComponent<Animator>();
-            if(pose != "" && model != null) anim.Play(pose);
-            if(targetPosition != null && model != null) StartCoroutine(MoveModel());
+            if(waypoints.Length > 0 && model != null) StartCoroutine(MoveModel());
             //if(!waitForEnd){GameManager.Instance.SetGameplayState(GameplayState.FreeMovement); CallNext();}
+
+            if(cameraSource == null)
+            {
+                cameraSource = GameObject.FindGameObjectWithTag("Player").transform;
+            }
+
+            if(cameraSource != null)
+            {
+                cameraRig = Instantiate(Resources.Load<GameObject>("CameraRig"));
+                cameraAnimator = cameraRig.GetComponent<Animator>();
+                cutsceneCamera = cameraRig.GetComponentInChildren<CinemachineCamera>();
+                cutsceneCamera.Priority = 10;
+                cameraRig.transform.parent = cameraSource;
+                cameraRig.transform.localRotation = Quaternion.identity;
+                cameraRig.transform.localPosition = new Vector3(0f,0f,0f);
+            }
         }
     }
 
     IEnumerator MoveModel()
+{
+    var anim = model.GetComponent<Animator>();
+
+    for (int i = 0; i < waypoints.Length; i++)
     {
-        //Move model to targetPosition over moveTime seconds
-        float elapsedTime = 0f;
-        Vector3 startingPos = model.position;
-        Quaternion startingRot = model.rotation;
-        while (elapsedTime < moveTime)
+        Waypoint wp = waypoints[i];
+        Transform target = wp.waypointTransform;
+        if(wp.sound != "")
         {
-            float t = (elapsedTime / moveTime);
-            model.position = Vector3.Lerp(startingPos, targetPosition.position, t);
-            // Smoothly rotate to look at the target position (rather than matching the target's rotation)
-            Vector3 currentPos = model.position;
-            Vector3 lookDir = targetPosition.position - currentPos;
-            Quaternion desiredRot = startingRot;
-            if (lookDir.sqrMagnitude > 0.0001f)
+            AudioManager.Instance.PlaySoundEffect(wp.sound);
+        }
+
+        // Play movement animation for this waypoint
+        if (!string.IsNullOrEmpty(wp.animation))
+        {
+            anim.Play(wp.animation, 0, 0f);
+        }
+
+        Vector3 startPos = model.position;
+        Quaternion startRot = model.rotation;
+
+        float elapsed = 0f;
+
+        while (elapsed < wp.duration)
+        {
+            float t = elapsed / wp.duration;
+
+            // Position
+            model.position = Vector3.Lerp(startPos, target.position, t);
+
+            // Face movement direction
+
+            Vector3 moveDir = (target.position - model.position);
+            if (moveDir.sqrMagnitude > 0.0001f)
             {
-                desiredRot = Quaternion.LookRotation(lookDir.normalized, Vector3.up);
+                Quaternion lookRot = Quaternion.LookRotation(moveDir.normalized, Vector3.up);
+                model.rotation = Quaternion.Slerp(startRot, lookRot, Mathf.Clamp01(elapsed / 0.25f));
             }
-            model.rotation = Quaternion.Slerp(startingRot, desiredRot, Mathf.Min(elapsedTime/0.3f,1f));
-            elapsedTime += Time.deltaTime;
+
+            // Camera logic (unchanged)
+            if (cutsceneCamera != null)
+            {
+                cameraAnimator.Play("Camera_Behind");
+                cutsceneCamera.transform.LookAt(model);
+            }
+
+            elapsed += Time.deltaTime;
             yield return null;
         }
-        model.position = targetPosition.position;
-        // Final rotation: try to look at the target position from the final position. If that's degenerate,
-        // fall back to the target's rotation to avoid zero-length look vectors.
-        Vector3 finalLookDir = targetPosition.position - model.position;
-        if (finalLookDir.sqrMagnitude > 0.0001f)
+
+        // Snap to final waypoint position
+        model.position = target.position;
+
+        // If this is the LAST waypoint, smoothly align to its rotation
+        if (i == waypoints.Length - 1)
         {
-            model.rotation = Quaternion.LookRotation(finalLookDir.normalized, Vector3.up);
+            yield return StartCoroutine(AlignRotation(target.rotation));
         }
-        else
-        {
-            model.rotation = targetPosition.rotation;
-        }
-        var anim = model.GetComponent<Animator>();
-        anim.Play("Idle");
-        if(waitForEnd){
-            GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
-            CallNext();
-        }
-       
     }
+
+    // End pose
+    anim.Play("Idle");
+
+    if (waitForEnd)
+    {
+        if (cameraRig != null) Destroy(cameraRig);
+        GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
+        CallNext();
+    }
+}
+
+IEnumerator AlignRotation(Quaternion targetRotation)
+{
+    Quaternion startRot = model.rotation;
+    float duration = 0.4f;
+    float t = 0f;
+
+    while (t < duration)
+    {
+        model.rotation = Quaternion.Slerp(startRot, targetRotation, t / duration);
+        t += Time.deltaTime;
+        yield return null;
+    }
+
+    model.rotation = targetRotation;
+}
+
+
 }
