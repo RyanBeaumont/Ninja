@@ -183,7 +183,6 @@ public class YourParty : MonoBehaviour
             combatant.maxMp = 30f + combatant.psychic * partyMember.level;
             combatant.level = partyMember.level;
             var model = Instantiate(Resources.Load<GameObject>($"Characters/{partyMember.modelName}"), combatantObject.transform);
-
             var healthbar = Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);
 
             combatant.enabled = true;    
@@ -213,6 +212,15 @@ public class YourParty : MonoBehaviour
         BattleManager.Instance.StartBattle(newplayer);
 
         
+    }
+
+    public void RestoreHealth()
+    {
+        foreach(PartyMember p in reserve)
+        {
+            p.hpPercentage = 1f;
+            GameManager.Instance.ShowMessage("Health restored");
+        }
     }
 
     public void AddPartyMember(string memberName)

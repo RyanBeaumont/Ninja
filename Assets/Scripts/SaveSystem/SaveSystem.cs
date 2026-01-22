@@ -7,15 +7,19 @@ public static class SaveSystem
 {
     public static void SaveGame(string fname)
     {
-        AudioManager.Instance.PlaySoundEffect("Save");
-
+        try{
+        SaveData data = SaveDataBuilder.Build(fname); // Assume SaveData is a serializable class that holds player info
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/" + fname + ".sav";
         FileStream stream = new FileStream(path, FileMode.Create);
-
-        SaveData data = new SaveData(); // Assume SaveData is a serializable class that holds player info
         formatter.Serialize(stream, data);
         stream.Close();
+         AudioManager.Instance.PlaySoundEffect("Save");
+        }catch (System.Exception e)
+        {
+            Debug.LogError("SAVE FAILED: " + e);
+            GameManager.Instance.ShowMessage("Save failed");
+        }
     }
 
     public static SaveData LoadGame(string fname)
@@ -23,6 +27,13 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/" + fname + ".sav";
         if (File.Exists(path))
         {
+            FileInfo info = new FileInfo(path);
+            if (info.Length == 0)
+            {
+                Debug.LogError("Save file is empty: " + path);
+                GameManager.Instance.ShowMessage("Load failed");
+                return null;
+            }
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
@@ -48,6 +59,12 @@ public static class SaveSystem
 
             foreach (string file in files)
             {
+                FileInfo info = new FileInfo(file);
+                if (info.Length == 0)
+                {
+                    Debug.LogError("Save file is empty: " + file);
+                    break;
+                }
                 FileStream stream = new FileStream(file, FileMode.Open);
                 SaveData data = formatter.Deserialize(stream) as SaveData;
                 stream.Close();

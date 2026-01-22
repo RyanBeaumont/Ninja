@@ -20,6 +20,7 @@ public class EnemyAttackData
     public int hits;
     public float mpCost;
     public float healthThreshold; //The enemy will only use this attack if its health is below this percentage (0-100)
+    public string altFunction; //If this is specified, the attack will instead call this function
 }
 
 public class EnemyCombatant : Combatant
@@ -29,6 +30,7 @@ public class EnemyCombatant : Combatant
     public float xpReward = 10f;
     public float goldReward = 10f;
     public float attackSpeed = 0.25f;
+    EnemyAttackData tempAttackData;
 
     public void OnHit(string direction)
     {
@@ -51,6 +53,11 @@ public class EnemyCombatant : Combatant
         {
             GameManager.Instance.ShowMessage($"{combatantName} is stunned and cannot move!");
             return;
+        }
+        var speed = attackSpeed;
+        if(HasStatusEffect("SpeedUp") != null)
+        {
+            speed += HasStatusEffect("SpeedUp").amount;
         }
         //select a random attack pattern that the enemy can afford and meets health threshold
         List<EnemyAttackData> availableAttacks = new List<EnemyAttackData>();
@@ -88,6 +95,12 @@ public class EnemyCombatant : Combatant
         BattleManager.Instance.SelectRandomTargets(this, selectedAttack.targetType);
 
         //Split attack pattern by commas
+
+        if(selectedAttack.altFunction != "")
+        {
+            tempAttackData = selectedAttack;
+            Invoke(selectedAttack.altFunction,0f);
+        }else{
         var attacks = selectedAttack.attackPattern.Split(',');
         foreach(var attack in attacks)
         {
@@ -100,8 +113,20 @@ public class EnemyCombatant : Combatant
                 damage = selectedAttack.damage,
                 damageType = selectedAttack.damageType,
                 hits = selectedAttack.hits,
-                timeScale = attackSpeed
+                timeScale = speed
             });
         }
+        }
+    }
+
+    public void BuffAlly()
+    {
+        BattleManager.Instance.actionQueue.Add(new StatusEffectAction()
+        {
+            caller = this,
+            animation = tempAttackData.attackPattern,
+            //targets = BattleManager.Instance.currentTargets,
+            statusEffect = tempAttackData.statusEffect,
+        });
     }
 }

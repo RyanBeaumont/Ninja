@@ -469,7 +469,7 @@ public class BattleManager : MonoBehaviour
         }
 
         if(dodgeCooldown > 0f) dodgeCooldown -= Time.unscaledDeltaTime;
-        if(dodgeWindow > 0f) dodgeWindow -= Time.unscaledDeltaTime; else {dodgeInput = "";print("Dodge window ended");}
+        if(dodgeWindow > 0f) dodgeWindow -= Time.unscaledDeltaTime; else {dodgeInput = "";}
 
         //Dodge system
         if(canDodge)
@@ -820,12 +820,13 @@ public class BattleManager : MonoBehaviour
             }
             if(pendingStatusEffect != null && pendingStatusEffect.name != "")
             {
-                pendingStatusEffect = null;
+                
                 if(!perfectDodge)
                     foreach(var t in currentTargets)
                     {
                         t.ApplyStatusEffect(pendingStatusEffect);
                     }
+                pendingStatusEffect = null;
             }
             EndAction();
         }

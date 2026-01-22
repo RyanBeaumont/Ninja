@@ -6,7 +6,7 @@ public class AnimationListener : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        
+        animator.enabled = false;
     }
 
     void SpawnWeapon(string weapon)
@@ -49,6 +49,15 @@ public class AnimationListener : MonoBehaviour
         else if(GetComponentInParent<PlayerCombatant>() != null)
         {
             GetComponentInParent<PlayerCombatant>().OnHit();
+        }
+    }
+
+    void ParticleEffect(string effect)
+    {
+        var particle = Resources.Load<GameObject>($"Particles/{effect}");
+        if(particle != null)
+        {
+            Instantiate(particle,transform);
         }
     }
 

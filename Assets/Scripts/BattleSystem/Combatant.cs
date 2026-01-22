@@ -151,6 +151,7 @@ public class Combatant : MonoBehaviour
         {
             statusEffects.Add(effect);
         }
+        GameManager.Instance.ShowMessage($"{combatantName} is affected by {effect.name}");
         UpdateStatusVisuals();
     }
 
@@ -167,8 +168,10 @@ public class Combatant : MonoBehaviour
     {
         foreach(var effect in statusEffects)
         {
-            if(effect.duration != -1)
+            if(effect.duration != -1){
                 effect.duration--;
+                print($"Effect {effect.name} decreased to {effect.duration}");
+            }
         }
         statusEffects.RemoveAll(e => e.duration <= 0 && e.duration != -1);
         UpdateStatusVisuals();
@@ -189,8 +192,8 @@ public class Combatant : MonoBehaviour
             var sprite = Resources.Load<Sprite>($"Sprites/{effect.name}");
             iconImage.sprite = sprite;
             TMP_Text durationText = statusIcon.GetComponentInChildren<TMP_Text>();
-            if(effect.duration != -1)
-                durationText.text = effect.duration.ToString();
+            if(effect.amount > 1)
+                durationText.text = effect.amount.ToString();
             else
                 durationText.text = "";
         }

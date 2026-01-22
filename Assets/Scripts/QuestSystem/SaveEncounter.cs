@@ -7,6 +7,7 @@ public class SaveEncounter : ChainedInteractable
     {
         if (active)
         {
+            YourParty.instance.RestoreHealth();
             if (GetComponentInChildren<SpawnPoint>())
             {
                 GameManager.Instance.SetSpawnPoint(GetComponentInChildren<SpawnPoint>().index);

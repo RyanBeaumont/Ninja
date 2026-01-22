@@ -163,12 +163,12 @@ public class GameManager : MonoBehaviour
         var currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         currentSpawnPointIndex = spawnPointIndex;
         sceneVariant = newSceneVariant;
-        if(sceneName != currentScene && sceneName != "")
+        //if(sceneName != currentScene && sceneName != "")
         {
             Debug.Log($"Changing scene to {sceneName} at spawn point {spawnPointIndex}");
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
         }
-        else
+        /*else
         {
             var spawnPoins = Object.FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);
             var player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -185,6 +185,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        */
     }
 
     void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
@@ -233,6 +234,7 @@ public class GameManager : MonoBehaviour
     public void SpawnPlayer(int spawnPointIndex)
     {
         var player = Object.Instantiate(Resources.Load<GameObject>("Player"));
+        //YourParty.instance.UpdateLeader();
         var cam = Object.Instantiate(Resources.Load<GameObject>("MainCamera"));
         PlayerInput playerInput = player.GetComponent<PlayerInput>();
         playerInput.cameraTransform = cam.transform;
@@ -250,6 +252,7 @@ public class GameManager : MonoBehaviour
         inventoryUI = ui.transform.Find("QuestHUD").GetComponent<RectTransform>();
         inventoryUI.gameObject.SetActive(false);
         UpdateQuests();
+        //
         var dialog = Object.Instantiate(Resources.Load<GameObject>("Dialog"));
         var spawnPoints = Object.FindObjectsByType<SpawnPoint>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         Debug.Log("Found spawn points: " + spawnPoints.Length);

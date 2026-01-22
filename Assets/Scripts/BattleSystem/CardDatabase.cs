@@ -120,7 +120,7 @@ public class CardDatabase : MonoBehaviour
                 new DamageAction()
                 {
                     damage = "15",
-                    animation = "Jab",
+                    animation = "SwordBackhand",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
                     hits = 1,
@@ -151,6 +151,55 @@ public class CardDatabase : MonoBehaviour
                     animation = "",
                     targetType = TargetType.Self
                 }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Sweep the Leg",
+            description = "Stun the enemy",
+            cost = 60,
+            level = 3,
+            artwork = "IconKick",
+            cardClass = CardClass.Grappler,
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "10",
+                    animation = "Sweep",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1,
+                    statusEffect = new StatusEffect()
+                    {
+                        name = "Stunned",
+                        stat = "",
+                        amount = 1,
+                        duration = 1,
+                    }
+                },
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Fit of Rage",
+            description = "Damage all enemies",
+            cost = 40,
+            level = 3,
+            artwork = "IconFist",
+            cardClass = CardClass.Grappler,
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "40",
+                    animation = "SpinKick",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.AllEnemies,
+                    hits = 1,
+                },
             }
         });
 
@@ -187,7 +236,7 @@ public class CardDatabase : MonoBehaviour
                 new DamageAction()
                 {
                     damage = "25",
-                    animation = "SwordWhirlwind",
+                    animation = "SpinKick",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.AllEnemies,
                     hits = 1
@@ -219,7 +268,7 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "SPARTA! KICK",
-            description = "Ultimate attack",
+            description = "Ultimate attack costs 50 TP",
             tpCost = 50,
             cardClass = CardClass.Warrior,
             artwork = "IconSpartaKick",
@@ -291,7 +340,7 @@ public class CardDatabase : MonoBehaviour
                 new DamageAction()
                 {
                     damage = "70",
-                    animation = "SwordWhirlwind",
+                    animation = "LongswordBlast",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
                     hits = 1
@@ -311,7 +360,7 @@ public class CardDatabase : MonoBehaviour
                 new GainMPAction()
                 {
                     mpAmount = "PSY",
-                    animation = "Burst",
+                    animation = "GatherChi",
                     targetType = TargetType.Self
                 }
                 ,new DrawCardsAction()

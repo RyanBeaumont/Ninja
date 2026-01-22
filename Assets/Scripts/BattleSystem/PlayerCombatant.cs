@@ -7,6 +7,7 @@ public class PlayerCombatant : Combatant
     public List<Card> deck = new List<Card>();
     public List<Card> hand = new List<Card>();
     List<Card> discard = new List<Card>();
+    Animator anim;
     [HideInInspector] public int tp; //TERROR points
 
     public void DrawCards(int amount)
@@ -76,8 +77,34 @@ public class PlayerCombatant : Combatant
         }
     }
 
+    void OnEnable()
+    {
+        anim = GetComponentInChildren<Animator>();
+        anim.enabled = false;
+        Invoke("EnableAnim",0.1f);
+    }
+
+    void EnableAnim()
+    {
+        anim.Rebind();
+        anim.enabled = true;
+    }
+
     public override void StartTurn()
     {
+        var se = HasStatusEffect("Discard");
+        if(HasStatusEffect("Discard") != null)
+        {
+            for(var i=0; i<se.amount; i++)
+            {
+                //discard random card
+                var random = Random.Range(0,hand.Count);
+                hand.RemoveAt(random);
+                GameManager.Instance.ShowMessage("You discarded a card");
+            }
+        }
+        RemoveStatusEffect("Discard");
+
         base.StartTurn();
         DrawCards(1);
         maxMp = (int)(psychic * 10);

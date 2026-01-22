@@ -61,7 +61,7 @@ MonoBehaviour:
     mainClass: 2
     subClass: 3
   - memberName: Thad
-    modelName: WitchDoctor
+    modelName: Thad
     level: 4
     xp: 0
     hpPercentage: 1
@@ -74,6 +74,7 @@ MonoBehaviour:
   attackPerLevel: 2
   defensePerLevel: 2
   psychicPerLevel: 2
+  devTools: 0
   currentSaveFileName: savefile_1
   gold: 0
 --- !u!114 &4165134398127773951
