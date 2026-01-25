@@ -120,8 +120,8 @@ public class CardDatabase : MonoBehaviour
                 new DamageAction()
                 {
                     damage = "15",
-                    animation = "Jab",
-                    damageType = DamageType.Bludgeoning,
+                    animation = "KnifeBackhand",
+                    damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
                     hits = 1,
                     bonusActions = 1,
@@ -187,7 +187,7 @@ public class CardDatabase : MonoBehaviour
                 new DamageAction()
                 {
                     damage = "25",
-                    animation = "SwordWhirlwind",
+                    animation = "SpinKick",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.AllEnemies,
                     hits = 1
@@ -219,7 +219,7 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "SPARTA! KICK",
-            description = "Ultimate attack",
+            description = "Ultimate attack, costs 50 TP",
             tpCost = 50,
             cardClass = CardClass.Warrior,
             artwork = "IconSpartaKick",
@@ -291,7 +291,7 @@ public class CardDatabase : MonoBehaviour
                 new DamageAction()
                 {
                     damage = "70",
-                    animation = "SwordWhirlwind",
+                    animation = "LongswordBlast",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
                     hits = 1
@@ -311,7 +311,7 @@ public class CardDatabase : MonoBehaviour
                 new GainMPAction()
                 {
                     mpAmount = "PSY",
-                    animation = "Burst",
+                    animation = "GatherChi",
                     targetType = TargetType.Self
                 }
                 ,new DrawCardsAction()

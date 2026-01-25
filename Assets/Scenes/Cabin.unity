@@ -1690,6 +1690,8 @@ MonoBehaviour:
   sceneName: ThadHouse
   spawnPointIndex: 0
   sceneVariant: 0
+  skybox: {fileID: 0}
+  cameraTarget: {fileID: 1923886051}
 --- !u!1001 &440185484
 PrefabInstance:
   m_ObjectHideFlags: 0

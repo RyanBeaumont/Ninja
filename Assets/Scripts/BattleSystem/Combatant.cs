@@ -130,7 +130,7 @@ public class Combatant : MonoBehaviour
     public float PlayAnimation(string animationName)
     {
         if(animator == null || string.IsNullOrEmpty(animationName)) return 0.1f;
-        animator.Play(animationName);
+        animator.Play(animationName,0,0f);
         return animator.GetCurrentAnimatorStateInfo(0).length;
     }
 

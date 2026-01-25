@@ -94,6 +94,7 @@ MonoBehaviour:
   lootDrops: []
   xpReward: 10
   goldReward: 10
+  attackSpeed: 0.25
 --- !u!1001 &224500113225208119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -316,13 +317,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3683342962514484752, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7483047974945771247, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8830103037856643106}
   m_SourcePrefab: {fileID: 100100000, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
 --- !u!4 &461049839424485875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7823580282688705621, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
   m_PrefabInstance: {fileID: 7707641047891619238}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &949743636815668041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7483047974945771247, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+  m_PrefabInstance: {fileID: 7707641047891619238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8830103037856643106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949743636815668041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43cd97b5c7b8f8c4fb837aac636b3217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -18135,7 +18135,7 @@ AnimationClip:
     messageOptions: 0
   - time: 0.36666667
     functionName: SlowMo
-    data: 
+    data: '[WASD] Side-step vertical attacks'
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

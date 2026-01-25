@@ -15,6 +15,7 @@ public class Menu : MonoBehaviour
     public GameObject cardPrefab;
     public TMP_Text deckText;
     public Transform characterList;
+    public Transform tutorialUI;
     public string currentCharacter = "";
 
     void Start()
@@ -22,6 +23,7 @@ public class Menu : MonoBehaviour
         deckContainer.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        tutorialUI.gameObject.SetActive(false);
         entireMenu.gameObject.SetActive(false);
     }
 
@@ -53,6 +55,15 @@ public class Menu : MonoBehaviour
             }
             deckText.text = $"Your Deck ({p.deck.Count})                Available Cards";
         }
+    }
+
+    public void ShowTutorialMessage(string tutorialMessage){
+        if(tutorialMessage != "" && tutorialMessage != null)
+        {
+            tutorialUI.gameObject.SetActive(true);
+            tutorialUI.GetComponent<TMP_Text>().text = tutorialMessage;
+        }else
+            tutorialUI.gameObject.SetActive(false);
     }
 
     public void MoveCardToDeck(Card card)
@@ -126,5 +137,11 @@ public class Menu : MonoBehaviour
             }
         
         }   
+
+        if(tutorialUI.gameObject.activeInHierarchy && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift)))
+        {
+            tutorialUI.gameObject.SetActive(false);
+            Time.timeScale = 1f;
+        }
     }
 }

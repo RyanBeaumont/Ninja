@@ -52,7 +52,7 @@ public class AnimationListener : MonoBehaviour
         }
     }
 
-    void SlowMo()
+    public virtual void SlowMo(string message)
     {
         if(GetComponentInParent<EnemyCombatant>() != null)
         {

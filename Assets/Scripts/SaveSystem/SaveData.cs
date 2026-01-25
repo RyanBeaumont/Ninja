@@ -18,31 +18,37 @@ public class SaveData
 
     public string saveFileName = "savefile_1";
 
-    public SaveData()
+}
+
+public static class SaveDataBuilder
+{
+    public static SaveData Build(string saveFileName)
     {
-        playersInParty = YourParty.instance.partyMembers;
-        reserve = new List<SavePartyMember>();
+        SaveData data = new SaveData();
+        data.playersInParty = YourParty.instance.partyMembers;
+        data.reserve = new List<SavePartyMember>();
         foreach (var member in YourParty.instance.reserve)
         {
             SavePartyMember saveMember = YourParty.instance.ConvertToSavePartyMember(member);
-            reserve.Add(saveMember);
+            data.reserve.Add(saveMember);
         }
         foreach(InventoryItem item in GameManager.Instance.inventory)
         {
-            items.Add(item.itemName);
-            itemQuantities.Add(item.quantity);
+            data.items.Add(item.itemName);
+            data.itemQuantities.Add(item.quantity);
         }
-        finishedEncounters = GameManager.Instance.finishedEncounters;
-        quests = GameManager.Instance.quests;
-        playTime = GameManager.Instance.playTime;
-        gold = YourParty.instance.gold;
-        sceneVariant = GameManager.Instance.sceneVariant;
-        spawnPoint = GameManager.Instance.currentSpawnPointIndex;
-        sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        data.finishedEncounters = GameManager.Instance.finishedEncounters;
+        data.quests = GameManager.Instance.quests;
+        data.playTime = GameManager.Instance.playTime;
+        data.gold = YourParty.instance.gold;
+        data.sceneVariant = GameManager.Instance.sceneVariant;
+        data.spawnPoint = GameManager.Instance.currentSpawnPointIndex;
+        data.sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         saveFileName = YourParty.instance.currentSaveFileName;
-        Debug.Log($"Saved {reserve.Count} reserve members.");
-    }
+        Debug.Log($"Saved {data.reserve.Count} reserve members.");
 
+        return data;
+    }
 }
 
 [System.Serializable]

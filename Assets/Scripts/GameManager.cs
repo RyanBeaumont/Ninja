@@ -91,10 +91,19 @@ public class GameManager : MonoBehaviour
    
     }
 
-    public IEnumerator Fade(bool toBlack)
+    public IEnumerator Fade(bool toBlack, Transform cameraTarget = null)
     {
+        GameObject cameraRig = null;
         var ui = GameObject.Find("MainCanvas");
         var imgToFade = ui.transform.Find("OtherHUD/Black").GetComponent<UnityEngine.UI.Image>();
+        if(cameraTarget != null && toBlack)
+        {
+            cameraRig = Instantiate(Resources.Load<GameObject>("CameraRig"),cameraTarget);
+            var cameraAnimator = cameraRig.GetComponent<Animator>();
+            var cutsceneCamera = cameraRig.GetComponentInChildren<CinemachineCamera>();
+            cutsceneCamera.Priority = 5;
+            cameraAnimator.Play("Camera_Behind");
+        }
         //Fade over the course of 1s
         float duration = 1f;
         float elapsed = 0f;     
@@ -109,6 +118,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(0.1f);
+        if(cameraRig != null) Destroy(cameraRig);
     }
 
     void Update()
@@ -139,18 +149,18 @@ public class GameManager : MonoBehaviour
         messageTimer = 3f;
     }
 
-    public void StartSceneTransition(string sceneName, int spawnPointIndex, int sceneVariant)
+    public void StartSceneTransition(string sceneName, int spawnPointIndex, int sceneVariant, Transform cameraTarget)
     {
-        StartCoroutine(SceneTransition(sceneName, spawnPointIndex, sceneVariant));
+        StartCoroutine(SceneTransition(sceneName, spawnPointIndex, sceneVariant, cameraTarget));
     }
 
-    public IEnumerator SceneTransition(string sceneName, int spawnPointIndex, int newSceneVariant)
+    public IEnumerator SceneTransition(string sceneName, int spawnPointIndex, int newSceneVariant, Transform cameraTarget)
     {
-        yield return StartCoroutine(Fade(true));
+        yield return StartCoroutine(Fade(true, cameraTarget));
         ChangeScene(sceneName, spawnPointIndex, newSceneVariant);
         yield return new WaitForSeconds(0.1f);
         Debug.Log("SceneTransition complete");
-        yield return StartCoroutine(Fade(false));
+        yield return StartCoroutine(Fade(false, cameraTarget));
     }
 
     public void SetSpawnPoint(int spawnPointIndex)

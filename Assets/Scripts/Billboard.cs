@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    void Update()
+    public virtual void Update()
     {
         transform.LookAt(transform.position + Camera.main.transform.forward);
     }

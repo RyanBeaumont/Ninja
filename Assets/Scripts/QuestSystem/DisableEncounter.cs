@@ -18,6 +18,8 @@ public class DisableEncounter : ChainedInteractable
             }
         } else {
           
+            var questIcon = GetComponentInChildren<QuestIcon>();
+            if(questIcon != null) Destroy(questIcon.gameObject);
             var defaultPose = GetComponentInChildren<DefaultPose>();
             if(defaultPose != null){
                 defaultPose.pose = endingPose;

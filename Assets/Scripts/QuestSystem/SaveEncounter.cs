@@ -11,8 +11,9 @@ public class SaveEncounter : ChainedInteractable
             {
                 GameManager.Instance.SetSpawnPoint(GetComponentInChildren<SpawnPoint>().index);
             }
+            YourParty.instance.HealParty();
             SaveSystem.SaveGame(YourParty.instance.currentSaveFileName);
-            GameManager.Instance.ShowMessage("Game Saved!");
+            GameManager.Instance.ShowMessage("Party Healed and Game Saved!");
             CallNext();
         }
     }

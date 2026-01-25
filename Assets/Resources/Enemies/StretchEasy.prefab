@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 3
-  maxHp: 350
-  hp: 350
+  maxHp: 300
+  hp: 300
   attack: 15
   defense: 15
   speed: 19
@@ -57,12 +57,12 @@ MonoBehaviour:
   maxMp: 30
   alive: 1
   resistances: 
-  weaknesses: 
+  weaknesses: 01000000
   combatantName: Stretch
   initiative: 0
   attackPatterns:
-  - attackPattern: PunchCombo
-    attackName: Punch Combo
+  - attackPattern: SwordStab
+    attackName: Side Dodge This!
     damage: 10
     damageType: 1
     targetType: 1

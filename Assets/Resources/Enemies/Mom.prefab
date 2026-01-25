@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  maxHp: 350
-  hp: 350
+  maxHp: 325
+  hp: 325
   attack: 12
   defense: 15
   speed: 10
@@ -66,6 +66,13 @@ MonoBehaviour:
     damage: 10
     damageType: 1
     targetType: 1
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
@@ -74,6 +81,13 @@ MonoBehaviour:
     damage: 10
     damageType: 1
     targetType: 3
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
@@ -82,6 +96,13 @@ MonoBehaviour:
     damage: 15
     damageType: 1
     targetType: 1
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
@@ -90,6 +111,7 @@ MonoBehaviour:
     dropChance: 100
   xpReward: 50
   goldReward: 30
+  attackSpeed: 0.25
 --- !u!1001 &224500113225208119
 PrefabInstance:
   m_ObjectHideFlags: 0

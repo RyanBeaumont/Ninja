@@ -23999,7 +23999,7 @@ AnimationClip:
   m_Events:
   - time: 0.23333333
     functionName: SlowMo
-    data: 
+    data: '[WASD] Duck under horizontal attacks'
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

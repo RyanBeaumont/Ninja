@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  maxHp: 400
-  hp: 400
+  maxHp: 425
+  hp: 425
   attack: 15
   defense: 15
   speed: 13
@@ -56,8 +56,8 @@ MonoBehaviour:
   mp: 0
   maxMp: 30
   alive: 1
-  resistances: 01000000
-  weaknesses: 02000000
+  resistances: 
+  weaknesses: 0200000000000000
   combatantName: Storm
   initiative: 0
   attackPatterns:

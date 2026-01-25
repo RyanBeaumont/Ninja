@@ -272,9 +272,15 @@ public class YourParty : MonoBehaviour
         {
             var dialog = LevelUp(150,150);
             GameManager.Instance.AddInventoryItem("Coke", 1);
+            GameManager.Instance.AddInventoryItem("Bang", 1);
             var dialogBox = FindFirstObjectByType<DialogBox>();
             dialogBox.StartDialog(dialog);
         }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                GameManager.Instance.StartSceneTransition(SceneManager.GetActiveScene().name,GameManager.Instance.currentSpawnPointIndex,GameManager.Instance.sceneVariant + 1,null);
+            }
 
         if(Input.GetKeyDown(KeyCode.K))
         {
@@ -291,7 +297,11 @@ public class YourParty : MonoBehaviour
     }
 
     
-
+    public void HealParty()
+    {
+        foreach(PartyMember m in reserve)
+            m.hpPercentage = 1f;
+    }
 
     public List<Dialog> LevelUp(int xpAmount, int goldAmount)
     {
