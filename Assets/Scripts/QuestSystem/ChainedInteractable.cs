@@ -17,9 +17,13 @@ public abstract class ChainedInteractable : PersistentObject, IInteractable
     {
         if (!blockInteraction && active && (GameManager.Instance.GetGameplayState() == GameplayState.FreeMovement || GameManager.Instance.GetGameplayState() == GameplayState.Dialog))
         {
-            if (next != null) next.Interact();
+            if (next != null){next.Interact(); return;}
 
         }
+
+        //If no further interactions
+        GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
+        GameManager.Instance.DestroyCamera();
     }
 
     protected override void Awake()

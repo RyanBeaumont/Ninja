@@ -53,6 +53,7 @@ MonoBehaviour:
     hpPercentage: 1
     mainClass: 1
     subClass: 2
+    alive: 1
   - memberName: Stretch
     modelName: Stretch
     level: 4
@@ -60,6 +61,7 @@ MonoBehaviour:
     hpPercentage: 1
     mainClass: 2
     subClass: 3
+    alive: 1
   - memberName: Thad
     modelName: WitchDoctor
     level: 4
@@ -67,13 +69,16 @@ MonoBehaviour:
     hpPercentage: 1
     mainClass: 4
     subClass: 1
+    alive: 1
   partyMembers:
-  - Spartan Jack
+  - Stretch
+  - Thad
   hpPerLevel: 10
   speedPerLevel: 1
   attackPerLevel: 2
   defensePerLevel: 2
   psychicPerLevel: 2
+  devTools: 0
   currentSaveFileName: savefile_1
   gold: 0
 --- !u!114 &4165134398127773951

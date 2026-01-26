@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
     public CardClass mainClass;
     public CardClass subClass;
     public List<Card> deck;
+    public bool alive = true;
 }
 public class YourParty : MonoBehaviour
 {
@@ -185,8 +186,9 @@ public class YourParty : MonoBehaviour
             var model = Instantiate(Resources.Load<GameObject>($"Characters/{partyMember.modelName}"), combatantObject.transform);
 
             var healthbar = Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);
-
-            combatant.enabled = true;    
+            if(partyMember.alive == false){combatant.alive = false; combatant.PlayAnimation("Knockdown");}
+            combatant.enabled = true;
+            combatant.GetComponentInChildren<Animator>().enabled = true;    
 
         }
 
@@ -232,7 +234,7 @@ public class YourParty : MonoBehaviour
         }
     }
 
-    public void UpdateLeader()
+     public void UpdateLeader()
     {
         var character = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Character>();
         var anim = character.GetComponent<Animator>();
@@ -240,7 +242,7 @@ public class YourParty : MonoBehaviour
         anim.enabled = false;
         if(partyMembers.Count > 0)
         {
-            var leader = partyMembers[partyMembers.Count - 1];
+            var leader = partyMembers[0];
             var modelName = GetPartyMember(leader).modelName;
             var model = character.ChangeModel(modelName);
             if(model.GetComponent<Animator>() != null)

@@ -1723,7 +1723,7 @@ MonoBehaviour:
     face: Dissapointed
   - text: "Gee, THANKS\u2026 Now you got me thinking of FOOD\u2026 And my fridge
       is so far away. I hate you\u2026\r\n"
-    name: Stretch
+    name: Thad
     character: {fileID: 1915123191}
     pose: SittingDown
     cameraAngle: 0

@@ -91,7 +91,7 @@ public class Character : MonoBehaviour
             GameObject modelInstance = Instantiate(modelPrefab, modelContainer);
             modelInstance.transform.localPosition = new Vector3(0f,0.124f,0f);
             modelInstance.transform.localRotation = Quaternion.identity;
-            modelInstance.transform.localScale = new Vector3(.75f,.75f,.75f);
+            //modelInstance.transform.localScale = new Vector3(.75f,.75f,.75f);
         }
         return modelPrefab;
     }

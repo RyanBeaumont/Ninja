@@ -20,15 +20,21 @@ public class Cutscene : ChainedInteractable
     GameObject cameraRig;
     CinemachineCamera cutsceneCamera;
     Animator cameraAnimator;
+    Transform originalParent;
+    Vector3 originalPosition;
+    Quaternion originalRotation;
     public override void Interact()
     {
         if (active)
         {
             GameManager.Instance.SetGameplayState(GameplayState.Dialog);
-            if(model == null) model = GameObject.FindGameObjectWithTag("Player").transform;
+            var player = GameObject.FindGameObjectWithTag("Player").transform;
+            if(model == null) model = player;
+            player.GetComponentInChildren<Animator>().Play("ArmsCrossed");
             var anim = model.GetComponent<Animator>();
             if(waypoints.Length > 0 && model != null) StartCoroutine(MoveModel());
-            //if(!waitForEnd){GameManager.Instance.SetGameplayState(GameplayState.FreeMovement); CallNext();}
+
+            if(!waitForEnd){ CallNext(); return;}; //Don't lock the camera on
 
             if(cameraSource == null)
             {
@@ -37,10 +43,10 @@ public class Cutscene : ChainedInteractable
 
             if(cameraSource != null)
             {
-                cameraRig = Instantiate(Resources.Load<GameObject>("CameraRig"));
-                cameraAnimator = cameraRig.GetComponent<Animator>();
-                cutsceneCamera = cameraRig.GetComponentInChildren<CinemachineCamera>();
-                cutsceneCamera.Priority = 10;
+                cameraRig = GameManager.Instance.GetCamera(out cameraAnimator, out cutsceneCamera);
+                originalParent = cameraRig.transform.parent;
+                originalPosition = cameraRig.transform.localPosition;
+                originalRotation = cameraRig.transform.localRotation;
                 cameraRig.transform.parent = cameraSource;
                 cameraRig.transform.localRotation = Quaternion.identity;
                 cameraRig.transform.localPosition = new Vector3(0f,0f,0f);
@@ -114,8 +120,10 @@ public class Cutscene : ChainedInteractable
 
     if (waitForEnd)
     {
-        if (cameraRig != null) Destroy(cameraRig);
-        GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
+        cameraRig.transform.parent = originalParent;
+        cameraRig.transform.localPosition = originalPosition;
+        cameraRig.transform.localRotation = originalRotation;
+        cutsceneCamera.transform.localRotation = Quaternion.identity;
         CallNext();
     }
 }

@@ -78,6 +78,19 @@ public class PlayerCombatant : Combatant
 
     public override void StartTurn()
     {
+        var se = HasStatusEffect("Discard");
+        if(HasStatusEffect("Discard") != null)
+        {
+            for(var i=0; i<se.amount; i++)
+            {
+                //discard random card
+                var random = Random.Range(0,hand.Count);
+                hand.RemoveAt(random);
+                GameManager.Instance.ShowMessage("You discarded a card");
+            }
+        }
+        
+        RemoveStatusEffect("Discard");
         base.StartTurn();
         DrawCards(1);
         maxMp = (int)(psychic * 10);

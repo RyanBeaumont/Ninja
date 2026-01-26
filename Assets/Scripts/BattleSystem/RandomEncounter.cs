@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Collections;
+using Mono.Cecil.Cil;
 
 [Serializable]
 public class EnemyTroop
@@ -15,6 +16,26 @@ public class RandomEncounter : MonoBehaviour
     public List<EnemyTroop> possibleEncounters;
     public float encounterChance = 10f; //Percentage chance (0-100) of an encounter occurring
     public int gracePeriod = 0; //5 squares
+    Vector3 prevPosition;
+    Transform player;
+    public bool globalRandomEncounters = false; //Do you need to be in the tall grass?
+
+    void Start()
+    {
+        player = FindFirstObjectByType<Character>().transform;
+    }
+
+    void Update()
+    {
+        if (globalRandomEncounters && player != null)
+        {
+            if((player.position - prevPosition).magnitude > 4f)
+            {
+                prevPosition = player.position;
+                TriggerRandomEncounter(player);
+            }
+        }
+    }
     public void TriggerRandomEncounter(Transform position)
     {
         if(gracePeriod > 0)

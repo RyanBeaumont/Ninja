@@ -79,7 +79,7 @@ public class DialogBox : MonoBehaviour
         dialog = new List<Dialog>(newDialog);
         anim.SetBool("DialogActive", true);
         GameManager.Instance.SetGameplayState(GameplayState.Dialog);
-        player.GetComponent<Animator>().Play("Idle");
+        player.GetComponentInChildren<Animator>().Play("Idle");
         textComponent.text = "";
         flipCam = false;
         StartCoroutine(TypeLine());
@@ -115,15 +115,11 @@ public class DialogBox : MonoBehaviour
         AdvanceDialog();
     }
 
+
     void SetPose(Transform target, string pose, CameraAngle cameraAngle, string face)
     {
         if(target == null) target = player;
-        if(cameraRig == null)
-        {
-            cameraRig = Instantiate(Resources.Load<GameObject>("CameraRig"));
-            cameraAnimator = cameraRig.GetComponent<Animator>();
-            cutsceneCamera = cameraRig.GetComponentInChildren<CinemachineCamera>();
-        }
+        cameraRig = GameManager.Instance.GetCamera(out cameraAnimator,out cutsceneCamera);
         Animator anim = target.GetComponent<Animator>();
         if(anim != null && pose != ""){
             if(!anim.GetCurrentAnimatorStateInfo(0).IsName(pose)){
@@ -175,8 +171,6 @@ public class DialogBox : MonoBehaviour
         }
         else
         {
-            
-            cutsceneCamera.Priority = 0;
             anim.SetBool("DialogActive", false);
             Invoke("DisableCanvas", 0.3f);
             Cursor.lockState = CursorLockMode.Locked;
@@ -186,10 +180,11 @@ public class DialogBox : MonoBehaviour
 
     void DisableCanvas()
     {
+        GameManager.Instance.DestroyCamera();
+        GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
         canvas.enabled = false;
         player.GetComponentInChildren<Animator>().Play("Running");
         player.GetComponentInChildren<FaceChanger>().ChangeFace("Happy");
-        GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
         OnDialogFinished?.Invoke();
         
     }

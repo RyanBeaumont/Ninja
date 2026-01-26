@@ -10,10 +10,6 @@ public class Door : ChainedInteractable
     public override void Interact()
     {
         if(active)
-        GameManager.Instance.StartSceneTransition(sceneName, spawnPointIndex, sceneVariant, cameraTarget);
-        if(skybox != null)
-        {
-            Camera.main.GetComponent<Skybox>().material = skybox;
-        }
+        GameManager.Instance.StartSceneTransition(sceneName, spawnPointIndex, sceneVariant, cameraTarget, skybox);
     }
 }

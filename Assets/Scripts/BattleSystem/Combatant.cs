@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Text.RegularExpressions;
+using UnityEditor.UI;
 
 public class Combatant : MonoBehaviour
 {
@@ -90,7 +91,12 @@ public class Combatant : MonoBehaviour
         return baseDamage;
     }
 
-    public virtual void OnDeath(){}
+    public virtual void OnDeath()
+    {
+        if(this is PlayerCombatant){
+            YourParty.instance.GetPartyMember(combatantName).alive = false;
+        }
+    }
 
     void Update()
     {
@@ -109,12 +115,18 @@ public class Combatant : MonoBehaviour
 
     public void Heal(float amount)
     {
+        if(alive){
         hp += amount;
         if (hp > maxHp) hp = maxHp;
          var damageNumber = Instantiate(Resources.Load<GameObject>("DamageNumber"), transform.position, Quaternion.identity);
         var damageText = damageNumber.GetComponentInChildren<TMP_Text>();
         damageText.text = $"+{Mathf.RoundToInt(amount)}";
         damageText.color = Color.green;
+        }
+        else
+        {
+            GameManager.Instance.ShowMessage("Can't Heal a Dead Hero");
+        }
     }
 
     public void GainMP(float amount)
@@ -151,6 +163,7 @@ public class Combatant : MonoBehaviour
         {
             statusEffects.Add(effect);
         }
+        GameManager.Instance.ShowMessage($"{combatantName} is affected by {effect.name}");
         UpdateStatusVisuals();
     }
 

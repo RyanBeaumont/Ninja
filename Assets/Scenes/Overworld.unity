@@ -14,16 +14,16 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.5794239, g: 0.42212528, b: 0.5849056, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
+  m_AmbientEquatorColor: {r: 0, g: 0.19811319, b: 0.3301887, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.68
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
@@ -94,7 +94,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: c0cc6c4875f38594fa7cbb90a5b69359, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -55780,14 +55780,15 @@ MonoBehaviour:
     - {fileID: 8346498964973016767, guid: 32e3d459d977cea499c41a5a8c0c2ce8, type: 3}
     - {fileID: 8346498964973016767, guid: 32e3d459d977cea499c41a5a8c0c2ce8, type: 3}
     startingLevel: 0
-    endingLevel: 3
+    endingLevel: 100
   - enemyPrefabs:
     - {fileID: 8346498964973016767, guid: 32e3d459d977cea499c41a5a8c0c2ce8, type: 3}
     - {fileID: 8346498964973016767, guid: 415c5bcff5cebfb44bbc4f942a2a8011, type: 3}
-    startingLevel: 0
-    endingLevel: 3
+    startingLevel: 2
+    endingLevel: 100
   encounterChance: 10
   gracePeriod: 0
+  globalRandomEncounters: 0
 --- !u!4 &915888190
 Transform:
   m_ObjectHideFlags: 0
@@ -81769,6 +81770,7 @@ MonoBehaviour:
   spawnPointIndex: 0
   sceneVariant: 2
   skybox: {fileID: 0}
+  cameraTarget: {fileID: 0}
 --- !u!65 &1317456449
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -87029,6 +87031,7 @@ MonoBehaviour:
   active: 1
   blockInteraction: 0
   toBlack: 1
+  cameraTarget: {fileID: 0}
 --- !u!114 &1414783446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87336,6 +87339,7 @@ MonoBehaviour:
   spawnPointIndex: 0
   sceneVariant: 0
   skybox: {fileID: 2100000, guid: 3b74a526f7aa0294d9cfa6a8fff2e5d4, type: 2}
+  cameraTarget: {fileID: 0}
 --- !u!136 &1414783463
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -119181,6 +119185,7 @@ MonoBehaviour:
   spawnPointIndex: 0
   sceneVariant: 0
   skybox: {fileID: 0}
+  cameraTarget: {fileID: 0}
 --- !u!65 &1854050964
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -126808,6 +126813,7 @@ MonoBehaviour:
   spawnPointIndex: 0
   sceneVariant: 2
   skybox: {fileID: 0}
+  cameraTarget: {fileID: 0}
 --- !u!114 &1975152732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127379,6 +127385,7 @@ MonoBehaviour:
   spawnPointIndex: 3
   sceneVariant: 2
   skybox: {fileID: 2100000, guid: ceb0a3ed2cb53a94fa21843cc958c52b, type: 2}
+  cameraTarget: {fileID: 0}
 --- !u!114 &1981613256
 MonoBehaviour:
   m_ObjectHideFlags: 0

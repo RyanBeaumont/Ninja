@@ -6,6 +6,7 @@ public class DialogEncounter : ChainedInteractable
 {
     public List<Dialog> dialog;
     public bool turnToFace = false;
+    bool currentlyTurningToFace = false;
     public bool snapPlayerPosition = false;
     Quaternion originalRotation;
     int originalPose;
@@ -15,11 +16,12 @@ public class DialogEncounter : ChainedInteractable
     void Start(){
         originalRotation = transform.rotation;
         animator = GetComponent<Animator>();
+        currentlyTurningToFace = true;
     }
 
     void Update()
     {
-        if (turnToFace)
+        if (turnToFace && currentlyTurningToFace)
         {
             Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
             if (player == null) return;
@@ -59,12 +61,14 @@ public class DialogEncounter : ChainedInteractable
             var player = GameObject.FindGameObjectWithTag("Player").transform;
             var characterController = player.GetComponent<CharacterController>();
             characterController.enabled = false;
+            currentlyTurningToFace = false;
             if (snapPlayerPosition)
             {
-                player.position = transform.position + originalRotation * Vector3.forward * 1.5f;
+                transform.rotation = originalRotation;
+                player.position = transform.position + transform.forward * 1.5f;
             }
             Vector3 direction = transform.position - player.position;
-                direction.y = 0f; // ignore vertical
+            direction.y = 0f; // ignore vertical
             player.transform.rotation = Quaternion.LookRotation(direction);
             characterController.enabled = true;
             d.StartDialog(dialog);
@@ -75,6 +79,7 @@ public class DialogEncounter : ChainedInteractable
      private void OnDialogFinished()
     {
         // Unsubscribe to avoid duplicate calls
+        currentlyTurningToFace = true;
         var dialogBox = FindFirstObjectByType<DialogBox>();
         dialogBox.OnDialogFinished -= OnDialogFinished;
         GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);

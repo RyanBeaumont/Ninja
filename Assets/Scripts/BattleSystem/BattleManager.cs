@@ -476,7 +476,7 @@ public class BattleManager : MonoBehaviour
         {
             if(dodgeCooldown <= 0f)
             {
-                if (Input.GetKeyDown(KeyCode.A)){ dodgeInput = "Left"; }
+                if (Input.GetKeyDown(KeyCode.A)){ dodgeInput = "Left"; GameManager.Instance.ShowMessage("Dodge Attempt");}
                 if (Input.GetKeyDown(KeyCode.D)) dodgeInput = "Right";
                 if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) dodgeInput = "Jump";
                 if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.LeftShift)) dodgeInput = "Duck";
@@ -722,6 +722,7 @@ public class BattleManager : MonoBehaviour
         //damage all targets
         foreach(var t in currentTargets)
         {
+            if(t.alive){
             t.TakeDamage(activeCombatant,(int)pendingDamage, pendingDamageType);
             var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
             if(hitsRemaining == 0) t.PlayAnimation("Knockdown");
@@ -735,6 +736,7 @@ public class BattleManager : MonoBehaviour
             var d = t.TakeDamage(activeCombatant,(int)pendingDamage, pendingDamageType);
             if(lifestrike){lifestrike = false; activeCombatant.Heal(d);}
             if(activePlayer != null) activePlayer.tp += (int)(d/4f); //Gain TERROR points based on damage dealt
+            }
         }
         if(hitsRemaining <= 0)
         {
@@ -742,6 +744,7 @@ public class BattleManager : MonoBehaviour
             {
                 foreach(var t in currentTargets)
                 {
+                    if(t.alive)
                     t.ApplyStatusEffect(pendingStatusEffect);
                 }
                 pendingStatusEffect = null;
@@ -751,7 +754,6 @@ public class BattleManager : MonoBehaviour
     }
     public void EnemyHit(string direction)
     {
-        
         if(direction == dodgeInput || (direction == "Dodge" && dodgeInput == "Left") || (direction == "Dodge" && dodgeInput == "Right"))
         {
             //successful dodge
@@ -761,7 +763,9 @@ public class BattleManager : MonoBehaviour
             //GameManager.Instance.SoundEffect("Parry");
             foreach(var t in currentTargets)
             {
+                if(t.alive){
                 var effect = Instantiate(Resources.Load<GameObject>("Particles/Block"), t.transform);
+                }
             }
         }
         else if(dodgeInput == "Block")
@@ -773,15 +777,18 @@ public class BattleManager : MonoBehaviour
             AudioManager.Instance.PlaySoundEffect("SwordClang",UnityEngine.Random.Range(0.8f,1.2f));
             foreach(var t in currentTargets)
             {
-                var effect = Instantiate(Resources.Load<GameObject>("Particles/Block"), t.transform);
-                t.PlayAnimation("BlockSuccess");
-                t.TakeDamage(activeCombatant,(int)pendingDamage, pendingDamageType);
+                if(t.alive){
+                    var effect = Instantiate(Resources.Load<GameObject>("Particles/Block"), t.transform);
+                    t.PlayAnimation("BlockSuccess");
+                    t.TakeDamage(activeCombatant,(int)pendingDamage, pendingDamageType);
+                }
             }
         }
         else{
             perfectDodge = false;
             foreach(var t in currentTargets)
             {
+                if(t.alive){
                 var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
                 t.TakeDamage(activeCombatant,(int)pendingDamage, pendingDamageType);
                 if(hitsRemaining == 0) t.PlayAnimation("Knockdown");
@@ -792,6 +799,7 @@ public class BattleManager : MonoBehaviour
                     AudioManager.Instance.PlaySoundEffect("s_punch",UnityEngine.Random.Range(0.8f,1.2f));
                 if(pendingDamageType == DamageType.Psychic)
                     AudioManager.Instance.PlaySoundEffect("Crackle",UnityEngine.Random.Range(0.8f,1.2f));
+                }
             }
         }
         hitsRemaining --;
@@ -803,7 +811,7 @@ public class BattleManager : MonoBehaviour
                 GameManager.Instance.ShowMessage($"Counter!");
                 foreach(var t in currentTargets)
                 {
-                    if(t is PlayerCombatant pt){
+                    if(t is PlayerCombatant pt && t.alive){
                         actionQueue.Insert(0, new DamageAction()
                         {
                             caller = t,
@@ -824,6 +832,7 @@ public class BattleManager : MonoBehaviour
                 if(!perfectDodge)
                     foreach(var t in currentTargets)
                     {
+                        if(t.alive)
                         t.ApplyStatusEffect(pendingStatusEffect);
                     }
                 pendingStatusEffect = null;

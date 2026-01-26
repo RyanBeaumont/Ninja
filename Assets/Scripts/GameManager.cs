@@ -33,8 +33,10 @@ public class GameManager : MonoBehaviour
     Transform battleHUD;
     GameObject ui;
     TMP_Text message;
+    Material skyboxMaterial;
     GameObject[] sceneVariants;
     float messageTimer = 0f;
+    GameObject cameraRig;
     RectTransform inventoryUI;
     public float playTime = 0f;
     Menu menu;
@@ -91,16 +93,38 @@ public class GameManager : MonoBehaviour
    
     }
 
+    public GameObject GetCamera(out Animator cameraAnimator, out CinemachineCamera cutsceneCamera)
+    {
+        if(cameraRig == null)
+        {
+            cameraRig = Instantiate(Resources.Load<GameObject>("CameraRig"));
+        }
+
+        cameraAnimator = cameraRig.GetComponent<Animator>();
+        cutsceneCamera = cameraRig.GetComponentInChildren<CinemachineCamera>();
+        cutsceneCamera.Priority = 5;
+        return cameraRig;
+    }
+
+    public void DestroyCamera()
+    {
+        GetCamera(out Animator cameraAnimator, out CinemachineCamera cutsceneCamera);
+        cutsceneCamera.Priority = 0;
+    }
+
     public IEnumerator Fade(bool toBlack, Transform cameraTarget = null)
     {
-        GameObject cameraRig = null;
+        if(toBlack)
+        {
+        SetGameplayState(GameplayState.Dialog);
+        var player = GameObject.FindGameObjectWithTag("Player").transform;
+        player.GetComponentInChildren<Animator>().Play("ArmsCrossed");
+        }
         var ui = GameObject.Find("MainCanvas");
         var imgToFade = ui.transform.Find("OtherHUD/Black").GetComponent<UnityEngine.UI.Image>();
         if(cameraTarget != null && toBlack)
         {
-            cameraRig = Instantiate(Resources.Load<GameObject>("CameraRig"),cameraTarget);
-            var cameraAnimator = cameraRig.GetComponent<Animator>();
-            var cutsceneCamera = cameraRig.GetComponentInChildren<CinemachineCamera>();
+            GetCamera(out var cameraAnimator, out var cutsceneCamera);
             cutsceneCamera.Priority = 5;
             cameraAnimator.Play("Camera_Behind");
         }
@@ -118,7 +142,9 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(0.1f);
-        if(cameraRig != null) Destroy(cameraRig);
+        SetGameplayState(GameplayState.FreeMovement);
+        if(cameraTarget == null && toBlack)
+        DestroyCamera();
     }
 
     void Update()
@@ -149,15 +175,15 @@ public class GameManager : MonoBehaviour
         messageTimer = 3f;
     }
 
-    public void StartSceneTransition(string sceneName, int spawnPointIndex, int sceneVariant, Transform cameraTarget)
+    public void StartSceneTransition(string sceneName, int spawnPointIndex, int sceneVariant, Transform cameraTarget = null, Material skyboxMaterial = null)
     {
-        StartCoroutine(SceneTransition(sceneName, spawnPointIndex, sceneVariant, cameraTarget));
+        StartCoroutine(SceneTransition(sceneName, spawnPointIndex, sceneVariant, cameraTarget, skyboxMaterial));
     }
 
-    public IEnumerator SceneTransition(string sceneName, int spawnPointIndex, int newSceneVariant, Transform cameraTarget)
+    public IEnumerator SceneTransition(string sceneName, int spawnPointIndex, int newSceneVariant, Transform cameraTarget, Material skyboxMaterial)
     {
         yield return StartCoroutine(Fade(true, cameraTarget));
-        ChangeScene(sceneName, spawnPointIndex, newSceneVariant);
+        ChangeScene(sceneName, spawnPointIndex, newSceneVariant, skyboxMaterial);
         yield return new WaitForSeconds(0.1f);
         Debug.Log("SceneTransition complete");
         yield return StartCoroutine(Fade(false, cameraTarget));
@@ -168,32 +194,16 @@ public class GameManager : MonoBehaviour
         currentSpawnPointIndex = spawnPointIndex;
     }
 
-    public void ChangeScene(string sceneName, int spawnPointIndex, int newSceneVariant)
+    public void ChangeScene(string sceneName, int spawnPointIndex, int newSceneVariant, Material sbMaterial = null)
     {
         var currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         currentSpawnPointIndex = spawnPointIndex;
         sceneVariant = newSceneVariant;
-        if(sceneName != currentScene && sceneName != "")
+        skyboxMaterial = sbMaterial;
+        if(sceneName != "")
         {
             Debug.Log($"Changing scene to {sceneName} at spawn point {spawnPointIndex}");
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
-        }
-        else
-        {
-            var spawnPoins = Object.FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);
-            var player = GameObject.FindGameObjectWithTag("Player").transform;
-            ChangeSceneVariant();
-            foreach (var sp in spawnPoins)
-            {
-                if (sp.index == spawnPointIndex)
-                {
-                    player.GetComponent<CharacterController>().enabled = false;
-                    player.transform.position = sp.transform.position;
-                    player.transform.rotation = sp.transform.rotation;
-                    player.GetComponent<CharacterController>().enabled = true;
-                    break;
-                }
-            }
         }
     }
 
@@ -243,6 +253,7 @@ public class GameManager : MonoBehaviour
     public void SpawnPlayer(int spawnPointIndex)
     {
         var player = Object.Instantiate(Resources.Load<GameObject>("Player"));
+        YourParty.instance.UpdateLeader();
         var cam = Object.Instantiate(Resources.Load<GameObject>("MainCamera"));
         PlayerInput playerInput = player.GetComponent<PlayerInput>();
         playerInput.cameraTransform = cam.transform;
@@ -263,6 +274,10 @@ public class GameManager : MonoBehaviour
         var dialog = Object.Instantiate(Resources.Load<GameObject>("Dialog"));
         var spawnPoints = Object.FindObjectsByType<SpawnPoint>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         Debug.Log("Found spawn points: " + spawnPoints.Length);
+        //Skybox
+        var skybox = Camera.main.GetComponent<Skybox>();
+        if(skyboxMaterial != null){skybox.material = skyboxMaterial; skyboxMaterial = null;}
+        else{ skybox.enabled = false;}
         foreach (var sp in spawnPoints)
         {
             if (sp.index == spawnPointIndex)
