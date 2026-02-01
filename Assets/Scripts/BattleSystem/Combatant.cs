@@ -146,6 +146,15 @@ public class Combatant : MonoBehaviour
         return animator.GetCurrentAnimatorStateInfo(0).length;
     }
 
+     public float RestartAnimation()
+    {
+        if(animator == null) return 0.1f;
+        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+        animator.Play(state.fullPathHash, 0, 0f);
+        return animator.GetCurrentAnimatorStateInfo(0).length;
+    }
+
+
     public void ApplyStatusEffect(StatusEffect effect)
     {
         if(effect == null) return;

@@ -6,7 +6,7 @@ public class PlayerCombatant : Combatant
 {
     public List<Card> deck = new List<Card>();
     public List<Card> hand = new List<Card>();
-    List<Card> discard = new List<Card>();
+    public List<Card> discard = new List<Card>();
     [HideInInspector] public int tp; //TERROR points
 
     public void DrawCards(int amount)
@@ -32,6 +32,26 @@ public class PlayerCombatant : Combatant
             deck.RemoveAt(0);
             hand.Add(drawnCard);
         }
+    }
+
+    public Card Scry()
+    {
+        if (deck.Count == 0)
+        {
+            //Reshuffle discard into deck
+            deck.AddRange(discard);
+            discard.Clear();
+            //shuffle deck
+            for (int j = 0; j < deck.Count; j++)
+            {
+                Card temp = deck[j];
+                int randomIndex = Random.Range(j, deck.Count);
+                deck[j] = deck[randomIndex];
+                deck[randomIndex] = temp;
+            }
+        }
+        if (deck.Count == 0) return null; //No cards to draw
+        return deck[0];
     }
 
     public bool PlayCard(Card card)

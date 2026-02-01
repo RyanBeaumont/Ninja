@@ -7,12 +7,13 @@ public class AudioManager : MonoBehaviour
 
     AudioSource active;
     AudioSource inactive;
-    float musicVolume = 0.4f;
      [SerializeField] AudioSource soundEffectsSource;
 
      
     [SerializeField]AudioClip mainTheme;
     [SerializeField]AudioClip encounterTheme;
+    [SerializeField] FloatValue musicVolume;
+    [SerializeField] FloatValue sfxVolume;
 
     public static AudioManager Instance { get; private set; }
 
@@ -29,6 +30,14 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        musicVolume.OnValueChanged += OnVolumeChange;
+        active.volume = musicVolume.value;
+    }
+
+    void OnVolumeChange(float newVolume)
+    {
+        print("VOLUME CHANGED");
+        active.volume = newVolume;
     }
 
     public void PlayMainTheme(){PlayMusic(mainTheme,1f);}
@@ -47,6 +56,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySoundEffect(string effect, float pitch = 1f)
     {
+        soundEffectsSource.volume = sfxVolume.value;
         var fx = Resources.Load<AudioClip>($"Sound/SFX/{effect}");
         if(fx != null)
             soundEffectsSource.PlayOneShot(fx, pitch);
@@ -78,15 +88,15 @@ public class AudioManager : MonoBehaviour
             t += Time.unscaledDeltaTime;
             float k = t / duration;
 
-            from.volume = Mathf.Lerp(musicVolume, 0f, k);
-            to.volume   = Mathf.Lerp(0f, musicVolume, k);
+            from.volume = Mathf.Lerp(musicVolume.value, 0f, k);
+            to.volume   = Mathf.Lerp(0f, musicVolume.value, k);
 
             yield return null;
         }
 
         from.volume = 0f;
         from.Stop();
-        to.volume = 1f;
+        to.volume = musicVolume.value;
 
         //swap AFTER fade completes
         active = to;

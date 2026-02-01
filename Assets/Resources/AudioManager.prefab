@@ -52,6 +52,8 @@ MonoBehaviour:
   soundEffectsSource: {fileID: 5501785476817837455}
   mainTheme: {fileID: 8300000, guid: 3e3e2d970796e7746be925ed46ad1ad9, type: 3}
   encounterTheme: {fileID: 8300000, guid: b5b3142626e681d469109f18dcca0e8c, type: 3}
+  musicVolume: {fileID: 11400000, guid: 7528e91c08f565d488208cc548627d9d, type: 2}
+  sfxVolume: {fileID: 11400000, guid: dbc09f67b2bdf6f49989e87699d9d291, type: 2}
 --- !u!82 &863204755447060446
 AudioSource:
   m_ObjectHideFlags: 0

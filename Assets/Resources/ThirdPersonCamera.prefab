@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1723502627749707331}
   - component: {fileID: 1965324591371826125}
   - component: {fileID: 6255116576847299806}
+  - component: {fileID: 2505355053391617018}
   m_Layer: 0
   m_Name: ThirdPersonCamera
   m_TagString: Untagged
@@ -183,3 +184,17 @@ MonoBehaviour:
         DecelTime: 0.2
   PlayerIndex: -1
   AutoEnableInputs: 1
+--- !u!114 &2505355053391617018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594690484563361440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2553d703e53723e4885e4a7c28d56761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xSensitivity: {fileID: 11400000, guid: 22e9c0b6ba0afe44f96929c49dbec77f, type: 2}
+  ySensitivity: {fileID: 11400000, guid: ebece7555157d4141a80c636d8f39403, type: 2}

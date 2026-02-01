@@ -12,6 +12,7 @@ public class DialogEncounter : ChainedInteractable
     int originalPose;
     float turnSpeed = 5f;
     Animator animator;
+    List<GameObject> spawnedCharacters = new List<GameObject>();
     
     void Start(){
         originalRotation = transform.rotation;
@@ -53,12 +54,22 @@ public class DialogEncounter : ChainedInteractable
 
     public override void Interact()
     {
-        if (active)
+    if (active)
         {
+            var player = GameObject.FindGameObjectWithTag("Player").transform;
+            float spacing = 1f; // distance between party members
+            int count = YourParty.instance.partyMembers.Count - 1;
+            float startOffset = -(count - 1) * 0.5f;
+            
+            //You can index party leader by saying party[0]
+            foreach(Dialog dd in dialog)
+            {
+                if(dd.character == null && dd.name == $"party[0]"){dd.name = YourParty.instance.GetPartyMember(YourParty.instance.partyMembers[0]).memberName;}
+            }
+
             if(animator != null)
                 originalPose = animator.GetCurrentAnimatorStateInfo(0).shortNameHash;
             DialogBox d = FindFirstObjectByType<DialogBox>();
-            var player = GameObject.FindGameObjectWithTag("Player").transform;
             var characterController = player.GetComponent<CharacterController>();
             characterController.enabled = false;
             currentlyTurningToFace = false;
@@ -71,6 +82,38 @@ public class DialogEncounter : ChainedInteractable
             direction.y = 0f; // ignore vertical
             player.transform.rotation = Quaternion.LookRotation(direction);
             characterController.enabled = true;
+
+            //Spawn other player objects
+            if(YourParty.instance.partyMembers.Count > 1)
+            {
+                for(int i=1; i<=count; i++)
+                {
+                    var partyMember =  YourParty.instance.GetPartyMember(YourParty.instance.partyMembers[i]);
+                    var modelToSpawn = partyMember.modelName;
+                    GameObject thisPartyMember = Instantiate(Resources.Load<GameObject>($"Characters/{modelToSpawn}"));
+                    float offsetIndex = startOffset + (i - 1);
+
+                    Vector3 offset =  player.right * offsetIndex * spacing - player.forward * 1.5f; // slightly behind player
+
+                    thisPartyMember.transform.position = player.position + offset;
+                    thisPartyMember.transform.rotation = player.rotation;
+                    spawnedCharacters.Add(thisPartyMember);
+
+                    //Replace dialog by name
+                    foreach(Dialog dd in dialog)
+                    {
+                        if(dd.character == null && dd.name == partyMember.memberName) dd.character = thisPartyMember.transform;
+                        //Replace dialog by index
+                        if(dd.character == null && dd.name == $"party[{i}]"){
+                            dd.name = partyMember.memberName;
+                            dd.character = thisPartyMember.transform;
+                        }
+                    }
+
+                    
+                }
+            }
+
             d.StartDialog(dialog);
             d.OnDialogFinished += OnDialogFinished;
         }
@@ -88,6 +131,8 @@ public class DialogEncounter : ChainedInteractable
         else if(animator != null)
             animator.Play(originalPose); //Default animation
         CallNext();
+        foreach(GameObject g in spawnedCharacters) Destroy(g.gameObject);
+        spawnedCharacters.Clear();
     }
 
 }

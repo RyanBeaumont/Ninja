@@ -4,6 +4,9 @@ using Unity.Cinemachine;
 using UnityEngine;
 using System.Linq;
 using System;
+using NUnit.Framework.Internal;
+using Unity.Mathematics;
+using System.Security.Cryptography;
 
 [System.Serializable]public class StatusEffect
 {
@@ -35,6 +38,7 @@ public class GameAction
     public int bonusActions = 0;
     public virtual void Execute(BattleManager battleManager)
     {
+        caller.PlayAnimation(animation);
     }
 }
 
@@ -58,6 +62,7 @@ public class EnemyAttackAction : GameAction
     public DamageType damageType;
     public StatusEffect statusEffect = null;
     public float timeScale = 0.25f;
+    public bool loopAnimation = true;
 
     public override void Execute(BattleManager battleManager)
     {
@@ -70,7 +75,17 @@ public class EnemyAttackAction : GameAction
         if(statusEffect != null && statusEffect.name != "")
             battleManager.pendingStatusEffect = statusEffect;
         battleManager.canDodge = true;
+        battleManager.loopAnimation = loopAnimation;
         caller.PlayAnimation(animation);
+    }
+}
+
+public class StabbyStabAction: EnemyAttackAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        base.Execute(battleManager);
+        battleManager.hitsRemaining = battleManager.hitCounter + 1;
     }
 }
 
@@ -80,6 +95,7 @@ public class DamageAction : GameAction
     public int hits;
     public DamageType damageType;
     public StatusEffect statusEffect = null;
+    public bool loopAnimation = false;
 
     public override void Execute(BattleManager battleManager)
     {
@@ -89,7 +105,24 @@ public class DamageAction : GameAction
         battleManager.pendingDamage = caller.EvaluateStatFormula(damage);
         battleManager.pendingDamageType = damageType;
         battleManager.pendingStatusEffect = statusEffect;
+        battleManager.loopAnimation = loopAnimation;
         caller.PlayAnimation(animation);
+    }
+}
+
+public class WildSwingAction : GameAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        base.Execute(battleManager);
+        if(caller is PlayerCombatant playerCombatant)
+        {
+            Card newCard  = playerCombatant.Scry();
+            battleManager.ExecuteCard(newCard,caller);
+            GameManager.Instance.ShowMessage($"{caller.combatantName} wild swings into {newCard.cardName}!");
+            playerCombatant.deck.RemoveAt(0);
+            playerCombatant.discard.Add(newCard);
+        }
     }
 }
 
@@ -140,6 +173,22 @@ public class DrawCardsAction : GameAction
         if (caller is PlayerCombatant player)
         {
             player.DrawCards(cardCount);
+            GameManager.Instance.ShowMessage($"{caller.combatantName} draws {cardCount} cards!");
+        }
+    }
+}
+
+public class DrawUntilAction : DrawCardsAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        caller.PlayAnimation(animation);
+        if (caller is PlayerCombatant player)
+        {
+            while(player.hand.Count < cardCount){
+                player.DrawCards(cardCount);
+                GameManager.Instance.ShowMessage($"{caller.combatantName} draws up to {cardCount} cards!");
+            }
         }
     }
 }
@@ -160,6 +209,7 @@ public class BattleManager : MonoBehaviour
     public Action onWin;
     public List<Combatant> combatants = new List<Combatant>();
     public List<GameAction> actionQueue = new List<GameAction>();
+    public bool loopAnimation = false;
     public float clock = 0f;
     public bool waitingForInput = false;
     float waitTime = 1f;
@@ -176,6 +226,7 @@ public class BattleManager : MonoBehaviour
     public int hitsRemaining = 0;
     public bool canDodge = false;
     public bool perfectDodge = false;
+    public int hitCounter = 0;
     bool executingActions = false;
     bool canWin = true;
     GameObject cameraRig;
@@ -333,6 +384,8 @@ public class BattleManager : MonoBehaviour
         else if(targetType == TargetType.None)
         {
             currentTargets = new List<Combatant>();
+            Transform spawnPoint = GameObject.Find("BattleSetup/PlayerSpawn").transform;
+            SetPose(spawnPoint.transform, "", CameraAngle.wideBehind, "");
         }
         else if(targetType == TargetType.Any)
         {
@@ -484,6 +537,7 @@ public class BattleManager : MonoBehaviour
 
                 if(dodgeInput != "")
                 {
+                    /*
                     if(currentTargets.Count == 1)
                     {
                         if(dodgeInput == "Left")
@@ -503,6 +557,7 @@ public class BattleManager : MonoBehaviour
                             cameraAnimator.Play("Camera_Duck");
                         }
                     }
+                    */
                     AudioManager.Instance.PlaySoundEffect("Whoosh",UnityEngine.Random.Range(0.8f,1.2f));
                     dodgeWindow = dodgeInputWindow;
                     dodgeCooldown = 0.5f;
@@ -538,7 +593,11 @@ public class BattleManager : MonoBehaviour
                         NextTurn();
                         attacksRemaining = 1;
                     }else{
-                        if(activePlayer != null) activePlayer.BonusTurn();
+                        if(activePlayer != null){
+                            activePlayer.BonusTurn();
+                            itemContainer.gameObject.SetActive(false);
+                            buttonContainer.gameObject.SetActive(true);
+                        }
                     }
                 }
             }
@@ -637,6 +696,7 @@ public class BattleManager : MonoBehaviour
         // Consume initiative
         current.initiative -= 100f;
         current.StartTurn();
+        hitCounter = 0;
         activeCombatant = current;
         if(current is PlayerCombatant)
         {
@@ -716,9 +776,19 @@ public class BattleManager : MonoBehaviour
         handManager.SetHandActive(false);
     }
 
+    public void SpawnProjectile(Combatant caller, string prefab = "")
+    {
+        GameObject projectileInstance = null;
+        if(prefab != "") projectileInstance = Resources.Load<GameObject>(prefab); else projectileInstance = Resources.Load<GameObject>("Projectile");
+        var p = Instantiate(projectileInstance,caller.gameObject.transform.position,Quaternion.identity);
+        var projectile = p.GetComponent<Projectile>();
+        if(caller is PlayerCombatant) projectile.Initialize("Enemy"); else projectile.Initialize("PlayerCombatant");
+    }
+
     public void PlayerHit()
     {
         hitsRemaining --;
+        hitCounter ++;
         //damage all targets
         foreach(var t in currentTargets)
         {
@@ -737,7 +807,12 @@ public class BattleManager : MonoBehaviour
             if(lifestrike){lifestrike = false; activeCombatant.Heal(d);}
             if(activePlayer != null) activePlayer.tp += (int)(d/4f); //Gain TERROR points based on damage dealt
             }
+            
         }
+        if(hitsRemaining > 0 && loopAnimation)
+            {
+                activeCombatant.RestartAnimation();
+            }
         if(hitsRemaining <= 0)
         {
             if(pendingStatusEffect != null)
@@ -747,6 +822,7 @@ public class BattleManager : MonoBehaviour
                     if(t.alive)
                     t.ApplyStatusEffect(pendingStatusEffect);
                 }
+                loopAnimation = false;
                 pendingStatusEffect = null;
             }
             EndAction();
@@ -803,6 +879,10 @@ public class BattleManager : MonoBehaviour
             }
         }
         hitsRemaining --;
+        if(hitsRemaining > 0 && loopAnimation)
+        {
+            activeCombatant.RestartAnimation();
+        }
         if(hitsRemaining <= 0)
         {
             if(perfectDodge && actionQueue.Count == 0) //you dodged perfectly and there are no more actions queued

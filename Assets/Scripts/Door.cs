@@ -11,5 +11,6 @@ public class Door : ChainedInteractable
     {
         if(active)
         GameManager.Instance.StartSceneTransition(sceneName, spawnPointIndex, sceneVariant, cameraTarget, skybox);
+        CallNext();
     }
 }

@@ -34,6 +34,7 @@ public class DialogBox : MonoBehaviour
     [SerializeField] TMP_Text nameText;
     [SerializeField] RectTransform yesButton;
     [SerializeField] RectTransform noButton;
+    int sfxTimer = 0;
     bool flipCam = false;
     void Start()
     {
@@ -196,6 +197,8 @@ public class DialogBox : MonoBehaviour
         foreach (char c in dialog[0].text.ToCharArray())
         {
             textComponent.text += c;
+            sfxTimer --;
+            if(sfxTimer <= 0){AudioManager.Instance.PlaySoundEffect("click",UnityEngine.Random.Range(0.8f,1.2f));sfxTimer = 3;}
             yield return new WaitForSeconds(textSpeed);
         }
     }

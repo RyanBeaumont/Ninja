@@ -108,9 +108,17 @@ public class GameManager : MonoBehaviour
 
     public void DestroyCamera()
     {
-        GetCamera(out Animator cameraAnimator, out CinemachineCamera cutsceneCamera);
-        cutsceneCamera.Priority = 0;
+        if (cameraRig == null) return;
+
+        var cutsceneCamera = cameraRig.GetComponentInChildren<CinemachineCamera>();
+        if (cutsceneCamera != null)
+            cutsceneCamera.Priority = 0;
+
+        cameraRig.transform.SetParent(null);
+        cameraRig.transform.localPosition = Vector3.zero;
+        cameraRig.transform.localRotation = Quaternion.identity;
     }
+
 
     public IEnumerator Fade(bool toBlack, Transform cameraTarget = null)
     {
@@ -247,6 +255,10 @@ public class GameManager : MonoBehaviour
                 print($"Disabling encounter object {poID}");
                 po.Interact();
             }
+        }
+        foreach(ConditionalEncounter c in FindObjectsByType<ConditionalEncounter>(FindObjectsSortMode.None))
+        {
+            c.TryCheckConditions();
         }
     }
 

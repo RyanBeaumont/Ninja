@@ -16,6 +16,7 @@ public class Menu : MonoBehaviour
     public TMP_Text deckText;
     public Transform characterList;
     public Transform tutorialUI;
+    public Transform settingsContainer;
     public string currentCharacter = "";
 
     void Start()
@@ -25,6 +26,13 @@ public class Menu : MonoBehaviour
         Cursor.visible = false;
         tutorialUI.gameObject.SetActive(false);
         entireMenu.gameObject.SetActive(false);
+        settingsContainer.gameObject.SetActive(false);
+    }
+
+    public void ShowSettingsMenu()
+    {
+        settingsContainer.gameObject.SetActive(true);
+        characterContainer.gameObject.SetActive(false);
     }
 
     public void ShowCharacterMenu(string character)
@@ -118,6 +126,11 @@ public class Menu : MonoBehaviour
                     characterContainer.gameObject.SetActive(true);
                     currentCharacter = "";
                 }
+                else if (settingsContainer.gameObject.activeInHierarchy)
+                {
+                    settingsContainer.gameObject.SetActive(false);
+                characterContainer.gameObject.SetActive(true);
+                }
                 else
                 {
                     entireMenu.gameObject.SetActive(false);
@@ -126,7 +139,7 @@ public class Menu : MonoBehaviour
                     Time.timeScale = 1f;
                 }
             }
-            else
+        else
             {
                 entireMenu.gameObject.SetActive(true);
                 UpdateParty();

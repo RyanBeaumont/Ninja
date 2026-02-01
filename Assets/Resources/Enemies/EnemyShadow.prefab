@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8833767021225393275}
   - component: {fileID: 7372951704756142816}
+  - component: {fileID: 4431760837445767744}
   m_Layer: 8
-  m_Name: Shadow
+  m_Name: EnemyShadow
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,79 +50,31 @@ MonoBehaviour:
   level: 1
   maxHp: 275
   hp: 275
-  attack: 20
-  defense: 10
+  attack: 10
+  defense: 20
   speed: 15
-  psychic: 15
+  psychic: 25
   mp: 0
   maxMp: 0
   alive: 1
-  resistances: 
-  weaknesses: 01000000
-  combatantName: Ninja Acolyte
+  resistances: 02000000
+  weaknesses: 00000000
+  combatantName: Shadow
   initiative: 0
   attackPatterns:
-  - attackPattern: SwordThrust
-    attackName: Discarding Strike
-    damage: 30
+  - attackPattern: ThrowKnife
+    attackName: Knives
+    damage: 15
     damageType: 0
-    targetType: 1
+    targetType: 0
     statusEffect:
-      name: Discard
+      name: 
       stat: 
-      amount: 1
+      amount: 0
       additive: 1
-      duration: 1
+      duration: 0
       removeOnHit: 0
-    hits: 1
-    mpCost: 0
-    healthThreshold: 100
-    altFunction: 
-  - attackPattern: Burst
-    attackName: Speed Up
-    damage: 10
-    damageType: 1
-    targetType: 4
-    statusEffect:
-      name: SpeedUp
-      stat: 
-      amount: 2
-      additive: 1
-      duration: -1
-      removeOnHit: 0
-    hits: 1
-    mpCost: 0
-    healthThreshold: 100
-    altFunction: BuffAlly
-  - attackPattern: Burst
-    attackName: Speed Up
-    damage: 0
-    damageType: 0
-    targetType: 4
-    statusEffect:
-      name: SpeedUp
-      stat: 
-      amount: 0.25
-      additive: 1
-      duration: 2
-      removeOnHit: 0
-    hits: 0
-    mpCost: 0
-    healthThreshold: 100
-    altFunction: BuffAlly
-  - attackPattern: SwordThrust
-    attackName: Discarding Strike
-    damage: 30
-    damageType: 0
-    targetType: 1
-    statusEffect:
-      name: Discard
-      stat: 
-      amount: 1
-      additive: 1
-      duration: 1
-      removeOnHit: 0
-    hits: 1
+    hits: 3
     mpCost: 0
     healthThreshold: 100
     altFunction: 
@@ -130,9 +83,32 @@ MonoBehaviour:
     dropChance: 25
   - itemID: Coke
     dropChance: 50
-  xpReward: 40
-  goldReward: 40
+  xpReward: 25
+  goldReward: 25
   attackSpeed: 0.75
+--- !u!136 &4431760837445767744
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346498964973016767}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &224500113225208119
 PrefabInstance:
   m_ObjectHideFlags: 0

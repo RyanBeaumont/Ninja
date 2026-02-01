@@ -13,6 +13,7 @@ public enum TargetType
     SingleAlly,
     AllEnemies,
     AllAllies,
+    RandomEnemies,
     Self,
     Any
 }
@@ -125,6 +126,130 @@ public class CardDatabase : MonoBehaviour
                     targetType = TargetType.SingleEnemy,
                     hits = 1,
                     bonusActions = 1,
+                }
+            }
+        });
+        allCards.Add(new Card()
+        {
+            cardName = "Stabby Stab",
+            description = "Hits an extra time for each strike you've dealt this turn",
+            cost = 10,
+            level = 3,
+            artwork = "IconFist",
+            cardClass = CardClass.Ninja,
+            effects = new List<GameAction>()
+            {
+                new StabbyStabAction()
+                {
+                    damage = "15",
+                    animation = "SwordThrust",
+                    damageType = DamageType.Slashing,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1,
+                    loopAnimation = true
+                }
+            }
+        });
+        allCards.Add(new Card()
+        {
+            cardName = "It Begins",
+            description = "Play 2 extra cards this turn",
+            cost = 20,
+            level = 4,
+            artwork = "IconFist",
+            cardClass = CardClass.Ninja,
+            effects = new List<GameAction>()
+            {
+                new GameAction()
+                {
+                    animation = "Burst",
+                    targetType = TargetType.None,
+                    bonusActions = 2
+                }
+            }
+        });
+         allCards.Add(new Card()
+        {
+            cardName = "Tactical Reload",
+            cardClass = CardClass.Ninja,
+            description = "Draw until you have 4 cards",
+            artwork = "IconSuperSaiyan",
+            cost = 10,
+            level = 1,
+            effects = new List<GameAction>()
+            {
+                new DrawUntilAction()
+                {
+                    cardCount = 3,
+                    animation = "GatherChi",
+                    targetType = TargetType.Self
+                }
+            }
+        });
+        allCards.Add(new Card()
+        {
+            cardName = "Seven Knives",
+            description = "Costs 50 TP. Throw 7 knives at random",
+            cost = 0,
+            tpCost = 50,
+            level = 2,
+            artwork = "IconFist",
+            cardClass = CardClass.Ninja,
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "12",
+                    animation = "ThrowKnife",
+                    damageType = DamageType.Slashing,
+                    targetType = TargetType.None,
+                    hits = 7,
+                    loopAnimation = true
+                }
+            }
+        });
+         allCards.Add(new Card()
+        {
+            cardName = "Dual Blades",
+            description = "Throw 2 knives at random",
+            cost = 0,
+            level = 2,
+            artwork = "IconFist",
+            cardClass = CardClass.Ninja,
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "10",
+                    animation = "ThrowKnife",
+                    damageType = DamageType.Slashing,
+                    targetType = TargetType.None,
+                    hits = 2,
+                    loopAnimation = true
+                }
+            }
+        });
+        allCards.Add(new Card()
+        {
+            cardName = "Sneak Attack!",
+            description = "Increase your STRENGTH until your next turn ends",
+            cost = 20,
+            level = 4,
+            artwork = "IconSuperSaiyan",
+            cardClass = CardClass.Ninja,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "GatherChi",
+                    targetType = TargetType.Self,
+                    statusEffect = new StatusEffect()
+                    {
+                        name = "Rage",
+                        stat = "STR",
+                        amount = 10,
+                        duration = 2
+                    }
                 }
             }
         });
@@ -376,5 +501,91 @@ public class CardDatabase : MonoBehaviour
                 }
             }
         });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Here It Comes!",
+            description = "Double your STRENGTH for your next turn",
+            cost = 20,
+            level = 4,
+            artwork = "IconSuperSaiyan",
+            cardClass = CardClass.Warrior,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "GatherChi",
+                    targetType = TargetType.Self,
+                    statusEffect = new StatusEffect()
+                    {
+                        name = "DoubleDamage",
+                        stat = "STR",
+                        amount = 2,
+                        additive = false,
+                        duration = 2
+                    }
+                }
+            }
+        });
+        allCards.Add(new Card()
+        {
+            cardName = "Wild Swing",
+            description = "Play the top card of your deck for free",
+            cost = 0,
+            level = 4,
+            artwork = "IconSuperSaiyan",
+            cardClass = CardClass.Grappler,
+            effects = new List<GameAction>()
+            {
+                new WildSwingAction()
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Omnislash",
+            description = "Damages all opponents",
+            artwork = "IconSword",
+            cost = 30,
+            level = 2,
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "40",
+                    animation = "SwordBackhand",
+                    damageType = DamageType.Slashing,
+                    targetType = TargetType.AllEnemies,
+                    hits = 1
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Casual Lean",
+            description = "Increase your team's DEF and Counter Damage until the end of your next turn",
+            cost = 20,
+            level = 4,
+            artwork = "IconSuperSaiyan",
+            cardClass = CardClass.Grappler,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "CasualLean",
+                    targetType = TargetType.AllAllies,
+                    statusEffect = new StatusEffect()
+                    {
+                        name = "CasualLean",
+                        stat = "DEF",
+                        amount = 10,
+                        additive = true,
+                        duration = 2
+                    }
+                }
+            }
+        });
+
     }
 }

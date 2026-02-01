@@ -25,6 +25,7 @@ public class AnimationListener : MonoBehaviour
         i.transform.localRotation = Quaternion.identity;
     }
 
+
     Transform FindTransformRecursive(Transform root, string name)
     {
         if (root.name == name)
@@ -38,6 +39,13 @@ public class AnimationListener : MonoBehaviour
         }
         
         return null;
+    }
+
+    void SpawnProjectile(string prefab)
+    {
+        var c = GetComponentInParent<Combatant>();
+        if(c != null)
+            BattleManager.Instance.SpawnProjectile(c, prefab);
     }
 
     void Hit(string direction)
