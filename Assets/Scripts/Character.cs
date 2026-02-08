@@ -93,6 +93,12 @@ public class Character : MonoBehaviour
         yield return new WaitForNextFrameUnit();
         animator = GetComponentInChildren<Animator>();
         
+        //If you just spawned in, play the right dialog pose
+        var dialogBox = FindFirstObjectByType<DialogBox>();
+        if(dialogBox != null && dialogBox.dialog.Count > 0)
+        {
+            animator.Play(dialogBox.dialog[0].pose);
+        }
     }
 
     public void SetMotion(Vector3 m, Vector3 l){moveVector = m; lookVector = l;}
