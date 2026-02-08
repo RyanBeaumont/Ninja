@@ -237,35 +237,15 @@ public class YourParty : MonoBehaviour
      public void UpdateLeader()
     {
         var character = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Character>();
-        var anim = character.GetComponent<Animator>();
         if(character == null) {print("Could not find player character"); return;}
-        anim.enabled = false;
         if(partyMembers.Count > 0)
         {
             var leader = partyMembers[0];
             var modelName = GetPartyMember(leader).modelName;
-            var model = character.ChangeModel(modelName);
-            if(model.GetComponent<Animator>() != null)
-            {
-                model.GetComponent<Animator>().enabled = false;
-            }
-            
+            StartCoroutine(character.ChangeModel(modelName));
             var menu = FindFirstObjectByType<Menu>();
-            if(menu != null)
-            {
-                menu.UpdateParty();
-            }
+            if(menu != null)menu.UpdateParty();
         }
-        Invoke("EnableAnim", 0.1f);
-    }
-
-    void EnableAnim()
-    {
-        var character = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Character>();
-        var anim = character.GetComponent<Animator>();
-        anim.enabled = true;
-        anim.Rebind();
-        //anim.Play("Idle");
     }
 
     void Update()

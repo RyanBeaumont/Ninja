@@ -3877,7 +3877,7 @@ Transform:
   m_GameObject: {fileID: 189220706}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.0000009685754, z: -0, w: 1}
-  m_LocalPosition: {x: -3.904, y: 1.5, z: -7.14}
+  m_LocalPosition: {x: -1.9039962, y: 1.5, z: -5.1400037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6356,69 +6356,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3503871415192851515, guid: 00b2a4d6234479b48affd810a1258daa, type: 3}
   m_PrefabInstance: {fileID: 301248857}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &304968614
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1221794332}
-    m_Modifications:
-    - target: {fileID: 3696915577932073333, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_Name
-      value: Torch (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.805
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6.994
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8120256055439649502, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
---- !u!4 &304968615 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-  m_PrefabInstance: {fileID: 304968614}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &305077993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7590,147 +7527,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59db014136037dd45a2dd299df8f3a6e, type: 3}
---- !u!1 &351524082
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 351524083}
-  - component: {fileID: 351524088}
-  - component: {fileID: 351524087}
-  - component: {fileID: 351524086}
-  - component: {fileID: 351524085}
-  - component: {fileID: 351524084}
-  m_Layer: 0
-  m_Name: Torch
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &351524083
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351524082}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -2, y: 0.9710002, z: 6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1455778815}
-  m_Father: {fileID: 2074167929}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &351524084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351524082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  dialog:
-  - text: "Don\u2019t come back here! You need to be SAFE to join our secret club!\r\n"
-    name: Torch
-    character: {fileID: 351524083}
-    pose: ArmsCrossed
-    cameraAngle: 0
-    face: 
-  - text: SAFE?
-    name: Spartan Jack
-    character: {fileID: 0}
-    pose: Idle
-    cameraAngle: 0
-    face: Happy
-  - text: "Secret Assassins Feared by Everyone. It\u2019s our little club. Our SECRET
-      club. You didn\u2019t hear a thing.\r\n"
-    name: Torch
-    character: {fileID: 351524083}
-    pose: Explaining
-    cameraAngle: 0
-    face: 
-  turnToFace: 1
-  snapPlayerPosition: 1
---- !u!114 &351524085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351524082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e114ab93b5066be4c80a680534745c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: CasualLean
-  face: 
---- !u!95 &351524086
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351524082}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4a3f43c48b55a97419ef73b4fe12a250, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4abfd846172c05c4d9640c387e26d453, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!136 &351524087
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351524082}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Height: 1.25
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.16, z: 0}
---- !u!33 &351524088
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351524082}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &354674791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3503871415192851515, guid: 00b2a4d6234479b48affd810a1258daa, type: 3}
@@ -11162,90 +10958,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
---- !u!1001 &521980761
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 9db519702b86d18409d6373dd028291e, type: 2}
-    - target: {fileID: 919132149155446097, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      propertyPath: m_Name
-      value: FaceMask
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1601639839}
-  m_SourcePrefab: {fileID: 100100000, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
 --- !u!4 &523030883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3503871415192851515, guid: 00b2a4d6234479b48affd810a1258daa, type: 3}
@@ -13828,30 +13540,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6061218905984369798, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 678268363}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
---- !u!1 &678268362 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6061218905984369798, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
-  m_PrefabInstance: {fileID: 678268361}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &678268363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 678268362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e114ab93b5066be4c80a680534745c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: ArmsCrossed
-  face: Happy
 --- !u!4 &678268364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
@@ -16727,23 +16417,23 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1750474063}
+    m_TransformParent: {fileID: 2074167929}
     m_Modifications:
     - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.096
+      value: 0.90499955
       objectReference: {fileID: 0}
     - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10.315
       objectReference: {fileID: 0}
     - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.25881916
       objectReference: {fileID: 0}
     - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -16751,7 +16441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.9659258
       objectReference: {fileID: 0}
     - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -16763,7 +16453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -16771,13 +16461,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8629889987127832614, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_Name
-      value: Storm (1)
+      value: Storm
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3381023518492330136, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8629889987127832614, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1042751203}
   m_SourcePrefab: {fileID: 100100000, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
 --- !u!4 &856095856 stripped
 Transform:
@@ -16973,6 +16666,18 @@ PrefabInstance:
       value: Torch (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.3826346
       objectReference: {fileID: 0}
@@ -17019,120 +16724,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3696915577932073333, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 869746691}
-    - targetCorrespondingSourceObject: {fileID: 3696915577932073333, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 869746690}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
 --- !u!4 &869746688 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
   m_PrefabInstance: {fileID: 869746687}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &869746689 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3696915577932073333, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-  m_PrefabInstance: {fileID: 869746687}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &869746690
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869746689}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &869746691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869746689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  dialog:
-  - text: You... Jutsu?
-    name: Spartan Jack
-    character: {fileID: 0}
-    pose: ArmsCrossed
-    cameraAngle: 0
-    face: Confused
-  - text: Another one of Sensei's nonsensical--
-    name: Torch
-    character: {fileID: 869746688}
-    pose: Explaining
-    cameraAngle: 0
-    face: Confused
-  - text: Ahem
-    name: Sensei
-    character: {fileID: 13634528}
-    pose: ArmsCrossed
-    cameraAngle: 0
-    face: Angry
-  - text: (ahem) genius trains of thought. You'll be kicking butt in no time.
-    name: Torch
-    character: {fileID: 869746688}
-    pose: ArmsCrossed
-    cameraAngle: 0
-    face: Happy
-  - text: I'll make you... My apprentice
-    name: Torch
-    character: {fileID: 869746688}
-    pose: Explaining
-    cameraAngle: 0
-    face: Happy
-  - text: My star student. My minion. My first disciple in the church of Torch (That's
-      my name, don't you forget)
-    name: Torch
-    character: {fileID: 869746688}
-    pose: Explaining
-    cameraAngle: 0
-    face: Happy
-  - text: And your first lesson is, be cool. Don't give a crap about anything.
-    name: Torch
-    character: {fileID: 869746688}
-    pose: Explaining
-    cameraAngle: 0
-    face: Happy
-  - text: Oh, I'm the coolest. Natually.
-    name: Spartan Jack
-    character: {fileID: 0}
-    pose: HandsOnHips
-    cameraAngle: 0
-    face: Confused
-  - text: Pssht. Whatever
-    name: Spartan Jack
-    character: {fileID: 0}
-    pose: Explaining
-    cameraAngle: 0
-    face: Confused
-  turnToFace: 0
-  snapPlayerPosition: 0
 --- !u!4 &869916051 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
@@ -17961,7 +17559,6 @@ Transform:
   - {fileID: 678268364}
   - {fileID: 1321626069}
   - {fileID: 5565010610205757138}
-  - {fileID: 1221794332}
   - {fileID: 869746688}
   - {fileID: 2034459488}
   m_Father: {fileID: 0}
@@ -21750,6 +21347,43 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00b2a4d6234479b48affd810a1258daa, type: 3}
+--- !u!1 &1042751201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8629889987127832614, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+  m_PrefabInstance: {fileID: 856095855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1042751203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042751201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  dialog:
+  - text: 'Heya! Your name is Storm, right?
+
+'
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Embarrased
+    cameraAngle: 0
+    face: 
+  - text: The very one. I'm selling some crap, want anything?
+    name: Storm
+    character: {fileID: 856095856}
+    pose: Explaining
+    cameraAngle: 0
+    face: Confused
+  turnToFace: 1
+  snapPlayerPosition: 0
 --- !u!1 &1045528484
 GameObject:
   m_ObjectHideFlags: 0
@@ -23112,6 +22746,18 @@ PrefabInstance:
     - target: {fileID: 3696915577932073333, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
       propertyPath: m_Name
       value: Torch
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25025,147 +24671,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e7f1160f3f3ffb47968b5618bc236b5, type: 3}
---- !u!1 &1221794326
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1221794332}
-  - component: {fileID: 1221794331}
-  - component: {fileID: 1221794330}
-  - component: {fileID: 1221794329}
-  - component: {fileID: 1221794328}
-  - component: {fileID: 1221794327}
-  m_Layer: 0
-  m_Name: Torch
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1221794327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221794326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  dialog:
-  - text: "Don\u2019t come back here! You need to be SAFE to join our secret club!\r\n"
-    name: Torch
-    character: {fileID: 1221794332}
-    pose: ArmsCrossed
-    cameraAngle: 0
-    face: 
-  - text: SAFE?
-    name: Spartan Jack
-    character: {fileID: 0}
-    pose: Idle
-    cameraAngle: 0
-    face: Happy
-  - text: "Secret Assassins Feared by Everyone. It\u2019s our little club. Our SECRET
-      club. You didn\u2019t hear a thing.\r\n"
-    name: Torch
-    character: {fileID: 1221794332}
-    pose: Explaining
-    cameraAngle: 0
-    face: 
-  turnToFace: 1
-  snapPlayerPosition: 1
---- !u!114 &1221794328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221794326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e114ab93b5066be4c80a680534745c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: CasualLean
-  face: 
---- !u!95 &1221794329
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221794326}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4a3f43c48b55a97419ef73b4fe12a250, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4abfd846172c05c4d9640c387e26d453, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!136 &1221794330
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221794326}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Height: 1.25
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.16, z: 0}
---- !u!33 &1221794331
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221794326}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1221794332
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221794326}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -2, y: 0.9710002, z: 6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 304968615}
-  m_Father: {fileID: 918380979}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &1223055859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26991,6 +26496,7 @@ MonoBehaviour:
   blockInteraction: 0
   enemies:
   - {fileID: 8346498964973016767, guid: 790e06b1820895b4d94dffb0e3b70c45, type: 3}
+  hideObjects: []
   battleMusic: {fileID: 0}
 --- !u!114 &1324303869
 MonoBehaviour:
@@ -29734,39 +29240,55 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 351524083}
+    m_TransformParent: {fileID: 2074167929}
     m_Modifications:
+    - target: {fileID: 3653380821085883312, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: pose
+      value: CasualLean
+      objectReference: {fileID: 0}
     - target: {fileID: 3696915577932073333, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
       propertyPath: m_Name
       value: Torch
       objectReference: {fileID: 0}
     - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
-      propertyPath: m_LocalRotation.w
+      propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9710002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00000295043
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4231137917421231506, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -29780,11 +29302,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5423397942409403043, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      propertyPath: pose
+      value: CasualLean
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8120256055439649502, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3696915577932073333, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2037307392}
   m_SourcePrefab: {fileID: 100100000, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
 --- !u!4 &1455778815 stripped
 Transform:
@@ -31732,30 +31261,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8629889987127832614, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1582378554}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
---- !u!1 &1582378553 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8629889987127832614, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
-  m_PrefabInstance: {fileID: 1582378552}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1582378554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582378553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e114ab93b5066be4c80a680534745c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: ArmsCrossed
-  face: Happy
 --- !u!4 &1582378555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
@@ -31840,26 +31347,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: faafaef35d16af649a3a747ed9e84257, type: 3}
   m_PrefabInstance: {fileID: 1703366148}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1601639838 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
-  m_PrefabInstance: {fileID: 521980761}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1601639839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601639838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67941e4d51d73a441a47bb63fdd66c6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 2100000, guid: 9db519702b86d18409d6373dd028291e, type: 2}
-  - {fileID: 2100000, guid: 7320494bb11800c409ceb9861acf90a8, type: 2}
 --- !u!1001 &1602323472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32357,7 +31844,9 @@ PrefabInstance:
       propertyPath: pose
       value: Default
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5843794263352963333, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+    - {fileID: 8383270624873576683, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3547561562679030337, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
     m_AddedGameObjects:
@@ -34270,142 +33759,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00b2a4d6234479b48affd810a1258daa, type: 3}
---- !u!1 &1750474062
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1750474063}
-  - component: {fileID: 1750474068}
-  - component: {fileID: 1750474067}
-  - component: {fileID: 1750474066}
-  - component: {fileID: 1750474065}
-  - component: {fileID: 1750474064}
-  m_Layer: 0
-  m_Name: Storm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1750474063
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750474062}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000849366}
-  m_LocalPosition: {x: -10, y: 0.80899954, z: 10.315}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 856095856}
-  m_Father: {fileID: 2074167929}
-  m_LocalEulerAnglesHint: {x: 0, y: -539.999, z: 0}
---- !u!114 &1750474064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750474062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  dialog:
-  - text: 'Heya! Your name is Storm, right?
-
-'
-    name: Spartan Jack
-    character: {fileID: 0}
-    pose: Embarrased
-    cameraAngle: 0
-    face: 
-  - text: The very one. I'm selling some crap, want anything?
-    name: Storm
-    character: {fileID: 1750474063}
-    pose: Explaining
-    cameraAngle: 0
-    face: Confused
-  turnToFace: 1
-  snapPlayerPosition: 0
---- !u!114 &1750474065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750474062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e114ab93b5066be4c80a680534745c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: ArmsCrossed
-  face: 
---- !u!95 &1750474066
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750474062}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4a3f43c48b55a97419ef73b4fe12a250, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4abfd846172c05c4d9640c387e26d453, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!136 &1750474067
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750474062}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Height: 1.25
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.16, z: 0}
---- !u!33 &1750474068
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750474062}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1763868867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38158,183 +37511,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
---- !u!1 &1955474710
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1955474711}
-  - component: {fileID: 1955474716}
-  - component: {fileID: 1955474715}
-  - component: {fileID: 1955474714}
-  - component: {fileID: 1955474713}
-  - component: {fileID: 1955474712}
-  m_Layer: 0
-  m_Name: Thad
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1955474711
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955474710}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.49999917, z: -0, w: 0.8660259}
-  m_LocalPosition: {x: -7.0307145, y: 0.9710002, z: -6.0173364}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2054210860}
-  m_Father: {fileID: 2074167929}
-  m_LocalEulerAnglesHint: {x: 0, y: 60, z: 0}
---- !u!114 &1955474712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955474710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  dialog:
-  - text: You... Jutsu?
-    name: Spartan Jack
-    character: {fileID: 0}
-    pose: ArmsCrossed
-    cameraAngle: 0
-    face: Confused
-  - text: Another one of Sensei's nonsensical--
-    name: Thad
-    character: {fileID: 2054210860}
-    pose: Explaining
-    cameraAngle: 0
-    face: Confused
-  - text: Ahem
-    name: Sensei
-    character: {fileID: 113662918}
-    pose: ArmsCrossed
-    cameraAngle: 0
-    face: Angry
-  - text: (ahem) genius trains of thought. You'll be kicking butt in no time.
-    name: Thad
-    character: {fileID: 2054210860}
-    pose: ArmsCrossed
-    cameraAngle: 0
-    face: Happy
-  - text: I'll make you... My apprentice
-    name: Thad
-    character: {fileID: 2054210860}
-    pose: Explaining
-    cameraAngle: 0
-    face: Happy
-  - text: My star student. My minion. My first disciple in the church of Thad (That's
-      my name, don't you forget)
-    name: Thad
-    character: {fileID: 2054210860}
-    pose: Explaining
-    cameraAngle: 0
-    face: Happy
-  - text: And your first lesson is, be cool. Don't give a crap about anything.
-    name: Thad
-    character: {fileID: 2054210860}
-    pose: Explaining
-    cameraAngle: 0
-    face: Happy
-  - text: Oh, I'm the coolest. Natually.
-    name: Spartan Jack
-    character: {fileID: 0}
-    pose: HandsOnHips
-    cameraAngle: 0
-    face: Confused
-  - text: Pssht. Whatever
-    name: Spartan Jack
-    character: {fileID: 0}
-    pose: Explaining
-    cameraAngle: 0
-    face: Confused
-  turnToFace: 0
-  snapPlayerPosition: 0
---- !u!114 &1955474713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955474710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e114ab93b5066be4c80a680534745c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: ArmsCrossed
-  face: 
---- !u!95 &1955474714
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955474710}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4a3f43c48b55a97419ef73b4fe12a250, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4abfd846172c05c4d9640c387e26d453, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!136 &1955474715
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955474710}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Height: 1.25
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.16, z: 0}
---- !u!33 &1955474716
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955474710}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1958657325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40043,6 +39219,48 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f4e0351fa5acc564688327e8619cdfcd, type: 3}
   m_PrefabInstance: {fileID: 1209842608}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2037307390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3696915577932073333, guid: 5812d650579aff444b6dde44e204a39e, type: 3}
+  m_PrefabInstance: {fileID: 1455778814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2037307392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037307390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  dialog:
+  - text: "Don\u2019t come back here! You need to be SAFE to join our secret club!\r\n"
+    name: Torch
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 0
+    face: 
+  - text: SAFE?
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Idle
+    cameraAngle: 0
+    face: Happy
+  - text: "Secret Assassins Feared by Everyone. It\u2019s our little club. Our SECRET
+      club. You didn\u2019t hear a thing.\r\n"
+    name: Torch
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 0
+    face: 
+  turnToFace: 1
+  snapPlayerPosition: 1
 --- !u!1001 &2037716557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40406,47 +39624,47 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1955474711}
+    m_TransformParent: {fileID: 2074167929}
     m_Modifications:
     - target: {fileID: 2805509842704245774, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_Name
-      value: WitchDoctor (1)
+      value: Thad
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.6999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
-      propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.0307145
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.264
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.0173364
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8660259
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.49999917
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -40460,6 +39678,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737643799303656821, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
+      propertyPath: pose
+      value: ArmsCrossed
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2929520174562938265, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
     m_RemovedGameObjects: []
@@ -40467,7 +39693,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2805509842704245774, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2054210863}
+      addedObject: {fileID: 2054210865}
   m_SourcePrefab: {fileID: 100100000, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
 --- !u!4 &2054210860 stripped
 Transform:
@@ -40479,7 +39705,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2805509842704245774, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
   m_PrefabInstance: {fileID: 2054210859}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2054210863
+--- !u!114 &2054210865
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40488,11 +39714,70 @@ MonoBehaviour:
   m_GameObject: {fileID: 2054210861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e114ab93b5066be4c80a680534745c22, type: 3}
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pose: ArmsCrossed
-  face: Happy
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  dialog:
+  - text: You... Jutsu?
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 0
+    face: Confused
+  - text: Another one of Sensei's nonsensical--
+    name: Thad
+    character: {fileID: 2054210860}
+    pose: Explaining
+    cameraAngle: 0
+    face: Confused
+  - text: Ahem
+    name: Sensei
+    character: {fileID: 113662918}
+    pose: ArmsCrossed
+    cameraAngle: 0
+    face: Angry
+  - text: (ahem) genius trains of thought. You'll be kicking butt in no time.
+    name: Thad
+    character: {fileID: 2054210860}
+    pose: ArmsCrossed
+    cameraAngle: 0
+    face: Happy
+  - text: I'll make you... My apprentice
+    name: Thad
+    character: {fileID: 2054210860}
+    pose: Explaining
+    cameraAngle: 0
+    face: Happy
+  - text: My star student. My minion. My first disciple in the church of Thad (That's
+      my name, don't you forget)
+    name: Thad
+    character: {fileID: 2054210860}
+    pose: Explaining
+    cameraAngle: 0
+    face: Happy
+  - text: And your first lesson is, be cool. Don't give a crap about anything.
+    name: Thad
+    character: {fileID: 2054210860}
+    pose: Explaining
+    cameraAngle: 0
+    face: Happy
+  - text: Oh, I'm the coolest. Natually.
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: HandsOnHips
+    cameraAngle: 0
+    face: Confused
+  - text: Pssht. Whatever
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 0
+    face: Confused
+  turnToFace: 0
+  snapPlayerPosition: 0
 --- !u!1001 &2054869620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40921,11 +40206,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 856095856}
+  - {fileID: 1455778815}
   - {fileID: 113662918}
   - {fileID: 159599871}
-  - {fileID: 1955474711}
-  - {fileID: 351524083}
-  - {fileID: 1750474063}
+  - {fileID: 2054210860}
   - {fileID: 1639963842}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -42366,7 +41651,6 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 163581589}
-  - {fileID: 521980761}
   - {fileID: 1949449831}
   - {fileID: 2675047}
   - {fileID: 1045528485}

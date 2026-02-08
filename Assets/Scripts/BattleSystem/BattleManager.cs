@@ -979,9 +979,12 @@ public class BattleManager : MonoBehaviour
     {
         itemContainer.gameObject.SetActive(false);
         buttonContainer.gameObject.SetActive(false);
+        string pose = "FightingIdle";
         foreach(Combatant combatant in combatants)
         {
-            combatant.PlayAnimation("Fighting");
+            var defaultPose = combatant.GetComponentInChildren<DefaultPose>();
+            if(defaultPose != null && defaultPose.combatIdle != "") pose = defaultPose.combatIdle;
+            combatant.PlayAnimation(pose);
             combatant.ReturnToStartPosition();
         }
         perfectDodge = true;
@@ -996,15 +999,19 @@ public class BattleManager : MonoBehaviour
         current.StartTurn();
         hitCounter = 0;
         activeCombatant = current;
+        pose = "FightingIdle";
+        var defaultPose2 = current.GetComponentInChildren<DefaultPose>();
+        if(defaultPose2 != null && defaultPose2.combatIdle != "") pose = defaultPose2.combatIdle;
         if(current is PlayerCombatant)
         {
             activePlayer = (PlayerCombatant)current;
-            SetPose(current.transform, "Idle", CameraAngle.behind, "Mad");
+            
+            SetPose(current.transform, pose, CameraAngle.behind, "Mad");
             buttonContainer.gameObject.SetActive(true);
         }
         else
         {
-            SetPose(current.transform, "Idle", CameraAngle.closeup, "Mad");
+            SetPose(current.transform, pose, CameraAngle.closeup, "Mad");
             activePlayer = null;
         }
         

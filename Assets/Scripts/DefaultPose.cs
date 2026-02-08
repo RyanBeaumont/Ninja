@@ -4,15 +4,17 @@ public class DefaultPose : MonoBehaviour
 {
     public string pose;
     public string face;
+    public string combatIdle;
 
     void Start()
     {
+        if(GetComponentInParent<Character>() == null)
         PlayDefault();
     }
 
     public void PlayDefault()
     {
-        var animator = GetComponent<Animator>();
+        var animator = GetComponentInChildren<Animator>();
         if(animator != null && pose != ""){
             animator.Play(pose);
         }

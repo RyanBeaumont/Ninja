@@ -96143,7 +96143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1139540644
 Transform:
   m_ObjectHideFlags: 0
@@ -142573,8 +142573,6 @@ GameObject:
   - component: {fileID: 1677283609}
   - component: {fileID: 1677283608}
   - component: {fileID: 1677283607}
-  - component: {fileID: 1677283606}
-  - component: {fileID: 1677283605}
   - component: {fileID: 1677283604}
   - component: {fileID: 1677283611}
   - component: {fileID: 1677283603}
@@ -142627,7 +142625,7 @@ MonoBehaviour:
     name: Spartan No-Belt
     character: {fileID: 1677283609}
     pose: Defeated
-    cameraAngle: 4
+    cameraAngle: 13
     face: Confused
   - text: Beats me
     name: Spartan Jack
@@ -142640,7 +142638,7 @@ MonoBehaviour:
     name: Spartan No-Belt
     character: {fileID: 1677283609}
     pose: Defeated
-    cameraAngle: 4
+    cameraAngle: 13
     face: Confused
   - text: Yeah, whatever
     name: Spartan Jack
@@ -142719,42 +142717,6 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
---- !u!114 &1677283605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1677283599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e114ab93b5066be4c80a680534745c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: ArmsCrossed
-  face: Mad
---- !u!95 &1677283606
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1677283599}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4a3f43c48b55a97419ef73b4fe12a250, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4abfd846172c05c4d9640c387e26d453, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!136 &1677283607
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -144029,6 +143991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pose: ArmsCrossed
   face: Mad
+  combatIdle: 
 --- !u!95 &1692691705
 Animator:
   serializedVersion: 7
@@ -170499,6 +170462,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9114394909812014759, guid: 59db014136037dd45a2dd299df8f3a6e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1981613255}
+    - targetCorrespondingSourceObject: {fileID: 9114394909812014759, guid: 59db014136037dd45a2dd299df8f3a6e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1981613258}
   m_SourcePrefab: {fileID: 100100000, guid: 59db014136037dd45a2dd299df8f3a6e, type: 3}
 --- !u!1 &1981613254 stripped
 GameObject:
@@ -170512,7 +170478,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981613254}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61b4ef69776623b4f92b74bdf634fb1e, type: 3}
   m_Name: 
@@ -170530,6 +170496,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4791988861103740600, guid: 59db014136037dd45a2dd299df8f3a6e, type: 3}
   m_PrefabInstance: {fileID: 1981613253}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1981613258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981613254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b4ef69776623b4f92b74bdf634fb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  sceneName: 
+  spawnPointIndex: 4
+  sceneVariant: 2
+  skybox: {fileID: 0}
+  cameraTarget: {fileID: 0}
 --- !u!1001 &1981688545
 PrefabInstance:
   m_ObjectHideFlags: 0

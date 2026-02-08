@@ -4,11 +4,6 @@ public class PlayerInput : MonoBehaviour
 {
     public Transform cameraTransform;   // Assign Main Camera here
     Character character;
-    float leftMouseDownTime = 0f;
-    bool leftMouseHoldSent = false;
-    public float leftMouseHoldThreshold = 0.25f; // seconds to consider a hold
-    [SerializeField] string weapon = "None";
-
 
     void Start()
     {

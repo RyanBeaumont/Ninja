@@ -63,7 +63,7 @@ MonoBehaviour:
     subClass: 3
     alive: 1
   - memberName: Thad
-    modelName: WitchDoctor
+    modelName: Thad
     level: 4
     xp: 0
     hpPercentage: 1
@@ -87,9 +87,7 @@ MonoBehaviour:
     subClass: 1
     alive: 1
   partyMembers:
-  - Stretch
-  - Thad
-  - Storm
+  - Spartan Jack
   hpPerLevel: 10
   speedPerLevel: 1
   attackPerLevel: 2

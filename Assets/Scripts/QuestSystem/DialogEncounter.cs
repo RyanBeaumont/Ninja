@@ -65,6 +65,7 @@ public class DialogEncounter : ChainedInteractable
             foreach(Dialog dd in dialog)
             {
                 if(dd.character == null && dd.name == $"party[0]"){dd.name = YourParty.instance.GetPartyMember(YourParty.instance.partyMembers[0]).memberName;}
+                if(dd.character == null && dd.name.Equals(name)){dd.character = this.transform;}
             }
 
             if(animator != null)
@@ -126,8 +127,8 @@ public class DialogEncounter : ChainedInteractable
         var dialogBox = FindFirstObjectByType<DialogBox>();
         dialogBox.OnDialogFinished -= OnDialogFinished;
         GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
-        if(GetComponent<DefaultPose>() != null)
-            GetComponent<DefaultPose>().PlayDefault();
+        if(GetComponentInChildren<DefaultPose>() != null)
+            GetComponentInChildren<DefaultPose>().PlayDefault();
         else if(animator != null)
             animator.Play(originalPose); //Default animation
         CallNext();

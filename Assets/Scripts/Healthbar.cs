@@ -18,7 +18,6 @@ public class Healthbar : MonoBehaviour {
 
     void Start()
     {
-        character = GetComponentInParent<Character>();
         combatant = GetComponentInParent<Combatant>();
         hpBar = transform.Find("Fill/Healthbar").GetComponent<Image>();
         whiteHealth = transform.Find("Background").GetComponent<Slider>();
@@ -27,12 +26,6 @@ public class Healthbar : MonoBehaviour {
         levelText = transform.Find("Level/LevelText").GetComponent<TMP_Text>();
         hpText = transform.Find("HPValue").GetComponent<TMP_Text>();
         mpText = transform.Find("MPValue").GetComponent<TMP_Text>();
-        if(character != null)
-        {
-            whiteHealth.maxValue = character.maxHp;
-            health.maxValue = character.maxHp;
-            //levelText.text = character.level.ToString();
-        }
         if(combatant != null)
         {
             if(combatant is PlayerCombatant)
@@ -49,16 +42,6 @@ public class Healthbar : MonoBehaviour {
 
     void Update()
     {
-        
-
-
-        if(character != null) 
-        {
-            health.value = Mathf.RoundToInt(character.hp);
-            hpText.text = character.hp.ToString();
-            mp.value = 1;
-            mpText.text = "";
-        }
         if(combatant != null) 
         {
             health.value = Mathf.RoundToInt(combatant.hp);
@@ -77,14 +60,5 @@ public class Healthbar : MonoBehaviour {
         }
     }
 
-    /*void LateUpdate()
-    {
-
-        float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
-        float scale = (distance / referenceDistance) * baseScale;
-
-        transform.localScale = Vector3.one * scale;
-    }
-    */
 }
 

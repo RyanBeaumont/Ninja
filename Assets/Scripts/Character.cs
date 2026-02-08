@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework.Constraints;
 using Unity.IntegerTime;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 
@@ -38,18 +40,13 @@ public class Character : MonoBehaviour
     CharacterController controller;
     Animator animator;
     [HideInInspector] public int comboStep = 0;
-    
-    List<AttackAction> attackQueue;
-    bool attackQueueFinished = true;
     public float maxHp = 200f;
     [HideInInspector] public float hp;
     public bool waitForGround = false;
     [HideInInspector] public bool waitForHit = false;
-    float armor = 1f;
     float freezeY = 0f;
     [HideInInspector] public bool blockInput = false;
     [HideInInspector] public bool crouchInput = false;
-    float attackQueueTimer = 0f;
     public bool player = false;
 
     //Create a string-int dictionary of all move names on cooldown
@@ -58,7 +55,6 @@ public class Character : MonoBehaviour
     bool isGrounded;
 
     public State state;
-    List<string> cooldownKeys = new List<string>();
 
     void SetState(State newState)
     { 
@@ -76,12 +72,11 @@ public class Character : MonoBehaviour
     void Awake()
     {
         controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
-        attackQueue = new List<AttackAction>();
+        animator = GetComponentInChildren<Animator>();
         hp = maxHp;
     }
 
-    public GameObject ChangeModel(string modelName)
+    public IEnumerator ChangeModel(string modelName)
     {
         var modelContainer = transform.Find("Model");
         GameObject modelPrefab = Resources.Load<GameObject>("Characters/" + modelName);
@@ -95,146 +90,9 @@ public class Character : MonoBehaviour
             //modelInstance.transform.localScale = new Vector3(.75f,.75f,.75f);
         }
         //animator.Play(anim);
-        return modelPrefab;
-    }
-
-    public void TakeDamage(float damage, Transform caller, float knockbackDistance, State hitState, AttackType attackType, bool finalHit)
-    {
-        // If already dead, ignore further damage
-        if(state == State.Dead) return;
-        var callerChar = caller.GetComponent<Character>();
-        var jump = 0f;
-        var success = true;
-        print($" Taking damage in state {state}");
-        Vector3 dir = (transform.position - caller.transform.position).normalized;
-        //if there is a wall between position and position+knockbackDistance
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position, (transform.position - caller.transform.position).normalized, out hit, knockbackDistance, LayerMask.GetMask("Ground","Wall")))
-        {
-            if(hit.collider != null && hit.collider.gameObject != gameObject)
-            {
-                callerChar.vel.x = -dir.x * 5f;
-                callerChar.vel.z = -dir.z * 5f;
-                callerChar.velocityTimeout = 0.1f;
-            }
-        }
+        yield return new WaitForNextFrameUnit();
+        animator = GetComponentInChildren<Animator>();
         
-        if((state == State.Blocking || state == State.BlockSuccess) && attackType != AttackType.Low)
-        {
-            //You blocked it!
-            jump = 1f;
-            success = false;
-            GameManager.Instance.Freeze(0.4f);
-            var p = Instantiate(Resources.Load<GameObject>("Particles/Block"), transform.position, Quaternion.identity);
-            attackQueue.Clear();
-            attackQueueTimer = 0f;
-            if(finalHit)
-             callerChar.OnHitOrBlock();
-            attackQueue.Add(new KnockbackAction{anim = "BlockSuccess", duration = 11 , direction=dir, distance = 1f, state = State.BlockSuccess});
-        }else if(state == State.Windup)
-        {
-            attackQueue.Clear();
-            attackQueueTimer = 0f;
-            //Critical hit
-            hitState = State.Launched;
-        }
-        else if(state == State.Knockdown || state == State.HardKnockdown || state == State.Dead)
-        {
-            success = false;
-            //Miss, you are already knocked down and can't be double-knocked
-        }
-        else if(attackType == AttackType.Low && !isGrounded)
-        {
-            success = false;
-            //Miss, you jumped over it!
-        }else{
-            jump = 1f;
-        }
-        if(success){
-            GameManager.Instance.Freeze(damage/50f);
-            //freezeY = 0.5f;
-            //callerChar.freezeY = 0.5f;
-            callerChar.autoAim = 0.8f;
-            autoAim = 0.8f;
-            //GameManager.Instance.Freeze(0.5f);
-            var p = Instantiate(Resources.Load<GameObject>("Particles/Hit"), transform.position, Quaternion.identity);
-            animator.SetBool("Blocking",false);
-            var activeHitbox = transform.GetComponentInChildren<Hitbox>();
-            if(activeHitbox != null){activeHitbox.gameObject.SetActive(false); Destroy(activeHitbox.gameObject);}
-            ResetInput();
-            hp -= damage * armor;
-            armor *= 0.8f;
-            attackQueue.Clear();
-            attackQueueTimer = 0f;
-            if(finalHit)
-            callerChar.OnHitOrBlock();
-            transform.LookAt(caller);
-            if(hitState == State.Stunned){
-                print("Applying Stun");
-                attackQueue.Add(new KnockbackAction{anim = "Stunned", duration = 20 , direction=dir, distance = knockbackDistance, state = State.Stunned});
-            }if(hitState == State.Knockdown){
-                attackQueue.Add(new KnockbackAction{anim = "Knockdown", duration = 15 , direction=dir, distance = knockbackDistance, state = State.Knockdown});
-                attackQueue.Add(new WaitAction{duration = 100});
-            }if(hitState == State.Launched){
-                attackQueue.Add(new KnockbackAction{anim = "Launcher", duration = 45 , direction=dir, distance = knockbackDistance * 0.5f, state = State.Launched});
-                attackQueue.Add(new WaitForGroundHitboxAction{duration = 120});
-                jump = 2f;
-            }if(hitState == State.HardKnockdown){
-                attackQueue.Add(new KnockbackAction{anim = "Knockdown", duration = 30 , direction=dir, distance = knockbackDistance, state = State.HardKnockdown});
-                attackQueue.Add(new WaitAction{duration = 120});
-            }
-        }else{
-           
-        }
-                //Send both the player and the hitter into the air slightly (store vertical velocity in vel.y)
-        //set position a tiny bit up to avoid ground collision issues
-        if(jump > 0f){
-            if(!isGrounded || jump > 1f){
-
-                var callerController = caller.GetComponent<CharacterController>();
-
-                controller.Move(new Vector3(0f,0.1f,0f));
-                callerController.Move(new Vector3(0f,0.1f,0f));
-
-                callerChar.pendingJump = GameConstants.JumpForce * jump;
-                pendingJump = GameConstants.JumpForce * jump;
-
-                // Prevent immediate re-grounding from overwriting upward velocity
-                isGrounded = false;
-                callerChar.isGrounded = false;
-                
-            }
-        }
-        
-        
-    }
-
-    public void OnHitOrBlock()
-    {
-
-        if(GetComponent<BotInput>() != null){
-            GetComponent<BotInput>().OnHitOrBlock();
-        }
-        
-        if(AttackActions.Instance.GetAttack(attackName) != null)
-            canCancel = AttackActions.Instance.GetAttack(attackName).cancelPriority;
-        else
-            canCancel = 10;
-        if(attackName == "Punch") comboStep = 1;
-        if(attackName == "PunchCombo") comboStep = 2;
-    }
-
-    public void EndWaitForHit()
-    {
-        if(waitForHit){
-            print("Wait for hit over");
-            attackQueueTimer = 0f;
-            waitForHit = false;
-            var activeHitbox = transform.GetComponentInChildren<Hitbox>();
-            if(activeHitbox != null){activeHitbox.timer = 0; activeHitbox.gameObject.SetActive(false); Destroy(activeHitbox.gameObject);}
-            velocityTimeout = 0f;
-            vel = Vector3.zero;
-        }
     }
 
     public void SetMotion(Vector3 m, Vector3 l){moveVector = m; lookVector = l;}
@@ -248,19 +106,7 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        if(GameManager.Instance.IsFrozen()){animator.speed = 0; return;}
-
-        //Death for NPC characters
-        if(hp <= 0f && !player && state != State.Dead)
-        {
-            animator.Play("Knockdown",0,0f);
-            Instantiate(Resources.Load<GameObject>("Particles/Death"), transform.position, Quaternion.identity);
-            GameManager.Instance.Freeze(0.6f);
-            Destroy(gameObject, 3f);
-            state = State.Dead;
-            return;
-        }
-
+        if(animator == null) return;
         animator.speed = 1f;
         //Input buffer
         if(inputTimeout > 0f) inputTimeout -= Time.deltaTime;
@@ -269,8 +115,6 @@ public class Character : MonoBehaviour
         if(GameManager.Instance.GetGameplayState() == GameplayState.FreeMovement || GameManager.Instance.GetGameplayState() == GameplayState.Combat){
             LedgeGrab();
             
-            TryAttack();
-
             if(state == State.Idle && crouchInput && isGrounded)
             {
                 SetState(State.Idle);
@@ -313,115 +157,6 @@ public class Character : MonoBehaviour
             } 
         }
     }
-
-    void FixedUpdate()
-    {
-            if(GameManager.Instance.IsFrozen()){return;}
-            if(GameManager.Instance.GetGameplayState() == GameplayState.FreeMovement || GameManager.Instance.GetGameplayState() == GameplayState.Combat){
-                ProcessAttackQueue();
-            }
-    }
-
-    void ProcessAttackQueue()
-    {
-        // Do not process attack queue if dead
-        if(state == State.Dead) return;
-        //Cooldowns
-        //for each item in dictionary
-        cooldownKeys.Clear();
-        cooldownKeys.AddRange(moveCooldowns.Keys);
-
-        foreach (var key in cooldownKeys)
-        {
-            float time = moveCooldowns[key] - Time.deltaTime;
-
-            if (time <= 0f)
-                moveCooldowns.Remove(key);
-            else
-                moveCooldowns[key] = time;
-        }
-
-        if(attackQueueTimer > 0f)
-        {
-            if (waitForGround)
-            {
-                if(isGrounded) {
-                    waitForGround = false; attackQueueTimer = 0f; vel = Vector3.zero; velocityTimeout = 0f;
-                    var activeHitbox = transform.GetComponentInChildren<Hitbox>();
-                    if(activeHitbox != null){activeHitbox.timer = 0; activeHitbox.gameObject.SetActive(false); Destroy(activeHitbox.gameObject);}
-                }
-            }
-
-            attackQueueTimer -= 1;
-        }
-        else
-        {
-            if(attackQueue.Count == 0) //attack queue is finished
-            {
-                if(!attackQueueFinished){
-                    attackQueueFinished = true;
-                    armor = 1f;
-                    comboStep = 0;
-                    if(state != State.Hanging)
-                        SetState(State.Idle);
-                    canCancel = -1;
-                    animator.Play("Running");
-                }
-            }
-            else
-            {
-                attackQueueFinished = false;
-                AttackAction thisAction = attackQueue[0];
-                attackQueue.RemoveAt(0);
-                attackQueueTimer = thisAction.duration;
-                if(thisAction.state != State.Idle) SetState(thisAction.state);
-                if(thisAction.anim != "")animator.Play(thisAction.anim,0,0f);
-                thisAction.Execute(gameObject);
-            }
-        }
-    }
-
-    public void Lunge(Vector3 newVel, float duration)
-    {
-        vel.x = newVel.x;
-        vel.z = newVel.z;
-        velocityTimeout = duration;
-        vel.y += newVel.y;
-    }
-
-    void TryAttack()
-    {
-        if(lastInput == GameplayInput.Attack)
-        {
-            var thisAttack = AttackActions.Instance.GetAttack(attackName);
-            if(thisAttack == null) return;
-
-            if(state == State.Idle || (state == State.FollowThrough && canCancel > -1 && thisAttack.cancelPriority > canCancel)){
-                ResetInput();
-                if(!moveCooldowns.ContainsKey(attackName))
-                {
-                    moveCooldowns[attackName] = thisAttack.cooldown;
-                    QueueAttack(thisAttack.attackActions);
-                    if(thisAttack.attackName != "Punch" && thisAttack.attackName != "PunchCombo")
-                        comboStep = 0; //Only combo for punches
-                    canCancel = -1;
-                    //On Cooldown
-                    return;
-                }
-            }
-        }
-    }
-
-    void QueueAttack(List<AttackAction> attackActions)
-    {
-        attackQueue.Clear();
-        attackQueueTimer = 0f;
-        foreach(AttackAction a in attackActions)
-        {
-            attackQueue.Add(a);
-        }
-    }
-
     public void Move(Vector3 moveVector, Vector3 lookVector)
     {
         Vector3 motion = Vector3.zero;
@@ -499,8 +234,6 @@ public class Character : MonoBehaviour
                 vel.z = dashVel.z;
                 velocityTimeout = 0.5f;
                 animator.SetTrigger("Flip");
-                attackQueue.Clear();
-                attackQueue.Add(new WaitAction{duration = 20 , state = State.FollowThrough});
             }
         }
 

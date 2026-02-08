@@ -41,7 +41,7 @@ public class DialogBox : MonoBehaviour
         canvas = GetComponent<Canvas>();
         textComponent.text = "";
         canvas.enabled = false;
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         cameraRig = Instantiate(Resources.Load<GameObject>("CameraRig"));
         cameraAnimator = cameraRig.GetComponent<Animator>();
         cutsceneCamera = cameraRig.GetComponentInChildren<CinemachineCamera>();
@@ -121,7 +121,7 @@ public class DialogBox : MonoBehaviour
     {
         if(target == null) target = player;
         cameraRig = GameManager.Instance.GetCamera(out cameraAnimator,out cutsceneCamera);
-        Animator anim = target.GetComponent<Animator>();
+        Animator anim = target.GetComponentInChildren<Animator>();
         if(anim != null && pose != ""){
             if(!anim.GetCurrentAnimatorStateInfo(0).IsName(pose)){
                 anim.CrossFade(pose, 0.05f);

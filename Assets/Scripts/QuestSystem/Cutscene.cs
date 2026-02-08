@@ -48,16 +48,14 @@ public class Cutscene : ChainedInteractable
                 originalParent = cameraRig.transform.parent;
                 originalPosition = cameraRig.transform.localPosition;
                 originalRotation = cameraRig.transform.localRotation;
-                cameraRig.transform.parent = cameraSource;
-                cameraRig.transform.localRotation = Quaternion.identity;
-                cameraRig.transform.localPosition = new Vector3(0f,0f,0f);
+                
             }
         }
     }
 
     IEnumerator MoveModel()
 {
-    var anim = model.GetComponent<Animator>();
+    var anim = model.GetComponentInChildren<Animator>();
 
     for (int i = 0; i < waypoints.Length; i++)
     {

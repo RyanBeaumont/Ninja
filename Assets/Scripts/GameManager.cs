@@ -103,6 +103,9 @@ public class GameManager : MonoBehaviour
         cameraAnimator = cameraRig.GetComponent<Animator>();
         cutsceneCamera = cameraRig.GetComponentInChildren<CinemachineCamera>();
         cutsceneCamera.Priority = 5;
+        cameraRig.transform.SetParent(null);
+        cameraRig.transform.localPosition = Vector3.zero;
+        cameraRig.transform.localRotation = Quaternion.identity;
         return cameraRig;
     }
 
@@ -157,12 +160,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(freeze > 0f)
-        {
-            freeze -= Time.deltaTime;
-        }
 
-        UpdateBotActivation();
 
         if(messageTimer > 0f)
         {
@@ -300,46 +298,6 @@ public class GameManager : MonoBehaviour
                     player.GetComponent<CharacterController>().enabled = true;
             }
         }
-    }
-
-    void UpdateBotActivation()
-    {
-        List<BotInput> allBots = FindObjectsByType<BotInput>(FindObjectsSortMode.None).ToList();
-        // Create a list of bots with their priority score
-        var rankedBots = allBots
-            .Select(bot => new
-            {
-                bot,
-                priority = CalculatePriority(bot)
-            })
-            .OrderByDescending(x => x.priority)   // Highest priority first
-            .ToList();
-
-        // Activate top N bots
-        for (int i = 0; i < rankedBots.Count; i++)
-        {
-            bool shouldBeActive = i < maxActiveBots;
-            rankedBots[i].bot.SetActiveBot(shouldBeActive);
-        }
-    }
-
-    float CalculatePriority(BotInput bot)
-    {
-        var playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        // Lower distance = higher priority, so invert it
-        float distanceScore = 1f / (Vector3.Distance(playerTransform.position, bot.transform.position) + 0.1f);
-
-        // Active bots get a small boost
-        float activeScore = bot.active ? 1f : 0f;
-
-        // Stunned bots are lower priority
-        float stunnedScore = bot.GetComponent<Character>().state == State.Stunned ? 0f : 1f;
-
-        // Weighted sum
-        float totalScore = (distanceScore * 3) +
-                           (activeScore * 1) +
-                           (stunnedScore * 2);
-        return totalScore;
     }
 
     public void AddInventoryItem(string itemName, int quantity)
