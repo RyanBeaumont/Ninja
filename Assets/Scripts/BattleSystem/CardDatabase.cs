@@ -29,13 +29,28 @@ public class Card
     [Header("Rules")]
     public CardClass cardClass;
     public int cost;
+    public int tempCost = 0;
     public int tpCost = 0;
     public int level = 0;
+    public int discardCost = 0;
 
     [Header("Effects")]
     public List<GameAction> effects = new();
 }
 
+//Ninja: DISAPPEAR - untargetable ally
+//Share Buff
+//NULLIFY
+//Reduce all cards' cost?
+//Ultimate: Gun - Kill a non-boss character
+//Ultimate: Dominate Mind - You choose an enemy's next target
+
+/* Enemies
+    Jade - Picks her target each turn for heavy damage. Counterattacks each turn.
+    Chrome Dome - Reveals weakness when charging major attacks
+    Faceless - Spawns minions and consumes them for buff
+    Grappler - Stuns you
+*/
 
 public class CardDatabase : MonoBehaviour
 {
@@ -141,8 +156,8 @@ public class CardDatabase : MonoBehaviour
             {
                 new StabbyStabAction()
                 {
-                    damage = "15",
-                    animation = "SwordThrust",
+                    damage = "10",
+                    animation = "SwordBackhand",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
                     hits = 1,
@@ -259,7 +274,8 @@ public class CardDatabase : MonoBehaviour
             description = "Draw a card",
             cost = 10,
             artwork = "IconFist",
-            cardClass = CardClass.Grappler,
+            cardClass = CardClass.None,
+            level = 3,
             effects = new List<GameAction>()
             {
                 new DamageAction()
@@ -322,21 +338,163 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
-            cardName = "Chi Blade",
-            description = "Deals damage based on your MP",
+            cardName = "Battle of Wills",
+            description = "Deals damage based on the difference in MP",
             artwork = "IconSlash",
             cardClass = CardClass.Psychic,
-            level = 1,
+            level = 2,
             cost = 10,
             effects = new List<GameAction>()
             {
-                new DamageAction()
+                new BattleOfWillsAction()
                 {
                     damage = "MP * 0.75",
+                    animation = "Slash",
+                    damageType = DamageType.Psychic,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1
+                }
+            }
+        });
+        allCards.Add(new Card()
+        {
+            cardName = "Chi Blade",
+            description = "Drain your MP to deal equivalent slashing damage",
+            artwork = "IconSlash",
+            cardClass = CardClass.Psychic,
+            level = 1,
+            cost = 0,
+            effects = new List<GameAction>()
+            {
+                new ChiBladeAction()
+                {
+                    damage = "MP * 0.9",
                     animation = "Slash",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
                     hits = 1
+                }
+            }
+        });
+        allCards.Add(new Card()
+        {
+            cardName = "Mind Strike",
+            description = "Deals mental damage that ignores status effects",
+            artwork = "IconSlash",
+            cardClass = CardClass.Psychic,
+            level = 1,
+            cost = 15,
+            effects = new List<GameAction>()
+            {
+                new ChiBladeAction()
+                {
+                    damage = "30",
+                    animation = "headbutt",
+                    damageType = DamageType.Psychic,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1
+                }
+            }
+        });
+        allCards.Add(new Card()
+        {
+            cardName = "Vampire Energy Suck",
+            description = "Steal MP from an enemy or give it to an ally",
+            artwork = "IconSuperSaiyan",
+            cardClass = CardClass.Psychic,
+            level = 1,
+            cost = 0,
+            effects = new List<GameAction>()
+            {
+                new EnergySuckAction()
+                {
+                    targetType = TargetType.Any,
+                    mpAmount = "PSY",
+                    animation = "Choke"
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Tactical Reload",
+            description = "Recover an ally's last played card at reduced MP cost",
+            artwork = "IconSuperSaiyan",
+            cardClass = CardClass.Psychic,
+            level = 1,
+            cost = 20,
+            effects = new List<GameAction>()
+            {
+                new ReloadAction()
+                {
+                    targetType = TargetType.SingleAlly,
+                    animation = "Objection"
+                }
+            }
+        });
+
+        
+
+        allCards.Add(new Card()
+        {
+            cardName = "Linking Strike",
+            description = "Affected target shares next status effect with their team",
+            artwork = "IconSuperSaiyan",
+            cardClass = CardClass.Psychic,
+            level = 4,
+            cost = 30,
+            effects = new List<GameAction>()
+            {
+                new DamageAction
+                {
+                    targetType = TargetType.SingleEnemy,
+                    animation = "KnifeBackhand",
+                    damage = "30",
+                    damageType = DamageType.Psychic,
+                    statusEffect = new StatusEffect()
+                    {
+                        name = "Linked",
+                        duration = -1,
+                        removeOnHit = true
+                    }
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Lock In",
+            description = "Affected ally doubles their PSY but weakens their DEF. Play again",
+            artwork = "IconSuperSaiyan",
+            cardClass = CardClass.Psychic,
+            level = 4,
+            cost = 30,
+            effects = new List<GameAction>()
+            {
+                new LockInAction
+                {
+                    targetType = TargetType.SingleAlly,
+                    animation = "GatherChi",
+                    bonusActions = 1,
+                }
+            }
+        });
+
+         allCards.Add(new Card()
+        {
+            cardName = "Flirty Wink",
+            description = "Give an ally a health boost based on your PSY, and all your TP",
+            artwork = "IconSuperSaiyan",
+            cardClass = CardClass.Psychic,
+            level = 2,
+            tpCost = 10,
+            effects = new List<GameAction>()
+            {
+                new ShareTPAction
+                {
+                    targetType = TargetType.SingleAlly,
+                    healAmount = "PSY * 2",
+                    animation = "GatherChi"
                 }
             }
         });
@@ -346,6 +504,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "SPARTA! KICK",
             description = "Ultimate attack, costs 50 TP",
             tpCost = 50,
+            discardCost = 2,
             cardClass = CardClass.Warrior,
             artwork = "IconSpartaKick",
             level = 2,
@@ -409,6 +568,7 @@ public class CardDatabase : MonoBehaviour
             description = "A powerful slash attack.",
             cost = 40,
             level = 4,
+            discardCost = 1,
             cardClass = CardClass.Warrior,
             artwork = "IconSlash",
             effects = new List<GameAction>()
@@ -420,6 +580,24 @@ public class CardDatabase : MonoBehaviour
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
                     hits = 1
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Card Exchange",
+            description = "Draw a card plus an extra for each card discarded",
+            cost = 0,
+            level = 4,
+            discardCost = 0,
+            cardClass = CardClass.Warrior,
+            artwork = "IconSlash",
+            effects = new List<GameAction>()
+            {
+                new CardExchangeAction()
+                {
+                    animation = "GatherChi"
                 }
             }
         });
@@ -532,9 +710,9 @@ public class CardDatabase : MonoBehaviour
             cardName = "Wild Swing",
             description = "Play the top card of your deck for free",
             cost = 0,
-            level = 4,
+            level = 5,
             artwork = "IconSuperSaiyan",
-            cardClass = CardClass.Grappler,
+            cardClass = CardClass.Warrior,
             effects = new List<GameAction>()
             {
                 new WildSwingAction()
@@ -543,28 +721,8 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
-            cardName = "Omnislash",
-            description = "Damages all opponents",
-            artwork = "IconSword",
-            cost = 30,
-            level = 2,
-            effects = new List<GameAction>()
-            {
-                new DamageAction()
-                {
-                    damage = "40",
-                    animation = "SwordBackhand",
-                    damageType = DamageType.Slashing,
-                    targetType = TargetType.AllEnemies,
-                    hits = 1
-                }
-            }
-        });
-
-        allCards.Add(new Card()
-        {
-            cardName = "Casual Lean",
-            description = "Increase your team's DEF and Counter Damage until the end of your next turn",
+            cardName = "Rock Solid",
+            description = "Increase your team's DEF. Counterattacks trigger Off-Balance",
             cost = 20,
             level = 4,
             artwork = "IconSuperSaiyan",
@@ -573,11 +731,11 @@ public class CardDatabase : MonoBehaviour
             {
                 new StatusEffectAction()
                 {
-                    animation = "CasualLean",
+                    animation = "ArmsCrossed",
                     targetType = TargetType.AllAllies,
                     statusEffect = new StatusEffect()
                     {
-                        name = "CasualLean",
+                        name = "Rock Solid",
                         stat = "DEF",
                         amount = 10,
                         additive = true,
@@ -586,6 +744,208 @@ public class CardDatabase : MonoBehaviour
                 }
             }
         });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Headbutt",
+            description = "Deal damage WITH YOUR HEAD. Knock the enemy Off-Balance",
+            cost = 10,
+            level = 1,
+            cardClass = CardClass.Grappler,
+            artwork = "IconKick",
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "15",
+                    animation = "headbutt",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    statusEffect = new StatusEffect()
+                    {
+                        name = "Off-Balance",
+                        stat = "DEF",
+                        amount = -4,
+                        duration = -1,
+                        removeOnHit = true
+                    },
+                    hits = 1
+                }
+            }
+        });
+
+
+        allCards.Add(new Card()
+        {
+            cardName = "Suplex",
+            description = "Deal heavy damage to an off-balance enemy. Knock yourself off balance",
+            cost = 25,
+            level = 3,
+            cardClass = CardClass.Grappler,
+            artwork = "IconKick",
+            effects = new List<GameAction>()
+            {
+                new SuplexDamageAction()
+                {
+                    damage = "20",
+                    animation = "ShoulderThrowAttacker",
+                    receivingAnimation = "ShoulderThrowVictim",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Knock it Off",
+            description = "Slap an enemy. If they're off-balance, they lose all status effects",
+            cost = 25,
+            level = 3,
+            cardClass = CardClass.Grappler,
+            artwork = "IconFist",
+            effects = new List<GameAction>()
+            {
+                new NullifyDamageAction()
+                {
+                    damage = "15",
+                    animation = "Slap",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Slap Some Sense",
+            description = "Slap any target to remove status effects",
+            cost = 10,
+            level = 5,
+            cardClass = CardClass.Psychic,
+            artwork = "IconFist",
+            effects = new List<GameAction>()
+            {
+                new NullifyDamageAction2()
+                {
+                    damage = "15",
+                    animation = "Slap",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.Any,
+                    hits = 1
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Pin",
+            description = "Stun an off-balance enemy. Knock yourself off balance",
+            cost = 30,
+            level = 3,
+            cardClass = CardClass.Grappler,
+            artwork = "IconFist",
+            effects = new List<GameAction>()
+            {
+                new GrappleDamageAction()
+                {
+                    damage = "40",
+                    animation = "ShoulderThrowAttacker",
+                    receivingAnimation = "ShoulderThrowVictim",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Tag Team",
+            description = "Stun an off-balance enemy. Enable party lifesteal",
+            tpCost = 50,
+            level = 2,
+            cardClass = CardClass.Grappler,
+            artwork = "IconFist",
+            effects = new List<GameAction>()
+            {
+                new GrappleDamageAction()
+                {
+                    damage = "40",
+                    animation = "ShoulderThrowAttacker",
+                    receivingAnimation = "ShoulderThrowVictim",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    lifesteal = true,
+                    hits = 1
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Chokehold",
+            description = "Continuously grapple an off-balance opponent until you take damage",
+            cost = 30,
+            level = 4,
+            cardClass = CardClass.Grappler,
+            artwork = "IconFist",
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "Choke",
+                    targetType = TargetType.SingleEnemy,
+                    statusEffect = new StatusEffect()
+                    {
+                        name = "Choked",
+                        amount = 1,
+                        additive = true,
+                        duration = 3
+                    }
+                },
+                new StatusEffectAction()
+                {
+                    targetType = TargetType.Self,
+                    statusEffect = new StatusEffect()
+                    {
+                        name = "Choking",
+                        amount = 1,
+                        additive = true,
+                        duration = 3
+                    }
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Identify Weakness",
+            description = "Hitting the enemy's weakness inflicts Off-Balance",
+            cost = 25,
+            level = 3,
+            cardClass = CardClass.Grappler,
+            artwork = "IconSuperSaiyan",
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "Objection",
+                    targetType = TargetType.SingleEnemy,
+                    statusEffect = new StatusEffect()
+                    {
+                        name = "Exposed",
+                        amount = 1,
+                        additive = true,
+                        duration = 2
+                    }
+                }
+            }
+        });
+
+        
 
     }
 }

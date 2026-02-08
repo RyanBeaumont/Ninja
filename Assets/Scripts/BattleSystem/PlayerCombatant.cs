@@ -56,12 +56,15 @@ public class PlayerCombatant : Combatant
 
     public bool PlayCard(Card card)
     {
-        if (hand.Contains(card) && mp >= card.cost && tp >= card.tpCost)
+        var cost = card.cost;
+        if(card.tempCost != 0){cost = card.tempCost; card.tempCost = 0;}
+        if (hand.Contains(card) && mp >= cost && tp >= card.tpCost && BattleManager.Instance.discardPower >= card.discardCost)
         {
             hand.Remove(card);
             discard.Add(card);
-            mp -= card.cost;
+            mp -= cost;
             tp -= card.tpCost;
+            BattleManager.Instance.UpdateDiscardPower(BattleManager.Instance.discardPower - card.discardCost);
             BattleManager.Instance.ExecuteCard(card, this);
             return true;
         }
@@ -71,8 +74,17 @@ public class PlayerCombatant : Combatant
                 GameManager.Instance.ShowMessage("Not enough MP!");
             else if(tp < card.tpCost)
                 GameManager.Instance.ShowMessage("Not enough TP!");
+            else if(BattleManager.Instance.discardPower < card.discardCost)
+                GameManager.Instance.ShowMessage($"You must first discard { card.discardCost-BattleManager.Instance.discardPower} more cards with right-click");
         }
         return false;
+    }
+
+    public void DiscardCard(Card card)
+    {
+        hand.Remove(card);
+        discard.Add(card);
+        BattleManager.Instance.UpdateDiscardPower(BattleManager.Instance.discardPower + 1);
     }
 
     public void OnHit()
@@ -83,6 +95,15 @@ public class PlayerCombatant : Combatant
     void Awake()
     {
     
+    }
+
+    public void GainTP(int amount)
+    {
+        tp += amount;
+        var damageNumber = Instantiate(Resources.Load<GameObject>("DamageNumber"), transform.position, Quaternion.identity);
+        var damageText = damageNumber.GetComponentInChildren<TMP_Text>();
+        damageText.text = $"{Mathf.RoundToInt(amount)}";
+        damageText.color = Color.magenta;
     }
 
     public void ShuffleDeck()
@@ -96,7 +117,7 @@ public class PlayerCombatant : Combatant
         }
     }
 
-    public override void StartTurn()
+    public override bool StartTurn()
     {
         var se = HasStatusEffect("Discard");
         if(HasStatusEffect("Discard") != null)
@@ -106,20 +127,25 @@ public class PlayerCombatant : Combatant
                 //discard random card
                 var random = Random.Range(0,hand.Count);
                 hand.RemoveAt(random);
-                GameManager.Instance.ShowMessage("You discarded a card");
+                GameManager.Instance.ShowMessage($"{combatantName} discarded a card");
             }
         }
+       
         
         RemoveStatusEffect("Discard");
-        base.StartTurn();
-        DrawCards(1);
-        maxMp = (int)(psychic * 10);
-        mp += (int)psychic;
-        if (mp > maxMp) mp = maxMp;
-        var HandManager = FindFirstObjectByType<HandManager>();
-        HandManager.InitializeHand(hand);
-        HandManager.SetHandActive(true);
-        ShowStats();
+        if (base.StartTurn())
+        {
+            DrawCards(1);
+            maxMp = (int)(psychic * 10);
+            mp += (int)psychic;
+            if (mp > maxMp) mp = maxMp;
+            var HandManager = FindFirstObjectByType<HandManager>();
+            HandManager.InitializeHand(hand);
+            HandManager.SetHandActive(true);
+            ShowStats();
+        }
+
+        return true;
     }
 
     public void BonusTurn()

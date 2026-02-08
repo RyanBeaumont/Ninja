@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using System.Text.RegularExpressions;
 using UnityEditor.UI;
+using System.Runtime.CompilerServices;
 
 public class Combatant : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class Combatant : MonoBehaviour
     //Misc
     public string combatantName;
     [HideInInspector] public float initiative = 0f;
-    List<StatusEffect> statusEffects = new List<StatusEffect>();
+    public List<StatusEffect> statusEffects = new List<StatusEffect>();
 
     //Animation properties
     Transform model;
@@ -40,32 +41,38 @@ public class Combatant : MonoBehaviour
         statusCanvas = transform.Find("StatusCanvas").GetComponent<RectTransform>();
     }
 
-    public float TakeDamage(Combatant caller, float baseDamage, DamageType damageType)
+    public virtual float TakeDamage(Combatant caller, float baseDamage, DamageType damageType)
     {
         if(!alive) return 0f;
+        var strong = false;
+        baseDamage *= 0.8f; //Scale down to compensate for new formula
         baseDamage += level * damagePerLevel;
-        baseDamage *= caller.EvaluateStatFormula("ATK") / (caller.EvaluateStatFormula("ATK")+EvaluateStatFormula("DEF")); //If attack and defense are equal, deal 1x damage. Higher attack deals more damage, higher defense reduces damage.
+        var multiplier = caller.EvaluateStatFormula("ATK") / (EvaluateStatFormula("DEF") + 10);
+        multiplier = Mathf.Clamp(multiplier,0.5f,3.0f);
+        baseDamage *= multiplier; //If attack and defense are equal, deal 1x damage. Higher attack deals more damage, higher defense reduces damage.
         var damageNumber = Instantiate(Resources.Load<GameObject>("DamageNumber"), transform.position, Quaternion.identity);
         var damageText = damageNumber.GetComponentInChildren<TMP_Text>();
         damageText.text = "";
         //1 in 20 chance to crit
-        if(UnityEngine.Random.Range(1,21) == 1)
+        /*if(UnityEngine.Random.Range(1,21) == 1)
         {
             baseDamage *= 1.5f;
             damageText.text += "CRIT! ";
             damageText.color = Color.yellow;
         }
+        */
         if( resistances != null && System.Array.Exists(resistances, element => element == damageType))
         {
             baseDamage *= 0.5f; //Take half damage
-            damageText.text += "TO THE ABS!";
-            damageText.color = Color.cyan;
+            damageText.text += "Weak!";
+            damageText.color = Color.blue;
         }
         if( weaknesses != null && System.Array.Exists(weaknesses, element => element == damageType))
         {
             baseDamage *= 1.5f; //Take 1.5x damage
             damageText.text += "STRONG!";
             damageText.color = Color.yellow;
+            strong = true;
         }
         damageText.text += Mathf.RoundToInt(baseDamage).ToString();
         hp -= baseDamage;
@@ -82,9 +89,38 @@ public class Combatant : MonoBehaviour
 
         for (int i = statusEffects.Count - 1; i >= 0; i--)
         {
-            if (statusEffects[i].removeOnHit)
+            if (statusEffects[i].removeOnHit && damageType != DamageType.Psychic)
             {
                 RemoveStatusEffect(statusEffects[i].name);
+            }
+        }
+
+        if (strong) //Check for exposed
+        {
+            if (HasStatusEffect("Exposed") != null)
+            {
+                ApplyStatusEffect(new StatusEffect
+                {
+                    name = "Off-Balance",
+                        stat = "DEF",
+                        amount = -4,
+                        duration = -1,
+                        removeOnHit = true
+                });
+            }
+        }
+
+        if(HasStatusEffect("Lifesteal") != null)
+        {
+            caller.Heal(baseDamage);
+        }
+
+        if(HasStatusEffect("Choking") != null) //Stop the choke
+        {
+            RemoveStatusEffect("Choking");
+            foreach(Combatant c in BattleManager.Instance.combatants)
+            {
+                c.RemoveStatusEffect("Choked");
             }
         }
         
@@ -95,6 +131,10 @@ public class Combatant : MonoBehaviour
     {
         if(this is PlayerCombatant){
             YourParty.instance.GetPartyMember(combatantName).alive = false;
+        }
+        if(HasStatusEffect("Choked") != null)
+        {
+            foreach(Combatant c in BattleManager.Instance.combatants) c.RemoveStatusEffect("Choking");
         }
     }
 
@@ -133,9 +173,10 @@ public class Combatant : MonoBehaviour
     {
         mp += amount;
         if (mp > maxMp) mp = maxMp;
+        if(mp < 0) mp = 0;
          var damageNumber = Instantiate(Resources.Load<GameObject>("DamageNumber"), transform.position, Quaternion.identity);
         var damageText = damageNumber.GetComponentInChildren<TMP_Text>();
-        damageText.text = $"+{Mathf.RoundToInt(amount)}";
+        damageText.text = $"{Mathf.RoundToInt(amount)}";
         damageText.color = Color.magenta;
     }
 
@@ -160,6 +201,17 @@ public class Combatant : MonoBehaviour
         if(effect == null) return;
         if(effect.name == "") return;
         if(effect.name == null) return;
+
+        if (HasStatusEffect("Linked") != null)
+        {
+            foreach(Combatant c in BattleManager.Instance.combatants)
+            {
+                if(c.CompareTag(gameObject.tag) && c != this)
+                {
+                    c.ApplyStatusEffect(effect);
+                }
+            }
+        }
         //Check if effect is already applied
         var existingEffect = statusEffects.Find(e => e.name == effect.name);
         if(existingEffect != null)
@@ -196,9 +248,43 @@ public class Combatant : MonoBehaviour
         UpdateStatusVisuals();
     }
 
-    public virtual void StartTurn()
+    public virtual bool StartTurn()
     {
+        bool success = true;
+         if(HasStatusEffect("Stunned") != null)
+        {
+            BattleManager.Instance.actionQueue.Add(new StunAction()
+            {
+                caller = this,
+                animation = "Defeated",
+            });
+            GameManager.Instance.ShowMessage($"{combatantName} is stunned and cannot move!");
+            success = false;
+        }
+        if(HasStatusEffect("Choked") != null)
+        {
+            BattleManager.Instance.actionQueue.Add(new SelfDamageAction()
+            {
+                caller = this,
+                damage = "30",
+                animation = "Defeated",
+            });
+            GameManager.Instance.ShowMessage($"{combatantName} is being choked!");
+            success = false;
+        }
+        if(HasStatusEffect("Choking") != null)
+        {
+            BattleManager.Instance.actionQueue.Add(new StunAction()
+            {
+                caller = this,
+                animation = "ArmsCrossed",
+            });
+            GameManager.Instance.ShowMessage($"{combatantName} has the enemy locked in a chokehold");
+            success = false;
+        }
+
         decreaseStatusEffects();
+        return success;
     }
 
     void UpdateStatusVisuals()

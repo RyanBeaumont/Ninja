@@ -17,10 +17,10 @@ public class EnemyAttackData
     public DamageType damageType;
     public TargetType targetType;
     public StatusEffect statusEffect;
-    public int hits;
-    public float mpCost;
-    public float healthThreshold; //The enemy will only use this attack if its health is below this percentage (0-100)
-    public string altFunction; //If this is specified, the attack will instead call this function
+    public int hits = 1;
+    public float mpCost = 0;
+    public float healthThreshold = 100; //The enemy will only use this attack if its health is below this percentage (0-100)
+    public string altFunction = ""; //If this is specified, the attack will instead call this function
 }
 
 public class EnemyCombatant : Combatant
@@ -30,30 +30,31 @@ public class EnemyCombatant : Combatant
     public float xpReward = 10f;
     public float goldReward = 10f;
     public float attackSpeed = 0.25f;
-    EnemyAttackData tempAttackData;
+    [HideInInspector] public EnemyAttackData tempAttackData;
 
     public void OnHit(string direction)
     {
         BattleManager.Instance.EnemyHit(direction);
     }
 
-    public override void StartTurn()
+    public override bool StartTurn()
     {
-        base.StartTurn();
-        mp += 10f;
-        if(mp > maxMp) mp = maxMp;
-        GameManager.Instance.ShowMessage($"{combatantName}'s turn!");
-        Invoke("Attack", 2f);
+        if(base.StartTurn()){
+            mp += 10f;
+            if(mp > maxMp) mp = maxMp;
+            GameManager.Instance.ShowMessage($"{combatantName}'s turn!");
+            Invoke("DefaultAttack", 2f);
+        }
+        return true;
     }
 
-
-    void Attack()
+    void DefaultAttack()
     {
-        if(HasStatusEffect("Stunned") != null)
-        {
-            GameManager.Instance.ShowMessage($"{combatantName} is stunned and cannot move!");
-            return;
-        }
+        Attack(null);
+    }
+
+    public void Attack(List<EnemyAttackData> attacksToUse = null, Combatant specialTarget = null)
+    {
         var speed = attackSpeed;
         
         if(HasStatusEffect("SpeedUp") != null)
@@ -64,8 +65,10 @@ public class EnemyCombatant : Combatant
         }
         
         //select a random attack pattern that the enemy can afford and meets health threshold
+        List<EnemyAttackData> tempData = attackPatterns;
+        if(attacksToUse != null) tempData = attacksToUse;
         List<EnemyAttackData> availableAttacks = new List<EnemyAttackData>();
-        foreach(var attack in attackPatterns)  
+        foreach(var attack in tempData)  
         {
             if(mp >= attack.mpCost && (hp / maxHp * 100f) <= attack.healthThreshold)
             {
@@ -75,6 +78,7 @@ public class EnemyCombatant : Combatant
         if(availableAttacks.Count == 0)
         {
             //No available attacks, skip turn
+            Debug.Log("No available attacks");
             return;
         }
         // choose the highest MP-cost attack that is affordable; if multiple share the same
@@ -96,7 +100,8 @@ public class EnemyCombatant : Combatant
 
 
         GameManager.Instance.ShowMessage($"{combatantName} uses {selectedAttack.attackName}!");
-        BattleManager.Instance.SelectRandomTargets(this, selectedAttack.targetType);
+        //if(attacksToUse == null) //Only randomize targets if not countering
+            
 
         //Split attack pattern by commas
 
@@ -115,13 +120,16 @@ public class EnemyCombatant : Combatant
                 //targets = BattleManager.Instance.currentTargets,
                 statusEffect = selectedAttack.statusEffect,
                 damage = selectedAttack.damage,
+                targetType = selectedAttack.targetType,
                 damageType = selectedAttack.damageType,
+                specialTarget = specialTarget,
                 hits = selectedAttack.hits,
                 timeScale = speed
             });
         }
         }
     }
+
 
     public void BuffAlly()
     {
@@ -133,4 +141,6 @@ public class EnemyCombatant : Combatant
             statusEffect = tempAttackData.statusEffect,
         });
     }
+
+    
 }

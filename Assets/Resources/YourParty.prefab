@@ -48,7 +48,7 @@ MonoBehaviour:
   reserve:
   - memberName: Spartan Jack
     modelName: SpartanJack
-    level: 1
+    level: 5
     xp: 0
     hpPercentage: 1
     mainClass: 1
@@ -87,7 +87,9 @@ MonoBehaviour:
     subClass: 1
     alive: 1
   partyMembers:
-  - Spartan Jack
+  - Stretch
+  - Thad
+  - Storm
   hpPerLevel: 10
   speedPerLevel: 1
   attackPerLevel: 2

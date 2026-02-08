@@ -265,6 +265,7 @@ public class YourParty : MonoBehaviour
         var anim = character.GetComponent<Animator>();
         anim.enabled = true;
         anim.Rebind();
+        //anim.Play("Idle");
     }
 
     void Update()

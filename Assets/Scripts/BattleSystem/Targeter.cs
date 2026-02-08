@@ -15,7 +15,6 @@ public class Targeter : MonoBehaviour
     {
         targetType = type;
         initialized = true;
-        print("Targeter initialized for type: " + type.ToString());
         this.action = action;
     }
 
@@ -59,6 +58,7 @@ public class Targeter : MonoBehaviour
 
                     if(Input.GetMouseButtonDown(0)){
                         selectedTargets.Add(best.GetComponent<Combatant>());
+                        
                         EndSelection();
                     }
                 }else{
@@ -74,6 +74,7 @@ public class Targeter : MonoBehaviour
         }
 
         void EndSelection(){
+            BattleManager.Instance.ShowQuickTimeEvent();
             if(targetType == TargetType.SingleEnemy)
             {
                 action.caller.SetTargetPosition(selectedTargets[0].transform.position + selectedTargets[0].transform.forward * 2f);
@@ -82,6 +83,7 @@ public class Targeter : MonoBehaviour
             BattleManager.Instance.SelectTargets(selectedTargets);
             BattleManager.Instance.actionQueue.Add(action);
             BattleManager.Instance.EndAction();
+            if(BattleManager.Instance.currentTargets.Count == 1 && BattleManager.Instance.currentTargets[0].GetComponent<Combatant>() is EnemyJade j){j.PerformCounterAttack();}
             Destroy(gameObject);
         }
     }

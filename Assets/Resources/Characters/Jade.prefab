@@ -214,7 +214,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: e33bb954cab09ef4b91bbcf1b64eb4cc, type: 2}
+      objectReference: {fileID: 2100000, guid: 66d974064e813e54881a467d33daa3e8, type: 2}
     - target: {fileID: 919132149155446097, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: m_Name
       value: FaceMask
@@ -250,5 +250,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 2100000, guid: 9db519702b86d18409d6373dd028291e, type: 2}
-  - {fileID: 2100000, guid: 7320494bb11800c409ceb9861acf90a8, type: 2}
+  - {fileID: 2100000, guid: ccb7fba4eca556b4f97dacbbf8aa12af, type: 2}
+  - {fileID: 2100000, guid: 33aa9925b967a4d4886bf1ac87fdefde, type: 2}
+  - {fileID: 2100000, guid: d47229557a71b2941b304fd306f29083, type: 2}
+  - {fileID: 2100000, guid: 18c0112f652cf7d40b20350fbe222c43, type: 2}
+  - {fileID: 2100000, guid: 22443a5d9ef8a0e42adfb73e1d2ef796, type: 2}
+  - {fileID: 2100000, guid: 79d5e6d9ec55c9941bcdba76316bb3f0, type: 2}
+  - {fileID: 2100000, guid: 66d974064e813e54881a467d33daa3e8, type: 2}

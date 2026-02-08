@@ -14,6 +14,9 @@ public class CardDisplay : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
     public Image borderImage;
     public Image damageTypeImage;
     public Image selectedBorder;
+    public Image discardImage;
+    public Image tpImage;
+    public TMP_Text discardCost;
     public Vector3 targetLocalPos;
     public Quaternion targetLocalRot;
     public float smoothFactor = 0.125f;
@@ -28,6 +31,24 @@ public class CardDisplay : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
         nameText.text = card.cardName;
         descriptionText.text = card.description;
         costText.text = card.cost.ToString();
+        if(card.discardCost > 0)
+        {
+            discardCost.text = card.discardCost.ToString();
+        }
+        else
+        {
+            discardImage.gameObject.SetActive(false);
+        }
+        if(card.tpCost > 0)
+        {
+            costText.text = $"{card.tpCost} TP";
+            costText.color = Color.cyan;
+        }
+        else
+        {
+            tpImage.gameObject.SetActive(false);
+        }
+        
         if(card.cardClass == CardClass.Warrior) borderImage.sprite = Resources.Load<Sprite>("Sprites/Cards/WarriorBorder");
         if(card.cardClass == CardClass.Grappler) borderImage.sprite = Resources.Load<Sprite>("Sprites/Cards/SupportBorder");
         if(card.cardClass == CardClass.Ninja) borderImage.sprite = Resources.Load<Sprite>("Sprites/Cards/NinjaBorder");
@@ -56,13 +77,25 @@ public class CardDisplay : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
     }
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        var activePlayer = BattleManager.Instance.activePlayer;
-        if (activePlayer != null)
+        if(eventData.button == PointerEventData.InputButton.Left){
+            var activePlayer = BattleManager.Instance.activePlayer;
+            if (activePlayer != null)
+            {
+                if(activePlayer.PlayCard(card))
+                    Destroy(gameObject);
+            }
+        }
+        else
         {
-            if(activePlayer.PlayCard(card))
+            var activePlayer = BattleManager.Instance.activePlayer;
+            if (activePlayer != null)
+            {
+                activePlayer.DiscardCard(card);
                 Destroy(gameObject);
+            }
         }
     }
+
     void Update()
     {
         transform.localPosition = Vector3.Lerp(transform.localPosition, targetLocalPos, smoothFactor);

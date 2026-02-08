@@ -110,6 +110,7 @@ public class Menu : MonoBehaviour
                 var tempHP = YourParty.instance.hpPerLevel * partyMember.level + 100f;
                 thisCharacter.transform.Find("Health/HP").GetComponent<TMP_Text>().text = $"{partyMember.hpPercentage * tempHP}/{tempHP}";
                 thisCharacter.transform.Find("Health").GetComponent<Slider>().value = partyMember.hpPercentage;
+                thisCharacter.transform.Find("Portrait").GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/{partyMember.memberName}");
                 thisCharacter.GetComponentInChildren<Button>().onClick.AddListener(() => ShowCharacterMenu(p));
             }
         }

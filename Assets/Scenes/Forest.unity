@@ -1512,7 +1512,7 @@ GameObject:
   m_Component:
   - component: {fileID: 469144364}
   m_Layer: 0
-  m_Name: SceneVariant_0
+  m_Name: SceneVariant_1
   m_TagString: SceneVariant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3095,6 +3095,127 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e7f1160f3f3ffb47968b5618bc236b5, type: 3}
+--- !u!1 &1072753573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1072753576}
+  - component: {fileID: 1072753575}
+  - component: {fileID: 1072753574}
+  m_Layer: 0
+  m_Name: Point Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1072753574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072753573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+--- !u!108 &1072753575
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072753573}
+  m_Enabled: 1
+  serializedVersion: 11
+  m_Type: 2
+  m_Color: {r: 0.5411765, g: 0.9810314, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
+--- !u!4 &1072753576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072753573}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9914446, z: -0, w: 0.13052888}
+  m_LocalPosition: {x: 52.16, y: 5.3920503, z: 54.47}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1073303220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4530,6 +4651,68 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e7f1160f3f3ffb47968b5618bc236b5, type: 3}
+--- !u!1001 &1561294920
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2096795319}
+    m_Modifications:
+    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5722547457033871467, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
+      propertyPath: m_Name
+      value: Kristina
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
+--- !u!4 &1561294921 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
+  m_PrefabInstance: {fileID: 1561294920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1581190453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4723,7 +4906,7 @@ GameObject:
   - component: {fileID: 1696135410}
   - component: {fileID: 1696135409}
   - component: {fileID: 1696135408}
-  - component: {fileID: 1696135404}
+  - component: {fileID: 1696135413}
   m_Layer: 0
   m_Name: Encounter
   m_TagString: Untagged
@@ -4747,26 +4930,6 @@ Transform:
   - {fileID: 930929}
   m_Father: {fileID: 469144364}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1696135404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696135402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b4ef69776623b4f92b74bdf634fb1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  sceneName: Cabin
-  spawnPointIndex: 0
-  sceneVariant: 1
-  skybox: {fileID: 0}
-  cameraTarget: {fileID: 0}
 --- !u!114 &1696135408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4860,33 +5023,37 @@ MonoBehaviour:
     pose: ArmsCrossed
     cameraAngle: 2
     face: Confused
-  - text: E-S-Pow isn't some magical telekenisis, it's a force that connects minds...
+  - text: 'E-S-Pow isn''t some magical telekenisis, it''s...
+
+      It''s hard to
+      explain. Something more subtle...'
     name: Storm
     character: {fileID: 930929}
     pose: Explaining
     cameraAngle: 2
     face: Confused
-  - text: 'Skilled ninjas don''t need to talk to each other - they just lock eyes,
-      and they know each other''s thoughts. They can predict each other''s moves.
-      That''s E-S-Pow. '
+  - text: 'Skilled ninjas don''t need to talk to each other - we just lock eyes,
+      and we know each other''s thoughts. We can predict each other''s moves. That''s
+      E-S-Pow. '
     name: Storm
     character: {fileID: 930929}
     pose: Explaining
     cameraAngle: 2
     face: Confused
-  - text: Jade and I have lived our whole lives together... We're like best friends
-      - The connection between us got so strong, we began thinking the same thoughts.
-      We began acting the same way.
+  - text: Jade and I have lived slmost our whole lives together... We're like best
+      friends - The connection between us got so strong, we began thinking the same
+      thoughts. We began acting the same way.
     name: Storm
     character: {fileID: 930929}
     pose: Explaining
     cameraAngle: 0
     face: Surprised
-  - text: 'And yesterday it went too far - she thought about killing, and so did
-      I.
+  - text: 'Spartan Jack knew too much, we both agreed on that... But I could feel
+      Jade''s voice in my mind. She wanted more than just to trap him. And her thoughts
+      became mine...
 
-      I was so conflicted, I started freaking out... I let Jack free and
-      he ran away to the forest'
+      I was so conflicted, I started freaking out... I let
+      Jack free and he ran away to the forest'
     name: Storm
     character: {fileID: 930929}
     pose: Explaining
@@ -4898,7 +5065,7 @@ MonoBehaviour:
     pose: Explaining
     cameraAngle: 2
     face: Mad
-  - text: 'You''re telling me that... we knocked out a kid on his first week here...
+  - text: 'You''re telling me... we knocked out a kid on his first week here...
 
       Tied
       him up with rope threatening to kill him... and then just LET HIM FREE??!'
@@ -4956,6 +5123,13 @@ MonoBehaviour:
     cameraAngle: 2
     face: Happy
   - text: You can... Stop flexing now.
+    name: Stretch
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Blank
+  - text: Let's get back to the party bus... I bet Jack fled back into town, there's
+      nothing else around for miles
     name: Stretch
     character: {fileID: 0}
     pose: ArmsCrossed
@@ -5054,6 +5228,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696135402}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1696135413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696135402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c878f22abfffcb44b490cf6a3e20262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  questName: Get Back to the Bus
 --- !u!1001 &1698985573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5749,6 +5939,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef4481f0570540545bef7307a2aae554, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1882381360}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef4481f0570540545bef7307a2aae554, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1882381362}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef4481f0570540545bef7307a2aae554, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1882381361}
   m_SourcePrefab: {fileID: 100100000, guid: ef4481f0570540545bef7307a2aae554, type: 3}
 --- !u!1 &1882381359 stripped
 GameObject:
@@ -5776,6 +5972,57 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.11612249, y: 0.054461557, z: 0.06138136}
   m_Center: {x: -0.043641966, y: -0.0096079055, z: 0.02169065}
+--- !u!114 &1882381361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882381359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b4ef69776623b4f92b74bdf634fb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  sceneName: PartyBus
+  spawnPointIndex: 0
+  sceneVariant: 2
+  skybox: {fileID: 2100000, guid: ceb0a3ed2cb53a94fa21843cc958c52b, type: 2}
+  cameraTarget: {fileID: 0}
+--- !u!114 &1882381362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882381359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b5bf5e381673248b03fce9dbf3fef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  questName: Get Back to the Bus
+  consume: 1
+  xpReward: 50
+  goldReward: 50
+  giveQuestIfMissing: 0
+  completeEvenIfMissing: 0
+  incompleteDialog:
+  - text: 'You say the party never stops in the PARTY BUS...
+
+      But maybe the
+      party should wind down a bit until you track down your friend'
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
 --- !u!1 &1925550199
 GameObject:
   m_ObjectHideFlags: 0
@@ -6371,7 +6618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2039977725}
   m_Layer: 0
-  m_Name: SceneVariant_1
+  m_Name: SceneVariant_0
   m_TagString: SceneVariant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6450,6 +6697,360 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ed408fb9a417b740ad0d1aeb9e4ebce, type: 3}
+--- !u!1001 &2096795318
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4151748577976030078, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: face
+      value: Blank
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151748577976030078, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: pose
+      value: Meditating
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552535940791351686, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: m_Name
+      value: ???
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: snapPlayerPosition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[0].name
+      value: Thad
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[0].text
+      value: You're not another one of those ninjas that keep attacking us, are you?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[1].face
+      value: Blank
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[1].name
+      value: ???
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[1].pose
+      value: Meditating
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[1].text
+      value: 'who?
+
+        (The mysterious figure looks behind her)
+
+        oh,
+        me?
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[2].name
+      value: ???
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[2].text
+      value: 'i''m just an observer...
+
+        a witness to the great drama about
+        to unfold.
+
+        the ninjas prophesized about this
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[3].face
+      value: Confused
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[3].name
+      value: Thad
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[3].pose
+      value: Explaining
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[3].text
+      value: Does this prophecy have anything to do with... Spartan Jack?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[4].face
+      value: Confused
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[4].name
+      value: ???
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[4].pose
+      value: Explaining
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[4].text
+      value: 'they told me to keep watch over him,
+
+        and i was like,
+
+        okay
+        sure whatever'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[5].face
+      value: Happy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[5].name
+      value: ???
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[5].pose
+      value: ArmsCrossed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[5].text
+      value: 'and now i''m here,
+
+        and i''m bored,
+
+        and i''m thinking,
+        this forest is pretty nice'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[6].face
+      value: Confused
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[6].name
+      value: ???
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[6].pose
+      value: ArmsCrossed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[6].text
+      value: 'why would i even go back to the ninjas,
+
+        they''re like, okay
+        i guess but do they even care'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[7].face
+      value: Confused
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[7].name
+      value: ???
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[7].pose
+      value: Embarrassed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[7].text
+      value: 'anyway you guys seem pretty nice.
+
+        and you''re, like, trying
+        to save the world or whatever'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[8].face
+      value: Happy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[8].name
+      value: ???
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[8].pose
+      value: ArmsCrossed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[8].text
+      value: 'anyway you guys seem pretty nice.
+
+        and you''re, like, trying
+        to save the world or whatever.
+
+        want any of my ninja stuff?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[0].character
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[1].character
+      value: 
+      objectReference: {fileID: 2096795319}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[2].character
+      value: 
+      objectReference: {fileID: 2096795319}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[3].character
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[4].character
+      value: 
+      objectReference: {fileID: 2096795319}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[5].character
+      value: 
+      objectReference: {fileID: 2096795319}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[6].character
+      value: 
+      objectReference: {fileID: 2096795319}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[7].character
+      value: 
+      objectReference: {fileID: 2096795319}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[8].character
+      value: 
+      objectReference: {fileID: 2096795319}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[0].cameraAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[1].cameraAngle
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[2].cameraAngle
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[3].cameraAngle
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[4].cameraAngle
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[5].cameraAngle
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[6].cameraAngle
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[7].cameraAngle
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: dialog.Array.data[8].cameraAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 51.743
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.129
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 54.196
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9102076
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.41415226
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 48.932
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 6766679181287893784, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1561294921}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4552535940791351686, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2096795321}
+  m_SourcePrefab: {fileID: 100100000, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+--- !u!4 &2096795319 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+  m_PrefabInstance: {fileID: 2096795318}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2096795320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4552535940791351686, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+  m_PrefabInstance: {fileID: 2096795318}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2096795321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096795320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  dialog:
+  - text: 'oh,
+
+      the name''s Kristina by the way.
+
+      maybe we''ll meet again.
+      or maybe not.'
+    name: ???
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 0
+    face: 
+  turnToFace: 0
+  snapPlayerPosition: 0
 --- !u!1 &2115323800
 GameObject:
   m_ObjectHideFlags: 0
@@ -6785,6 +7386,7 @@ SceneRoots:
   - {fileID: 21073626}
   - {fileID: 1995023981}
   - {fileID: 1534576802}
+  - {fileID: 1072753576}
   - {fileID: 1036165274}
   - {fileID: 923313100}
   - {fileID: 1949933737}
@@ -6868,3 +7470,4 @@ SceneRoots:
   - {fileID: 241575898}
   - {fileID: 936702938}
   - {fileID: 6911325449815021033}
+  - {fileID: 2096795318}

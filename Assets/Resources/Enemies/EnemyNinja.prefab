@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7372951704756142816}
   - component: {fileID: -8026483303802534423}
   m_Layer: 8
-  m_Name: Ninja
+  m_Name: EnemyNinja
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,22 +91,6 @@ MonoBehaviour:
       duration: -1
       removeOnHit: 0
     hits: 1
-    mpCost: 0
-    healthThreshold: 100
-    altFunction: BuffAlly
-  - attackPattern: Burst
-    attackName: Speed Up
-    damage: 0
-    damageType: 0
-    targetType: 4
-    statusEffect:
-      name: SpeedUp
-      stat: 
-      amount: 0.25
-      additive: 1
-      duration: 2
-      removeOnHit: 0
-    hits: 0
     mpCost: 0
     healthThreshold: 100
     altFunction: BuffAlly

@@ -6,7 +6,7 @@ using System;
 using Unity.Cinemachine;
 using UnityEngine.U2D.Animation;
 
-[Serializable] public enum CameraAngle{standard, none, closeup, lowAngle, highAngle, behind, zoom, tilt, dodgeLeft, dodgeRight, jump, duck, wideBehind};
+[Serializable] public enum CameraAngle{standard, none, closeup, lowAngle, highAngle, behind, zoom, tilt, dodgeLeft, dodgeRight, jump, duck, wideBehind, ground};
 [Serializable] public class Dialog
 {
     [TextArea] public string text;
@@ -157,6 +157,7 @@ public class DialogBox : MonoBehaviour
         else if(cameraAngle == CameraAngle.highAngle) cameraAnimator.Play("Camera_HighAngle");
         else if(cameraAngle == CameraAngle.zoom) cameraAnimator.Play("Camera_Zoom");
         else if(cameraAngle == CameraAngle.tilt) cameraAnimator.Play("Camera_Tilt");
+        else if(cameraAngle == CameraAngle.ground) cameraAnimator.Play("Camera_Ground");
     }
     
 

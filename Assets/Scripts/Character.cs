@@ -85,6 +85,7 @@ public class Character : MonoBehaviour
     {
         var modelContainer = transform.Find("Model");
         GameObject modelPrefab = Resources.Load<GameObject>("Characters/" + modelName);
+        //var anim = animator.GetCurrentAnimatorStateInfo(0).fullPathHash;
         if(modelPrefab != null)
         {
             foreach(Transform child in modelContainer) Destroy(child.gameObject);
@@ -93,6 +94,7 @@ public class Character : MonoBehaviour
             modelInstance.transform.localRotation = Quaternion.identity;
             //modelInstance.transform.localScale = new Vector3(.75f,.75f,.75f);
         }
+        //animator.Play(anim);
         return modelPrefab;
     }
 
@@ -306,6 +308,7 @@ public class Character : MonoBehaviour
             
             if(state != State.Hanging)
             {
+                if(GetComponent<CharacterController>().enabled)
                 Move(moveVector,lookVector);
             } 
         }

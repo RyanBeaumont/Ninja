@@ -14,6 +14,7 @@ public class Waypoint
 public class Cutscene : ChainedInteractable
 {
     public Transform model;
+    public float rotationSpeed = 720f; // degrees per second when rotating toward target
     public Waypoint[] waypoints;
     public bool waitForEnd = true;
     public Transform cameraSource;
@@ -31,7 +32,7 @@ public class Cutscene : ChainedInteractable
             var player = GameObject.FindGameObjectWithTag("Player").transform;
             if(model == null) model = player;
             player.GetComponentInChildren<Animator>().Play("ArmsCrossed");
-            var anim = model.GetComponent<Animator>();
+            var anim = model.GetComponentInChildren<Animator>();
             if(waypoints.Length > 0 && model != null) StartCoroutine(MoveModel());
 
             if(!waitForEnd){ CallNext(); return;}; //Don't lock the camera on
@@ -90,8 +91,11 @@ public class Cutscene : ChainedInteractable
             Vector3 moveDir = (target.position - model.position);
             if (moveDir.sqrMagnitude > 0.0001f)
             {
-                Quaternion lookRot = Quaternion.LookRotation(moveDir.normalized, Vector3.up);
-                model.rotation = Quaternion.Slerp(startRot, lookRot, Mathf.Clamp01(elapsed / 0.25f));
+                // Constrain rotation to vertical (yaw) only and rotate via shortest path
+                float targetYaw = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
+                float currentYaw = model.eulerAngles.y;
+                float newYaw = Mathf.MoveTowardsAngle(currentYaw, targetYaw, rotationSpeed * Time.deltaTime);
+                model.rotation = Quaternion.Euler(0f, newYaw, 0f);
             }
 
             // Camera logic (unchanged)
@@ -131,17 +135,20 @@ public class Cutscene : ChainedInteractable
 IEnumerator AlignRotation(Quaternion targetRotation)
 {
     Quaternion startRot = model.rotation;
+    float startYaw = startRot.eulerAngles.y;
+    float targetYaw = targetRotation.eulerAngles.y;
     float duration = 0.4f;
     float t = 0f;
 
     while (t < duration)
     {
-        model.rotation = Quaternion.Slerp(startRot, targetRotation, t / duration);
+        float yaw = Mathf.LerpAngle(startYaw, targetYaw, t / duration);
+        model.rotation = Quaternion.Euler(0f, yaw, 0f);
         t += Time.deltaTime;
         yield return null;
     }
 
-    model.rotation = targetRotation;
+    model.rotation = Quaternion.Euler(0f, targetYaw, 0f);
 }
 
 
