@@ -11,11 +11,40 @@ public class Targeter : MonoBehaviour
     GameAction action;
     public List<Combatant> selectedTargets = new List<Combatant>();
 
-    public void Initialize(TargetType type, string prompt, GameAction action)
+    public void Initialize(TargetType type, string prompt, GameAction action, bool targetDead = false)
     {
         targetType = type;
         initialized = true;
         this.action = action;
+        this.targetDead = targetDead;
+    }
+
+    void Start()
+    {
+        if(targetType == TargetType.SingleEnemy)
+        {
+            BattleManager.Instance.SetPose(BattleManager.Instance.activeCombatant.transform, "", CameraAngle.behind, "");
+        }
+        else if(targetType == TargetType.AllEnemies)
+        {
+            Transform spawnPoint = GameObject.Find("BattleSetup/EnemySpawn").transform;
+            BattleManager.Instance.SetPose(spawnPoint, "", CameraAngle.wideBehind, "");
+        }
+        else if(targetType == TargetType.SingleAlly || targetType == TargetType.Any)
+        {
+            Transform spawnPoint = GameObject.Find("BattleSetup/PlayerSpawn").transform;
+            BattleManager.Instance.SetPose(spawnPoint, "", CameraAngle.wideBehind, "");
+        }
+        else if(targetType == TargetType.AllAllies)
+        {
+            Transform spawnPoint = GameObject.Find("BattleSetup/PlayerSpawn").transform;
+            BattleManager.Instance.SetPose(spawnPoint, "", CameraAngle.wideBehind, "");
+        }
+        else if(targetType == TargetType.None)
+        {
+            Transform spawnPoint = GameObject.Find("BattleSetup/PlayerSpawn").transform;
+            BattleManager.Instance.SetPose(spawnPoint, "", CameraAngle.wideBehind, "");
+        }
     }
 
     void Update()
@@ -23,8 +52,10 @@ public class Targeter : MonoBehaviour
         if (!initialized) return;
 
         var tag = "Enemy";
-        if(targetType == TargetType.SingleEnemy) tag = "Enemy";
-        else if(targetType == TargetType.SingleAlly) tag = "PlayerCombatant";
+        if(targetType == TargetType.SingleEnemy){ tag = "Enemy";}
+        else if(targetType == TargetType.SingleAlly) {tag = "PlayerCombatant"; 
+        
+        }
         
         else if(targetType == TargetType.None){selectedTargets.Add(BattleManager.Instance.activeCombatant); EndSelection(); return;}
 

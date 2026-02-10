@@ -9,6 +9,7 @@ using Unity.Mathematics;
 using System.Security.Cryptography;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Runtime.CompilerServices;
 
 [System.Serializable]public class StatusEffect
 {
@@ -48,11 +49,12 @@ public class ChooseTargetsAction : GameAction
 {
     public string prompt;
     public GameAction gameAction; //action to perform after targeting
+    public bool targetDead = false;
 
     public override void Execute(BattleManager battleManager)
     {
         Targeter targeter = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Targeter")).GetComponent<Targeter>();
-        targeter.Initialize(targetType, prompt, gameAction);
+        targeter.Initialize(targetType, prompt, gameAction, targetDead);
         battleManager.waitingForInput = true;
     }
 }
@@ -93,9 +95,9 @@ public class StabbyStabAction: DamageAction
 {
     public override void Execute(BattleManager battleManager)
     {
-        battleManager.hitsRemaining = battleManager.hitCounter + 1;
-        GameManager.Instance.ShowMessage($"Stabbing {battleManager.hitCounter} times");
         base.Execute(battleManager);
+        battleManager.hitsRemaining = battleManager.hitCounter + 1;
+        GameManager.Instance.ShowMessage($"Stabbing {battleManager.hitCounter + 1} times");
     }
 }
 
@@ -106,10 +108,17 @@ public class NullifyDamageAction : DamageAction
         base.Execute(battleManager);
         foreach(var t in battleManager.currentTargets)
         {
-            if(t.HasStatusEffect("Off-Balance") != null){
-                t.RemoveStatusEffect("");
-            }
+            t.RemoveStatusEffect("");
+            t.ApplyStatusEffect(new StatusEffect()
+            {
+                name = "Off-Balance",
+                stat = "DEF",
+                amount = -4,
+                duration = -1,
+                removeOnHit = true
+            });
         }
+        
     }
 }
 
@@ -173,7 +182,7 @@ public class BattleOfWillsAction : DamageAction
 {
     public override void Execute(BattleManager battleManager)
     {
-        damage = $"{(caller.mp - battleManager.currentTargets[0].mp) * 0.8}";
+        damage = $"{(caller.mp - battleManager.currentTargets[0].mp)}";
         base.Execute(battleManager);
     }
 }
@@ -182,10 +191,15 @@ public class SuplexDamageAction : DamageAction
 {
     public override void Execute(BattleManager battleManager)
     {
-        if(battleManager.currentTargets.Count == 1 && (battleManager.currentTargets[0].HasStatusEffect("Off-Balance")!=null || battleManager.currentTargets[0].HasStatusEffect("Stunned") != null))
+        if(battleManager.currentTargets.Count == 1 && (battleManager.currentTargets[0].HasStatusEffect("Off-Balance")!=null || battleManager.currentTargets[0].HasStatusEffect("Prone") != null))
         {
             battleManager.currentTargets[0].RemoveStatusEffect("Off-Balance");
-            battleManager.currentTargets[0].RemoveStatusEffect("Stunned");
+            battleManager.currentTargets[0].ApplyStatusEffect(new StatusEffect
+            {
+                name = "Prone",
+                amount = 1,
+                duration = 2,
+            });
             damage = "60";
         }
         caller.ApplyStatusEffect(new StatusEffect()
@@ -205,15 +219,20 @@ public class GrappleDamageAction : DamageAction
     public bool lifesteal = false;
     public override void Execute(BattleManager battleManager)
     {
-        if(battleManager.currentTargets.Count == 1 && (battleManager.currentTargets[0].HasStatusEffect("Off-Balance")!=null || battleManager.currentTargets[0].HasStatusEffect("Stunned") != null))
+        if(battleManager.currentTargets.Count == 1 && (battleManager.currentTargets[0].HasStatusEffect("Off-Balance")!=null || battleManager.currentTargets[0].HasStatusEffect("Prone") != null) || lifesteal)
         {
             battleManager.currentTargets[0].RemoveStatusEffect("Off-Balance");
-            battleManager.currentTargets[0].RemoveStatusEffect("Stunned");
+            battleManager.currentTargets[0].ApplyStatusEffect(new StatusEffect
+            {
+                name = "Prone",
+                amount = 1,
+                duration = 2,
+            });
             statusEffect = new StatusEffect
             {
                 name = "Stunned",
                 amount = 1,
-                duration = 2,
+                duration = 1,
             };
             if (lifesteal)
             {
@@ -265,6 +284,18 @@ public class HealAction : GameAction
         {
             t.Heal(caller.EvaluateStatFormula(healAmount));
         }
+    }
+}
+
+public class ReviveAction : HealAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        foreach(var t in battleManager.currentTargets)
+        {
+            t.alive = true;
+        }
+        base.Execute(battleManager);
     }
 }
 
@@ -421,6 +452,25 @@ public class ReloadAction : GameAction
                 GameManager.Instance.ShowMessage("Discard is empty - nothing to reload");
             }
         }
+    }
+}
+
+public class ReduceCostAction : GameAction
+{
+    public int amount;
+
+    public override void Execute(BattleManager battleManager)
+    {
+        base.Execute(battleManager);
+        if(caller is PlayerCombatant p)
+        {
+            foreach(Card card in p.hand)
+            {
+                card.tempCost = Mathf.Max(0,card.cost - 20);
+            }
+            GameManager.Instance.ShowMessage("Card cost reduced!");
+        }
+        
     }
 }
 
@@ -725,6 +775,7 @@ public class BattleManager : MonoBehaviour
     {
         GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
         //Destroy(cameraRig);
+        GameManager.Instance.DestroyCamera();
         Destroy(gameObject);
         //unsubscribe
         var d = FindFirstObjectByType<DialogBox>();
@@ -1046,6 +1097,66 @@ public class BattleManager : MonoBehaviour
         buttonContainer.gameObject.SetActive(false);
     }
 
+    public void UseCokeKeg()
+    {
+        var action = new HealAction()
+        {
+            caller = activePlayer,
+            targetType = TargetType.AllAllies,
+            animation = "Drink",
+            healAmount = "50"
+        };
+        GameManager.Instance.ShowMessage("Party: Started. Bass: Bumpin'. Health: Restored");
+        actionQueue.Add(action);
+        itemContainer.gameObject.SetActive(false);
+        buttonContainer.gameObject.SetActive(false);
+    }
+
+    public void UseDrPepper()
+    {
+        var action = new ReviveAction()
+        {
+            caller = activePlayer,
+            targetType = TargetType.SingleAlly,
+            animation = "Drink",
+            healAmount = "50"
+        };
+        var targetAction = new ChooseTargetsAction()
+        {
+            targetType = action.targetType,
+            prompt = "Revive Who?",
+            targetDead = true,
+            gameAction = action,
+            caller = activePlayer
+        };
+        GameManager.Instance.ShowMessage("Who Will Revive?");
+        actionQueue.Add(targetAction);
+        itemContainer.gameObject.SetActive(false);
+        buttonContainer.gameObject.SetActive(false);
+    }
+
+    public void UseCoffee()
+    {
+        var action = new GainMPAction()
+        {
+            caller = activePlayer,
+            targetType = TargetType.SingleAlly,
+            animation = "Drink",
+            mpAmount = "30"
+        };
+        var targetAction = new ChooseTargetsAction()
+        {
+            targetType = action.targetType,
+            prompt = "Who Will Drink the Coffee?",
+            gameAction = action,
+            caller = activePlayer
+        };
+        GameManager.Instance.ShowMessage("Who Will Drink the Coffee?");
+        actionQueue.Add(targetAction);
+        itemContainer.gameObject.SetActive(false);
+        buttonContainer.gameObject.SetActive(false);
+    }
+
     public void UseBang()
     {
         var action = new DamageAction()
@@ -1112,7 +1223,20 @@ public class BattleManager : MonoBehaviour
             if(lifestrike){lifestrike = false; activeCombatant.Heal(d);}
             if(activePlayer != null) activePlayer.tp += (int)(d/4f); //Gain TERROR points based on damage dealt
             }
-            
+            if(pendingStatusEffect != null)
+            {
+                    if(t.alive)
+                    t.ApplyStatusEffect(pendingStatusEffect);
+            }
+            if (activeCombatant.HasStatusEffect("Poisoner") != null)
+            {
+                t.ApplyStatusEffect(new StatusEffect()
+                {
+                    name = "Poisoned",
+                    amount = 2,
+                    duration = -1
+                });
+            }
         }
         if(hitsRemaining > 0 && loopAnimation)
             {
@@ -1120,16 +1244,8 @@ public class BattleManager : MonoBehaviour
             }
         if(hitsRemaining <= 0)
         {
-            if(pendingStatusEffect != null)
-            {
-                foreach(var t in currentTargets)
-                {
-                    if(t.alive)
-                    t.ApplyStatusEffect(pendingStatusEffect);
-                }
-                loopAnimation = false;
-                pendingStatusEffect = null;
-            }
+            loopAnimation = false;
+            pendingStatusEffect = null;  
             EndAction();
         }
     }

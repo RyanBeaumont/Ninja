@@ -54,13 +54,14 @@ MonoBehaviour:
   defense: 12
   speed: 12
   psychic: 10
-  mp: 0
-  maxMp: 0
+  mp: 20
+  maxMp: 20
   alive: 1
   resistances: 
   weaknesses: 01000000
   combatantName: Spartan No-Belt
   initiative: 0
+  statusEffects: []
   attackPatterns:
   - attackPattern: SwordHeavy
     attackName: Powerslash
@@ -75,7 +76,7 @@ MonoBehaviour:
       duration: -1
       removeOnHit: 0
     hits: 1
-    mpCost: 0
+    mpCost: 10
     healthThreshold: 100
     altFunction: 
   - attackPattern: Sweep
@@ -116,6 +117,23 @@ MonoBehaviour:
   xpReward: 20
   goldReward: 20
   attackSpeed: 0.25
+  tempAttackData:
+    attackPattern: 
+    attackName: 
+    damage: 
+    damageType: 0
+    targetType: 0
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
+    hits: 1
+    mpCost: 0
+    healthThreshold: 100
+    altFunction: 
 --- !u!136 &8440213631048659082
 CapsuleCollider:
   m_ObjectHideFlags: 0

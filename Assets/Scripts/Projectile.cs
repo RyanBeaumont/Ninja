@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework;
+using TMPro;
 
 public class Projectile : MonoBehaviour
 {
@@ -9,7 +11,8 @@ public class Projectile : MonoBehaviour
     Combatant target;
     public float speed = 10f;
     bool initialized = false;
-    string[] directions = {"Left","Right","Jump","Duck"};
+    string[] directions;
+    //List<GameObject> prompts;
 
     public void Initialize(string targetTag)
     {
@@ -24,6 +27,23 @@ public class Projectile : MonoBehaviour
             indexToHit = Random.Range(0,list.Count);
             target = list[indexToHit];
             BattleManager.Instance.currentTargets = new List<Combatant>(){target};
+        }
+        if(list.Count == 1)  directions = new string[]{"Jump"};
+        else if(list.Count == 2)  directions = new string[]{"Left","Right"};
+        else if(list.Count == 3)  directions = new string[]{"Left","Jump","Right"};
+        else if(list.Count == 4)  directions = new string[]{"Left","Jump","Duck","Right"};
+        if(list.Count > 0 && list[0] is PlayerCombatant){
+            for(int i=0; i<list.Count; i++)
+            {
+                var prompt = Instantiate(Resources.Load<GameObject>("DodgePrompt"), list[i].transform);
+                string text = "";
+                if(directions[i] == "Jump") text = "W";
+                if(directions[i] == "Duck") text = "S";
+                if(directions[i] == "Left") text = "A";
+                if(directions[i] == "Right") text = "D";
+                prompt.GetComponentInChildren<TMP_Text>().text = text;
+                Destroy(prompt, 2f);
+            }
         }
         Invoke("SafetyDestroy",2f);
     }

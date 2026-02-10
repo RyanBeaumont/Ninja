@@ -8,7 +8,6 @@ public class DisableEncounter : ChainedInteractable
     [SerializeField] string endingFace = "";
     public override void Interact()
     {
-        print("Disabling encounter object via DisableEncounter script");
         GameManager.Instance.AddEncounter($"{gameObject.scene.name}_{transform.position}");
         
         if(hideObject){

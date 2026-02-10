@@ -1521,7 +1521,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 684623941448871463, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -45642,7 +45643,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7197910892455583103, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+    - {fileID: 4151748577976030078, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+    - {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6766679181287893784, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
     m_AddedGameObjects:
@@ -61951,7 +61955,7 @@ Transform:
   m_GameObject: {fileID: 744181769}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.992, y: 4.86, z: -45.021}
+  m_LocalPosition: {x: 7.992, y: 4.86, z: -45.512}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90382,6 +90386,7 @@ GameObject:
   - component: {fileID: 1078865911}
   - component: {fileID: 1078865910}
   - component: {fileID: 1078865916}
+  - component: {fileID: 1078865918}
   m_Layer: 0
   m_Name: BossEncounter
   m_TagString: Untagged
@@ -90675,8 +90680,12 @@ MonoBehaviour:
   waypoints:
   - waypointTransform: {fileID: 1804272677}
     animation: FrontFlip
-    duration: 0.6
+    duration: 0.5
     sound: s_dbz_jump
+  - waypointTransform: {fileID: 1895229406}
+    animation: SuperheroLanding
+    duration: 0.6
+    sound: 
   waitForEnd: 1
   cameraSource: {fileID: 0}
 --- !u!114 &1078865900
@@ -90767,7 +90776,7 @@ MonoBehaviour:
     duration: 0.6
     sound: s_dbz_jump
   - waypointTransform: {fileID: 1556746471}
-    animation: Duck
+    animation: SuperheroLanding
     duration: 0.5
     sound: 
   waitForEnd: 1
@@ -90854,11 +90863,11 @@ MonoBehaviour:
   rotationSpeed: 720
   waypoints:
   - waypointTransform: {fileID: 744181770}
-    animation: headbutt
+    animation: Kick
     duration: 0.5
     sound: s_dbz_jump
   waitForEnd: 1
-  cameraSource: {fileID: 0}
+  cameraSource: {fileID: 1629255761}
 --- !u!114 &1078865906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90902,7 +90911,7 @@ MonoBehaviour:
   rotationSpeed: 720
   waypoints:
   - waypointTransform: {fileID: 1512722542}
-    animation: SwordBackhand
+    animation: Slash
     duration: 0.5
     sound: s_dbz_jump
   waitForEnd: 1
@@ -90985,6 +90994,175 @@ MonoBehaviour:
     pose: ArmsCrossed
     cameraAngle: 2
     face: Confused
+  - text: "She just\u2026 disappeared into dust\r\n"
+    name: Stretch
+    character: {fileID: 1465752566}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: "This is getting way over our heads\u2026 One day we were friends, and
+      the next she\u2019s..\r\n"
+    name: Stretch
+    character: {fileID: 1465752566}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: "If I start thinking about it now\u2026 \nNo\u2026 \r\n"
+    name: Storm
+    character: {fileID: 1939439166}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Dissapointed
+  - text: "I never meant for it to get this far\u2026\nJade was my... IS my sister...\r\n"
+    name: Storm
+    character: {fileID: 1939439166}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Surprised
+  - text: 'We need to focus. These enemies of ours aren''t gonna stop just because
+      we keep fighting each other--
+
+      In fact, if they saw anything that happened
+      this week, they might find it the perfect time to strike, now that--
+
+'
+    name: Stretch
+    character: {fileID: 1465752566}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Confused
+  - text: 'Is Jade... Dead?
+
+      What... Happened to her?'
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: 'I''m not sure anyone could have survived that...
+
+      She attacked us
+      with lethal force, and... I wasn''t even thinking
+
+      I let out my rage'
+    name: Storm
+    character: {fileID: 1939439166}
+    pose: Meditating
+    cameraAngle: 4
+    face: Dissapointed
+  - text: 'Storm, you and I both knew Jade was bad news.
+
+      I didn''t want things
+      to end this way, but it was gonna end in pain one way or another...'
+    name: Stretch
+    character: {fileID: 1465752566}
+    pose: ArmsCrossed
+    cameraAngle: 3
+    face: Dissapointed
+  - text: We just have to make sure that all this wasn't for nothing
+    name: Stretch
+    character: {fileID: 1465752566}
+    pose: ArmsCrossed
+    cameraAngle: 3
+    face: Mad
+  - text: "Where\u2019s Spartan Jack? We need to find him\r\n"
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: "Definitely. As much as I hate to admit it, Jade was right about the sword.
+      And Spartan Jack can\u2019t be trusted with this knowledge. We need to find
+      him before he tells anyone\r\n"
+    name: Storm
+    character: {fileID: 1939439166}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Surprised
+  - text: "You girls keep talking about some big \u201Csecret\u201D\u2026 What is
+      it??\r\n"
+    name: Thad
+    character: {fileID: 0}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Confused
+  - text: "If you needed to know, we would\u2019ve told you."
+    name: Storm
+    character: {fileID: 1939439166}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Confused
+  - text: "It's a secret.\nlike, obviously. \nC'mon man how many times do we have
+      to say that"
+    name: Stretch
+    character: {fileID: 1465752566}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Mad
+  - text: "So\u2026 What are you planning to do to Spartan Jack after you catch him?
+      I mean, it\u2019s not like you\u2019re going to KILL him like Jade wanted\u2026"
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: "I\u2026 think there\u2019s only one other way\u2026\r\n"
+    name: Storm
+    character: {fileID: 1939439166}
+    pose: Idle
+    cameraAngle: 2
+    face: Surprised
+  - text: We need to make him an Insider.
+    name: Storm
+    character: {fileID: 1939439166}
+    pose: Idle
+    cameraAngle: 3
+    face: Surprised
+  - text: "We haven\u2019t trained a new one in years.. And with every new person
+      we train, the chance of the secret getting out goes up. Not only that, but
+      Jack was attacked once already, just ONE DAY after learning it exists. Making
+      him an Insider would only raise his danger\u2026"
+    name: Stretch
+    character: {fileID: 1465752566}
+    pose: Idle
+    cameraAngle: 2
+    face: Confused
+  - text: "I know\u2026 But it\u2019s the only choice we\u2019ve got. We were trained
+      to protect.\nI swore an oath, Stretch.\nAnd if the threat against us is growing,
+      we need more friends on our side.\r\n"
+    name: Storm
+    character: {fileID: 1939439166}
+    pose: Idle
+    cameraAngle: 3
+    face: Confused
+  - text: "The prospect of being an INSIDER excites you. You don\u2019t quite know
+      what it means, but it sounds pretty rad.\r\n"
+    name: 
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Happy
+  - text: "Stretch, watch them closely. Make sure the knowledge doesn\u2019t spread.
+      I\u2019m calling a meeting tomorrow at midnight. An INITIATION"
+    name: Storm
+    character: {fileID: 1939439166}
+    pose: HandsOnHips
+    cameraAngle: 3
+    face: Confused
+  - text: 'Thad, you better show up.
+
+      ALL will be revealed'
+    name: Storm
+    character: {fileID: 1939439166}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Confused
+  - text: About time!
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Mad
   turnToFace: 0
   snapPlayerPosition: 0
 --- !u!114 &1078865911
@@ -91090,7 +91268,7 @@ MonoBehaviour:
     duration: 0.5
     sound: 
   waitForEnd: 1
-  cameraSource: {fileID: 0}
+  cameraSource: {fileID: 1629255761}
 --- !u!136 &1078865916
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -91132,6 +91310,26 @@ MonoBehaviour:
   overwrite: 1
   partyMembers:
   - Thad
+--- !u!114 &1078865918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078865890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b4ef69776623b4f92b74bdf634fb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  sceneName: StormHouse
+  spawnPointIndex: 0
+  sceneVariant: 0
+  skybox: {fileID: 0}
+  cameraTarget: {fileID: 0}
 --- !u!1001 &1079523457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117294,12 +117492,12 @@ MonoBehaviour:
     duration: 0.1
     sound: 
   - waypointTransform: {fileID: 1951714028}
-    animation: Running
+    animation: Running2
     duration: 1.5
     sound: 
   - waypointTransform: {fileID: 1951714028}
     animation: SwordWhirlwind
-    duration: 0.5
+    duration: 0.4
     sound: s_dbz_jump
   waitForEnd: 1
   cameraSource: {fileID: 0}
@@ -117323,7 +117521,7 @@ MonoBehaviour:
     name: 
     character: {fileID: 770400198}
     pose: Defeated
-    cameraAngle: 4
+    cameraAngle: 13
     face: Mad
   - text: That's all I get? For defeating the master's daughter? Nice try?
     name: 
@@ -117339,7 +117537,7 @@ MonoBehaviour:
     name: Storm
     character: {fileID: 770400198}
     pose: Defeated
-    cameraAngle: 2
+    cameraAngle: 13
     face: Mad
   turnToFace: 0
   snapPlayerPosition: 0
@@ -117436,7 +117634,7 @@ MonoBehaviour:
     character: {fileID: 0}
     pose: 
     cameraAngle: 2
-    face: 
+    face: Confused
   turnToFace: 0
   snapPlayerPosition: 1
 --- !u!114 &1414783455
@@ -117545,11 +117743,11 @@ MonoBehaviour:
   rotationSpeed: 720
   waypoints:
   - waypointTransform: {fileID: 1942293703}
-    animation: Running
+    animation: Walking
     duration: 0.1
     sound: Alert
   - waypointTransform: {fileID: 100823160}
-    animation: Running
+    animation: Walking
     duration: 1
     sound: 
   - waypointTransform: {fileID: 1910508794}
@@ -117557,8 +117755,8 @@ MonoBehaviour:
     duration: 0.5
     sound: s_dbz_jump
   - waypointTransform: {fileID: 1924040994}
-    animation: Duck
-    duration: 0.5
+    animation: SuperheroLanding
+    duration: 1.5
     sound: 
   waitForEnd: 1
   cameraSource: {fileID: 0}
@@ -122108,7 +122306,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7197910892455583103, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+    - {fileID: 4151748577976030078, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+    - {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6766679181287893784, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
     m_AddedGameObjects:
@@ -125469,7 +125670,7 @@ Transform:
   m_GameObject: {fileID: 1512722541}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 7.586, y: 4.86, z: -44.523}
+  m_LocalPosition: {x: 7.141, y: 4.86, z: -44.523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -126847,7 +127048,7 @@ Transform:
   m_GameObject: {fileID: 1533528542}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 8.475, y: 4.86, z: -44.523}
+  m_LocalPosition: {x: 9.066, y: 4.86, z: -44.523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -136135,6 +136336,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5638438615969112222, guid: c2c4553088a529c47bdb39a30b20bace, type: 3}
   m_PrefabInstance: {fileID: 1628797218}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1629255760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1629255761}
+  m_Layer: 0
+  m_Name: CameraSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1629255761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629255760}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.992, y: 4.86, z: -48.285}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2015288907}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1629610732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152717,6 +152949,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
     - {fileID: 4151748577976030078, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+    - {fileID: 7197910892455583103, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6766679181287893784, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
     m_AddedGameObjects:
@@ -163288,6 +163521,37 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5124574302441228235, guid: 6d63822999b64e748b0004fee0e234ae, type: 3}
+--- !u!1 &1895229405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1895229406}
+  m_Layer: 0
+  m_Name: Waypoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1895229406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895229405}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 6.392, y: 4.414, z: -45.731}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2015288907}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &1895951469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -166882,7 +167146,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7197910892455583103, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+    - {fileID: 4151748577976030078, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
+    - {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6766679181287893784, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
     m_AddedGameObjects:
@@ -170512,9 +170779,9 @@ MonoBehaviour:
   active: 1
   blockInteraction: 0
   sceneName: 
-  spawnPointIndex: 4
-  sceneVariant: 2
-  skybox: {fileID: 0}
+  spawnPointIndex: 6
+  sceneVariant: 4
+  skybox: {fileID: 2100000, guid: 3930fc89a28b29746bde6a2389a513e0, type: 2}
   cameraTarget: {fileID: 0}
 --- !u!1001 &1981688545
 PrefabInstance:
@@ -173915,11 +174182,13 @@ Transform:
   - {fileID: 1533528543}
   - {fileID: 1512722542}
   - {fileID: 744181770}
+  - {fileID: 1629255761}
   - {fileID: 1893287523}
   - {fileID: 1841143337}
   - {fileID: 1395840312}
   - {fileID: 1431599742}
   - {fileID: 1804272677}
+  - {fileID: 1895229406}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2015582976

@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 public enum GameplayState{FreeMovement, RestrictedMovement, Dialog, Combat}
-public class InventoryItem
+[System.Serializable] public class InventoryItem
 {
     public string itemName;
     public int quantity;
@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                print("Hiding Battle HUD");
                 battleHUD.gameObject.SetActive(false);
             }
         }
@@ -85,7 +84,6 @@ public class GameManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
         message = GameObject.Find("MainCanvas/OtherHUD/Message").GetComponent<TMP_Text>();
          sceneVariants = GameObject.FindGameObjectsWithTag("SceneVariant");
-        print("found " + sceneVariants.Length + " scene variants");
         ChangeSceneVariant();
         if(EventSystem.current == null)
             Object.Instantiate(Resources.Load<GameObject>("EventSystem"));
@@ -102,7 +100,8 @@ public class GameManager : MonoBehaviour
 
         cameraAnimator = cameraRig.GetComponent<Animator>();
         cutsceneCamera = cameraRig.GetComponentInChildren<CinemachineCamera>();
-        cutsceneCamera.Priority = 5;
+        // Give the cutscene camera a high priority so it wins over gameplay vcams while active
+        cutsceneCamera.Priority = 10;
         cameraRig.transform.SetParent(null);
         cameraRig.transform.localPosition = Vector3.zero;
         cameraRig.transform.localRotation = Quaternion.identity;
@@ -127,7 +126,6 @@ public class GameManager : MonoBehaviour
     {
         if(toBlack)
         {
-        SetGameplayState(GameplayState.Dialog);
         var player = GameObject.FindGameObjectWithTag("Player").transform;
         player.GetComponentInChildren<Animator>().Play("ArmsCrossed");
         }
@@ -135,8 +133,12 @@ public class GameManager : MonoBehaviour
         var imgToFade = ui.transform.Find("OtherHUD/Black").GetComponent<UnityEngine.UI.Image>();
         if(cameraTarget != null && toBlack)
         {
-            GetCamera(out var cameraAnimator, out var cutsceneCamera);
-            cutsceneCamera.Priority = 5;
+            var cam = GetCamera(out var cameraAnimator, out var cutsceneCamera);
+            cam.transform.SetParent(cameraTarget);
+            cam.transform.localPosition = Vector3.zero;
+            cam.transform.localRotation = Quaternion.identity;
+            // Ensure this cutscene camera has highest priority during the fade
+            cutsceneCamera.Priority = 100;
             cameraAnimator.Play("Camera_Behind");
         }
         //Fade over the course of 1s
@@ -153,9 +155,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(0.1f);
-        SetGameplayState(GameplayState.FreeMovement);
-        if(cameraTarget == null && toBlack)
-        DestroyCamera();
+        
     }
 
     void Update()
@@ -215,10 +215,8 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
     {
-        Debug.Log($"Spawn point {currentSpawnPointIndex}");
         DisableFinishedEncounters();
         sceneVariants = GameObject.FindGameObjectsWithTag("SceneVariant");
-        print("found " + sceneVariants.Length + " scene variants");
         ChangeSceneVariant();
         
         SpawnPlayer(currentSpawnPointIndex);
@@ -226,7 +224,6 @@ public class GameManager : MonoBehaviour
 
     void ChangeSceneVariant()
     {
-        print("Changing to scene variant " + sceneVariant);
         foreach (var sv in sceneVariants)
         {
             sv.SetActive(sv.name.EndsWith($"_{sceneVariant}"));
@@ -238,7 +235,6 @@ public class GameManager : MonoBehaviour
         if (!finishedEncounters.Contains(encounterID))
         {
             finishedEncounters.Add(encounterID);
-            print($"Added finished encounter {encounterID}");
         }
     }
     public void DisableFinishedEncounters()
@@ -250,7 +246,6 @@ public class GameManager : MonoBehaviour
             string poID = po.encounterID;
             if (finishedEncounters.Contains(poID))
             {
-                print($"Disabling encounter object {poID}");
                 po.Interact();
             }
         }

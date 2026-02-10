@@ -87,7 +87,9 @@ MonoBehaviour:
     subClass: 1
     alive: 1
   partyMembers:
-  - Spartan Jack
+  - Thad
+  - Stretch
+  - Storm
   hpPerLevel: 10
   speedPerLevel: 1
   attackPerLevel: 2

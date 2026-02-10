@@ -1499,15 +1499,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1515,7 +1515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.124
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1548,6 +1548,14 @@ PrefabInstance:
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709361895834653659, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
+      propertyPath: face
+      value: Blank
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709361895834653659, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
+      propertyPath: pose
+      value: Meditating
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4078,6 +4086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pose: ArmsCrossed
   face: Happy
+  combatIdle: 
 --- !u!95 &357850597
 Animator:
   serializedVersion: 7
@@ -7993,7 +8002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 99b97f0b25dbffd4881b08ee9d7fa366, type: 3}
       propertyPath: m_Name
-      value: plate (2)
+      value: Plate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12562,27 +12571,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.16711141
+      value: 0.23873061
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.08279517
+      value: 0.11827881
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.18612082
+      value: 0.2658869
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.015851544
+      value: -0.01585154
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1059
+      value: -0.07416081
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.2767387
+      value: 0.27673885
       objectReference: {fileID: 0}
     - target: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15448,6 +15457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pose: ArmsCrossed
   face: 
+  combatIdle: 
 --- !u!95 &1221794329
 Animator:
   serializedVersion: 7
@@ -17103,6 +17113,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8348990587756189354, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: pose
+      value: Meditating
+      objectReference: {fileID: 0}
     - target: {fileID: 8992449917690472824, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       propertyPath: pose
       value: Meditating
@@ -17562,7 +17576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
       propertyPath: m_Name
-      value: soda
+      value: Soda
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17620,7 +17634,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
-  itemName: Bang
+  itemName: DrPepper
 --- !u!114 &1334314197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17645,6 +17659,15 @@ MonoBehaviour:
     cameraAngle: 5
     face: 
   - text: Dang it, you were hoping to get some water
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  - text: 'At least this is the good stuff...
+
+      You hear Dr. Pepper is so artificial
+      it can shock the dead back to life'
     name: 
     character: {fileID: 0}
     pose: 
@@ -19345,72 +19368,19 @@ PrefabInstance:
       addedObject: {fileID: 1482735778}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e585475e216d151439b41aeacd63e31c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1482735777}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e585475e216d151439b41aeacd63e31c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1482735776}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e585475e216d151439b41aeacd63e31c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1482735775}
+      addedObject: {fileID: 1482735780}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e585475e216d151439b41aeacd63e31c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1482735779}
   m_SourcePrefab: {fileID: 100100000, guid: e585475e216d151439b41aeacd63e31c, type: 3}
 --- !u!1 &1482735774 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e585475e216d151439b41aeacd63e31c, type: 3}
   m_PrefabInstance: {fileID: 1482735773}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1482735775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482735774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  dialog:
-  - text: 'Ahhhh. The bitter taste of pure energy.
-
-      You drink it BLACK, because
-      you are a MAN.'
-    name: 
-    character: {fileID: 0}
-    pose: 
-    cameraAngle: 5
-    face: 
-  - text: 'A man on a mission.
-
-      And you are ready to hit the town.'
-    name: 
-    character: {fileID: 0}
-    pose: HandsOnHips
-    cameraAngle: 5
-    face: 
-  - text: 'You grab yourself some coffee for the road.
-
-      It''s sure to boost
-      your ''Murica Points.'
-    name: 
-    character: {fileID: 0}
-    pose: HandsOnHips
-    cameraAngle: 5
-    face: 
-  - text: 'You should probably leave out the front door...
-
-      No use in taking
-      the party bus, you''re already in town.'
-    name: 
-    character: {fileID: 0}
-    pose: HandsOnHips
-    cameraAngle: 5
-    face: 
-  turnToFace: 0
-  snapPlayerPosition: 0
 --- !u!114 &1482735776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19427,39 +19397,6 @@ MonoBehaviour:
   active: 1
   blockInteraction: 0
   itemName: Coffee
---- !u!114 &1482735777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482735774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89b5bf5e381673248b03fce9dbf3fef0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  questName: Get Coffee
-  consume: 1
-  xpReward: 10
-  goldReward: 0
-  giveQuestIfMissing: 0
-  completeEvenIfMissing: 0
-  incompleteDialog:
-  - text: 'Rats, no water...
-
-      There''s only some leftover coffee.
-
-      It
-      tempts you, but you already have energy. It''s 2AM and you are in your PRIME.'
-    name: 
-    character: {fileID: 0}
-    pose: 
-    cameraAngle: 5
-    face: 
 --- !u!65 &1482735778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19481,6 +19418,54 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.030557832, y: 0.03926123, z: 0.080827296}
   m_Center: {x: 0.0064322418, y: 0.00019856449, z: -0.004900379}
+--- !u!114 &1482735779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482735774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  hideObject: 0
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &1482735780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482735774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  dialog:
+  - text: 'Rats, no water...
+
+      There''s only some leftover coffee.
+
+      It
+      tempts you, but you already have energy. It''s 2AM and you are in your PRIME.'
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  turnToFace: 0
+  snapPlayerPosition: 0
 --- !u!1001 &1487941795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23826,8 +23811,6 @@ GameObject:
   - component: {fileID: 1809109950}
   - component: {fileID: 1809109954}
   - component: {fileID: 1809109953}
-  - component: {fileID: 1809109952}
-  - component: {fileID: 1809109951}
   m_Layer: 0
   m_Name: Thad
   m_TagString: Untagged
@@ -23851,42 +23834,6 @@ Transform:
   - {fileID: 117976864}
   m_Father: {fileID: 1466277743}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1809109951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809109949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e114ab93b5066be4c80a680534745c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: Meditating
-  face: Blank
---- !u!95 &1809109952
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809109949}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ce3d2743faba90046874148bcac73dbc, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4abfd846172c05c4d9640c387e26d453, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!136 &1809109953
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -25383,15 +25330,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.59999996
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6000001
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.59999996
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25399,7 +25346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.284
+      value: 1.196
       objectReference: {fileID: 0}
     - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27934,28 +27881,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4950152962487820164, guid: 579e672413cf8424ca5271a772ed65c9, type: 3}
   m_PrefabInstance: {fileID: 2136612197}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &959136884560148348
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5874470078363554693}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: fc2fde5b84547fb419e2bcd2e93a7a20, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4abfd846172c05c4d9640c387e26d453, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &1448012937513763991
 Transform:
   m_ObjectHideFlags: 0
@@ -27965,7 +27890,7 @@ Transform:
   m_GameObject: {fileID: 5874470078363554693}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -30.785, y: 0.918, z: 6.892}
+  m_LocalPosition: {x: -30.785, y: 1.216, z: 6.892}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28005,7 +27930,7 @@ MonoBehaviour:
     pose: Meditating
     cameraAngle: 13
     face: Confused
-  - text: 'You are entirely crap at this...
+  - text: 'You are absolutely crap at this...
 
       Do you even take anything seriously?'
     name: Stretch
@@ -28202,8 +28127,6 @@ GameObject:
   - component: {fileID: 1448012937513763991}
   - component: {fileID: 6860339758905032238}
   - component: {fileID: 7624025255791560606}
-  - component: {fileID: 959136884560148348}
-  - component: {fileID: 6284330647383898493}
   - component: {fileID: 7624025255791560607}
   - component: {fileID: 2241831942060835345}
   - component: {fileID: 7624025255791560609}
@@ -28217,20 +28140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6284330647383898493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5874470078363554693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e114ab93b5066be4c80a680534745c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: Meditating
-  face: Happy
 --- !u!33 &6860339758905032238
 MeshFilter:
   m_ObjectHideFlags: 0

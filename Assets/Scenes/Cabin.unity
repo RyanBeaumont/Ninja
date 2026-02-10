@@ -1665,6 +1665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pose: HandsOnHips
   face: Blank
+  combatIdle: 
 --- !u!114 &419053736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1807,13 +1808,14 @@ MonoBehaviour:
   active: 1
   blockInteraction: 0
   model: {fileID: 1320128508}
+  rotationSpeed: 720
   waypoints:
   - waypointTransform: {fileID: 1151932587}
-    animation: Running
-    duration: 1
+    animation: Walking
+    duration: 1.5
     sound: 
   - waypointTransform: {fileID: 709982292}
-    animation: Running
+    animation: Walking
     duration: 1
     sound: 
   waitForEnd: 1
@@ -1837,7 +1839,7 @@ MonoBehaviour:
   spawnPointIndex: 0
   sceneVariant: 0
   skybox: {fileID: 0}
-  cameraTarget: {fileID: 1923886051}
+  cameraTarget: {fileID: 419053738}
 --- !u!1001 &440185484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3206,7 +3208,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
-  sceneName: Cabin
+  sceneName: Forest
   spawnPointIndex: 1
   sceneVariant: 1
   skybox: {fileID: 2100000, guid: ceb0a3ed2cb53a94fa21843cc958c52b, type: 2}
@@ -3270,6 +3272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pose: HandsOnHips
   face: Blank
+  combatIdle: 
 --- !u!114 &763555211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3349,7 +3352,7 @@ MonoBehaviour:
   - text: "I can\u2019t do this. I know my orders, but\u2026\r\n"
     name: Storm
     character: {fileID: 763555205}
-    pose: Sheath
+    pose: Idle
     cameraAngle: 4
     face: Sigh
   - text: "I\u2019m sorry, Jade\r\n"
@@ -3414,13 +3417,14 @@ MonoBehaviour:
   active: 1
   blockInteraction: 0
   model: {fileID: 181594438}
+  rotationSpeed: 720
   waypoints:
   - waypointTransform: {fileID: 988382190}
-    animation: Running
+    animation: Running2
     duration: 0.8
     sound: 
   - waypointTransform: {fileID: 669834901}
-    animation: Running
+    animation: Running2
     duration: 1
     sound: 
   waitForEnd: 1
@@ -4834,6 +4838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pose: ArmsCrossed
   face: 
+  combatIdle: 
 --- !u!95 &1221794329
 Animator:
   serializedVersion: 7
@@ -7266,11 +7271,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.70000005
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.70000005
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7310,6 +7319,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8629889987127832614, guid: e65782f1295db9a4b812124dd98b448e, type: 3}

@@ -162,6 +162,7 @@ public class YourParty : MonoBehaviour
             var doubleDeck = new List<Card>(partyMember.deck);
             doubleDeck.AddRange(partyMember.deck);
             combatantObject.GetComponent<PlayerCombatant>().deck = doubleDeck;
+            combatantObject.GetComponent<PlayerCombatant>().ShuffleDeck();
             combatantObject.GetComponent<PlayerCombatant>().DrawCards(4);
 
             //spread out combatants centered around spawn point

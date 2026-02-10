@@ -119,6 +119,17 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         if(tutorialUI.gameObject.activeInHierarchy && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift)))
+        {
+            tutorialUI.gameObject.SetActive(false);
+            Time.timeScale = 1f;
+        }
+
+        if(FindFirstObjectByType<BattleManager>() != null || GameObject.Find("Shop") != null)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.GetGameplayState() == GameplayState.FreeMovement)
         {
             if(entireMenu.gameObject.activeInHierarchy){
@@ -152,10 +163,6 @@ public class Menu : MonoBehaviour
         
         }   
 
-        if(tutorialUI.gameObject.activeInHierarchy && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift)))
-        {
-            tutorialUI.gameObject.SetActive(false);
-            Time.timeScale = 1f;
-        }
+       
     }
 }

@@ -44,6 +44,8 @@ public class HandManager : MonoBehaviour
         int cardCount = cardsInHand.Count;
         for (int i = 0; i < cardCount; i++)
         {
+            if(cardsInHand[i].GetComponent<CardDisplay>().card.tempCost != 0)
+                cardsInHand[i].GetComponent<CardDisplay>().costText.text = cardsInHand[i].GetComponent<CardDisplay>().card.tempCost.ToString();
             float rotationAngle = (fanSpread * (i - (cardCount - 1) / 2f));
             cardsInHand[i].GetComponent<CardDisplay>().targetLocalRot = Quaternion.Euler(0f, 0f, rotationAngle);
             float horizontalOffset = 0f; float normalizedPosition = 0f;

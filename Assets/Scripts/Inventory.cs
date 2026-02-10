@@ -77,16 +77,53 @@ public class Inventory : MonoBehaviour
                         var p = YourParty.instance.GetPartyMember(menu.currentCharacter);
                         if(p != null)
                         {
-                            p.hpPercentage += 0.5f;
+                            //Calculate what percentage 50hp is
+                            float tempHP = YourParty.instance.hpPerLevel * p.level + 100f;
+                            float healAmount = 50f;
+                            p.hpPercentage += healAmount / tempHP;
                             if(p.hpPercentage > 1f) p.hpPercentage = 1f;
                             success = true;
                         }
                     }
                     break;
+                case "Coca-Cola Keg":
+                    //heal player
+                    if(battleManager != null)
+                    {
+                        battleManager.UseCokeKeg();
+                        success = true;
+                    }
+                    else
+                    {
+                        foreach(PartyMember pm in YourParty.instance.reserve)
+                        {
+                            float tempHP = YourParty.instance.hpPerLevel * pm.level + 100f;
+                            float healAmount = 50f;
+                            pm.hpPercentage += healAmount / tempHP;
+                            if(pm.hpPercentage > 1f) pm.hpPercentage = 1f;
+                            success = true;
+                        }
+                    }
+                    break;
+                
                 case "Bang":
                     if(battleManager != null)
                     {
                         battleManager.UseBang();
+                        success = true;
+                    }
+                    break;
+                case "DrPepper":
+                    if(battleManager != null)
+                    {
+                        battleManager.UseDrPepper();
+                        success = true;
+                    }
+                    break;
+                case "Coffee":
+                    if(battleManager != null)
+                    {
+                        battleManager.UseCoffee();
                         success = true;
                     }
                     break;

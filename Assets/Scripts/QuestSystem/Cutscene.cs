@@ -40,6 +40,7 @@ public class Cutscene : ChainedInteractable
             if(cameraSource == null)
             {
                 cameraSource = GameObject.FindGameObjectWithTag("Player").transform;
+                Debug.Log("Defaulting to player camera source");
             }
 
             if(cameraSource != null)
@@ -48,7 +49,8 @@ public class Cutscene : ChainedInteractable
                 originalParent = cameraRig.transform.parent;
                 originalPosition = cameraRig.transform.localPosition;
                 originalRotation = cameraRig.transform.localRotation;
-                
+                cameraRig.transform.SetParent(cameraSource);
+                cameraRig.transform.localPosition = Vector3.zero;
             }
         }
     }
@@ -126,6 +128,7 @@ public class Cutscene : ChainedInteractable
         cameraRig.transform.localPosition = originalPosition;
         cameraRig.transform.localRotation = originalRotation;
         cutsceneCamera.transform.localRotation = Quaternion.identity;
+
         CallNext();
     }
 }

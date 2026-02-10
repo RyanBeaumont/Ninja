@@ -42,9 +42,11 @@ public class DialogBox : MonoBehaviour
         textComponent.text = "";
         canvas.enabled = false;
         anim = GetComponentInChildren<Animator>();
-        cameraRig = Instantiate(Resources.Load<GameObject>("CameraRig"));
-        cameraAnimator = cameraRig.GetComponent<Animator>();
-        cutsceneCamera = cameraRig.GetComponentInChildren<CinemachineCamera>();
+        // Use the GameManager camera rig instead of creating a separate one here.
+        // DialogBox.SetPose will call GameManager.Instance.GetCamera when needed.
+        cameraRig = null;
+        cameraAnimator = null;
+        cutsceneCamera = null;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 

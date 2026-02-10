@@ -55,18 +55,35 @@ MonoBehaviour:
   speed: 15
   psychic: 25
   mp: 0
-  maxMp: 0
+  maxMp: 30
   alive: 1
   resistances: 02000000
   weaknesses: 00000000
   combatantName: Shadow
   initiative: 0
+  statusEffects: []
   attackPatterns:
-  - attackPattern: ThrowKnife
-    attackName: Knives
-    damage: 15
-    damageType: 0
-    targetType: 0
+  - attackPattern: headbutt
+    attackName: Headbutt
+    damage: 30
+    damageType: 1
+    targetType: 1
+    statusEffect:
+      name: Off-Balance
+      stat: DEF
+      amount: -8
+      additive: 1
+      duration: -1
+      removeOnHit: 1
+    hits: 1
+    mpCost: 0
+    healthThreshold: 100
+    altFunction: 
+  - attackPattern: Uppercut
+    attackName: Pound Town
+    damage: 40
+    damageType: 1
+    targetType: 1
     statusEffect:
       name: 
       stat: 
@@ -74,8 +91,8 @@ MonoBehaviour:
       additive: 1
       duration: 0
       removeOnHit: 0
-    hits: 3
-    mpCost: 0
+    hits: 1
+    mpCost: 10
     healthThreshold: 100
     altFunction: 
   lootDrops:
@@ -85,7 +102,24 @@ MonoBehaviour:
     dropChance: 50
   xpReward: 25
   goldReward: 25
-  attackSpeed: 0.75
+  attackSpeed: 0.25
+  tempAttackData:
+    attackPattern: 
+    attackName: 
+    damage: 
+    damageType: 0
+    targetType: 0
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
+    hits: 1
+    mpCost: 0
+    healthThreshold: 100
+    altFunction: 
 --- !u!136 &4431760837445767744
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -330,6 +364,10 @@ PrefabInstance:
     - target: {fileID: 4287543778738817992, guid: 90267c378ced7774c9a843becb6831e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767757204410182729, guid: 90267c378ced7774c9a843becb6831e9, type: 3}
+      propertyPath: combatIdle
+      value: IdlePushup
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

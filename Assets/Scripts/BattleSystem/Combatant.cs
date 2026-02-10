@@ -45,11 +45,15 @@ public class Combatant : MonoBehaviour
     {
         if(!alive) return 0f;
         var strong = false;
-        baseDamage *= 0.8f; //Scale down to compensate for new formula
-        baseDamage += level * damagePerLevel;
-        var multiplier = caller.EvaluateStatFormula("ATK") / (EvaluateStatFormula("DEF") + 10);
-        multiplier = Mathf.Clamp(multiplier,0.5f,3.0f);
-        baseDamage *= multiplier; //If attack and defense are equal, deal 1x damage. Higher attack deals more damage, higher defense reduces damage.
+        if(caller != null){
+            baseDamage *= 0.8f; //Scale down to compensate for new formula
+            baseDamage += level * damagePerLevel;
+            var multiplier = caller.EvaluateStatFormula("ATK") / (EvaluateStatFormula("DEF") + 10);
+            multiplier = Mathf.Clamp(multiplier,0.5f,3.0f);
+            baseDamage *= multiplier; //If attack and defense are equal, deal 1x damage. Higher attack deals more damage, higher defense reduces damage.
+        }
+        
+        
         var damageNumber = Instantiate(Resources.Load<GameObject>("DamageNumber"), transform.position, Quaternion.identity);
         var damageText = damageNumber.GetComponentInChildren<TMP_Text>();
         damageText.text = "";
@@ -239,8 +243,14 @@ public class Combatant : MonoBehaviour
 
     public void decreaseStatusEffects()
     {
-        foreach(var effect in statusEffects)
+        for (int i = statusEffects.Count - 1; i >= 0; i--)
         {
+            var effect = statusEffects[i];
+            if(effect.name == "Poisoned")
+            {
+                effect.amount --;
+                if(effect.amount <= 0) statusEffects.Remove(effect);
+            }
             if(effect.duration != -1)
                 effect.duration--;
         }
@@ -251,6 +261,13 @@ public class Combatant : MonoBehaviour
     public virtual bool StartTurn()
     {
         bool success = true;
+        if(HasStatusEffect("Poisoned") != null)
+        {
+            var poison = HasStatusEffect("Poisoned");
+            GameManager.Instance.ShowMessage($"{combatantName} takes {5*poison.amount} damage from poison");
+            TakeDamage(null,5*poison.amount, DamageType.Psychic);
+            if(hp <= 0) return false;
+        }
          if(HasStatusEffect("Stunned") != null)
         {
             BattleManager.Instance.actionQueue.Add(new StunAction()
@@ -297,7 +314,9 @@ public class Combatant : MonoBehaviour
             var sprite = Resources.Load<Sprite>($"Sprites/{effect.name}");
             iconImage.sprite = sprite;
             TMP_Text durationText = statusIcon.GetComponentInChildren<TMP_Text>();
-            if(effect.duration != -1)
+            if(effect.amount > 1)
+                durationText.text = effect.amount.ToString();
+            else if(effect.duration != -1)
                 durationText.text = effect.duration.ToString();
             else
                 durationText.text = "";
