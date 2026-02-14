@@ -51,7 +51,7 @@ MonoBehaviour:
   maxHp: 100
   hp: 100
   attack: 10
-  defense: 10
+  defense: 1
   speed: 10
   psychic: 10
   mp: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
   weaknesses: 
   combatantName: Spartan No-Belt
   initiative: 0
+  statusEffects: []
   attackPatterns:
   - attackPattern: Slap
     attackName: Slap
@@ -100,6 +101,23 @@ MonoBehaviour:
   xpReward: 30
   goldReward: 30
   attackSpeed: 0.25
+  tempAttackData:
+    attackPattern: 
+    attackName: 
+    damage: 
+    damageType: 0
+    targetType: 0
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
+    hits: 1
+    mpCost: 0
+    healthThreshold: 100
+    altFunction: 
 --- !u!136 &3452124113354061754
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -50,8 +50,8 @@ MonoBehaviour:
   level: 1
   maxHp: 325
   hp: 325
-  attack: 12
-  defense: 15
+  attack: 10
+  defense: 1
   speed: 10
   psychic: 10
   mp: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
   weaknesses: 0200000000000000
   combatantName: Jack's Mom
   initiative: 0
+  statusEffects: []
   attackPatterns:
   - attackPattern: Slash
     attackName: Sit Down, Kid
@@ -116,6 +117,23 @@ MonoBehaviour:
   xpReward: 50
   goldReward: 30
   attackSpeed: 0.25
+  tempAttackData:
+    attackPattern: 
+    attackName: 
+    damage: 
+    damageType: 0
+    targetType: 0
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
+    hits: 1
+    mpCost: 0
+    healthThreshold: 100
+    altFunction: 
 --- !u!136 &5087880022016791542
 CapsuleCollider:
   m_ObjectHideFlags: 0

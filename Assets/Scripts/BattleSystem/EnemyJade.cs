@@ -61,16 +61,17 @@ public class EnemyJade : EnemyCombatant
             });
             return;
         }
+        
 
         List<EnemyAttackData> specialAttackData = new List<EnemyAttackData>()
         {
             new EnemyAttackData
             {
                 attackName = "Fatal Blow",
-                attackPattern = "SwordHeavy",
+                attackPattern = "FlyingAxeKick",
                 damage = "200",
                 mpCost = 0,
-                damageType = DamageType.Slashing,
+                damageType = DamageType.Bludgeoning,
                 targetType = TargetType.SingleEnemy
             },
             new EnemyAttackData
@@ -92,7 +93,7 @@ public class EnemyJade : EnemyCombatant
                     c.RemoveStatusEffect("Marked for Death");
                     BattleManager.Instance.currentTargets = new List<Combatant>(){c};
                     //Attack
-                    Attack(specialAttackData, c); //Add c to this to special-select the marked target
+                    Attack(specialAttackData,c); //Add c to this to special-select the marked target
                     print("Attacking with killing blow");
                     return; //Stop the marking
                 }

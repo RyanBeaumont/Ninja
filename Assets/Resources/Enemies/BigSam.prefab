@@ -50,17 +50,18 @@ MonoBehaviour:
   level: 1
   maxHp: 300
   hp: 300
-  attack: 8
-  defense: 12
+  attack: 10
+  defense: 1
   speed: 10
   psychic: 10
   mp: 0
-  maxMp: 0
+  maxMp: 20
   alive: 1
   resistances: 00000000
   weaknesses: 02000000
   combatantName: Big Sam
   initiative: 0
+  statusEffects: []
   attackPatterns:
   - attackPattern: SwordHeavy, Sweep
     attackName: Heavy Combo
@@ -75,7 +76,7 @@ MonoBehaviour:
       duration: -1
       removeOnHit: 0
     hits: 1
-    mpCost: 0
+    mpCost: 10
     healthThreshold: 100
     altFunction: 
   - attackPattern: Uppercut
@@ -98,6 +99,23 @@ MonoBehaviour:
   xpReward: 10
   goldReward: 10
   attackSpeed: 0.25
+  tempAttackData:
+    attackPattern: 
+    attackName: 
+    damage: 
+    damageType: 0
+    targetType: 0
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
+    hits: 1
+    mpCost: 0
+    healthThreshold: 100
+    altFunction: 
 --- !u!136 &394189880784954682
 CapsuleCollider:
   m_ObjectHideFlags: 0

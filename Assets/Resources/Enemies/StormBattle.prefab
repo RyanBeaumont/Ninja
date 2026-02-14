@@ -50,8 +50,8 @@ MonoBehaviour:
   level: 1
   maxHp: 425
   hp: 425
-  attack: 15
-  defense: 15
+  attack: 10
+  defense: 1
   speed: 13
   psychic: 15
   mp: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
   weaknesses: 0200000000000000
   combatantName: Storm
   initiative: 0
+  statusEffects: []
   attackPatterns:
   - attackPattern: Slash, SwordBackhand, Slash
     attackName: C-C-Combo
@@ -152,6 +153,23 @@ MonoBehaviour:
   xpReward: 150
   goldReward: 150
   attackSpeed: 0.4
+  tempAttackData:
+    attackPattern: 
+    attackName: 
+    damage: 
+    damageType: 0
+    targetType: 0
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
+    hits: 1
+    mpCost: 0
+    healthThreshold: 100
+    altFunction: 
 --- !u!136 &3472871779482487007
 CapsuleCollider:
   m_ObjectHideFlags: 0

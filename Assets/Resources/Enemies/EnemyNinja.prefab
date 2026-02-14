@@ -50,8 +50,8 @@ MonoBehaviour:
   level: 1
   maxHp: 275
   hp: 275
-  attack: 20
-  defense: 10
+  attack: 10
+  defense: 1
   speed: 15
   psychic: 15
   mp: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
   weaknesses: 01000000
   combatantName: Ninja Acolyte
   initiative: 0
+  statusEffects: []
   attackPatterns:
   - attackPattern: SwordThrust
     attackName: Discarding Strike
@@ -111,13 +112,30 @@ MonoBehaviour:
     healthThreshold: 100
     altFunction: 
   lootDrops:
-  - itemID: Lockpick
+  - itemID: Coca-Cola Keg
     dropChance: 25
   - itemID: Coke
     dropChance: 50
   xpReward: 20
   goldReward: 20
   attackSpeed: 0.75
+  tempAttackData:
+    attackPattern: 
+    attackName: 
+    damage: 
+    damageType: 0
+    targetType: 0
+    statusEffect:
+      name: 
+      stat: 
+      amount: 0
+      additive: 1
+      duration: -1
+      removeOnHit: 0
+    hits: 1
+    mpCost: 0
+    healthThreshold: 100
+    altFunction: 
 --- !u!136 &-8026483303802534423
 CapsuleCollider:
   m_ObjectHideFlags: 0

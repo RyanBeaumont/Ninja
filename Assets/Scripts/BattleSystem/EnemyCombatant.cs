@@ -40,7 +40,7 @@ public class EnemyCombatant : Combatant
     public override bool StartTurn()
     {
         if(base.StartTurn()){
-            mp += 10f;
+            mp += psychic;
             if(mp > maxMp) mp = maxMp;
             GameManager.Instance.ShowMessage($"{combatantName}'s turn!");
             Invoke("DefaultAttack", 2f);

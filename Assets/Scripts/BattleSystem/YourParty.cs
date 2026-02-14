@@ -20,11 +20,7 @@ public class YourParty : MonoBehaviour
     public static YourParty instance;
     public List<PartyMember> reserve;
     public List<string> partyMembers;
-    public float hpPerLevel = 10f;
-    public float speedPerLevel = 1f;
-    public float attackPerLevel = 2f;
-    public float defensePerLevel = 2f;
-    public float psychicPerLevel = 2f;
+
     public bool devTools = false;
     public string currentSaveFileName = "savefile_1";
     public float gold;
@@ -171,19 +167,20 @@ public class YourParty : MonoBehaviour
             battleManager.AddCombatant(combatant);
 
             combatant.combatantName = partyMember.memberName;
-            combatant.maxHp = hpPerLevel * partyMember.level + 100f;
-            combatant.hp = combatant.maxHp * partyMember.hpPercentage ;
+
             print($"{combatant.combatantName} HP: {combatant.hp}/{combatant.maxHp} HP PERCENT {partyMember.hpPercentage}");
-            var levelBonus = (float)partyMember.level; levelBonus += partyMember.mainClass == CardClass.Ninja ? 2f : 0f; levelBonus += partyMember.subClass == CardClass.Ninja ? 1f : 0f;
-            combatant.speed = speedPerLevel * levelBonus + 10f;
-            levelBonus = (float)partyMember.level; levelBonus += partyMember.mainClass == CardClass.Warrior ? 2f : 0f; levelBonus += partyMember.subClass == CardClass.Warrior ? 1f : 0f;
-            combatant.attack = attackPerLevel * levelBonus + 10f;
-            levelBonus = (float)partyMember.level; levelBonus += partyMember.mainClass == CardClass.Grappler ? 2f : 0f; levelBonus += partyMember.subClass == CardClass.Grappler ? 1f : 0f;
-            combatant.defense = defensePerLevel * levelBonus + 10f;
-            levelBonus = (float)partyMember.level; levelBonus += partyMember.mainClass == CardClass.Psychic ? 2f : 0f; levelBonus += partyMember.subClass == CardClass.Psychic ? 1f : 0f;
-            combatant.psychic = psychicPerLevel * levelBonus + 10f;
-            combatant.maxMp = 30f + combatant.psychic * partyMember.level;
+            var multiplier = 2f; if(partyMember.subClass == CardClass.Ninja) multiplier = 3f; if(partyMember.mainClass == CardClass.Ninja) multiplier = 4f;
+            combatant.speed = partyMember.level * multiplier + 10f;
+            multiplier = 2f; if(partyMember.subClass == CardClass.Warrior) multiplier = 3f; if(partyMember.mainClass == CardClass.Warrior) multiplier = 4f;
+            combatant.attack = partyMember.level * multiplier + 10f;
+            multiplier = 10f; if(partyMember.subClass == CardClass.Grappler) multiplier = 20f; if(partyMember.mainClass == CardClass.Grappler) multiplier = 30f;
+            combatant.maxHp = partyMember.level * multiplier + 50f;
+            combatant.hp = combatant.maxHp * partyMember.hpPercentage ;
+            multiplier = 1f; if(partyMember.subClass == CardClass.Psychic) multiplier = 1.5f; if(partyMember.mainClass == CardClass.Psychic) multiplier = 2f;
+            combatant.psychic = partyMember.level * multiplier + 15f;
+            combatant.maxMp = combatant.psychic * 4;
             combatant.level = partyMember.level;
+            combatant.defense = 1f;
             var model = Instantiate(Resources.Load<GameObject>($"Characters/{partyMember.modelName}"), combatantObject.transform);
 
             var healthbar = Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);

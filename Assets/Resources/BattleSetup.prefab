@@ -2383,9 +2383,9 @@ RectTransform:
   - {fileID: 3762728261264919603}
   m_Father: {fileID: 7274050575041734983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 210, y: 210}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -50, y: 199.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &821119565390323026
@@ -2403,6 +2403,8 @@ MonoBehaviour:
   handTransform: {fileID: 3762728261264919603}
   fanSpread: -3
   cardSpacing: 200
+  maxHandWidth: 800
+  maxFanSpread: -3
   verticalCardSpacing: 5
   cardsInHand: []
 --- !u!1001 &7670515908718578847

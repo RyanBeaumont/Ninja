@@ -19,6 +19,17 @@ public class MainMenu : MonoBehaviour
         GameManager.GetComponent<GameManager>().ChangeScene("DojoInterior",0,0);
     }
 
+    public void StartChapter2()
+    {
+        var GameManager = Object.Instantiate(Resources.Load<GameObject>("GameManager"));
+        var YourParty = Object.Instantiate(Resources.Load<GameObject>("YourParty"));
+        YourParty.GetComponent<YourParty>().BuildStartingDeck();
+        var gm = GameManager.GetComponent<GameManager>();
+        gm.AddInventoryItem("Coke",4);
+        gm.AddInventoryItem("Bang",1);
+       gm.ChangeScene("Cabin",0,0);
+    }
+
     public void ShowSavePanel()
     {
         savePanel.gameObject.SetActive(true);

@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            DestroyImmediate(gameObject);
+            Destroy(gameObject);
             return;
         }
 
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
-        message = GameObject.Find("MainCanvas/OtherHUD/Message").GetComponent<TMP_Text>();
+        //message = GameObject.Find("MainCanvas/OtherHUD/Message").GetComponent<TMP_Text>();
          sceneVariants = GameObject.FindGameObjectsWithTag("SceneVariant");
         ChangeSceneVariant();
         if(EventSystem.current == null)
@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
 
     public void DestroyCamera()
     {
+        print("Destorying camera");
         if (cameraRig == null) return;
 
         var cutsceneCamera = cameraRig.GetComponentInChildren<CinemachineCamera>();
@@ -134,9 +135,7 @@ public class GameManager : MonoBehaviour
         if(cameraTarget != null && toBlack)
         {
             var cam = GetCamera(out var cameraAnimator, out var cutsceneCamera);
-            cam.transform.SetParent(cameraTarget);
-            cam.transform.localPosition = Vector3.zero;
-            cam.transform.localRotation = Quaternion.identity;
+            cam.transform.position = cameraTarget.position;
             // Ensure this cutscene camera has highest priority during the fade
             cutsceneCamera.Priority = 100;
             cameraAnimator.Play("Camera_Behind");
@@ -177,6 +176,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowMessage(string msg)
     {
+        if(message == null) return;
         message.text += msg + "\n";
         messageTimer = 3f;
     }
@@ -258,7 +258,6 @@ public class GameManager : MonoBehaviour
     public void SpawnPlayer(int spawnPointIndex)
     {
         var player = Object.Instantiate(Resources.Load<GameObject>("Player"));
-        YourParty.instance.UpdateLeader();
         var cam = Object.Instantiate(Resources.Load<GameObject>("MainCamera"));
         PlayerInput playerInput = player.GetComponent<PlayerInput>();
         playerInput.cameraTransform = cam.transform;
@@ -293,6 +292,7 @@ public class GameManager : MonoBehaviour
                     player.GetComponent<CharacterController>().enabled = true;
             }
         }
+        YourParty.instance.UpdateLeader();
     }
 
     public void AddInventoryItem(string itemName, int quantity)
@@ -352,7 +352,9 @@ public class GameManager : MonoBehaviour
 
     void UpdateQuests()
     {
+        if(inventoryUI == null) return;
         var questUI = inventoryUI.Find("CharacterContainer/Quests").GetComponent<TMP_Text>();
+        
         questUI.text = "";
         foreach(var quest in quests)
         {

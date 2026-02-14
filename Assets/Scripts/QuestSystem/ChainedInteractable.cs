@@ -23,7 +23,8 @@ public abstract class ChainedInteractable : PersistentObject, IInteractable
 
         //If no further interactions
         GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
-        GameManager.Instance.DestroyCamera();
+        if(this is not Door)
+            GameManager.Instance.DestroyCamera();
     }
 
     protected override void Awake()

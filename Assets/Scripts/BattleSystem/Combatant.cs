@@ -38,6 +38,7 @@ public class Combatant : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         startPosition = transform.position;
         targetPosition = startPosition;
+        defense = 1f; //Now a multiplier
         statusCanvas = transform.Find("StatusCanvas").GetComponent<RectTransform>();
     }
 
@@ -46,16 +47,19 @@ public class Combatant : MonoBehaviour
         if(!alive) return 0f;
         var strong = false;
         if(caller != null){
-            baseDamage *= 0.8f; //Scale down to compensate for new formula
-            baseDamage += level * damagePerLevel;
-            var multiplier = caller.EvaluateStatFormula("ATK") / (EvaluateStatFormula("DEF") + 10);
-            multiplier = Mathf.Clamp(multiplier,0.5f,3.0f);
+            //Damage = BaseDamage × (Attack / AttackBaseline) × (K / (Defense + K))
+            var multiplier = caller.EvaluateStatFormula("ATK")/15 * EvaluateStatFormula("DEF");
+            print($"Base damage {baseDamage} x Multiplier {multiplier}");
+            multiplier = Mathf.Clamp(multiplier,0.25f,6.0f);
             baseDamage *= multiplier; //If attack and defense are equal, deal 1x damage. Higher attack deals more damage, higher defense reduces damage.
         }
         
         
         var damageNumber = Instantiate(Resources.Load<GameObject>("DamageNumber"), transform.position, Quaternion.identity);
         var damageText = damageNumber.GetComponentInChildren<TMP_Text>();
+        var color = Color.yellow;
+        if(damageType == DamageType.Bludgeoning) color = Color.red;
+        if(damageType == DamageType.Psychic) color = Color.magenta;
         damageText.text = "";
         //1 in 20 chance to crit
         /*if(UnityEngine.Random.Range(1,21) == 1)
@@ -69,13 +73,15 @@ public class Combatant : MonoBehaviour
         {
             baseDamage *= 0.5f; //Take half damage
             damageText.text += "Weak!";
-            damageText.color = Color.blue;
+            AudioManager.Instance.PlaySoundEffect("Anvil",Random.Range(0.9f,1.1f));
+            damageText.color = color;
         }
         if( weaknesses != null && System.Array.Exists(weaknesses, element => element == damageType))
         {
             baseDamage *= 1.5f; //Take 1.5x damage
             damageText.text += "STRONG!";
-            damageText.color = Color.yellow;
+            AudioManager.Instance.PlaySoundEffect("OrchestraHit",Random.Range(0.9f,1.1f));
+            damageText.color = color;
             strong = true;
         }
         damageText.text += Mathf.RoundToInt(baseDamage).ToString();
@@ -107,14 +113,14 @@ public class Combatant : MonoBehaviour
                 {
                     name = "Off-Balance",
                         stat = "DEF",
-                        amount = -4,
+                        amount = .25f,
                         duration = -1,
                         removeOnHit = true
                 });
             }
         }
 
-        if(HasStatusEffect("Lifesteal") != null)
+        if(HasStatusEffect("Lifesteal") != null && caller != null)
         {
             caller.Heal(baseDamage);
         }
@@ -210,7 +216,7 @@ public class Combatant : MonoBehaviour
         {
             foreach(Combatant c in BattleManager.Instance.combatants)
             {
-                if(c.CompareTag(gameObject.tag) && c != this)
+                if(c.CompareTag(gameObject.tag) && c != this && c.HasStatusEffect("Linked") == null) //Only chain to non-linked targets
                 {
                     c.ApplyStatusEffect(effect);
                 }
@@ -266,7 +272,14 @@ public class Combatant : MonoBehaviour
             var poison = HasStatusEffect("Poisoned");
             GameManager.Instance.ShowMessage($"{combatantName} takes {5*poison.amount} damage from poison");
             TakeDamage(null,5*poison.amount, DamageType.Psychic);
-            if(hp <= 0) return false;
+            if(hp <= 0){
+                BattleManager.Instance.actionQueue.Add(new StunAction()
+            {
+                caller = this,
+                animation = "Defeated",
+            });
+            return false;
+            }
         }
          if(HasStatusEffect("Stunned") != null)
         {

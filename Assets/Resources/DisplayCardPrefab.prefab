@@ -150,6 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1943774743045039782 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5720001956778892180, guid: 629bc4ed864e57642a5d7660d404decf, type: 3}
+  m_PrefabInstance: {fileID: 6167727715048439090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2949345306626805892 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9040420190579322294, guid: 629bc4ed864e57642a5d7660d404decf, type: 3}
@@ -189,6 +194,7 @@ MonoBehaviour:
   tpImage: {fileID: 5075389987797910570}
   discardCost: {fileID: 22826150588021097}
   targetLocalPos: {x: 0, y: 0, z: 0}
+  damageTypeOverlay: {fileID: 1943774743045039782}
   targetLocalRot: {x: 0, y: 0, z: 0, w: 0}
   smoothFactor: 0.125
   horOffset: 2

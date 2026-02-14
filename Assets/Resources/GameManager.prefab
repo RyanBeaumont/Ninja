@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2727291546717950318}
   - component: {fileID: 1609745443165008663}
-  - component: {fileID: 5284989611397509544}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,19 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2d8f51d022c0849a856a89a7814912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSpawnPointIndex: 0
+  sceneVariant: 0
   maxActiveBots: 1
-  cash: 0
   quests: []
+  inventory: []
+  playTime: 0
   finishedEncounters: []
---- !u!114 &5284989611397509544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3395452841755842168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76af7c42e91b36448b6098a790c456a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

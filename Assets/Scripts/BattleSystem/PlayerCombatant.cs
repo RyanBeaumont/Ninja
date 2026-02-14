@@ -136,7 +136,7 @@ public class PlayerCombatant : Combatant
         if (base.StartTurn())
         {
             DrawCards(1);
-            maxMp = (int)(psychic * 8);
+            maxMp = (int)(psychic * 4);
             mp += EvaluateStatFormula("PSY");
             if (mp > maxMp) mp = maxMp;
             var HandManager = FindFirstObjectByType<HandManager>();

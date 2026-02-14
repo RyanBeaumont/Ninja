@@ -16,7 +16,6 @@ public class PlayerInput : MonoBehaviour
         GameplayState currentState = GameManager.Instance.GetGameplayState();
         if(currentState != GameplayState.FreeMovement)
         {
-            print("Player input ignored due to gameplay state: " + currentState);
             return;
         }
 

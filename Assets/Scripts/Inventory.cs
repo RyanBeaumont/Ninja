@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System;
 using TMPro;
+using System.Linq;
 
 public class PointerHoverHandler : MonoBehaviour,
     IPointerEnterHandler,
@@ -31,6 +32,7 @@ public class Inventory : MonoBehaviour
         foreach(Transform child in itemContainer){Destroy(child.gameObject);}
         foreach(var item in inventory)
         {
+            if(item.quantity == 0)continue;
             var itemGO = Instantiate(Resources.Load<GameObject>("InventoryItem"), itemContainer);
             var itemText = itemGO.GetComponentInChildren<TMPro.TMP_Text>();
             if(itemText != null)
@@ -74,16 +76,17 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        var p = YourParty.instance.GetPartyMember(menu.currentCharacter);
-                        if(p != null)
+                        var pm = YourParty.instance.GetPartyMember(menu.currentCharacter);
+                        if(pm != null)
                         {
-                            //Calculate what percentage 50hp is
-                            float tempHP = YourParty.instance.hpPerLevel * p.level + 100f;
+                            var multiplier = 10f; if(pm.subClass == CardClass.Grappler) multiplier = 20f; if(pm.mainClass == CardClass.Grappler) multiplier = 30f;
+                            var maxHp = pm.level * multiplier + 50f;
                             float healAmount = 50f;
-                            p.hpPercentage += healAmount / tempHP;
-                            if(p.hpPercentage > 1f) p.hpPercentage = 1f;
+                            pm.hpPercentage += healAmount / maxHp;
+                            if(pm.hpPercentage > 1f) pm.hpPercentage = 1f;
                             success = true;
                         }
+                        
                     }
                     break;
                 case "Coca-Cola Keg":
@@ -97,12 +100,14 @@ public class Inventory : MonoBehaviour
                     {
                         foreach(PartyMember pm in YourParty.instance.reserve)
                         {
-                            float tempHP = YourParty.instance.hpPerLevel * pm.level + 100f;
+                            var multiplier = 10f; if(pm.subClass == CardClass.Grappler) multiplier = 20f; if(pm.mainClass == CardClass.Grappler) multiplier = 30f;
+                            var maxHp = pm.level * multiplier + 50f;
                             float healAmount = 50f;
-                            pm.hpPercentage += healAmount / tempHP;
+                            pm.hpPercentage += healAmount / maxHp;
                             if(pm.hpPercentage > 1f) pm.hpPercentage = 1f;
-                            success = true;
+                            
                         }
+                        success = true;
                     }
                     break;
                 

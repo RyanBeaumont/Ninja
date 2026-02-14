@@ -51,14 +51,14 @@ MonoBehaviour:
   maxHp: 275
   hp: 275
   attack: 10
-  defense: 20
+  defense: 1
   speed: 15
   psychic: 25
   mp: 0
   maxMp: 30
   alive: 1
-  resistances: 02000000
-  weaknesses: 00000000
+  resistances: 00000000
+  weaknesses: 01000000
   combatantName: Shadow
   initiative: 0
   statusEffects: []
@@ -96,8 +96,8 @@ MonoBehaviour:
     healthThreshold: 100
     altFunction: 
   lootDrops:
-  - itemID: Lockpick
-    dropChance: 25
+  - itemID: Coffee
+    dropChance: 50
   - itemID: Coke
     dropChance: 50
   xpReward: 25

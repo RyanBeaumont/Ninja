@@ -50,18 +50,19 @@ public class Targeter : MonoBehaviour
     void Update()
     {
         if (!initialized) return;
-
+        GameObject[] candidates = null;
         var tag = "Enemy";
-        if(targetType == TargetType.SingleEnemy){ tag = "Enemy";}
-        else if(targetType == TargetType.SingleAlly) {tag = "PlayerCombatant"; 
-        
-        }
+        if(targetType == TargetType.SingleEnemy){ tag = "Enemy"; candidates = GameObject.FindGameObjectsWithTag(tag);}
+        else if(targetType == TargetType.SingleAlly) {tag = "PlayerCombatant"; candidates = GameObject.FindGameObjectsWithTag(tag);}
         
         else if(targetType == TargetType.None){selectedTargets.Add(BattleManager.Instance.activeCombatant); EndSelection(); return;}
+        else if(targetType == TargetType.Any)
+        {
+            candidates = BattleManager.Instance.combatants.Where(c => c.alive).Select(c => c.gameObject).ToArray();
+        }
 
         // Passively move the targeter to the closest matching object to the mouse cursor
 
-        var candidates = GameObject.FindGameObjectsWithTag(tag);
         if(candidates != null && candidates.Length > 0){
             var cam = Camera.main;
             if(cam != null){
@@ -99,22 +100,24 @@ public class Targeter : MonoBehaviour
         }
     
 
-        if(Input.GetMouseButtonDown(1)){
+        //if(Input.GetMouseButtonDown(1)){
 
-            EndSelection();
-        }
+        //    EndSelection();
+        //}
 
         void EndSelection(){
             BattleManager.Instance.ShowQuickTimeEvent();
-            if(targetType == TargetType.SingleEnemy)
-            {
-                action.caller.SetTargetPosition(selectedTargets[0].transform.position + selectedTargets[0].transform.forward * 2f);
-                action.caller.PlayAnimation("FrontFlip");
+            if(action != null){
+                if(targetType == TargetType.SingleEnemy)
+                {
+                    action.caller.SetTargetPosition(selectedTargets[0].transform.position + selectedTargets[0].transform.forward * 2f);
+                    action.caller.PlayAnimation("FrontFlip");
+                }
+                BattleManager.Instance.SelectTargets(selectedTargets);
+                BattleManager.Instance.actionQueue.Add(action);
+                BattleManager.Instance.EndAction();
+                if(BattleManager.Instance.currentTargets.Count == 1 && BattleManager.Instance.currentTargets[0].GetComponent<Combatant>() is EnemyJade j){j.PerformCounterAttack();}
             }
-            BattleManager.Instance.SelectTargets(selectedTargets);
-            BattleManager.Instance.actionQueue.Add(action);
-            BattleManager.Instance.EndAction();
-            if(BattleManager.Instance.currentTargets.Count == 1 && BattleManager.Instance.currentTargets[0].GetComponent<Combatant>() is EnemyJade j){j.PerformCounterAttack();}
             Destroy(gameObject);
         }
     }

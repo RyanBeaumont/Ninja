@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Forest.unity
     guid: 14d3375a1f40c5949a14a850c8cdbbc7
   - enabled: 1
+    path: Assets/Scenes/StormHouse.unity
+    guid: a1fde086a0d396c4b8c9ab578e9f6062
+  - enabled: 1
     path: Assets/Scenes/JackHouse2.unity
     guid: eec2fda4e8436ce49a1c93ff331bf68a
   m_configObjects:

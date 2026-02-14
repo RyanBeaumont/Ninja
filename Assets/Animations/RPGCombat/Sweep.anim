@@ -52401,6 +52401,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: Particle
+    data: 
+    objectReferenceParameter: {fileID: 309480444895470982, guid: 0b438317290236a4d810faf909da4c99, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.2
     functionName: SlowMo
     data: '[WASD] Jump over low attacks'

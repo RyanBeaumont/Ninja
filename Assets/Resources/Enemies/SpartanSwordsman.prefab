@@ -50,8 +50,8 @@ MonoBehaviour:
   level: 1
   maxHp: 150
   hp: 150
-  attack: 12
-  defense: 12
+  attack: 10
+  defense: 1
   speed: 12
   psychic: 10
   mp: 20

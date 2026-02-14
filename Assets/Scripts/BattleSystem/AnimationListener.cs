@@ -9,6 +9,15 @@ public class AnimationListener : MonoBehaviour
         
     }
 
+    public void Particle(GameObject particle)
+    {
+        if(GetComponentInParent<EnemyCombatant>() != null){
+            var p = Instantiate(particle, transform);
+            p.transform.localPosition = Vector3.zero;
+        }
+
+    }
+
     void SpawnWeapon(string weapon)
     {
         //find WeaponR in skeleton (searches deep hierarchy)

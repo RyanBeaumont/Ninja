@@ -18133,6 +18133,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.033333335
+    functionName: Particle
+    data: 
+    objectReferenceParameter: {fileID: 7590665085625613400, guid: 6a9299f3483a50c42b55acc40f0f211f, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.36666667
     functionName: SlowMo
     data: '[WASD] Side-step vertical attacks'

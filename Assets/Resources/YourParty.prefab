@@ -48,7 +48,7 @@ MonoBehaviour:
   reserve:
   - memberName: Spartan Jack
     modelName: SpartanJack
-    level: 5
+    level: 1
     xp: 0
     hpPercentage: 1
     mainClass: 1
@@ -76,25 +76,18 @@ MonoBehaviour:
     xp: 0
     hpPercentage: 1
     mainClass: 3
-    subClass: 4
+    subClass: 2
     alive: 1
   - memberName: Big Sam
     modelName: BigSam
     level: 5
     xp: 0
     hpPercentage: 1
-    mainClass: 4
-    subClass: 1
+    mainClass: 1
+    subClass: 4
     alive: 1
   partyMembers:
-  - Thad
-  - Stretch
-  - Storm
-  hpPerLevel: 10
-  speedPerLevel: 1
-  attackPerLevel: 2
-  defensePerLevel: 2
-  psychicPerLevel: 2
+  - Spartan Jack
   devTools: 0
   currentSaveFileName: savefile_1
   gold: 0

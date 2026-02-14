@@ -107,7 +107,8 @@ public class Menu : MonoBehaviour
             {
                 thisCharacter.transform.Find("CharacterName").GetComponent<TMP_Text>().text = p;
                 thisCharacter.transform.Find("Subheading").GetComponent<TMP_Text>().text = $"Lv. {partyMember.level} {partyMember.mainClass} {partyMember.subClass}";
-                var tempHP = YourParty.instance.hpPerLevel * partyMember.level + 100f;
+                var multiplier = 10f; if(partyMember.subClass == CardClass.Grappler) multiplier = 20f; if(partyMember.mainClass == CardClass.Grappler) multiplier = 30f;
+                var tempHP = partyMember.level * multiplier + 50f;
                 thisCharacter.transform.Find("Health/HP").GetComponent<TMP_Text>().text = $"{partyMember.hpPercentage * tempHP}/{tempHP}";
                 thisCharacter.transform.Find("Health").GetComponent<Slider>().value = partyMember.hpPercentage;
                 thisCharacter.transform.Find("Portrait").GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/{partyMember.memberName}");
