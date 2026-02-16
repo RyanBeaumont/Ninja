@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Collections;
-using Mono.Cecil.Cil;
 
 [Serializable]
 public class EnemyTroop

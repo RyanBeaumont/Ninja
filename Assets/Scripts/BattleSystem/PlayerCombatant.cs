@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.AI;
 
 public class PlayerCombatant : Combatant
 {
@@ -60,6 +61,23 @@ public class PlayerCombatant : Combatant
         if(card.tempCost != 0){cost = card.tempCost; card.tempCost = 0;}
         if (hand.Contains(card) && mp >= cost && tp >= card.tpCost && BattleManager.Instance.discardPower >= card.discardCost)
         {
+            if(card.effects[0] is SuplexDamageAction || card.effects[0] is GrappleDamageAction)
+            {
+                var success = false;
+                foreach(EnemyCombatant e in FindObjectsByType<EnemyCombatant>(FindObjectsSortMode.None))
+                {
+                    if (e.HasStatusEffect("Off-Balance") != null)
+                    {
+                        success = true; break;
+                    }
+                }
+                if(success == false)
+                {
+                    AudioManager.Instance.PlaySoundEffect("Negative",1f);
+                    GameManager.Instance.ShowMessage("Can only be used on an Off-Balance opponent");
+                    return false;
+                } 
+            }
             hand.Remove(card);
             discard.Add(card);
             mp -= cost;
@@ -70,6 +88,7 @@ public class PlayerCombatant : Combatant
         }
         else
         {
+            AudioManager.Instance.PlaySoundEffect("Negative",1f);
             if(mp < card.cost)
                 GameManager.Instance.ShowMessage("Not enough MP!");
             else if(tp < card.tpCost)
@@ -115,6 +134,15 @@ public class PlayerCombatant : Combatant
             deck[j] = deck[randomIndex];
             deck[randomIndex] = temp;
         }
+    }
+
+    public void Revive()
+    {
+        hp = maxHp/2f;
+        BattleManager.Instance.combatants.Add(this);
+        alive = true;
+        PlayAnimation("Drink");
+        GameManager.Instance.ShowMessage($"{combatantName} is risen!");
     }
 
     public override bool StartTurn()

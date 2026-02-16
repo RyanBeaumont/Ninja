@@ -10457,6 +10457,7 @@ Transform:
   - {fileID: 1421444821}
   - {fileID: 426277667}
   - {fileID: 955928495}
+  - {fileID: 969680079}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &462338075
@@ -11659,6 +11660,133 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+--- !u!1001 &546944082
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.867
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.617
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.269
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_Name
+      value: soda (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 546944086}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 546944085}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 546944084}
+  m_SourcePrefab: {fileID: 100100000, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+--- !u!1 &546944083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+  m_PrefabInstance: {fileID: 546944082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &546944084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546944083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &546944085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546944083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  itemName: Bang
+--- !u!65 &546944086
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546944083}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0024, y: 0.0023999996, z: 0.0035999995}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &547140086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13753,6 +13881,133 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3503871415192851515, guid: 00b2a4d6234479b48affd810a1258daa, type: 3}
   m_PrefabInstance: {fileID: 658514100}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &663972089
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.7669101
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.617
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.894
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_Name
+      value: soda
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 663972093}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 663972092}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 663972091}
+  m_SourcePrefab: {fileID: 100100000, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+--- !u!1 &663972090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+  m_PrefabInstance: {fileID: 663972089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &663972091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663972090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &663972092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663972090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  itemName: DrPepper
+--- !u!65 &663972093
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663972090}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0024, y: 0.0023999996, z: 0.0035999995}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &664823458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13810,6 +14065,133 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+--- !u!1001 &672253288
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.867
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.617
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.511
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      propertyPath: m_Name
+      value: soda (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 672253292}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 672253291}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 672253290}
+  m_SourcePrefab: {fileID: 100100000, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+--- !u!1 &672253289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+  m_PrefabInstance: {fileID: 672253288}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &672253290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672253289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &672253291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672253289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  itemName: Coffee
+--- !u!65 &672253292
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672253289}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0024, y: 0.0023999996, z: 0.0035999995}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &675130717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15953,6 +16335,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5880966151668079918, guid: 7e7f1160f3f3ffb47968b5618bc236b5, type: 3}
   m_PrefabInstance: {fileID: 819417241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &821521318
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 969680079}
+    m_Modifications:
+    - target: {fileID: 7483047974945771247, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+      propertyPath: m_Name
+      value: BigSam
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823580282688705621, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823580282688705621, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823580282688705621, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823580282688705621, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823580282688705621, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823580282688705621, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823580282688705621, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823580282688705621, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823580282688705621, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823580282688705621, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+--- !u!4 &821521319 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7823580282688705621, guid: 819b977d9379dd9419c9771c0231ac6e, type: 3}
+  m_PrefabInstance: {fileID: 821521318}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &825004146 stripped
 Transform:
@@ -19302,21 +19746,77 @@ MonoBehaviour:
       A dedicated one, I see!'
     name: Sensei
     character: {fileID: 955928495}
-    pose: 
-    cameraAngle: 0
-    face: 
-  - text: Let's get you fitted for a helmet...
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Happy
+  - text: 'It''s time for my favorite lesson!
+
+      Sit down, let me show you the
+      world of SPECIALTY DRINKS!'
     name: Sensei
     character: {fileID: 955928495}
-    pose: 
+    pose: ArmsCrossed
     cameraAngle: 0
-    face: 
-  - text: '[IMAGINE A SCENE HERE WHERE YOU GET SUITED UP IN A COOL TRANSFORMATION]'
+    face: Happy
+  - text: 'First up - coffee!
+
+      It gives you... energy!
+
+      And it''s so
+      ''MURICAN you get some MP too!'
     name: Sensei
     character: {fileID: 955928495}
-    pose: 
+    pose: Drink
     cameraAngle: 0
-    face: 
+    face: Happy
+  - text: 'I''m feeling young n'' fresh already!
+
+      Second drink - Sierra Mist!
+      Perfect for escaping a tight bind. Most people don''t know this, but you can
+      throw it on the ground and escape random encounters in a cloud of mist'
+    name: Sensei
+    character: {fileID: 955928495}
+    pose: Drink
+    cameraAngle: 0
+    face: Happy
+  - text: 'You could, y''know, run away too...
+
+      But us ninjas love to be DRAMATIC.'
+    name: Sensei
+    character: {fileID: 955928495}
+    pose: Explaining
+    cameraAngle: 0
+    face: Happy
+  - text: 'Now do you know about the rarest and most important soda?
+
+      DR. PEPPER!
+
+      Tastes
+      so good the dead come back to life!'
+    name: Sensei
+    character: {fileID: 955928495}
+    pose: Drink
+    cameraAngle: 0
+    face: Happy
+  - text: 'The DR has done it again!
+
+      Alright your turn - give em all a sip!'
+    name: Sensei
+    character: {fileID: 955928495}
+    pose: ArmsCrossed
+    cameraAngle: 0
+    face: Happy
+  - text: 'Er...
+
+      I seem to have drank ''em all.
+
+      Oh well, my daughter
+      STORM has plenty more in her dojo shop!'
+    name: Sensei
+    character: {fileID: 955928495}
+    pose: ArmsCrossed
+    cameraAngle: 0
+    face: Confused
   turnToFace: 1
   snapPlayerPosition: 1
 --- !u!114 &955928501
@@ -19334,7 +19834,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
-  questName: Reach Level 3 and Talk to Sensei
+  questName: Reach Level 4 and Talk to Sensei
   consume: 1
   xpReward: 0
   goldReward: 0
@@ -19365,7 +19865,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
-  levelGate: 3
+  levelGate: 4
   allowedSceneVariants: 
   needsPartyMember: 
   excludePartyMember: 
@@ -20153,6 +20653,311 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
   m_PrefabInstance: {fileID: 969672756}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &969680078
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 456392844}
+    m_Modifications:
+    - target: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.949
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.579
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.471525
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.000008493661
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -539.999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: turnToFace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[0].text
+      value: It's your friend Big Sam!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[1].name
+      value: Big Sam
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[1].pose
+      value: Embarrassed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[1].text
+      value: Hullo! What'SuPPPPP?!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[2].face
+      value: Confused
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[2].name
+      value: Spartan Jack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[2].text
+      value: Wow... You're... Tall!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[3].face
+      value: Happy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[3].name
+      value: Big Sam
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[3].pose
+      value: Explaining
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[3].text
+      value: I've been practicing!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[4].face
+      value: Confused
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[4].name
+      value: Spartan Jack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[4].pose
+      value: Embarrassed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[4].text
+      value: Practicing... growing?
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[5].face
+      value: Happy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[5].name
+      value: Big Sam
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[5].pose
+      value: ArmsCrossed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[5].text
+      value: Yup. You should try it
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[1].character
+      value: 
+      objectReference: {fileID: 969680079}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[2].character
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[3].character
+      value: 
+      objectReference: {fileID: 969680079}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[4].character
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[5].character
+      value: 
+      objectReference: {fileID: 969680079}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[1].cameraAngle
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[2].cameraAngle
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[3].cameraAngle
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[4].cameraAngle
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: dialog.Array.data[5].cameraAngle
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841343756449015673, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: m_Name
+      value: Big Sam
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383270624873576683, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: face
+      value: Happy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383270624873576683, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      propertyPath: pose
+      value: Default
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5843794263352963333, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+    - {fileID: 8383270624873576683, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+    - {fileID: 1771011392191703348, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 3547561562679030337, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 821521319}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4841343756449015673, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 969680081}
+    - targetCorrespondingSourceObject: {fileID: 4841343756449015673, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 969680082}
+  m_SourcePrefab: {fileID: 100100000, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+--- !u!4 &969680079 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+  m_PrefabInstance: {fileID: 969680078}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &969680080 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4841343756449015673, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
+  m_PrefabInstance: {fileID: 969680078}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &969680081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969680080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b5bf5e381673248b03fce9dbf3fef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  questName: Investigate the Alley
+  consume: 0
+  xpReward: 0
+  goldReward: 0
+  giveQuestIfMissing: 0
+  completeEvenIfMissing: 0
+  incompleteDialog:
+  - text: So... What was in that mysterious dark alley?
+    name: Big Sam
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 3
+    face: Confused
+  - text: (You look around, realizing the prime suspect is standing in this very
+      room)
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Embarrassed
+    cameraAngle: 4
+    face: Blank
+  - text: 'I''ll... Tell ya later. Over the PORTA-COMMS.
+
+      Untraceable, remember?'
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Embarrassed
+    cameraAngle: 4
+    face: Confused
+--- !u!114 &969680082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969680080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  dialog:
+  - text: So... What was in that mysterious alley?
+    name: Big Sam
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 3
+    face: Confused
+  - text: 'Ah...
+
+      I haven''t gotten around to it yet'
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Embarrassed
+    cameraAngle: 4
+    face: Confused
+  - text: "What are you, CHICKEN?\nBucCAW! \nBok Bok Bok!"
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 3
+    face: Happy
+  - text: AM NOT!
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 4
+    face: Angry
+  - text: BET???
+    name: Big Sam
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 3
+    face: Happy
+  turnToFace: 0
+  snapPlayerPosition: 0
 --- !u!1001 &970245307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22725,6 +23530,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 504988885477684759, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
+      propertyPath: m_Name
+      value: Closet
+      objectReference: {fileID: 0}
     - target: {fileID: 6044087082982615358, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
       propertyPath: m_Name
       value: FullDoor
@@ -27010,10 +27819,10 @@ MonoBehaviour:
     pose: ArmsCrossed
     cameraAngle: 5
     face: Confused
-  - text: 'You''re almost ready for your first ARMOR.
+  - text: 'You''re almost ready for a SECRET PRIVATE LESSON
 
-      Reach LEVEL 3 and we''ll
-      have a talk...'
+      Reach LEVEL 4
+      and we''ll have a talk...'
     name: Sensei
     character: {fileID: 1980157446}
     pose: ArmsCrossed
@@ -27321,7 +28130,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
-  questName: Reach Level 3 and Talk to Sensei
+  questName: Reach Level 4 and Talk to Sensei
 --- !u!1001 &1328603116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28739,7 +29548,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
-  toBlack: 1
+  toBlack: 0
   cameraTarget: {fileID: 0}
 --- !u!114 &1402315733
 MonoBehaviour:
@@ -33981,7 +34790,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
-  toBlack: 1
+  toBlack: 0
   cameraTarget: {fileID: 0}
 --- !u!114 &1707148891
 MonoBehaviour:
@@ -34382,7 +35191,7 @@ Transform:
   m_GameObject: {fileID: 1739906322}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.000008493661}
-  m_LocalPosition: {x: -0.36380053, y: 1.4197841, z: 5.893586}
+  m_LocalPosition: {x: -1.966, y: 1.4197841, z: 5.328}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -42717,3 +43526,6 @@ SceneRoots:
   - {fileID: 1707148888}
   - {fileID: 1402315730}
   - {fileID: 640363651}
+  - {fileID: 663972089}
+  - {fileID: 546944082}
+  - {fileID: 672253288}

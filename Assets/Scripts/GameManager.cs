@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
         if(toBlack)
         {
         var player = GameObject.FindGameObjectWithTag("Player").transform;
-        player.GetComponentInChildren<Animator>().Play("ArmsCrossed");
+        //player.GetComponentInChildren<Animator>().Play("ArmsCrossed");
         }
         var ui = GameObject.Find("MainCanvas");
         var imgToFade = ui.transform.Find("OtherHUD/Black").GetComponent<UnityEngine.UI.Image>();

@@ -457,7 +457,7 @@ public class BattleManager : MonoBehaviour
                 {
                     executingActions = false;
                     attacksRemaining --;
-                    if(attacksRemaining <= 0)
+                    if(attacksRemaining <= 0 || activeCombatant.alive == false)
                     {
                         NextTurn();
                         attacksRemaining = 1;
@@ -656,7 +656,6 @@ public class BattleManager : MonoBehaviour
             caller = activePlayer,
             targetType = TargetType.SingleAlly,
             animation = "Drink",
-            healAmount = "50"
         };
         var targetAction = new ChooseTargetsAction()
         {
@@ -770,6 +769,7 @@ public class BattleManager : MonoBehaviour
                 {
                     name = "Poisoned",
                     amount = 2,
+                    additive = true,
                     duration = -1
                 });
             }

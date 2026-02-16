@@ -1908,7 +1908,6 @@ GameObject:
   - component: {fileID: 194422027}
   - component: {fileID: 194422026}
   - component: {fileID: 194422031}
-  - component: {fileID: 194422025}
   - component: {fileID: 194422023}
   - component: {fileID: 194422022}
   - component: {fileID: 194422021}
@@ -2105,21 +2104,6 @@ MonoBehaviour:
     face: Confused
   turnToFace: 0
   snapPlayerPosition: 0
---- !u!114 &194422025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194422018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 679e7d6cbd6ea234daa49f6a576b7c62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
 --- !u!114 &194422026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15039,12 +15023,12 @@ GameObject:
   - component: {fileID: 1210492128}
   - component: {fileID: 1210492127}
   - component: {fileID: 1210492126}
-  - component: {fileID: 1210492125}
   - component: {fileID: 1210492124}
   - component: {fileID: 1210492131}
   - component: {fileID: 1210492123}
   - component: {fileID: 1210492122}
   - component: {fileID: 1210492130}
+  - component: {fileID: 1210492125}
   - component: {fileID: 1210492121}
   m_Layer: 0
   m_Name: Encounter (2)
@@ -25380,6 +25364,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8348990587756189354, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: face
+      value: Dissapointed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348990587756189354, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: pose
+      value: Defeated
+      objectReference: {fileID: 0}
     - target: {fileID: 8992449917690472824, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       propertyPath: face
       value: Dissapointed
@@ -25395,42 +25387,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6061218905984369798, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1967133391}
-    - targetCorrespondingSourceObject: {fileID: 6061218905984369798, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1967133390}
   m_SourcePrefab: {fileID: 100100000, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
 --- !u!4 &1967133386 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
   m_PrefabInstance: {fileID: 1967133385}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1967133390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8279554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  dialog:
-  - text: 'I''ll catch up to you when you''re ready to face the day...
-
-      Don''t
-      forget to edit your deck whenever you learn new moves!'
-    name: Stretch
-    character: {fileID: 1967133386}
-    pose: Meditating
-    cameraAngle: 13
-    face: Happy
-  turnToFace: 0
-  snapPlayerPosition: 0
 --- !u!136 &1967133391
 CapsuleCollider:
   m_ObjectHideFlags: 0

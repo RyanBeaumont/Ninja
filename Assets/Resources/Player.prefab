@@ -118,6 +118,9 @@ MonoBehaviour:
   interactRange: 2
   interactKey: 101
   promptPrefab: {fileID: 3754202814060213082, guid: 1752f5324e928b64fabee9603823f24b, type: 3}
+  lineOfSightMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &8178249343665881205
 MonoBehaviour:
   m_ObjectHideFlags: 0

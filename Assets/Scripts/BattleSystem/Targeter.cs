@@ -10,6 +10,7 @@ public class Targeter : MonoBehaviour
     bool targetDead = false;
     GameAction action;
     public List<Combatant> selectedTargets = new List<Combatant>();
+    bool grapple = false;
 
     public void Initialize(TargetType type, string prompt, GameAction action, bool targetDead = false)
     {
@@ -17,6 +18,7 @@ public class Targeter : MonoBehaviour
         initialized = true;
         this.action = action;
         this.targetDead = targetDead;
+        if(this.action is GrappleDamageAction || this.action is SuplexDamageAction) grapple = true;
     }
 
     void Start()
@@ -50,26 +52,47 @@ public class Targeter : MonoBehaviour
     void Update()
     {
         if (!initialized) return;
-        GameObject[] candidates = null;
-        var tag = "Enemy";
-        if(targetType == TargetType.SingleEnemy){ tag = "Enemy"; candidates = GameObject.FindGameObjectsWithTag(tag);}
-        else if(targetType == TargetType.SingleAlly) {tag = "PlayerCombatant"; candidates = GameObject.FindGameObjectsWithTag(tag);}
-        
-        else if(targetType == TargetType.None){selectedTargets.Add(BattleManager.Instance.activeCombatant); EndSelection(); return;}
-        else if(targetType == TargetType.Any)
-        {
-            candidates = BattleManager.Instance.combatants.Where(c => c.alive).Select(c => c.gameObject).ToArray();
-        }
+        List<GameObject> candidates = new List<GameObject>();
 
+    if (targetType == TargetType.None)
+    {
+        selectedTargets.Add(BattleManager.Instance.activeCombatant);
+        EndSelection();
+        return;
+    }
+
+    // Step 1: Gather base candidates
+    if (targetType == TargetType.SingleEnemy)
+    {
+        candidates = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+    }
+    else if (targetType == TargetType.SingleAlly)
+    {
+        candidates = GameObject.FindGameObjectsWithTag("PlayerCombatant").ToList();
+    }
+    else if (targetType == TargetType.Any)
+    {
+        candidates = BattleManager.Instance.combatants
+            .Select(c => c.gameObject)
+            .ToList();
+    }
+
+    // Step 2: Convert to Combatants and filter
+    var filtered = candidates
+        .Select(go => go.GetComponent<Combatant>())
+        .Where(c => c != null)
+        .Where(c => c.alive != targetDead) // if targetDead=true → alive must be false
+        .Where(c => !grapple || c.HasStatusEffect("Off-Balance") != null)
+        .Select(c => c.gameObject);
         // Passively move the targeter to the closest matching object to the mouse cursor
 
-        if(candidates != null && candidates.Length > 0){
+        if(filtered != null && filtered.Count() > 0){
             var cam = Camera.main;
             if(cam != null){
                 var mousePos = Input.mousePosition;
                 float bestDistSqr = float.MaxValue;
                 Transform best = null;
-                foreach(var go in candidates){
+                foreach(var go in filtered){
                     if(go == null) continue;
                     // only consider dead targets if targeting dead
                     if(!go.GetComponent<Combatant>().alive && targetDead == false) continue;

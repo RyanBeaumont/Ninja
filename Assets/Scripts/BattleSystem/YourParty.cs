@@ -280,8 +280,10 @@ public class YourParty : MonoBehaviour
     
     public void HealParty()
     {
-        foreach(PartyMember m in reserve)
+        foreach(PartyMember m in reserve){
             m.hpPercentage = 1f;
+            m.alive = true;
+        }
     }
 
     public List<Dialog> LevelUp(int xpAmount, int goldAmount)

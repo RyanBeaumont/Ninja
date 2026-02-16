@@ -438,6 +438,9 @@ PrefabInstance:
       addedObject: {fileID: 812761113}
     - targetCorrespondingSourceObject: {fileID: 4358426915205826297, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 812761116}
+    - targetCorrespondingSourceObject: {fileID: 4358426915205826297, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 812761112}
   m_SourcePrefab: {fileID: 100100000, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
 --- !u!4 &812761110 stripped
@@ -467,6 +470,7 @@ MonoBehaviour:
   blockInteraction: 0
   enemies:
   - {fileID: 8346498964973016767, guid: bf624347d4f3a4641846aae466b7870b, type: 3}
+  hideObjects: []
   battleMusic: {fileID: 0}
 --- !u!136 &812761113
 CapsuleCollider:
@@ -491,6 +495,26 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &812761116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812761111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac35fd4abf8e9e146a1aad31e368a113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  overwrite: 1
+  partyMembers:
+  - Stretch
+  - Storm
+  - Thad
 --- !u!1001 &1315927525
 PrefabInstance:
   m_ObjectHideFlags: 0

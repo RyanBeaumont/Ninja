@@ -2,8 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Text.RegularExpressions;
-using UnityEditor.UI;
-using System.Runtime.CompilerServices;
+
 
 public class Combatant : MonoBehaviour
 {
@@ -92,8 +91,9 @@ public class Combatant : MonoBehaviour
             BattleManager.Instance.RemoveCombatant(this);
             GameManager.Instance.ShowMessage($"{combatantName} has been defeated!");
             AudioManager.Instance.PlaySoundEffect("Explosion");
+            animator.Play("Launcher");
             alive = false;
-            animator.Play("Death");
+            
             OnDeath();
         }
 
@@ -192,7 +192,7 @@ public class Combatant : MonoBehaviour
 
     public float PlayAnimation(string animationName)
     {
-        if(animator == null || string.IsNullOrEmpty(animationName)) return 0.1f;
+        if(animator == null || string.IsNullOrEmpty(animationName) || alive == false) return 0.1f;
         animator.Play(animationName,0,0f);
         return animator.GetCurrentAnimatorStateInfo(0).length;
     }
@@ -270,8 +270,8 @@ public class Combatant : MonoBehaviour
         if(HasStatusEffect("Poisoned") != null)
         {
             var poison = HasStatusEffect("Poisoned");
-            GameManager.Instance.ShowMessage($"{combatantName} takes {5*poison.amount} damage from poison");
-            TakeDamage(null,5*poison.amount, DamageType.Psychic);
+            GameManager.Instance.ShowMessage($"{combatantName} takes {6*poison.amount} damage from poison");
+            TakeDamage(null,6*poison.amount, DamageType.Psychic);
             if(hp <= 0){
                 BattleManager.Instance.actionQueue.Add(new StunAction()
             {

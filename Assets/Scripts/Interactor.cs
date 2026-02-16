@@ -7,6 +7,7 @@ public class PlayerInteractor : MonoBehaviour
     public float interactRange = 2f;
     public KeyCode interactKey = KeyCode.E;
     public GameObject promptPrefab;  // assign a prefab in Inspector
+    public LayerMask lineOfSightMask;
 
     private ChainedInteractable currentTarget;
     private GameObject currentPrompt;
@@ -54,24 +55,40 @@ public class PlayerInteractor : MonoBehaviour
     }
 
     void FindInteractable()
+{
+    currentTarget = null;
+
+    Collider[] hits = Physics.OverlapSphere(transform.position, interactRange);
+    float closest = Mathf.Infinity;
+
+    Vector3 origin = transform.position + Vector3.up * 1f;
+
+    foreach (var hit in hits)
     {
-        currentTarget = null;
+        var interactable = hit.GetComponent<ChainedInteractable>();
+        if (interactable == null) continue;
+        if (!interactable.active) continue;
+        if (interactable.GetComponentInParent<TriggerInteractable>() != null) continue;
 
-        Collider[] hits = Physics.OverlapSphere(transform.position, interactRange);
-        float closest = Mathf.Infinity;
+        Vector3 targetPoint = hit.bounds.center;
+        Vector3 dir = (targetPoint - origin).normalized;
+        float dist = Vector3.Distance(origin, targetPoint);
 
-        foreach (var hit in hits)
+        // Raycast for line of sight
+        if (Physics.Raycast(origin, dir, out RaycastHit rayHit, dist, lineOfSightMask, QueryTriggerInteraction.Ignore))
         {
-            var interactable = hit.GetComponent<ChainedInteractable>();
-            if (interactable != null && interactable.active && interactable.GetComponentInParent<TriggerInteractable>() == null)
-            {
-                float dist = Vector3.Distance(transform.position, hit.transform.position);
-                if (dist < closest)
-                {
-                    closest = dist;
-                    currentTarget = interactable;
-                }
+            // Only valid if we hit THIS interactable
+            if (rayHit.collider != hit){
+                print($"Blocked by {rayHit.collider.gameObject.name}");
+                continue;
             }
         }
+
+        if (dist < closest)
+        {
+            closest = dist;
+            currentTarget = interactable;
+        }
     }
+}
 }

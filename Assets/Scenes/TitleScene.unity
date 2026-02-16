@@ -1807,7 +1807,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1293376588}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: ShowSavePanel
+        m_MethodName: StartChapter2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

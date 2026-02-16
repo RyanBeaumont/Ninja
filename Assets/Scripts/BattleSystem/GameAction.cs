@@ -282,15 +282,15 @@ public class HealAction : GameAction
     }
 }
 
-public class ReviveAction : HealAction
+public class ReviveAction : GameAction
 {
     public override void Execute(BattleManager battleManager)
     {
+        base.Execute(battleManager);
         foreach(var t in battleManager.currentTargets)
         {
-            t.alive = true;
+            if(t is PlayerCombatant p){p.Revive();}
         }
-        base.Execute(battleManager);
     }
 }
 

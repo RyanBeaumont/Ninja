@@ -207,7 +207,7 @@ public class CardDatabase : MonoBehaviour
             description = "Draw until you have 4 cards",
             artwork = "IconSuperSaiyan",
             cost = 10,
-            level = 1,
+            level = 100,
             effects = new List<GameAction>()
             {
                 new DrawUntilAction()
@@ -534,7 +534,7 @@ public class CardDatabase : MonoBehaviour
             description = "An attack that reduces the cost of all cards in hand. Play again",
             artwork = "IconSuperSaiyan",
             cardClass = CardClass.Psychic,
-            level = 6,
+            level = 7,
             cost = 15,
             effects = new List<GameAction>()
             {
@@ -559,7 +559,7 @@ public class CardDatabase : MonoBehaviour
             tpCost = 50,
             cardClass = CardClass.Psychic,
             artwork = "IconSuperSaiyan",
-            level = 2,
+            level = 3,
             effects = new List<GameAction>()
             {
                 new StatusEffectAction()
@@ -581,7 +581,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "SPARTA! KICK",
             description = "Ultimate attack deals massive damage. Must discard 2 cards",
             tpCost = 50,
-            discardCost = 2,
+            discardCost = 3,
             cardClass = CardClass.Warrior,
             artwork = "IconSpartaKick",
             level = 2,
@@ -589,7 +589,7 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "80",
+                    damage = "70",
                     animation = "Kick",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
@@ -762,7 +762,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "Here It Comes!",
             description = "Double your STRENGTH for your next turn",
             cost = 20,
-            level = 4,
+            level = 6,
             artwork = "IconSuperSaiyan",
             cardClass = CardClass.Warrior,
             effects = new List<GameAction>()
@@ -922,7 +922,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "Nardbuster",
             description = "Stun the enemy, knock them prone, and enable party lifesteal",
             tpCost = 50,
-            level = 2,
+            level = 3,
             cardClass = CardClass.Grappler,
             artwork = "IconFist",
             effects = new List<GameAction>()
