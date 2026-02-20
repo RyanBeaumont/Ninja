@@ -47,10 +47,10 @@ public class Combatant : MonoBehaviour
         var strong = false;
         if(caller != null){
             //Damage = BaseDamage × (Attack / AttackBaseline) × (K / (Defense + K))
-            var multiplier = caller.EvaluateStatFormula("ATK")/15 * EvaluateStatFormula("DEF");
+            var multiplier = Mathf.Abs(caller.EvaluateStatFormula("ATK")/15 * EvaluateStatFormula("DEF"));
             print($"Base damage {baseDamage} x Multiplier {multiplier}");
             multiplier = Mathf.Clamp(multiplier,0.25f,6.0f);
-            baseDamage *= multiplier; //If attack and defense are equal, deal 1x damage. Higher attack deals more damage, higher defense reduces damage.
+            baseDamage = Mathf.Abs(baseDamage * multiplier); //If attack and defense are equal, deal 1x damage. Higher attack deals more damage, higher defense reduces damage.
         }
         
         
@@ -148,7 +148,7 @@ public class Combatant : MonoBehaviour
         }
     }
 
-    void Update()
+    public virtual void Update()
     {
         //Smoothly move to target position
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 10f);
@@ -241,7 +241,7 @@ public class Combatant : MonoBehaviour
     public void RemoveStatusEffect(string effectName) //blank effectName removes all effects
     {
         if(effectName == "")
-            statusEffects.Clear();
+            statusEffects.RemoveAll(e => e.name != "Equipment");
         else
             statusEffects.RemoveAll(e => e.name == effectName);
         UpdateStatusVisuals();
@@ -322,6 +322,7 @@ public class Combatant : MonoBehaviour
         foreach(Transform child in statusCanvas) Destroy(child.gameObject);
         foreach(var effect in statusEffects)
         {
+            if(effect.name == "Equipment") continue;
             var statusIcon = Instantiate(Resources.Load<GameObject>("StatusEffect"), statusCanvas);
             var iconImage = statusIcon.GetComponent<UnityEngine.UI.Image>();
             var sprite = Resources.Load<Sprite>($"Sprites/{effect.name}");

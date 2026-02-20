@@ -830,7 +830,7 @@ MonoBehaviour:
   currentTargets: []
   quickTimeEvent: {fileID: 2005629893069994807}
   quickTimeActiveTime: 1
-  quickTimeCritWindow: 0.1
+  quickTimeCritWindow: 0.03
   discardText: {fileID: 3858332740523129898}
   dodgeInputWindow: 0.25
   dodgeCooldown: 1
@@ -1582,15 +1582,15 @@ RectTransform:
   m_Children:
   - {fileID: 2108573852036502189}
   - {fileID: 7442325664584236805}
-  - {fileID: 8491835315743409081}
   - {fileID: 7806965741549352652}
+  - {fileID: 8491835315743409081}
   m_Father: {fileID: 3084168631498908681}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -132}
+  m_AnchoredPosition: {x: -200, y: -132}
   m_SizeDelta: {x: -800, y: -1059}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.75, y: 0.5}
 --- !u!222 &889828772783218842
 CanvasRenderer:
   m_ObjectHideFlags: 0

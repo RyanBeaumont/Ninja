@@ -86,11 +86,22 @@ MonoBehaviour:
     mainClass: 1
     subClass: 4
     alive: 1
+  - memberName: Torch
+    modelName: Torch
+    level: 5
+    xp: 0
+    hpPercentage: 1
+    mainClass: 4
+    subClass: 3
+    alive: 1
   partyMembers:
-  - Spartan Jack
+  - Storm
+  - Torch
+  - Stretch
   devTools: 0
   currentSaveFileName: savefile_1
   gold: 0
+  spacing: 1
 --- !u!114 &4165134398127773951
 MonoBehaviour:
   m_ObjectHideFlags: 0

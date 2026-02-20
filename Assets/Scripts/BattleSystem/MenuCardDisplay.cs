@@ -21,5 +21,14 @@ public class MenuCardDisplay : CardDisplay
     {
         
     }
+    public override void OnPointerEnter(PointerEventData eventData)
+    {
+        AudioManager.Instance.PlaySoundEffect("MenuHover");
+        // Intentionally not calling base to skip card reordering/movement
+    }
+    public override void OnPointerExit(PointerEventData eventData)
+    {
+        // Intentionally not calling base to skip card reset behavior
+    }
 }
 

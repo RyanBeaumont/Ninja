@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,7 @@ using UnityEngine.SceneManagement;
     public CardClass mainClass;
     public CardClass subClass;
     public List<Card> deck;
+    public List<InventoryItem> equipment;
     public bool alive = true;
 }
 public class YourParty : MonoBehaviour
@@ -24,6 +26,7 @@ public class YourParty : MonoBehaviour
     public bool devTools = false;
     public string currentSaveFileName = "savefile_1";
     public float gold;
+    public float spacing = 1f;
     void Awake()
     {
         if (instance == null)
@@ -59,6 +62,7 @@ public class YourParty : MonoBehaviour
         saveMember.xp = member.xp;
         saveMember.hpPercentage = member.hpPercentage;
         saveMember.deck = new List<string>();
+        saveMember.equipment = member.equipment;
         foreach (var card in member.deck)
         {
             saveMember.deck.Add(card.cardName); // Assuming Card has a cardName property
@@ -74,6 +78,7 @@ public class YourParty : MonoBehaviour
             member.level = saveMember.level;
             member.xp = saveMember.xp;
             member.hpPercentage = saveMember.hpPercentage;
+            member.equipment = saveMember.equipment;
             member.deck = new List<Card>();
             foreach (var cardName in saveMember.deck)
             {
@@ -124,6 +129,30 @@ public class YourParty : MonoBehaviour
         currentSaveFileName = data.saveFileName;
     }
 
+    public void GetStats(PartyMember partyMember, out float attack, out float maxHp, out float speed, out float psychic)
+    {
+        var multiplier = 2f; if(partyMember.subClass == CardClass.Ninja) multiplier = 2.5f; if(partyMember.mainClass == CardClass.Ninja) multiplier = 3f;
+        speed = partyMember.level * multiplier + 10f;
+        foreach(Equipment e in partyMember.equipment)
+            foreach(StatusEffect se in e.statusEffects)
+                if(se.stat == "SPD") speed += se.amount;
+        multiplier = 2f; if(partyMember.subClass == CardClass.Warrior) multiplier = 2.5f; if(partyMember.mainClass == CardClass.Warrior) multiplier = 3f;
+        attack = partyMember.level * multiplier + 10f;
+        foreach(Equipment e in partyMember.equipment)
+            foreach(StatusEffect se in e.statusEffects)
+                if(se.stat == "ATK") attack += se.amount;
+        multiplier = 10f; if(partyMember.subClass == CardClass.Grappler) multiplier = 20f; if(partyMember.mainClass == CardClass.Grappler) multiplier = 30f;
+        maxHp = partyMember.level * multiplier + 50f;
+        foreach(Equipment e in partyMember.equipment)
+            foreach(StatusEffect se in e.statusEffects)
+                if(se.stat == "MAXHP") maxHp += se.amount;
+        multiplier = 1f; if(partyMember.subClass == CardClass.Psychic) multiplier = 1.5f; if(partyMember.mainClass == CardClass.Psychic) multiplier = 2f;
+        psychic = partyMember.level * multiplier + 10f;
+        foreach(Equipment e in partyMember.equipment)
+            foreach(StatusEffect se in e.statusEffects)
+                if(se.stat == "PSY") psychic += se.amount;
+    }
+
 
     public void StartEncounter(List<GameObject> enemyPrefabs, Transform position, GameObject newplayer)
     {
@@ -146,13 +175,16 @@ public class YourParty : MonoBehaviour
         var battleManager = BattleSetup.GetComponent<BattleManager>();
         var playerSpawn = BattleSetup.transform.Find("PlayerSpawn");
         var enemySpawn = BattleSetup.transform.Find("EnemySpawn");
-        var spacing = 2f;
+        
         
         // Add party members as combatants
         for(int i=0; i< partyMembers.Count; i++)
         {
             var partyMember = GetPartyMember(partyMembers[i]);
             var combatantObject = Instantiate(Resources.Load<GameObject>("PlayerCombatant"), playerSpawn);
+            var model = Instantiate(Resources.Load<GameObject>($"Characters/{partyMember.modelName}"), combatantObject.transform);
+
+            var healthbar = Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);
 
             //give cards
             var doubleDeck = new List<Card>(partyMember.deck);
@@ -168,22 +200,17 @@ public class YourParty : MonoBehaviour
 
             combatant.combatantName = partyMember.memberName;
 
-            print($"{combatant.combatantName} HP: {combatant.hp}/{combatant.maxHp} HP PERCENT {partyMember.hpPercentage}");
-            var multiplier = 2f; if(partyMember.subClass == CardClass.Ninja) multiplier = 3f; if(partyMember.mainClass == CardClass.Ninja) multiplier = 4f;
-            combatant.speed = partyMember.level * multiplier + 10f;
-            multiplier = 2f; if(partyMember.subClass == CardClass.Warrior) multiplier = 3f; if(partyMember.mainClass == CardClass.Warrior) multiplier = 4f;
-            combatant.attack = partyMember.level * multiplier + 10f;
-            multiplier = 10f; if(partyMember.subClass == CardClass.Grappler) multiplier = 20f; if(partyMember.mainClass == CardClass.Grappler) multiplier = 30f;
-            combatant.maxHp = partyMember.level * multiplier + 50f;
+            //print($"{combatant.combatantName} HP: {combatant.hp}/{combatant.maxHp} HP PERCENT {partyMember.hpPercentage}");
+            GetStats(partyMember, out var attack, out var maxHp, out var speed, out var psychic);
+            //check for an equipment item that boosts max hp
+                
+            combatant.attack = attack; combatant.maxHp = maxHp; combatant.speed = speed; combatant.psychic = psychic;
             combatant.hp = combatant.maxHp * partyMember.hpPercentage ;
-            multiplier = 1f; if(partyMember.subClass == CardClass.Psychic) multiplier = 1.5f; if(partyMember.mainClass == CardClass.Psychic) multiplier = 2f;
-            combatant.psychic = partyMember.level * multiplier + 15f;
             combatant.maxMp = combatant.psychic * 4;
             combatant.level = partyMember.level;
             combatant.defense = 1f;
-            var model = Instantiate(Resources.Load<GameObject>($"Characters/{partyMember.modelName}"), combatantObject.transform);
-
-            var healthbar = Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);
+            
+            
             if(partyMember.alive == false){combatant.alive = false; combatant.PlayAnimation("Knockdown");}
             combatant.enabled = true;
             combatant.GetComponentInChildren<Animator>().enabled = true;    

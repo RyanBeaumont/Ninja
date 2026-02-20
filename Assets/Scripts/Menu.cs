@@ -16,7 +16,12 @@ public class Menu : MonoBehaviour
     public TMP_Text deckText;
     public Transform characterList;
     public Transform tutorialUI;
+    public TMP_Text statsText;
+    public TMP_Text nameText;
+    public Image portrait;
     public Transform settingsContainer;
+    public Transform equipmentContainer;
+    public TMP_Text descriptionText;
     public string currentCharacter = "";
 
     void Start()
@@ -41,6 +46,10 @@ public class Menu : MonoBehaviour
         PartyMember p = YourParty.instance.GetPartyMember(character);
         if(p != null)
         {
+            nameText.text = p.memberName;
+            YourParty.instance.GetStats(p,out float attack, out float maxHp, out float speed, out float psychic);
+            portrait.sprite = Resources.Load<Sprite>($"Sprites/{p.memberName}");
+            statsText.text = $"Attack: {attack}  \n HP: {p.hpPercentage * maxHp}/{maxHp}  \n MP/Turn: {psychic}  \n Speed: {speed}";
             print("Party member deck contains " + p.deck.Count + " cards.");
             deckContainer.gameObject.SetActive(true);
             characterContainer.gameObject.SetActive(false);
@@ -62,7 +71,86 @@ public class Menu : MonoBehaviour
                 thisCardPrefab.GetComponentInChildren<MenuCardDisplay>().onPointerDown = () => MoveCardToDeck(card);
             }
             deckText.text = $"Your Deck ({p.deck.Count})                Available Cards";
+
+            //Equipment container
+            //clear
+            foreach(Transform child in equipmentContainer) Destroy(child.gameObject);
+            //populate
+            foreach(InventoryItem item in p.equipment)
+            {
+                var itemGO = Instantiate(Resources.Load<GameObject>("InventoryItem"), equipmentContainer);
+                var itemText = itemGO.GetComponentInChildren<TMPro.TMP_Text>();
+                if(itemText != null)
+                {
+                    itemText.text = $"{item.itemName}";
+                }
+                var itemImage = itemGO.transform.Find("Image").GetComponent<UnityEngine.UI.Image>();
+                if(itemImage != null)
+                {
+                    var sprite = Resources.Load<Sprite>($"Items/{item.itemName}");
+                    if(sprite != null)
+                    {
+                        itemImage.sprite = sprite;
+                    }
+                }
+                var itemButton = itemGO.GetComponent<UnityEngine.UI.Button>();
+                itemButton.onClick.AddListener(() => {
+                    UnequipItem(item);
+                });
+                //mouse enter to show description
+                var hover = itemGO.AddComponent<PointerHoverHandler>();
+
+                hover.onEnter = () =>{ShowItemDescription(item);};
+            }
         }
+    }
+
+    public bool EquipItem(InventoryItem item)
+    {
+        var p = YourParty.instance.GetPartyMember(currentCharacter);
+        if(p != null)
+        {
+            // Check if item is already equipped
+            if(p.equipment.Contains(item))
+            {
+                UnequipItem(item);
+                return false; // Don't consume when unequipping
+            }
+            
+            //Iterate backward to remove all equipment that shares a type
+            for(int i = p.equipment.Count - 1; i >= 0; i--)
+            {
+                if(p.equipment[i] is Equipment e && item is Equipment itemEq && e.type == itemEq.type)
+                {
+                    UnequipItem(p.equipment[i]);
+                }
+            }
+            AudioManager.Instance.PlaySoundEffect("MenuEquip");
+            p.equipment.Add(item);
+            GameManager.Instance.ConsumeInventoryItem(item.itemName,true, 1);
+            FindFirstObjectByType<Inventory>().UpdateInventoryImages(GameManager.Instance.inventory);
+            ShowCharacterMenu(currentCharacter);
+            return true; // Consume when equipping
+        }
+        return false;
+    }
+    public void UnequipItem(InventoryItem item)
+    {
+        AudioManager.Instance.PlaySoundEffect("MenuEquip");
+        var p = YourParty.instance.GetPartyMember(currentCharacter);
+        if(p != null)
+        {
+            p.equipment.Remove(item);
+            GameManager.Instance.AddInventoryItem(item.itemName, 1);
+            ShowCharacterMenu(currentCharacter);
+        }
+        FindFirstObjectByType<Inventory>().UpdateInventoryImages(GameManager.Instance.inventory);
+    }
+
+    void ShowItemDescription(InventoryItem item)
+    {
+        descriptionText.text = item.description;
+
     }
 
     public void ShowTutorialMessage(string tutorialMessage){
@@ -76,6 +164,7 @@ public class Menu : MonoBehaviour
 
     public void MoveCardToDeck(Card card)
     {
+        
         print("Clicked");
         var p = YourParty.instance.GetPartyMember(currentCharacter);
         if(p != null)
@@ -107,8 +196,7 @@ public class Menu : MonoBehaviour
             {
                 thisCharacter.transform.Find("CharacterName").GetComponent<TMP_Text>().text = p;
                 thisCharacter.transform.Find("Subheading").GetComponent<TMP_Text>().text = $"Lv. {partyMember.level} {partyMember.mainClass} {partyMember.subClass}";
-                var multiplier = 10f; if(partyMember.subClass == CardClass.Grappler) multiplier = 20f; if(partyMember.mainClass == CardClass.Grappler) multiplier = 30f;
-                var tempHP = partyMember.level * multiplier + 50f;
+                YourParty.instance.GetStats(partyMember,out var attack, out var tempHP, out var speed, out var psychic);
                 thisCharacter.transform.Find("Health/HP").GetComponent<TMP_Text>().text = $"{partyMember.hpPercentage * tempHP}/{tempHP}";
                 thisCharacter.transform.Find("Health").GetComponent<Slider>().value = partyMember.hpPercentage;
                 thisCharacter.transform.Find("Portrait").GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/{partyMember.memberName}");
@@ -133,6 +221,7 @@ public class Menu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.GetGameplayState() == GameplayState.FreeMovement)
         {
+            AudioManager.Instance.PlaySoundEffect("MenuClose");
             if(entireMenu.gameObject.activeInHierarchy){
                 if(deckContainer.gameObject.activeInHierarchy){
                     deckContainer.gameObject.SetActive(false);

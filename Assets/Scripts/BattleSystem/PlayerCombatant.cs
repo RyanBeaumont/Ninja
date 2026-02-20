@@ -9,6 +9,7 @@ public class PlayerCombatant : Combatant
     public List<Card> hand = new List<Card>();
     public List<Card> discard = new List<Card>();
     [HideInInspector] public int tp; //TERROR points
+    [HideInInspector] public bool hidden = false;
 
     public void DrawCards(int amount)
     {
@@ -53,6 +54,25 @@ public class PlayerCombatant : Combatant
         }
         if (deck.Count == 0) return null; //No cards to draw
         return deck[0];
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (hidden)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                hidden = false;
+                initiative = 100f;
+                BattleManager.Instance.AddCombatant(this);
+                PlayAnimation("ArmsCrossed");
+                SetTargetPosition(transform.position + Vector3.up*4f);
+                AudioManager.Instance.PlaySoundEffect("Teleport");
+                RemoveStatusEffect("");
+                GameManager.Instance.ShowMessage($"{combatantName} emerges from the shadows to play next!");
+            }
+        }
     }
 
     public bool PlayCard(Card card)

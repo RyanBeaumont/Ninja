@@ -12,13 +12,28 @@ public enum GameplayState{FreeMovement, RestrictedMovement, Dialog, Combat}
 {
     public string itemName;
     public int quantity;
+    public string description;
 
+    public string function = "EquipItem";
     public InventoryItem(string name, int qty)
     {
         itemName = name;
         quantity = qty;
     }
+    public GameAction gameAction;
+    public System.Action<Menu> outOfBattleAction;
 }
+
+public class Equipment : InventoryItem
+{
+    public StatusEffect[] statusEffects;
+    public string type;
+    public Equipment(string name, int qty) : base(name, qty)
+    {
+        function = ""; // Equipment doesn't use functions
+    }
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -42,6 +57,197 @@ public class GameManager : MonoBehaviour
     Menu menu;
 
     public List<string> finishedEncounters = new List<string>();
+
+    public InventoryItem GetInventoryItemByName(string name){
+        InventoryItem newItem = null;
+        var battleManager = FindFirstObjectByType<BattleManager>();
+        
+        switch(name){
+            case "Coke":
+                newItem = new InventoryItem(name,1);
+                newItem.description = "Good for your HEALTH... You think. Can be used in combat";
+                newItem.outOfBattleAction = (menu) => {
+                    var pm = YourParty.instance.GetPartyMember(menu.currentCharacter);
+                    if(pm != null)
+                    {
+                        var multiplier = 10f; 
+                        if(pm.subClass == CardClass.Grappler) multiplier = 20f; 
+                        if(pm.mainClass == CardClass.Grappler) multiplier = 30f;
+                        var maxHp = pm.level * multiplier + 50f;
+                        float healAmount = 50f;
+                        pm.hpPercentage += healAmount / maxHp;
+                        if(pm.hpPercentage > 1f) pm.hpPercentage = 1f;
+                    }
+                };
+                newItem.gameAction = new HealAction()
+                {
+                    targetType = TargetType.SingleAlly,
+                    animation = "Drink",
+                    healAmount = "50"
+                };
+            break;
+            case "Bang":
+                newItem = new InventoryItem(name,1);
+                newItem.description = "Throw at an enemy to deal damage. Does not consume a turn";
+                newItem.gameAction = new DamageAction()
+                {
+                    targetType = TargetType.SingleEnemy,
+                    animation = "Throw",
+                    damageType = DamageType.Psychic,
+                    damage = "25",
+                    hits = 1
+                };
+            break;
+            case "Lockpick":
+                newItem = new InventoryItem(name,1);
+                newItem.description = "You made this out of a hairpin! Perks of having long, luscious locks";
+            break;
+            case "Coffee":
+                newItem = new InventoryItem(name,1);
+                newItem.description = "Gives you the jitters, the craps, and 30 MP. You drink it BLACK, because you are A REAL MAN";
+                newItem.gameAction = new GainMPAction()
+                {
+                    targetType = TargetType.SingleAlly,
+                    animation = "Drink",
+                    mpAmount = "30"
+                };
+            break;
+            case "DrPepper":
+                newItem = new InventoryItem(name,1);
+                newItem.description = "The Dr is In! Instantly revives an ally and restores 50 HP";
+                newItem.gameAction = new ReviveAction()
+                {
+                    targetType = TargetType.SingleAlly,
+                    animation = "Drink"
+                };
+            break;
+            case "Coca-Cola Keg":
+                newItem = new InventoryItem(name,1);
+                newItem.description = "Now with 3000 calories! Enough health for the whole party to drink at once!";
+                newItem.outOfBattleAction = (menu) => {
+                    foreach(PartyMember pm in YourParty.instance.reserve)
+                    {
+                        var multiplier = 10f; 
+                        if(pm.subClass == CardClass.Grappler) multiplier = 20f; 
+                        if(pm.mainClass == CardClass.Grappler) multiplier = 30f;
+                        var maxHp = pm.level * multiplier + 50f;
+                        float healAmount = 50f;
+                        pm.hpPercentage += healAmount / maxHp;
+                        if(pm.hpPercentage > 1f) pm.hpPercentage = 1f;
+                    }
+                };
+                newItem.gameAction = new HealAction()
+                {
+                    targetType = TargetType.AllAllies,
+                    animation = "Drink",
+                    healAmount = "50"
+                };
+            break;
+            case "Leather Vest":
+                newItem = new Equipment(name,1)
+                {
+                    description = "+20 Max HP",
+                    statusEffects = new StatusEffect[]
+                    {
+                        new StatusEffect()
+                        {
+                            name = "Armored",
+                            stat = "MAXHP",
+                            amount = 20,
+                            duration = -1
+                        },
+                    },
+                    type = "Body"
+                };
+            break;
+            case "Viking Helmet":
+                newItem = new Equipment(name,1)
+                {
+                    description = "+5 Attack",
+                    statusEffects = new StatusEffect[]
+                    {
+                        new StatusEffect()
+                        {
+                            name = "BrassKnuckles",
+                            stat = "ATK",
+                            amount = 5,
+                            duration = -1
+                        }
+                    },
+                    type = "Head"
+                };
+            break;
+            case "Brass Knuckles":
+                newItem = new Equipment(name,1)
+                {
+                    description = "+5 Attack",
+                    statusEffects = new StatusEffect[]
+                    {
+                        new StatusEffect()
+                        {
+                            name = "BrassKnuckles",
+                            stat = "ATK",
+                            amount = 5,
+                            duration = -1
+                        }
+                    },
+                    type = "Accessory"
+                };
+            break;
+            case "Bicycle Helmet":
+                newItem = new Equipment(name,1)
+                {
+                    description = "+20 Max HP",
+                    statusEffects = new StatusEffect[]
+                    {
+                        new StatusEffect()
+                        {
+                            name = "Helmet",
+                            stat = "MAXHP",
+                            amount = 20,
+                            duration = -1
+                        },
+                    },
+                    type = "Head"
+                };
+            break;
+            case "Mind Helmet":
+                newItem = new Equipment(name,1)
+                {
+                    description = "Protects against UFO's and rogue airwaves. No protection against judgement. +5 MP/turn",
+                    statusEffects = new StatusEffect[]
+                    {
+                        new StatusEffect()
+                        {
+                            name = "Mind Helmet",
+                            stat = "PSY",
+                            amount = 5,
+                            duration = -1
+                        }
+                    },
+                    type = "Head"
+                };
+            break;
+            case "Ninja Headband":
+                newItem = new Equipment(name,1)
+                {
+                    description = "+5 Speed (but only if you run with your hands behind you)",
+                    statusEffects = new StatusEffect[]
+                    {
+                        new StatusEffect()
+                        {
+                            name = "Headband",
+                            stat = "SPD",
+                            amount = 5,
+                            duration = -1
+                        }
+                    },
+                    type = "Head"
+                };
+            break;
+        }
+        return newItem;
+    }
 
     public void SetGameplayState(GameplayState newState)
     { 
@@ -306,7 +512,7 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
-        inventory.Add(new InventoryItem(itemName, quantity));
+        inventory.Add(GameManager.Instance.GetInventoryItemByName(itemName));
     }
     public bool ConsumeInventoryItem(string itemName, bool consume, int quantity)
     {

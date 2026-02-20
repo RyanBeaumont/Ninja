@@ -13,7 +13,12 @@ public class UpdateParty : ChainedInteractable
             }
             foreach(var member in partyMembers)
             {
-                YourParty.instance.AddPartyMember(member);
+                if(!YourParty.instance.partyMembers.Contains(member))
+                    YourParty.instance.AddPartyMember(member);
+                else
+                {
+                    GameManager.Instance.ShowMessage($"Already in your party");
+                }
             }
             CallNext();  
         }

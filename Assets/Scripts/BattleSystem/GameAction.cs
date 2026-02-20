@@ -209,6 +209,23 @@ public class SuplexDamageAction : DamageAction
     }
 }
 
+public class OmnisweepDamageAction : DamageAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        for (int i = battleManager.currentTargets.Count - 1; i >= 0; i--)
+        {
+            var target = battleManager.currentTargets[i];
+            if (target.HasStatusEffect("Off-Balance") != null)
+            {
+                target.RemoveStatusEffect("Off-Balance");
+                battleManager.currentTargets.RemoveAt(i);
+            }
+        }
+        base.Execute(battleManager);
+    }
+}
+
 public class GrappleDamageAction : DamageAction
 {
     public bool lifesteal = false;
@@ -227,7 +244,50 @@ public class GrappleDamageAction : DamageAction
             {
                 name = "Stunned",
                 amount = 1,
-                duration = 1,
+                duration = -1,
+            };
+            if (lifesteal)
+            {
+                battleManager.currentTargets[0].ApplyStatusEffect(new StatusEffect()
+                {
+                    name = "Lifesteal",
+                    amount = 1,
+                    additive = true,
+                    duration = 2,
+                });
+            }
+        }
+        caller.ApplyStatusEffect(new StatusEffect()
+        {
+            name = "Off-Balance",
+            stat = "DEF",
+            amount = .25f,
+            duration = -1,
+            removeOnHit = true
+        });
+        base.Execute(battleManager);
+    }
+}
+
+public class NardbusterDamageAction : DamageAction
+{
+    public bool lifesteal = false;
+    public override void Execute(BattleManager battleManager)
+    {
+        if(battleManager.currentTargets.Count == 1 && (battleManager.currentTargets[0].HasStatusEffect("Off-Balance")!=null || battleManager.currentTargets[0].HasStatusEffect("Prone") != null) || lifesteal)
+        {
+            battleManager.currentTargets[0].RemoveStatusEffect("Off-Balance");
+            battleManager.currentTargets[0].ApplyStatusEffect(new StatusEffect
+            {
+                name = "Prone",
+                amount = 1,
+                duration = 2,
+            });
+            statusEffect = new StatusEffect
+            {
+                name = "Stunned",
+                amount = 1,
+                duration = -1,
             };
             if (lifesteal)
             {
@@ -357,6 +417,53 @@ public class StunAction : GameAction
 {
     public override void Execute(BattleManager battleManager){
         base.Execute(battleManager);
+        caller.RemoveStatusEffect("Stunned");
+    }
+}
+
+public class VanishAction : GameAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        base.Execute(battleManager);
+        if (caller is PlayerCombatant p)p.hidden = true;
+        caller.SetTargetPosition(caller.transform.position + Vector3.down*4f);
+        battleManager.RemoveCombatant(caller);
+        AudioManager.Instance.PlaySoundEffect("Teleport");
+        GameManager.Instance.ShowMessage($"{caller.combatantName} vanishes... Press [E] on any turn to reappear");
+    }
+}
+
+public class ExploitWeaknessAction : DamageAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        base.Execute(battleManager);
+        if(battleManager.currentTargets[0] != null && battleManager.currentTargets[0].statusEffects.Count > 0)
+        {
+            bonusActions = 1;
+        }
+    }
+}
+
+public class ChainKillAction : GameAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        base.Execute(battleManager);
+        if(battleManager.currentTargets[0] != null && battleManager.currentTargets[0].hp <= 50f)
+        {
+            battleManager.currentTargets[0].TakeDamage(caller,100,DamageType.Slashing);
+            if(battleManager.activePlayer != null)
+            {
+                var card = battleManager.activePlayer.discard[0];
+                if(card != null) battleManager.activePlayer.discard.Remove(card);
+                battleManager.activePlayer.deck.Insert(0,card);
+                battleManager.activePlayer.DrawCards(1);
+                GameManager.Instance.ShowMessage("Chain Kill!");
+            }
+            bonusActions = 1;
+        }
     }
 }
 
@@ -406,11 +513,13 @@ public class DrawUntilAction : DrawCardsAction
         int cards = 0;
         if (caller is PlayerCombatant player)
         {
-            while(player.hand.Count < cardCount){
-                player.DrawCards(cardCount);
-                cards ++;
+           foreach(var card in GameObject.FindFirstObjectByType<HandManager>().cardsInHand)
+            {
+                player.DiscardCard(card.GetComponent<CardDisplay>().card);
+                GameObject.Destroy(card.gameObject);
             }
-            GameManager.Instance.ShowMessage($"{caller.combatantName} draws {cards} cards!");
+            player.DrawCards(cards);
+            GameManager.Instance.ShowMessage($"Drawing {cards} cards");
         }
     }
 }
@@ -426,7 +535,7 @@ public class GainMPAction : GameAction
     }
 }
 
-public class ReloadAction : GameAction
+public class ChainOfPainAction : GameAction
 {
     public override void Execute(BattleManager battleManager)
     {
@@ -436,11 +545,9 @@ public class ReloadAction : GameAction
             if(c is PlayerCombatant player && player.discard.Count > 0)
             {
                 var card = player.discard[0];
-                card.tempCost = Mathf.Max(0,card.cost - 20);
-                player.discard.RemoveAt(0);
-                player.deck.Insert(0,card);
-                player.DrawCards(1);
-                 GameManager.Instance.ShowMessage($"{player.combatantName} re-draws {card.cardName}");
+                GameManager.Instance.ShowMessage($"{player.combatantName} uses {card.cardName} AGAIN!!!");
+                player.PlayCard(card);
+                 
             }
             else
             {
@@ -486,7 +593,7 @@ public class EnergySuckAction : GameAction
         }
         else
         {
-            float suckAmount = Mathf.Min(caller.EvaluateStatFormula(mpAmount), battleManager.currentTargets[0].mp);
+            float suckAmount = caller.EvaluateStatFormula(mpAmount);
             battleManager.currentTargets[0].GainMP(-caller.EvaluateStatFormula(mpAmount));
             caller.GainMP(suckAmount);
             GameManager.Instance.ShowMessage($"{caller.combatantName} winks at {battleManager.currentTargets[0].combatantName}, stealing their heart and {suckAmount} MP");

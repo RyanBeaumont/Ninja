@@ -97,9 +97,20 @@ public class CardDisplay : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
 
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
+        AudioManager.Instance.PlaySoundEffect("MenuHover");
+        if(GameObject.FindFirstObjectByType<BattleManager>() == null) return;
         selectedBorder.enabled = true;
+        if(BattleManager.Instance.activePlayer.mp > card.cost && BattleManager.Instance.activePlayer.tp > card.tpCost)
+        {
+            selectedBorder.color = Color.white;
+        }
+        else
+        {
+            selectedBorder.color = Color.red;
+        }
         targetLocalPos += new Vector3(0f, 20f, 0f);
         originalSiblingIndex = transform.GetSiblingIndex();
+        
         if(FindFirstObjectByType<BattleManager>() != null){
             transform.SetAsLastSibling();
             if(damageTypeOverlay != null) damageTypeOverlay.gameObject.SetActive(true);

@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 3
-  maxHp: 300
-  hp: 300
+  maxHp: 400
+  hp: 400
   attack: 10
   defense: 1
   speed: 19
@@ -63,7 +63,7 @@ MonoBehaviour:
   initiative: 0
   statusEffects: []
   attackPatterns:
-  - attackPattern: SwordStab
+  - attackPattern: SwordThrust
     attackName: Side Dodge This!
     damage: 10
     damageType: 1
@@ -75,13 +75,13 @@ MonoBehaviour:
       additive: 1
       duration: -1
       removeOnHit: 0
-    hits: 3
+    hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
   - attackPattern: Slash, SwordBackhand, Slash
     attackName: I'll Show You Karate
-    damage: 30
+    damage: 20
     damageType: 0
     targetType: 1
     statusEffect:

@@ -68,15 +68,8 @@ public class Shop : ChainedInteractable
 
     void ShowItemDescription(InventoryItem item)
     {
-        string description = "";
-            if(CardDatabase.Instance.itemDescriptions.TryGetValue(item.itemName, out description))
-            {
-                descriptionText.text = description;
-            }
-            else
-            {
-                descriptionText.text = "Nothing is known of this item.";
-            }
+
+      descriptionText.text = item.description;
     }
 
     void BuyItem(ShopItem item)

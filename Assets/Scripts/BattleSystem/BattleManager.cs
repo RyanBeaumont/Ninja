@@ -47,7 +47,7 @@ public class BattleManager : MonoBehaviour
     public static BattleManager Instance;
     public Transform quickTimeEvent;
     public float quickTimeActiveTime = 1.5f;
-    public float quickTimeCritWindow = 0.2f;
+    public float quickTimeCritWindow = 0.01f;
     public Transform discardText;
     float quickTimeMultiplier = 1f;
     float elapsedTime = 0f;
@@ -143,7 +143,7 @@ public class BattleManager : MonoBehaviour
     public void ExecuteCard(Card card, Combatant caller)
     {
         print("Executing card: " + card.cardName);
-        if(activePlayer != null) activePlayer.tp += 10; //Gain TERROR points
+        if(activePlayer != null) activePlayer.tp += 5; //Gain TERROR points
         foreach(var action in card.effects)
         {
             action.caller = caller;
@@ -339,9 +339,10 @@ public class BattleManager : MonoBehaviour
             {
                 AudioManager.Instance.PlaySoundEffect("SwordClang");
                 var difference = Mathf.Abs(slider.value - 1f);
+                print(difference);
                 if(difference < quickTimeCritWindow) quickTimeMultiplier = 1.25f;
-                else quickTimeMultiplier = 1 - (difference * 2);
-                if(quickTimeMultiplier == 1.5){
+                else quickTimeMultiplier = 1 - (difference * 8);
+                if(quickTimeMultiplier == 1.25){
                     GameManager.Instance.ShowMessage($"CRITICAL! 1.25X");
                     AudioManager.Instance.PlaySoundEffect("OrchestraHit",UnityEngine.Random.Range(0.9f,1.1f));
                 }
@@ -402,7 +403,7 @@ public class BattleManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.D)) dodgeInput = "Right";
                 if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) dodgeInput = "Jump";
                 if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.LeftShift)) dodgeInput = "Duck";
-                if(Input.GetKeyDown(KeyCode.Mouse1)) dodgeInput = "Block";
+                //if(Input.GetKeyDown(KeyCode.Mouse1)) dodgeInput = "Block";
 
                 if(dodgeInput != "")
                 {
@@ -756,7 +757,7 @@ public class BattleManager : MonoBehaviour
             if(pendingDamageType == DamageType.Psychic)
                 AudioManager.Instance.PlaySoundEffect("Crackle",UnityEngine.Random.Range(0.8f,1.2f));
             if(lifestrike){lifestrike = false; activeCombatant.Heal(d);}
-            if(activePlayer != null) activePlayer.tp += (int)(d/4f); //Gain TERROR points based on damage dealt
+            if(activePlayer != null) activePlayer.tp += (int)(d/2f); //Gain TERROR points based on damage dealt
             }
             if(pendingStatusEffect != null)
             {
@@ -834,6 +835,11 @@ public class BattleManager : MonoBehaviour
                 if(pendingDamageType == DamageType.Psychic)
                     AudioManager.Instance.PlaySoundEffect("Crackle",UnityEngine.Random.Range(0.8f,1.2f));
                 }
+                if(pendingStatusEffect != null && pendingStatusEffect.name != "")
+                {
+                    if(t.alive)
+                    t.ApplyStatusEffect(pendingStatusEffect);
+                }
             }
         }
         hitsRemaining --;
@@ -882,17 +888,7 @@ public class BattleManager : MonoBehaviour
                 }
                 
             }
-            if(pendingStatusEffect != null && pendingStatusEffect.name != "")
-            {
-                
-                if(!perfectDodge)
-                    foreach(var t in currentTargets)
-                    {
-                        if(t.alive)
-                        t.ApplyStatusEffect(pendingStatusEffect);
-                    }
-                pendingStatusEffect = null;
-            }
+            pendingStatusEffect = null;
             EndAction();
         }
     }

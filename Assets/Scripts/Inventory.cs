@@ -15,6 +15,7 @@ public class PointerHoverHandler : MonoBehaviour,
     public void OnPointerEnter(PointerEventData eventData)
     {
         onEnter?.Invoke();
+        AudioManager.Instance.PlaySoundEffect("MenuHover");
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -50,7 +51,7 @@ public class Inventory : MonoBehaviour
             }
             var itemButton = itemGO.GetComponent<UnityEngine.UI.Button>();
             itemButton.onClick.AddListener(() => {
-                UseItem(item.itemName);
+                UseItem(item);
             });
             //mouse enter to show description
             var hover = itemGO.AddComponent<PointerHoverHandler>();
@@ -60,97 +61,90 @@ public class Inventory : MonoBehaviour
             hover.onExit = () =>{HideItemDescription(item);};
         }
 
-        void UseItem(string itemName)
+        
+
+        void UseItem(InventoryItem item)
         {
             var menu = FindFirstObjectByType<Menu>();
             var battleManager = FindFirstObjectByType<BattleManager>();
             bool success = false;
-            switch(itemName)
-            {
-                case "Coke":
-                    //heal player
-                    if(battleManager != null)
-                    {
-                        battleManager.UseCoke();
-                        success = true;
-                    }
-                    else
-                    {
-                        var pm = YourParty.instance.GetPartyMember(menu.currentCharacter);
-                        if(pm != null)
-                        {
-                            var multiplier = 10f; if(pm.subClass == CardClass.Grappler) multiplier = 20f; if(pm.mainClass == CardClass.Grappler) multiplier = 30f;
-                            var maxHp = pm.level * multiplier + 50f;
-                            float healAmount = 50f;
-                            pm.hpPercentage += healAmount / maxHp;
-                            if(pm.hpPercentage > 1f) pm.hpPercentage = 1f;
-                            success = true;
-                        }
-                        
-                    }
-                    break;
-                case "Coca-Cola Keg":
-                    //heal player
-                    if(battleManager != null)
-                    {
-                        battleManager.UseCokeKeg();
-                        success = true;
-                    }
-                    else
-                    {
-                        foreach(PartyMember pm in YourParty.instance.reserve)
-                        {
-                            var multiplier = 10f; if(pm.subClass == CardClass.Grappler) multiplier = 20f; if(pm.mainClass == CardClass.Grappler) multiplier = 30f;
-                            var maxHp = pm.level * multiplier + 50f;
-                            float healAmount = 50f;
-                            pm.hpPercentage += healAmount / maxHp;
-                            if(pm.hpPercentage > 1f) pm.hpPercentage = 1f;
-                            
-                        }
-                        success = true;
-                    }
-                    break;
-                
-                case "Bang":
-                    if(battleManager != null)
-                    {
-                        battleManager.UseBang();
-                        success = true;
-                    }
-                    break;
-                case "DrPepper":
-                    if(battleManager != null)
-                    {
-                        battleManager.UseDrPepper();
-                        success = true;
-                    }
-                    break;
-                case "Coffee":
-                    if(battleManager != null)
-                    {
-                        battleManager.UseCoffee();
-                        success = true;
-                    }
-                    break;
-                default:
-                    break;
-            }
-                if(success)
-                {
-                    GameManager.Instance.ConsumeInventoryItem(itemName, true, 1);
-                    menu.UpdateParty();
-                    AudioManager.Instance.PlaySoundEffect("Save",1);
-                    UpdateInventoryImages(GameManager.Instance.inventory);
-                }
             
+            // Equipment handling (out-of-battle only)
+            if(item is Equipment equipment && menu != null)
+            {
+                try
+                {
+                    menu.EquipItem(item);
+                    success = true;  // EquipItem handles consumption internally
+                }
+                catch(System.Exception ex)
+                {
+                    Debug.LogError($"Error equipping '{item.itemName}': {ex.Message}");
+                }
+            }
+            // Battle usage
+            else if(item.gameAction != null && battleManager != null)
+            {
+               try
+               {
+                Debug.Log("Trying to use item in battle");
+                item.gameAction.caller = battleManager.activeCombatant;
+                   // If it's a targeting action, queue it for targeting
+                   if(item.gameAction.targetType == TargetType.SingleAlly || 
+                      item.gameAction.targetType == TargetType.SingleEnemy ||
+                      item.gameAction.targetType == TargetType.Any)
+                   {
+                       var targetAction = new ChooseTargetsAction()
+                       {
+                           targetType = item.gameAction.targetType,
+                           prompt = $"Choose target for {item.itemName}",
+                           gameAction = item.gameAction,
+                           caller = item.gameAction.caller
+                       };
+                       battleManager.actionQueue.Add(targetAction);
+                   }
+                   else
+                   {
+                       // Direct execution for non-targeted actions
+                       battleManager.actionQueue.Add(item.gameAction);
+                   }
+                   success = true;
+               }
+               catch(System.Exception ex)
+               {
+                   Debug.LogError($"Error using '{item.itemName}' in battle: {ex.Message}");
+               }
+            }
+            // Out-of-battle usage
+            else if(item.outOfBattleAction != null && menu != null)
+            {
+                try
+                {
+                    Debug.Log("Out of battle item");
+                    item.outOfBattleAction(menu);
+                    success = true;
+                    GameManager.Instance.ConsumeInventoryItem(item.itemName, true, 1);
+                }
+                catch(System.Exception ex)
+                {
+                    Debug.LogError($"Error using '{item.itemName}' out of battle: {ex.Message}");
+                }
+            }
+            
+            if(success)
+            {
+                menu.UpdateParty();
+                AudioManager.Instance.PlaySoundEffect("Save",1);
+                UpdateInventoryImages(GameManager.Instance.inventory);
+            }
         }
+        
 
         void ShowItemDescription(InventoryItem item)
         {
-            string description = "";
-            if(CardDatabase.Instance.itemDescriptions.TryGetValue(item.itemName, out description))
+            if(item.description != "")
             {
-                itemDescriptionText.text = description;
+                itemDescriptionText.text = item.description;
             }
             else
             {
