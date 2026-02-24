@@ -9,7 +9,9 @@ public class Door : ChainedInteractable
     public Transform cameraTarget;
     public override void Interact()
     {
-        if(active)
+        if(!active) return;
+        if(spawnPointIndex == -1) spawnPointIndex = GameManager.Instance.currentSpawnPointIndex;
+        if(sceneVariant == -1) sceneVariant = GameManager.Instance.sceneVariant;
         GameManager.Instance.StartSceneTransition(sceneName, spawnPointIndex, sceneVariant, cameraTarget, skybox);
         CallNext();
     }

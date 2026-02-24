@@ -29,9 +29,14 @@ public class QuestGate : ChainedInteractable
         }
         else
         {
-            
-            d.StartDialog(incompleteDialog);
-            d.OnDialogFinished += GiveQuestIfMissing;
+            if(incompleteDialog.Count > 0){
+                d.StartDialog(incompleteDialog);
+                d.OnDialogFinished += GiveQuestIfMissing;
+            }
+            else
+            {
+                Fail();
+            }
         }
     }
 

@@ -2875,6 +2875,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   levelGate: -1
   allowedSceneVariants: 
   needsPartyMember: Storm
@@ -6018,6 +6019,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -6037,6 +6039,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: The streets are eerily silent... A bad omen for a ninja like you
     name: 
@@ -6061,6 +6064,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!65 &66843777
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6150,6 +6154,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!114 &66843781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6165,6 +6170,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: 911ffb73b14752641995bf860c2a5e89, type: 3}
   fadeTime: 1.5
   sfx: 
@@ -20564,6 +20570,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -20583,6 +20590,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Investigate the Alley
 --- !u!114 &189064070
 MonoBehaviour:
@@ -20599,6 +20607,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!4 &189064071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
@@ -22095,6 +22104,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4511803531779812032, guid: 2ed408fb9a417b740ad0d1aeb9e4ebce, type: 3}
   m_PrefabInstance: {fileID: 208917133}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &210694693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4089712344278570179, guid: 0655c0a0b0f759e42883399a6efa94a3, type: 3}
+  m_PrefabInstance: {fileID: 6752025741285810488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &210694698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210694693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: This is your classmate Stretch's house
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  - text: The door is covered in locks
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  turnToFace: 0
+  snapPlayerPosition: 0
 --- !u!1001 &212924560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22556,6 +22601,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -22575,6 +22621,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   itemName: Coke
 --- !u!4 &215972964 stripped
 Transform:
@@ -31619,6 +31666,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -31638,6 +31686,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: A secret passageway? You realize the house right next to the dojo belongs
       to Stretch - does she know about this?
@@ -31674,6 +31723,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!65 &330073387
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31815,6 +31865,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -31834,6 +31885,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Investigate the Alley
   consume: 1
   xpReward: 100
@@ -31862,6 +31914,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Whoever was in charge of decorating this place did a great job. This is
       a Spartan's dream
@@ -34882,6 +34935,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Alright, slowpoke...
 
@@ -34945,6 +34999,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!65 &369911431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35034,6 +35089,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Investigate the Fight Club
 --- !u!114 &369911435
 MonoBehaviour:
@@ -35050,6 +35106,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Investigate the Forest
 --- !u!114 &369911436
 MonoBehaviour:
@@ -35066,6 +35123,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Investigate the Rival Dojo
 --- !u!114 &369911437
 MonoBehaviour:
@@ -35082,6 +35140,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects:
   - {fileID: 2066147007}
@@ -49774,6 +49833,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   prompt: Use lock pick?
   itemName: Lockpick
   itemQuantity: 1
@@ -49800,6 +49860,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -86986,6 +87047,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: This book is titled "Tai Chi for Dummies"
     name: 
@@ -90302,6 +90364,300 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4791988861103740600, guid: 59db014136037dd45a2dd299df8f3a6e, type: 3}
   m_PrefabInstance: {fileID: 1006757032}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1007453493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1007453504}
+  - component: {fileID: 1007453503}
+  - component: {fileID: 1007453502}
+  - component: {fileID: 1007453501}
+  - component: {fileID: 1007453500}
+  - component: {fileID: 1007453499}
+  - component: {fileID: 1007453498}
+  - component: {fileID: 1007453497}
+  - component: {fileID: 1007453496}
+  - component: {fileID: 1007453495}
+  - component: {fileID: 1007453494}
+  m_Layer: 0
+  m_Name: Clues
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1007453494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007453493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &1007453495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007453493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679e7d6cbd6ea234daa49f6a576b7c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+--- !u!114 &1007453496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007453493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c878f22abfffcb44b490cf6a3e20262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  questName: Take Down 5 Wanted Posters
+--- !u!114 &1007453497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007453493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b5bf5e381673248b03fce9dbf3fef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  questName: Investigate the Forest
+  consume: 1
+  xpReward: 25
+  goldReward: 25
+  giveQuestIfMissing: 0
+  completeEvenIfMissing: 1
+  incompleteDialog: []
+--- !u!114 &1007453498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007453493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: You see a scroll tied to a tree...
+    name: 
+    character: {fileID: 1063102851}
+    pose: HandsOnHips
+    cameraAngle: 5
+    face: 
+  - text: 'WANTED: "Spartan" Jack
+
+      HIGHLY DANGEROUS CRIMINAL
+
+      IF SEEN,
+      REPORT TO THE SPARTAN DOJO'
+    name: 
+    character: {fileID: 1063102851}
+    pose: HandsOnHips
+    cameraAngle: 5
+    face: 
+  - text: 'BOUNTY: 500 GOLD'
+    name: 
+    character: {fileID: 1063102851}
+    pose: HandsOnHips
+    cameraAngle: 5
+    face: 
+  - text: Dang. You wish you were worth 500 gold.
+    name: 
+    character: {fileID: 1063102851}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Surprised
+  - text: 'Um, guys?
+
+      It looks like we''re not the only ones on the hunt for
+      Spartan Jack'
+    name: Storm
+    character: {fileID: 1063102851}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Confused
+  - text: 'We better take down these posters...
+
+      I don''t know what Chrome
+      Dome and the Spartans want with our friend but it can''t be good'
+    name: Storm
+    character: {fileID: 1063102851}
+    pose: Explaining
+    cameraAngle: 2
+    face: Confused
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &1007453499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007453493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c98763bde1e894f9c5f6a304ca39dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+--- !u!114 &1007453500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007453493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bf4172aedc168478a45f52bdfd7867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  levelGate: -1
+  allowedSceneVariants: 
+  needsPartyMember: Storm
+  excludePartyMember: 
+  hideObject: 1
+--- !u!65 &1007453501
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007453493}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1007453502
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007453493}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1007453503
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007453493}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1007453504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007453493}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -65, y: 0.74999976, z: -7.250003}
+  m_LocalScale: {x: 9, y: 2.5, z: 8.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1008165048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96317,6 +96673,204 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4950152962487820164, guid: 579e672413cf8424ca5271a772ed65c9, type: 3}
   m_PrefabInstance: {fileID: 1061288876}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1063102849
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -65.92
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.77
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9787779
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.20492439
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -23.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_Name
+      value: Wanted Poster
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1063102856}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1063102855}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1063102854}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1063102853}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1063102852}
+  m_SourcePrefab: {fileID: 100100000, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+--- !u!1 &1063102850 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+  m_PrefabInstance: {fileID: 1063102849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1063102851 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+  m_PrefabInstance: {fileID: 1063102849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1063102852
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063102850}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1063102853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063102850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &1063102854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063102850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  itemName: Wanted Poster
+--- !u!114 &1063102855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063102850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: You take down the WANTED poster
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &1063102856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063102850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bf4172aedc168478a45f52bdfd7867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  levelGate: -1
+  allowedSceneVariants: 
+  needsPartyMember: Storm
+  excludePartyMember: 
+  hideObject: 1
 --- !u!1001 &1063262618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97880,6 +98434,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!23 &1078865894
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -97948,6 +98503,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Suddenly, you see...
     name: 
@@ -98032,6 +98588,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: 0841476bb5b8d3c449dc700a50730a6d, type: 3}
   fadeTime: 0.5
   sfx: 
@@ -98050,6 +98607,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Oh, there you guys are...
 
@@ -98131,6 +98689,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1465752566}
   rotationSpeed: 720
   waypoints:
@@ -98159,6 +98718,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Oh, we have a problem alright
     name: Storm
@@ -98224,6 +98784,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1939439166}
   rotationSpeed: 720
   waypoints:
@@ -98252,6 +98813,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   enemies:
   - {fileID: 8346498964973016767, guid: bf624347d4f3a4641846aae466b7870b, type: 3}
   hideObjects:
@@ -98274,6 +98836,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   overwrite: 1
   partyMembers:
   - Thad
@@ -98294,6 +98857,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1939439166}
   rotationSpeed: 720
   waypoints:
@@ -98318,6 +98882,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 534117363}
   rotationSpeed: 720
   waypoints:
@@ -98342,6 +98907,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1779771471}
   rotationSpeed: 720
   waypoints:
@@ -98366,6 +98932,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1465752566}
   rotationSpeed: 720
   waypoints:
@@ -98390,6 +98957,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1779771471}
   rotationSpeed: 720
   waypoints:
@@ -98414,6 +98982,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Don't hold back
     name: Storm
@@ -98438,6 +99007,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Did we just...
     name: Thad
@@ -98631,6 +99201,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   toBlack: 0
   cameraTarget: {fileID: 0}
 --- !u!114 &1078865912
@@ -98648,6 +99219,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 0}
   rotationSpeed: 720
   waypoints:
@@ -98672,6 +99244,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   toBlack: 1
   cameraTarget: {fileID: 0}
 --- !u!114 &1078865914
@@ -98689,6 +99262,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: 911ffb73b14752641995bf860c2a5e89, type: 3}
   fadeTime: 0
   sfx: explosion
@@ -98707,6 +99281,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1779771471}
   rotationSpeed: 720
   waypoints:
@@ -98758,6 +99333,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   overwrite: 1
   partyMembers:
   - Thad
@@ -98776,6 +99352,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: StormHouse
   spawnPointIndex: 0
   sceneVariant: 0
@@ -100773,6 +101350,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1102994177}
+    - targetCorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1102994178}
   m_SourcePrefab: {fileID: 100100000, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
 --- !u!1 &1102994175 stripped
 GameObject:
@@ -100799,6 +101379,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Against every instinct of self-preservation, you open the door of the FIGHT
       CLUB
@@ -100825,6 +101406,27 @@ MonoBehaviour:
     face: 
   turnToFace: 0
   snapPlayerPosition: 0
+--- !u!114 &1102994178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102994175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b4ef69776623b4f92b74bdf634fb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  sceneName: FightClub
+  spawnPointIndex: 0
+  sceneVariant: -1
+  skybox: {fileID: 0}
+  cameraTarget: {fileID: 0}
 --- !u!1001 &1103498266
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111313,6 +111915,199 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5880966151668079918, guid: 7e7f1160f3f3ffb47968b5618bc236b5, type: 3}
   m_PrefabInstance: {fileID: 1219700533}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1221218017
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -80.927
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.736
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98951215
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.14174981
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.003941706
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.02751585
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -16.305
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 3.186
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_Name
+      value: Wanted Poster (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1221218023}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1221218022}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1221218021}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1221218020}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1221218019}
+  m_SourcePrefab: {fileID: 100100000, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+--- !u!1 &1221218018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+  m_PrefabInstance: {fileID: 1221218017}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1221218019
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221218018}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1221218020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221218018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &1221218021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221218018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  itemName: Wanted Poster
+--- !u!114 &1221218022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221218018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: You take down the WANTED poster
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &1221218023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221218018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bf4172aedc168478a45f52bdfd7867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  levelGate: -1
+  allowedSceneVariants: 
+  needsPartyMember: Storm
+  excludePartyMember: 
+  hideObject: 1
 --- !u!1001 &1221608753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118751,6 +119546,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: This book is titled "7 Reasons Why You Need 7 Knives"
     name: 
@@ -119584,6 +120380,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: JackHouse
   spawnPointIndex: 0
   sceneVariant: 2
@@ -121379,6 +122176,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: JackHouse2
   spawnPointIndex: 0
   sceneVariant: 0
@@ -121399,6 +122197,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'The door isn''t even closed...
 
@@ -121425,6 +122224,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Investigate Spartan Jack's House
   consume: 1
   xpReward: 0
@@ -124848,6 +125648,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2805509842704245774, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1387872099}
+    - targetCorrespondingSourceObject: {fileID: 2805509842704245774, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1387872098}
   m_SourcePrefab: {fileID: 100100000, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
 --- !u!4 &1387872096 stripped
@@ -124883,6 +125686,27 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1387872099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387872097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bf4172aedc168478a45f52bdfd7867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  levelGate: -1
+  allowedSceneVariants: 
+  needsPartyMember: SpartanJack
+  excludePartyMember: 
+  hideObject: 1
 --- !u!1001 &1388195290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127352,6 +128176,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -127371,6 +128196,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Stretch...
 
@@ -127403,6 +128229,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   toBlack: 1
   cameraTarget: {fileID: 0}
 --- !u!114 &1414783446
@@ -127420,6 +128247,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 947807508}
   rotationSpeed: 720
   waypoints:
@@ -127452,6 +128280,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Ungghh... Nice try...
     name: 
@@ -127492,6 +128321,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: S... Storm? It's midnight - what are you doing here?
     name: Spartan Jack
@@ -127545,6 +128375,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: a771b7d13abcec6479d2472603246269, type: 3}
   fadeTime: 1.5
   sfx: 
@@ -127563,6 +128394,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "You hear a sound coming from the roof\u2026 Your fight-or-flight instinct
       begins to kick in, but before you have time to react\u2026\r\n"
@@ -127588,6 +128420,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!23 &1414783457
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -127656,6 +128489,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   enemies:
   - {fileID: 8346498964973016767, guid: f610705916b6c134bb50ec195eeb6682, type: 3}
   hideObjects: []
@@ -127675,6 +128509,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 770400198}
   rotationSpeed: 720
   waypoints:
@@ -127711,6 +128546,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: Cabin
   spawnPointIndex: 0
   sceneVariant: 0
@@ -127754,6 +128590,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Unnghhh
     name: 
@@ -127778,6 +128615,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 0}
   fadeTime: 0.1
   sfx: Explosion
@@ -127796,6 +128634,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: a771b7d13abcec6479d2472603246269, type: 3}
   fadeTime: 0.5
   sfx: 
@@ -132397,6 +133236,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -132416,6 +133256,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   itemName: Bang
 --- !u!4 &1463903959 stripped
 Transform:
@@ -135419,6 +136260,199 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5638438615969112222, guid: c2c4553088a529c47bdb39a30b20bace, type: 3}
   m_PrefabInstance: {fileID: 1494799405}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1494960422
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -92.57
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.97
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.585
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.871549
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.4890974
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000029957882
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.034439098
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -58.489
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 3.701
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -6.599
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_Name
+      value: Wanted Poster (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1494960428}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1494960427}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1494960426}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1494960425}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1494960424}
+  m_SourcePrefab: {fileID: 100100000, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+--- !u!1 &1494960423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+  m_PrefabInstance: {fileID: 1494960422}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1494960424
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494960423}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1494960425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494960423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &1494960426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494960423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  itemName: Wanted Poster
+--- !u!114 &1494960427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494960423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: You take down the WANTED poster
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &1494960428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494960423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bf4172aedc168478a45f52bdfd7867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  levelGate: -1
+  allowedSceneVariants: 
+  needsPartyMember: Storm
+  excludePartyMember: 
+  hideObject: 1
 --- !u!1001 &1496036420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153799,6 +154833,199 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5638438615969112222, guid: c2c4553088a529c47bdb39a30b20bace, type: 3}
   m_PrefabInstance: {fileID: 1663542257}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1665025988
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -80.105
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.391
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.096
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98951215
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.14174981
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.003941706
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.02751585
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -16.305
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 3.186
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_Name
+      value: Wanted Poster (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1665025994}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1665025993}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1665025992}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1665025991}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1665025990}
+  m_SourcePrefab: {fileID: 100100000, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+--- !u!1 &1665025989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+  m_PrefabInstance: {fileID: 1665025988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1665025990
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665025989}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1665025991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665025989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &1665025992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665025989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  itemName: Wanted Poster
+--- !u!114 &1665025993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665025989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: You take down the WANTED poster
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &1665025994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665025989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bf4172aedc168478a45f52bdfd7867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  levelGate: -1
+  allowedSceneVariants: 
+  needsPartyMember: Storm
+  excludePartyMember: 
+  hideObject: 1
 --- !u!1001 &1665339041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -154652,6 +155879,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 0
   additionalObjects: []
   endingPose: Defeated
@@ -154671,6 +155899,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: MP? Super gauge? What the heck is any of this?
     name: Spartan No-Belt
@@ -154714,6 +155943,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: YOU!!!
     name: Spartan No-Belt
@@ -154768,6 +155998,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!136 &1677283607
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -154830,6 +156061,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   enemies:
   - {fileID: 8346498964973016767, guid: 5310dbf325222474f8e6b994caab43ef, type: 3}
   hideObjects: []
@@ -154849,6 +156081,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: 0841476bb5b8d3c449dc700a50730a6d, type: 3}
   fadeTime: 0.5
   sfx: Alert
@@ -156196,6 +157429,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 0
   additionalObjects:
   - {fileID: 453850301}
@@ -156216,6 +157450,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Ugh.. You can have all my... Well, my lunch money was already stolen. You
       can have my soda
@@ -156265,6 +157500,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!114 &1692691704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156348,6 +157584,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: ...And this guy just comes out of nowhere and we start having this fight
     name: Spartan No-Belt
@@ -156408,6 +157645,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   enemies:
   - {fileID: 8346498964973016767, guid: 32e3d459d977cea499c41a5a8c0c2ce8, type: 3}
   - {fileID: 8346498964973016767, guid: 32e3d459d977cea499c41a5a8c0c2ce8, type: 3}
@@ -156488,6 +157726,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6061218905984369798, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1693674164}
+    - targetCorrespondingSourceObject: {fileID: 6061218905984369798, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1693674163}
     - targetCorrespondingSourceObject: {fileID: 6061218905984369798, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       insertIndex: -1
@@ -156533,6 +157774,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   enemies:
   - {fileID: 8346498964973016767, guid: 04a1dd1685bb2bd49b0bb0cd98551399, type: 3}
   hideObjects: []
@@ -156552,6 +157794,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   prompt: Train with Stretch?
   itemName: 
   itemQuantity: 0
@@ -156572,6 +157815,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Fight Stretch
   consume: 0
   xpReward: 0
@@ -156646,6 +157890,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 0
   additionalObjects: []
   endingPose: ArmsCrossed
@@ -156665,6 +157910,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Sheesh, you really took my lessons to heart!
     name: Stretch
@@ -156708,6 +157954,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Fight Stretch
   consume: 1
   xpReward: 0
@@ -156730,6 +157977,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Do Tai Chi in the Forest
   consume: 1
   xpReward: 0
@@ -156737,6 +157985,27 @@ MonoBehaviour:
   giveQuestIfMissing: 1
   completeEvenIfMissing: 1
   incompleteDialog: []
+--- !u!114 &1693674164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693674155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bf4172aedc168478a45f52bdfd7867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  levelGate: -1
+  allowedSceneVariants: 
+  needsPartyMember: SpartanJack
+  excludePartyMember: 
+  hideObject: 1
 --- !u!1001 &1693683092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -159269,6 +160538,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects:
   - {fileID: 2066133109}
@@ -159289,6 +160559,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Investigate the Alley
 --- !u!114 &1716219823
 MonoBehaviour:
@@ -159305,6 +160576,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!4 &1716219824 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
@@ -159325,6 +160597,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: 3e3e2d970796e7746be925ed46ad1ad9, type: 3}
   fadeTime: 1.5
   sfx: 
@@ -159343,6 +160616,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: a771b7d13abcec6479d2472603246269, type: 3}
   fadeTime: 0.5
   sfx: 
@@ -166062,6 +167336,199 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4791988861103740600, guid: 59db014136037dd45a2dd299df8f3a6e, type: 3}
   m_PrefabInstance: {fileID: 1783604215}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1783871095
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.027731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -96.33
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.726
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -37.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7505204
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6013623
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.014852494
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.27360916
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -65.616
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 47.994
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -72.084
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_Name
+      value: Wanted Poster (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1783871101}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1783871100}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1783871099}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1783871098}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1783871097}
+  m_SourcePrefab: {fileID: 100100000, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+--- !u!1 &1783871096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+  m_PrefabInstance: {fileID: 1783871095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1783871097
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783871096}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1783871098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783871096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &1783871099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783871096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  itemName: Wanted Poster
+--- !u!114 &1783871100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783871096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: You take down the WANTED poster
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &1783871101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783871096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bf4172aedc168478a45f52bdfd7867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  levelGate: -1
+  allowedSceneVariants: 
+  needsPartyMember: Storm
+  excludePartyMember: 
+  hideObject: 1
 --- !u!1001 &1783891137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -167527,6 +168994,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Phew...
 
@@ -167563,6 +169031,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!114 &1799197829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167578,6 +169047,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!65 &1799197830
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -169054,6 +170524,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -169073,6 +170544,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: What... is this place? And why is there blood?
     name: 
@@ -169097,6 +170569,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!65 &1808580659
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -171567,6 +173040,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Did we just...
     name: Thad
@@ -171591,6 +173065,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   toBlack: 0
   cameraTarget: {fileID: 0}
 --- !u!114 &1836267830
@@ -171608,6 +173083,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 0}
   rotationSpeed: 720
   waypoints:
@@ -171632,6 +173108,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   toBlack: 1
   cameraTarget: {fileID: 0}
 --- !u!114 &1836267832
@@ -171649,6 +173126,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: 911ffb73b14752641995bf860c2a5e89, type: 3}
   fadeTime: 0
   sfx: explosion
@@ -171667,6 +173145,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1779771471}
   rotationSpeed: 720
   waypoints:
@@ -171695,6 +173174,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 534117363}
   rotationSpeed: 720
   waypoints:
@@ -171719,6 +173199,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1779771471}
   rotationSpeed: 720
   waypoints:
@@ -171743,6 +173224,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1465752566}
   rotationSpeed: 720
   waypoints:
@@ -171767,6 +173249,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1779771471}
   rotationSpeed: 720
   waypoints:
@@ -171791,6 +173274,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1939439166}
   rotationSpeed: 720
   waypoints:
@@ -171815,6 +173299,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'She''s weak!
 
@@ -171847,6 +173332,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   overwrite: 1
   partyMembers:
   - Thad
@@ -171865,6 +173351,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!23 &1836267842
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -172863,6 +174350,15 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1847850383}
+    - targetCorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1847850382}
+    - targetCorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1847850381}
+    - targetCorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1847850380}
   m_SourcePrefab: {fileID: 100100000, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
 --- !u!1 &1847850379 stripped
@@ -172885,6 +174381,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Another dojo...
 
@@ -172903,6 +174400,65 @@ MonoBehaviour:
     face: 
   turnToFace: 0
   snapPlayerPosition: 0
+--- !u!114 &1847850381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847850379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31441617c7f832e43b2308e10814aa79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  branchName: 
+--- !u!114 &1847850382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847850379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b4ef69776623b4f92b74bdf634fb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  sceneName: SpartanDojo
+  spawnPointIndex: 0
+  sceneVariant: -1
+  skybox: {fileID: 0}
+  cameraTarget: {fileID: 0}
+--- !u!114 &1847850383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847850379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bf4172aedc168478a45f52bdfd7867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  levelGate: -1
+  allowedSceneVariants: 
+  needsPartyMember: Storm
+  excludePartyMember: 
+  hideObject: 0
 --- !u!1001 &1849415624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -173681,6 +175237,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: JackHouse
   spawnPointIndex: 0
   sceneVariant: 0
@@ -173722,6 +175279,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Go Home
   consume: 1
   xpReward: 0
@@ -184093,6 +185651,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: JackHouse
   spawnPointIndex: 0
   sceneVariant: 2
@@ -184113,6 +185672,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Answer your Porta-Comm
   consume: 0
   xpReward: 0
@@ -184727,6 +186287,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: Overworld
   spawnPointIndex: 6
   sceneVariant: 4
@@ -184752,6 +186313,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: 
   spawnPointIndex: 7
   sceneVariant: 4
@@ -189185,6 +190747,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: StormHouse
   spawnPointIndex: 1
   sceneVariant: 0
@@ -189205,6 +190768,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   levelGate: -1
   allowedSceneVariants: 
   needsPartyMember: Storm
@@ -196553,6 +198117,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: JackHouse2
   spawnPointIndex: 0
   sceneVariant: 0
@@ -196573,6 +198138,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Investigate Spartan Jack's House
   consume: 1
   xpReward: 0
@@ -196622,6 +198188,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'The door isn''t even closed...
 
@@ -199009,6 +200576,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!4 &2131571512 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1089196919421779006, guid: 7d84b769d9d68594d8edc7d2f9820d18, type: 3}
@@ -199029,6 +200597,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Go Home
 --- !u!114 &2131571517
 MonoBehaviour:
@@ -199045,6 +200614,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -199064,6 +200634,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!1001 &2131668500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203145,7 +204716,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4089712344278570179, guid: 0655c0a0b0f759e42883399a6efa94a3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 210694698}
   m_SourcePrefab: {fileID: 100100000, guid: 0655c0a0b0f759e42883399a6efa94a3, type: 3}
 --- !u!4 &6752025741285810489 stripped
 Transform:
@@ -203922,3 +205496,9 @@ SceneRoots:
   - {fileID: 1607015705}
   - {fileID: 1070827598}
   - {fileID: 1216239766}
+  - {fileID: 1007453504}
+  - {fileID: 1063102849}
+  - {fileID: 1221218017}
+  - {fileID: 1665025988}
+  - {fileID: 1494960422}
+  - {fileID: 1783871095}

@@ -137,6 +137,15 @@ public class BattleManager : MonoBehaviour
     {
         combatants.Remove(combatant);
         UpdateTurnOrderUI();
+        //update spacing
+        var enemies = combatants.Where(c => c.tag == "Enemy" && c.alive).ToList();
+        for(int i = 0; i < enemies.Count; i++)
+        {
+            var enemy = enemies[i];
+
+            enemy.transform.localPosition = new Vector3((-0.5f * YourParty.instance.spacing * enemies.Count) + (YourParty.instance.spacing * i), 0f, 0f);
+            enemy.GetComponent<Combatant>().startPosition = enemy.transform.position;
+        }
     }
 
 
@@ -748,8 +757,12 @@ public class BattleManager : MonoBehaviour
             if(t.alive){
             var d = t.TakeDamage(activeCombatant,(int)pendingDamage * quickTimeMultiplier, pendingDamageType);
             var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
-            if(hitsRemaining == 0) t.PlayAnimation("Knockdown");
-            else t.PlayAnimation("Stunned");
+            
+                {
+                     if(hitsRemaining == 0) t.PlayAnimation("Knockdown");
+                        else t.PlayAnimation("Stunned");
+                }
+           
             if(pendingDamageType == DamageType.Slashing)
                 AudioManager.Instance.PlaySoundEffect("HitSlash",UnityEngine.Random.Range(0.8f,1.2f));
             if(pendingDamageType == DamageType.Bludgeoning)
@@ -826,8 +839,15 @@ public class BattleManager : MonoBehaviour
                 if(t.alive){
                 var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
                 t.TakeDamage(activeCombatant,(int)pendingDamage, pendingDamageType);
-                if(hitsRemaining == 0) t.PlayAnimation("Knockdown");
-                else t.PlayAnimation("Stunned");
+                if(currentTargets.Count > 0 && currentTargets[0] == activeCombatant)
+                {
+                    activeCombatant.RemoveStatusEffect("E-S-Pow");
+                    GameManager.Instance.ShowMessage($"{activeCombatant.combatantName} hits themself!");
+                }
+                else{
+                    if(hitsRemaining == 0) t.PlayAnimation("Knockdown");
+                    else t.PlayAnimation("Stunned");
+                }
                 if(pendingDamageType == DamageType.Slashing)
                 AudioManager.Instance.PlaySoundEffect("HitSlash",UnityEngine.Random.Range(0.8f,1.2f));
                 if(pendingDamageType == DamageType.Bludgeoning)

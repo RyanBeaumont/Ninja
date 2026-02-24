@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]public class StatusEffect
@@ -177,7 +179,7 @@ public class BattleOfWillsAction : DamageAction
 {
     public override void Execute(BattleManager battleManager)
     {
-        damage = $"{(caller.mp - battleManager.currentTargets[0].mp)}";
+        damage = $"{(caller.mp - battleManager.currentTargets[0].mp) * 2}";
         base.Execute(battleManager);
     }
 }
@@ -216,9 +218,10 @@ public class OmnisweepDamageAction : DamageAction
         for (int i = battleManager.currentTargets.Count - 1; i >= 0; i--)
         {
             var target = battleManager.currentTargets[i];
-            if (target.HasStatusEffect("Off-Balance") != null)
+            if (target.HasStatusEffect("Off-Balance") != null || target.HasStatusEffect("Prone") != null)
             {
                 target.RemoveStatusEffect("Off-Balance");
+
                 battleManager.currentTargets.RemoveAt(i);
             }
         }
@@ -338,6 +341,7 @@ public class HealAction : GameAction
         foreach(var t in battleManager.currentTargets)
         {
             t.Heal(caller.EvaluateStatFormula(healAmount));
+            GameManager.Instance.ShowMessage($"{t.combatantName} drinks coke! +{caller.EvaluateStatFormula(healAmount)} HP");
         }
     }
 }
@@ -382,6 +386,39 @@ public class StatusEffectAction : GameAction
             t.ApplyStatusEffect(statusEffect);
         }
     }
+}
+
+public class SummonAction : GameAction
+{
+    public bool enemy = true;
+    public GameObject summon;
+
+    public override void Execute(BattleManager battleManager)
+    {
+        GameObject combatantObject = null;
+        if(enemy)
+            combatantObject = Object.Instantiate(summon, GameObject.Find("BattleSetup/EnemySpawn").transform);
+        else
+            combatantObject = Object.Instantiate(summon, GameObject.Find("BattleSetup/PlayerSpawn").transform);
+        //spread out combatants centered around spawn point
+
+        int enemyCount = 0;
+        if(enemy)
+            enemyCount = battleManager.combatants.Count(c => c is EnemyCombatant && c.alive);
+        else
+            enemyCount = battleManager.combatants.Count(c => c is PlayerCombatant);
+
+        combatantObject.transform.localPosition = new Vector3((-0.5f * YourParty.instance.spacing * enemyCount) + (YourParty.instance.spacing * enemyCount), 0f, 0f);
+        combatantObject.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+        var combatant = combatantObject.GetComponent<Combatant>();
+        combatant.initiative = 50f;
+        var healthbar = Object.Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);
+        BattleManager.Instance.AddCombatant(combatant);
+        GameManager.Instance.ShowMessage($"{combatant.combatantName} appears!");
+        var effect = Object.Instantiate(Resources.Load<GameObject>("Particles/Encounter"), combatantObject.transform);
+        combatant.enabled = true;
+    }
+    
 }
 
 public class LockInAction : StatusEffectAction
@@ -510,16 +547,16 @@ public class DrawUntilAction : DrawCardsAction
     public override void Execute(BattleManager battleManager)
     {
         caller.PlayAnimation(animation);
-        int cards = 0;
         if (caller is PlayerCombatant player)
         {
+            cardCount = (int)caller.EvaluateStatFormula("PSY/4");
            foreach(var card in GameObject.FindFirstObjectByType<HandManager>().cardsInHand)
             {
                 player.DiscardCard(card.GetComponent<CardDisplay>().card);
                 GameObject.Destroy(card.gameObject);
             }
-            player.DrawCards(cards);
-            GameManager.Instance.ShowMessage($"Drawing {cards} cards");
+            player.DrawCards(cardCount);
+            GameManager.Instance.ShowMessage($"Drawing {cardCount} cards");
         }
     }
 }

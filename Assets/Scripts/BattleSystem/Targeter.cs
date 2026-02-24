@@ -82,7 +82,7 @@ public class Targeter : MonoBehaviour
         .Select(go => go.GetComponent<Combatant>())
         .Where(c => c != null)
         .Where(c => c.alive != targetDead) // if targetDead=true → alive must be false
-        .Where(c => !grapple || c.HasStatusEffect("Off-Balance") != null)
+        .Where(c => !grapple || c.HasStatusEffect("Off-Balance") != null || c.HasStatusEffect("Prone") != null)
         .Select(c => c.gameObject);
         // Passively move the targeter to the closest matching object to the mouse cursor
 

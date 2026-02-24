@@ -94,7 +94,7 @@ public class DialogEncounter : ChainedInteractable
                     GameObject thisPartyMember = Instantiate(Resources.Load<GameObject>($"Characters/{modelToSpawn}"));
                     float offsetIndex = startOffset + (i - 1);
 
-                    Vector3 offset =  player.right * offsetIndex * spacing - player.forward * 1.5f; // slightly behind player
+                    Vector3 offset =  player.right * offsetIndex * spacing - player.forward * 1.5f + Vector3.down * 0.5f; // slightly behind player
 
                     thisPartyMember.transform.position = player.position + offset;
                     thisPartyMember.transform.rotation = player.rotation;

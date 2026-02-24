@@ -69,7 +69,7 @@ public class Cutscene : ChainedInteractable
         }
 
         // Play movement animation for this waypoint
-        if (!string.IsNullOrEmpty(wp.animation))
+        if (!string.IsNullOrEmpty(wp.animation) && anim != null)
         {
             anim.Play(wp.animation, 0, 0f);
         }
@@ -120,6 +120,7 @@ public class Cutscene : ChainedInteractable
     }
 
     // End pose
+    if (anim != null)
     anim.Play("Idle");
 
     if (waitForEnd)

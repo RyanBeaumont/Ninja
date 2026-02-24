@@ -53,6 +53,7 @@ MonoBehaviour:
     hpPercentage: 1
     mainClass: 1
     subClass: 2
+    equipment: []
     alive: 1
   - memberName: Stretch
     modelName: Stretch
@@ -61,6 +62,7 @@ MonoBehaviour:
     hpPercentage: 1
     mainClass: 2
     subClass: 3
+    equipment: []
     alive: 1
   - memberName: Thad
     modelName: Thad
@@ -69,6 +71,7 @@ MonoBehaviour:
     hpPercentage: 1
     mainClass: 4
     subClass: 1
+    equipment: []
     alive: 1
   - memberName: Storm
     modelName: Storm
@@ -77,6 +80,7 @@ MonoBehaviour:
     hpPercentage: 1
     mainClass: 3
     subClass: 2
+    equipment: []
     alive: 1
   - memberName: Big Sam
     modelName: BigSam
@@ -85,6 +89,7 @@ MonoBehaviour:
     hpPercentage: 1
     mainClass: 1
     subClass: 4
+    equipment: []
     alive: 1
   - memberName: Torch
     modelName: Torch
@@ -93,11 +98,12 @@ MonoBehaviour:
     hpPercentage: 1
     mainClass: 4
     subClass: 3
+    equipment: []
     alive: 1
   partyMembers:
   - Storm
-  - Torch
-  - Stretch
+  - Thad
+  - Big Sam
   devTools: 0
   currentSaveFileName: savefile_1
   gold: 0

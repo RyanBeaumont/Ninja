@@ -64,7 +64,7 @@ public class PlayerCombatant : Combatant
             if (Input.GetKeyDown(KeyCode.E))
             {
                 hidden = false;
-                initiative = 100f;
+                initiative = 50f;
                 BattleManager.Instance.AddCombatant(this);
                 PlayAnimation("ArmsCrossed");
                 SetTargetPosition(transform.position + Vector3.up*4f);
@@ -86,7 +86,7 @@ public class PlayerCombatant : Combatant
                 var success = false;
                 foreach(EnemyCombatant e in FindObjectsByType<EnemyCombatant>(FindObjectsSortMode.None))
                 {
-                    if (e.HasStatusEffect("Off-Balance") != null)
+                    if (e.HasStatusEffect("Off-Balance") != null || e.HasStatusEffect("Prone") != null)
                     {
                         success = true; break;
                     }
@@ -94,7 +94,7 @@ public class PlayerCombatant : Combatant
                 if(success == false)
                 {
                     AudioManager.Instance.PlaySoundEffect("Negative",1f);
-                    GameManager.Instance.ShowMessage("Can only be used on an Off-Balance opponent");
+                    GameManager.Instance.ShowMessage("Can only be used on an Off-Balance or Prone opponent");
                     return false;
                 } 
             }

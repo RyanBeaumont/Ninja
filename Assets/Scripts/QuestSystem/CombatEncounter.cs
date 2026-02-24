@@ -30,10 +30,15 @@ public class CombatEncounter : ChainedInteractable
         transform.GetChild(0).gameObject.SetActive(true);
         player.SetActive(true);
         AudioManager.Instance.PlayMainTheme();
+        if(GetComponent<CapsuleCollider>() != null)
         GetComponent<CapsuleCollider>().enabled = true;
             foreach(var obj in hideObjects)
             {
                 obj.SetActive(true);
+                if(obj.GetComponent<DefaultPose>() != null)
+                {
+                    obj.GetComponent<DefaultPose>().PlayDefault();
+                }
             }
         CallNext();  
     }

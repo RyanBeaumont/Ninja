@@ -779,6 +779,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -798,6 +799,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   itemName: DrPepper
 --- !u!65 &66575635
 BoxCollider:
@@ -967,6 +969,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Hey! New kid!
 
@@ -1015,6 +1018,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   enemies:
   - {fileID: 8346498964973016767, guid: f2e9ea965b4b6ae48bdfb24574e06f24, type: 3}
   - {fileID: 8346498964973016767, guid: 8c386c2f782ed5e4788cb2448580f1a1, type: 3}
@@ -1038,6 +1042,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   prompt: Enter Round 2?
   itemName: 
   itemQuantity: 0
@@ -1058,6 +1063,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Bravo! A powerful showing for our newbies!
     name: Announcer
@@ -1082,6 +1088,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   enemies:
   - {fileID: 8346498964973016767, guid: 8c386c2f782ed5e4788cb2448580f1a1, type: 3}
   - {fileID: 8346498964973016767, guid: 415c5bcff5cebfb44bbc4f942a2a8011, type: 3}
@@ -1105,6 +1112,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   prompt: Enter Round 1?
   itemName: 
   itemQuantity: 0
@@ -1125,6 +1133,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   enemies:
   - {fileID: 8346498964973016767, guid: f2e9ea965b4b6ae48bdfb24574e06f24, type: 3}
   - {fileID: 8346498964973016767, guid: d8b7a6c613672644aa57811827e07376, type: 3}
@@ -1148,6 +1157,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   prompt: Enter Round 3?
   itemName: 
   itemQuantity: 0
@@ -1168,6 +1178,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: WOW! And just like that, the underdogs WALLOP the competition!
     name: Announcer
@@ -5198,6 +5209,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: My money's on the other guy
     name: Fighter
@@ -9212,6 +9224,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Hrrrrnnnggghhhh....
 
@@ -10214,6 +10227,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   items:
   - item:
       itemName: Coffee
@@ -12491,6 +12505,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: AND THAT'S A KNOCKOUT!!!
     name: Announcer
@@ -12521,6 +12536,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1687770954}
   rotationSpeed: 720
   waypoints:
@@ -12573,6 +12589,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 96088526}
   rotationSpeed: 720
   waypoints:
@@ -12621,6 +12638,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "Welcome to THE CAGE! If you\u2019ve come here for a bit of ACTION in your
       otherwise boring life, we won\u2019t disappoint! "
@@ -12653,6 +12671,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!65 &1327577414
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12704,6 +12723,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 96088526}
   rotationSpeed: 720
   waypoints:
@@ -12732,6 +12752,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -12751,6 +12772,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Our champion is undefeated once again!
     name: Announcer
@@ -13339,6 +13361,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: (The fighter spits on the ground)
     name: Fighter
@@ -13726,11 +13749,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 684623941448871463, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
       propertyPath: sceneVariant
-      value: 5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 684623941448871463, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
       propertyPath: spawnPointIndex
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
       propertyPath: m_Name
@@ -18196,6 +18219,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   items:
   - item:
       itemName: Coke

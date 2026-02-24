@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     public List<string> finishedEncounters = new List<string>();
 
     public InventoryItem GetInventoryItemByName(string name){
-        InventoryItem newItem = null;
+        InventoryItem newItem = new InventoryItem(name,1);
         var battleManager = FindFirstObjectByType<BattleManager>();
         
         switch(name){

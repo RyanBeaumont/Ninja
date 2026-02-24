@@ -48,7 +48,7 @@ public class EnemyCombatant : Combatant
         return true;
     }
 
-    void DefaultAttack()
+    public virtual void DefaultAttack()
     {
         Attack(null);
     }
@@ -124,6 +124,8 @@ public class EnemyCombatant : Combatant
                 damageType = selectedAttack.damageType,
                 specialTarget = specialTarget,
                 hits = selectedAttack.hits,
+                //Loop animation only if named ThrowKnife or ThrowKnifeFast
+                loopAnimation = attack.Trim() == "ThrowKnife" || attack.Trim() == "ThrowKnifeFast",
                 timeScale = speed
             });
         }

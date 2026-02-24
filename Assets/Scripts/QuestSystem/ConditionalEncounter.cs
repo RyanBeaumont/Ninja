@@ -30,16 +30,33 @@ public class ConditionalEncounter : ChainedInteractable
         return true;
     }
 
+    void Start()
+    {
+        TryCheckConditions();
+    }
+
     public void TryCheckConditions()
     {
+        foreach(ChainedInteractable i in transform.GetComponents<ChainedInteractable>()) i.active = true;
+        DefaultPose defaultPose = GetComponentInChildren<DefaultPose>();
+        if(defaultPose != null) defaultPose.PlayDefault();
         if(CheckConditions() == false)
         {
-            foreach(ChainedInteractable i in transform.GetComponents<ChainedInteractable>()) i.active = false;
-            if(hideObject) gameObject.SetActive(false);
+            if(hideObject){
+                gameObject.SetActive(false);
+                foreach(ChainedInteractable i in transform.GetComponents<ChainedInteractable>()) i.active = false;
+            }
         }
     }
     public override void Interact()
     {
-        if(CheckConditions()) CallNext();
+        if(CheckConditions()){
+            CallNext();
+        }
+        else
+        {
+            print("fail");
+           Fail();
+        }
     }
 }

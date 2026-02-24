@@ -39,6 +39,8 @@ public class Shop : ChainedInteractable
         foreach(Transform child in container.transform){Destroy(child.gameObject);}
         foreach(ShopItem item in items)
         {
+            var realItem = GameManager.Instance.GetInventoryItemByName(item.item.itemName);
+            item.item.description = realItem.description;
             if(item.item.quantity <= 0) continue;
             var itemGO = Instantiate(Resources.Load<GameObject>("InventoryItem"), container.transform);
             var itemText = itemGO.GetComponentInChildren<TMPro.TMP_Text>();

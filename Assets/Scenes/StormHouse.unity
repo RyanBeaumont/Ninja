@@ -499,6 +499,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: What is this, ancient Greece?
     name: 
@@ -1003,6 +1004,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: In here is Jade's room...
     name: 
@@ -2587,6 +2589,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Your name is STORM. You are the daughter of the GRANDMASTER, and a LEVEL
       5 PSYCHIC.
@@ -2635,6 +2638,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   overwrite: 1
   partyMembers:
   - Storm
@@ -2653,6 +2657,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!65 &183227235
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2757,6 +2762,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -2776,6 +2782,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!114 &183227241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2791,7 +2798,8 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
-  questName: Meet Torch at the Dojo
+  failBranch: 
+  questName: Talk to Torch at the Dojo
 --- !u!1001 &192005226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3024,6 +3032,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Stretch made you these dolls on your birthday!
     name: 
@@ -3188,6 +3197,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "It\u2019s a statue of the legendary GRANDMASTER JADE. The plaque used
       to read something different, but then Jade showed up with her chisel.\r\n"
@@ -3910,6 +3920,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: You hold one of the pillows to your face and scream as loud as you can.
     name: 
@@ -6740,6 +6751,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'You look at your sword collection!
 
@@ -7473,6 +7485,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Hi, Harold.
 
@@ -8905,6 +8918,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: No FOOOOOOOODDDD????
     name: Thad
@@ -15167,6 +15181,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'This is Sensei''s room...
 
@@ -15756,6 +15771,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'END OF CHAPTER 2...
 
@@ -15782,6 +15798,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: Overworld
   spawnPointIndex: 6
   sceneVariant: 4
@@ -16098,6 +16115,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'You look at your sword collection!
 
@@ -16482,6 +16500,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "Don\u2019t come back here! You need to be SAFE to join our secret club!\r\n"
     name: 
@@ -21315,6 +21334,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'You change into your hot pink you-jitsu uniform.
 
@@ -23038,6 +23058,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: You poor thing...
     name: 

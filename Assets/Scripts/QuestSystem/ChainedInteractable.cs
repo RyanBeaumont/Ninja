@@ -5,6 +5,7 @@ public abstract class ChainedInteractable : PersistentObject, IInteractable
     [Tooltip("If true, interaction stops here.")]
     [HideInInspector] public bool blockInteraction;
     [HideInInspector] public IInteractable next;
+    [HideInInspector] public string failBranch;
 
     public abstract void Interact();
     public virtual string GetPromptMessage()
@@ -25,6 +26,23 @@ public abstract class ChainedInteractable : PersistentObject, IInteractable
         GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
         if(this is not Door)
             GameManager.Instance.DestroyCamera();
+    }
+
+    public void Fail()
+    {
+        foreach(Branch branch in GetComponents<Branch>())
+        {
+            if (branch.branchName.Equals(failBranch))
+            {
+                branch.CallNext();
+                return;
+            }
+        }
+        //No branch found
+        GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
+        if(this is not Door)
+            GameManager.Instance.DestroyCamera();
+        
     }
 
     protected override void Awake()

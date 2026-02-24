@@ -2436,6 +2436,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 3653064329812786717}
     m_Position: {x: -364.7441, y: 586.0107, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 8311589776543294397}
+    m_Position: {x: -34.658386, y: 887.8887, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -2748,6 +2751,32 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 321ef4f002a5c6042931d9640dcf74c1, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &8311589776543294397
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: KnifeTripleStab
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 6f21f62075bc7964abc95d3af44e5515, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

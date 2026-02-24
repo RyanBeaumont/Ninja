@@ -250,7 +250,7 @@ public class CardDatabase : MonoBehaviour
             description = "Throw 2 poisoned knives at random",
             cost = 0,
             level = 2,
-            artwork = "IconFist",
+            artwork = "IconDoubleKnife",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
@@ -277,7 +277,7 @@ public class CardDatabase : MonoBehaviour
             description = "Poisoned blade strikes for each hit you've dealt including items",
             cost = 10,
             level = 3,
-            artwork = "IconFist",
+            artwork = "IconStab",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
@@ -305,7 +305,7 @@ public class CardDatabase : MonoBehaviour
             description = "Play 2 extra cards this turn",
             tpCost = 50,
             level = 4,
-            artwork = "IconFist",
+            artwork = "IconSuperSaiyan",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
@@ -323,7 +323,7 @@ public class CardDatabase : MonoBehaviour
             description = "Until the end of your next turn, all your attacks apply poison",
             cost = 20,
             level = 4,
-            artwork = "IconSuperSaiyan",
+            artwork = "IconDeath",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
@@ -344,7 +344,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Tactical Reload",
             cardClass = CardClass.Ninja,
-            description = "Discard your hand and draw 4 cards",
+            description = "Discard your hand and draw cards based on your PSY",
             artwork = "IconSuperSaiyan",
             cost = 10,
             level = 5,
@@ -385,7 +385,7 @@ public class CardDatabase : MonoBehaviour
             description = "Vanish. Re-enter on anyone's turn by pressing E",
             cost = 30,
             level = 6,
-            artwork = "IconSuperSaiyan",
+            artwork = "IconDeath",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
@@ -421,7 +421,7 @@ public class CardDatabase : MonoBehaviour
             cost = 0,
             tpCost = 50,
             level = 8,
-            artwork = "IconFist",
+            artwork = "IconDoubleKnife",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
@@ -451,7 +451,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Mind Strike",
             description = "Deals mental damage that ignores status effects",
-            artwork = "IconSlash",
+            artwork = "IconPsychic",
             cardClass = CardClass.Psychic,
             level = 1,
             cost = 15,
@@ -459,7 +459,7 @@ public class CardDatabase : MonoBehaviour
             {
                 new ChiBladeAction()
                 {
-                    damage = "30",
+                    damage = "35",
                     animation = "PsychicLift",
                     damageType = DamageType.Psychic,
                     targetType = TargetType.SingleEnemy,
@@ -493,7 +493,7 @@ public class CardDatabase : MonoBehaviour
             description = "Your opponent questions everything and attacks an ally or themselves",
             tpCost = 50,
             cardClass = CardClass.Psychic,
-            artwork = "IconSuperSaiyan",
+            artwork = "IconPsychic",
             level = 3,
             effects = new List<GameAction>()
             {
@@ -523,7 +523,7 @@ public class CardDatabase : MonoBehaviour
             {
                 new ChiBladeAction()
                 {
-                    damage = "MP",
+                    damage = "MP * 1.5",
                     animation = "Slash",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
@@ -543,7 +543,7 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "50",
+                    damage = "60",
                     animation = "CombatBurst",
                     damageType = DamageType.Psychic,
                     targetType = TargetType.AllEnemies,
@@ -556,7 +556,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Linking Strike",
             description = "Target shares status effects with their team for 3 turns",
-            artwork = "IconSuperSaiyan",
+            artwork = "IconPsychic",
             cardClass = CardClass.Psychic,
             level = 5,
             cost = 30,
@@ -602,7 +602,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Lock In",
             description = "Affected ally doubles their PSY but weakens their DEF. Play again",
-            artwork = "IconSuperSaiyan",
+            artwork = "IconPsychic",
             cardClass = CardClass.Psychic,
             level = 6,
             cost = 30,
@@ -619,7 +619,7 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
-            cardName = "Focus Strike",
+            cardName = "Shopping Spree",
             description = "An attack that reduces the cost of all cards in hand. Play again",
             artwork = "IconSuperSaiyan",
             cardClass = CardClass.Psychic,
@@ -643,7 +643,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Battle of Wills",
             description = "Deals damage based on the difference in MP",
-            artwork = "IconSlash",
+            artwork = "IconPsychic",
             cardClass = CardClass.Psychic,
             level = 7,
             cost = 10,
@@ -875,7 +875,7 @@ public class CardDatabase : MonoBehaviour
             cost = 0,
             level = 1,
             cardClass = CardClass.Grappler,
-            artwork = "IconKick",
+            artwork = "IconHeadbutt",
             effects = new List<GameAction>()
             {
                 new DamageAction()
@@ -904,7 +904,7 @@ public class CardDatabase : MonoBehaviour
             description = "Increase your team's DEF. Counterattacks trigger Off-Balance",
             cost = 10,
             level = 2,
-            artwork = "IconSuperSaiyan",
+            artwork = "IconShield",
             cardClass = CardClass.Grappler,
             effects = new List<GameAction>()
             {
@@ -931,7 +931,7 @@ public class CardDatabase : MonoBehaviour
             cost = 25,
             level = 2,
             cardClass = CardClass.Grappler,
-            artwork = "IconKick",
+            artwork = "IconGrab",
             effects = new List<GameAction>()
             {
                 new SuplexDamageAction()
@@ -946,29 +946,23 @@ public class CardDatabase : MonoBehaviour
             }
         });
 
-        allCards.Add(new Card()
+            allCards.Add(new Card()
         {
-            cardName = "Nardbuster",
-            description = "Stun the enemy, knock them prone, and enable party lifesteal",
-            tpCost = 50,
-            level = 3,
+            cardName = "Chain of Pain",
+            description = "Re-use your last played card",
+            artwork = "IconGrab",
             cardClass = CardClass.Grappler,
-            artwork = "IconFist",
+            level = 3,
+            tpCost = 50,
             effects = new List<GameAction>()
             {
-                new NardbusterDamageAction()
+                new ChainOfPainAction()
                 {
-                    damage = "40",
-                    animation = "Uppercut",
-                    receivingAnimation = "Launcher",
-                    damageType = DamageType.Bludgeoning,
-                    targetType = TargetType.SingleEnemy,
-                    lifesteal = true,
-                    hits = 1
+                    targetType = TargetType.Self,
+                    animation = "ArmsCrossed"
                 }
             }
         });
-
         
         allCards.Add(new Card()
         {
@@ -977,7 +971,7 @@ public class CardDatabase : MonoBehaviour
             cost = 15,
             level = 4,
             cardClass = CardClass.Grappler,
-            artwork = "IconSuperSaiyan",
+            artwork = "IconPsychic",
             effects = new List<GameAction>()
             {
                 new StatusEffectAction()
@@ -1002,7 +996,7 @@ public class CardDatabase : MonoBehaviour
             cost = 25,
             level = 5,
             cardClass = CardClass.Grappler,
-            artwork = "IconFist",
+            artwork = "IconGrab",
             effects = new List<GameAction>()
             {
                 new GrappleDamageAction()
@@ -1076,25 +1070,30 @@ public class CardDatabase : MonoBehaviour
             }
         });
 
-           allCards.Add(new Card()
+       
+
+        allCards.Add(new Card()
         {
-            cardName = "Chain of Pain",
-            description = "Re-use your last played card",
-            artwork = "IconSuperSaiyan",
-            cardClass = CardClass.Psychic,
-            level = 9,
+            cardName = "Nardbuster",
+            description = "Stun the enemy, knock them prone, and enable party lifesteal",
             tpCost = 50,
+            level = 8,
+            cardClass = CardClass.Grappler,
+            artwork = "IconGroin",
             effects = new List<GameAction>()
             {
-                new ChainOfPainAction()
+                new NardbusterDamageAction()
                 {
-                    targetType = TargetType.Self,
-                    animation = "ArmsCrossed"
+                    damage = "40",
+                    animation = "Uppercut",
+                    receivingAnimation = "Launcher",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    lifesteal = true,
+                    hits = 1
                 }
             }
         });
-
-        
 
         
 

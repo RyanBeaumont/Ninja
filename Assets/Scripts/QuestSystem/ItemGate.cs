@@ -54,12 +54,16 @@ public class ItemGate : ChainedInteractable
             }
             else
             {
-                d.StartDialog(incompleteDialog);
+                if(incompleteDialog.Count > 0)
+                    d.StartDialog(incompleteDialog);
+                else
+                    Fail();
             }
         }
         else
         {
             print("No");
+            Fail();
         }
         d.OnDialogFinished -= OnChoiceMade;
     }

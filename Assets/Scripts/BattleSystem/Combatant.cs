@@ -17,7 +17,7 @@ public class Combatant : MonoBehaviour
     float damagePerLevel = 2f;
     public float mp;
     public float maxMp;
-    Vector3 startPosition;
+    [HideInInspector] public Vector3 startPosition;
     public bool alive = true;
     Vector3 targetPosition;
     public DamageType[] resistances;
@@ -142,10 +142,20 @@ public class Combatant : MonoBehaviour
         if(this is PlayerCombatant){
             YourParty.instance.GetPartyMember(combatantName).alive = false;
         }
+        else
+        {
+            Invoke("DieForReal", 3f);
+        }
         if(HasStatusEffect("Choked") != null)
         {
             foreach(Combatant c in BattleManager.Instance.combatants) c.RemoveStatusEffect("Choking");
         }
+    }
+
+    void DieForReal()
+    {
+        SetTargetPosition(transform.position + Vector3.down * 2f);
+        Destroy(gameObject,1f);
     }
 
     public virtual void Update()
@@ -274,10 +284,10 @@ public class Combatant : MonoBehaviour
             TakeDamage(null,6*poison.amount, DamageType.Psychic);
             if(hp <= 0){
                 BattleManager.Instance.actionQueue.Add(new StunAction()
-            {
-                caller = this,
-                animation = "Defeated",
-            });
+                {
+                    caller = this,
+                    animation = "Defeated",
+                });
             return false;
             }
         }
