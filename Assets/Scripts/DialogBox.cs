@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System;
 using Unity.Cinemachine;
-using UnityEngine.U2D.Animation;
+using UnityEngine.UI;
 
 [Serializable] public enum CameraAngle{standard, none, closeup, lowAngle, highAngle, behind, zoom, tilt, dodgeLeft, dodgeRight, jump, duck, wideBehind, ground};
 [Serializable] public class Dialog
@@ -35,6 +35,7 @@ public class DialogBox : MonoBehaviour
     [SerializeField] RectTransform yesButton;
     [SerializeField] RectTransform noButton;
     int sfxTimer = 0;
+    public Image image;
     bool flipCam = false;
     void Start()
     {
@@ -92,6 +93,14 @@ public class DialogBox : MonoBehaviour
         noButton.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        var partyLeader = YourParty.instance.partyMembers[0];
+        print($"Party Leader: {partyLeader}");
+        if(partyLeader == "Spartan Jack") image.color = new Color32(250, 222, 159,255);
+        if(partyLeader == "Thad") image.color = new Color32(245, 144, 129,255);
+        if(partyLeader.Equals("Storm")) image.color = new Color32(251, 129, 255,255);
+        if(partyLeader == "Stretch") image.color = new Color32(255, 252, 165,255);
+        if(partyLeader == "Torch") image.color = new Color32(255, 177, 96,255);
+
         
     }
 

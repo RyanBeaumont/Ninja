@@ -31,7 +31,13 @@ public class Inventory : MonoBehaviour
     public void UpdateInventoryImages(List<InventoryItem> inventory)
     {
         foreach(Transform child in itemContainer){Destroy(child.gameObject);}
-        foreach(var item in inventory)
+        //If in battle, only show items with gameActions. Out of battle, show all items.
+        var inventory2 = inventory;
+        if(GameObject.FindFirstObjectByType<BattleManager>() != null)
+        {
+            inventory2 = inventory.Where(item => item.gameAction != null).ToList();
+        }
+        foreach(var item in inventory2)
         {
             if(item.quantity == 0)continue;
             var itemGO = Instantiate(Resources.Load<GameObject>("InventoryItem"), itemContainer);
@@ -102,6 +108,9 @@ public class Inventory : MonoBehaviour
                            caller = item.gameAction.caller
                        };
                        battleManager.actionQueue.Add(targetAction);
+                       GameManager.Instance.ConsumeInventoryItem(item.itemName, true, 1);
+                       UpdateInventoryImages(GameManager.Instance.inventory);
+                       battleManager.HideInventory();
                    }
                    else
                    {

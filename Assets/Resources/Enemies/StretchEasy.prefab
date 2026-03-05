@@ -56,6 +56,7 @@ MonoBehaviour:
   psychic: 17
   mp: 0
   maxMp: 30
+  startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 
   weaknesses: 01000000
@@ -101,6 +102,7 @@ MonoBehaviour:
   xpReward: 50
   goldReward: 30
   attackSpeed: 0.5
+  portrait: {fileID: 21300000, guid: 376bdaddb3cebc9438d42ccdb1fcd61e, type: 3}
   tempAttackData:
     attackPattern: 
     attackName: 

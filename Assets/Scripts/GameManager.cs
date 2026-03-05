@@ -86,6 +86,23 @@ public class GameManager : MonoBehaviour
                     healAmount = "50"
                 };
             break;
+            case "Ramen":
+                newItem = new InventoryItem(name,1);
+                newItem.description = "Restores Full HP";
+                newItem.outOfBattleAction = (menu) => {
+                    var pm = YourParty.instance.GetPartyMember(menu.currentCharacter);
+                    if(pm != null)
+                    {
+                        pm.hpPercentage = 1f;
+                    }
+                };
+                newItem.gameAction = new HealAction()
+                {
+                    targetType = TargetType.SingleAlly,
+                    animation = "Drink",
+                    healAmount = "500"
+                };
+            break;
             case "Bang":
                 newItem = new InventoryItem(name,1);
                 newItem.description = "Throw at an enemy to deal damage. Does not consume a turn";
@@ -114,11 +131,11 @@ public class GameManager : MonoBehaviour
             break;
             case "DrPepper":
                 newItem = new InventoryItem(name,1);
-                newItem.description = "The Dr is In! Instantly revives an ally and restores 50 HP";
+                newItem.description = "The Dr is In! Instantly revives an ally and restores 50% HP";
                 newItem.gameAction = new ReviveAction()
                 {
                     targetType = TargetType.SingleAlly,
-                    animation = "Drink"
+                    animation = "Drink",
                 };
             break;
             case "Coca-Cola Keg":

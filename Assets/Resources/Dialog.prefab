@@ -741,7 +741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.880916, b: 0.6839622, a: 1}
+  m_Color: {r: 1, g: 0.8759609, b: 0.6650944, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1010,9 +1010,11 @@ MonoBehaviour:
   textComponent: {fileID: 260199065299937066}
   dialog: []
   textSpeed: 0.02
+  choice: 
   nameText: {fileID: 404724827130165428}
   yesButton: {fileID: 6920701119964383192}
   noButton: {fileID: 8047476889426075095}
+  image: {fileID: 4525047092430099987}
 --- !u!95 &3267297627249615102
 Animator:
   serializedVersion: 7

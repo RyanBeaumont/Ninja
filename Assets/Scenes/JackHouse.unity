@@ -813,6 +813,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Sleep til Midnight
 --- !u!114 &69174320
 MonoBehaviour:
@@ -829,6 +830,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'You answer the PORTA-COMM. Surprisingly it''s not Big Sam. Who could it
       be? '
@@ -962,6 +964,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Answer your Porta-Comm
   consume: 1
   xpReward: 10
@@ -1058,6 +1061,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -1077,6 +1081,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: a771b7d13abcec6479d2472603246269, type: 3}
   fadeTime: 1.5
   sfx: 
@@ -3581,84 +3586,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &284357144
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 551193927}
-    m_Modifications:
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4358426915205826297, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_Name
-      value: Jade (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8255421463205862292, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
---- !u!4 &284357145 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-  m_PrefabInstance: {fileID: 284357144}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &295007402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4753,13 +4680,11 @@ GameObject:
   m_Component:
   - component: {fileID: 419053738}
   - component: {fileID: 419053736}
-  - component: {fileID: 419053735}
   - component: {fileID: 419053734}
   - component: {fileID: 419053742}
   - component: {fileID: 419053732}
   - component: {fileID: 419053740}
   - component: {fileID: 419053739}
-  - component: {fileID: 419053741}
   m_Layer: 0
   m_Name: Mom
   m_TagString: Untagged
@@ -4782,6 +4707,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Okay FINE, go to your room. Always so moody about everything!
     name: Mom
@@ -4812,6 +4738,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: The sudden appearance of your MOM surprises you. She is just another obstacle
       standing between you and your QUEST to reach your room.
@@ -4834,21 +4761,6 @@ MonoBehaviour:
     face: Mad
   turnToFace: 1
   snapPlayerPosition: 0
---- !u!114 &419053735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 419053731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e114ab93b5066be4c80a680534745c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: HandsOnHips
-  face: Happy
-  combatIdle: 
 --- !u!114 &419053736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4864,6 +4776,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!4 &419053738
 Transform:
   m_ObjectHideFlags: 0
@@ -4877,7 +4790,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1130787792}
+  - {fileID: 705697368}
   m_Father: {fileID: 820919641}
   m_LocalEulerAnglesHint: {x: 0, y: -225, z: 0}
 --- !u!136 &419053739
@@ -4918,32 +4831,11 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 0
   additionalObjects: []
   endingPose: HandsOnHips
   endingFace: Neutral
---- !u!95 &419053741
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 419053731}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4a3f43c48b55a97419ef73b4fe12a250, type: 3}
-  m_Controller: {fileID: 9100000, guid: f86b0e37d927a6e40bb8c4caf8fa0df9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &419053742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4959,6 +4851,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   enemies:
   - {fileID: 8346498964973016767, guid: 1ef6aa7223e7f4449997993b4667feef, type: 3}
   hideObjects: []
@@ -6274,12 +6167,10 @@ GameObject:
   m_Component:
   - component: {fileID: 551193927}
   - component: {fileID: 551193934}
-  - component: {fileID: 551193933}
   - component: {fileID: 551193932}
   - component: {fileID: 551193931}
   - component: {fileID: 551193930}
   - component: {fileID: 551193929}
-  - component: {fileID: 551193928}
   m_Layer: 0
   m_Name: Mom
   m_TagString: Untagged
@@ -6300,31 +6191,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 284357145}
+  - {fileID: 1704299068}
   m_Father: {fileID: 1466277743}
   m_LocalEulerAnglesHint: {x: 0, y: -269.999, z: 0}
---- !u!95 &551193928
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 551193926}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4a3f43c48b55a97419ef73b4fe12a250, type: 3}
-  m_Controller: {fileID: 9100000, guid: f86b0e37d927a6e40bb8c4caf8fa0df9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!136 &551193929
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6363,6 +6232,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 0
   additionalObjects: []
   endingPose: HandsOnHips
@@ -6382,6 +6252,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   itemName: Coke
 --- !u!114 &551193932
 MonoBehaviour:
@@ -6398,6 +6269,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Good morning my little Spartan! Do you want any breakfast?
     name: Mom
@@ -6413,21 +6285,6 @@ MonoBehaviour:
     face: Embarrassed
   turnToFace: 1
   snapPlayerPosition: 0
---- !u!114 &551193933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 551193926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e114ab93b5066be4c80a680534745c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: HandsOnHips
-  face: Happy
-  combatIdle: 
 --- !u!114 &551193934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6443,6 +6300,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!1001 &552057731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7945,6 +7803,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: Overworld
   spawnPointIndex: 1
   sceneVariant: 2
@@ -7965,6 +7824,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Investigate the Dojo
 --- !u!114 &668733819
 MonoBehaviour:
@@ -7981,6 +7841,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - DAY 2. If I thought something was fishy before, I hadn't seen nothing yet
   - A secret lair? A mysterious deal? And don't even get me started on what Sensei
@@ -8002,6 +7863,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   toBlack: 1
   cameraTarget: {fileID: 0}
 --- !u!114 &668733821
@@ -8019,6 +7881,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   prompt: You realize this is your last chance to complete today's QUESTS before
     you call it a night... Do you still want to sleep?
   itemName: 
@@ -8040,6 +7903,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Sleep til Midnight
   consume: 0
   xpReward: 0
@@ -8089,6 +7953,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: 3e3e2d970796e7746be925ed46ad1ad9, type: 3}
   fadeTime: 1.5
   sfx: 
@@ -8107,6 +7972,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: 5563344985e47444cb336f0971102dad, type: 3}
   fadeTime: 0.5
   sfx: 
@@ -8125,6 +7991,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Sleep til Midnight
   consume: 1
   xpReward: 0
@@ -8428,6 +8295,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5880966151668079918, guid: 7e7f1160f3f3ffb47968b5618bc236b5, type: 3}
   m_PrefabInstance: {fileID: 705625543}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &705697367
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 419053738}
+    m_Modifications:
+    - target: {fileID: 5378271276609573190, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_Name
+      value: SpartanMom
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+--- !u!4 &705697368 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+  m_PrefabInstance: {fileID: 705697367}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &711301693
 PrefabInstance:
@@ -8762,6 +8691,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -8781,6 +8711,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!114 &720802867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8796,6 +8727,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!65 &720802868
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10596,6 +10528,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -10615,6 +10548,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "That scream was pretty alarming. Maybe you should tell Big Sam via your
       new PORTA-COMM. It\u2019s right where you left it, on your desk."
@@ -10729,6 +10663,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!1001 &877573013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11786,6 +11721,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   itemName: Coke
 --- !u!114 &990141608
 MonoBehaviour:
@@ -11802,6 +11738,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 0
   additionalObjects: []
   endingPose: 
@@ -13140,84 +13077,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 39e177bff501ed046a3aebd7010f9570, type: 3}
   m_PrefabInstance: {fileID: 1128427227}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1130787791
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 419053738}
-    m_Modifications:
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4358426915205826297, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_Name
-      value: Jade (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8255421463205862292, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
---- !u!4 &1130787792 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3978911043939736643, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
-  m_PrefabInstance: {fileID: 1130787791}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1133865234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14439,6 +14298,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "You raise Big Sam on the PORTA-COMM. Just \u2018cause he\u2019s the only
       person you know who actually owns a PORTA COMM."
@@ -14643,6 +14503,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Sleep
 --- !u!114 &1278167202
 MonoBehaviour:
@@ -14659,6 +14520,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -14678,6 +14540,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: 3e3e2d970796e7746be925ed46ad1ad9, type: 3}
   fadeTime: 0.5
   sfx: 
@@ -14696,6 +14559,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: a771b7d13abcec6479d2472603246269, type: 3}
   fadeTime: 1.5
   sfx: 
@@ -18135,6 +17999,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Go to the Dojo
 --- !u!114 &1638810716
 MonoBehaviour:
@@ -18151,6 +18016,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Today is Saturday. You realize there is a YOU-JITSU class on Saturdays.
       You are curious what the heck YOU-JITSU actually is. You make it your QUEST
@@ -18177,6 +18043,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   toBlack: 0
   cameraTarget: {fileID: 0}
 --- !u!114 &1638810718
@@ -18194,6 +18061,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - DAY 1. There are definitely some bad vibes going on around town. Perfect for
     a private investigator like me.
@@ -18216,6 +18084,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   toBlack: 1
   cameraTarget: {fileID: 0}
 --- !u!114 &1638810720
@@ -18233,6 +18102,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Sleep
   consume: 1
   xpReward: 0
@@ -18262,6 +18132,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: 
   spawnPointIndex: 1
   sceneVariant: 1
@@ -18282,6 +18153,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: 3e3e2d970796e7746be925ed46ad1ad9, type: 3}
   fadeTime: 0.5
   sfx: 
@@ -18300,6 +18172,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: 5563344985e47444cb336f0971102dad, type: 3}
   fadeTime: 1.5
   sfx: 
@@ -18810,6 +18683,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5880966151668079918, guid: 7e7f1160f3f3ffb47968b5618bc236b5, type: 3}
   m_PrefabInstance: {fileID: 1691571712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1704299067
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 551193927}
+    m_Modifications:
+    - target: {fileID: 5378271276609573190, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_Name
+      value: SpartanMom
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+--- !u!4 &1704299068 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
+  m_PrefabInstance: {fileID: 1704299067}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1715819681
 PrefabInstance:
@@ -19858,6 +19793,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   itemName: Lockpick
 --- !u!114 &1795118661
 MonoBehaviour:
@@ -19874,6 +19810,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 0
   additionalObjects: []
   endingPose: 
@@ -20310,6 +20247,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: Overworld
   spawnPointIndex: 1
   sceneVariant: 1
@@ -20335,6 +20273,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Go to the Dojo
   consume: 0
   xpReward: 0
@@ -23258,6 +23197,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: It's your older brother's room - he's always away.
     name: 

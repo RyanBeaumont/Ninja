@@ -45,6 +45,7 @@ public class ChooseTargetsAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
+        if(gameAction is ReviveAction) targetDead = true;
         Targeter targeter = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Targeter")).GetComponent<Targeter>();
         targeter.Initialize(targetType, prompt, gameAction, targetDead);
         battleManager.waitingForInput = true;

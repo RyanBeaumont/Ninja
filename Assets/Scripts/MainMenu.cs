@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
         var GameManager = Object.Instantiate(Resources.Load<GameObject>("GameManager"));
         var YourParty = Object.Instantiate(Resources.Load<GameObject>("YourParty"));
         YourParty.GetComponent<YourParty>().BuildStartingDeck();
-        GameManager.GetComponent<GameManager>().ChangeScene("DojoInterior",0,0);
+        GameManager.GetComponent<GameManager>().ChangeScene("Overworld",99,9);
     }
 
     public void StartChapter2()

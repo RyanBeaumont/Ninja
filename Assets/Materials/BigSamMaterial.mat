@@ -111,7 +111,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RimStep: 0.45
+    - _RimStep: 0.305
     - _RimStepSmooth: 0
     - _ShadowStep: 0.5
     - _ShadowStepSmooth: 0
@@ -135,7 +135,7 @@ Material:
     - _Highlight_Color: {r: 1, g: 0.6156863, b: 0, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _Outline_Color: {r: 0.11764706, g: 0, b: 0.49019605, a: 1}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimColor: {r: 1, g: 0.07980795, b: 0, a: 1}
     - _Shadows_Color: {r: 0.116559066, g: 0, b: 0.49056596, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 0.24528301, g: 0.031238874, b: 0.031238874, a: 1}

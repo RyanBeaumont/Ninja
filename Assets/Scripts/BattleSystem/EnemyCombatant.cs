@@ -30,6 +30,7 @@ public class EnemyCombatant : Combatant
     public float xpReward = 10f;
     public float goldReward = 10f;
     public float attackSpeed = 0.25f;
+    public Sprite portrait;
     [HideInInspector] public EnemyAttackData tempAttackData;
 
     public void OnHit(string direction)

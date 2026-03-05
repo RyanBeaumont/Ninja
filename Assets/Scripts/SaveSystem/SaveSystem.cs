@@ -23,54 +23,86 @@ public static class SaveSystem
     }
 
     public static SaveData LoadGame(string fname)
-    {
-        string path = Application.persistentDataPath + "/" + fname + ".sav";
-        if (File.Exists(path))
-        {
-            FileInfo info = new FileInfo(path);
-            if (info.Length == 0)
-            {
-                Debug.LogError("Save file is empty: " + path);
-                GameManager.Instance.ShowMessage("Load failed");
-                return null;
-            }
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+{
+    string path = Application.persistentDataPath + "/" + fname + ".sav";
 
-            SaveData data = formatter.Deserialize(stream) as SaveData;
-            stream.Close();
-            return data;
-        }
-        else
-        {
-            Debug.LogError("Save file not found in " + path);
-            return null;
-        }
+    if (!File.Exists(path))
+    {
+        Debug.LogError("Save file not found: " + path);
+        GameManager.Instance.ShowMessage("Save file not found");
+        return null;
     }
 
-    public static List<SaveData> GetAllSaves()
+    try
     {
-        List<SaveData> saves = new List<SaveData>();
-        string directoryPath = Application.persistentDataPath;
-        if (Directory.Exists(directoryPath))
+        FileInfo info = new FileInfo(path);
+        if (info.Length == 0)
         {
-            string[] files = Directory.GetFiles(directoryPath, "*.sav");
-            BinaryFormatter formatter = new BinaryFormatter();
+            Debug.LogError("Save file is empty: " + path);
+            GameManager.Instance.ShowMessage("Save file is corrupt");
+            return null;
+        }
 
-            foreach (string file in files)
+        BinaryFormatter formatter = new BinaryFormatter();
+        using (FileStream stream = new FileStream(path, FileMode.Open))
+        {
+            SaveData data = formatter.Deserialize(stream) as SaveData;
+            return data;
+        }
+    }
+    catch (System.Exception e)
+    {
+        Debug.LogError($"LOAD FAILED for {path}: {e}");
+        GameManager.Instance.ShowMessage("Save file is corrupt");
+
+        // Optional: rename or delete corrupt save
+        string corruptPath = path + ".corrupt";
+        if (File.Exists(path))
+            File.Move(path, corruptPath);
+
+        return null;
+    }
+}
+
+    public static List<SaveData> GetAllSaves()
+{
+    List<SaveData> saves = new List<SaveData>();
+    string directoryPath = Application.persistentDataPath;
+
+    if (!Directory.Exists(directoryPath))
+        return saves;
+
+    string[] files = Directory.GetFiles(directoryPath, "*.sav");
+    BinaryFormatter formatter = new BinaryFormatter();
+
+    foreach (string file in files)
+    {
+        try
+        {
+            FileInfo info = new FileInfo(file);
+            if (info.Length == 0)
             {
-                FileInfo info = new FileInfo(file);
-                if (info.Length == 0)
-                {
-                    Debug.LogError("Save file is empty: " + file);
-                    break;
-                }
-                FileStream stream = new FileStream(file, FileMode.Open);
+                Debug.LogError("Save file is empty: " + file);
+                continue;
+            }
+
+            using (FileStream stream = new FileStream(file, FileMode.Open))
+            {
                 SaveData data = formatter.Deserialize(stream) as SaveData;
-                stream.Close();
                 saves.Add(data);
             }
         }
-        return saves;
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Corrupt save skipped: {file}\n{e}");
+
+            // Optional: quarantine corrupt file
+            string corruptPath = file + ".corrupt";
+            if (File.Exists(file))
+                File.Move(file, corruptPath);
+        }
     }
+
+    return saves;
+}
 }

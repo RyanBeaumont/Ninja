@@ -197,9 +197,18 @@ public class Menu : MonoBehaviour
                 thisCharacter.transform.Find("CharacterName").GetComponent<TMP_Text>().text = p;
                 thisCharacter.transform.Find("Subheading").GetComponent<TMP_Text>().text = $"Lv. {partyMember.level} {partyMember.mainClass} {partyMember.subClass}";
                 YourParty.instance.GetStats(partyMember,out var attack, out var tempHP, out var speed, out var psychic);
+                if(partyMember.alive){
                 thisCharacter.transform.Find("Health/HP").GetComponent<TMP_Text>().text = $"{partyMember.hpPercentage * tempHP}/{tempHP}";
                 thisCharacter.transform.Find("Health").GetComponent<Slider>().value = partyMember.hpPercentage;
                 thisCharacter.transform.Find("Portrait").GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/{partyMember.memberName}");
+                }
+                else
+                {
+                    thisCharacter.transform.Find("Health/HP").GetComponent<TMP_Text>().text = $"DEAD";
+                    thisCharacter.transform.Find("Health").GetComponent<Slider>().value = 0;
+                    thisCharacter.transform.Find("Portrait").GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/Cards/IconDeath");
+                }
+                
                 thisCharacter.GetComponentInChildren<Button>().onClick.AddListener(() => ShowCharacterMenu(p));
             }
         }

@@ -8,25 +8,36 @@ public class SaveEncounter : ChainedInteractable
     bool uiActive = false;
     GameObject ui;
     public override void Interact()
+{
+    if (!active) return;
+
+    ui = Instantiate(Resources.Load<GameObject>("Saves"));
+    ui.transform.Find("Saves/Title").GetComponent<TMP_Text>().text = "Save Your Game";
+
+    Transform content = ui.transform.Find("Saves/Viewport/Content");
+
+    foreach (var save in SaveSystem.GetAllSaves())
     {
-        if (active)
+        GameObject loadButton = Instantiate(Resources.Load<GameObject>("LoadButton"), content);
+
+        var buttonScript = loadButton.GetComponent<LoadGameButton>();
+        buttonScript.SetSaveData(save, true);
+
+        string fileName = save.saveFileName; // capture locally for closure safety
+
+        loadButton.GetComponent<Button>().onClick.AddListener(() =>
         {
-            ui = Instantiate(Resources.Load<GameObject>("Saves"));
-            ui.transform.Find("Saves/Title").GetComponent<TMP_Text>().text = "Save Your Game";
-            Transform content = ui.transform.Find("Saves/Viewport/Content");
-            foreach (var save in SaveSystem.GetAllSaves())
-            {
-                GameObject loadButton = Instantiate(Resources.Load<GameObject>("LoadButton"), content);
-                loadButton.GetComponent<LoadGameButton>().SetSaveData(save, true);
-                loadButton.GetComponent<Button>().onClick.AddListener(OnSaveFinished); //Button already auto-sets save file name
-            }
-            GameObject newSave = Instantiate(Resources.Load<GameObject>("NewSave"), content);
-            newSave.GetComponent<Button>().onClick.AddListener(NewSave);
-            Time.timeScale = 0f;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+            OnSaveFinished(fileName);
+        });
     }
+
+    GameObject newSave = Instantiate(Resources.Load<GameObject>("NewSave"), content);
+    newSave.GetComponent<Button>().onClick.AddListener(NewSave);
+
+    Time.timeScale = 0f;
+    Cursor.lockState = CursorLockMode.None;
+    Cursor.visible = true;
+}
 
     public void NewSave()
     {
@@ -38,22 +49,29 @@ public class SaveEncounter : ChainedInteractable
             saveIndex++;
         }
         YourParty.instance.currentSaveFileName = "savefile_" + saveIndex;
-        OnSaveFinished();
+        OnSaveFinished(YourParty.instance.currentSaveFileName);
     }
 
-    public void OnSaveFinished()
+    public void OnSaveFinished(string saveFileName)
+{
+    print("Saving to " + saveFileName);
+    if (ui != null) Destroy(ui);
+
+    Cursor.lockState = CursorLockMode.Locked;
+    Cursor.visible = false;
+    Time.timeScale = 1f;
+
+    if (GetComponentInChildren<SpawnPoint>())
     {
-        if(ui != null) Destroy(ui);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        Time.timeScale = 1f;
-        if (GetComponentInChildren<SpawnPoint>())
-            {
-                GameManager.Instance.SetSpawnPoint(GetComponentInChildren<SpawnPoint>().index);
-            }
-        YourParty.instance.HealParty();
-        SaveSystem.SaveGame(YourParty.instance.currentSaveFileName);
-        GameManager.Instance.ShowMessage($"Party Healed and Game Saved to {YourParty.instance.currentSaveFileName}");
-        CallNext();
+        GameManager.Instance.SetSpawnPoint(GetComponentInChildren<SpawnPoint>().index);
     }
+
+    YourParty.instance.HealParty();
+    YourParty.instance.currentSaveFileName = saveFileName;
+
+    SaveSystem.SaveGame(saveFileName);
+    GameManager.Instance.ShowMessage($"Party Healed and Game Saved");
+
+    CallNext();
+}
 }

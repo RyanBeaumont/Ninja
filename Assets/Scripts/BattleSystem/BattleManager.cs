@@ -375,12 +375,7 @@ public class BattleManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(itemContainer.gameObject.activeInHierarchy)
-            {
-                itemContainer.gameObject.SetActive(false);
-                buttonContainer.gameObject.SetActive(true);
-                activePlayer.BonusTurn();
-            }
+           HideInventory();
         }
         //Check for win
         var enemies = combatants.Where(c => c.tag == "Enemy" && c.alive).ToList();
@@ -498,9 +493,17 @@ public class BattleManager : MonoBehaviour
                 TurnOrderUI
             );
 
-            icon.GetComponentInChildren<TMP_Text>().text =
-                combatant.name.Substring(0, 1);
-            icon.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>($"Sprites/{combatant.combatantName}");
+            icon.GetComponentInChildren<TMP_Text>().text = "";
+            
+                if(combatant is EnemyCombatant e && e.portrait != null)
+                {
+                        icon.GetComponentInChildren<Image>().sprite = e.portrait;
+            }
+            else
+            {
+                icon.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>($"Sprites/{combatant.combatantName}");
+            }
+            
         }
     }
 
@@ -510,7 +513,7 @@ public class BattleManager : MonoBehaviour
     const int MAX_ITERATIONS = 10000;
 
     var sim = new List<(Combatant c, float initiative)>();
-    foreach (var c in combatants)
+    foreach (var c in combatants.Where(c => c.alive))
         sim.Add((c, c.initiative));
 
     var result = new List<Combatant>();
@@ -580,9 +583,11 @@ public class BattleManager : MonoBehaviour
         string pose = "FightingIdle";
         foreach(Combatant combatant in combatants)
         {
-            var defaultPose = combatant.GetComponentInChildren<DefaultPose>();
-            if(defaultPose != null && defaultPose.combatIdle != "") pose = defaultPose.combatIdle;
-            combatant.PlayAnimation(pose);
+            if(combatant.alive){
+                var defaultPose = combatant.GetComponentInChildren<DefaultPose>();
+                if(defaultPose != null && defaultPose.combatIdle != "") pose = defaultPose.combatIdle;
+                combatant.PlayAnimation(pose);
+            }
             combatant.ReturnToStartPosition();
         }
         perfectDodge = true;
@@ -736,6 +741,16 @@ public class BattleManager : MonoBehaviour
         var activeCardDisplays = FindObjectsByType<CardDisplay>(FindObjectsSortMode.None);
         buttonContainer.gameObject.SetActive(false);
         handManager.SetHandActive(false);
+    }
+
+    public void HideInventory()
+    {
+         if(itemContainer.gameObject.activeInHierarchy)
+            {
+                itemContainer.gameObject.SetActive(false);
+                buttonContainer.gameObject.SetActive(true);
+                activePlayer.BonusTurn();
+            }
     }
 
     public void SpawnProjectile(Combatant caller, string prefab = "")

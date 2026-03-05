@@ -211,8 +211,9 @@ public class YourParty : MonoBehaviour
             combatant.defense = 1f;
             
             
-            if(partyMember.alive == false){combatant.alive = false; combatant.PlayAnimation("Knockdown");}
+            
             combatant.enabled = true;
+            if(partyMember.alive == false){combatant.alive = false; combatant.PlayAnimation("Knockdown");}
             combatant.GetComponentInChildren<Animator>().enabled = true;    
 
         }
