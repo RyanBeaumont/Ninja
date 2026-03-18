@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         savePanel.gameObject.SetActive(false);
+
     }
 
     public void StartNewGame()

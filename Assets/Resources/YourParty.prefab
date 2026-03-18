@@ -101,9 +101,7 @@ MonoBehaviour:
     equipment: []
     alive: 1
   partyMembers:
-  - Storm
-  - Thad
-  - Big Sam
+  - Spartan Jack
   devTools: 0
   currentSaveFileName: savefile_1
   gold: 0

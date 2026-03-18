@@ -48,7 +48,7 @@ public class Combatant : MonoBehaviour
         if(caller != null){
             //Damage = BaseDamage × (Attack / AttackBaseline) × (K / (Defense + K))
             var multiplier = Mathf.Abs(caller.EvaluateStatFormula("ATK")/15 * EvaluateStatFormula("DEF"));
-            print($"Base damage {baseDamage} x Multiplier {multiplier}");
+            print($"Atk: {caller.EvaluateStatFormula("ATK")} Base damage: {baseDamage} x Multiplier: {multiplier}");
             multiplier = Mathf.Clamp(multiplier,0.25f,6.0f);
             baseDamage = Mathf.Abs(baseDamage * multiplier); //If attack and defense are equal, deal 1x damage. Higher attack deals more damage, higher defense reduces damage.
         }

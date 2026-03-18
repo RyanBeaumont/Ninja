@@ -349,12 +349,14 @@ public class BattleManager : MonoBehaviour
                 AudioManager.Instance.PlaySoundEffect("SwordClang");
                 var difference = Mathf.Abs(slider.value - 1f);
                 print(difference);
-                if(difference < quickTimeCritWindow) quickTimeMultiplier = 1.25f;
-                else quickTimeMultiplier = 1 - (difference * 8);
-                if(quickTimeMultiplier == 1.25){
+                //set the multiplier from 0-1
+                quickTimeMultiplier = Mathf.Clamp(1f - difference * 2f, 0.1f, 1f);
+                if(difference < quickTimeCritWindow)
+                {
+                    quickTimeMultiplier = 1.25f;
                     GameManager.Instance.ShowMessage($"CRITICAL! 1.25X");
                     AudioManager.Instance.PlaySoundEffect("OrchestraHit",UnityEngine.Random.Range(0.9f,1.1f));
-                }
+                } 
                 quickTimeEvent.gameObject.SetActive(false);
                 clock = 0f;
             }
@@ -577,6 +579,7 @@ public class BattleManager : MonoBehaviour
 
     public void NextTurn()
     {
+        quickTimeMultiplier = 1f;
         pitch = 1f;
         itemContainer.gameObject.SetActive(false);
         buttonContainer.gameObject.SetActive(false);
@@ -770,6 +773,7 @@ public class BattleManager : MonoBehaviour
         foreach(var t in currentTargets)
         {
             if(t.alive){
+                print($"QuickTime Multiplier = {quickTimeMultiplier} Pending Damage = {pendingDamage}");
             var d = t.TakeDamage(activeCombatant,(int)pendingDamage * quickTimeMultiplier, pendingDamageType);
             var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
             

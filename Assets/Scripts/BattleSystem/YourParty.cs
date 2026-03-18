@@ -63,6 +63,7 @@ public class YourParty : MonoBehaviour
         saveMember.hpPercentage = member.hpPercentage;
         saveMember.deck = new List<string>();
         saveMember.equipment = member.equipment;
+        saveMember.alive = member.alive;
         foreach (var card in member.deck)
         {
             saveMember.deck.Add(card.cardName); // Assuming Card has a cardName property
@@ -80,6 +81,7 @@ public class YourParty : MonoBehaviour
             member.hpPercentage = saveMember.hpPercentage;
             member.equipment = saveMember.equipment;
             member.deck = new List<Card>();
+            member.alive = saveMember.alive;
             foreach (var cardName in saveMember.deck)
             {
                 Card card = CardDatabase.Instance.GetCardByName(cardName);

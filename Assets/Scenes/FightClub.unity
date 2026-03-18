@@ -981,24 +981,13 @@ MonoBehaviour:
     face: Happy
   - text: 'The rules are simple...
 
-      You fight your way through THREE MATCHES,
+      You fight your way through TWO GRUELLING
+      MATCHES,
 
-      then
-      you fight your way through ME'
+      then you fight your way through ME'
     name: Fighter
     character: {fileID: 96088526}
     pose: ArmsCrossed
-    cameraAngle: 0
-    face: Happy
-  - text: 'But... What''s that?
-
-      Today is TAG TEAM NIGHT?
-
-      Better bring
-      a full party of 3'
-    name: Fighter
-    character: {fileID: 96088526}
-    pose: Explaining
     cameraAngle: 0
     face: Happy
   turnToFace: 1
@@ -1027,27 +1016,6 @@ MonoBehaviour:
   - {fileID: 1687770951}
   - {fileID: 96088523}
   battleMusic: {fileID: 8300000, guid: b126a3bc245c23248a209b1bee1807a5, type: 3}
---- !u!114 &96088529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 96088523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01669c0162d07b44db4ebfe8a41cd058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  prompt: Enter Round 2?
-  itemName: 
-  itemQuantity: 0
-  consume: 0
-  incompleteDialog: []
 --- !u!114 &96088530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1142,27 +1110,6 @@ MonoBehaviour:
   - {fileID: 1687770951}
   - {fileID: 96088523}
   battleMusic: {fileID: 8300000, guid: b126a3bc245c23248a209b1bee1807a5, type: 3}
---- !u!114 &96088534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 96088523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01669c0162d07b44db4ebfe8a41cd058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  prompt: Enter Round 3?
-  itemName: 
-  itemQuantity: 0
-  consume: 0
-  incompleteDialog: []
 --- !u!114 &96088535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1193,8 +1140,127 @@ MonoBehaviour:
     pose: Explaining
     cameraAngle: 0
     face: Happy
+  - text: The gold is yours!
+    name: Announcer
+    character: {fileID: 169933059}
+    pose: Explaining
+    cameraAngle: 0
+    face: Happy
   turnToFace: 0
   snapPlayerPosition: 0
+--- !u!114 &96088536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96088523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: 'But... What''s that?
+
+      Today is TAG TEAM NIGHT?
+
+      Sorry, kid,
+      but you need a TEAM'
+    name: The King
+    character: {fileID: 96088526}
+    pose: Explaining
+    cameraAngle: 3
+    face: Confused
+  - text: Come back with two friends if you wanna fight
+    name: The King
+    character: {fileID: 96088526}
+    pose: Explaining
+    cameraAngle: 3
+    face: Confused
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &96088537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96088523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31441617c7f832e43b2308e10814aa79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  branchName: 
+--- !u!114 &96088538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96088523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: 'And now our MAIN EVENT!
+
+      The delicious dinner to our buffet of whoopin'''
+    name: Announcer
+    character: {fileID: 169933059}
+    pose: 
+    cameraAngle: 6
+    face: 
+  - text: (The crowd of one roars)
+    name: Announcer
+    character: {fileID: 169933059}
+    pose: 
+    cameraAngle: 0
+    face: 
+  - text: ARE YOU READY FOR THE KING??!?!
+    name: Announcer
+    character: {fileID: 169933059}
+    pose: Explaining
+    cameraAngle: 2
+    face: 
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &96088539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96088523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bf4172aedc168478a45f52bdfd7867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  levelGate: -1
+  allowedSceneVariants: 
+  needsPartyMember: Storm
+  excludePartyMember: 
+  hideObject: 0
 --- !u!1 &104490264
 GameObject:
   m_ObjectHideFlags: 0
@@ -5183,6 +5249,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 539162201297099810, guid: e903a6feed1eb1f4f8943b23ce7571d8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 517905820}
+    - targetCorrespondingSourceObject: {fileID: 539162201297099810, guid: e903a6feed1eb1f4f8943b23ce7571d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 517905823}
+    - targetCorrespondingSourceObject: {fileID: 539162201297099810, guid: e903a6feed1eb1f4f8943b23ce7571d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 517905822}
+    - targetCorrespondingSourceObject: {fileID: 539162201297099810, guid: e903a6feed1eb1f4f8943b23ce7571d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 517905821}
   m_SourcePrefab: {fileID: 100100000, guid: e903a6feed1eb1f4f8943b23ce7571d8, type: 3}
 --- !u!1 &517905818 stripped
 GameObject:
@@ -5212,13 +5287,122 @@ MonoBehaviour:
   failBranch: 
   dialog:
   - text: My money's on the other guy
-    name: Fighter
+    name: Ninja
     character: {fileID: 517905819}
     pose: 
     cameraAngle: 0
     face: 
   turnToFace: 0
   snapPlayerPosition: 0
+--- !u!114 &517905821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517905818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b5bf5e381673248b03fce9dbf3fef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  questName: Investigate the Fight Club
+  consume: 1
+  xpReward: 50
+  goldReward: 50
+  giveQuestIfMissing: 0
+  completeEvenIfMissing: 1
+  incompleteDialog: []
+--- !u!114 &517905822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517905818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: Hey... Have you seen a kid by the name of Spartan Jack?
+    name: Storm
+    character: {fileID: 0}
+    pose: HandsOnHips
+    cameraAngle: 0
+    face: Confused
+  - text: 'Oh, the new kid?
+
+      Yeah, seen him. A lot actually.
+
+      The ninja
+      council got me stalkin ''em'
+    name: Ninja
+    character: {fileID: 517905819}
+    pose: SittingDown
+    cameraAngle: 2
+    face: Confused
+  - text: But he hasn't been 'round here. Last I saw, he was on his way to the You
+      Jitsu school - I tell 'ya, they're up to something funny in there
+    name: Ninja
+    character: {fileID: 517905819}
+    pose: SittingDown
+    cameraAngle: 0
+    face: Confused
+  - text: ...Then what happened?
+    name: Storm
+    character: {fileID: 0}
+    pose: HandsOnHips
+    cameraAngle: 0
+    face: Confused
+  - text: 'Can''t tell ''ya, I clocked out.
+
+      Now I''m here, and I put some
+      fat stacks on the King. Sure bet.'
+    name: Ninja
+    character: {fileID: 517905819}
+    pose: SittingDown
+    cameraAngle: 0
+    face: Confused
+  - text: (Well, that rules out the fight club - but dang, if even the ninja council
+      can't find him?? He's either a prodigy, or something fishy IS going on)
+    name: 
+    character: {fileID: 517905819}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Confused
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &517905823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517905818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bf4172aedc168478a45f52bdfd7867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  levelGate: -1
+  allowedSceneVariants: 
+  needsPartyMember: Storm
+  excludePartyMember: 
+  hideObject: 0
 --- !u!1001 &520060758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8770,6 +8954,9 @@ PrefabInstance:
       addedObject: {fileID: 96088527}
     - targetCorrespondingSourceObject: {fileID: 8342605929869227899, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 96088539}
+    - targetCorrespondingSourceObject: {fileID: 8342605929869227899, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 96088532}
     - targetCorrespondingSourceObject: {fileID: 8342605929869227899, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
       insertIndex: -1
@@ -8779,19 +8966,22 @@ PrefabInstance:
       addedObject: {fileID: 96088530}
     - targetCorrespondingSourceObject: {fileID: 8342605929869227899, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 96088529}
-    - targetCorrespondingSourceObject: {fileID: 8342605929869227899, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 96088528}
     - targetCorrespondingSourceObject: {fileID: 8342605929869227899, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 96088534}
+      addedObject: {fileID: 96088538}
     - targetCorrespondingSourceObject: {fileID: 8342605929869227899, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
       insertIndex: -1
       addedObject: {fileID: 96088533}
     - targetCorrespondingSourceObject: {fileID: 8342605929869227899, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
       insertIndex: -1
       addedObject: {fileID: 96088535}
+    - targetCorrespondingSourceObject: {fileID: 8342605929869227899, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 96088537}
+    - targetCorrespondingSourceObject: {fileID: 8342605929869227899, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 96088536}
   m_SourcePrefab: {fileID: 100100000, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
 --- !u!1001 &879883966
 PrefabInstance:

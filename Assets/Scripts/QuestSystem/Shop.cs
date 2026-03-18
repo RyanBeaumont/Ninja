@@ -46,7 +46,7 @@ public class Shop : ChainedInteractable
             var itemText = itemGO.GetComponentInChildren<TMPro.TMP_Text>();
             if(itemText != null)
             {
-                itemText.text = $"{item.item.itemName} X{item.item.quantity} - ${item.cost}";
+                itemText.text = $"{item.item.itemName} - ${item.cost} ({item.item.quantity} left)";
             }
             var itemImage = itemGO.transform.Find("Image").GetComponent<UnityEngine.UI.Image>();
             if(itemImage != null)

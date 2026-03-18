@@ -60,5 +60,6 @@ public class SavePartyMember
     public float hpPercentage = 1f;
     public List<string> deck;
     public List<InventoryItem> equipment;
+    public bool alive;
 }
 
