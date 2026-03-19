@@ -37,6 +37,7 @@ public class BattleManager : MonoBehaviour
     public bool perfectDodge = false;
     public int hitCounter = 0;
     public int discardPower = 0;
+    public FloatValue gameDifficulty;
     bool executingActions = false;
     bool canWin = true;
     float pitch = 1f;
@@ -349,9 +350,15 @@ public class BattleManager : MonoBehaviour
                 AudioManager.Instance.PlaySoundEffect("SwordClang");
                 var difference = Mathf.Abs(slider.value - 1f);
                 print(difference);
+                var adjustedCritWindow = quickTimeCritWindow;
+                if(gameDifficulty.value == 0) quickTimeCritWindow *= 2f;
+                if(gameDifficulty.value == 2) quickTimeCritWindow *= 0.75f;
                 //set the multiplier from 0-1
-                quickTimeMultiplier = Mathf.Clamp(1f - difference * 2f, 0.1f, 1f);
-                if(difference < quickTimeCritWindow)
+                var sensitivity = 2f;
+                if(gameDifficulty.value == 0) sensitivity = 1f;
+                if(gameDifficulty.value == 2) sensitivity = 3f;
+                quickTimeMultiplier = Mathf.Clamp(1f - difference * sensitivity, 0.1f, 1f);
+                if(difference < adjustedCritWindow)
                 {
                     quickTimeMultiplier = 1.25f;
                     GameManager.Instance.ShowMessage($"CRITICAL! 1.25X");
@@ -436,7 +443,11 @@ public class BattleManager : MonoBehaviour
                     */
                     AudioManager.Instance.PlaySoundEffect("Whoosh",UnityEngine.Random.Range(0.8f,1.2f));
                     dodgeWindow = dodgeInputWindow;
+                    if(gameDifficulty.value == 0) dodgeWindow = dodgeInputWindow * 1.5f;
+                    if(gameDifficulty.value == 2) dodgeWindow = dodgeInputWindow * 0.75f; 
                     dodgeCooldown = 0.5f;
+                    if(gameDifficulty.value == 0) dodgeCooldown = 0.25f;
+                    if(gameDifficulty.value == 2) dodgeCooldown = 1f;
                     foreach(var t in currentTargets) t.PlayAnimation(dodgeInput);
                 }
             }

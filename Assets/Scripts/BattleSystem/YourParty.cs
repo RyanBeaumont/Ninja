@@ -22,6 +22,7 @@ public class YourParty : MonoBehaviour
     public static YourParty instance;
     public List<PartyMember> reserve;
     public List<string> partyMembers;
+    public FloatValue gameDifficulty;
 
     public bool devTools = false;
     public string currentSaveFileName = "savefile_1";
@@ -211,7 +212,8 @@ public class YourParty : MonoBehaviour
             combatant.maxMp = combatant.psychic * 4;
             combatant.level = partyMember.level;
             combatant.defense = 1f;
-            
+            if(gameDifficulty.value == 2) combatant.defense = 0.8f;
+            if(gameDifficulty.value == 0) combatant.defense = 1.2f;
             
             
             combatant.enabled = true;

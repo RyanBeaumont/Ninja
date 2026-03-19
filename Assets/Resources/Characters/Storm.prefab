@@ -103,6 +103,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Happy
   combatIdle: IdleOffensive
+  combatWeapon: {fileID: 7770521537806205000, guid: 34ac1d37729c6a4488bd7e8128b5acfe, type: 3}
 --- !u!1001 &3861310417951817879
 PrefabInstance:
   m_ObjectHideFlags: 0

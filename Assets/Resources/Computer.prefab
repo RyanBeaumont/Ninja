@@ -1,5 +1,113 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &662998046982755572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9038656757540266584}
+  - component: {fileID: 1006354768290920426}
+  - component: {fileID: 8214556334064191219}
+  - component: {fileID: 2325717400546854690}
+  m_Layer: 5
+  m_Name: Scroll View
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &9038656757540266584
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662998046982755572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8655159689680496279}
+  - {fileID: 8318401937602493398}
+  m_Father: {fileID: 5556923785304572312}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1006354768290920426
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662998046982755572}
+  m_CullTransparentMesh: 1
+--- !u!114 &8214556334064191219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662998046982755572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2325717400546854690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662998046982755572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Content: {fileID: 194025959991143324}
+  m_Horizontal: 1
+  m_Vertical: 1
+  m_MovementType: 1
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 1
+  m_Viewport: {fileID: 8655159689680496279}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 977141434831712843}
+  m_HorizontalScrollbarVisibility: 2
+  m_VerticalScrollbarVisibility: 2
+  m_HorizontalScrollbarSpacing: -3
+  m_VerticalScrollbarSpacing: -3
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &965922638682618630
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,12 +228,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3767656092909877556}
   - {fileID: 2823546566429790316}
   - {fileID: 5556923785304572312}
   - {fileID: 7107039544798208904}
   - {fileID: 6858573124127495106}
   - {fileID: 2467891752852346111}
-  - {fileID: 3767656092909877556}
   m_Father: {fileID: 8035385392659024847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -171,6 +279,207 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1234333829878826437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8318401937602493398}
+  - component: {fileID: 6156121521096100461}
+  - component: {fileID: 6855959111033170757}
+  - component: {fileID: 977141434831712843}
+  m_Layer: 5
+  m_Name: Scrollbar Vertical
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8318401937602493398
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234333829878826437}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9000281219511582248}
+  m_Father: {fileID: 9038656757540266584}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: -17}
+  m_Pivot: {x: 1, y: 1}
+--- !u!222 &6156121521096100461
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234333829878826437}
+  m_CullTransparentMesh: 1
+--- !u!114 &6855959111033170757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234333829878826437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &977141434831712843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234333829878826437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2947088333483816548}
+  m_HandleRect: {fileID: 2959712292465623954}
+  m_Direction: 2
+  m_Value: 0.99999976
+  m_Size: 0.15804929
+  m_NumberOfSteps: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1539596072086883517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2959712292465623954}
+  - component: {fileID: 7859785395436850839}
+  - component: {fileID: 2947088333483816548}
+  m_Layer: 5
+  m_Name: Handle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2959712292465623954
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539596072086883517}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9000281219511582248}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7859785395436850839
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539596072086883517}
+  m_CullTransparentMesh: 1
+--- !u!114 &2947088333483816548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539596072086883517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1910856226818896943
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,12 +510,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5556923785304572312}
+  m_Father: {fileID: 194025959991143324}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -36.25}
-  m_SizeDelta: {x: 0, y: 72.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 55.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8965462694580791359
 CanvasRenderer:
@@ -263,8 +572,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 72
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1590,14 +1899,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1887704287402568046}
-  - {fileID: 5559450703524872622}
+  - {fileID: 9038656757540266584}
   m_Father: {fileID: 5715436995658163962}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 911.5, y: -199.5}
-  m_SizeDelta: {x: 1783, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 1.5, y: -86.25}
+  m_SizeDelta: {x: -37, y: -226.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4370972338822650424
 CanvasRenderer:
@@ -1620,7 +1928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1637,6 +1945,42 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4843094024726171003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9000281219511582248}
+  m_Layer: 5
+  m_Name: Sliding Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &9000281219511582248
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4843094024726171003}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2959712292465623954}
+  m_Father: {fileID: 8318401937602493398}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: -20}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5339503544851721211
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,12 +2374,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5556923785304572312}
+  m_Father: {fileID: 194025959991143324}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -434.25}
-  m_SizeDelta: {x: 0, y: 723.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 4712}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &647161371105521400
 CanvasRenderer:
@@ -2065,7 +2409,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Body Text
+  m_text: jhwkejhrqlwkjehrlkjwhelkjrhwkljehrklwjehrlkjwherkljwhelkrjwhekljrhwlkjehrlkwjehrlkwjehlrkjwhekljrhwlkjehrlkwjehrlkjwhekljrhwlkjehrlkwjehrkljwheklrjhwlkejhrlkwjehrlkjwhelkrjhwelkjrhlwkjehrlkwjh
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40a70dcaf183c2e47846de14bb68c8be, type: 2}
   m_sharedMaterial: {fileID: 2499761555235851943, guid: 40a70dcaf183c2e47846de14bb68c8be, type: 2}
@@ -2092,8 +2436,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2110,7 +2454,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 4
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
@@ -2130,7 +2474,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0.13739014}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2256,9 +2600,292 @@ MonoBehaviour:
   resultsContainer: {fileID: 7299516636660157760}
   inputField: {fileID: 6279198554736648853}
   activeArticle: {fileID: 4731855415094666820}
+  articleTitle: {fileID: 6697646059411461299}
+  articleBody: {fileID: 7015981654081930128}
   searchResults:
-  - name: Lock Combination
-    body: The lock combination is [REDACTED]. this code has been in use for years
-      and years bla bla bla
-  - name: Ninjas
-    body: Shhhh Don't Tell Anyone They Exist
+  - name: Lock Combination Code
+    body: "The Password to the Inner Vault is [REDACTED]. It is made of four digits
+      - The first digit is the month in which the family weapon was placed in the
+      vault, and the remaining three digits are the atomic number of the element
+      contained within the weapon.\r"
+  - name: Ninja
+    body: Shhhh Don't Tell Anyone The Ninjas Exist
+  - name: BunkerTec Stronghold Vault Construction Documents
+    body: "<color=blue>Phase One Completed August 2010</color>\r\nLuxury Bunker includes
+      Living Space for Two, Underground Training Facility, Surveillance Room, Storage
+      Room, Reinforced Titanium Combination Safe\r\n\r\n<color=blue>Phase Two (Awaiting
+      Construction)</color>\r\nBunker Annex will include Unobtanium Laboratory, Lead
+      Insulation, Tunnels to Storm\u2019s House, and seismic scanning equipment\r\n\r\n<color=yellow>JANUARY
+      2005</color> Initial survey of the terrain for the building of the underground
+      Vault reveals high concentrations of an unknown element compromising the structural
+      integrity of the foundation. We will have to drill for samples and send them
+      off to the lab before work can begin\r\n\r\n<color=yellow>FEBRUARY 2005</color>
+      We have decided to call the material Unobtanium for easy identification. Our
+      first two attempts to sample the material were unsuccessful - the drill bits
+      seemed to melt as if the element had created intense heat. Subsequent attempts
+      with a titanium drill bit were able to penetrate the material, but it began
+      to glow, crackle, and explode as if the deposit was under intense pressure.\r\n\r\n<color=yellow>MARCH
+      2005</color> The laboratory could not verify the composition of the material,
+      and it has been shipped to Washington for high level analysis. Due to the laboratory\u2019s
+      top-secret nature, we will not be alerted of the findings. As this material
+      is highly dangerous, we will proceed with caution, but this only proves that
+      this deposit cannot be left unchecked. Construction of the Stronghold will
+      now include quarantining the deposit and sealing it off as part of the titanium
+      vault chamber\r\n"
+  - name: 'Unobtanium: White Sands National Laboratory Report'
+    body: '<color=yellow>Element Number: 115</color>
+
+      Atomic Weight: 289
+
+      <color=red>Class:
+      Highly Dangerous</color>
+
+      Properties: Highly corrosive, toxic, radioactive.
+      Decays immediately unless in certain elemental compounds, which are extremely
+      volatile and exhibit strange properties especially when interacting with animal
+      and plant life, such as [REDACTED FOR NATIONAL SECURITY]
+
+      Medical Uses:
+      None
+
+      Military Uses: [REDACTED]
+
+'
+  - name: The Family Weapons - A Record by Jade
+    body: "<color=yellow>\u201CThe Dimension Blade\u201D</color> - This weapon is
+      currently in the Vault Stronghold. It contains a secret compartment that may
+      be filled with a strange material (Unobtanium). It has been locked away due
+      to its intense power, and none of the ninjas have seen it. Legend says it is
+      capable of opening a rift to another dimension - the afterlife, or somewhere
+      else? I have seen it. It has killed my closest companions. And it is NOT the
+      family weapon of Storm and her clan. It belongs to me. Danger Level: Extreme\r\n
+      \r\n<color=yellow>\u201CThe Lightning Staff\u201D</color> - Stretch\u2019s
+      weapon enables her to suck energy from her surroundings like some sort of vampire
+      and become absolutely wired. Her family has been known for their speed and
+      energy, and the staff has become imbued with their combined insanity. Danger
+      Level: Low \r\n\r\n<color=yellow>\u201CThe Axe\u201D</color> - Contrary to
+      popular belief, Torch\u2019s guitar is NOT his family\u2019s weapon. Instead
+      it is a katana labeled The Axe. Torch comes from a long line of martial arts
+      masters able to concentrate their Chi into the weapon and achieve incredible
+      feats. Some say they can even attempt the Tai Chi Teleport. Danger Level: High
+      \r\n\r\n<color=yellow>\u201CThe Actual Axe\u201D</color> - No one knows Storm\u2019s
+      real family history. No records indicate that her or the Master are actually
+      martial artists, or have a history of concentrating power into a family weapon.
+      She is simply very good at swinging a very regular axe. Danger Level: Low \r\n\r\n<color=yellow>\u201CSam\u2019s
+      Hammer\u201D</color> - Big Sam\u2019s family weapon is absolutely huge. Surprise.
+      It seems impossibly heavy, and allows only Big Sam to pick it up. Danger Level:
+      Low\r\n\r\n<color=yellow>\u201CThe Seeing Sword\u201D</color> - We do not know
+      where Spartan Jack\u2019s weapon comes from. It does not seem to do anything,
+      however it is made almost entirely of the material Unobtanium, in some sort
+      of stable form. It is decorated with an eye that seems to move occasionally.
+      Its history, along with Jack\u2019s family, is unknown. Danger Level: Low?
+      \r\n"
+  - name: Stronghold/Dimension Blade Access Log
+    body: "<color=yellow>August 1, 2010</color> - Phase One Construction Completed\r\n\r\n<color=yellow>August
+      4, 2010</color> - Dimension Blade has been locked away\r\n\r\n<color=yellow>September
+      5, 2010</color> - Stronghold was opened for maintenance. Corrosion through
+      the titanium was visible, and a bizarre odor was detected. The Stronghold and
+      its surrounding tunnels were deemed \u201Chazardous\u201D due to their high
+      concentration of the dangerous element and should not be reopened.\r\nThe Stronghold
+      has not been accessed since\r\n"
+  - name: 'Cracking the You-Jitsu Code: Vampire Energy Suck'
+    body: "Energy (Chi) is a powerful element of You-Jitsu that only the most focused
+      ninjas can harness. Concentrating on a victim, a tired ninja can perform the
+      Vampire Energy Suck, stealing their ki. This technique has the possibility
+      of causing the target to fatigue or pass out, but anybody in the Children or
+      Youth classes should have plenty of energy to share with you. Arm circles are
+      not necessary while performing the Vampire Energy Suck, but useful if you don\u2019t
+      want to look like a stalker staring down children. If it is your first time
+      trying this technique, you will look like a stalker staring down children,
+      and thus should flail your arms in circles as if you are doing something important. "
+  - name: 'E-S-Pow: A Deadly Combination of Mind and Technique'
+    body: "One of the most widely attempted and most failed Ninja Technique in the
+      Dojoplex is a type of mind reading known as \u201CE-S-Pow\u201D. Many people
+      believe that performing E-S-Pow is similar to the Vampire Energy Suck, and
+      thus scare fellow trainees by staring at them like a murderer. This is not
+      the correct way to perform the technique.\r\n\r\nTrue E-S-Pow requires a combination
+      of elements: maximum knowledge of your teammates and a high degree of cooperation,
+      as well as strange facial gestures for effect. E-S-Pow occurs not when you
+      want to read the mind of a target, but when you know the target and yourself
+      share the same thoughts. Many advanced ninjas extend this technique by projecting
+      their thoughts to be read by a fellow ninja, as well as predicting the exact
+      outcome of an event before it occurs. This is done by creating an E-S-Pow link
+      with the ninja and then imagining exactly how their thoughts will affect the
+      future. The link can be held for an extended period of time for more accurate
+      results.\r\n\r\nTo perform E-S-Pow at its maximum level, you and the target
+      must have been able to communicate with each other recently. This has to do
+      with the Flux Flow and is well beyond your comprehension. These laws also prevent
+      a ninja from performing any kind of E-S-Pow with anyone not aware of E-S-Pow\u2019s
+      existence. These people collectively are known as Muggles.\r\n\r\n As a review:\r\n1
+      \u2013 You must know the person well in order to perform E-S-Pow\r\n2 \u2013
+      You must have communicated with the person recently.\r\n3 \u2013 The person
+      cannot be a Muggle.\r\n"
+--- !u!1 &6755485625691043959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8655159689680496279}
+  - component: {fileID: 2757122845932638689}
+  - component: {fileID: 5408257420714733968}
+  - component: {fileID: 8343388113696726537}
+  m_Layer: 5
+  m_Name: Viewport
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8655159689680496279
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6755485625691043959}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 194025959991143324}
+  m_Father: {fileID: 9038656757540266584}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 1}
+--- !u!222 &2757122845932638689
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6755485625691043959}
+  m_CullTransparentMesh: 1
+--- !u!114 &5408257420714733968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6755485625691043959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8343388113696726537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6755485625691043959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 0
+--- !u!1 &6980260354607296181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 194025959991143324}
+  - component: {fileID: 5692982334500794363}
+  - component: {fileID: 1389087785922842167}
+  m_Layer: 5
+  m_Name: Content
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &194025959991143324
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6980260354607296181}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1887704287402568046}
+  - {fileID: 5559450703524872622}
+  m_Father: {fileID: 8655159689680496279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0.0009362026}
+  m_SizeDelta: {x: -12, y: 0}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &5692982334500794363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6980260354607296181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &1389087785922842167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6980260354607296181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2

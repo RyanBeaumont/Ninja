@@ -102,6 +102,7 @@ MonoBehaviour:
     alive: 1
   partyMembers:
   - Spartan Jack
+  gameDifficulty: {fileID: 11400000, guid: dc74c96ad530c7849ac75dbae876e553, type: 2}
   devTools: 0
   currentSaveFileName: savefile_1
   gold: 0

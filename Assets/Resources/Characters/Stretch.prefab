@@ -200,6 +200,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Happy
   combatIdle: IdleStretching
+  combatWeapon: {fileID: 6139973996953326225, guid: 9caa3d0f6764dcb41bd66387551bdb34, type: 3}
 --- !u!1 &9049970306333817541
 GameObject:
   m_ObjectHideFlags: 0

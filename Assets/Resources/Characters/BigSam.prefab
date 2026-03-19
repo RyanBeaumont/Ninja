@@ -177,6 +177,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Happy
   combatIdle: IdlePunchingBag
+  combatWeapon: {fileID: 5222867599178813536, guid: 39912fac00195c942ba30a264cda9d37, type: 3}
 --- !u!136 &9194131544939107985
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -361,6 +362,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Happy
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!114 &2734093933141383188
 MonoBehaviour:
   m_ObjectHideFlags: 0

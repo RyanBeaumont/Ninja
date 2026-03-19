@@ -827,6 +827,7 @@ MonoBehaviour:
   perfectDodge: 0
   hitCounter: 0
   discardPower: 0
+  gameDifficulty: {fileID: 11400000, guid: dc74c96ad530c7849ac75dbae876e553, type: 2}
   currentTargets: []
   quickTimeEvent: {fileID: 2005629893069994807}
   quickTimeActiveTime: 1

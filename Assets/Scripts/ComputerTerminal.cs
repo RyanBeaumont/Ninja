@@ -8,7 +8,8 @@ using System.Text.RegularExpressions;
 [Serializable] public class SearchResult
 {
     public string name;
-    public string body;
+    //rich text box
+    [TextArea(3, 10)] public string body;
 }
 
 public class ComputerTerminal : MonoBehaviour
@@ -18,6 +19,8 @@ public class ComputerTerminal : MonoBehaviour
     public Transform resultsContainer;
     public TMP_InputField inputField;
     public GameObject activeArticle;
+    public TMP_Text articleTitle;
+    public TMP_Text articleBody;
     public SearchResult[] searchResults;
 
     void Start()
@@ -31,10 +34,18 @@ public class ComputerTerminal : MonoBehaviour
         var searchString = inputField.text;
         Clear();
         bool foundMatch = false;
+        if(searchString.Length < 4)
+        {
+            AudioManager.Instance.PlaySoundEffect("Negative");
+            articleTitle.text = "Search term too short";
+            articleBody.GetComponent<TMP_Text>().text = "The infinitely wise ninja council requires at least 4 characters to process your request";
+            activeArticle.SetActive(true);
+            return;
+        }
         //search both content and body for matches and return all matches
         foreach (var result in searchResults)
         {
-            if (ContainsWord(result.name, searchString) || ContainsWord(result.body, searchString))
+            if (ContainsWord(result.name, searchString))
             {
                 foundMatch = true;
                 var resultObj = Instantiate(searchResultPrefab, resultsContainer);
@@ -49,8 +60,8 @@ public class ComputerTerminal : MonoBehaviour
                 resultButton.onClick.AddListener(() => {
                     Clear();
                     AudioManager.Instance.PlaySoundEffect("MenuEquip");
-                    activeArticle.transform.Find("Title").GetComponent<TMP_Text>().text = capturedResult.name;
-                    activeArticle.transform.Find("Body").GetComponent<TMP_Text>().text = capturedResult.body;
+                    articleTitle.text = capturedResult.name;
+                    articleBody.text = capturedResult.body;
                     activeArticle.SetActive(true);
                 });
             }
@@ -59,8 +70,8 @@ public class ComputerTerminal : MonoBehaviour
         if(!foundMatch)
         {
             AudioManager.Instance.PlaySoundEffect("Negative");
-            activeArticle.transform.Find("Title").GetComponent<TMP_Text>().text = "No Results";
-            activeArticle.transform.Find("Body").GetComponent<TMP_Text>().text = "Even the infinitely wise ninja council are completely confounded by your request";
+            articleTitle.text = "No Results";
+            articleBody.text = "Even the infinitely wise ninja council are completely confounded by your request";
             activeArticle.SetActive(true);
         }
     }
@@ -79,34 +90,20 @@ public class ComputerTerminal : MonoBehaviour
 
     bool ContainsWord(string text, string word)
     {
-        return Regex.IsMatch(
+        //not strict match
+        return text.IndexOf(word, StringComparison.OrdinalIgnoreCase) >= 0;
+        /*return Regex.IsMatch(
             text,
             $@"\b{Regex.Escape(word)}\b",
             RegexOptions.IgnoreCase
         );
+        */
     }
 
     string GetPreview(string body, string search, int contextLength = 20)
     {
-        if (string.IsNullOrEmpty(search)) return body.Substring(0, Mathf.Min(50, body.Length));
 
-        int index = body.IndexOf(search, StringComparison.OrdinalIgnoreCase);
-
-        if (index < 0)
-        {
-            // fallback if not found in body (but matched name)
             return body.Substring(0, Mathf.Min(50, body.Length)) + "...";
-        }
-
-        int start = Mathf.Max(0, index - contextLength);
-        int end = Mathf.Min(body.Length, index + search.Length + contextLength);
-
-        string snippet = body.Substring(start, end - start);
-
-        if (start > 0) snippet = "..." + snippet;
-        if (end < body.Length) snippet += "...";
-
-        return snippet;
     }
 
     void Clear()

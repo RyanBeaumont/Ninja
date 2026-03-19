@@ -21,15 +21,25 @@ public class AnimationListener : MonoBehaviour
     void SpawnWeapon(string weapon)
     {
         //find WeaponR in skeleton (searches deep hierarchy)
+        //if the parent or child has a DefaultPose component, get its weapon game model
+        var defaultPose = GetComponentInParent<DefaultPose>();
+        GameObject weaponGO = null;
+        if(defaultPose != null && defaultPose.combatWeapon != null && weapon != "")
+        {
+            weaponGO = defaultPose.combatWeapon;
+        }
+        else
+        {
+            weaponGO = Resources.Load<GameObject>($"Weapons/{weapon}");
+        }
         var weaponHolder = FindTransformRecursive(transform, "WeaponR");
         if(weaponHolder == null){print("WeaponR not found in skeleton");return;}
         foreach(Transform child in weaponHolder)
         {
             Destroy(child.gameObject);
         }
-        var weaponPrefab = Resources.Load<GameObject>($"Weapons/{weapon}");
-        if(weaponPrefab == null){print("Weapon model not found");return;}
-        var i = Instantiate(weaponPrefab, weaponHolder);
+        if(weaponGO == null){print("Weapon model not found");return;}
+        var i = Instantiate(weaponGO, weaponHolder);
         i.transform.localPosition = Vector3.zero;
         i.transform.localRotation = Quaternion.identity;
     }
