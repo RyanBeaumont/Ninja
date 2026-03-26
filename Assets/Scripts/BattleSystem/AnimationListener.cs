@@ -32,6 +32,7 @@ public class AnimationListener : MonoBehaviour
         {
             weaponGO = Resources.Load<GameObject>($"Weapons/{weapon}");
         }
+        if(weapon == "Soda"){weaponGO = Resources.Load<GameObject>($"Weapons/Soda");}
         var weaponHolder = FindTransformRecursive(transform, "WeaponR");
         if(weaponHolder == null){print("WeaponR not found in skeleton");return;}
         foreach(Transform child in weaponHolder)

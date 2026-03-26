@@ -79,6 +79,7 @@ MonoBehaviour:
   psychic: 20
   mp: 0
   maxMp: 60
+  startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 000000000100000002000000
   weaknesses: 
@@ -138,6 +139,7 @@ MonoBehaviour:
   xpReward: 100
   goldReward: 100
   attackSpeed: 0.5
+  portrait: {fileID: 0}
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -364,7 +366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8227785349284725193, guid: 7e9d023fa1186ec49af4942c19d6fafb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.933
+      value: 1.175
       objectReference: {fileID: 0}
     - target: {fileID: 8227785349284725193, guid: 7e9d023fa1186ec49af4942c19d6fafb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

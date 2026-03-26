@@ -14,6 +14,7 @@ public class Combatant : MonoBehaviour
     public float defense;
     public float speed;
     public float psychic;
+    public bool surprise = false;
     float damagePerLevel = 2f;
     public float mp;
     public float maxMp;
@@ -93,7 +94,19 @@ public class Combatant : MonoBehaviour
             AudioManager.Instance.PlaySoundEffect("Explosion");
             animator.Play("Launcher");
             alive = false;
-            
+            if(caller != null && caller != this){
+            StatusEffect rocket = caller.HasStatusEffect("RocketFistActive");
+            if(rocket != null && caller.alive)
+            {
+                caller.ApplyStatusEffect(new StatusEffect()
+                {
+                    name = "Rocket Fist",
+                    amount = 10,
+                    stat = "ATK"
+                });
+                GameManager.Instance.ShowMessage($"Rocket Fist got a kill and is now up to +{caller.HasStatusEffect("Rocket Fist").amount} damage");
+            }
+            }
             OnDeath();
         }
 
@@ -336,6 +349,7 @@ public class Combatant : MonoBehaviour
             var statusIcon = Instantiate(Resources.Load<GameObject>("StatusEffect"), statusCanvas);
             var iconImage = statusIcon.GetComponent<UnityEngine.UI.Image>();
             var sprite = Resources.Load<Sprite>($"Sprites/{effect.name}");
+            if(sprite == null) sprite = Resources.Load<Sprite>($"Items/{effect.name}");
             iconImage.sprite = sprite;
             TMP_Text durationText = statusIcon.GetComponentInChildren<TMP_Text>();
             if(effect.amount > 1)

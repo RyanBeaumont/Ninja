@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  maxHp: 325
-  hp: 325
+  maxHp: 200
+  hp: 200
   attack: 10
   defense: 1
   speed: 10
@@ -305,7 +305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8227785349284725193, guid: 7e9d023fa1186ec49af4942c19d6fafb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.933
+      value: 1.292
       objectReference: {fileID: 0}
     - target: {fileID: 8227785349284725193, guid: 7e9d023fa1186ec49af4942c19d6fafb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

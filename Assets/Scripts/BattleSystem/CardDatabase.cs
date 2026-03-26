@@ -309,12 +309,12 @@ public class CardDatabase : MonoBehaviour
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
-                new GameAction()
+                new UltimateAction()
                 {
-                    animation = "Burst",
                     targetType = TargetType.None,
-                    bonusActions = 2
-                }
+                    animation = "BoTwirl",  
+                    bonusActions = 2,
+                },
             }
         });
          allCards.Add(new Card()
@@ -384,7 +384,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "Disappear",
             description = "Vanish. Re-enter on anyone's turn by pressing E",
             cost = 30,
-            level = 6,
+            level = 7,
             artwork = "IconDeath",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
@@ -416,6 +416,25 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
+            cardName = "The Perfect Tool",
+            description = "Look at an ally's top 3 cards. You may discard any of them",
+            cost = 10,
+            level = 6,
+            artwork = "IconSuperSaiyan",
+            cardClass = CardClass.Ninja,
+            effects = new List<GameAction>()
+            {
+                new ScryAction()
+                 {
+                    animation = "GatherChi",
+                    targetType = TargetType.SingleAlly,
+                    scryAmount = 3
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
             cardName = "Seven Knives",
             description = "Costs 50 TP. Throw 7 poisoned knives at random",
             cost = 0,
@@ -425,6 +444,11 @@ public class CardDatabase : MonoBehaviour
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
+                new UltimateAction()
+                {
+                    animation = "BoTwirl",  
+                    targetType = TargetType.None,
+                },
                 new DamageAction()
                 {
                     damage = "6",
@@ -497,6 +521,11 @@ public class CardDatabase : MonoBehaviour
             level = 3,
             effects = new List<GameAction>()
             {
+                new UltimateAction()
+                {
+                    animation = "Levitate",  
+                    targetType = TargetType.None,
+                },
                 new StatusEffectAction()
                 {
                     animation = "ArmsCrossed",
@@ -523,7 +552,7 @@ public class CardDatabase : MonoBehaviour
             {
                 new ChiBladeAction()
                 {
-                    damage = "MP * 1.5",
+                    damage = "MP * 1.25",
                     animation = "Slash",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
@@ -726,6 +755,11 @@ public class CardDatabase : MonoBehaviour
             level = 3,
             effects = new List<GameAction>()
             {
+                new UltimateAction()
+                {
+                    animation = "CraneKick", 
+                    targetType = TargetType.None, 
+                },
                 new DamageAction()
                 {
                     damage = "70",
@@ -926,8 +960,8 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
-            cardName = "Grand Slam",
-            description = "Attack an off-balance or prone enemy for massive damage",
+            cardName = "Y.E.E.T.",
+            description = "Throw an off-balance or prone enemy for massive damage",
             cost = 25,
             level = 2,
             cardClass = CardClass.Grappler,
@@ -952,8 +986,8 @@ public class CardDatabase : MonoBehaviour
             description = "Re-use your last played card",
             artwork = "IconGrab",
             cardClass = CardClass.Grappler,
-            level = 3,
-            tpCost = 50,
+            level = 6,
+            cost = 25,
             effects = new List<GameAction>()
             {
                 new ChainOfPainAction()
@@ -991,14 +1025,19 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
-            cardName = "Shoulder Throw",
+            cardName = "Grand Slam",
             description = "Stun an off-balance or prone enemy. Knock yourself off balance",
-            cost = 25,
+            tpCost = 50,
             level = 5,
             cardClass = CardClass.Grappler,
             artwork = "IconGrab",
             effects = new List<GameAction>()
             {
+                new UltimateAction()
+                {
+                    animation = "Rage",  
+                    targetType = TargetType.None,
+                },
                 new GrappleDamageAction()
                 {
                     damage = "40",

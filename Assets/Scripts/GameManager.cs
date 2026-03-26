@@ -24,7 +24,7 @@ public enum GameplayState{FreeMovement, RestrictedMovement, Dialog, Combat}
     public System.Action<Menu> outOfBattleAction;
 }
 
-public class Equipment : InventoryItem
+[System.Serializable] public class Equipment : InventoryItem
 {
     public StatusEffect[] statusEffects;
     public string type;
@@ -129,6 +129,23 @@ public class GameManager : MonoBehaviour
                     mpAmount = "30"
                 };
             break;
+            case "Beer":
+                newItem = new InventoryItem(name,1);
+                newItem.description = "It make you crunk and you don't take no damgageeee becausf you are hottt stuffff adn you are feeelin good";
+                newItem.gameAction = new StatusEffectAction()
+                {
+                    targetType = TargetType.SingleAlly,
+                    animation = "Drink",
+                    statusEffect = new StatusEffect()
+                    {
+                        name = "Drunk",
+                        stat = "DEF",
+                        amount = 1.5f,
+                        additive = false,
+                        duration = 3
+                    }
+                };
+            break;
             case "DrPepper":
                 newItem = new InventoryItem(name,1);
                 newItem.description = "The Dr is In! Instantly revives an ally and restores 50% HP";
@@ -163,18 +180,35 @@ public class GameManager : MonoBehaviour
             case "Leather Vest":
                 newItem = new Equipment(name,1)
                 {
-                    description = "+20 Max HP",
+                    description = "+30 Max HP",
                     statusEffects = new StatusEffect[]
                     {
                         new StatusEffect()
                         {
                             name = "Armored",
                             stat = "MAXHP",
-                            amount = 20,
+                            amount = 30,
                             duration = -1
                         },
                     },
                     type = "Body"
+                };
+            break;
+            case "Jockstrap":
+                newItem = new Equipment(name,1)
+                {
+                    description = "Protection for the Crown Jewels, +15 Max HP",
+                    statusEffects = new StatusEffect[]
+                    {
+                        new StatusEffect()
+                        {
+                            name = "Jockstrap",
+                            stat = "MAXHP",
+                            amount = 15,
+                            duration = -1
+                        }
+                    },
+                    type = "Accessory"
                 };
             break;
             case "Viking Helmet":
@@ -185,7 +219,7 @@ public class GameManager : MonoBehaviour
                     {
                         new StatusEffect()
                         {
-                            name = "BrassKnuckles",
+                            name = "VikingHelmet",
                             stat = "ATK",
                             amount = 5,
                             duration = -1
@@ -262,6 +296,124 @@ public class GameManager : MonoBehaviour
                     type = "Head"
                 };
             break;
+            case "Mysterious Robe":
+                newItem = new Equipment(name,1)
+                {
+                    description = "Your first 3 turns apply Poison",
+                    statusEffects = new StatusEffect[]
+                    {
+                        new StatusEffect()
+                        {
+                            name = "Poisoner",
+                            stat = "",
+                            amount = 1,
+                            duration = 3
+                        }
+                    },
+                    type = "Body"
+                };
+            break;
+            case "Shirt of Ab Visibility":
+                newItem = new Equipment(name,1)
+                {
+                    description = "+15 Attack. +25% Damage Taken",
+                    statusEffects = new StatusEffect[]
+                    {
+                        new StatusEffect()
+                        {
+                            name = "Shirt of Ab Visibility",
+                            stat = "ATK",
+                            amount = 15,
+                            duration = -1
+                        },
+                        new StatusEffect()
+                        {
+                            name = "Shirt of Ab Visibility",
+                            stat = "DEF",
+                            amount = .25f,
+                            duration = -1
+                        }
+                    },
+                    type = "Body"
+                };
+            break;
+            case "Suit of Armor":
+                newItem = new Equipment(name,1)
+                {
+                    description = "Increases your Health by 50%",
+                    statusEffects = new StatusEffect[]
+                    {
+                        new StatusEffect()
+                        {
+                            name = "Armor",
+                            stat = "MAXHP",
+                            amount = 1.5f,
+                            additive = false,
+                            duration = -1
+                        }
+                    },
+                    type = "Body"
+                };
+            break;
+            case "Keg Backpack":
+                newItem = new Equipment(name,1)
+                {
+                    description = "Provides a steady stream of coke for you to drink each turn",
+                    statusEffects = new StatusEffect[]
+                    {
+                        new StatusEffect()
+                        {
+                            name = "Keg Backpack",
+                            stat = "",
+                            amount = 1,
+                            duration = -1
+                        }
+                    },
+                    type = "Accessory"
+                };
+            break;
+            case "Hair Mace":
+                newItem = new Equipment(name,1)
+                {
+                    description = "The only weapon a dojo girl needs. +5 ATK and +10 PSY",
+                    statusEffects = new StatusEffect[]
+                    {
+                        new StatusEffect()
+                        {
+                            name = "Hair Mace",
+                            stat = "ATK",
+                            amount = 5,
+                            duration = -1
+                        },
+                        new StatusEffect()
+                        {
+                            name = "Hair Mace",
+                            stat = "PSY",
+                            amount = 10,
+                            duration = -1
+                        }
+                    },
+                    type = "Accessory"
+                };
+            break;
+            case "Rocket Fist":
+                newItem = new Equipment(name,1)
+                {
+                    description = "Increase your Attack by 10 with every kill",
+                    statusEffects = new StatusEffect[]
+                    {
+                        new StatusEffect()
+                        {
+                            name = "RocketFistActive",
+                            stat = "",
+                            amount = 1,
+                            duration = -1
+                        },
+                    },
+                    type = "Accessory"
+                };
+            break;
+            
         }
         return newItem;
     }

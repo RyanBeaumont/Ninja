@@ -59,7 +59,7 @@ public class SavePartyMember
     public int xp;
     public float hpPercentage = 1f;
     public List<string> deck;
-    public List<InventoryItem> equipment;
+    public List<string> equipment = new List<string>();
     public bool alive;
 }
 

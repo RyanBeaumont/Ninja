@@ -12,6 +12,19 @@ public class Targeter : MonoBehaviour
     public List<Combatant> selectedTargets = new List<Combatant>();
     bool grapple = false;
 
+    //Animation
+    Transform currentTarget;
+    float animTime = 0f;
+
+    public float burstDuration = 0.25f;
+
+    public float minScale = 0.8f;
+    public float maxScale = 1.8f;
+
+    public float minRotationSpeed = 60f;
+    public float maxRotationSpeed = 720f;
+    public Transform visual;
+
     public void Initialize(TargetType type, string prompt, GameAction action, bool targetDead = false)
     {
         targetType = type;
@@ -25,7 +38,7 @@ public class Targeter : MonoBehaviour
     {
         if(targetType == TargetType.SingleEnemy)
         {
-            BattleManager.Instance.SetPose(BattleManager.Instance.activeCombatant.transform, "", CameraAngle.behind, "");
+            BattleManager.Instance.SetPose(BattleManager.Instance.activeCombatant.transform, "", CameraAngle.lockOn, "");
         }
         else if(targetType == TargetType.AllEnemies)
         {
@@ -45,7 +58,7 @@ public class Targeter : MonoBehaviour
         else if(targetType == TargetType.None)
         {
             Transform spawnPoint = GameObject.Find("BattleSetup/PlayerSpawn").transform;
-            BattleManager.Instance.SetPose(spawnPoint, "", CameraAngle.wideBehind, "");
+            BattleManager.Instance.SetPose(spawnPoint, "", CameraAngle.lowAngle, "");
         }
     }
 
@@ -109,6 +122,14 @@ public class Targeter : MonoBehaviour
                     }
                 }
                 if(best != null){
+                    // Detect target change
+                    if (currentTarget != best)
+                    {
+                        currentTarget = best;
+                        animTime = 0f; // restart animation
+                    }
+
+                    // Follow target
                     transform.position = best.position;
 
                     if(Input.GetMouseButtonDown(0)){
@@ -119,6 +140,21 @@ public class Targeter : MonoBehaviour
                 }else{
                     EndSelection();
                 }
+
+                // Animate reticle
+                animTime += Time.deltaTime;
+                float t = Mathf.Clamp01(animTime / burstDuration);
+
+                // Ease out (fast → slow, big → small)
+                float eased = 1f - Mathf.Pow(1f - t, 3f);
+
+                // Scale animation
+                float scale = Mathf.Lerp(maxScale, minScale, eased);
+                visual.transform.localScale = Vector3.one * scale;
+
+                // Rotation animation
+                float rotSpeed = Mathf.Lerp(maxRotationSpeed, minRotationSpeed, eased);
+                visual.transform.Rotate(Vector3.forward, rotSpeed * Time.deltaTime);
             }
         }
     
@@ -135,6 +171,7 @@ public class Targeter : MonoBehaviour
                 {
                     action.caller.SetTargetPosition(selectedTargets[0].transform.position + selectedTargets[0].transform.forward * 2f);
                     action.caller.PlayAnimation("FrontFlip");
+                    BattleManager.Instance.SetPose(action.caller.transform, "", CameraAngle.behind, "");
                 }
                 BattleManager.Instance.SelectTargets(selectedTargets);
                 BattleManager.Instance.actionQueue.Add(action);

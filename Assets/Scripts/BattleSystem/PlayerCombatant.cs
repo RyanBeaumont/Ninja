@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.AI;
+using System.Linq;
 
 public class PlayerCombatant : Combatant
 {
@@ -36,9 +36,9 @@ public class PlayerCombatant : Combatant
         }
     }
 
-    public Card Scry()
+    public Card[] Scry(int amount)
     {
-        if (deck.Count == 0)
+        if (deck.Count < amount)
         {
             //Reshuffle discard into deck
             deck.AddRange(discard);
@@ -53,7 +53,8 @@ public class PlayerCombatant : Combatant
             }
         }
         if (deck.Count == 0) return null; //No cards to draw
-        return deck[0];
+        //return the top 3 cards of the deck without deleting
+        return deck.Take(amount).ToArray();
     }
 
     public override void Update()
@@ -61,16 +62,22 @@ public class PlayerCombatant : Combatant
         base.Update();
         if (hidden)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            var playerCharactersRemaining = BattleManager.Instance.combatants.FindAll(c => c is PlayerCombatant && c.alive).Count;
+            if (Input.GetKeyDown(KeyCode.E) || playerCharactersRemaining == 1)
             {
                 hidden = false;
-                initiative = 50f;
+                surprise = true;
+                initiative = 100f;
                 BattleManager.Instance.AddCombatant(this);
                 PlayAnimation("ArmsCrossed");
                 SetTargetPosition(transform.position + Vector3.up*4f);
                 AudioManager.Instance.PlaySoundEffect("Teleport");
                 RemoveStatusEffect("");
                 GameManager.Instance.ShowMessage($"{combatantName} emerges from the shadows to play next!");
+                if(playerCharactersRemaining == 1)
+                {
+                    GameManager.Instance.ShowMessage($"{combatantName} is no longer hidden since they are the last alive");
+                }
             }
         }
     }
@@ -81,7 +88,7 @@ public class PlayerCombatant : Combatant
         if(card.tempCost != 0){cost = card.tempCost; card.tempCost = 0;}
         if (hand.Contains(card) && mp >= cost && tp >= card.tpCost && BattleManager.Instance.discardPower >= card.discardCost)
         {
-            if(card.effects[0] is SuplexDamageAction || card.effects[0] is GrappleDamageAction)
+            if (card.effects.Any(e => e is SuplexDamageAction || e is GrappleDamageAction))
             {
                 var success = false;
                 foreach(EnemyCombatant e in FindObjectsByType<EnemyCombatant>(FindObjectsSortMode.None))
@@ -177,6 +184,11 @@ public class PlayerCombatant : Combatant
                 hand.RemoveAt(random);
                 GameManager.Instance.ShowMessage($"{combatantName} discarded a card");
             }
+        }
+        if(HasStatusEffect("Keg Backpack") != null)
+        {
+            GameManager.Instance.ShowMessage($"{combatantName} drank from the Coca-Cola Keg restoring 10HP");
+            Heal(10);
         }
        
         

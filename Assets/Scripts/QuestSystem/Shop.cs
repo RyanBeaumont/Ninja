@@ -20,7 +20,7 @@ public class Shop : ChainedInteractable
     {
         shopActive = true;
         shopUI = Instantiate(Resources.Load<GameObject>("Shop"));
-        shopUI.name = "Shop";
+        shopUI.name = "ShopUI";
         container = shopUI.transform.Find("Scroll View/Viewport/Content").gameObject;
         descriptionText = shopUI.transform.Find("Description/Text (TMP)").GetComponent<TMP_Text>();
         //unlock cursor

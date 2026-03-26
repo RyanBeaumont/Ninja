@@ -103,6 +103,7 @@ MonoBehaviour:
   pose: HandsOnHips
   face: Happy
   combatIdle: HandsOnHips
+  combatWeapon: {fileID: 0}
 --- !u!1001 &667638247964175747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5a32fab339788c4a9308f7b466cef5e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5a32fab339788c4a9308f7b466cef5e, type: 3}
       propertyPath: m_LocalPosition.z

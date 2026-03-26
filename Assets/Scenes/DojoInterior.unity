@@ -23239,132 +23239,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e307583106644244ab1132f1080b9f5a, type: 3}
---- !u!1001 &426107013
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.48300004
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.10000005
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      propertyPath: m_Name
-      value: chair_stool_wood (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 426107016}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 426107015}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 426107020}
-  m_SourcePrefab: {fileID: 100100000, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
---- !u!1 &426107014 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7684710f29c17574c99bfa8f3c0526e0, type: 3}
-  m_PrefabInstance: {fileID: 426107013}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &426107015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426107014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c878f22abfffcb44b490cf6a3e20262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  questName: Talk to Torch at the Dojo
---- !u!65 &426107016
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426107014}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.75, y: 0.5, z: 0.75}
-  m_Center: {x: -0.000015258789, y: 0.24999999, z: -0.00000008940697}
---- !u!114 &426107020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426107014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c878f22abfffcb44b490cf6a3e20262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  questName: Assemble a Squad
 --- !u!1001 &426277666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24334,6 +24208,7 @@ GameObject:
   - component: {fileID: 443832327}
   - component: {fileID: 443832326}
   - component: {fileID: 443832325}
+  - component: {fileID: 443832336}
   - component: {fileID: 443832332}
   - component: {fileID: 443832331}
   - component: {fileID: 443832330}
@@ -24511,7 +24386,7 @@ MonoBehaviour:
     pose: Idle
     cameraAngle: 3
     face: Mad
-  - text: "I\u2019M COMING BACK FOR YOU THAD! AND I WILL MAKE SURE YOU WILL NEVER
+  - text: "I\u2019M GONNA MAKE YOU PAY, THAD! AND I WILL MAKE SURE YOU WILL NEVER
       BETRAY ME LIKE THIS AGAIN!\r\n"
     name: Storm
     character: {fileID: 1364881548}
@@ -24827,6 +24702,29 @@ MonoBehaviour:
   giveQuestIfMissing: 0
   completeEvenIfMissing: 1
   incompleteDialog: []
+--- !u!114 &443832336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443832320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f2a1a952d974b4eb4ec016f85f4f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  enemies:
+  - {fileID: 8346498964973016767, guid: 29a001229a0478c4697e5dfd649414f2, type: 3}
+  - {fileID: 8346498964973016767, guid: 10c65b00e0b4bf841b323e994d0ec11f, type: 3}
+  hideObjects:
+  - {fileID: 472883134}
+  - {fileID: 1364881549}
+  battleMusic: {fileID: 8300000, guid: cc63f7f524e316645bad53d8e1e13b7d, type: 3}
 --- !u!1001 &444527513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25892,6 +25790,11 @@ PrefabInstance:
 --- !u!4 &472883133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+  m_PrefabInstance: {fileID: 472883132}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &472883134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6061218905984369798, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
   m_PrefabInstance: {fileID: 472883132}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &473899534
@@ -43070,6 +42973,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Happy
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!95 &839371170
 Animator:
   serializedVersion: 7
@@ -46303,7 +46207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 918380979}
   m_Layer: 0
-  m_Name: SceneVariant_09
+  m_Name: SceneVariant_0
   m_TagString: SceneVariant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48368,6 +48272,9 @@ PrefabInstance:
       addedObject: {fileID: 955928500}
     - targetCorrespondingSourceObject: {fileID: 3324881858509501463, guid: 86089a7fff683cc499194b61db37ca67, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 955928506}
+    - targetCorrespondingSourceObject: {fileID: 3324881858509501463, guid: 86089a7fff683cc499194b61db37ca67, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 955928499}
     - targetCorrespondingSourceObject: {fileID: 3324881858509501463, guid: 86089a7fff683cc499194b61db37ca67, type: 3}
       insertIndex: -1
@@ -48559,6 +48466,30 @@ MonoBehaviour:
     pose: ArmsCrossed
     cameraAngle: 0
     face: Confused
+  - text: And one more thing... In addition to drinks, you can also hold EQUIPMENT
+      in your inventory!
+    name: Sensei
+    character: {fileID: 955928495}
+    pose: Explaining
+    cameraAngle: 0
+    face: Confused
+  - text: At anytime, you can press [ESCAPE] and click on a character to see their
+      menu. There, you can edit your deck and click on EQUIPMENT to equip them
+    name: Sensei
+    character: {fileID: 955928495}
+    pose: Explaining
+    cameraAngle: 0
+    face: Confused
+  - text: 'Try it with this BIKE HELMET!
+
+      The ultimate in protective equipment.
+
+'
+    name: Sensei
+    character: {fileID: 955928495}
+    pose: Explaining
+    cameraAngle: 0
+    face: Confused
   turnToFace: 1
   snapPlayerPosition: 1
 --- !u!114 &955928501
@@ -48681,6 +48612,23 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   branchName: 
+--- !u!114 &955928506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955928496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  itemName: Bicycle Helmet
 --- !u!1001 &956074692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51574,6 +51522,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Happy
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!1001 &988343559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54716,6 +54665,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: 
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!95 &1049823883
 Animator:
   serializedVersion: 7
@@ -60575,7 +60525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1193947073}
   m_Layer: 0
-  m_Name: SceneVariant_0
+  m_Name: SceneVariant_9
   m_TagString: SceneVariant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66654,6 +66604,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
       insertIndex: 2
       addedObject: {fileID: 1299768715}
+    - targetCorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1299768716}
   m_SourcePrefab: {fileID: 100100000, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
 --- !u!4 &1299768713 stripped
 Transform:
@@ -66686,6 +66639,38 @@ MonoBehaviour:
   itemQuantity: 0
   consume: 0
   incompleteDialog: []
+--- !u!114 &1299768716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299768714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b5bf5e381673248b03fce9dbf3fef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  questName: Assemble a Squad
+  consume: 1
+  xpReward: 0
+  goldReward: 0
+  giveQuestIfMissing: 0
+  completeEvenIfMissing: 0
+  incompleteDialog:
+  - text: 'You''re not done here yet...
+
+      You need to talk with your friend
+      TORCH'
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 0
+    face: 
 --- !u!1001 &1300693130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67587,6 +67572,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Happy
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!4 &1321626069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
@@ -67893,6 +67879,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: 
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!114 &1324303871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70364,6 +70351,11 @@ PrefabInstance:
 --- !u!4 &1364881548 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+  m_PrefabInstance: {fileID: 1364881547}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1364881549 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8629889987127832614, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
   m_PrefabInstance: {fileID: 1364881547}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1365701409
@@ -73448,6 +73440,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: 
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!95 &1421444826
 Animator:
   serializedVersion: 7
@@ -80786,6 +80779,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Happy
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!4 &1561350469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3503871415192851515, guid: 00b2a4d6234479b48affd810a1258daa, type: 3}
@@ -90009,6 +90003,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Happy
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!95 &1739906327
 Animator:
   serializedVersion: 7
@@ -99525,6 +99520,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Mad
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!1 &1950221764
 GameObject:
   m_ObjectHideFlags: 0
@@ -105206,6 +105202,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: 
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!95 &2034459485
 Animator:
   serializedVersion: 7
@@ -105387,7 +105384,7 @@ MonoBehaviour:
   dialog:
   - text: "Don\u2019t come back here! You need to be SAFE to join our secret club!\r\n"
     name: Torch
-    character: {fileID: 0}
+    character: {fileID: 1455778815}
     pose: ArmsCrossed
     cameraAngle: 0
     face: 
@@ -105400,10 +105397,29 @@ MonoBehaviour:
   - text: "Secret Assassins Feared by Everyone. It\u2019s our little club. Our SECRET
       club. You didn\u2019t hear a thing.\r\n"
     name: Torch
-    character: {fileID: 0}
+    character: {fileID: 1455778815}
     pose: Explaining
     cameraAngle: 0
     face: 
+  - text: And what if I want to join?
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 0
+    face: Confused
+  - text: "Well first off, you gotta be so UNSHAKEABLE that you don\u2019t even FLINCH
+      when I show you these ROCK SOLID ABS. BOOM! Look at these, baby!"
+    name: Torch
+    character: {fileID: 1455778815}
+    pose: Explaining
+    cameraAngle: 0
+    face: Happy
+  - text: (Wow! You can almost see the definition!)
+    name: 
+    character: {fileID: 0}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Happy
   turnToFace: 1
   snapPlayerPosition: 1
 --- !u!1001 &2037436408
@@ -106397,6 +106413,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Happy
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!1 &2052303802 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 889c2fc9d1aba3a4d9f279fb8ac2cad8, type: 3}
@@ -110843,6 +110860,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142428905}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &2143714041
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5087189774306366076, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
+      propertyPath: m_Name
+      value: BattleArea (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.753
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071058
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710784
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -270
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
 --- !u!1001 &2144613616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113661,7 +113735,6 @@ SceneRoots:
   - {fileID: 672253288}
   - {fileID: 1595225851}
   - {fileID: 1476276282}
-  - {fileID: 426107013}
   - {fileID: 853506835}
   - {fileID: 1540719435}
   - {fileID: 1197074257}
@@ -113802,3 +113875,4 @@ SceneRoots:
   - {fileID: 206136995}
   - {fileID: 1388594935}
   - {fileID: 1167009733}
+  - {fileID: 2143714041}

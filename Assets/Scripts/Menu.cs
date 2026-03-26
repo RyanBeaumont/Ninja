@@ -223,7 +223,7 @@ public class Menu : MonoBehaviour
             Time.timeScale = 1f;
         }
 
-        if(FindFirstObjectByType<BattleManager>() != null || GameObject.Find("Shop") != null)
+        if(FindFirstObjectByType<BattleManager>() != null || GameObject.Find("ShopUI") != null)
         {
             return;
         }

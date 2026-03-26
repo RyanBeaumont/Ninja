@@ -5258,6 +5258,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 539162201297099810, guid: e903a6feed1eb1f4f8943b23ce7571d8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 517905821}
+    - targetCorrespondingSourceObject: {fileID: 539162201297099810, guid: e903a6feed1eb1f4f8943b23ce7571d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 517905824}
   m_SourcePrefab: {fileID: 100100000, guid: e903a6feed1eb1f4f8943b23ce7571d8, type: 3}
 --- !u!1 &517905818 stripped
 GameObject:
@@ -5376,7 +5379,14 @@ MonoBehaviour:
   - text: (Well, that rules out the fight club - but dang, if even the ninja council
       can't find him?? He's either a prodigy, or something fishy IS going on)
     name: 
-    character: {fileID: 517905819}
+    character: {fileID: 0}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Confused
+  - text: (I could look elsewhere... Or I could go down there, prepare my battle
+      deck and fight for that fat bounty)
+    name: 
+    character: {fileID: 0}
     pose: HandsOnHips
     cameraAngle: 2
     face: Confused
@@ -5403,6 +5413,26 @@ MonoBehaviour:
   needsPartyMember: Storm
   excludePartyMember: 
   hideObject: 0
+--- !u!114 &517905824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517905818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
 --- !u!1001 &520060758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10424,6 +10454,12 @@ MonoBehaviour:
       quantity: 5
       description: 
       function: 
+    cost: 25
+  - item:
+      itemName: Bicycle Helmet
+      quantity: 5
+      description: 
+      function: 
     cost: 50
 --- !u!65 &1052379983
 BoxCollider:
@@ -14001,8 +14037,141 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 1202973532642157809, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1424694606}
+    - targetCorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1424694605}
+    - targetCorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1424694604}
+    - targetCorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1424694607}
+    - targetCorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 1424694603}
   m_SourcePrefab: {fileID: 100100000, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+--- !u!1 &1424694602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+  m_PrefabInstance: {fileID: 1424694601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1424694603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424694602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31441617c7f832e43b2308e10814aa79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  branchName: 
+--- !u!114 &1424694604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424694602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: 'Well, it looks like it''s getting late...
+
+      Better get back to the
+      dojo, we have a midnight meeting to host'
+    name: Storm
+    character: {fileID: 0}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Surprised
+  - text: It's time we let Thad in on the true purpose of the S.A.F.E. club
+    name: Storm
+    character: {fileID: 0}
+    pose: HandsOnHips
+    cameraAngle: 6
+    face: Confused
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &1424694605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424694602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39dbe71c188417348bd6d12fd2a31004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  questsToComplete:
+  - Investigate the Rival Dojo
+  - Investigate the Fight Club
+  - Investigate the Forest
+--- !u!114 &1424694606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424694602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bf4172aedc168478a45f52bdfd7867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  levelGate: -1
+  allowedSceneVariants: 
+  needsPartyMember: Storm
+  excludePartyMember: 
+  hideObject: 0
+--- !u!114 &1424694607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424694602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b4ef69776623b4f92b74bdf634fb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  sceneName: DojoInterior
+  spawnPointIndex: 1
+  sceneVariant: 9
+  skybox: {fileID: 0}
+  cameraTarget: {fileID: 0}
 --- !u!1001 &1426031461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18413,6 +18582,12 @@ MonoBehaviour:
   items:
   - item:
       itemName: Coke
+      quantity: 5
+      description: 
+      function: 
+    cost: 25
+  - item:
+      itemName: Brass Knuckles
       quantity: 5
       description: 
       function: 

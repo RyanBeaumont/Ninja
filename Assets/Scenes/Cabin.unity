@@ -1587,6 +1587,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'You awaken to a mysterious chamber...
 
@@ -1666,6 +1667,7 @@ MonoBehaviour:
   pose: HandsOnHips
   face: Blank
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!114 &419053736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1681,6 +1683,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!4 &419053738
 Transform:
   m_ObjectHideFlags: 0
@@ -1757,6 +1760,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "Hey Storm.. What are you\u2026"
     name: Stretch
@@ -1783,13 +1787,98 @@ MonoBehaviour:
     pose: Explaining
     cameraAngle: 2
     face: Mad
-  - text: "*Ungghhh* I\u2019m getting an awful headache. Let\u2019s get this over
-      with.\r\n"
+  - text: 'Tell me what you were doing here, Jack. Are you working with the kid?
+
+'
     name: Storm
     character: {fileID: 176893421}
-    pose: Embarrassed
+    pose: HandsOnHips
     cameraAngle: 3
-    face: Disappointed
+    face: Surprised
+  - text: "N.. No! I don\u2019t know what I was doing\u2026 I was being a detective,
+      that\u2019s all"
+    name: Spartan Jack
+    character: {fileID: 1923886051}
+    pose: SittingDown
+    cameraAngle: 4
+    face: Confused
+  - text: "Pfft, detectives don\u2019t break into the dojo at night. And they definitely
+      don\u2019t steal our most valuable family weapons. I saw the lockpicks in your
+      pocket."
+    name: Storm
+    character: {fileID: 176893421}
+    pose: ArmsCrossed
+    cameraAngle: 3
+    face: Confused
+  - text: ...
+    name: Spartan Jack
+    character: {fileID: 1923886051}
+    pose: SittingDown
+    cameraAngle: 4
+    face: Blank
+  - text: "That\u2019s right, stay silent, I\u2019m onto you. You\u2019re not just
+      some random kid, you\u2019re a SPARTAN!\r\n"
+    name: Storm
+    character: {fileID: 176893421}
+    pose: Explaining
+    cameraAngle: 3
+    face: Mad
+  - text: "That\u2019s.. A thing? Besides just me?"
+    name: Spartan Jack
+    character: {fileID: 1923886051}
+    pose: SittingDown
+    cameraAngle: 4
+    face: Confused
+  - text: "I dunno, Storm, he seems like a normal kid. He might just be someone\u2019s
+      pawn"
+    name: Stretch
+    character: {fileID: 1320128508}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Confused
+  - text: Ex-CUSE me? A PAWN?
+    name: Spartan Jack
+    character: {fileID: 1923886051}
+    pose: SittingDown
+    cameraAngle: 4
+    face: Mad
+  - text: "You think it\u2019s a COINCIDENCE that just as we start having problems
+      with the rival dojo\u2013 who call themselves the Spartans\u2013 this kid named
+      Spartan Jack appears out of nowhere with some crazy new weapon?"
+    name: Storm
+    character: {fileID: 176893421}
+    pose: Sassy
+    cameraAngle: 3
+    face: Confused
+  - text: "Jack\u2019s family sword doesn\u2019t even do anything. I checked the
+      database. It doesn\u2019t belong to some ancient pedigree, it doesn't have
+      any known powers\nIt\u2019s entry is just... blank"
+    name: Stretch
+    character: {fileID: 1320128508}
+    pose: Embarrassed
+    cameraAngle: 0
+    face: Confused
+  - text: "Exactly, it might be dangerous. JACK might be dangerous. Ugh, I do so
+      much to maintain order around here, you know I don\u2019t like when the pieces
+      don\u2019t fit"
+    name: Storm
+    character: {fileID: 176893421}
+    pose: Explaining
+    cameraAngle: 3
+    face: Surprised
+  - text: "*Ungghhh* I\u2019m getting an awful headache. Let\u2019s get this over
+      with."
+    name: Storm
+    character: {fileID: 176893421}
+    pose: Unsheath
+    cameraAngle: 7
+    face: Dissapointed
+  - text: (Storm presses the blade of her axe to your neck)
+    name: 
+    character: {fileID: 176893421}
+    pose: SittingDown
+    cameraAngle: 4
+    face: Surprised
   turnToFace: 0
   snapPlayerPosition: 0
 --- !u!114 &419053745
@@ -1807,6 +1896,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1320128508}
   rotationSpeed: 720
   waypoints:
@@ -1835,6 +1925,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: ThadHouse
   spawnPointIndex: 0
   sceneVariant: 0
@@ -3208,6 +3299,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: Forest
   spawnPointIndex: 1
   sceneVariant: 1
@@ -3228,6 +3320,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "You\u2019re not thinking straight! Storm, this isn\u2019t you!\r\n"
     name: Stretch
@@ -3273,6 +3366,7 @@ MonoBehaviour:
   pose: HandsOnHips
   face: Blank
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!114 &763555211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3288,6 +3382,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!95 &763555212
 Animator:
   serializedVersion: 7
@@ -3348,6 +3443,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "I can\u2019t do this. I know my orders, but\u2026\r\n"
     name: Storm
@@ -3416,6 +3512,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 181594438}
   rotationSpeed: 720
   waypoints:
@@ -4802,6 +4899,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "Don\u2019t come back here! You need to be SAFE to join our secret club!\r\n"
     name: 
@@ -4839,6 +4937,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: 
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!95 &1221794329
 Animator:
   serializedVersion: 7

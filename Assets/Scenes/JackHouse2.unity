@@ -1433,6 +1433,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: '"7 Reasons why you should carry 7 Knives" by I.M. Sharpe'
     name: 
@@ -6568,6 +6569,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Someone was clearly here...
 
@@ -7789,6 +7791,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Happy
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!1001 &684548082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7877,6 +7880,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: It's the best selling young-adult series THE ONE
     name: 
@@ -8706,6 +8710,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: Overworld
   spawnPointIndex: 7
   sceneVariant: 4
@@ -8726,6 +8731,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Get to the Roof
   consume: 1
   xpReward: 0
@@ -8777,6 +8783,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!1001 &758688565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9592,6 +9599,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'FOUR empty plates?
 
@@ -10232,6 +10240,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -10251,6 +10260,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'The ninjas must have beat you here--
 
@@ -10373,6 +10383,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!1001 &877573013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11511,6 +11522,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   itemName: Coke
 --- !u!114 &990141608
 MonoBehaviour:
@@ -11527,6 +11539,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 0
   additionalObjects: []
   endingPose: 
@@ -12852,6 +12865,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'You touch the cactus.
 
@@ -13149,6 +13163,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -13168,6 +13183,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   itemName: Lockpick
 --- !u!114 &1123563659
 MonoBehaviour:
@@ -13184,6 +13200,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: The book reads 1000 PAGES OF PURE FACTS ABOUT ANCIENT SPARTA
     name: 
@@ -13853,6 +13870,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "Don\u2019t come back here! You need to be SAFE to join our secret club!\r\n"
     name: 
@@ -13890,6 +13908,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: 
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!95 &1221794329
 Animator:
   serializedVersion: 7
@@ -14880,6 +14899,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Get Water
   consume: 1
   xpReward: 10
@@ -14936,6 +14956,7 @@ MonoBehaviour:
   nameText: {fileID: 0}
   yesButton: {fileID: 0}
   noButton: {fileID: 0}
+  image: {fileID: 0}
 --- !u!65 &1277952433
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14992,6 +15013,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'It''s Jack''s PORTA-COMM...
 
@@ -18389,6 +18411,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Happy
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!1001 &1591520551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18964,6 +18987,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: The tape slots right into the radio - you wonder if Jack used this very
       device to record them - and you press play.
@@ -19042,6 +19066,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: a771b7d13abcec6479d2472603246269, type: 3}
   fadeTime: 1.5
   sfx: 
@@ -19081,13 +19106,14 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   prompt: Play the tapes you found?
   itemName: Tapes
   itemQuantity: 1
   consume: 1
   incompleteDialog:
-  - text: You don't know much about Spartan Jack's older brother... But he must be,
-      like, MUCH older if he has an old casette player. Ancient, even
+  - text: You don't know much about Spartan Jack's mom... But she must be, like,
+      OLD if she has an old casette player. Ancient, even
     name: 
     character: {fileID: 0}
     pose: 
@@ -19108,6 +19134,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -19127,6 +19154,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Get to the Roof
 --- !u!114 &1635160808
 MonoBehaviour:
@@ -19143,6 +19171,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Suddenly, you hear...
 
@@ -19192,6 +19221,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 0}
   fadeTime: 0
   sfx: footsteps
@@ -21353,6 +21383,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 0
   additionalObjects: []
   endingPose: 
@@ -21372,6 +21403,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   prompt: Use Lockpick?
   itemName: Lockpick
   itemQuantity: 1
@@ -21398,6 +21430,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'This looks like an ordinary drawer...
 
@@ -21447,6 +21480,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: You pick the lock, and the floor of the drawer comes loose revealing...
       a hidden compartment!
@@ -21500,6 +21534,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   itemName: Tapes
 --- !u!1001 &1827105342
 PrefabInstance:
@@ -21935,6 +21970,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'You shouldn''t leave just yet...
 
@@ -24792,6 +24828,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 

@@ -12156,6 +12156,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
   m_PrefabInstance: {fileID: 863529155}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &864818178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 864818179}
+  - component: {fileID: 864818180}
+  m_Layer: 6
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &864818179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864818178}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00047361304, y: -0.000115338014, z: 0.000028090346, w: 0.9999999}
+  m_LocalPosition: {x: -30, y: 1.5, z: -3}
+  m_LocalScale: {x: 2, y: 0.20000003, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2072440054}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &864818180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864818178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43380566ebb04274f83352d0e5e2ebbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 1
 --- !u!1001 &865489651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15741,9 +15786,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6044087082982615358, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1176840488}
-    - targetCorrespondingSourceObject: {fileID: 6044087082982615358, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1176840489}
   m_SourcePrefab: {fileID: 100100000, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
 --- !u!4 &1176493803 stripped
@@ -15756,33 +15798,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6044087082982615358, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
   m_PrefabInstance: {fileID: 1176493802}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1176840488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176840485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  dialog:
-  - text: 'END OF CHAPTER 2...
-
-      Stay tuned for more!'
-    name: 
-    character: {fileID: 0}
-    pose: 
-    cameraAngle: 5
-    face: 
-  turnToFace: 0
-  snapPlayerPosition: 0
 --- !u!114 &1176840489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16538,6 +16553,7 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: 
   combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!95 &1221794329
 Animator:
   serializedVersion: 7
@@ -24875,6 +24891,7 @@ Transform:
   - {fileID: 194961964}
   - {fileID: 806204027}
   - {fileID: 205077063}
+  - {fileID: 864818179}
   - {fileID: 635228579}
   - {fileID: 526689408}
   - {fileID: 1827430776}

@@ -63,7 +63,12 @@ public class YourParty : MonoBehaviour
         saveMember.xp = member.xp;
         saveMember.hpPercentage = member.hpPercentage;
         saveMember.deck = new List<string>();
-        saveMember.equipment = member.equipment;
+        foreach(Equipment equipment in member.equipment)
+        {
+            if(equipment.itemName != null){
+                saveMember.equipment.Add(equipment.itemName);
+            }
+        }
         saveMember.alive = member.alive;
         foreach (var card in member.deck)
         {
@@ -80,7 +85,11 @@ public class YourParty : MonoBehaviour
             member.level = saveMember.level;
             member.xp = saveMember.xp;
             member.hpPercentage = saveMember.hpPercentage;
-            member.equipment = saveMember.equipment;
+            foreach(string equipmentName in saveMember.equipment)
+            {
+                var equipment = GameManager.Instance.GetInventoryItemByName(equipmentName);
+                member.equipment.Add(equipment);
+            }
             member.deck = new List<Card>();
             member.alive = saveMember.alive;
             foreach (var cardName in saveMember.deck)
@@ -148,7 +157,12 @@ public class YourParty : MonoBehaviour
         maxHp = partyMember.level * multiplier + 50f;
         foreach(Equipment e in partyMember.equipment)
             foreach(StatusEffect se in e.statusEffects)
-                if(se.stat == "MAXHP") maxHp += se.amount;
+                if(se.stat == "MAXHP") {
+                    if(se.additive == true)
+                        maxHp += se.amount;
+                    else
+                        maxHp *= se.amount;
+                }
         multiplier = 1f; if(partyMember.subClass == CardClass.Psychic) multiplier = 1.5f; if(partyMember.mainClass == CardClass.Psychic) multiplier = 2f;
         psychic = partyMember.level * multiplier + 10f;
         foreach(Equipment e in partyMember.equipment)
@@ -205,7 +219,16 @@ public class YourParty : MonoBehaviour
 
             //print($"{combatant.combatantName} HP: {combatant.hp}/{combatant.maxHp} HP PERCENT {partyMember.hpPercentage}");
             GetStats(partyMember, out var attack, out var maxHp, out var speed, out var psychic);
-            //check for an equipment item that boosts max hp
+            //check for equipment with other stats
+            foreach(Equipment e in partyMember.equipment)
+            {
+                foreach(StatusEffect s in e.statusEffects){
+                    if(s.stat != "ATK" && s.stat != "DEF" && s.stat != "MAXHP" && s.stat != "SPD" && s.stat != "PSY")
+                    {
+                        combatant.statusEffects.Add(s);
+                    }
+                }
+            }
                 
             combatant.attack = attack; combatant.maxHp = maxHp; combatant.speed = speed; combatant.psychic = psychic;
             combatant.hp = combatant.maxHp * partyMember.hpPercentage ;

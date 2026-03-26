@@ -50,6 +50,7 @@ public class BattleManager : MonoBehaviour
     public float quickTimeActiveTime = 1.5f;
     public float quickTimeCritWindow = 0.01f;
     public Transform discardText;
+    public Transform scryPanel;
     float quickTimeMultiplier = 1f;
     float elapsedTime = 0f;
 
@@ -99,6 +100,7 @@ public class BattleManager : MonoBehaviour
         }
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        scryPanel.gameObject.SetActive(false);
         itemContainer.gameObject.SetActive(false);
     }
 
@@ -110,6 +112,31 @@ public class BattleManager : MonoBehaviour
         quickTimeEvent.GetComponent<Slider>().value = 0;
         elapsedTime = 0f;
     }
+
+    public void ShowScryPanel(PlayerCombatant player, int scryAmount)
+    {
+        scryPanel.gameObject.SetActive(true);
+        waitingForInput = true;
+        var cards = player.Scry(scryAmount);
+        foreach(Card c in cards)
+        {
+            var cardDisplay = Instantiate(Resources.Load<GameObject>("DisplayCardPrefab"), scryPanel.Find("Panel")).GetComponent<CardDisplay>();
+            cardDisplay.SetData(c);
+            //add onclick listener
+            cardDisplay.GetComponentInChildren<MenuCardDisplay>().onPointerDown = () => {
+                    player.deck.Remove(cardDisplay.card);
+                    player.discard.Add(cardDisplay.card);
+                    Destroy(cardDisplay.gameObject);
+            };
+        }
+    }
+
+    public void HideScryPanel()
+    {
+        scryPanel.gameObject.SetActive(false);
+        waitingForInput = false;
+    }
+
     public void StartBattle(GameObject newplayer)
     {
         player = newplayer;
@@ -178,6 +205,7 @@ public class BattleManager : MonoBehaviour
 
     public void SelectRandomTargets(Combatant caller, TargetType targetType)
     {
+        
         List<Combatant> possibleTargets = new List<Combatant>();
 
         if(caller.HasStatusEffect("E-S-Pow") != null)
@@ -557,6 +585,11 @@ public class BattleManager : MonoBehaviour
             {
                 var chosen = sim[bestIndex];
                 chosen.initiative -= TURN_THRESHOLD;
+                    if (chosen.c.surprise) //First turn initiative boost
+                    {
+                        chosen.c.surprise = false;
+                        chosen.initiative = 0f;
+                    }
                 sim[bestIndex] = chosen;
 
                 result.Add(chosen.c);
@@ -628,7 +661,7 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            SetPose(current.transform, pose, CameraAngle.closeup, "Mad");
+            SetPose(current.transform, pose, CameraAngle.zoom, "Mad");
             activePlayer = null;
         }
         
@@ -785,22 +818,23 @@ public class BattleManager : MonoBehaviour
         {
             if(t.alive){
                 print($"QuickTime Multiplier = {quickTimeMultiplier} Pending Damage = {pendingDamage}");
-            var d = t.TakeDamage(activeCombatant,(int)pendingDamage * quickTimeMultiplier, pendingDamageType);
-            var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
+                CameraShake(1f,0.2f);
+                var d = t.TakeDamage(activeCombatant,(int)pendingDamage * quickTimeMultiplier, pendingDamageType);
+                var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
+                
+                    {
+                        if(hitsRemaining == 0) t.PlayAnimation("Knockdown");
+                            else t.PlayAnimation("Stunned");
+                    }
             
-                {
-                     if(hitsRemaining == 0) t.PlayAnimation("Knockdown");
-                        else t.PlayAnimation("Stunned");
-                }
-           
-            if(pendingDamageType == DamageType.Slashing)
-                AudioManager.Instance.PlaySoundEffect("HitSlash",UnityEngine.Random.Range(0.8f,1.2f));
-            if(pendingDamageType == DamageType.Bludgeoning)
-                AudioManager.Instance.PlaySoundEffect("s_punch",UnityEngine.Random.Range(0.8f,1.2f));
-            if(pendingDamageType == DamageType.Psychic)
-                AudioManager.Instance.PlaySoundEffect("Crackle",UnityEngine.Random.Range(0.8f,1.2f));
-            if(lifestrike){lifestrike = false; activeCombatant.Heal(d);}
-            if(activePlayer != null) activePlayer.tp += (int)(d/2f); //Gain TERROR points based on damage dealt
+                if(pendingDamageType == DamageType.Slashing)
+                    AudioManager.Instance.PlaySoundEffect("HitSlash",UnityEngine.Random.Range(0.8f,1.2f));
+                if(pendingDamageType == DamageType.Bludgeoning)
+                    AudioManager.Instance.PlaySoundEffect("s_punch",UnityEngine.Random.Range(0.8f,1.2f));
+                if(pendingDamageType == DamageType.Psychic)
+                    AudioManager.Instance.PlaySoundEffect("Crackle",UnityEngine.Random.Range(0.8f,1.2f));
+                if(lifestrike){lifestrike = false; activeCombatant.Heal(d);}
+                if(activePlayer != null) activePlayer.tp += (int)(d/2f); //Gain TERROR points based on damage dealt
             }
             if(pendingStatusEffect != null)
             {
@@ -868,6 +902,7 @@ public class BattleManager : MonoBehaviour
             {
                 if(t.alive){
                 var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
+                CameraShake(1f,0.2f);
                 t.TakeDamage(activeCombatant,(int)pendingDamage, pendingDamageType);
                 if(currentTargets.Count > 0 && currentTargets[0] == activeCombatant)
                 {
@@ -911,7 +946,7 @@ public class BattleManager : MonoBehaviour
                         {
                             caller = t,
                             animation = "SwordWhirlwind",
-                            damage = "DEF*LEVEL*3+10",
+                            damage = "LEVEL*10",
                             damageType = DamageType.Psychic,
                             hits = 1
                         };
@@ -940,6 +975,15 @@ public class BattleManager : MonoBehaviour
             }
             pendingStatusEffect = null;
             EndAction();
+        }
+    }
+
+    public void CameraShake(float intensity, float duration)
+    {
+       //camera shake using cinemachine
+         var impulseSource = cameraRig.GetComponent<CinemachineImpulseSource>();
+        if(impulseSource != null)        {
+            impulseSource.GenerateImpulse(intensity);  
         }
     }
 
@@ -983,5 +1027,7 @@ public class BattleManager : MonoBehaviour
         else if(cameraAngle == CameraAngle.dodgeRight) cameraAnimator.Play("Camera_DodgeRight");
         else if(cameraAngle == CameraAngle.jump) cameraAnimator.Play("Camera_Jump");
         else if(cameraAngle == CameraAngle.duck) cameraAnimator.Play("Camera_Duck");
+        else if(cameraAngle == CameraAngle.super) cameraAnimator.Play("Camera_Super");
+        else if(cameraAngle == CameraAngle.lockOn) cameraAnimator.Play("Camera_LockOn");
     }
 }

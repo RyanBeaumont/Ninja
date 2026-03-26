@@ -34,6 +34,18 @@ public class GameAction
     public virtual void Execute(BattleManager battleManager)
     {
         caller.PlayAnimation(animation);
+        if(text != ""){GameManager.Instance.ShowMessage(text);}
+    }
+}
+
+public class UltimateAction : GameAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        AudioManager.Instance.PlaySoundEffect("Thunder");
+        battleManager.clock = 1f;
+        battleManager.SetPose(caller.transform, "", CameraAngle.super, "Mad");
+        caller.PlayAnimation(animation);
     }
 }
 
@@ -219,10 +231,9 @@ public class OmnisweepDamageAction : DamageAction
         for (int i = battleManager.currentTargets.Count - 1; i >= 0; i--)
         {
             var target = battleManager.currentTargets[i];
-            if (target.HasStatusEffect("Off-Balance") != null || target.HasStatusEffect("Prone") != null)
+            //Remove target if they don't have any effects
+            if (target.HasStatusEffect("Off-Balance") == null && target.HasStatusEffect("Prone") == null && target.HasStatusEffect("Stunned") == null)
             {
-                target.RemoveStatusEffect("Off-Balance");
-
                 battleManager.currentTargets.RemoveAt(i);
             }
         }
@@ -323,7 +334,7 @@ public class WildSwingAction : GameAction
         base.Execute(battleManager);
         if(caller is PlayerCombatant playerCombatant)
         {
-            Card newCard  = playerCombatant.Scry();
+            Card newCard  = playerCombatant.Scry(1)[0];
             battleManager.ExecuteCard(newCard,caller);
             GameManager.Instance.ShowMessage($"{caller.combatantName} wild swings into {newCard.cardName}!");
             playerCombatant.deck.RemoveAt(0);
@@ -338,7 +349,7 @@ public class HealAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
-        caller.PlayAnimation(animation);
+        base.Execute(battleManager);
         foreach(var t in battleManager.currentTargets)
         {
             t.Heal(caller.EvaluateStatFormula(healAmount));
@@ -380,8 +391,10 @@ public class StatusEffectAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
-        caller.PlayAnimation(animation);
-        if(caller is EnemyCombatant e){battleManager.SelectRandomTargets(caller,targetType);}
+        base.Execute(battleManager);
+        if(caller is EnemyCombatant e){
+            Debug.Log($"Selecting random targets for status effect");
+            battleManager.SelectRandomTargets(caller,targetType);}
         foreach(var t in battleManager.currentTargets)
         {
             t.ApplyStatusEffect(statusEffect);
@@ -413,6 +426,7 @@ public class SummonAction : GameAction
         combatantObject.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
         var combatant = combatantObject.GetComponent<Combatant>();
         combatant.initiative = 50f;
+        combatant.surprise = true;
         var healthbar = Object.Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);
         BattleManager.Instance.AddCombatant(combatant);
         GameManager.Instance.ShowMessage($"{combatant.combatantName} appears!");
@@ -479,8 +493,18 @@ public class ExploitWeaknessAction : DamageAction
         base.Execute(battleManager);
         if(battleManager.currentTargets[0] != null && battleManager.currentTargets[0].statusEffects.Count > 0)
         {
-            bonusActions = 1;
+            GameManager.Instance.ShowMessage("Exploiting weakness! Bonus action gained!");
+            bonusActions += 1;
         }
+    }
+}
+
+public class ScryAction : GameAction
+{
+    public int scryAmount = 3;
+    public override void Execute(BattleManager battleManager)
+    {
+        battleManager.ShowScryPanel((PlayerCombatant)battleManager.currentTargets[0], scryAmount);
     }
 }
 
@@ -500,7 +524,7 @@ public class ChainKillAction : GameAction
                 battleManager.activePlayer.DrawCards(1);
                 GameManager.Instance.ShowMessage("Chain Kill!");
             }
-            bonusActions = 1;
+            bonusActions += 1;
         }
     }
 }
@@ -580,11 +604,11 @@ public class ChainOfPainAction : GameAction
         base.Execute(battleManager);
         foreach(Combatant c in battleManager.currentTargets)
         {
-            if(c is PlayerCombatant player && player.discard.Count > 0)
+            if(c is PlayerCombatant player && player.discard.Count > 1)
             {
-                var card = player.discard[0];
+                var card = player.discard[player.discard.Count-2];
                 GameManager.Instance.ShowMessage($"{player.combatantName} uses {card.cardName} AGAIN!!!");
-                player.PlayCard(card);
+                battleManager.ExecuteCard(card,caller);
                  
             }
             else
