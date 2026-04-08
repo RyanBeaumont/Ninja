@@ -693,15 +693,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 71.087326
+      value: 58.6
       objectReference: {fileID: 0}
     - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.7479515
+      value: 2.74
       objectReference: {fileID: 0}
     - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 72.70243
+      value: 60.98
       objectReference: {fileID: 0}
     - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1102,6 +1102,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: Cabin
   spawnPointIndex: 0
   sceneVariant: 1
@@ -2017,6 +2018,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: Cabin
   spawnPointIndex: 0
   sceneVariant: 1
@@ -2037,6 +2039,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "Wait up! Stop!\r"
     name: Storm
@@ -2112,6 +2115,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "Stretch?! Where have you\u2026\r\n"
     name: Storm
@@ -2142,6 +2146,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1314645892}
   rotationSpeed: 720
   waypoints:
@@ -2170,6 +2175,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Hold up... I hear something
     name: Thad
@@ -2194,6 +2200,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!136 &684217263
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2668,15 +2675,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 53.087242
+      value: 50.29
       objectReference: {fileID: 0}
     - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.689552
+      value: 7.934
       objectReference: {fileID: 0}
     - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 140.80534
+      value: 141.354
       objectReference: {fileID: 0}
     - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2776,6 +2783,68 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e7f1160f3f3ffb47968b5618bc236b5, type: 3}
+--- !u!1001 &842910217
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2096795319}
+    m_Modifications:
+    - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258848384577057107, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      propertyPath: m_Name
+      value: Kristina 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+--- !u!4 &842910218 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+  m_PrefabInstance: {fileID: 842910217}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &870655773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3109,7 +3178,7 @@ Transform:
   m_GameObject: {fileID: 974222646}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 35.7, y: -2.57, z: 135.74}
+  m_LocalPosition: {x: 35.7, y: -1.5000002, z: 135.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4665,7 +4734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15700722
+      value: 1.767
       objectReference: {fileID: 0}
     - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4814,68 +4883,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e7f1160f3f3ffb47968b5618bc236b5, type: 3}
---- !u!1001 &1561294920
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2096795319}
-    m_Modifications:
-    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5722547457033871467, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
-      propertyPath: m_Name
-      value: Kristina
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
---- !u!4 &1561294921 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4909277891463871185, guid: 8902ba42d69041d409b1b1127c697977, type: 3}
-  m_PrefabInstance: {fileID: 1561294920}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1581190453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5016,7 +5023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.046898
+      value: 14.56
       objectReference: {fileID: 0}
     - target: {fileID: 7412941143395295260, guid: dfb745c815990744dae40d1d71539b8a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5080,7 +5087,7 @@ Transform:
   m_GameObject: {fileID: 1663497471}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 37.140003, y: -2.5699997, z: 135.408}
+  m_LocalPosition: {x: 37.140003, y: -1.5, z: 135.408}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5141,6 +5148,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'I never had thoughts like that before...
 
@@ -5348,6 +5356,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!136 &1696135410
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5439,6 +5448,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Get Back to the Bus
 --- !u!114 &1696135414
 MonoBehaviour:
@@ -5455,6 +5465,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 0
   additionalObjects: []
   endingPose: 
@@ -5474,6 +5485,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!1001 &1698985573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6398,7 +6410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef4481f0570540545bef7307a2aae554, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3254757
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef4481f0570540545bef7307a2aae554, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6438,7 +6450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ef4481f0570540545bef7307a2aae554, type: 3}
       propertyPath: m_Name
-      value: PartyBusExterior
+      value: Party Bus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6495,6 +6507,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: PartyBus
   spawnPointIndex: 0
   sceneVariant: 2
@@ -6515,12 +6528,14 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Get Back to the Bus
   consume: 1
   xpReward: 50
   goldReward: 50
   giveQuestIfMissing: 0
   completeEvenIfMissing: 0
+  hideIfMissing: 0
   incompleteDialog:
   - text: 'You say the party never stops in the PARTY BUS...
 
@@ -6531,6 +6546,65 @@ MonoBehaviour:
     pose: 
     cameraAngle: 5
     face: 
+--- !u!1001 &1894244296
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3499823039844636353, guid: 0a852a633346af948b8620ea2421b980, type: 3}
+      propertyPath: m_Name
+      value: Save Point
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982875161300932152, guid: 0a852a633346af948b8620ea2421b980, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.959589
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982875161300932152, guid: 0a852a633346af948b8620ea2421b980, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982875161300932152, guid: 0a852a633346af948b8620ea2421b980, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 109.47717
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982875161300932152, guid: 0a852a633346af948b8620ea2421b980, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9904978
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982875161300932152, guid: 0a852a633346af948b8620ea2421b980, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982875161300932152, guid: 0a852a633346af948b8620ea2421b980, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982875161300932152, guid: 0a852a633346af948b8620ea2421b980, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.13752832
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982875161300932152, guid: 0a852a633346af948b8620ea2421b980, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982875161300932152, guid: 0a852a633346af948b8620ea2421b980, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982875161300932152, guid: 0a852a633346af948b8620ea2421b980, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 15.81
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 3145641054803703270, guid: 0a852a633346af948b8620ea2421b980, type: 3}
+    - {fileID: 7060863625304981543, guid: 0a852a633346af948b8620ea2421b980, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a852a633346af948b8620ea2421b980, type: 3}
 --- !u!1 &1925550199
 GameObject:
   m_ObjectHideFlags: 0
@@ -7227,7 +7301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
       propertyPath: dialog.Array.size
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
       propertyPath: snapPlayerPosition
@@ -7514,7 +7588,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1561294921}
+      addedObject: {fileID: 842910218}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4552535940791351686, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
       insertIndex: -1
@@ -7548,6 +7622,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'oh,
 
@@ -7577,26 +7652,37 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   items:
   - item:
       itemName: Coke
       quantity: 10
+      description: 
+      function: 
     cost: 50
   - item:
       itemName: Coffee
       quantity: 10
+      description: 
+      function: 
     cost: 50
   - item:
       itemName: Bang
       quantity: 5
+      description: 
+      function: 
     cost: 50
   - item:
       itemName: Coca-Cola Keg
       quantity: 2
+      description: 
+      function: 
     cost: 100
   - item:
       itemName: DrPepper
       quantity: 2
+      description: 
+      function: 
     cost: 150
 --- !u!1 &2115323800
 GameObject:
@@ -7635,6 +7721,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -7654,6 +7741,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: There it is...
     name: Thad
@@ -7684,6 +7772,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!65 &2115323804
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7869,7 +7958,7 @@ Transform:
   m_GameObject: {fileID: 1907233286766166779}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9692116, z: -0, w: -0.24622935}
-  m_LocalPosition: {x: 37.182003, y: 0.9800004, z: 135.268}
+  m_LocalPosition: {x: 37.182003, y: 2.64, z: 135.268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7892,6 +7981,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   enemies:
   - {fileID: 8346498964973016767, guid: cb29665848fdc1c43a4fdcc05e5ff80b, type: 3}
   - {fileID: 8346498964973016767, guid: 625f093e75cb26f44ac0e6f527498d7a, type: 3}
@@ -7914,6 +8004,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'What...
 
@@ -7961,6 +8052,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -7980,6 +8072,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: ...Weird, man
     name: Thad
@@ -8004,6 +8097,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1711811435}
   rotationSpeed: 720
   waypoints:
@@ -8028,6 +8122,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   model: {fileID: 1701804714}
   rotationSpeed: 720
   waypoints:
@@ -8052,6 +8147,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -8149,3 +8245,4 @@ SceneRoots:
   - {fileID: 1854531935}
   - {fileID: 474308937}
   - {fileID: 1736954947}
+  - {fileID: 1894244296}

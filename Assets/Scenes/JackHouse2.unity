@@ -8738,6 +8738,7 @@ MonoBehaviour:
   goldReward: 0
   giveQuestIfMissing: 0
   completeEvenIfMissing: 0
+  hideIfMissing: 0
   incompleteDialog:
   - text: 'You shouldn''t leave just yet...
 
@@ -13119,7 +13120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bd501448429e63d4990b13ac895818b9, type: 3}
       propertyPath: m_Name
-      value: book_single (2)
+      value: Book
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14874,10 +14875,13 @@ PrefabInstance:
       addedObject: {fileID: 1277952433}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1277952432}
+      addedObject: {fileID: 1277952435}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1277952431}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 385ac34bef020094480fca2618e65dad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1277952434}
   m_SourcePrefab: {fileID: 100100000, guid: 385ac34bef020094480fca2618e65dad, type: 3}
 --- !u!1 &1277952430 stripped
 GameObject:
@@ -14906,57 +14910,8 @@ MonoBehaviour:
   goldReward: 10
   giveQuestIfMissing: 0
   completeEvenIfMissing: 1
+  hideIfMissing: 0
   incompleteDialog: []
---- !u!114 &1277952432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277952430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 129f7d2a97baa684d94041083edd8373, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textComponent: {fileID: 0}
-  dialog:
-  - text: It looks like vodka
-    name: 
-    character: {fileID: 0}
-    pose: ArmsCrossed
-    cameraAngle: 5
-    face: 
-  - text: 'You take a sip.
-
-      No....? Could it be?'
-    name: 
-    character: {fileID: 0}
-    pose: Drink
-    cameraAngle: 5
-    face: 
-  - text: 'It''s been replaced by water!
-
-      You take a refreshing sip'
-    name: 
-    character: {fileID: 0}
-    pose: ArmsCrossed
-    cameraAngle: 5
-    face: 
-  - text: 'Finally!
-
-      (Quest Complete: Get Water)'
-    name: 
-    character: {fileID: 0}
-    pose: ArmsCrossed
-    cameraAngle: 5
-    face: 
-  textSpeed: 0.05
-  choice: 
-  nameText: {fileID: 0}
-  yesButton: {fileID: 0}
-  noButton: {fileID: 0}
-  image: {fileID: 0}
 --- !u!65 &1277952433
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14978,6 +14933,75 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0024, y: 0.0023999996, z: 0.0035999995}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1277952434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277952430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &1277952435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277952430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: It looks like vodka
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  - text: 'You take a sip.
+
+      No....? Could it be?'
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  - text: 'It''s been replaced by water!
+
+      You take a refreshing sip'
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  - text: 'Finally!
+
+      (Quest Complete: Get Water)'
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  turnToFace: 0
+  snapPlayerPosition: 0
 --- !u!1 &1278167195
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,6 +48,16 @@ public class UltimateAction : GameAction
         caller.PlayAnimation(animation);
     }
 }
+public class CutAction : GameAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        AudioManager.Instance.PlaySoundEffect("Battle");
+        battleManager.clock = 1.5f;
+        battleManager.SetPose(caller.transform, "", CameraAngle.highAngle, "Mad");
+        caller.PlayAnimation("Cut");
+    }
+}
 
 public class ChooseTargetsAction : GameAction
 {

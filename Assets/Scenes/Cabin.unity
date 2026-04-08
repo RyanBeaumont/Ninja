@@ -1850,17 +1850,23 @@ MonoBehaviour:
     pose: Sassy
     cameraAngle: 3
     face: Confused
-  - text: "Jack\u2019s family sword doesn\u2019t even do anything. I checked the
-      database. It doesn\u2019t belong to some ancient pedigree, it doesn't have
-      any known powers\nIt\u2019s entry is just... blank"
+  - text: "Jack\u2019s family sword doesn\u2019t even do anything. He showed it to
+      me last night.. he did some like, kicky thingy and broke through the wall but
+      that was it. Kind of a cute trick \r\n"
     name: Stretch
     character: {fileID: 1320128508}
     pose: Embarrassed
     cameraAngle: 0
     face: Confused
-  - text: "Exactly, it might be dangerous. JACK might be dangerous. Ugh, I do so
-      much to maintain order around here, you know I don\u2019t like when the pieces
-      don\u2019t fit"
+  - text: EX-CUUUUSE ME?!?!
+    name: Spartan Jack
+    character: {fileID: 1923886051}
+    pose: SittingDown
+    cameraAngle: 4
+    face: Mad
+  - text: "Hm. Even if his sword is useless, JACK might be dangerous, with his nose
+      in our top secret business. And that Spartan name... Ugh, I do so much to maintain
+      order around here, you know I don\u2019t like when the pieces don\u2019t fit"
     name: Storm
     character: {fileID: 176893421}
     pose: Explaining

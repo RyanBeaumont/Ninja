@@ -93,7 +93,7 @@ public class PlayerCombatant : Combatant
                 var success = false;
                 foreach(EnemyCombatant e in FindObjectsByType<EnemyCombatant>(FindObjectsSortMode.None))
                 {
-                    if (e.HasStatusEffect("Off-Balance") != null || e.HasStatusEffect("Prone") != null)
+                    if (e.alive && (e.HasStatusEffect("Off-Balance") != null || e.HasStatusEffect("Prone") != null))
                     {
                         success = true; break;
                     }

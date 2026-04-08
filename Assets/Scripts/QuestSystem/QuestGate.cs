@@ -11,8 +11,19 @@ public class QuestGate : ChainedInteractable
     public float goldReward = 0;
     public bool giveQuestIfMissing = false;
     public bool completeEvenIfMissing = true;
+    public bool hideIfMissing = false;
     public List<Dialog> incompleteDialog = new List<Dialog>();
 
+    void Start()
+    {
+        if (hideIfMissing)
+        {
+            if(!GameManager.Instance.ConsumeQuest(questName, false)){
+                gameObject.SetActive(false);
+                active = false;
+            }
+        }
+    }
     public override void Interact()
     {
         DialogBox d = FindFirstObjectByType<DialogBox>();

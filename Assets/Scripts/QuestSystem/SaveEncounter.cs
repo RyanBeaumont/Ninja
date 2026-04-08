@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SaveEncounter : ChainedInteractable
 {
-    bool uiActive = false;
     GameObject ui;
     public override void Interact()
 {

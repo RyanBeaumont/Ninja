@@ -77,7 +77,7 @@ public class DialogEncounter : ChainedInteractable
             if (snapPlayerPosition)
             {
                 transform.rotation = originalRotation;
-                player.position = transform.position + transform.forward * 1.5f;
+                player.position = transform.position + transform.forward * 1.5f + transform.up * 0.5f;
             }
             Vector3 direction = transform.position - player.position;
             direction.y = 0f; // ignore vertical

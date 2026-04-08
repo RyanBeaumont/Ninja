@@ -38,6 +38,7 @@ public class BattleManager : MonoBehaviour
     public int hitCounter = 0;
     public int discardPower = 0;
     public FloatValue gameDifficulty;
+    bool gainTP = true;
     bool executingActions = false;
     bool canWin = true;
     float pitch = 1f;
@@ -180,7 +181,8 @@ public class BattleManager : MonoBehaviour
     public void ExecuteCard(Card card, Combatant caller)
     {
         print("Executing card: " + card.cardName);
-        if(activePlayer != null) activePlayer.tp += 5; //Gain TERROR points
+        if(card.tpCost > 0) gainTP = false; else gainTP = true;
+        if(activePlayer != null && gainTP) activePlayer.tp += 5; //Gain TERROR points
         foreach(var action in card.effects)
         {
             action.caller = caller;
@@ -834,7 +836,7 @@ public class BattleManager : MonoBehaviour
                 if(pendingDamageType == DamageType.Psychic)
                     AudioManager.Instance.PlaySoundEffect("Crackle",UnityEngine.Random.Range(0.8f,1.2f));
                 if(lifestrike){lifestrike = false; activeCombatant.Heal(d);}
-                if(activePlayer != null) activePlayer.tp += (int)(d/2f); //Gain TERROR points based on damage dealt
+                if(activePlayer != null && gainTP) activePlayer.tp += (int)(d/3f); //Gain TERROR points based on damage dealt
             }
             if(pendingStatusEffect != null)
             {
@@ -962,7 +964,7 @@ public class BattleManager : MonoBehaviour
                             };
                         }
                         actionQueue.Insert(0, action);
-                        pt.tp += 5; //Gain TERROR points based on damage dealt
+                        if(gainTP) pt.tp += 5; //Gain TERROR points based on damage dealt
                     }
                     if(activeCombatant is PlayerCombatant p)
                     {

@@ -15,7 +15,6 @@ public class Combatant : MonoBehaviour
     public float speed;
     public float psychic;
     public bool surprise = false;
-    float damagePerLevel = 2f;
     public float mp;
     public float maxMp;
     [HideInInspector] public Vector3 startPosition;

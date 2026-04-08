@@ -11,11 +11,9 @@ public class AnimationListener : MonoBehaviour
 
     public void Particle(GameObject particle)
     {
-        if(GetComponentInParent<EnemyCombatant>() != null){
             var p = Instantiate(particle, transform);
             p.transform.localPosition = Vector3.zero;
-        }
-
+            Destroy(p,5);
     }
 
     void SpawnWeapon(string weapon)
@@ -77,6 +75,11 @@ public class AnimationListener : MonoBehaviour
         else if(GetComponentInParent<PlayerCombatant>() != null)
         {
             GetComponentInParent<PlayerCombatant>().OnHit();
+        }
+        //Trigger "OnHit" event for all instances of CombatCutscene
+        var cutscenes = FindObjectsByType<CombatCutscene>(FindObjectsSortMode.None);
+        foreach(var cutscene in cutscenes)        {
+            cutscene.OnHit();
         }
     }
 

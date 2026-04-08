@@ -2,8 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 public class EnemyStretch : EnemyCombatant
 {
-    public bool reinforcements = false;
-    int reinforcementTurn = 0;
     List<GameAction> bonusActions = new List<GameAction>();
 
     public void Awake(){

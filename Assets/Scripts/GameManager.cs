@@ -296,7 +296,7 @@ public class GameManager : MonoBehaviour
                     type = "Head"
                 };
             break;
-            case "Mysterious Robe":
+            case "Dark Black Clothes":
                 newItem = new Equipment(name,1)
                 {
                     description = "Your first 3 turns apply Poison",
@@ -493,6 +493,7 @@ public class GameManager : MonoBehaviour
             cutsceneCamera.Priority = 0;
 
         cameraRig.transform.SetParent(null);
+        cameraRig.transform.localScale = Vector3.one;
         cameraRig.transform.localPosition = Vector3.zero;
         cameraRig.transform.localRotation = Quaternion.identity;
     }
@@ -507,7 +508,7 @@ public class GameManager : MonoBehaviour
         }
         var ui = GameObject.Find("MainCanvas");
         var imgToFade = ui.transform.Find("OtherHUD/Black").GetComponent<UnityEngine.UI.Image>();
-        if(cameraTarget != null && toBlack)
+        if(cameraTarget != null)
         {
             var cam = GetCamera(out var cameraAnimator, out var cutsceneCamera);
             cam.transform.position = cameraTarget.position;

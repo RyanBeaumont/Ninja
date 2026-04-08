@@ -309,6 +309,7 @@ public class CardDatabase : MonoBehaviour
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
+                new CutAction(){},
                 new UltimateAction()
                 {
                     targetType = TargetType.None,
@@ -444,6 +445,7 @@ public class CardDatabase : MonoBehaviour
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
+                new CutAction(){},
                 new UltimateAction()
                 {
                     animation = "BoTwirl",  
@@ -521,6 +523,7 @@ public class CardDatabase : MonoBehaviour
             level = 3,
             effects = new List<GameAction>()
             {
+                new CutAction(){},
                 new UltimateAction()
                 {
                     animation = "Levitate",  
@@ -752,9 +755,10 @@ public class CardDatabase : MonoBehaviour
             discardCost = 2,
             cardClass = CardClass.Warrior,
             artwork = "IconSpartaKick",
-            level = 3,
+            level = 4,
             effects = new List<GameAction>()
             {
+                new CutAction(){},
                 new UltimateAction()
                 {
                     animation = "CraneKick", 
@@ -1033,6 +1037,7 @@ public class CardDatabase : MonoBehaviour
             artwork = "IconGrab",
             effects = new List<GameAction>()
             {
+                new CutAction(){},
                 new UltimateAction()
                 {
                     animation = "Rage",  

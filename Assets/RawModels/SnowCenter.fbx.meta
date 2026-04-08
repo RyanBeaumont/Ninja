@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Snow
+    second: {fileID: 2100000, guid: a3ab6fa66b11cac438ef160303384ebc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Snow.005
     second: {fileID: 2100000, guid: a3ab6fa66b11cac438ef160303384ebc, type: 2}
   materials:
