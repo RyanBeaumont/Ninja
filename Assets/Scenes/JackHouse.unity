@@ -974,6 +974,7 @@ MonoBehaviour:
   goldReward: 10
   giveQuestIfMissing: 0
   completeEvenIfMissing: 0
+  hideIfMissing: 0
   incompleteDialog:
   - text: 'You scan through the frequencies of your PORTA-COMM...
 
@@ -8952,6 +8953,7 @@ MonoBehaviour:
   goldReward: 0
   giveQuestIfMissing: 0
   completeEvenIfMissing: 0
+  hideIfMissing: 0
   incompleteDialog:
   - text: SLEEP IS FOR THE WEAK
     name: 
@@ -9040,6 +9042,7 @@ MonoBehaviour:
   goldReward: 0
   giveQuestIfMissing: 1
   completeEvenIfMissing: 1
+  hideIfMissing: 0
   incompleteDialog: []
 --- !u!1001 &673239204
 PrefabInstance:
@@ -16709,9 +16712,6 @@ PrefabInstance:
       addedObject: {fileID: 1316935864}
     - targetCorrespondingSourceObject: {fileID: 5222867599178813536, guid: 39912fac00195c942ba30a264cda9d37, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1316935866}
-    - targetCorrespondingSourceObject: {fileID: 5222867599178813536, guid: 39912fac00195c942ba30a264cda9d37, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1316935867}
     - targetCorrespondingSourceObject: {fileID: 5222867599178813536, guid: 39912fac00195c942ba30a264cda9d37, type: 3}
       insertIndex: -1
@@ -16793,9 +16793,7 @@ MonoBehaviour:
     face: Confused
   - text: You figure you should get a good night's sleep to clear your head.. Maybe
       tomorrow you should tell someone about the sword. You know Big Sam would believe
-      you-- his HOUSE is directly across the street from the dojo. And you think
-      you heard something about Torch being a weapons expert, if you're cool enough
-      to get his attention.
+      you-- his HOUSE is directly across the street from the dojo.
     name: Spartan Jack
     character: {fileID: 0}
     pose: 
@@ -16824,23 +16822,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 2.0000002}
   m_Center: {x: -0.000000016233765, y: -0.0000000118304415, z: -0.5000001}
---- !u!114 &1316935866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1316935862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c878f22abfffcb44b490cf6a3e20262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  questName: Ask Torch about your Sword
 --- !u!114 &1316935867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16880,6 +16861,7 @@ MonoBehaviour:
   goldReward: 30
   giveQuestIfMissing: 0
   completeEvenIfMissing: 1
+  hideIfMissing: 0
   incompleteDialog: []
 --- !u!1001 &1321195895
 PrefabInstance:
@@ -20615,6 +20597,7 @@ MonoBehaviour:
   goldReward: 0
   giveQuestIfMissing: 0
   completeEvenIfMissing: 0
+  hideIfMissing: 0
   incompleteDialog:
   - text: You should talk to Big Sam on your PORTA-COMM before you turn in for the
       night
@@ -22857,6 +22840,7 @@ MonoBehaviour:
   goldReward: 0
   giveQuestIfMissing: 0
   completeEvenIfMissing: 0
+  hideIfMissing: 0
   incompleteDialog:
   - text: You're not done here yet...
     name: 
@@ -23513,6 +23497,7 @@ MonoBehaviour:
   goldReward: 0
   giveQuestIfMissing: 0
   completeEvenIfMissing: 0
+  hideIfMissing: 0
   incompleteDialog:
   - text: You're not done here yet...
     name: 

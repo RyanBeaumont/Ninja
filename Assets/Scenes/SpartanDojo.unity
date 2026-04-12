@@ -1182,6 +1182,333 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
   m_PrefabInstance: {fileID: 45844327}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &47055141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 47055142}
+  - component: {fileID: 47055153}
+  - component: {fileID: 47055152}
+  - component: {fileID: 47055151}
+  - component: {fileID: 47055150}
+  - component: {fileID: 47055149}
+  - component: {fileID: 47055148}
+  - component: {fileID: 47055147}
+  - component: {fileID: 47055146}
+  - component: {fileID: 47055145}
+  - component: {fileID: 47055154}
+  - component: {fileID: 47055143}
+  m_Layer: 0
+  m_Name: Cube (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &47055142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47055141}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9, y: 1.5, z: -10}
+  m_LocalScale: {x: 1, y: 3, z: 7}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 308696735}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &47055143
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47055141}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Height: 0
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &47055145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47055141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  itemName: Brass Knuckles
+--- !u!114 &47055146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47055141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: 'Unnnghhh
+
+      We seem to have made a most terrible mistake'
+    name: Spartan Orange Belt
+    character: {fileID: 1319793439}
+    pose: Defeated
+    cameraAngle: 13
+    face: Confused
+  - text: 'TACTICAL RETREAT!
+
+      ESCAPE WITH YOUR DIGNITY!'
+    name: Spartan Green Belt
+    character: {fileID: 1924849709}
+    pose: Objection
+    cameraAngle: 0
+    face: Confused
+  - text: 'Very... Good... Spartan Jack.
+
+      A true Spartan indeed!
+
+      Class...
+      dismissed?'
+    name: Chrome Dome
+    character: {fileID: 1484589694}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Confused
+  - text: And don't come back!
+    name: Chrome Dome
+    character: {fileID: 1484589694}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Mad
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &47055147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47055141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f2a1a952d974b4eb4ec016f85f4f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  enemies:
+  - {fileID: 8346498964973016767, guid: f2e9ea965b4b6ae48bdfb24574e06f24, type: 3}
+  - {fileID: 8346498964973016767, guid: 415c5bcff5cebfb44bbc4f942a2a8011, type: 3}
+  - {fileID: 8346498964973016767, guid: 32e3d459d977cea499c41a5a8c0c2ce8, type: 3}
+  hideObjects:
+  - {fileID: 1081375803}
+  - {fileID: 562181602}
+  - {fileID: 1319793436}
+  - {fileID: 934370016}
+  battleMusic: {fileID: 8300000, guid: cc63f7f524e316645bad53d8e1e13b7d, type: 3}
+--- !u!114 &47055148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47055141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: 'Hey!
+
+      It''s that kid who beat up my friends!'
+    name: Spartan Green Belt
+    character: {fileID: 1924849709}
+    pose: Objection
+    cameraAngle: 6
+    face: Mad
+  - text: 'AHAHAHA!
+
+      THE TRAP WORKED!
+
+      GET ''EM BOYS!'
+    name: Chrome Dome
+    character: {fileID: 1484589694}
+    pose: ArmsCrossed
+    cameraAngle: 3
+    face: Mad
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &47055149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47055141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc188127f6a42c46a49d02911cf03b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  encounterMusic: {fileID: 0}
+  fadeTime: 1.5
+  sfx: Alert
+--- !u!114 &47055150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47055141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c98763bde1e894f9c5f6a304ca39dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+--- !u!65 &47055151
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47055141}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &47055152
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47055141}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &47055153
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47055141}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &47055154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47055141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b4ef69776623b4f92b74bdf634fb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  sceneName: Overworld
+  spawnPointIndex: 2
+  sceneVariant: 1
+  skybox: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
+  cameraTarget: {fileID: 0}
 --- !u!1001 &47508179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5756,6 +6083,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 889c2fc9d1aba3a4d9f279fb8ac2cad8, type: 3}
   m_PrefabInstance: {fileID: 299337145}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &308696734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 308696735}
+  m_Layer: 0
+  m_Name: SceneVariant_3
+  m_TagString: SceneVariant
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &308696735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308696734}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 47055142}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &309235614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10028,6 +10387,7 @@ MonoBehaviour:
   goldReward: 100
   giveQuestIfMissing: 0
   completeEvenIfMissing: 1
+  hideIfMissing: 0
   incompleteDialog:
   - text: Oops, this quest hasn't been given yet... How did you get in here?
     name: 
@@ -27531,12 +27891,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216602457}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9, y: 1.5, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.758102, y: -1.0929999, z: -13.857375}
   m_LocalScale: {x: 1, y: 3, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1729545602}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1216602465
 MonoBehaviour:
@@ -37538,6 +37898,7 @@ Transform:
   m_Children:
   - {fileID: 2028575522}
   - {fileID: 1384272705}
+  - {fileID: 1216602464}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1730349557
@@ -39101,6 +39462,7 @@ MonoBehaviour:
   goldReward: 100
   giveQuestIfMissing: 0
   completeEvenIfMissing: 1
+  hideIfMissing: 0
   incompleteDialog: []
 --- !u!65 &1791770174
 BoxCollider:
@@ -39283,6 +39645,7 @@ MonoBehaviour:
   goldReward: 100
   giveQuestIfMissing: 0
   completeEvenIfMissing: 1
+  hideIfMissing: 0
   incompleteDialog: []
 --- !u!114 &1791770182
 MonoBehaviour:
@@ -41916,6 +42279,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 934370020}
   m_SourcePrefab: {fileID: 100100000, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
+--- !u!4 &1924849709 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8686655644832132545, guid: 8b3bb78f6a827b9489377a4fd7140988, type: 3}
+  m_PrefabInstance: {fileID: 1924849708}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1925184179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47052,7 +47420,7 @@ SceneRoots:
   - {fileID: 479119120}
   - {fileID: 127955632184688993}
   - {fileID: 667845233}
-  - {fileID: 1216602464}
+  - {fileID: 308696735}
   - {fileID: 253836768}
   - {fileID: 1729545602}
   - {fileID: 661254642}

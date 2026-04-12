@@ -7478,6 +7478,337 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4791988861103740600, guid: 59db014136037dd45a2dd299df8f3a6e, type: 3}
   m_PrefabInstance: {fileID: 77469439}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &77815494
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 303365569235957390, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -28.994
+      objectReference: {fileID: 0}
+    - target: {fileID: 303365569235957390, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 303365569235957390, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -33.87246
+      objectReference: {fileID: 0}
+    - target: {fileID: 303365569235957390, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 303365569235957390, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303365569235957390, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000461936
+      objectReference: {fileID: 0}
+    - target: {fileID: 303365569235957390, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303365569235957390, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303365569235957390, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303365569235957390, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197555825143571696, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      propertyPath: m_Name
+      value: ChromeDome
+      objectReference: {fileID: 0}
+    - target: {fileID: 8965935215818427274, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      propertyPath: m_Radius
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8965935215818427274, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5197555825143571696, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77815504}
+    - targetCorrespondingSourceObject: {fileID: 5197555825143571696, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77815503}
+    - targetCorrespondingSourceObject: {fileID: 5197555825143571696, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77815505}
+    - targetCorrespondingSourceObject: {fileID: 5197555825143571696, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77815502}
+    - targetCorrespondingSourceObject: {fileID: 5197555825143571696, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77815501}
+    - targetCorrespondingSourceObject: {fileID: 5197555825143571696, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77815500}
+    - targetCorrespondingSourceObject: {fileID: 5197555825143571696, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77815499}
+    - targetCorrespondingSourceObject: {fileID: 5197555825143571696, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77815498}
+    - targetCorrespondingSourceObject: {fileID: 5197555825143571696, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77815497}
+  m_SourcePrefab: {fileID: 100100000, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+--- !u!1 &77815495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5197555825143571696, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+  m_PrefabInstance: {fileID: 77815494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &77815496 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 303365569235957390, guid: d03d87038c0d8e54e9addd76e6b9a737, type: 3}
+  m_PrefabInstance: {fileID: 77815494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &77815497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77815495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &77815498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77815495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: 'Humph. Your loss.
+
+      (He mutters under his breath)
+
+      What are
+      you doing wasting your time with those You-Jitsu clowns anyway?
+
+'
+    name: Rival Sensei
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 3
+    face: Confused
+  turnToFace: 0
+  snapPlayerPosition: 1
+--- !u!114 &77815499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77815495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31441617c7f832e43b2308e10814aa79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  branchName: 
+--- !u!114 &77815500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77815495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b4ef69776623b4f92b74bdf634fb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  sceneName: SpartanDojo
+  spawnPointIndex: 0
+  sceneVariant: 3
+  skybox: {fileID: 0}
+  cameraTarget: {fileID: 0}
+--- !u!114 &77815501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77815495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01669c0162d07b44db4ebfe8a41cd058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  prompt: Take a private lesson with the rival master?
+  itemName: 
+  itemQuantity: 0
+  consume: 0
+  incompleteDialog: []
+--- !u!114 &77815502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77815495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: You are about to enjoy the one and only peaceful time of the day when suddenly...
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  - text: 'OY!
+
+      You''re the one beating up all my students, arent you!'
+    name: Rival Sensei
+    character: {fileID: 77815496}
+    pose: ArmsCrossed
+    cameraAngle: 6
+    face: Mad
+  - text: '(You look around)
+
+      Who... Me?'
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Blank
+  - text: 'Yes, you! You got promise, kid!
+
+      Someone''s gotta shape these students
+      up, and it was gonna be me, but... You seem to have got to ''em first.'
+    name: Rival Sensei
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 3
+    face: Happy
+  - text: 'I''m so impressed with you, I tell you what...
+
+      I''m gonna give
+      you a PRIVATE LESSON!
+
+      Whaddaya say, do you want to know what it''s like
+      to be a TRUE Spartan?'
+    name: Rival Sensei
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 3
+    face: Confused
+  turnToFace: 0
+  snapPlayerPosition: 1
+--- !u!114 &77815503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77815495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c98763bde1e894f9c5f6a304ca39dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+--- !u!114 &77815504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77815495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bf4172aedc168478a45f52bdfd7867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  levelGate: 4
+  allowedSceneVariants: 
+  needsPartyMember: Spartan Jack
+  excludePartyMember: 
+  hideObject: 1
+--- !u!114 &77815505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77815495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc188127f6a42c46a49d02911cf03b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  encounterMusic: {fileID: 0}
+  fadeTime: 1.5
+  sfx: Alert
 --- !u!1001 &77822809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -215603,3 +215934,4 @@ SceneRoots:
   - {fileID: 99321854}
   - {fileID: 528380118}
   - {fileID: 419217504}
+  - {fileID: 77815494}

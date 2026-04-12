@@ -180,9 +180,11 @@ public class PlayerCombatant : Combatant
             for(var i=0; i<se.amount; i++)
             {
                 //discard random card
+                if(hand.Count > 0){
                 var random = Random.Range(0,hand.Count);
                 hand.RemoveAt(random);
                 GameManager.Instance.ShowMessage($"{combatantName} discarded a card");
+                }
             }
         }
         if(HasStatusEffect("Keg Backpack") != null)

@@ -1531,8 +1531,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   enemies:
-  - {fileID: 8346498964973016767, guid: 29a001229a0478c4697e5dfd649414f2, type: 3}
-  - {fileID: 8346498964973016767, guid: 10c65b00e0b4bf841b323e994d0ec11f, type: 3}
+  - {fileID: 8346498964973016767, guid: bf624347d4f3a4641846aae466b7870b, type: 3}
   hideObjects: []
   battleMusic: {fileID: 8300000, guid: b5b3142626e681d469109f18dcca0e8c, type: 3}
 --- !u!136 &812761113
