@@ -72,6 +72,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pose: ArmsCrossed
   face: Happy
+  combatIdle: 
+  combatWeapon: {fileID: 0}
 --- !u!1 &5824354922151686048
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,15 +346,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 197be916c4a177341bb58a1c29d1b2c9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 197be916c4a177341bb58a1c29d1b2c9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 197be916c4a177341bb58a1c29d1b2c9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 197be916c4a177341bb58a1c29d1b2c9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -360,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 197be916c4a177341bb58a1c29d1b2c9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.065
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 197be916c4a177341bb58a1c29d1b2c9, type: 3}
       propertyPath: m_LocalPosition.z

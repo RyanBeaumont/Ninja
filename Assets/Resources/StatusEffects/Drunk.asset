@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85afc1b1367c7a14da4ee484f3497e44, type: 3}
+  m_Name: Drunk
+  m_EditorClassIdentifier: 
+  statusEffect:
+    name: Drunk
+    stat: DEF
+    sprite: {fileID: -493878499, guid: 69d583eef7dd38c41aff97acd5a2a1e8, type: 3}
+    amount: -0.25
+    description: 'alcholol: draank. defnense: up'
+    additive: 1
+    duration: 3
+    removeOnHit: 0
+    caller: {fileID: 0}
+    statusUpdate: 1

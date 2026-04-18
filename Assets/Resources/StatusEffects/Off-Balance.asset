@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85afc1b1367c7a14da4ee484f3497e44, type: 3}
+  m_Name: Off-Balance
+  m_EditorClassIdentifier: 
+  statusEffect:
+    name: Off-Balance
+    stat: DEF
+    sprite: {fileID: 21300000, guid: 00982ae52b6a6594e9e95cc3952d5c44, type: 3}
+    amount: 0.25
+    description: Next hit deals [amount*100]% more damage
+    additive: 1
+    duration: -1
+    removeOnHit: 1
+    caller: {fileID: 0}
+    statusUpdate: 0

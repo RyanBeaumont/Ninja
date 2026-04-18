@@ -131,19 +131,12 @@ public class GameManager : MonoBehaviour
             break;
             case "Beer":
                 newItem = new InventoryItem(name,1);
-                newItem.description = "It make you crunk and you don't take no damgageeee becausf you are hottt stuffff adn you are feeelin good";
+                newItem.description = "It make you crunk";
                 newItem.gameAction = new StatusEffectAction()
                 {
                     targetType = TargetType.SingleAlly,
                     animation = "Drink",
-                    statusEffect = new StatusEffect()
-                    {
-                        name = "Drunk",
-                        stat = "DEF",
-                        amount = 1.5f,
-                        additive = false,
-                        duration = 3
-                    }
+                    statusEffect = CardDatabase.Instance.getStatusEffect("Drunk")
                 };
             break;
             case "DrPepper":
@@ -302,13 +295,7 @@ public class GameManager : MonoBehaviour
                     description = "Your first 3 turns apply Poison",
                     statusEffects = new StatusEffect[]
                     {
-                        new StatusEffect()
-                        {
-                            name = "Poisoner",
-                            stat = "",
-                            amount = 1,
-                            duration = 3
-                        }
+                        CardDatabase.Instance.getStatusEffect("Poisoner",1,3)
                     },
                     type = "Body"
                 };
@@ -361,13 +348,7 @@ public class GameManager : MonoBehaviour
                     description = "Provides a steady stream of coke for you to drink each turn",
                     statusEffects = new StatusEffect[]
                     {
-                        new StatusEffect()
-                        {
-                            name = "Keg Backpack",
-                            stat = "",
-                            amount = 1,
-                            duration = -1
-                        }
+                        CardDatabase.Instance.getStatusEffect("Keg Backpack")
                     },
                     type = "Accessory"
                 };
@@ -402,13 +383,7 @@ public class GameManager : MonoBehaviour
                     description = "Increase your Attack by 10 with every kill",
                     statusEffects = new StatusEffect[]
                     {
-                        new StatusEffect()
-                        {
-                            name = "RocketFistActive",
-                            stat = "",
-                            amount = 1,
-                            duration = -1
-                        },
+                        CardDatabase.Instance.getStatusEffect("Rocket Fist")
                     },
                     type = "Accessory"
                 };

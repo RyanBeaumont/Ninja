@@ -7,12 +7,17 @@ using UnityEngine;
 {
     public string name;
     public string stat;
+    public Sprite sprite;
     public float amount;
+    public string description;
     public bool additive = true; //true = additive, false = multiplicative
     public int duration = -1; //-1 = permanent
     public bool removeOnHit = false;
+    public Combatant caller;
+    public StatusUpdate statusUpdate = StatusUpdate.TurnStart;
 }
 
+public enum StatusUpdate{TurnStart,TurnEnd,CallerTurnStart}  
 public enum DamageType
 {
     Slashing, Bludgeoning, Psychic
@@ -29,10 +34,25 @@ public class GameAction
     //public List<Combatant> targets;
     public TargetType targetType;
     public string animation;
+    public string pattern = "";
     public string text;
     public int bonusActions = 0;
+
+    protected void ResolveInsanityTargets(BattleManager battleManager)
+    {
+        
+        if (caller != null && (caller.HasStatusEffect("Insanity") != null || caller.HasStatusEffect("Drunk") != null ) &&
+            targetType != TargetType.None && targetType != TargetType.Self &&
+            !(this is ChooseTargetsAction))
+        {
+            battleManager.SelectRandomTargets(caller, targetType);
+        }
+        
+    }
+
     public virtual void Execute(BattleManager battleManager)
     {
+        ResolveInsanityTargets(battleManager);
         caller.PlayAnimation(animation);
         if(text != ""){GameManager.Instance.ShowMessage(text);}
     }
@@ -104,7 +124,7 @@ public class EnemyAttackAction : GameAction
         Time.timeScale = timeScale; //slow down time for dramatic effect
         battleManager.pendingDamageType = damageType;
         if(statusEffect != null && statusEffect.name != "")
-            battleManager.pendingStatusEffect = statusEffect;
+            battleManager.pendingStatusEffect = CardDatabase.Instance.getStatusEffect(statusEffect.name,statusEffect.amount,statusEffect.duration);
         battleManager.canDodge = true;
         battleManager.loopAnimation = loopAnimation;
         
@@ -129,14 +149,7 @@ public class NullifyDamageAction : DamageAction
         foreach(var t in battleManager.currentTargets)
         {
             t.RemoveStatusEffect("");
-            t.ApplyStatusEffect(new StatusEffect()
-            {
-                name = "Off-Balance",
-                stat = "DEF",
-                amount = .25f,
-                duration = -1,
-                removeOnHit = true
-            });
+            t.ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Off-Balance"));
         }
         
     }
@@ -169,11 +182,23 @@ public class DamageAction : GameAction
         battleManager.waitingForInput = true; //wait for animation input
         battleManager.hitsRemaining = hits;
         battleManager.pendingDamage = caller.EvaluateStatFormula(damage);
+        Debug.Log($"Base damage: {caller.EvaluateStatFormula(damage)}");
         battleManager.pendingDamageType = damageType;
-        battleManager.pendingStatusEffect = statusEffect;
+        if(statusEffect != null)
+            statusEffect.caller = caller;
+         battleManager.pendingStatusEffect = statusEffect;
         battleManager.loopAnimation = loopAnimation;
         caller.PlayAnimation(animation);
         if(receivingAnimation != ""){foreach(Combatant c in battleManager.currentTargets) c.PlayAnimation(receivingAnimation);}
+    }
+}
+
+public class CounterDamageAction : DamageAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        base.Execute(battleManager);
+        battleManager.SetPose(caller.transform, "SwordCounter", CameraAngle.counter, "Mad");
     }
 }
 
@@ -184,6 +209,7 @@ public class SelfDamageAction : GameAction
      public override void Execute(BattleManager battleManager)
     {
         caller.PlayAnimation(animation);
+        battleManager.clock = 2.1f;
         caller.TakeDamage(caller,caller.EvaluateStatFormula(damage),damageType);
     }
 
@@ -194,7 +220,12 @@ public class ChiBladeAction : DamageAction
     public override void Execute(BattleManager battleManager)
     {
         base.Execute(battleManager);
-        caller.mp = 0;
+        if(caller.HasStatusEffect("Insanity") != null && battleManager.actionQueue.Count > 0)
+        {
+            
+        }else{
+            caller.mp = 0;
+        }
     }
 }
 
@@ -214,22 +245,9 @@ public class SuplexDamageAction : DamageAction
         if(battleManager.currentTargets.Count == 1 && (battleManager.currentTargets[0].HasStatusEffect("Off-Balance")!=null || battleManager.currentTargets[0].HasStatusEffect("Prone") != null))
         {
             battleManager.currentTargets[0].RemoveStatusEffect("Off-Balance");
-            battleManager.currentTargets[0].ApplyStatusEffect(new StatusEffect
-            {
-                name = "Prone",
-                amount = 1,
-                duration = 2,
-            });
-            damage = "60";
+            battleManager.currentTargets[0].ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Prone"));
         }
-        caller.ApplyStatusEffect(new StatusEffect()
-        {
-            name = "Off-Balance",
-            stat = "DEF",
-            amount = .25f,
-            duration = -1,
-            removeOnHit = true
-        });
+        caller.ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Off-Balance"));
         base.Execute(battleManager);
     }
 }
@@ -273,13 +291,7 @@ public class GrappleDamageAction : DamageAction
             };
             if (lifesteal)
             {
-                battleManager.currentTargets[0].ApplyStatusEffect(new StatusEffect()
-                {
-                    name = "Lifesteal",
-                    amount = 1,
-                    additive = true,
-                    duration = 2,
-                });
+                battleManager.currentTargets[0].ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Lifesteal"));
             }
         }
         caller.ApplyStatusEffect(new StatusEffect()
@@ -302,37 +314,14 @@ public class NardbusterDamageAction : DamageAction
         if(battleManager.currentTargets.Count == 1 && (battleManager.currentTargets[0].HasStatusEffect("Off-Balance")!=null || battleManager.currentTargets[0].HasStatusEffect("Prone") != null) || lifesteal)
         {
             battleManager.currentTargets[0].RemoveStatusEffect("Off-Balance");
-            battleManager.currentTargets[0].ApplyStatusEffect(new StatusEffect
-            {
-                name = "Prone",
-                amount = 1,
-                duration = 2,
-            });
-            statusEffect = new StatusEffect
-            {
-                name = "Stunned",
-                amount = 1,
-                duration = -1,
-            };
+            battleManager.currentTargets[0].ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Prone"));
+            statusEffect = CardDatabase.Instance.getStatusEffect("Stunned");
             if (lifesteal)
             {
-                battleManager.currentTargets[0].ApplyStatusEffect(new StatusEffect()
-                {
-                    name = "Lifesteal",
-                    amount = 1,
-                    additive = true,
-                    duration = 2,
-                });
+                battleManager.currentTargets[0].ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Lifesteal"));
             }
         }
-        caller.ApplyStatusEffect(new StatusEffect()
-        {
-            name = "Off-Balance",
-            stat = "DEF",
-            amount = .25f,
-            duration = -1,
-            removeOnHit = true
-        });
+        caller.ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Off-Balance"));
         base.Execute(battleManager);
     }
 }
@@ -402,6 +391,7 @@ public class StatusEffectAction : GameAction
     public override void Execute(BattleManager battleManager)
     {
         base.Execute(battleManager);
+        statusEffect.caller = caller;
         if(caller is EnemyCombatant e){
             Debug.Log($"Selecting random targets for status effect");
             battleManager.SelectRandomTargets(caller,targetType);}
@@ -514,6 +504,7 @@ public class ScryAction : GameAction
     public int scryAmount = 3;
     public override void Execute(BattleManager battleManager)
     {
+        ResolveInsanityTargets(battleManager);
         battleManager.ShowScryPanel((PlayerCombatant)battleManager.currentTargets[0], scryAmount);
     }
 }
@@ -574,6 +565,15 @@ public class CardExchangeAction : GameAction
             player.DrawCards(battleManager.discardPower + 1);
             GameManager.Instance.ShowMessage($"{caller.combatantName} draws {battleManager.discardPower + 1} cards!");
         }
+    }
+}
+
+public class CloserAction : DamageAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        damage = $"30 + {30*battleManager.discardPower}*MED";
+        base.Execute(battleManager);
     }
 }
 
@@ -658,6 +658,7 @@ public class EnergySuckAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
+        ResolveInsanityTargets(battleManager);
         if(battleManager.currentTargets[0] is PlayerCombatant p)
         {
             p.GainMP(caller.EvaluateStatFormula(mpAmount));

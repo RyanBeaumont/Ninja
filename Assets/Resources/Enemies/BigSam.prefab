@@ -48,12 +48,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  maxHp: 300
-  hp: 300
+  maxHp: 350
+  hp: 350
   attack: 10
   defense: 1
   speed: 10
   psychic: 10
+  surprise: 0
   mp: 0
   maxMp: 20
   startPosition: {x: 0, y: 0, z: 0}
@@ -76,6 +77,8 @@ MonoBehaviour:
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
     hits: 1
     mpCost: 10
     healthThreshold: 100
@@ -92,6 +95,8 @@ MonoBehaviour:
       additive: 1
       duration: 2
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
@@ -114,6 +119,8 @@ MonoBehaviour:
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100

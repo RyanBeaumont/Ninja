@@ -33,6 +33,7 @@ public class Card
     public int tpCost = 0;
     public int level = 0;
     public int discardCost = 0;
+    //public string pattern = "";
 
     [Header("Effects")]
     public List<GameAction> effects = new();
@@ -56,6 +57,31 @@ public class CardDatabase : MonoBehaviour
 {
     public static CardDatabase Instance;
     public List<Card> allCards = new List<Card>();
+
+    public StatusEffect getStatusEffect(string name, float amount = 0, int duration = 0)
+    {
+        StatusEffectData so = Resources.Load<StatusEffectData>($"StatusEffects/{name}");
+        StatusEffect se = new StatusEffect();
+        if(so != null)
+        {
+            se.name = so.statusEffect.name;
+            se.amount = so.statusEffect.amount;
+            se.description = so.statusEffect.description;
+            se.sprite = so.statusEffect.sprite;
+            se.duration = so.statusEffect.duration;
+            se.stat = so.statusEffect.stat;
+            se.additive = so.statusEffect.additive;
+            se.removeOnHit = so.statusEffect.removeOnHit;
+            return se;
+        }
+        else
+        {
+            se.name = name;
+        }
+        if(amount != 0) se.amount = amount;
+        if(duration != 0) se.duration = duration;
+        return se;
+    }
 
     public Card GetCardByName(string name)
     {
@@ -111,11 +137,12 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "15",
+                    damage = "15 + 15*LOW",
                     animation = "Jab",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
-                    hits = 1
+                    hits = 1,
+                    pattern = "1"
                 }
             }
         });
@@ -131,11 +158,12 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "30",
+                    damage = "30 + 30*MED",
                     animation = "SwordHeavy",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
-                    hits = 1
+                    hits = 1,
+                    pattern = " 2"
                 }
             }
         });
@@ -152,11 +180,12 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "15",
+                    damage = "15 + 15*LOW",
                     animation = "Jab",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
                     hits = 1,
+                    pattern = ""
                 },
                 new DrawCardsAction()
                 {
@@ -172,17 +201,18 @@ public class CardDatabase : MonoBehaviour
             cardName = "Tornado Butt Kick",
             description = "Damages all opponents",
             artwork = "IconKick",
-            cost = 10,
+            cost = 15,
             level = 1,
             effects = new List<GameAction>()
             {
                 new DamageAction()
                 {
-                    damage = "25",
+                    damage = "25 + 25*LOW",
                     animation = "SpinKick",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.AllEnemies,
-                    hits = 1
+                    hits = 1,
+                    pattern = "1 1 1"
                 }
             }
         });
@@ -228,19 +258,14 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "10",
+                    damage = "10+10*LOW",
                     animation = "KnifeBackhand",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
-                    statusEffect = new StatusEffect
-                    {
-                        name = "Poisoned",
-                        amount = 2,
-                        additive = true,
-                        duration = -1
-                    },
+                    statusEffect = getStatusEffect("Poisoned", 2, -1),
                     hits = 1,
                     bonusActions = 1,
+                    pattern = "22"
                 }
             }
         });
@@ -256,18 +281,14 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "10",
+                    damage = "10 + 10*MED",
                     animation = "ThrowKnife",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.None,
-                    statusEffect = new StatusEffect()
-                    {
-                        name = "Poisoned",
-                        amount = 1,
-                        duration = -1,
-                    },
+                    statusEffect = getStatusEffect("Poisoned", 1, -1),
                     hits = 2,
-                    loopAnimation = true
+                    loopAnimation = true,
+                    pattern = "11"
                 }
             }
         });
@@ -275,7 +296,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Stabby Stab",
             description = "Poisoned blade strikes for each hit you've dealt including items",
-            cost = 10,
+            cost = 15,
             level = 3,
             artwork = "IconStab",
             cardClass = CardClass.Ninja,
@@ -283,26 +304,21 @@ public class CardDatabase : MonoBehaviour
             {
                 new StabbyStabAction()
                 {
-                    damage = "10",
+                    damage = "15 + 15*MED",
                     animation = "SwordBackhand",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
-                    statusEffect = new StatusEffect
-                    {
-                        name = "Poisoned",
-                        amount = 1,
-                        additive = true,
-                        duration = -1
-                    },
+                    statusEffect = getStatusEffect("Poisoned", 1, -1),
                     hits = 1,
-                    loopAnimation = true
+                    loopAnimation = true,
+                    pattern = "11  2"
                 }
             }
         });
         allCards.Add(new Card()
         {
             cardName = "It Begins",
-            description = "Play 2 extra cards this turn",
+            description = "Open a wound for one turn that makes the enemy weak to all damage",
             tpCost = 50,
             level = 4,
             artwork = "IconSuperSaiyan",
@@ -310,18 +326,21 @@ public class CardDatabase : MonoBehaviour
             effects = new List<GameAction>()
             {
                 new CutAction(){},
-                new UltimateAction()
+                new DamageAction()
                 {
-                    targetType = TargetType.None,
-                    animation = "BoTwirl",  
-                    bonusActions = 2,
+                    targetType = TargetType.SingleEnemy,
+                    damageType = DamageType.Slashing,
+                    animation = "SwordWhirlwind",  
+                    damage = "30 + 30*MED",
+                    statusEffect = getStatusEffect("Weak", 1, 1),
+                    pattern = "2 2"
                 },
             }
         });
          allCards.Add(new Card()
         {
             cardName = "Get Poison'd",
-            description = "Until the end of your next turn, all your attacks apply poison",
+            description = "Your teammates apply Poison for as long as they take no damage",
             cost = 20,
             level = 4,
             artwork = "IconDeath",
@@ -331,13 +350,8 @@ public class CardDatabase : MonoBehaviour
                 new StatusEffectAction()
                 {
                     animation = "Unsheath",
-                    targetType = TargetType.Self,
-                    statusEffect = new StatusEffect()
-                    {
-                        name = "Poisoner",
-                        amount = 1,
-                        duration = 2
-                    }
+                    targetType = TargetType.AllAllies,
+                    statusEffect = getStatusEffect("Poisoner", 1, -1)
                 }
             }
         });
@@ -347,7 +361,7 @@ public class CardDatabase : MonoBehaviour
             cardClass = CardClass.Ninja,
             description = "Discard your hand and draw cards based on your PSY",
             artwork = "IconSuperSaiyan",
-            cost = 10,
+            cost = 15,
             level = 5,
             effects = new List<GameAction>()
             {
@@ -361,21 +375,23 @@ public class CardDatabase : MonoBehaviour
         });
         allCards.Add(new Card()
         {
-            cardName = "Exploit Weakness",
-            description = "Punch someone. If they are debuffed, play again",
-            cost = 10,
+            cardName = "Death Bomb",
+            description = "Attach a sticky bomb. When they Die, they Explode",
+            cost = 20,
             level = 6,
             artwork = "IconFist",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
-                new ExploitWeaknessAction()
+                new DamageAction()
                 {
-                    damage = "20",
-                    animation = "Jab",
+                    damage = "1",
+                    animation = "Throw",
                     damageType = DamageType.Bludgeoning,
-                    targetType = TargetType.SingleEnemy,
+                    targetType = TargetType.Any,
+                    statusEffect = getStatusEffect("Death Bomb", 1, -1),
                     hits = 1,
+                    pattern = "2"
                 }
             }
         });
@@ -399,24 +415,6 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
-            cardName = "Chain Kill",
-            description = "Execute an enemy below 50 HP, and gain this card back",
-            cost = 40,
-            level = 7,
-            artwork = "IconFist",
-            cardClass = CardClass.Ninja,
-            effects = new List<GameAction>()
-            {
-                new ChainKillAction()
-                {
-                    animation = "SwordHeavy",
-                    targetType = TargetType.SingleEnemy,
-                }
-            }
-        });
-
-        allCards.Add(new Card()
-        {
             cardName = "The Perfect Tool",
             description = "Look at an ally's top 3 cards. You may discard any of them",
             cost = 10,
@@ -430,6 +428,43 @@ public class CardDatabase : MonoBehaviour
                     animation = "GatherChi",
                     targetType = TargetType.SingleAlly,
                     scryAmount = 3
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Deploy Cat",
+            description = "Deploy Assault Kitten to the battlefield",
+            cost = 20,
+            artwork = "IconSuperSaiyan",
+            cardClass = CardClass.Ninja,
+            level = 99,
+            effects = new List<GameAction>()
+            {
+                new SummonAction()
+                {
+                    enemy = false,
+                    summon = Resources.Load<GameObject>("Enemies/EnemySpartan")
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "It Was HIM!",
+            description = "Enemies can only target the chosen ally until your next turn",
+            cost = 15,
+            level = 3,
+            artwork = "IconDeath",
+            cardClass = CardClass.Ninja,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "Objection",
+                    targetType = TargetType.SingleAlly,
+                    statusEffect = getStatusEffect("Taunt", 1, -1)
                 }
             }
         });
@@ -457,15 +492,10 @@ public class CardDatabase : MonoBehaviour
                     animation = "ThrowKnife",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.None,
-                    statusEffect = new StatusEffect
-                    {
-                        name = "Poisoned",
-                        amount = 1,
-                        additive = true,
-                        duration = -1
-                    },
+                    statusEffect = getStatusEffect("Poisoned", 1, -1),
                     hits = 7,
-                    loopAnimation = true
+                    loopAnimation = true,
+                    pattern = "1 111 111"
                 }
             }
         });
@@ -480,16 +510,17 @@ public class CardDatabase : MonoBehaviour
             artwork = "IconPsychic",
             cardClass = CardClass.Psychic,
             level = 1,
-            cost = 15,
+            cost = 20,
             effects = new List<GameAction>()
             {
-                new ChiBladeAction()
+                new DamageAction()
                 {
-                    damage = "35",
+                    damage = "30 + 30*HIGH",
                     animation = "PsychicLift",
                     damageType = DamageType.Psychic,
                     targetType = TargetType.SingleEnemy,
-                    hits = 1
+                    hits = 1,
+                    pattern = "3 3"
                 }
             }
         });
@@ -508,7 +539,33 @@ public class CardDatabase : MonoBehaviour
                 {
                     targetType = TargetType.Any,
                     mpAmount = "PSY",
-                    animation = "Sassy"
+                    animation = "Sass"
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Insanity",
+            description = "Go insane for 2 turns. Your cards get duplicated but target randomly",
+            tpCost = 50,
+            
+            cardClass = CardClass.Psychic,
+            artwork = "IconPsychic",
+            level = 4,
+            effects = new List<GameAction>()
+            {
+                new UltimateAction()
+                {
+                    animation = "Levitate",  
+                    targetType = TargetType.None,
+                },
+                new StatusEffectAction()
+                {
+                    pattern = "3 3 3",
+                    animation = "Rage",
+                    targetType = TargetType.Self,
+                    statusEffect = getStatusEffect("Insanity", 1, 3),
                 }
             }
         });
@@ -520,7 +577,7 @@ public class CardDatabase : MonoBehaviour
             tpCost = 50,
             cardClass = CardClass.Psychic,
             artwork = "IconPsychic",
-            level = 3,
+            level = 10,
             effects = new List<GameAction>()
             {
                 new CutAction(){},
@@ -533,12 +590,7 @@ public class CardDatabase : MonoBehaviour
                 {
                     animation = "ArmsCrossed",
                     targetType = TargetType.SingleEnemy,
-                    statusEffect = new StatusEffect()
-                    {
-                        name = "E-S-Pow",
-                        amount = 1,
-                        duration = 2 //permanent
-                    },
+                    statusEffect = getStatusEffect("E-S-Pow", 1, 2),
                 }
             }
         });
@@ -549,17 +601,19 @@ public class CardDatabase : MonoBehaviour
             description = "Drain your MP to deal equivalent slashing damage",
             artwork = "IconSlash",
             cardClass = CardClass.Psychic,
+
             level = 3,
             cost = 0,
             effects = new List<GameAction>()
             {
                 new ChiBladeAction()
                 {
-                    damage = "MP * 1.25",
+                    damage = "MP + MP*HIGH",
                     animation = "Slash",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
-                    hits = 1
+                    hits = 1,
+                    pattern = "2111"
                 }
             }
         });
@@ -575,11 +629,12 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "60",
+                    damage = "60 + 60*HIGH",
                     animation = "CombatBurst",
                     damageType = DamageType.Psychic,
                     targetType = TargetType.AllEnemies,
-                    hits = 1
+                    hits = 1,
+                    pattern = "2 22"
                 }
             }
         });
@@ -598,13 +653,10 @@ public class CardDatabase : MonoBehaviour
                 {
                     targetType = TargetType.SingleEnemy,
                     animation = "KnifeBackhand",
-                    damage = "40",
+                    damage = "40 + 40*LOW",
                     damageType = DamageType.Psychic,
-                    statusEffect = new StatusEffect()
-                    {
-                        name = "Linked",
-                        duration = 3,
-                    }
+                    statusEffect = getStatusEffect("Linked", 0, 2),
+                    pattern = "3 3"
                 }
             }
         });
@@ -612,7 +664,7 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "Slap Some Sense",
-            description = "Slap any target to remove status effects",
+            description = "Slap any target to remove status effects including stun",
             cost = 10,
             level = 6,
             cardClass = CardClass.Psychic,
@@ -621,11 +673,12 @@ public class CardDatabase : MonoBehaviour
             {
                 new NullifyDamageAction2()
                 {
-                    damage = "15",
+                    damage = "10",
                     animation = "Slap",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.Any,
-                    hits = 1
+                    hits = 1,
+                    pattern = "1"
                 }
             }
         });
@@ -662,32 +715,33 @@ public class CardDatabase : MonoBehaviour
                 new ReduceCostAction
                 {
                     animation = "Slash",
-                    damage = "15",
+                    damage = "15 + 15*MED",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
                     hits = 1,
                     bonusActions = 1,
+                    pattern = "1 3"
                 }
             }
         });
 
         allCards.Add(new Card()
         {
-            cardName = "Battle of Wills",
-            description = "Deals damage based on the difference in MP",
+            cardName = "Band-Aid",
+            description = "Heal an ally and play again",
             artwork = "IconPsychic",
+            
             cardClass = CardClass.Psychic,
             level = 7,
-            cost = 10,
+            cost = 15,
             effects = new List<GameAction>()
             {
-                new BattleOfWillsAction()
+                new HealAction()
                 {
-                    damage = "MP",
-                    animation = "CombatBurst",
-                    damageType = DamageType.Psychic,
-                    targetType = TargetType.SingleEnemy,
-                    hits = 1
+                    targetType = TargetType.SingleAlly,
+                    healAmount = "PSY*2",
+                    bonusActions = 1,
+                    pattern = "111",
                 }
             }
         });
@@ -708,19 +762,13 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "15",
+                    damage = "15 + 15*MED",
                     animation = "Uppercut",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
-                    statusEffect = new StatusEffect()
-                    {
-                        name = "Off-Balance",
-                        stat = "DEF",
-                        amount = .25f,
-                        duration = -1,
-                        removeOnHit = true
-                    },
-                    hits = 1
+                    statusEffect = getStatusEffect("Off-Balance"),
+                    hits = 1,
+                    pattern = "1 1"
                 }
             }
         });
@@ -737,11 +785,12 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "15",
+                    damage = "15 + 15*LOW",
                     animation = "PunchCombo",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
-                    hits = 3
+                    hits = 3,
+                    pattern = " 111"
                 }
             }
         });
@@ -766,11 +815,12 @@ public class CardDatabase : MonoBehaviour
                 },
                 new DamageAction()
                 {
-                    damage = "70",
+                    damage = "70 + 70*HIGH",
                     animation = "Kick",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
-                    hits = 1
+                    hits = 1,
+                    pattern = "1 1 2"
                 }
             }
         });
@@ -787,11 +837,12 @@ public class CardDatabase : MonoBehaviour
             {
                 new LifestrikeAction()
                 {
-                    damage = "30",
+                    damage = "30 + 30*MED",
                     animation = "Kick",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
-                    hits = 1
+                    hits = 1,
+                    pattern = " 2"
                 }
             }
         });
@@ -810,13 +861,7 @@ public class CardDatabase : MonoBehaviour
                 {
                     animation = "Burst",
                     targetType = TargetType.Self,
-                    statusEffect = new StatusEffect()
-                    {
-                        name = "Rage",
-                        stat = "ATK",
-                        amount = 3,
-                        duration = -1 //permanent
-                    },
+                    statusEffect = getStatusEffect("Rage",2,-1)
                 }
             }
         });
@@ -834,11 +879,12 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "50",
+                    damage = "50 + 50*HIGH",
                     animation = "LongswordBlast",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
-                    hits = 1
+                    hits = 1,
+                    pattern = "1  21  2"
                 }
             }
         });
@@ -859,18 +905,19 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
-            cardName = "Card Exchange",
-            description = "Draw a card plus an extra for each card discarded",
-            cost = 0,
+            cardName = "The Closer",
+            description = "Discard cards to this attack for extra damage",
+            cost = 20,
             level = 7,
             discardCost = 0,
             cardClass = CardClass.Warrior,
             artwork = "IconSlash",
             effects = new List<GameAction>()
             {
-                new CardExchangeAction()
+                new CloserAction()
                 {
-                    animation = "GatherChi"
+                    animation = "FlyingAxeKick",
+                    pattern = "2 2 2"
                 }
             }
         });
@@ -889,14 +936,7 @@ public class CardDatabase : MonoBehaviour
                 {
                     animation = "GatherChi",
                     targetType = TargetType.Self,
-                    statusEffect = new StatusEffect()
-                    {
-                        name = "DoubleDamage",
-                        stat = "STR",
-                        amount = 2,
-                        additive = false,
-                        duration = 2
-                    }
+                    statusEffect = getStatusEffect("DoubleDamage", 2, 2)
                 }
             }
         });
@@ -918,19 +958,13 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "15",
+                    damage = "15 + 15*MED",
                     animation = "headbutt",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
-                    statusEffect = new StatusEffect()
-                    {
-                        name = "Off-Balance",
-                        stat = "DEF",
-                        amount = .25f,
-                        duration = -1,
-                        removeOnHit = true
-                    },
-                    hits = 1
+                    statusEffect = getStatusEffect("Off-Balance"),
+                    hits = 1,
+                    pattern = "2"
                 }
             }
         });
@@ -950,14 +984,7 @@ public class CardDatabase : MonoBehaviour
                 {
                     animation = "ArmsCrossed",
                     targetType = TargetType.AllAllies,
-                    statusEffect = new StatusEffect()
-                    {
-                        name = "Rock Solid",
-                        stat = "DEF",
-                        amount = -0.5f,
-                        additive = true,
-                        duration = 2
-                    }
+                    statusEffect = getStatusEffect("Rock Solid", 0, 2)
                 }
             }
         });
@@ -974,12 +1001,13 @@ public class CardDatabase : MonoBehaviour
             {
                 new SuplexDamageAction()
                 {
-                    damage = "20",
+                    damage = "60 + 60*HIGH",
                     animation = "SlamAttacker",
                     receivingAnimation = "SlamVictim",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
-                    hits = 1
+                    hits = 1,
+                    pattern = "1 11  2"
                 }
             }
         });
@@ -1006,7 +1034,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Identify Weakness",
             description = "Hitting the enemy's weakness inflicts Off-Balance",
-            cost = 15,
+            cost = 10,
             level = 4,
             cardClass = CardClass.Grappler,
             artwork = "IconPsychic",
@@ -1016,13 +1044,7 @@ public class CardDatabase : MonoBehaviour
                 {
                     animation = "Objection",
                     targetType = TargetType.SingleEnemy,
-                    statusEffect = new StatusEffect()
-                    {
-                        name = "Exposed",
-                        amount = 1,
-                        additive = true,
-                        duration = 2
-                    }
+                    statusEffect = getStatusEffect("Exposed",0,2)
                 }
             }
         });
@@ -1045,12 +1067,13 @@ public class CardDatabase : MonoBehaviour
                 },
                 new GrappleDamageAction()
                 {
-                    damage = "40",
+                    damage = "40 + 40*MED",
                     animation = "ShoulderThrowAttacker",
                     receivingAnimation = "ShoulderThrowVictim",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
-                    hits = 1
+                    hits = 1,
+                    pattern = "2 2 2"
                 }
             }
         });
@@ -1069,17 +1092,13 @@ public class CardDatabase : MonoBehaviour
             {
                 new OmnisweepDamageAction()
                 {
-                    damage = "50",
+                    damage = "50 + 50*MED",
                     animation = "Sweep",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.AllEnemies,
-                    statusEffect = new StatusEffect
-                    {
-                        name = "Prone",
-                        amount = 1,
-                        duration = 2,
-                    },
-                    hits = 1
+                    statusEffect = getStatusEffect("Prone"),
+                    hits = 1,
+                    pattern = "1111"
                 }
             }
         });
@@ -1096,20 +1115,14 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "20",
+                    damage = "20 + 20*LOW",
                     animation = "Slap",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
-                    statusEffect = new StatusEffect()
-                    {
-                        name = "Off-Balance",
-                        stat = "DEF",
-                        amount = .25f,
-                        duration = -1,
-                        removeOnHit = true
-                    },
+                    statusEffect = getStatusEffect("Off-Balance"),
                     hits = 1,
-                    bonusActions = 1
+                    bonusActions = 1,
+                    pattern = "11"
                 }
             }
         });
@@ -1128,13 +1141,14 @@ public class CardDatabase : MonoBehaviour
             {
                 new NardbusterDamageAction()
                 {
-                    damage = "40",
+                    damage = "40 + 40*MED",
                     animation = "Uppercut",
                     receivingAnimation = "Launcher",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
                     lifesteal = true,
-                    hits = 1
+                    hits = 1,
+                    pattern = "2 2 3"
                 }
             }
         });

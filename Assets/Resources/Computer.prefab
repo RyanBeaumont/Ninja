@@ -2604,67 +2604,78 @@ MonoBehaviour:
   articleBody: {fileID: 7015981654081930128}
   searchResults:
   - name: Lock Combination Code
-    body: "The Password to the Inner Vault is [REDACTED]. It is made of four digits
-      - The first digit is the month in which the family weapon was placed in the
-      vault, and the remaining three digits are the atomic number of the element
-      contained within the weapon.\r"
+    body: "The Password to the Outer Vault is made up of four digits - the first
+      two are the \u201Cday\u201D taken from the date in which the family sword was
+      locked away in the Vault, and the second two are the \u201Cday\u201D taken
+      from the date in which its power will be at its peak - the day the Prophecy
+      is said to become real.\n\r\nThe Password the Inner Vault has never been found.
+      It is said to change daily, the pattern known only to the Master and his daughter
+      Storm.\r\n"
   - name: Ninja
     body: Shhhh Don't Tell Anyone The Ninjas Exist
   - name: BunkerTec Stronghold Vault Construction Documents
     body: "<color=blue>Phase One Completed August 2010</color>\r\nLuxury Bunker includes
       Living Space for Two, Underground Training Facility, Surveillance Room, Storage
       Room, Reinforced Titanium Combination Safe\r\n\r\n<color=blue>Phase Two (Awaiting
-      Construction)</color>\r\nBunker Annex will include Unobtanium Laboratory, Lead
-      Insulation, Tunnels to Storm\u2019s House, and seismic scanning equipment\r\n\r\n<color=yellow>JANUARY
+      Construction)</color>\r\nBunker Annex will include Scroll Archive, Lead Insulation,
+      Tunnels to Storm\u2019s House, and seismic scanning equipment\r\n\r\n<color=yellow>JANUARY
       2005</color> Initial survey of the terrain for the building of the underground
-      Vault reveals high concentrations of an unknown element compromising the structural
-      integrity of the foundation. We will have to drill for samples and send them
-      off to the lab before work can begin\r\n\r\n<color=yellow>FEBRUARY 2005</color>
-      We have decided to call the material Unobtanium for easy identification. Our
-      first two attempts to sample the material were unsuccessful - the drill bits
-      seemed to melt as if the element had created intense heat. Subsequent attempts
-      with a titanium drill bit were able to penetrate the material, but it began
-      to glow, crackle, and explode as if the deposit was under intense pressure.\r\n\r\n<color=yellow>MARCH
-      2005</color> The laboratory could not verify the composition of the material,
-      and it has been shipped to Washington for high level analysis. Due to the laboratory\u2019s
-      top-secret nature, we will not be alerted of the findings. As this material
-      is highly dangerous, we will proceed with caution, but this only proves that
-      this deposit cannot be left unchecked. Construction of the Stronghold will
-      now include quarantining the deposit and sealing it off as part of the titanium
+      Vault reveals a strange reddish material giving off a ghostly glow. We will
+      have to drill for samples and send them off to the lab before work can begin\r\n\r\n<color=yellow>FEBRUARY
+      2005</color> We have decided to call the material Redcliff Ore after the town
+      in which it is found. The material is weak and unsuitable for a foundation,
+      but it began to glow, crackle, and explode when drilled into as if the deposit
+      was under intense pressure.\r\n\r\n<color=yellow>MARCH 2005</color> Leyline
+      analysis suggests Redcliff Ore is highly tied to spiritual activity. Spiritual
+      weapons are amplified in the presence of this material, and the material glows
+      in the presence of spirits. Field readings are most notably present during
+      lunar and astral events suggesting a spiritual tie, most notably the winter
+      solstice - caution should be advised approaching at this time. Lab techs speculate
+      that the material could be formed during intense spiritual conflict. Alternate
+      theories suggest that the element is common in the spirit world and only enters
+      our own through some sort of portal. Construction of the Stronghold will now
+      include quarantining the deposit and sealing it off as part of the titanium
       vault chamber\r\n"
-  - name: 'Unobtanium: White Sands National Laboratory Report'
-    body: '<color=yellow>Element Number: 115</color>
+  - name: 'Redcliff Ore: White Sands National Laboratory Report'
+    body: '<color=yellow>Element Number: Unknown</color>
 
-      Atomic Weight: 289
+      Atomic Weight: Unknown
 
       <color=red>Class:
       Highly Dangerous</color>
 
-      Properties: Highly corrosive, toxic, radioactive.
-      Decays immediately unless in certain elemental compounds, which are extremely
-      volatile and exhibit strange properties especially when interacting with animal
-      and plant life, such as [REDACTED FOR NATIONAL SECURITY]
+      Properties: Ordinarily inert red sandstone,
+      yet highly sensitive to solar/lunar/astral activity. Potential connection to
+      the spirit world - only found in spiritually important sites and sites of past
+      contact with the beyond. Unusual electrical readings are most amplified when
+      the spirit world is closest to our own, during the <color=yellow>WINTER SOLSTICE
+      </color> Decays immediately unless in certain elemental compounds, which are
+      extremely volatile and exhibit strange properties especially when interacting
+      with animal and plant life, such as [REDACTED FOR NATIONAL SECURITY]
 
-      Medical Uses:
-      None
+      Medical
+      Uses: None
 
       Military Uses: [REDACTED]
 
 '
-  - name: The Family Weapons - A Record by Jade
-    body: "<color=yellow>\u201CThe Dimension Blade\u201D</color> - This weapon is
-      currently in the Vault Stronghold. It contains a secret compartment that may
-      be filled with a strange material (Unobtanium). It has been locked away due
-      to its intense power, and none of the ninjas have seen it. Legend says it is
-      capable of opening a rift to another dimension - the afterlife, or somewhere
-      else? I have seen it. It has killed my closest companions. And it is NOT the
-      family weapon of Storm and her clan. It belongs to me. Danger Level: Extreme\r\n
-      \r\n<color=yellow>\u201CThe Lightning Staff\u201D</color> - Stretch\u2019s
-      weapon enables her to suck energy from her surroundings like some sort of vampire
-      and become absolutely wired. Her family has been known for their speed and
-      energy, and the staff has become imbued with their combined insanity. Danger
-      Level: Low \r\n\r\n<color=yellow>\u201CThe Axe\u201D</color> - Contrary to
-      popular belief, Torch\u2019s guitar is NOT his family\u2019s weapon. Instead
+  - name: Khan and the Family Weapons - A Record by Jade
+    body: "<color=yellow>\u201CKHAN\u201D</color> - This weapon is currently in the
+      Vault Stronghold. It has been locked away due to its intense power, and none
+      of the ninjas have seen it. Some say it has been passed down for 100 generations
+      and accumulated countless souls. Legend says that amassing enough souls will
+      bring the spirit realm closer to our own, and potentially open a portal  -
+      to the afterlife, or somewhere else? This feat can only be achieved by the
+      sword\u2019s true heir, on the date where the spirit link is at its strongest
+      - the <color=red> WINTER SOLSTICE </color> I have seen it. It has killed my
+      closest companions. And it is NOT the family weapon of Storm and her clan.
+      It belongs to me. Danger Level: Extreme\r\n \r\n<color=yellow>\u201CThe Lightning
+      Staff\u201D</color> - Stretch\u2019s weapon enables her to suck energy from
+      her surroundings like some sort of vampire and become absolutely batty loco
+      wired, causing chains of critical hits. Her family has been known for their
+      speed and energy, and the staff has become imbued with their combined insanity.
+      Danger Level: Low \r\n\r\n<color=yellow>\u201CThe Axe\u201D</color> - Contrary
+      to popular belief, Torch\u2019s guitar is NOT his family\u2019s weapon. Instead
       it is a katana labeled The Axe. Torch comes from a long line of martial arts
       masters able to concentrate their Chi into the weapon and achieve incredible
       feats. Some say they can even attempt the Tai Chi Teleport. Danger Level: High
@@ -2672,22 +2683,24 @@ MonoBehaviour:
       real family history. No records indicate that her or the Master are actually
       martial artists, or have a history of concentrating power into a family weapon.
       She is simply very good at swinging a very regular axe. Danger Level: Low \r\n\r\n<color=yellow>\u201CSam\u2019s
-      Hammer\u201D</color> - Big Sam\u2019s family weapon is absolutely huge. Surprise.
+      Club\u201D</color> - Big Sam\u2019s family weapon is absolutely huge. Surprise.
       It seems impossibly heavy, and allows only Big Sam to pick it up. Danger Level:
       Low\r\n\r\n<color=yellow>\u201CThe Seeing Sword\u201D</color> - We do not know
       where Spartan Jack\u2019s weapon comes from. It does not seem to do anything,
-      however it is made almost entirely of the material Unobtanium, in some sort
-      of stable form. It is decorated with an eye that seems to move occasionally.
-      Its history, along with Jack\u2019s family, is unknown. Danger Level: Low?
-      \r\n"
+      however it is made almost entirely of Redcliff Ore, in some sort of stable
+      form. It is decorated with an eye that seems to move occasionally. I have read
+      countless scrolls about the Spartan prophecy and none mention this weapon -
+      making it a complete unknown. Further research is needed immediately. Danger
+      Level: Medium\r\n"
   - name: Storm's Stronghold/Dimension Blade Access Log
-    body: "<color=yellow>August 1, 2010</color> - Phase One Construction Completed\r\n\r\n<color=yellow>August
-      4, 2010</color> - Dimension Blade has been locked away\r\n\r\n<color=yellow>September
-      5, 2010</color> - Stronghold was opened for maintenance. Corrosion through
-      the titanium was visible, and a bizarre odor was detected. The Stronghold and
-      its surrounding tunnels were deemed \u201Chazardous\u201D due to their high
-      concentration of the dangerous element and should not be reopened.\r\nThe Stronghold
-      has not been accessed since\r\n"
+    body: "<color=yellow>8/01/2010</color> - Phase One Construction Completed\r\n\r\n<color=yellow>8/04/2010</color>
+      - Khan has been locked away\r\n\r\n<color=yellow>9/5/2010</color> - Stronghold
+      was opened for maintenance. Cracks have appeared in the titanium, likely due
+      to increased tidal forces. A nearby battle between highly charged weapons caused
+      excitement and decay within the Redcliff Ore foundation, and a bizarre odor
+      was detected. The Stronghold and its surrounding tunnels were deemed \u201Chazardous\u201D
+      due to their high concentration of the dangerous element and should not be
+      reopened.\r\nThe Stronghold has not been accessed since\r\n"
   - name: 'Cracking the You-Jitsu Code: Vampire Energy Suck'
     body: "Energy (Chi) is a powerful element of You-Jitsu that only the most focused
       ninjas can harness. Concentrating on a victim, a tired ninja can perform the
@@ -2720,6 +2733,22 @@ MonoBehaviour:
       \u2013 You must know the person well in order to perform E-S-Pow\r\n2 \u2013
       You must have communicated with the person recently.\r\n3 \u2013 The person
       cannot be a Muggle.\r\n"
+  - name: Spiritual, Lunar, and Astral Events - 2015
+    body: 'Total Solar Eclipse - 3/20   Spring Equinox - 3/22  Total Lunar Eclipse
+      - 4/04  Summer Solstice - 6/22  Autumn Equinox - 9/22  Blood Moon - 10/01 
+      Partial Solar Eclipse - 10/13  Total Lunar Eclipse - 10/28  Winter Solstice
+      - 12/22 '
+  - name: The Spartan Prophecy
+    body: "THROUGH YEARS OF LIVING IN ARTIFICIAL SOCIETIES, HUMANITY HAS BECOME CORRUPT
+      WITH LIARS, CHEATS, AND TRICKSTERS. \n\r\nIT IS SAID THAT IN THE YEAR 2015
+      A CHILD WILL APPEAR - A TRUE SUCCESSOR TO THE GREAT HEROES OF ANCIENT TIME,
+      AND HE WILL BRING WITH HIM THE WEAPON OF REVOLUTION. HE WILL CALL HIMSELF SPARTAN.\r\n\r\nON
+      THE WINTER SOLSTICE, THIS TRUE SPARTAN WILL PERFORM A SOUL RELEASE THAT BRINGS
+      OUR WORLD TOGETHER WITH THE SPIRIT REALM AND MAKES THE WORLD RIGHT\r\n\r\nNO
+      LONGER WILL ANYONE HIDE IN THE SHADOWS - THOSE WITH THE RIGHT TO RULE WILL
+      BE EMPOWERED BY THE SPIRITS OF THEIR ANCESTORS, AND TRUE MIGHT, NOT DECEPTION,
+      WILL RULE ALL. THIS IS THE SPARTAN WAY\r\n\r\nAND WHILE WE LIE IN WAIT, WE
+      MUST GROW STRONGER.\r\n\r\n<color=red>-THE SPARTANS</color>\r\n"
 --- !u!1 &6755485625691043959
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 
 public class Combatant : MonoBehaviour
@@ -22,6 +23,8 @@ public class Combatant : MonoBehaviour
     Vector3 targetPosition;
     public DamageType[] resistances;
     public DamageType[] weaknesses;
+    public List<DamageType> discoveredResistances = new List<DamageType>();
+    public List<DamageType> discoveredWeaknesses = new List<DamageType>();
 
     //Misc
     public string combatantName;
@@ -41,19 +44,18 @@ public class Combatant : MonoBehaviour
         statusCanvas = transform.Find("StatusCanvas").GetComponent<RectTransform>();
     }
 
+    public void EndTurn()
+    {
+        decreaseStatusEffects(statusUpdate: StatusUpdate.TurnEnd);
+    }
+
     public virtual float TakeDamage(Combatant caller, float baseDamage, DamageType damageType)
     {
         if(!alive) return 0f;
         var strong = false;
-        if(caller != null){
-            //Damage = BaseDamage × (Attack / AttackBaseline) × (K / (Defense + K))
-            var multiplier = Mathf.Abs(caller.EvaluateStatFormula("ATK")/15 * EvaluateStatFormula("DEF"));
-            print($"Atk: {caller.EvaluateStatFormula("ATK")} Base damage: {baseDamage} x Multiplier: {multiplier}");
-            multiplier = Mathf.Clamp(multiplier,0.25f,6.0f);
-            baseDamage = Mathf.Abs(baseDamage * multiplier); //If attack and defense are equal, deal 1x damage. Higher attack deals more damage, higher defense reduces damage.
-        }
-        
-        
+        if(caller == null)return 0f;
+        //Damage = BaseDamage × (Attack / AttackBaseline) × (K / (Defense + K))
+        baseDamage = Mathf.Abs(baseDamage *EvaluateStatFormula("DEF")); 
         var damageNumber = Instantiate(Resources.Load<GameObject>("DamageNumber"), transform.position, Quaternion.identity);
         var damageText = damageNumber.GetComponentInChildren<TMP_Text>();
         var color = Color.yellow;
@@ -68,17 +70,58 @@ public class Combatant : MonoBehaviour
             damageText.color = Color.yellow;
         }
         */
-        if( resistances != null && System.Array.Exists(resistances, element => element == damageType))
+        if(resistances != null && System.Array.Exists(resistances, element => element == damageType) && HasStatusEffect("Weak")==null)
         {
             baseDamage *= 0.5f; //Take half damage
             damageText.text += "Weak!";
             AudioManager.Instance.PlaySoundEffect("Anvil",Random.Range(0.9f,1.1f));
             damageText.color = color;
+            if(!discoveredResistances.Contains(damageType)) discoveredResistances.Add(damageType);
         }
-        if( weaknesses != null && System.Array.Exists(weaknesses, element => element == damageType))
+        if((weaknesses != null && System.Array.Exists(weaknesses, element => element == damageType)) || HasStatusEffect("Weak") != null)
         {
             baseDamage *= 1.5f; //Take 1.5x damage
             damageText.text += "STRONG!";
+            //spawn blood fx
+            var blood = Instantiate(Resources.Load<GameObject>("Particles/Blood"),transform);
+            if(!discoveredWeaknesses.Contains(damageType)&& System.Array.Exists(weaknesses, element => element == damageType)) discoveredWeaknesses.Add(damageType);
+            Destroy(blood,0.5f);
+
+            //Crit bonus
+            if(caller is PlayerCombatant p)
+            {
+                var character = YourParty.instance.GetPartyMember(p.combatantName);
+                if(character != null)
+                {
+                    if(character.mainClass == CardClass.Warrior)
+                    {
+                        p.DrawCards(1);
+                        GameManager.Instance.ShowMessage($"WARRIOR: {p.combatantName} draws a card on crit!");
+                    }
+                    if(character.mainClass == CardClass.Ninja)
+                    {
+                        if(HasStatusEffect("Ninja Mark") == null){
+                            ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Ninja Mark"));
+                            BattleManager.Instance.attacksRemaining ++;
+                            GameManager.Instance.ShowMessage($"NINJA: {p.combatantName} plays again on crit!");
+                        }
+                    }
+                    if(character.mainClass == CardClass.Psychic)
+                    {
+                        var mpAmount = 5 + p.level;
+                        p.GainMP(mpAmount);
+                        GameManager.Instance.ShowMessage($"PSYCHIC: {p.combatantName} gains {mpAmount} MP on crit!");
+                    }
+                    if(character.mainClass == CardClass.Grappler)
+                    {
+                        var counterAmount = 5 + p.level;
+                        p.ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Increased Counter"));
+                        GameManager.Instance.ShowMessage($"GRAPPLER: {p.combatantName}'s counter-hit gains +{counterAmount} damage");
+                    }
+                    
+                }
+            }
+
             AudioManager.Instance.PlaySoundEffect("OrchestraHit",Random.Range(0.9f,1.1f));
             damageText.color = color;
             strong = true;
@@ -94,16 +137,11 @@ public class Combatant : MonoBehaviour
             animator.Play("Launcher");
             alive = false;
             if(caller != null && caller != this){
-            StatusEffect rocket = caller.HasStatusEffect("RocketFistActive");
+            StatusEffect rocket = caller.HasStatusEffect("Rocket Fist");
             if(rocket != null && caller.alive)
             {
-                caller.ApplyStatusEffect(new StatusEffect()
-                {
-                    name = "Rocket Fist",
-                    amount = 10,
-                    stat = "ATK"
-                });
-                GameManager.Instance.ShowMessage($"Rocket Fist got a kill and is now up to +{caller.HasStatusEffect("Rocket Fist").amount} damage");
+                caller.ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Rocket Fist Damage"));
+                GameManager.Instance.ShowMessage($"Rocket Fist got a kill and is now up to +{caller.HasStatusEffect("Rocket Fist Damage").amount} damage");
             }
             }
             OnDeath();
@@ -121,14 +159,7 @@ public class Combatant : MonoBehaviour
         {
             if (HasStatusEffect("Exposed") != null)
             {
-                ApplyStatusEffect(new StatusEffect
-                {
-                    name = "Off-Balance",
-                        stat = "DEF",
-                        amount = .25f,
-                        duration = -1,
-                        removeOnHit = true
-                });
+                ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Off-Balance"));
             }
         }
 
@@ -161,6 +192,11 @@ public class Combatant : MonoBehaviour
         if(HasStatusEffect("Choked") != null)
         {
             foreach(Combatant c in BattleManager.Instance.combatants) c.RemoveStatusEffect("Choking");
+        }
+        if(HasStatusEffect("DeathBomb") != null)
+        {
+            GameManager.Instance.ShowMessage($"{combatantName} EXPLODES!");
+            foreach(Combatant c in BattleManager.Instance.combatants.Where(c => c is EnemyCombatant)) c.TakeDamage(c,50,DamageType.Bludgeoning);
         }
     }
 
@@ -269,11 +305,12 @@ public class Combatant : MonoBehaviour
         UpdateStatusVisuals();
     }
 
-    public void decreaseStatusEffects()
+    public void decreaseStatusEffects(StatusUpdate statusUpdate)
     {
         for (int i = statusEffects.Count - 1; i >= 0; i--)
         {
             var effect = statusEffects[i];
+            if(effect.statusUpdate != statusUpdate) continue; //Only update the correct type
             if(effect.name == "Poisoned")
             {
                 effect.amount --;
@@ -292,8 +329,15 @@ public class Combatant : MonoBehaviour
         if(HasStatusEffect("Poisoned") != null)
         {
             var poison = HasStatusEffect("Poisoned");
-            GameManager.Instance.ShowMessage($"{combatantName} takes {6*poison.amount} damage from poison");
-            TakeDamage(null,6*poison.amount, DamageType.Psychic);
+
+            BattleManager.Instance.actionQueue.Add(new SelfDamageAction()
+            {
+               caller = this,
+               animation = "IdleDrunk",
+               text =  $"{combatantName} takes {6*poison.amount} damage from poison",
+               damage = $"{6*poison.amount}",
+               damageType = DamageType.Psychic,
+            });
             if(hp <= 0){
                 BattleManager.Instance.actionQueue.Add(new StunAction()
                 {
@@ -313,29 +357,19 @@ public class Combatant : MonoBehaviour
             GameManager.Instance.ShowMessage($"{combatantName} is stunned and cannot move!");
             success = false;
         }
-        if(HasStatusEffect("Choked") != null)
-        {
-            BattleManager.Instance.actionQueue.Add(new SelfDamageAction()
-            {
-                caller = this,
-                damage = "30",
-                animation = "Defeated",
-            });
-            GameManager.Instance.ShowMessage($"{combatantName} is being choked!");
-            success = false;
-        }
-        if(HasStatusEffect("Choking") != null)
-        {
-            BattleManager.Instance.actionQueue.Add(new StunAction()
-            {
-                caller = this,
-                animation = "ArmsCrossed",
-            });
-            GameManager.Instance.ShowMessage($"{combatantName} has the enemy locked in a chokehold");
-            success = false;
-        }
 
-        decreaseStatusEffects();
+        decreaseStatusEffects(statusUpdate: StatusUpdate.TurnStart);
+        //decrease all players' status effects that have statusUpdate = CallerTurnStart and this is the caller
+        foreach(Combatant c in BattleManager.Instance.combatants)
+        {
+            foreach(var effect in c.statusEffects)
+            {
+                if(effect.statusUpdate == StatusUpdate.CallerTurnStart && effect.caller == this)
+                {
+                    c.decreaseStatusEffects(StatusUpdate.CallerTurnStart);
+                }
+            }
+        }
         return success;
     }
 
@@ -347,16 +381,11 @@ public class Combatant : MonoBehaviour
             if(effect.name == "Equipment") continue;
             var statusIcon = Instantiate(Resources.Load<GameObject>("StatusEffect"), statusCanvas);
             var iconImage = statusIcon.GetComponent<UnityEngine.UI.Image>();
-            var sprite = Resources.Load<Sprite>($"Sprites/{effect.name}");
-            if(sprite == null) sprite = Resources.Load<Sprite>($"Items/{effect.name}");
+            var sprite = effect.sprite;
+            if(sprite == null) sprite = Resources.Load<Sprite>($"Sprites/{effect.name}");
             iconImage.sprite = sprite;
             TMP_Text durationText = statusIcon.GetComponentInChildren<TMP_Text>();
-            if(effect.amount > 1)
-                durationText.text = effect.amount.ToString();
-            else if(effect.duration != -1)
-                durationText.text = effect.duration.ToString();
-            else
-                durationText.text = "";
+            durationText.text = "";
         }
     }
 
@@ -373,6 +402,10 @@ public class Combatant : MonoBehaviour
             "LEVEL" => level,
             "MP" => mp,
             "MAXMP" => maxMp,
+            "LOW" => attack*0.05f,
+            "MED" => attack*0.107f,
+            "HIGH" => attack*0.214f,
+
             _ => throw new System.Exception($"Unknown stat: {statName}")
         };
 

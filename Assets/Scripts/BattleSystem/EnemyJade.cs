@@ -52,12 +52,7 @@ public class EnemyJade : EnemyCombatant
                 caller = this,
                 animation = "ArmsCrossed",
                 targetType = TargetType.Self,
-                statusEffect = new StatusEffect()
-                {
-                    name = "Counterattack",
-                    amount = 1,
-                    duration = -1
-                },
+                statusEffect = CardDatabase.Instance.getStatusEffect("Counterattack")
             });
             return;
         }
@@ -106,12 +101,7 @@ public class EnemyJade : EnemyCombatant
             caller = this,
             targetType = TargetType.SingleEnemy,
             animation = "Objection",
-            statusEffect = new StatusEffect()
-            {
-                name = "Marked for Death",
-                amount = 1,
-                duration = 2
-            },
+            statusEffect = CardDatabase.Instance.getStatusEffect("Marked for Death")
         });
     }
 }

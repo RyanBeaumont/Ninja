@@ -58,10 +58,10 @@ public class EnemyCombatant : Combatant
     {
         var speed = attackSpeed;
         
-        if(HasStatusEffect("SpeedUp") != null)
+        if(HasStatusEffect("Speed Up") != null)
         {
-            speed += HasStatusEffect("SpeedUp").amount;
-            RemoveStatusEffect("SpeedUp");
+            speed += HasStatusEffect("Speed Up").amount;
+            RemoveStatusEffect("Speed Up");
             GameManager.Instance.ShowMessage($"Enemy is now at {speed}x speed");
         }
         

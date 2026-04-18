@@ -54,11 +54,15 @@ MonoBehaviour:
   defense: 1
   speed: 15
   psychic: 15
+  surprise: 0
   mp: 0
   maxMp: 0
+  startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 
   weaknesses: 01000000
+  discoveredResistances: 
+  discoveredWeaknesses: 
   combatantName: Ninja Acolyte
   initiative: 0
   statusEffects: []
@@ -71,10 +75,14 @@ MonoBehaviour:
     statusEffect:
       name: Discard
       stat: 
+      sprite: {fileID: 0}
       amount: 1
+      description: 
       additive: 1
       duration: 1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
@@ -87,10 +95,14 @@ MonoBehaviour:
     statusEffect:
       name: SpeedUp
       stat: 
+      sprite: {fileID: 0}
       amount: 2
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
@@ -103,10 +115,14 @@ MonoBehaviour:
     statusEffect:
       name: Discard
       stat: 
+      sprite: {fileID: 0}
       amount: 1
+      description: 
       additive: 1
       duration: 1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
@@ -119,6 +135,7 @@ MonoBehaviour:
   xpReward: 20
   goldReward: 20
   attackSpeed: 0.75
+  portrait: {fileID: 21300000, guid: 4eb34c1fdaaa2584fbf6502556111180, type: 3}
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -128,10 +145,14 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100

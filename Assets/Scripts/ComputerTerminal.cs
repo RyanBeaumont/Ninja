@@ -45,7 +45,7 @@ public class ComputerTerminal : MonoBehaviour
         //search both content and body for matches and return all matches
         foreach (var result in searchResults)
         {
-            if (ContainsWord(result.name, searchString))
+            if (ContainsWord(result.name, searchString) || ContainsWord(result.body, searchString))
             {
                 foundMatch = true;
                 var resultObj = Instantiate(searchResultPrefab, resultsContainer);
@@ -91,13 +91,13 @@ public class ComputerTerminal : MonoBehaviour
     bool ContainsWord(string text, string word)
     {
         //not strict match
-        return text.IndexOf(word, StringComparison.OrdinalIgnoreCase) >= 0;
-        /*return Regex.IsMatch(
+        //return text.IndexOf(word, StringComparison.OrdinalIgnoreCase) >= 0;
+        return Regex.IsMatch(
             text,
             $@"\b{Regex.Escape(word)}\b",
             RegexOptions.IgnoreCase
         );
-        */
+        
     }
 
     string GetPreview(string body, string search, int contextLength = 20)

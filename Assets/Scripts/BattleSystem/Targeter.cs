@@ -165,7 +165,7 @@ public class Targeter : MonoBehaviour
         //}
 
         void EndSelection(){
-            BattleManager.Instance.ShowQuickTimeEvent();
+            
             if(action != null){
                 if(targetType == TargetType.SingleEnemy)
                 {
@@ -179,6 +179,7 @@ public class Targeter : MonoBehaviour
                 if(BattleManager.Instance.currentTargets.Count == 1 && BattleManager.Instance.currentTargets[0].GetComponent<Combatant>() is EnemyJade j){j.PerformCounterAttack();}
             }
             Destroy(gameObject);
+            BattleManager.Instance.ShowQuickTimeEvent();
         }
     }
 }

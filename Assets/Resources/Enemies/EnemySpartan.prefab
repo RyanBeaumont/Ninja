@@ -54,6 +54,7 @@ MonoBehaviour:
   defense: 1
   speed: 10
   psychic: 10
+  surprise: 0
   mp: 0
   maxMp: 0
   startPosition: {x: 0, y: 0, z: 0}
@@ -76,6 +77,8 @@ MonoBehaviour:
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
@@ -92,12 +95,16 @@ MonoBehaviour:
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
   lootDrops:
   - itemID: Coke
+    dropChance: 25
+  - itemID: Bang
     dropChance: 25
   xpReward: 15
   goldReward: 15
@@ -116,6 +123,8 @@ MonoBehaviour:
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100

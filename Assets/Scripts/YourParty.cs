@@ -147,8 +147,8 @@ public class YourParty : MonoBehaviour
         foreach(Equipment e in partyMember.equipment)
             foreach(StatusEffect se in e.statusEffects)
                 if(se.stat == "SPD") speed += se.amount;
-        multiplier = 2.5f; if(partyMember.subClass == CardClass.Warrior) multiplier = 2.75f; if(partyMember.mainClass == CardClass.Warrior) multiplier = 3f;
-        attack = partyMember.level * multiplier + 10f;
+        multiplier = 1f; if(partyMember.subClass == CardClass.Warrior) multiplier = 1.25f; if(partyMember.mainClass == CardClass.Warrior) multiplier = 1.5f;
+        attack = partyMember.level * multiplier;
         foreach(Equipment e in partyMember.equipment)
             foreach(StatusEffect se in e.statusEffects)
                 if(se.stat == "ATK") attack += se.amount;
@@ -222,6 +222,7 @@ public class YourParty : MonoBehaviour
             foreach(Equipment e in partyMember.equipment)
             {
                 foreach(StatusEffect s in e.statusEffects){
+                    
                     if(s.stat != "ATK" && s.stat != "DEF" && s.stat != "MAXHP" && s.stat != "SPD" && s.stat != "PSY")
                     {
                         combatant.statusEffects.Add(s);
