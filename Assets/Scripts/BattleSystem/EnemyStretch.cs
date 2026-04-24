@@ -15,26 +15,13 @@ public class EnemyStretch : EnemyCombatant
             {
                 targetType = TargetType.SingleAlly,
                 animation = "Drink",
-                statusEffect = new StatusEffect()
-                {
-                    name = "SpeedUp",
-                    amount = 0.25f,
-                    duration = 2,
-                }
+                statusEffect = CardDatabase.Instance.getStatusEffect("Speed Up")
             });
         bonusActions.Add(new StatusEffectAction()
             {
                 targetType = TargetType.SingleAlly,
                 animation = "Drink",
-                statusEffect = new StatusEffect()
-                {
-                    name = "Rock Solid",
-                    stat = "DEF",
-                    amount = -1f,
-                    additive = true,
-                    duration = -1,
-                    removeOnHit = true
-                }
+                statusEffect = CardDatabase.Instance.getStatusEffect("Block")
             });
     }
 

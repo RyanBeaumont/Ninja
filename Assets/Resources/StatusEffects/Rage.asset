@@ -19,7 +19,7 @@ MonoBehaviour:
     amount: 1
     description: 'Your attack is increased by [amount] levels '
     additive: 1
-    duration: 1
+    duration: -1
     removeOnHit: 0
     caller: {fileID: 0}
     statusUpdate: 0

@@ -1,6 +1,5 @@
-using System.Collections.Generic;
+
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +22,7 @@ public class Menu : MonoBehaviour
     public Transform equipmentContainer;
     public TMP_Text descriptionText;
     public string currentCharacter = "";
+
 
     void Start()
     {
@@ -59,6 +59,7 @@ public class Menu : MonoBehaviour
             foreach(Card card in p.deck)
             {
                 var thisCardPrefab = Instantiate(cardPrefab,deck);
+                thisCardPrefab.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
                 thisCardPrefab.GetComponent<MenuCardDisplay>().SetData(card);
                 thisCardPrefab.GetComponentInChildren<MenuCardDisplay>().onPointerDown = () => RemoveCardFromDeck(card);
             }
@@ -67,10 +68,11 @@ public class Menu : MonoBehaviour
             {
                 if(p.deck.Contains(card)) continue; //Don't show cards already in deck
                 var thisCardPrefab = Instantiate(cardPrefab,cardReserve);
+                thisCardPrefab.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
                 thisCardPrefab.GetComponent<MenuCardDisplay>().SetData(card);
                 thisCardPrefab.GetComponentInChildren<MenuCardDisplay>().onPointerDown = () => MoveCardToDeck(card);
             }
-            deckText.text = $"Your Deck ({p.deck.Count})                Available Cards";
+            deckText.text = $"Your Deck ({p.deck.Count}/{CardDatabase.Instance.deckMax})                                 Available Cards";
 
             //Equipment container
             //clear
@@ -169,8 +171,18 @@ public class Menu : MonoBehaviour
         var p = YourParty.instance.GetPartyMember(currentCharacter);
         if(p != null)
         {
-            p.deck.Add(card);
-            ShowCharacterMenu(currentCharacter);
+            if(p.deck.Count >= CardDatabase.Instance.deckMax)
+            {
+                GameManager.Instance.ShowMessage($"Can't have more than {CardDatabase.Instance.deckMax} cards");
+                AudioManager.Instance.PlaySoundEffect("Negative");
+            }
+            else
+            {
+                p.deck.Add(card);
+                ShowCharacterMenu(currentCharacter);
+                AudioManager.Instance.PlaySoundEffect("MenuEquip");
+            }
+            
         }
     }
 
@@ -180,8 +192,18 @@ public class Menu : MonoBehaviour
         var p = YourParty.instance.GetPartyMember(currentCharacter);
         if(p != null)
         {
-            p.deck.Remove(card);
-            ShowCharacterMenu(currentCharacter);
+            if(p.deck.Count <= CardDatabase.Instance.deckMin)
+            {
+                GameManager.Instance.ShowMessage($"Can't have less than {CardDatabase.Instance.deckMin} cards");
+                AudioManager.Instance.PlaySoundEffect("Negative");
+            }
+            else
+            {
+                AudioManager.Instance.PlaySoundEffect("MenuEquip");
+                p.deck.Remove(card);
+                ShowCharacterMenu(currentCharacter);
+            }
+            
         }
     }
 

@@ -119,7 +119,7 @@ public class EnemyCombatant : Combatant
                 caller = this,
                 animation = attack.Trim(),
                 //targets = BattleManager.Instance.currentTargets,
-                statusEffect = selectedAttack.statusEffect,
+                statusEffect = CardDatabase.Instance.getStatusEffect(selectedAttack.statusEffect.name,selectedAttack.statusEffect.amount,selectedAttack.statusEffect.duration),
                 damage = selectedAttack.damage,
                 targetType = selectedAttack.targetType,
                 damageType = selectedAttack.damageType,
@@ -141,7 +141,7 @@ public class EnemyCombatant : Combatant
             caller = this,
             animation = tempAttackData.attackPattern,
             //targets = BattleManager.Instance.currentTargets,
-            statusEffect = tempAttackData.statusEffect,
+            statusEffect = CardDatabase.Instance.getStatusEffect(tempAttackData.statusEffect.name,tempAttackData.statusEffect.amount,tempAttackData.statusEffect.duration),
         });
     }
 

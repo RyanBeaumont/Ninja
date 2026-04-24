@@ -19,7 +19,7 @@ MonoBehaviour:
     amount: 1
     description: Can be grabbed by a Grappler
     additive: 1
-    duration: 1
+    duration: 2
     removeOnHit: 0
     caller: {fileID: 0}
     statusUpdate: 2

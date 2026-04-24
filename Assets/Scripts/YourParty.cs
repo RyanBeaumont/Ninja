@@ -385,7 +385,12 @@ public class YourParty : MonoBehaviour
                 var newCards = CardDatabase.Instance.GetNewCardsForLevel(partyMember.mainClass, partyMember.subClass, partyMember.level);
                 foreach(var card in newCards)
                 {
-                    partyMember.deck.Add(card);
+                    var text = $"{player} learned: {card.cardName}!";
+                    if(partyMember.deck.Count < CardDatabase.Instance.deckMax){
+                        partyMember.deck.Add(card);
+                        text += " (Deck maximum reached - You can swap out cards in the [ESC] menu)";
+                    }
+
                     dialog.Add(new Dialog()
                     {
                         name = player,

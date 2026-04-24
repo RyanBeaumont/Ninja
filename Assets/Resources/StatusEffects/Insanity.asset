@@ -16,10 +16,10 @@ MonoBehaviour:
     name: Insanity
     stat: 
     sprite: {fileID: 21300000, guid: b53fc6a68fcb7d54384fada0b103bf6a, type: 3}
-    amount: 3
+    amount: 1
     description: Your cards are duplicated but target randomly
     additive: 1
-    duration: 1
+    duration: 2
     removeOnHit: 0
     caller: {fileID: 0}
-    statusUpdate: 1
+    statusUpdate: 0

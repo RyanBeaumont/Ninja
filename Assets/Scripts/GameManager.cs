@@ -455,6 +455,8 @@ public class GameManager : MonoBehaviour
         cameraRig.transform.SetParent(null);
         cameraRig.transform.localPosition = Vector3.zero;
         cameraRig.transform.localRotation = Quaternion.identity;
+        var bg = cameraRig.transform.Find("CameraPosition/CutsceneCamera/Background").GetComponent<SpriteRenderer>();
+        bg.enabled = false;
         return cameraRig;
     }
 
@@ -471,6 +473,10 @@ public class GameManager : MonoBehaviour
         cameraRig.transform.localScale = Vector3.one;
         cameraRig.transform.localPosition = Vector3.zero;
         cameraRig.transform.localRotation = Quaternion.identity;
+        //set main camera culling mask to "everything"
+        Camera.main.cullingMask = -1;
+        var bg = cameraRig.transform.Find("CameraPosition/CutsceneCamera/Background").GetComponent<SpriteRenderer>();
+        bg.enabled = false;
     }
 
 

@@ -93,13 +93,13 @@ MonoBehaviour:
     damageType: 1
     targetType: 4
     statusEffect:
-      name: SpeedUp
+      name: Speed Up
       stat: 
       sprite: {fileID: 0}
-      amount: 2
+      amount: 0.25
       description: 
       additive: 1
-      duration: -1
+      duration: 1
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0

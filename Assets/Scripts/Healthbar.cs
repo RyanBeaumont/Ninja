@@ -13,7 +13,7 @@ public class Healthbar : MonoBehaviour {
     TMP_Text hpText;
     TMP_Text mpText;
     Slider health;
-    public float referenceDistance = 1f;
+    public float baseHP = 300f;
     public float baseScale = 1f;
 
     void Start()
@@ -22,10 +22,10 @@ public class Healthbar : MonoBehaviour {
         hpBar = transform.Find("Fill/Healthbar").GetComponent<Image>();
         whiteHealth = transform.Find("Background").GetComponent<Slider>();
         health = transform.Find("Fill").GetComponent<Slider>();
-        mp = transform.Find("MP").GetComponent<Slider>();
-        levelText = transform.Find("Level/LevelText").GetComponent<TMP_Text>();
+        //mp = transform.Find("MP").GetComponent<Slider>();
+        //levelText = transform.Find("Level/LevelText").GetComponent<TMP_Text>();
         hpText = transform.Find("HPValue").GetComponent<TMP_Text>();
-        mpText = transform.Find("MPValue").GetComponent<TMP_Text>();
+        //mpText = transform.Find("MPValue").GetComponent<TMP_Text>();
         if(combatant != null)
         {
             if(combatant is PlayerCombatant)
@@ -35,8 +35,11 @@ public class Healthbar : MonoBehaviour {
             }
             whiteHealth.maxValue = combatant.maxHp;
             health.maxValue = combatant.maxHp;
-            mp.maxValue = combatant.maxMp;
-            levelText.text = combatant.level.ToString();
+            //mp.maxValue = combatant.maxMp;
+            //levelText.text = combatant.level.ToString();
+
+            //Scale width to mimic max health
+            //transform.localScale = new Vector3(baseScale * (combatant.maxHp / baseHP), baseScale, baseScale);
         }
     }
 
@@ -46,9 +49,8 @@ public class Healthbar : MonoBehaviour {
         {
             health.value = Mathf.RoundToInt(combatant.hp);
             hpText.text = Mathf.RoundToInt(combatant.hp).ToString();
-            health.value = Mathf.RoundToInt(combatant.hp);
-            mp.value = Mathf.RoundToInt(combatant.mp);
-            mpText.text = Mathf.RoundToInt(combatant.mp).ToString();
+            //mp.value = Mathf.RoundToInt(combatant.mp);
+            //mpText.text = Mathf.RoundToInt(combatant.mp).ToString();
         }
         if(whiteHealth.value > health.value)
         {
@@ -58,6 +60,7 @@ public class Healthbar : MonoBehaviour {
         {
             whiteHealth.value = health.value;
         }
+
     }
 
 }

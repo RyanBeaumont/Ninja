@@ -19,7 +19,7 @@ MonoBehaviour:
     amount: 1
     description: Striking this target's weakness sends them Off-Balance
     additive: 1
-    duration: 1
+    duration: 3
     removeOnHit: 0
     caller: {fileID: 0}
     statusUpdate: 2

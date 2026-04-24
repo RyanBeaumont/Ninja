@@ -6,6 +6,7 @@ public class DefaultPose : MonoBehaviour
     public string face;
     public string combatIdle;
     public GameObject combatWeapon;
+    public Color color;
 
     void Start()
     {

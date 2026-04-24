@@ -57,6 +57,8 @@ public class CardDatabase : MonoBehaviour
 {
     public static CardDatabase Instance;
     public List<Card> allCards = new List<Card>();
+        public int deckMin = 5;
+    public int deckMax = 12;
 
     public StatusEffect getStatusEffect(string name, float amount = 0, int duration = 0)
     {
@@ -100,6 +102,7 @@ public class CardDatabase : MonoBehaviour
         deck.AddRange(GetCardsByClass(mainClass, level));
         deck.AddRange(GetCardsByClass(subClass, level - 4));
         deck.AddRange(GetCardsByClass(CardClass.None, level)); //neutral cards
+
         return deck;
     }
 
@@ -109,6 +112,7 @@ public class CardDatabase : MonoBehaviour
         newCards.AddRange(allCards.FindAll(card => card.cardClass == mainClass && card.level == level));
         newCards.AddRange(allCards.FindAll(card => card.cardClass == subClass && card.level == level-4));
         newCards.AddRange(allCards.FindAll(card => card.cardClass == CardClass.None && card.level == level));
+
         return newCards;
     }
 
@@ -146,6 +150,8 @@ public class CardDatabase : MonoBehaviour
                 }
             }
         });
+
+        
 
          allCards.Add(new Card()
         {
@@ -237,6 +243,130 @@ public class CardDatabase : MonoBehaviour
                     cardCount = 1,
                     animation = "",
                     targetType = TargetType.Self
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Advanced Strike",
+            description = "Now leveled up to use both fists at once",
+            cost = 0,
+            level = 4,
+            artwork = "IconFist",
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "15 + 15*LOW",
+                    animation = "Jab",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 2,
+                    loopAnimation = true,
+                    pattern = "11"
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Psychoslash",
+            description = "A powerful slash attack.",
+            cost = 60,
+            level = 5,
+            artwork = "IconSlash",
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "50 + 50*MED",
+                    animation = "LongswordBlast",
+                    damageType = DamageType.Slashing,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1,
+                    pattern = " 222"
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Band-Aid",
+            description = "Heal an ally based on your PSY",
+            artwork = "IconPsychic",
+            
+            cardClass = CardClass.None,
+            level = 6,
+            cost = 10,
+            effects = new List<GameAction>()
+            {
+                new HealAction()
+                {
+                    targetType = TargetType.SingleAlly,
+                    healAmount = "PSY",
+                    pattern = "11",
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "M-M-Mystery Block",
+            description = "Take half incoming damage",
+            cost = 10,
+            cardClass = CardClass.None,
+            artwork = "IconShield",
+            level = 3,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "BlockSuccess",
+                    targetType = TargetType.Self,
+                    statusEffect = getStatusEffect("M-M-Mystery Block")
+                },
+
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Sugar Rush",
+            description = "Snort raw sugar. Play again TWICE",
+            cost = 15,
+            cardClass = CardClass.None,
+            artwork = "IconSuperSaiyan",
+            level = 7,
+            effects = new List<GameAction>()
+            {
+                new UltimateAction()
+                {
+                    animation = "Burst",
+                    bonusActions = 2,
+                },
+
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Go to Sweep",
+            description = "Knock ALL opponents off-balance",
+            artwork = "IconKick",
+            cost = 30,
+            level = 8,
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "40 + 40*LOW",
+                    animation = "Sweep",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.AllEnemies,
+                    statusEffect = getStatusEffect("Off-Balance"),
+                    hits = 1,
+                    pattern = "1 1   2"
                 }
             }
         });
@@ -565,7 +695,7 @@ public class CardDatabase : MonoBehaviour
                     pattern = "3 3 3",
                     animation = "Rage",
                     targetType = TargetType.Self,
-                    statusEffect = getStatusEffect("Insanity", 1, 3),
+                    statusEffect = getStatusEffect("Insanity"),
                 }
             }
         });
@@ -727,7 +857,7 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
-            cardName = "Band-Aid",
+            cardName = "Advanced Band-Aid",
             description = "Heal an ally and play again",
             artwork = "IconPsychic",
             
@@ -949,7 +1079,7 @@ public class CardDatabase : MonoBehaviour
                 allCards.Add(new Card()
         {
             cardName = "Headbutt",
-            description = "Deal damage WITH YOUR HEAD. Knock the enemy Off-Balance",
+            description = "Deal damage WITH YOUR HEAD. Knock the enemy Prone",
             cost = 0,
             level = 1,
             cardClass = CardClass.Grappler,
@@ -962,7 +1092,7 @@ public class CardDatabase : MonoBehaviour
                     animation = "headbutt",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
-                    statusEffect = getStatusEffect("Off-Balance"),
+                    statusEffect = getStatusEffect("Prone"),
                     hits = 1,
                     pattern = "2"
                 }
@@ -975,7 +1105,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "Rock Solid",
             description = "Increase your team's DEF. Counterattacks trigger Off-Balance",
             cost = 10,
-            level = 2,
+            level = 3,
             artwork = "IconShield",
             cardClass = CardClass.Grappler,
             effects = new List<GameAction>()
@@ -1009,6 +1139,26 @@ public class CardDatabase : MonoBehaviour
                     hits = 1,
                     pattern = "1 11  2"
                 }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Untouchable",
+            description = "You or an ally will automatically block 1 hit",
+            cost = 10,
+            cardClass = CardClass.Grappler,
+            artwork = "IconShield",
+            level = 3,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "BlockSuccess",
+                    targetType = TargetType.SingleAlly,
+                    statusEffect = getStatusEffect("Block")
+                },
+
             }
         });
 

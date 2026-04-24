@@ -45,7 +45,6 @@ public class ArrowMovement : MonoBehaviour
         }
         else
         {
-            GetComponent<Image>().color = Color.red;
             // After first beat: continue moving at constant speed
             float extraTime = t - 1f;
             float speed = offset / beatLength; // Speed needed to reach hit zone in one beat

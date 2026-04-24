@@ -66,6 +66,7 @@ public class UltimateAction : GameAction
         battleManager.clock = 1f;
         battleManager.SetPose(caller.transform, "", CameraAngle.super, "Mad");
         caller.PlayAnimation(animation);
+        battleManager.ShowBackground();
     }
 }
 public class CutAction : GameAction
@@ -76,6 +77,7 @@ public class CutAction : GameAction
         battleManager.clock = 1.5f;
         battleManager.SetPose(caller.transform, "", CameraAngle.highAngle, "Mad");
         caller.PlayAnimation("Cut");
+        battleManager.ShowBackground();
     }
 }
 
@@ -198,6 +200,7 @@ public class CounterDamageAction : DamageAction
     public override void Execute(BattleManager battleManager)
     {
         base.Execute(battleManager);
+        //battleManager.ShowBackground();
         battleManager.SetPose(caller.transform, "SwordCounter", CameraAngle.counter, "Mad");
     }
 }
@@ -429,7 +432,7 @@ public class SummonAction : GameAction
         combatant.surprise = true;
         var healthbar = Object.Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);
         BattleManager.Instance.AddCombatant(combatant);
-        GameManager.Instance.ShowMessage($"{combatant.combatantName} appears!");
+        GameManager.Instance.ShowMessage($"<color=red>{combatant.combatantName} appears!</color>");
         var effect = Object.Instantiate(Resources.Load<GameObject>("Particles/Encounter"), combatantObject.transform);
         combatant.enabled = true;
     }
@@ -549,7 +552,7 @@ public class DrawCardsAction : GameAction
         if (caller is PlayerCombatant player)
         {
             player.DrawCards(cardCount);
-            GameManager.Instance.ShowMessage($"{caller.combatantName} draws {cardCount} cards!");
+            GameManager.Instance.ShowMessage($"<color=cyan>{caller.combatantName} draws {cardCount} cards!</color>");
         }
     }
 }
@@ -563,7 +566,7 @@ public class CardExchangeAction : GameAction
         if (caller is PlayerCombatant player)
         {
             player.DrawCards(battleManager.discardPower + 1);
-            GameManager.Instance.ShowMessage($"{caller.combatantName} draws {battleManager.discardPower + 1} cards!");
+            GameManager.Instance.ShowMessage($"<color=cyan>{caller.combatantName} draws {battleManager.discardPower + 1} cards!</color>");
         }
     }
 }
@@ -591,7 +594,7 @@ public class DrawUntilAction : DrawCardsAction
                 GameObject.Destroy(card.gameObject);
             }
             player.DrawCards(cardCount);
-            GameManager.Instance.ShowMessage($"Drawing {cardCount} cards");
+            GameManager.Instance.ShowMessage($"<color=cyan>Drawing {cardCount} cards</color>");
         }
     }
 }
@@ -662,14 +665,14 @@ public class EnergySuckAction : GameAction
         if(battleManager.currentTargets[0] is PlayerCombatant p)
         {
             p.GainMP(caller.EvaluateStatFormula(mpAmount));
-            GameManager.Instance.ShowMessage($"{caller.combatantName} winks at {p.combatantName}. You got this, girl! +{caller.EvaluateStatFormula(mpAmount)} MP");
+            GameManager.Instance.ShowMessage($"<color=cyan>{caller.combatantName} winks at {p.combatantName}. You got this, girl! +{caller.EvaluateStatFormula(mpAmount)} MP</color>");
         }
         else
         {
             float suckAmount = caller.EvaluateStatFormula(mpAmount);
             battleManager.currentTargets[0].GainMP(-caller.EvaluateStatFormula(mpAmount));
             caller.GainMP(suckAmount);
-            GameManager.Instance.ShowMessage($"{caller.combatantName} winks at {battleManager.currentTargets[0].combatantName}, stealing their heart and {suckAmount} MP");
+            GameManager.Instance.ShowMessage($"<color=cyan>{caller.combatantName} winks at {battleManager.currentTargets[0].combatantName}, stealing their heart and {suckAmount} MP</color>");
 
         }
         caller.PlayAnimation(animation);

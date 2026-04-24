@@ -63,6 +63,9 @@ public class BattleManager : MonoBehaviour
     GameObject player;
     List<LootDrop> lootRewards = new List<LootDrop>();
 
+    public LayerMask normalMask;
+    public LayerMask characterMask;
+
     void Awake()
     {
         cameraRig = Instantiate(Resources.Load<GameObject>("CameraRig"));
@@ -303,6 +306,7 @@ public class BattleManager : MonoBehaviour
 
     void Win()
     {
+        AudioManager.Instance.PlayMusic(Resources.Load<AudioClip>("Sound/Music/Victory"), 0.2f);
         foreach(var c in combatants)
         {
             if(c is PlayerCombatant pc)
@@ -342,6 +346,7 @@ public class BattleManager : MonoBehaviour
 
     void Lose()
     {
+        AudioManager.Instance.PlayMusic(Resources.Load<AudioClip>("Sound/Music/Defeat"), 0.2f);
         DialogBox d = FindFirstObjectByType<DialogBox>();
         d.StartDialog(new List<Dialog>()
         {
@@ -388,63 +393,25 @@ public class BattleManager : MonoBehaviour
 
         if(waitingForQuickTime) return;
         quickTimeEvent.gameObject.SetActive(false);
-        /*
-        if (quickTimeEvent.gameObject.activeInHierarchy)
-        {
-            var slider = quickTimeEvent.GetComponent<Slider>();
-            elapsedTime += Time.deltaTime;
-
-            float t = elapsedTime / quickTimeActiveTime; // 0 → 1
-            slider.value = Mathf.Lerp(0f, 1.5f, t);
-            if(t > 1f)
-            {
-                quickTimeMultiplier = 0.1f;
-                AudioManager.Instance.PlaySoundEffect("Negative",UnityEngine.Random.Range(0.9f,1.1f));
-                GameManager.Instance.ShowMessage($"Pathetic");
-                quickTimeEvent.gameObject.SetActive(false);
-                return;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                AudioManager.Instance.PlaySoundEffect("SwordClang");
-                var difference = Mathf.Abs(slider.value - 1f);
-                print(difference);
-                var adjustedCritWindow = quickTimeCritWindow;
-                if(gameDifficulty.value == 0) quickTimeCritWindow *= 2f;
-                if(gameDifficulty.value == 2) quickTimeCritWindow *= 0.75f;
-                //set the multiplier from 0-1
-                var sensitivity = 2f;
-                if(gameDifficulty.value == 0) sensitivity = 1f;
-                if(gameDifficulty.value == 2) sensitivity = 3f;
-                quickTimeMultiplier = Mathf.Clamp(1f - difference * sensitivity, 0.1f, 1f);
-                if(difference < adjustedCritWindow)
-                {
-                    quickTimeMultiplier = 1.25f;
-                    GameManager.Instance.ShowMessage($"CRITICAL! 1.25X");
-                    AudioManager.Instance.PlaySoundEffect("OrchestraHit",UnityEngine.Random.Range(0.9f,1.1f));
-                } 
-                quickTimeEvent.gameObject.SetActive(false);
-                clock = 0f;
-            }
-            return; //Don't do logic while quick-timing
-        }
-        */
 
         if(YourParty.instance.devTools){
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Win();
-            canWin = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Lose();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            if(activeCombatant is PlayerCombatant p) p.GainTP(50);
-        }
+             if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Win();
+                canWin = false;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Lose();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                if(activeCombatant is PlayerCombatant p) p.GainTP(50);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                ShowBackground();
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -660,6 +627,9 @@ public class BattleManager : MonoBehaviour
 
     public void NextTurn()
     {
+        Camera.main.cullingMask = normalMask;
+       cameraRig.transform.Find("CameraPosition/CutsceneCamera/Background").GetComponent<SpriteRenderer>().enabled = false;
+
         quickTimeMultiplier = 1f;
         pitch = 1f;
         itemContainer.gameObject.SetActive(false);
@@ -710,6 +680,22 @@ public class BattleManager : MonoBehaviour
         handManager.SetHandActive(false);
         NextTurn();
     }
+
+    public void ShowBackground()
+    {
+        Camera.main.cullingMask = characterMask;
+        var bg = cameraRig.transform.Find("CameraPosition/CutsceneCamera/Background").GetComponent<SpriteRenderer>();
+        bg.enabled = true;
+        bg.color = Color.red;
+        if(activePlayer){
+            var defaultPose = activePlayer.GetComponentInChildren<DefaultPose>();
+            if(defaultPose != null)
+            {
+                bg.color = defaultPose.color;
+            }
+        }
+    }
+
 
     public void UseCoke()
     {
@@ -856,13 +842,13 @@ public class BattleManager : MonoBehaviour
             if(t.alive){
                 print($"QuickTime Multiplier = {quickTimeMultiplier} Pending Damage = {pendingDamage}");
                 CameraShake(1.5f,0.4f);
-                var invincible = t.HasStatusEffect("Invincible");
+                var invincible = t.HasStatusEffect("Block");
                 if(invincible != null)
                 {
                     invincible.amount -= 1;
                     t.PlayAnimation("BlockSuccess");
                     AudioManager.Instance.PlaySoundEffect("Parry");
-                    if(invincible.amount <= 0) t.RemoveStatusEffect("Invincible");
+                    if(invincible.amount <= 0) t.RemoveStatusEffect("Block");
                 }else{
                     var d = t.TakeDamage(activeCombatant,(int)pendingDamage * quickTimeMultiplier, pendingDamageType);
                     var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
@@ -942,13 +928,13 @@ public class BattleManager : MonoBehaviour
             foreach(var t in currentTargets)
             {
                 if(t.alive){
-                     var invincible = t.HasStatusEffect("Invincible"); 
+                     var invincible = t.HasStatusEffect("Block"); 
                     if(invincible != null)
                     {
                         t.PlayAnimation("BlockSuccess");
                         AudioManager.Instance.PlaySoundEffect("Parry");
                         invincible.amount -= 1;
-                        if(invincible.amount <= 0) t.RemoveStatusEffect("Invincible");
+                        if(invincible.amount <= 0) t.RemoveStatusEffect("Block");
                     }else{
                         var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
                         CameraShake(1f,0.2f);
@@ -989,7 +975,7 @@ public class BattleManager : MonoBehaviour
                 AudioManager.Instance.PlaySoundEffect("SwordClang");
                 AudioManager.Instance.PlaySoundEffect("Counter");
                 AudioManager.Instance.PlaySoundEffect("Parry",UnityEngine.Random.Range(0.8f,1.2f));
-                GameManager.Instance.ShowMessage($"Counter!");
+                GameManager.Instance.ShowMessage($"<color=yellow>Counter!</color>");
                 foreach(var t in currentTargets)
                 {
                     if(t is PlayerCombatant pt && t.alive){

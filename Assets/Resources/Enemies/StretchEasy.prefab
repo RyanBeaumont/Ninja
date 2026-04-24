@@ -54,12 +54,15 @@ MonoBehaviour:
   defense: 1
   speed: 19
   psychic: 17
+  surprise: 0
   mp: 0
   maxMp: 30
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 
   weaknesses: 01000000
+  discoveredResistances: 
+  discoveredWeaknesses: 
   combatantName: Stretch
   initiative: 0
   statusEffects: []
@@ -72,10 +75,14 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
@@ -86,12 +93,16 @@ MonoBehaviour:
     damageType: 0
     targetType: 1
     statusEffect:
-      name: Concussed
-      stat: DEF
-      amount: -4
+      name: Off-Balance
+      stat: 
+      sprite: {fileID: 0}
+      amount: 1
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 1
+      caller: {fileID: 0}
+      statusUpdate: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100
@@ -112,10 +123,14 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
     hits: 1
     mpCost: 0
     healthThreshold: 100

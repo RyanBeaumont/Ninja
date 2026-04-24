@@ -37,7 +37,14 @@ public class ItemGate : ChainedInteractable
         else
         {
             DialogBox d = FindFirstObjectByType<DialogBox>();
-            d.StartDialog(incompleteDialog);
+            if(incompleteDialog.Count > 0)
+            {
+                d.StartDialog(incompleteDialog);
+            }
+            else
+            {
+                Fail();
+            }
         }
     }
 

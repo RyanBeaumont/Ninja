@@ -37,11 +37,26 @@ public class Combatant : MonoBehaviour
     Animator animator;
     void Start()
     {
+        CapsuleCollider collider = GetComponentInChildren<CapsuleCollider>();
+        if (collider != null)
+        {
+            LayerMask groundMask = LayerMask.GetMask("Ground");
+            RaycastHit hit;
+            if (Physics.Raycast(collider.transform.position + Vector3.up * 1f, Vector3.down, out hit, 4f, groundMask))
+            {
+                float halfHeight = collider.height / 2f;
+                Vector3 newPosition = hit.point + Vector3.up * halfHeight;
+                collider.transform.position = newPosition;
+                Debug.Log($"Adjusted {combatantName}'s position to {newPosition}");
+            }
+        }
         animator = GetComponentInChildren<Animator>();
         startPosition = transform.position;
         targetPosition = startPosition;
         defense = 1f; //Now a multiplier
         statusCanvas = transform.Find("StatusCanvas").GetComponent<RectTransform>();
+
+        
     }
 
     public void EndTurn()
@@ -96,27 +111,27 @@ public class Combatant : MonoBehaviour
                     if(character.mainClass == CardClass.Warrior)
                     {
                         p.DrawCards(1);
-                        GameManager.Instance.ShowMessage($"WARRIOR: {p.combatantName} draws a card on crit!");
+                        GameManager.Instance.ShowMessage($"<color=green>WARRIOR: {p.combatantName} draws a card on crit!</color>");
                     }
                     if(character.mainClass == CardClass.Ninja)
                     {
                         if(HasStatusEffect("Ninja Mark") == null){
                             ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Ninja Mark"));
                             BattleManager.Instance.attacksRemaining ++;
-                            GameManager.Instance.ShowMessage($"NINJA: {p.combatantName} plays again on crit!");
+                            GameManager.Instance.ShowMessage($"<color=green>NINJA: {p.combatantName} plays again on crit!</color>");
                         }
                     }
                     if(character.mainClass == CardClass.Psychic)
                     {
                         var mpAmount = 5 + p.level;
                         p.GainMP(mpAmount);
-                        GameManager.Instance.ShowMessage($"PSYCHIC: {p.combatantName} gains {mpAmount} MP on crit!");
+                        GameManager.Instance.ShowMessage($"<color=green>PSYCHIC: {p.combatantName} gains {mpAmount} MP on crit!</color>");
                     }
                     if(character.mainClass == CardClass.Grappler)
                     {
                         var counterAmount = 5 + p.level;
                         p.ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Increased Counter"));
-                        GameManager.Instance.ShowMessage($"GRAPPLER: {p.combatantName}'s counter-hit gains +{counterAmount} damage");
+                        GameManager.Instance.ShowMessage($"<color=green>GRAPPLER: {p.combatantName}'s counter-hit gains +{counterAmount} damage</color>");
                     }
                     
                 }
@@ -132,7 +147,7 @@ public class Combatant : MonoBehaviour
         {
             var skull = Instantiate(Resources.Load<GameObject>("Particles/Skull"), transform.position, Quaternion.identity);
             BattleManager.Instance.RemoveCombatant(this);
-            GameManager.Instance.ShowMessage($"{combatantName} has been defeated!");
+            GameManager.Instance.ShowMessage($"<color=red>{combatantName} has been defeated!</color>");
             AudioManager.Instance.PlaySoundEffect("Explosion");
             animator.Play("Launcher");
             alive = false;
@@ -292,7 +307,7 @@ public class Combatant : MonoBehaviour
         {
             statusEffects.Add(effect);
         }
-        GameManager.Instance.ShowMessage($"{combatantName} is affected by {effect.name}");
+        GameManager.Instance.ShowMessage($"<color=red>{combatantName} is affected by {effect.name}</color>");
         UpdateStatusVisuals();
     }
 
@@ -334,7 +349,7 @@ public class Combatant : MonoBehaviour
             {
                caller = this,
                animation = "IdleDrunk",
-               text =  $"{combatantName} takes {6*poison.amount} damage from poison",
+               text =  $"<color=magenta>{combatantName} takes {6*poison.amount} damage from poison</color>",
                damage = $"{6*poison.amount}",
                damageType = DamageType.Psychic,
             });
@@ -354,7 +369,7 @@ public class Combatant : MonoBehaviour
                 caller = this,
                 animation = "Defeated",
             });
-            GameManager.Instance.ShowMessage($"{combatantName} is stunned and cannot move!");
+            GameManager.Instance.ShowMessage($"<color=magenta>{combatantName} is stunned and cannot move!</color>");
             success = false;
         }
 

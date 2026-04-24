@@ -99,7 +99,7 @@ public class ShowStats : MonoBehaviour
         if(combatant is EnemyCombatant enemyCombatant) icon = enemyCombatant.portrait;
         if(icon != null) combatantIcon.sprite = icon;
         combatantName.text = combatant.combatantName;
-        combatantStats.text = $"HP: {combatant.hp}/{combatant.maxHp}    MP: {combatant.mp}/{combatant.maxMp}";
+        combatantStats.text = $"HP: {Mathf.Round(combatant.hp)}/{combatant.maxHp}    MP: {Mathf.Round(combatant.mp)}/{combatant.maxMp}";
         //delete all children of statsPanel except "CharacterStats"
         foreach(Transform child in statsPanel){
             if(child.name != "CharacterStats"){
@@ -130,18 +130,18 @@ public class ShowStats : MonoBehaviour
             if(se.duration != -1) description += $"({se.duration} turns) ";
             description += se.description;
             //Show the description but replace "[amount]" with se.amount and [duration] with se.duration and evaluate any simple expressions like [amount*2] or [duration+1]    
-                description = System.Text.RegularExpressions.Regex.Replace(description, @"\[(\w+)([+\-*\/])?(\d+)?\]", match => {
+                description = System.Text.RegularExpressions.Regex.Replace(description, @"\[(\w+)\s*([+\-*\/])?\s*(\d+(?:\.\d+)?)?\]", match => {
                     var statName = match.Groups[1].Value;
                     var op = match.Groups[2].Value;
                     var numberStr = match.Groups[3].Value;
-                    int statValue = 0;
+                    float statValue = 0;
                     if(statName == "amount"){
-                        statValue = (int)se.amount;
+                        statValue = (float)se.amount;
                     }else if(statName == "duration"){
-                        statValue = (int)se.duration;
+                        statValue = (float)se.duration;
                     }
                     if(op != "" && numberStr != ""){
-                        int number = int.Parse(numberStr);
+                        float number = float.Parse(numberStr);
                         switch(op){
                             case "+":
                                 statValue += number;
@@ -157,7 +157,7 @@ public class ShowStats : MonoBehaviour
                                 break;
                         }
                     }
-                    return statValue.ToString();
+                    return statValue % 1 == 0 ? statValue.ToString("F0") : statValue.ToString();
                 });
             descriptionText.text = description;
         }

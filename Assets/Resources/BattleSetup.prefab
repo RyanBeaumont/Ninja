@@ -1044,6 +1044,12 @@ MonoBehaviour:
   dodgeInputWindow: 0.25
   dodgeCooldown: 1
   lifestrike: 0
+  normalMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  characterMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &3117957295708080858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,8 +1240,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -31.5, y: -35.25}
-  m_SizeDelta: {x: 677, y: 0}
+  m_AnchoredPosition: {x: -18.045044, y: -33.840088}
+  m_SizeDelta: {x: 516.6417, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7223872248291653285
 CanvasRenderer:
@@ -1584,8 +1590,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.07006836, y: -10}
-  m_SizeDelta: {x: 537.99, y: 57.5}
+  m_AnchoredPosition: {x: -20, y: -10}
+  m_SizeDelta: {x: 525.99, y: 56}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &2764097265654303849
 CanvasRenderer:
@@ -1644,14 +1650,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2274,7 +2280,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.07006836, y: 0}
+  m_AnchoredPosition: {x: -20, y: 0}
   m_SizeDelta: {x: 537.92, y: 48.1}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &1428947310713457
@@ -2332,14 +2338,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38
-  m_fontSizeBase: 38
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2870,8 +2876,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -536.88995, y: -46.5}
-  m_SizeDelta: {x: -1073.78, y: 19}
+  m_AnchoredPosition: {x: -642.66846, y: -18.585815}
+  m_SizeDelta: {x: -1293.78, y: 8.5}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1299791727433459345
 CanvasRenderer:
@@ -3085,6 +3091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuickTimeEvent
       objectReference: {fileID: 0}
+    - target: {fileID: 3604457568973866595, guid: 4517990da58d82c479da4d2373b7befd, type: 3}
+      propertyPath: gameDifficulty
+      value: 
+      objectReference: {fileID: 11400000, guid: dc74c96ad530c7849ac75dbae876e553, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

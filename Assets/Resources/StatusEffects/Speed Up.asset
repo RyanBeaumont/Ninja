@@ -22,4 +22,4 @@ MonoBehaviour:
     duration: 1
     removeOnHit: 0
     caller: {fileID: 0}
-    statusUpdate: 1
+    statusUpdate: 2

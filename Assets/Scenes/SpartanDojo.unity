@@ -2952,6 +2952,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
   m_PrefabInstance: {fileID: 114431597}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &114777313
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 667845233}
+    m_Modifications:
+    - target: {fileID: 6061218905984369798, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_Name
+      value: Stretch (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.005339
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2249999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.408543
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+--- !u!4 &114777314 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+  m_PrefabInstance: {fileID: 114777313}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &119596688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5633,6 +5695,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5880966151668079918, guid: 7e7f1160f3f3ffb47968b5618bc236b5, type: 3}
   m_PrefabInstance: {fileID: 249470695}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &251693197
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 667845233}
+    m_Modifications:
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.053486
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2249999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.600351
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710653
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710707
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629889987127832614, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_Name
+      value: Storm
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+--- !u!4 &251693198 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+  m_PrefabInstance: {fileID: 251693197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &253836767
 GameObject:
   m_ObjectHideFlags: 0
@@ -6450,6 +6574,7 @@ GameObject:
   - component: {fileID: 323630398}
   - component: {fileID: 323630401}
   - component: {fileID: 323630397}
+  - component: {fileID: 323630402}
   m_Layer: 0
   m_Name: StartEncounter
   m_TagString: Untagged
@@ -6466,7 +6591,7 @@ Transform:
   m_GameObject: {fileID: 323630395}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.76, y: 5.209, z: -6.305}
+  m_LocalPosition: {x: -8.76, y: 5.561, z: -6.305}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6512,12 +6637,6 @@ MonoBehaviour:
     character: {fileID: 0}
     pose: ArmsCrossed
     cameraAngle: 2
-    face: Confused
-  - text: END OF ACT 3... Feel free to explore
-    name: 
-    character: {fileID: 0}
-    pose: ArmsCrossed
-    cameraAngle: 5
     face: Confused
   turnToFace: 0
   snapPlayerPosition: 0
@@ -6611,6 +6730,26 @@ MonoBehaviour:
   active: 1
   blockInteraction: 0
   failBranch: 
+--- !u!114 &323630402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323630395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
 --- !u!1001 &323937309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13908,6 +14047,13 @@ Transform:
   m_Children:
   - {fileID: 3664759742876539949}
   - {fileID: 323630396}
+  - {fileID: 1945568780}
+  - {fileID: 1361398562}
+  - {fileID: 1525343250}
+  - {fileID: 1726385273}
+  - {fileID: 1762225962}
+  - {fileID: 251693198}
+  - {fileID: 114777314}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &668057487
@@ -17983,6 +18129,152 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5880966151668079918, guid: 7e7f1160f3f3ffb47968b5618bc236b5, type: 3}
   m_PrefabInstance: {fileID: 806811177}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &806874862
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1729545602}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.042039998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.04204
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.042039998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.85
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.293
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.889
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.65802455
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.65777284
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.25912088
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.25921994
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 89.98
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -43.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_Name
+      value: Scrolls
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 806874866}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 806874865}
+  m_SourcePrefab: {fileID: 100100000, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+--- !u!4 &806874863 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+  m_PrefabInstance: {fileID: 806874862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &806874864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+  m_PrefabInstance: {fileID: 806874862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &806874865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806874864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: 'You unfurl one of the manuscripts...
+
+      It contains detailed drawings
+      - a sword with a secret compartment.
+
+      And-- construction plans? You can''t
+      quite make sense of them'
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  - text: 'You hear Chrome Dome yell "READING IS FOR THE WEAK!!!"
+
+      You better
+      not spend too long here'
+    name: 
+    character: {fileID: 0}
+    pose: Embarrassed
+    cameraAngle: 5
+    face: Surprised
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!65 &806874866
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806874864}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &818924497
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24314,7 +24606,7 @@ Transform:
   m_GameObject: {fileID: 1061861400}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.823, y: 5.301, z: -6.228}
+  m_LocalPosition: {x: -8.823, y: 5.576, z: -6.228}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30023,6 +30315,10 @@ PrefabInstance:
       propertyPath: spawnPointIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1202973532642157809, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2425377158581215684, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
       propertyPath: index
       value: 0
@@ -30190,6 +30486,7 @@ MonoBehaviour:
   - Investigate the Rival Dojo
   - Investigate the Forest
   - Investigate the Fight Club
+  - Learn about the Spartans at the Library
 --- !u!1001 &1309670123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31539,6 +31836,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
   m_PrefabInstance: {fileID: 1361232549}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1361398561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1361398562}
+  m_Layer: 0
+  m_Name: Waypoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1361398562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361398561}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.70710653, z: -0, w: 0.7071071}
+  m_LocalPosition: {x: -8.845, y: 5.568, z: -5.878}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 667845233}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &1363478926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34665,6 +34993,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
   m_PrefabInstance: {fileID: 1522008904}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1525343249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1525343250}
+  m_Layer: 0
+  m_Name: Waypoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1525343250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525343249}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -8.932, y: 5.568, z: -7.267}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 667845233}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &1527219565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37735,6 +38094,161 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3bd295d79a245424ead389c4b4878a34, type: 3}
   m_PrefabInstance: {fileID: 1726317009}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1726385272
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 667845233}
+    m_Modifications:
+    - target: {fileID: 6465271996756332302, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      propertyPath: m_Name
+      value: Door (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456399332241316039, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      propertyPath: m_Name
+      value: More Privater Office
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992729449467408391, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992729449467408391, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992729449467408391, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992729449467408391, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000030547376
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992729449467408391, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992729449467408391, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992729449467408391, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992729449467408391, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992729449467408391, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992729449467408391, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 684623941448871463, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+    - {fileID: 9191006209437268723, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+    - {fileID: 6649098481773803516, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 1202973532642157809, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7456399332241316039, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1726385277}
+    - targetCorrespondingSourceObject: {fileID: 7456399332241316039, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1726385276}
+    - targetCorrespondingSourceObject: {fileID: 7456399332241316039, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1726385275}
+  m_SourcePrefab: {fileID: 100100000, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+--- !u!4 &1726385273 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8992729449467408391, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+  m_PrefabInstance: {fileID: 1726385272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1726385274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7456399332241316039, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
+  m_PrefabInstance: {fileID: 1726385272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1726385275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726385274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &1726385276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726385274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01669c0162d07b44db4ebfe8a41cd058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  prompt: Leave the Spartan dojo?
+  itemName: Scroll
+  itemQuantity: 1
+  consume: 1
+  incompleteDialog:
+  - text: 'You should probably look around first...
+
+      The Spartans are definitely
+      hiding something from you'
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+--- !u!65 &1726385277
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726385274}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6000005, y: 2.8000002, z: 0.5460619}
+  m_Center: {x: -0.79999995, y: 1.4000002, z: -0.000000044703484}
 --- !u!1001 &1727452055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37899,6 +38413,7 @@ Transform:
   - {fileID: 2028575522}
   - {fileID: 1384272705}
   - {fileID: 1216602464}
+  - {fileID: 806874863}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1730349557
@@ -38454,6 +38969,612 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 579e672413cf8424ca5271a772ed65c9, type: 3}
+--- !u!1001 &1762225961
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 667845233}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.042039998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.04204
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.042039998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.7949996
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.886
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.8570004
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.65802455
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.65777284
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.25912088
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.25921994
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 89.98
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -43.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      propertyPath: m_Name
+      value: Scrolls
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762225967}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762225966}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762225965}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762225964}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762225968}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762225973}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762225972}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762225971}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762225970}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762225974}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762225969}
+  m_SourcePrefab: {fileID: 100100000, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+--- !u!4 &1762225962 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+  m_PrefabInstance: {fileID: 1762225961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1762225963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+  m_PrefabInstance: {fileID: 1762225961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1762225964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762225963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84032070fc2fd3049ac74cb69c5bde1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  model: {fileID: 114777314}
+  rotationSpeed: 720
+  waypoints:
+  - waypointTransform: {fileID: 1945568780}
+    animation: Jump
+    duration: 1
+    sound: s_dbz_jump
+  - waypointTransform: {fileID: 1525343250}
+    animation: FrontFlip
+    duration: 0.6
+    sound: s_dbz_jump
+  waitForEnd: 1
+  cameraSource: {fileID: 0}
+--- !u!114 &1762225965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762225963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84032070fc2fd3049ac74cb69c5bde1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  model: {fileID: 251693198}
+  rotationSpeed: 720
+  waypoints:
+  - waypointTransform: {fileID: 1945568780}
+    animation: Jump
+    duration: 1
+    sound: s_dbz_jump
+  - waypointTransform: {fileID: 1361398562}
+    animation: FrontFlip
+    duration: 0.6
+    sound: s_dbz_jump
+  waitForEnd: 1
+  cameraSource: {fileID: 0}
+--- !u!114 &1762225966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762225963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: 'You unfurl one of the manuscripts...
+
+      It contains detailed drawings
+      - a sword with a secret compartment.
+
+      And-- construction plans?'
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!65 &1762225967
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762225963}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1762225968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762225963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: "Wha.. How\u2026 But\u2026 But\u2026 WHAT IS ALL THIS SUPPOSED TO MEAN"
+    name: Storm
+    character: {fileID: 251693198}
+    pose: Explaining
+    cameraAngle: 2
+    face: Confused
+  - text: "I think I deserve an explanation for this, Spartan Jack\u2026"
+    name: Storm
+    character: {fileID: 251693198}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Disappointed
+  - text: "I\u2026 I didn\u2019t know anything about this! I\u2019m not really a
+      Spartan anyway \u2013 it\u2019s all just one big coincidence!"
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Confused
+  - text: Then why did you just happen to know about a TOP SECRET SPARTAN TUNNEL?
+      and you are holding TOP SECRET DOCUMENTS?
+    name: Storm
+    character: {fileID: 251693198}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Mad
+  - text: "Don\u2019t give them to her! They might help us get out of this mess!"
+    name: Thad
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 2
+    face: Confused
+  - text: "(You quickly read the first page of the file. There is a picture of the
+      sword- Khan, in the hands of an old man. And you seem to recognize that sword
+      from somewhere- although you can\u2019t place it)"
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 3
+    face: Blank
+  - text: "This would sure go a long way in unraveling the mystery and getting your
+      hands on the sword\u2026 But are you willing to risk a fight?"
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 3
+    face: Blank
+  - text: "What is this.. a sword? Is this what\u2019s in the\u2014"
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Confused
+  - text: UGH, you ABSOLUTE DOLT. We were JUST about to tell you this when you and
+      your Spartan friend decided to run away from us
+    name: Storm
+    character: {fileID: 251693198}
+    pose: Explaining
+    cameraAngle: 2
+    face: Mad
+  - text: "It\u2019s called the SAFE club because.."
+    name: Stretch
+    character: {fileID: 114777314}
+    pose: Explaining
+    cameraAngle: 2
+    face: Confused
+  - text: "Oh my God\u2026 you protect a SAFE"
+    name: Thad
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 2
+    face: Blank
+  - text: Inside that safe is my family sword- the weapon of all weapons - named
+      Khan - and trust me, you do NOT want it getting out
+    name: Storm
+    character: {fileID: 251693198}
+    pose: Explaining
+    cameraAngle: 2
+    face: Confused
+  - text: That girl is evil, Thad. Queen of the ninjas. She kidnapped me
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Angry
+  - text: "You tried to steal the blade! You\u2019re working with Chrome Dome"
+    name: Stretch
+    character: {fileID: 114777314}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Mad
+  - text: "Ch\u2014 Excuse me who? What? WHAT ARE THE SPARTANS? I THOUGHT IT WAS
+      JUST SOME COOL NICKNAME MY MOM GAVE ME. AND CHROME DOME?? IS HE NOT JUST SOME
+      TAE KWON DO TEACHER WHO BUILT A SCHOOL SUSPICUOUSLY CLOSE TO HERE?"
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 3
+    face: Mad
+  - text: WHAT IS GOING ONNNNN?!?
+    name: Thad
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 6
+    face: Confused
+  - text: "You\u2019re\u2026 really not part of the cult?"
+    name: Storm
+    character: {fileID: 251693198}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Surprised
+  - text: C.. Cult?
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Blank
+  - text: "The Spartans are a cult. Well, they call themselves a Taekwondo school,
+      but they\u2019re preparing for the end times"
+    name: Stretch
+    character: {fileID: 114777314}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Confused
+  - text: They have this prophecy.. that the greatest weapon of all time will be
+      delivered to them by the strongest kid in the world
+    name: Storm
+    character: {fileID: 251693198}
+    pose: Explaining
+    cameraAngle: 0
+    face: Confused
+  - text: "He\u2019s supposed to be the true heir, or whatever, to the sword Khan.
+      The TRUE SPARTAN"
+    name: Stretch
+    character: {fileID: 114777314}
+    pose: Explaining
+    cameraAngle: 0
+    face: Confused
+  - text: " I thought\u2014"
+    name: Storm
+    character: {fileID: 251693198}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Dissapointed
+  - text: "You thought it was\u2014  me?"
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Confused
+  - text: "Man, I\u2019m an idiot. Remind me to never buy into a prophecy again.
+      I knew it smelled cult-y"
+    name: Storm
+    character: {fileID: 251693198}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Confused
+  - text: "So all this time you were picking on me, you thought\u2014"
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: "*sigh* I was testing your strength, I was scared of you.. I couldn\u2019t
+      believe you were just some kid, thought you were playing some grand mind game
+      with me and.. I got in my head about it. Got carried away"
+    name: Storm
+    character: {fileID: 251693198}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Surprised
+  - text: "Thanks for the apology.. However...\nI might not be some great warrior,
+      but if I\u2019m being honest, I\u2019d trust YOU with the sword even less."
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Angry
+  - text: "It scares me that of all the people in the world, the most hot-headed
+      one gets the power. I guess we\u2019re both trying to keep our friends safe\r"
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Angry
+  - text: "*gasp* Y\u2014 You\u2026"
+    name: Storm
+    character: {fileID: 251693198}
+    pose: Unsheath
+    cameraAngle: 2
+    face: Mad
+  - text: Careful, now
+    name: Stretch
+    character: {fileID: 114777314}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Confused
+  - text: "You\u2019re right. My father was right to keep it locked away in the Vault.
+      Even I don\u2019t know the code - Well, I know half the code, Jade knows the
+      other half, and you know we didn\u2019t see eye to eye."
+    name: Storm
+    character: {fileID: 251693198}
+    pose: Sheath
+    cameraAngle: 2
+    face: Disappointed
+  - text: At least I know enough to know the sword is lethal, and it should stay
+      right where it is - even just the power radiating from it into the town is
+      enough to drive some of us mad, make our swords gain life. Some of us have
+      seen..
+    name: Storm
+    character: {fileID: 251693198}
+    pose: Sheath
+    cameraAngle: 2
+    face: Surprised
+  - text: Spirits?
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Confused
+  - text: "You believe me? And it\u2019s getting worse with every passing day"
+    name: Storm
+    character: {fileID: 251693198}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Confused
+  - text: "Guys, we are one more rash decision away from death. Clearly none of us
+      know what\u2019s going on, and we need to do our research before anyone else
+      dies "
+    name: Stretch
+    character: {fileID: 114777314}
+    pose: Explaining
+    cameraAngle: 2
+    face: Confused
+  - text: I say we go to the library and learn as much as we can about the sword,
+      the Spartans.. and who knows, maybe a way to defeat Jade
+    name: Stretch
+    character: {fileID: 114777314}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Confused
+  - text: "*I* say we take the Party Bus and confront Chrome Dome for answers. He\u2019s
+      still tied up in our secret forest base."
+    name: Storm
+    character: {fileID: 251693198}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Confused
+  - text: " I say we go straight to the source - Jade\u2019s room - and sneak in.
+      She\u2019s hiding something major from us"
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Mad
+  - text: BY THE POWER OF ANCIENT SPARTA, which I TOTALLY POSSESS, I will now make
+      a CHOICE
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 6
+    face: Confused
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &1762225969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762225963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &1762225970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762225963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679e7d6cbd6ea234daa49f6a576b7c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+--- !u!114 &1762225971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762225963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c878f22abfffcb44b490cf6a3e20262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  questName: Go to Jade and Storm's House
+--- !u!114 &1762225972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762225963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c878f22abfffcb44b490cf6a3e20262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  questName: Take the Party Bus and interrogate Chrome Dome
+--- !u!114 &1762225973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762225963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c878f22abfffcb44b490cf6a3e20262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  questName: Learn about the Spartans at the Library
+--- !u!114 &1762225974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762225963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  itemName: Scroll
 --- !u!1001 &1775070384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39689,152 +40810,6 @@ MonoBehaviour:
   sceneVariant: 1
   skybox: {fileID: 0}
   cameraTarget: {fileID: 0}
---- !u!1001 &1792316827
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2072440054}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.04204358
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.042043578
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.042043578
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.795
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.386
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6.857
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.65802455
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.65777284
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.25912088
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.25921994
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 89.98
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -43.003
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      propertyPath: m_Name
-      value: Scrolls
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1792316829}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1792316830}
-  m_SourcePrefab: {fileID: 100100000, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
---- !u!1 &1792316828 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-  m_PrefabInstance: {fileID: 1792316827}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1792316829
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792316828}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1792316830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792316828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  dialog:
-  - text: 'You unfurl one of the manuscripts...
-
-      It contains detailed drawings
-      - a sword with a secret compartment.
-
-      And-- construction plans? You can''t
-      quite make sense of them'
-    name: 
-    character: {fileID: 0}
-    pose: 
-    cameraAngle: 5
-    face: 
-  - text: 'You hear Chrome Dome yell "READING IS FOR THE WEAK!!!"
-
-      You better
-      not spend too long here'
-    name: 
-    character: {fileID: 0}
-    pose: Embarrassed
-    cameraAngle: 5
-    face: Surprised
-  turnToFace: 0
-  snapPlayerPosition: 0
---- !u!4 &1792316831 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
-  m_PrefabInstance: {fileID: 1792316827}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1795481146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42614,6 +43589,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5880966151668079918, guid: 7e7f1160f3f3ffb47968b5618bc236b5, type: 3}
   m_PrefabInstance: {fileID: 1942501710}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1945568779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1945568780}
+  m_Layer: 0
+  m_Name: Waypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1945568780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945568779}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.70710707, z: -0, w: 0.70710653}
+  m_LocalPosition: {x: -10.562, y: 6.28, z: -5.878}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 667845233}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &1948531930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45325,7 +46331,6 @@ Transform:
   - {fileID: 592607539}
   - {fileID: 1706275614}
   - {fileID: 1446408736}
-  - {fileID: 1792316831}
   - {fileID: 1777492560}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47022,6 +48027,7 @@ MonoBehaviour:
   face: Blank
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &3664759742876539949
 Transform:
   m_ObjectHideFlags: 0
