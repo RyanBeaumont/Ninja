@@ -340,7 +340,7 @@ public class CardDatabase : MonoBehaviour
             level = 7,
             effects = new List<GameAction>()
             {
-                new UltimateAction()
+                new GameAction()
                 {
                     animation = "Burst",
                     bonusActions = 2,

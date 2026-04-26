@@ -865,7 +865,8 @@ public class BattleManager : MonoBehaviour
                     if(pendingDamageType == DamageType.Psychic)
                         AudioManager.Instance.PlaySoundEffect("Crackle",UnityEngine.Random.Range(0.8f,1.2f));
                     if(lifestrike){lifestrike = false; activeCombatant.Heal(d);}
-                    if(activePlayer != null && gainTP) activePlayer.tp += (int)(d/3f); //Gain TERROR points based on damage dealt
+                    var tpGain = Mathf.Clamp(d/4f,10,30);
+                    if(activePlayer != null && gainTP) activePlayer.tp += (int)(tpGain); //Gain TERROR points based on damage dealt
 
                     if(pendingStatusEffect != null){ t.ApplyStatusEffect(pendingStatusEffect);}
                     if (activeCombatant.HasStatusEffect("Poisoner") != null)

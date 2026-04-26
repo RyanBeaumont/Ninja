@@ -162,7 +162,7 @@ public class YourParty : MonoBehaviour
                     else
                         maxHp *= se.amount;
                 }
-        multiplier = 1f; if(partyMember.subClass == CardClass.Psychic) multiplier = 1.5f; if(partyMember.mainClass == CardClass.Psychic) multiplier = 2f;
+        multiplier = 1f; if(partyMember.subClass == CardClass.Psychic) multiplier = 1.25f; if(partyMember.mainClass == CardClass.Psychic) multiplier = 1.5f;
         psychic = partyMember.level * multiplier + 10f;
         foreach(Equipment e in partyMember.equipment)
             foreach(StatusEffect se in e.statusEffects)
