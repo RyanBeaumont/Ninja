@@ -20,12 +20,12 @@ RenderSettings:
   m_FogDensity: 0.03
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.2236116, g: 0.35976627, b: 0.6320754, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.54
-  m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_AmbientSkyColor: {r: 1.5307256, g: 1.4057178, b: 1.5602732, a: 1}
+  m_AmbientEquatorColor: {r: 0.44705883, g: 0.3372549, b: 0.44060138, a: 1}
+  m_AmbientGroundColor: {r: 0.024427436, g: 0.023529412, b: 0.039215688, a: 1}
+  m_AmbientIntensity: 0.82
+  m_AmbientMode: 1
+  m_SubtractiveShadowColor: {r: 0.17007832, g: 0.19184811, b: 0.24528301, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -35,9 +35,9 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0.173
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 410087040}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -93,8 +93,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 1bf4d707ef55bd44e9a0fff4b08729cb, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: a44cbe131d151bb43a677cd6658df57a, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -44212,6 +44212,7 @@ MonoBehaviour:
   face: Happy
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &839371170
 Animator:
   serializedVersion: 7
@@ -53104,6 +53105,7 @@ MonoBehaviour:
   face: Happy
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &988343559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56135,6 +56137,7 @@ MonoBehaviour:
   face: 
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &1049823883
 Animator:
   serializedVersion: 7
@@ -69291,6 +69294,7 @@ MonoBehaviour:
   face: Happy
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &1321626069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
@@ -69616,6 +69620,7 @@ MonoBehaviour:
   face: 
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1324303871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75237,6 +75242,7 @@ MonoBehaviour:
   face: 
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &1421444826
 Animator:
   serializedVersion: 7
@@ -82891,6 +82897,7 @@ MonoBehaviour:
   face: Happy
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &1561350469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3503871415192851515, guid: 00b2a4d6234479b48affd810a1258daa, type: 3}
@@ -91930,6 +91937,7 @@ MonoBehaviour:
   face: Happy
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &1739906327
 Animator:
   serializedVersion: 7
@@ -101185,6 +101193,7 @@ MonoBehaviour:
   face: Mad
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1950221764
 GameObject:
   m_ObjectHideFlags: 0
@@ -106687,6 +106696,7 @@ MonoBehaviour:
   face: 
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!136 &2034459486
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -107823,6 +107833,7 @@ MonoBehaviour:
   face: Happy
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2052303802 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 889c2fc9d1aba3a4d9f279fb8ac2cad8, type: 3}

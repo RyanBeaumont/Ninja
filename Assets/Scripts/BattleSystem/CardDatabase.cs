@@ -74,6 +74,7 @@ public class CardDatabase : MonoBehaviour
             se.stat = so.statusEffect.stat;
             se.additive = so.statusEffect.additive;
             se.removeOnHit = so.statusEffect.removeOnHit;
+            se.particleEffect = so.statusEffect.particleEffect;
             return se;
         }
         else

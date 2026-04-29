@@ -1695,7 +1695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pose: SittingDown
   face: Mad
-  combatIdle: NinjaIdle
+  combatIdle: LibrarianIdle
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &3950607794992007608

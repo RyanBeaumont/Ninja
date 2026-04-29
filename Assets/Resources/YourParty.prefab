@@ -102,6 +102,8 @@ MonoBehaviour:
     alive: 1
   partyMembers:
   - Spartan Jack
+  - Storm
+  - Stretch
   gameDifficulty: {fileID: 11400000, guid: dc74c96ad530c7849ac75dbae876e553, type: 2}
   devTools: 0
   currentSaveFileName: savefile_1
@@ -119,3 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28c6b6ce22f6c2449d992dc35f46c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deckMin: 5
+  deckMax: 12

@@ -1203,8 +1203,9 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   enemies:
-  - {fileID: 8346498964973016767, guid: d23ec155faf49b34296cb74a46422490, type: 3}
-  - {fileID: 9134773197608302933, guid: 2692803cda0a9794ea986c6ba1b1735d, type: 3}
+  - {fileID: 8346498964973016767, guid: a8a28e2be9981bc49ac1c6b711e53c98, type: 3}
+  - {fileID: 8346498964973016767, guid: be430e32a809b7b43a10975cfc8d9e65, type: 3}
+  - {fileID: 8346498964973016767, guid: be430e32a809b7b43a10975cfc8d9e65, type: 3}
   hideObjects: []
   battleMusic: {fileID: 8300000, guid: b5b3142626e681d469109f18dcca0e8c, type: 3}
 --- !u!136 &812761113

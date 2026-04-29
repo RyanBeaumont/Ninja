@@ -33,7 +33,7 @@ public class QuickTimeEvent : MonoBehaviour
         pitch = 0.9f;
         
         currentIndex = 0;
-        beatLength = 0.6f - (gameDifficulty.value * 0.15f); //beat length decreases as difficulty increases, minimum of 0.5s
+        beatLength = 0.6f - (gameDifficulty.value * 0.2f); //beat length decreases as difficulty increases, minimum of 0.5s
         clock = beatLength;
         if(gameDifficulty.value >= 2f){mininumAccuracy = 0f;}
         if(gameDifficulty.value >= 1f){mininumAccuracy = .25f;}

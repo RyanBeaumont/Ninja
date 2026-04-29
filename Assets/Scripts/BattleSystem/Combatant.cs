@@ -245,6 +245,7 @@ public class Combatant : MonoBehaviour
         var damageText = damageNumber.GetComponentInChildren<TMP_Text>();
         damageText.text = $"+{Mathf.RoundToInt(amount)}";
         damageText.color = Color.green;
+        var particleeffect = Instantiate(Resources.Load<GameObject>("Particles/Health"), transform);
         }
         else
         {
@@ -261,6 +262,7 @@ public class Combatant : MonoBehaviour
         var damageText = damageNumber.GetComponentInChildren<TMP_Text>();
         damageText.text = $"{Mathf.RoundToInt(amount)}";
         damageText.color = Color.magenta;
+        var particleeffect = Instantiate(Resources.Load<GameObject>("Particles/MP"), transform);
     }
 
     public float PlayAnimation(string animationName)
@@ -295,6 +297,13 @@ public class Combatant : MonoBehaviour
                 }
             }
         }
+
+        if(effect.particleEffect != null)
+        {
+            var fx = Instantiate(effect.particleEffect, transform);
+            Destroy(fx, 2f);
+        }
+
         //Check if effect is already applied
         var existingEffect = statusEffects.Find(e => e.name == effect.name);
         if(existingEffect != null)

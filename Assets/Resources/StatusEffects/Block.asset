@@ -19,7 +19,8 @@ MonoBehaviour:
     amount: 1
     description: Automatically block [amount] hit
     additive: 1
-    duration: -1
+    duration: 1
     removeOnHit: 0
     caller: {fileID: 0}
-    statusUpdate: 0
+    statusUpdate: 2
+    particleEffect: {fileID: 4208484295450631797, guid: b8ad6a4f2febde644a7e59faf5d6e647, type: 3}

@@ -23,3 +23,4 @@ MonoBehaviour:
     removeOnHit: 0
     caller: {fileID: 0}
     statusUpdate: 0
+    particleEffect: {fileID: 4208484295450631797, guid: b8ad6a4f2febde644a7e59faf5d6e647, type: 3}

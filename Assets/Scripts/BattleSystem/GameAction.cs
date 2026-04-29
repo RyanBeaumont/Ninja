@@ -15,6 +15,7 @@ using UnityEngine;
     public bool removeOnHit = false;
     public Combatant caller;
     public StatusUpdate statusUpdate = StatusUpdate.TurnStart;
+    public GameObject particleEffect = null;
 }
 
 public enum StatusUpdate{TurnStart,TurnEnd,CallerTurnStart}  

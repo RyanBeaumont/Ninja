@@ -25,6 +25,7 @@ Material:
   m_Parent: {fileID: 2100000, guid: 0a1ba083acf4bab4497478b96fadfdd1, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _DETAIL_SCALED
   - _NORMALMAP
   - _PARALLAXMAP
   m_InvalidKeywords: []

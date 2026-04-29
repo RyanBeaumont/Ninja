@@ -110,26 +110,38 @@ public class EnemyCombatant : Combatant
         {
             tempAttackData = selectedAttack;
             Invoke(selectedAttack.altFunction,0f);
-        }else{
-        var attacks = selectedAttack.attackPattern.Split(',');
-        foreach(var attack in attacks)
-        {
-            BattleManager.Instance.actionQueue.Add(new EnemyAttackAction()
-            {
-                caller = this,
-                animation = attack.Trim(),
-                //targets = BattleManager.Instance.currentTargets,
-                statusEffect = CardDatabase.Instance.getStatusEffect(selectedAttack.statusEffect.name,selectedAttack.statusEffect.amount,selectedAttack.statusEffect.duration),
-                damage = selectedAttack.damage,
-                targetType = selectedAttack.targetType,
-                damageType = selectedAttack.damageType,
-                specialTarget = specialTarget,
-                hits = selectedAttack.hits,
-                //Loop animation only if named ThrowKnife or ThrowKnifeFast
-                loopAnimation = attack.Trim() == "ThrowKnife" || attack.Trim() == "ThrowKnifeFast",
-                timeScale = speed
-            });
         }
+        else
+        {
+            if(string.IsNullOrEmpty(selectedAttack.attackPattern))
+            {
+                Debug.LogWarning($"{combatantName} attack '{selectedAttack.attackName}' has no attackPattern.");
+                return;
+            }
+
+            var effect = selectedAttack.statusEffect != null
+                ? CardDatabase.Instance.getStatusEffect(selectedAttack.statusEffect.name, selectedAttack.statusEffect.amount, selectedAttack.statusEffect.duration)
+                : null;
+
+            var attacks = selectedAttack.attackPattern.Split(',');
+            foreach(var attack in attacks)
+            {
+                BattleManager.Instance.actionQueue.Add(new EnemyAttackAction()
+                {
+                    caller = this,
+                    animation = attack.Trim(),
+                    //targets = BattleManager.Instance.currentTargets,
+                    statusEffect = effect,
+                    damage = selectedAttack.damage,
+                    targetType = selectedAttack.targetType,
+                    damageType = selectedAttack.damageType,
+                    specialTarget = specialTarget,
+                    hits = selectedAttack.hits,
+                    //Loop animation only if named ThrowKnife or ThrowKnifeFast
+                    loopAnimation = attack.Trim() == "ThrowKnife" || attack.Trim() == "ThrowKnifeFast",
+                    timeScale = speed
+                });
+            }
         }
     }
 
@@ -140,7 +152,7 @@ public class EnemyCombatant : Combatant
         {
             caller = this,
             animation = tempAttackData.attackPattern,
-            //targets = BattleManager.Instance.currentTargets,
+            targetType = tempAttackData.targetType,
             statusEffect = CardDatabase.Instance.getStatusEffect(tempAttackData.statusEffect.name,tempAttackData.statusEffect.amount,tempAttackData.statusEffect.duration),
         });
     }
