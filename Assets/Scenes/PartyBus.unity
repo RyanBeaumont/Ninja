@@ -730,6 +730,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: DojoInterior
   spawnPointIndex: 1
   sceneVariant: 2
@@ -1200,6 +1201,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: ThadHouse
   spawnPointIndex: 1
   sceneVariant: 1
@@ -1220,6 +1222,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Man, it''s dark...
 
@@ -1334,6 +1337,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!136 &1319330910
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1471,6 +1475,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!136 &1377326375
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1509,6 +1514,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'THIS ROCKS!! BEST BUS RIDE EVER!!!
 
@@ -1570,6 +1576,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: DojoInterior
   spawnPointIndex: 1
   sceneVariant: 1
@@ -1927,6 +1934,10 @@ PrefabInstance:
       propertyPath: musicClip
       value: 
       objectReference: {fileID: 8300000, guid: 534474a51b46351499536ee47dc6d513, type: 3}
+    - target: {fileID: 4607604493686479118, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
+      propertyPath: locationName
+      value: Party Bus
+      objectReference: {fileID: 0}
     - target: {fileID: 7181501521815549258, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
       propertyPath: m_Name
       value: AudioStart
@@ -2049,6 +2060,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: I see you got my call...
     name: Stretch
@@ -2189,6 +2201,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!136 &1960590349
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2227,6 +2240,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: Forest
   spawnPointIndex: 0
   sceneVariant: 0
@@ -2247,6 +2261,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   overwrite: 1
   partyMembers:
   - Thad

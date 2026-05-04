@@ -6026,6 +6026,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 1f4611c0541ad854f81c5c028db470b9, type: 3}
     - target: {fileID: 4607604493686479118, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
+      propertyPath: locationName
+      value: Big Sam's House
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607604493686479118, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
       propertyPath: encounterClip
       value: 
       objectReference: {fileID: 8300000, guid: b5b3142626e681d469109f18dcca0e8c, type: 3}

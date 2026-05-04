@@ -1,4 +1,5 @@
 
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,7 @@ public class Menu : MonoBehaviour
     public Transform equipmentContainer;
     public TMP_Text descriptionText;
     public string currentCharacter = "";
+    public Transform locationName;
 
 
     void Start()
@@ -32,6 +34,32 @@ public class Menu : MonoBehaviour
         tutorialUI.gameObject.SetActive(false);
         entireMenu.gameObject.SetActive(false);
         settingsContainer.gameObject.SetActive(false);
+        var audioStart = GameObject.FindAnyObjectByType<StartMusic>();
+        if(audioStart != null)
+        {
+            locationName.GetComponentInChildren<TMP_Text>().text = audioStart.locationName;
+            StartCoroutine(FadeOutLocationName());
+        }
+    }
+
+    IEnumerator FadeOutLocationName()
+    {
+        var text = locationName.GetComponentInChildren<TMP_Text>();
+        var image = locationName.GetComponentInChildren<Image>();
+        float duration = 2f; // Duration of the fade-out
+        float elapsedTime = 0f;
+        yield return new WaitForSeconds(2f);
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(.5f, 0f, elapsedTime / duration);
+            text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
+            image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
+            yield return null;
+        }
+
+        text.gameObject.SetActive(false); // Hide the text after fading out
     }
 
     public void ShowSettingsMenu()

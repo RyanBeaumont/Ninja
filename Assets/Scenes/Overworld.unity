@@ -215077,6 +215077,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4607604493686479118, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
+      propertyPath: locationName
+      value: The Wild
+      objectReference: {fileID: 0}
     - target: {fileID: 7181501521815549258, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
       propertyPath: m_Name
       value: AudioStart

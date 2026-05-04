@@ -47,6 +47,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RadioTower.unity
     guid: 7d176d22dc158074ab686d8668115b19
+  - enabled: 1
+    path: Assets/Scenes/StormHouseWarped.unity
+    guid: 34767ce65ef66a44e9975388972cbd88
+  - enabled: 1
+    path: Assets/Scenes/Nightmare.unity
+    guid: 1d6f3aa5b55ce6d4e8aab76ab919af22
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

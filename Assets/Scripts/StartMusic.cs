@@ -4,6 +4,7 @@ public class StartMusic : MonoBehaviour
 {
     public AudioClip musicClip;
     public AudioClip encounterClip;
+    public string locationName;
 
     void Start()
     {

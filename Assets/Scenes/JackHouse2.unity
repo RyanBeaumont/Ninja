@@ -6300,6 +6300,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 911ffb73b14752641995bf860c2a5e89, type: 3}
     - target: {fileID: 4607604493686479118, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
+      propertyPath: locationName
+      value: Spartan Jack's House
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607604493686479118, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
       propertyPath: encounterClip
       value: 
       objectReference: {fileID: 8300000, guid: b5b3142626e681d469109f18dcca0e8c, type: 3}
@@ -7792,6 +7796,7 @@ MonoBehaviour:
   face: Happy
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &684548082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13910,6 +13915,7 @@ MonoBehaviour:
   face: 
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &1221794329
 Animator:
   serializedVersion: 7
@@ -18436,6 +18442,7 @@ MonoBehaviour:
   face: Happy
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &1591520551
 PrefabInstance:
   m_ObjectHideFlags: 0

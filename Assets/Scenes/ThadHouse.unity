@@ -1951,6 +1951,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -1970,6 +1971,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: 6192b15b8e5adc843ad0bee58616495e, type: 3}
   fadeTime: 0.5
   sfx: 
@@ -1988,6 +1990,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Find Spartan Jack
 --- !u!114 &194422023
 MonoBehaviour:
@@ -2004,6 +2007,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Unnnngghh...
 
@@ -2119,6 +2123,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!65 &194422027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2208,6 +2213,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: ThadHouse
   spawnPointIndex: 0
   sceneVariant: 3
@@ -2228,6 +2234,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   pose: SittingDown
   face: Confused
 --- !u!1001 &205944886
@@ -3229,6 +3236,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: Overworld
   spawnPointIndex: 5
   sceneVariant: 3
@@ -3249,6 +3257,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   overwrite: 1
   partyMembers:
   - Thad
@@ -4018,6 +4027,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "Stretch?? You're.. \nHow did you..."
     name: Thad
@@ -4071,6 +4081,8 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: Happy
   combatIdle: 
+  combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &357850597
 Animator:
   serializedVersion: 7
@@ -4155,6 +4167,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: PartyBus
   spawnPointIndex: 0
   sceneVariant: 0
@@ -4175,6 +4188,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Before you can react, STRETCH flings herself into the driver's seat
     name: 
@@ -4211,6 +4225,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   toBlack: 1
   cameraTarget: {fileID: 0}
 --- !u!1001 &373854459
@@ -4565,6 +4580,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'You could leave out the front door...
 
@@ -5268,6 +5284,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Starting the engine would definitely wake Stretch up... Better not.
     name: 
@@ -5504,6 +5521,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 862421258}
     m_Modifications:
+    - target: {fileID: 3029313627159069430, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029313627159069430, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029313627159069430, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5442103247177399780, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -5608,6 +5637,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'I''ll catch up to you when you''re ready to face the day...
 
@@ -7084,6 +7114,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: a771b7d13abcec6479d2472603246269, type: 3}
     - target: {fileID: 4607604493686479118, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
+      propertyPath: locationName
+      value: Thad's House
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607604493686479118, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
       propertyPath: encounterClip
       value: 
       objectReference: {fileID: 8300000, guid: b5b3142626e681d469109f18dcca0e8c, type: 3}
@@ -8019,6 +8053,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: No FOOOOOOOODDDD????
     name: Thad
@@ -8697,6 +8732,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Your idiot mother replaced the TV with a potted plant collection.
 
@@ -13141,6 +13177,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: You take aim at the target and practice your lines...
     name: 
@@ -15067,6 +15104,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -15086,6 +15124,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   questName: Get Water
 --- !u!114 &1210492123
 MonoBehaviour:
@@ -15102,6 +15141,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Your name is THAD. You awake from your bed, an ominous dream still resonating
       through your head. '
@@ -15161,6 +15201,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   overwrite: 1
   partyMembers:
   - Thad
@@ -15179,6 +15220,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!114 &1210492126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15194,6 +15236,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!65 &1210492127
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15283,6 +15326,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   encounterMusic: {fileID: 8300000, guid: 6192b15b8e5adc843ad0bee58616495e, type: 3}
   fadeTime: 0.5
   sfx: 
@@ -15301,6 +15345,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   pose: SittingDown
   face: Confused
 --- !u!1001 &1210575455
@@ -15405,6 +15450,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "Don\u2019t come back here! You need to be SAFE to join our secret club!\r\n"
     name: 
@@ -15442,6 +15488,8 @@ MonoBehaviour:
   pose: ArmsCrossed
   face: 
   combatIdle: 
+  combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &1221794329
 Animator:
   serializedVersion: 7
@@ -17599,6 +17647,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -17618,6 +17667,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   itemName: DrPepper
 --- !u!114 &1334314197
 MonoBehaviour:
@@ -17634,6 +17684,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Oh yeah, your parents decided to switch to an all-soda drink diet. Part
       of some health craze or something
@@ -19380,6 +19431,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   itemName: Coffee
 --- !u!65 &1482735778
 BoxCollider:
@@ -19417,6 +19469,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 0
   additionalObjects: []
   endingPose: 
@@ -19436,6 +19489,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'Rats, no water...
 
@@ -19689,6 +19743,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Two blunt katanas... You tried to sharpen one with your knife, but the
       knife just broke.
@@ -20144,6 +20199,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: "Over the years, you have accumulated a nice pile of all the boards you
       were too weak to break. One day you will get your sweet, sweet revenge. That
@@ -24980,6 +25036,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 
@@ -24999,6 +25056,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: 'You begin to exit the room when all of a sudden your iPhone rings!
 
@@ -25055,6 +25113,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!65 &1952148241
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27874,6 +27933,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - text: Okay, what am I thinking?
     name: Torch
@@ -28148,6 +28208,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!114 &7624025255791560608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28163,6 +28224,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   dialog:
   - Day 3 (Thad) - Holy cow. The holiest of cows. I must have drank from the divine
     utter because what even happened, man
@@ -28191,6 +28253,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   toBlack: 1
   cameraTarget: {fileID: 1809109950}
 --- !u!114 &7624025255791560610
@@ -28208,6 +28271,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
 --- !u!114 &7624025255791560611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28223,6 +28287,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   sceneName: ThadHouse
   spawnPointIndex: 1
   sceneVariant: 2
@@ -28332,6 +28397,7 @@ MonoBehaviour:
   encounterID: 
   active: 1
   blockInteraction: 0
+  failBranch: 
   hideObject: 1
   additionalObjects: []
   endingPose: 

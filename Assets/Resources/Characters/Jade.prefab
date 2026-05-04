@@ -81,6 +81,7 @@ MonoBehaviour:
   face: Happy
   combatIdle: IdleNinja
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!136 &6644522630308483042
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -118,15 +119,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: baf2424ad9d913d42819e44147598fcf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.90000004
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: baf2424ad9d913d42819e44147598fcf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.90000004
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: baf2424ad9d913d42819e44147598fcf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.90000004
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: baf2424ad9d913d42819e44147598fcf, type: 3}
       propertyPath: m_LocalPosition.x
