@@ -369,7 +369,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d8f8a1a3277e36746bb589f869d07855, type: 2}
     - target: {fileID: 6044087082982615358, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
       propertyPath: m_Name
-      value: Jade's House? (1)
+      value: Jade's House?
       objectReference: {fileID: 0}
     - target: {fileID: 6347066284866395256, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
       propertyPath: m_LocalScale.z
@@ -445,31 +445,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 53332335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Script: {fileID: 11500000, guid: 61b4ef69776623b4f92b74bdf634fb1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   encounterID: 
   active: 1
   blockInteraction: 0
   failBranch: 
-  dialog:
-  - text: 'You go to open the...
-
-      What is this anyway? It''s not a door at
-      all, it''s made out of... light?'
-    name: 
-    character: {fileID: 0}
-    pose: 
-    cameraAngle: 5
-    face: 
-  - text: There must be another way in
-    name: 
-    character: {fileID: 0}
-    pose: 
-    cameraAngle: 5
-    face: 
-  turnToFace: 0
-  snapPlayerPosition: 0
+  sceneName: Nightmare
+  spawnPointIndex: 0
+  sceneVariant: 0
+  skybox: {fileID: 0}
+  cameraTarget: {fileID: 0}
 --- !u!1001 &56097007
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Unity.Cinemachine;
+using System.Collections.Generic;
 [System.Serializable] public class CombatBeat
 {
     public Transform attacker;
@@ -20,7 +21,6 @@ public class CombatCutscene : ChainedInteractable
     GameObject cameraRig;
     CinemachineCamera cutsceneCamera;
     Animator cameraAnimator;
-    Transform originalParent;
     Vector3 originalPosition;
     Quaternion originalRotation;
     float waitClock = 0f;
@@ -28,6 +28,7 @@ public class CombatCutscene : ChainedInteractable
     bool waitingForHit = false;
     int currentIndex = 0;
     CombatBeat thisBeat;
+
     public override void Interact()
     {
         if (active)
@@ -39,9 +40,8 @@ public class CombatCutscene : ChainedInteractable
 
             if(combatBeats.Length > 0)
             {
-                originalParent = player.parent;
-                originalPosition = player.position;
-                originalRotation = player.rotation;
+                originalPosition = player.Find("Model").position;
+                originalRotation = player.Find("Model").rotation;
                 cutsceneActive = true;
                 waitClock = 0f;
                 currentIndex = 0;
@@ -89,13 +89,13 @@ public class CombatCutscene : ChainedInteractable
                 {
                     var defenderDefaultPose = defender.GetComponent<DefaultPose>()?.combatIdle ?? "FightingIdle";
                     var attackerDefaultPose = attacker.GetComponent<DefaultPose>()?.combatIdle ?? "FightingIdle";
-                    if(!waitingForHit && attacker.GetCurrentAnimatorStateInfo(0).IsName(thisBeat.animation) && attacker.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                    if(!waitingForHit && attacker.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName(thisBeat.animation) && attacker.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
                     {
-                        attacker.Play(attackerDefaultPose);
+                        attacker.GetComponentInChildren<Animator>().Play(attackerDefaultPose);
                     }
-                    if(!waitingForHit && defender.GetCurrentAnimatorStateInfo(0).IsName(thisBeat.hitPose) && defender.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                    if(!waitingForHit && defender.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName(thisBeat.hitPose) && defender.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
                     {
-                        defender.Play(defenderDefaultPose);
+                        defender.GetComponentInChildren<Animator>().Play(defenderDefaultPose);
                     }
                 }
             }
@@ -106,11 +106,10 @@ public class CombatCutscene : ChainedInteractable
             //Final wait has ended
             if(currentIndex >= combatBeats.Length){
                 cutsceneActive = false; 
-                //var player = GameObject.FindGameObjectWithTag("Player").transform;
-                //player.parent = originalParent; player.position = originalPosition; player.rotation = originalRotation;
+                var player = GameObject.FindGameObjectWithTag("Player").transform;
+                player.position = originalPosition; player.rotation = originalRotation;
                 cutsceneCamera.transform.localRotation = Quaternion.identity;
                 GameManager.Instance.DestroyCamera();
-
                 CallNext(); 
                 return;
             }
@@ -123,38 +122,37 @@ public class CombatCutscene : ChainedInteractable
                 if(thisBeat != null && attacker != null && defender != null)
                 {
                     waitingForHit = true;
-                    attacker.Play(thisBeat.animation);
+                    attacker.GetComponentInChildren<Animator>().Play(thisBeat.animation);
                     AudioManager.Instance.PlaySoundEffect(thisBeat.attackSound);
                     waitClock = thisBeat.delay + 0.4f;
                     //position attacker facing the defender 2m away
-                    var attackerTransform = attacker.GetComponentInParent<DefaultPose>().transform;
-                    var defenderTransform = defender.GetComponentInParent<DefaultPose>().transform;
-                    Vector3 direction = (defenderTransform.position - attackerTransform.position).normalized;
-                    attackerTransform.position = defenderTransform.position - direction * 2f;
-                    attackerTransform.LookAt(defenderTransform.position);
+                    //what if defaultPose is in the child object?
+                    Vector3 direction = (defender.position - attacker.position).normalized;
+                    attacker.position = defender.position - direction * 2f;
+                    attacker.LookAt(defender.position);
 
                 }
             }
         }
     }
 
-    public void GetCombatants(CombatBeat thisBeat, out Animator attacker, out Animator defender)
+    public void GetCombatants(CombatBeat thisBeat, out Transform attacker, out Transform defender)
     {
         attacker = null;
         defender = null;
 
         if (thisBeat == null) return;
-        if(thisBeat.attacker != null) attacker = thisBeat.attacker?.GetComponentInChildren<Animator>();
-        if(thisBeat.defender != null) defender = thisBeat.defender?.GetComponentInChildren<Animator>();
+        if(thisBeat.attacker != null) attacker = thisBeat.attacker;
+        if(thisBeat.defender != null) defender = thisBeat.defender;
         var player = GameObject.FindGameObjectWithTag("Player");
 
         if (player != null)
         {
             if (attacker == null)
-                attacker = player.GetComponentInChildren<Animator>();
+                attacker = player.transform;
 
             if (defender == null)
-                defender = player.GetComponentInChildren<Animator>();
+                defender = player.transform;
         }
 
         if (thisBeat.reversed)
@@ -172,7 +170,7 @@ public class CombatCutscene : ChainedInteractable
         {
             AudioManager.Instance.PlaySoundEffect(thisBeat.sound);
             defender.transform.LookAt(attacker.transform);
-            defender.Play(thisBeat.hitPose);
+            defender.GetComponentInChildren<Animator>().Play(thisBeat.hitPose);
             var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), defender.transform);
             CameraShake(2f,0.2f);
         }

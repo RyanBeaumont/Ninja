@@ -7,6 +7,7 @@ public class SaveData
     public string sceneName;
     public int sceneVariant;
     public int spawnPoint;
+    public string locationName;
     public float playTime;
     public float gold;
     public List<string> playersInParty;
@@ -44,8 +45,17 @@ public static class SaveDataBuilder
         data.sceneVariant = GameManager.Instance.sceneVariant;
         data.spawnPoint = GameManager.Instance.currentSpawnPointIndex;
         data.sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        saveFileName = YourParty.instance.currentSaveFileName;
-        Debug.Log($"Saved {data.reserve.Count} reserve members.");
+        if(GameObject.FindFirstObjectByType<StartMusic>() != null)
+        {
+            data.locationName = GameObject.FindFirstObjectByType<StartMusic>().locationName;
+        }
+        else
+        {
+            data.locationName = "Unknown Location";
+        }
+
+        data.saveFileName = saveFileName;
+        Debug.Log($"Saved {data.reserve.Count} reserve members to {data.saveFileName}.");
 
         return data;
     }

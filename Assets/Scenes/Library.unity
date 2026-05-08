@@ -24141,8 +24141,8 @@ MonoBehaviour:
     pose: Meditating
     cameraAngle: 13
     face: Confused
-  - text: Sensei and I are the owners of that blade, even if someone got into that
-      vault, no one else would be able to access even half of its power
+  - text: Sensei and I are the owners of that blade, we are the only ones who could
+      perform that soul release... Plus, the vault is... Hazardous...
     name: Storm
     character: {fileID: 1033884060}
     pose: Meditating
@@ -24182,11 +24182,21 @@ MonoBehaviour:
     pose: Meditating
     cameraAngle: 13
     face: Angry
-  - text: Pssht, better than these PSYCHOS having it!
+  - text: 'Pssht, better than these PSYCHOS having it!
+
+      At least I want it
+      for something NOBLE'
     name: Spartan Jack
     character: {fileID: 401832728}
     pose: Meditating
     cameraAngle: 13
+    face: Mad
+  - text: OPENING A PORTAL TO BRING YOUR DAD BACK ISN'T NOBLE, IT'S SELFISH! BECAUSE
+      IT'S GONNA GET US ALL KILLED!
+    name: Storm
+    character: {fileID: 1033884060}
+    pose: Explaining
+    cameraAngle: 6
     face: Mad
   - text: ENOUGH ALREADY!
     name: Librarian
@@ -24517,8 +24527,7 @@ MonoBehaviour:
     pose: Meditating
     cameraAngle: 13
     face: Confused
-  - text: Exactly, so are you gonna stop trying to help him? That sword needs to
-      stay locked away
+  - text: 'Exactly, so are you gonna stop trying to steal it from us? '
     name: Stretch
     character: {fileID: 974648309}
     pose: Meditating
@@ -24532,17 +24541,20 @@ MonoBehaviour:
     pose: Meditating
     cameraAngle: 13
     face: Confused
-  - text: You're playing with fire, both of you. That sword has caused nothing but
-      death for everyone around - just look at what it's done to Jade
+  - text: You're playing with fire, both of you. Even if you don't cause some sort
+      of crazy apocalypse, you saw the computer records... that vault is RADIOACTIVE
+      and it's getting worse with every passing day!
     name: Storm
     character: {fileID: 1033884060}
     pose: Meditating
     cameraAngle: 13
     face: Surprised
-  - text: 'I thought I wanted to keep it locked up, but if I ever get my hands on
-      Khan, i''m blowing that thing to bits. '
-    name: Storm
-    character: {fileID: 1033884060}
+  - text: 'This is getting ugly...
+
+      If I ever get my hands on Khan, i''m blowing
+      that thing to bits, even if it kills me'
+    name: Big Sam
+    character: {fileID: 38160111}
     pose: Meditating
     cameraAngle: 13
     face: Confused
@@ -24562,17 +24574,20 @@ MonoBehaviour:
     pose: Meditating
     cameraAngle: 13
     face: Happy
-  - text: Well, this has certainly cleared nothing up. But if one thing's for certain,
-      it's that we need to stop fighting. Jade is still out there, and if she ever
-      returns, we can't fight back if we're busy fighting each other
+  - text: Well, this has certainly cleared nothing up. All it did was draw a few
+      lines in the sand... I say we call it a day. And on the night of the solstice,
+      if this means we fight, then we fight.
     name: Spartan Jack
     character: {fileID: 401832728}
     pose: Meditating
     cameraAngle: 13
     face: Angry
-  - text: 'Finally!
+  - text: 'Finally some common sense around here!
 
-      Some COMMON SENSE around here!'
+      (Thad raises his fist)
+
+      Tomorrow
+      we settle this THAD STYLE'
     name: Thad
     character: {fileID: 401832728}
     pose: CasualLean

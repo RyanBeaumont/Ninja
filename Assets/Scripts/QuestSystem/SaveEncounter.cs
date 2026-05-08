@@ -9,29 +9,40 @@ public class SaveEncounter : ChainedInteractable
     public override void Interact()
 {
     if (!active) return;
-
+    GameManager.Instance.SetGameplayState(GameplayState.Dialog);
     ui = Instantiate(Resources.Load<GameObject>("Saves"));
     ui.transform.Find("Saves/Title").GetComponent<TMP_Text>().text = "Save Your Game";
 
     Transform content = ui.transform.Find("Saves/Viewport/Content");
 
-    foreach (var save in SaveSystem.GetAllSaves())
+    var saveSlots = new[] { "savefile_1", "savefile_2", "savefile_3" };
+    var allSaves = SaveSystem.GetAllSaves();
+    var saveMap = new Dictionary<string, SaveData>();
+    foreach (var save in allSaves)
     {
-        GameObject loadButton = Instantiate(Resources.Load<GameObject>("LoadButton"), content);
-
-        var buttonScript = loadButton.GetComponent<LoadGameButton>();
-        buttonScript.SetSaveData(save, true);
-
-        string fileName = save.saveFileName; // capture locally for closure safety
-
-        loadButton.GetComponent<Button>().onClick.AddListener(() =>
-        {
-            OnSaveFinished(fileName);
-        });
+        if (!string.IsNullOrEmpty(save.saveFileName))
+            saveMap[save.saveFileName] = save;
     }
 
-    GameObject newSave = Instantiate(Resources.Load<GameObject>("NewSave"), content);
-    newSave.GetComponent<Button>().onClick.AddListener(NewSave);
+    foreach (var slotName in saveSlots)
+    {
+        GameObject loadButton = Instantiate(Resources.Load<GameObject>("LoadButton"), content);
+        var buttonScript = loadButton.GetComponent<LoadGameButton>();
+
+        if (saveMap.TryGetValue(slotName, out var saveData))
+        {
+            buttonScript.SetSaveData(saveData, true);
+        }
+        else
+        {
+            loadButton.GetComponentInChildren<TMP_Text>().text = $"Empty Slot";
+        }
+
+        string capturedSlot = slotName;
+        var button = loadButton.GetComponent<Button>();
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() => OnSaveFinished(capturedSlot));
+    }
 
     Time.timeScale = 0f;
     Cursor.lockState = CursorLockMode.None;
@@ -70,7 +81,7 @@ public class SaveEncounter : ChainedInteractable
 
     SaveSystem.SaveGame(saveFileName);
     GameManager.Instance.ShowMessage($"Party Healed and Game Saved");
-
+    GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
     CallNext();
 }
 }

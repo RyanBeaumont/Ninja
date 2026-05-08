@@ -1,4 +1,7 @@
+
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoadGameButton : MonoBehaviour
 {
@@ -8,7 +11,19 @@ public class LoadGameButton : MonoBehaviour
     {
         saveData = data;
         save = saveInsteadOfLoad;
-        GetComponentInChildren<TMPro.TMP_Text>().text = data.sceneName + " - " + (data.playTime/60).ToString("F2") + "m";
+        //Show playtime in hours and minutes rounded
+        GetComponentInChildren<TMPro.TMP_Text>().text = $"{data.locationName} - {Mathf.Round(data.playTime / 3600f)}h {Mathf.Round(data.playTime % 3600 / 60f)}m";
+        foreach(var partyMember in data.playersInParty)
+        {
+           var portrait = Resources.Load<Sprite>($"Sprites/{partyMember}");
+           if(portrait != null)
+           {
+            var uiObject = Instantiate(Resources.Load<GameObject>("TurnIcon"), transform);
+            uiObject.GetComponent<Image>().sprite = portrait;
+            uiObject.transform.localScale = Vector3.one * 2f;
+            uiObject.transform.Find("Initial").GetComponent<TMP_Text>().text = "";
+           }
+        }
     }
 
     public void OnClick()
@@ -28,7 +43,7 @@ public class LoadGameButton : MonoBehaviour
         }
         else
         {
-            YourParty.instance.currentSaveFileName = saveData.saveFileName;
+            //YourParty.instance.currentSaveFileName = saveData.saveFileName;
         }
         
     }

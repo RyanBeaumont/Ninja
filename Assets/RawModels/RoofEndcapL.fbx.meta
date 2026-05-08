@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c52fcc14d07da9c45bf53d0945b083f4
+guid: 2bc9261eb0541b546a0d703ac0d0207b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,22 +7,17 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Roof
+      name: BrickReal.001
+    second: {fileID: 2100000, guid: 0a1ba083acf4bab4497478b96fadfdd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roof.006
     second: {fileID: 2100000, guid: ab6592ef3cb4cbe47945da1aae61420f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Roof.005
-    second: {fileID: 2100000, guid: ab6592ef3cb4cbe47945da1aae61420f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: White
-    second: {fileID: 2100000, guid: 3abc41eec966a3c4e8d17c3da720b079, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: White.007
+      name: White.008
     second: {fileID: 2100000, guid: a3ab6fa66b11cac438ef160303384ebc, type: 2}
   materials:
     materialImportMode: 2

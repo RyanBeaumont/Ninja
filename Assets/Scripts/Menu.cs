@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
@@ -21,6 +22,7 @@ public class Menu : MonoBehaviour
     public Image portrait;
     public Transform settingsContainer;
     public Transform equipmentContainer;
+    public Transform universalUI;
     public TMP_Text descriptionText;
     public string currentCharacter = "";
     public Transform locationName;
@@ -33,6 +35,7 @@ public class Menu : MonoBehaviour
         Cursor.visible = false;
         tutorialUI.gameObject.SetActive(false);
         entireMenu.gameObject.SetActive(false);
+        universalUI.gameObject.SetActive(false);
         settingsContainer.gameObject.SetActive(false);
         var audioStart = GameObject.FindAnyObjectByType<StartMusic>();
         if(audioStart != null)
@@ -66,6 +69,11 @@ public class Menu : MonoBehaviour
     {
         settingsContainer.gameObject.SetActive(true);
         characterContainer.gameObject.SetActive(false);
+    }
+
+    public void QuitToMainMenu()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 
     public void ShowCharacterMenu(string character)
@@ -251,11 +259,15 @@ public class Menu : MonoBehaviour
                 thisCharacter.transform.Find("Health/HP").GetComponent<TMP_Text>().text = $"{partyMember.hpPercentage * tempHP}/{tempHP}";
                 thisCharacter.transform.Find("Health").GetComponent<Slider>().value = partyMember.hpPercentage;
                 thisCharacter.transform.Find("Portrait").GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/{partyMember.memberName}");
+                int xpThreshold = 100 + partyMember.level * 10;
+                thisCharacter.transform.Find("XP").GetComponent<Slider>().value = (float)partyMember.xp / xpThreshold;
+                thisCharacter.transform.Find("XP/XP").GetComponent<TMP_Text>().text = $"{partyMember.xp}/{xpThreshold} XP";
                 }
                 else
                 {
                     thisCharacter.transform.Find("Health/HP").GetComponent<TMP_Text>().text = $"DEAD";
                     thisCharacter.transform.Find("Health").GetComponent<Slider>().value = 0;
+                    thisCharacter.transform.Find("XP").GetComponent<Slider>().value = 0;
                     thisCharacter.transform.Find("Portrait").GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/Cards/IconDeath");
                 }
                 
@@ -273,7 +285,7 @@ public class Menu : MonoBehaviour
             Time.timeScale = 1f;
         }
 
-        if(FindFirstObjectByType<BattleManager>() != null || GameObject.Find("ShopUI") != null)
+        if(GameObject.Find("ShopUI") != null || GameObject.Find("Saves(Clone)") != null)
         {
             return;
         }
@@ -295,21 +307,39 @@ public class Menu : MonoBehaviour
                 else
                 {
                     entireMenu.gameObject.SetActive(false);
+                    universalUI.gameObject.SetActive(false);
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
                     Time.timeScale = 1f;
                 }
             }
-        else
+            else
             {
                 entireMenu.gameObject.SetActive(true);
+                universalUI.gameObject.SetActive(true);
                 UpdateParty();
                 itemContainer.GetComponent<Inventory>().UpdateInventoryImages(GameManager.Instance.inventory);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 Time.timeScale = 0f;
             }
-        
+
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && FindFirstObjectByType<BattleManager>() != null)
+        {
+            if(universalUI.gameObject.activeInHierarchy)
+                {
+                    universalUI.gameObject.SetActive(false);
+                    settingsContainer.gameObject.SetActive(false);
+                    Time.timeScale = 1f;
+                }
+            else
+            {
+                universalUI.gameObject.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                Time.timeScale = 0f;
+            }
         }   
 
        
