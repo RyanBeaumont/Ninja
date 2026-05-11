@@ -1019,6 +1019,7 @@ MonoBehaviour:
     removeOnHit: 0
     caller: {fileID: 0}
     statusUpdate: 0
+    particleEffect: {fileID: 0}
   activePlayer: {fileID: 0}
   activeCombatant: {fileID: 0}
   TurnOrderUI: {fileID: 3893457885137305807}
@@ -1240,7 +1241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -18.045044, y: -33.840088}
+  m_AnchoredPosition: {x: -18.045044, y: -123.23}
   m_SizeDelta: {x: 516.6417, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7223872248291653285
@@ -2874,10 +2875,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7274050575041734983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -642.66846, y: -18.585815}
-  m_SizeDelta: {x: -1293.78, y: 8.5}
+  m_AnchoredPosition: {x: -219.78, y: -81}
+  m_SizeDelta: {x: 626.22, y: 8.5}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1299791727433459345
 CanvasRenderer:

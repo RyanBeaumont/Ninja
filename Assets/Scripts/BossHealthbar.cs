@@ -3,11 +3,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Healthbar : MonoBehaviour {
+public class BossHealthbar : MonoBehaviour {
     Character character;
     public Combatant combatant;
     public Slider whiteHealth;
-    public Image hpBar;
+    Image hpBar;
     Slider mp;
     TMP_Text levelText;
     public TMP_Text hpText;
@@ -29,7 +29,6 @@ public class Healthbar : MonoBehaviour {
             if(combatant is PlayerCombatant)
             {
                 //Lime green
-                Debug.Log("Player combatant found, setting hp bar color to lime green");
                 hpBar.color = new Color(0.5f, 1f, 0f);
             }
             whiteHealth.maxValue = combatant.maxHp;
@@ -52,9 +51,6 @@ public class Healthbar : MonoBehaviour {
             if(nameText != null) nameText.text = $"{combatant.combatantName} (HP: {Mathf.Round(combatant.hp)}/{Mathf.Round(combatant.maxHp)})";
             //mp.value = Mathf.RoundToInt(combatant.mp);
             //mpText.text = Mathf.RoundToInt(combatant.mp).ToString();
-        }else
-        {
-            Debug.LogWarning("No combatant assigned to healthbar");
         }
         if(whiteHealth.value > health.value)
         {

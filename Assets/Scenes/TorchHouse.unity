@@ -431,16 +431,16 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   dialog:
-  - text: (This spirtual version of Jade is not gonna be out for long - if she even
-      follows the same laws of physics. I need to get out of here before she wakes
-      up)
+  - text: (This spirtual version of Jade is not gonna be knocked out for long - if
+      she even follows the same laws of physics. I need to get out of here before
+      she wakes up)
     name: Torch
     character: {fileID: 0}
-    pose: Explaining
+    pose: FightingIdle
     cameraAngle: 5
     face: Confused
   turnToFace: 0
-  snapPlayerPosition: 1
+  snapPlayerPosition: 0
 --- !u!114 &9559059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,8 +462,12 @@ MonoBehaviour:
   waypoints:
   - waypointTransform: {fileID: 239178620}
     animation: Launcher
-    duration: 0.5
+    duration: 1
     sound: explosion
+  - waypointTransform: {fileID: 858805558}
+    animation: Defeated
+    duration: 1
+    sound: Teleport
   waitForEnd: 1
   cameraSource: {fileID: 0}
 --- !u!114 &9559060
@@ -485,7 +489,7 @@ MonoBehaviour:
   combatBeats:
   - attacker: {fileID: 0}
     defender: {fileID: 9559052}
-    animation: FrontKick
+    animation: Kick
     hitPose: Stunned
     delay: 0
     attackSound: s_dbz_whoosh
@@ -19551,6 +19555,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+--- !u!1 &858805557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 858805558}
+  m_Layer: 10
+  m_Name: Waypoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &858805558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858805557}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7967499, z: -0, w: 0.60430926}
+  m_LocalPosition: {x: -39.016, y: -2.422, z: 7.105}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1870404941}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &859577683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41597,6 +41632,7 @@ Transform:
   m_Children:
   - {fileID: 1073857534}
   - {fileID: 239178620}
+  - {fileID: 858805558}
   - {fileID: 9559052}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
