@@ -31,6 +31,7 @@ public class EnemyCombatant : Combatant
     public float goldReward = 10f;
     public float attackSpeed = 0.25f;
     public Sprite portrait;
+    public bool boss = false;
     [HideInInspector] public EnemyAttackData tempAttackData;
 
     public void OnHit(string direction)

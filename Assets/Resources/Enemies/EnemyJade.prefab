@@ -83,6 +83,7 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 0
     mpCost: 0
     healthThreshold: 100
@@ -103,6 +104,7 @@ MonoBehaviour:
       removeOnHit: 1
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 7
     mpCost: 60
     healthThreshold: 50
@@ -120,6 +122,7 @@ MonoBehaviour:
   goldReward: 150
   attackSpeed: 0.8
   portrait: {fileID: 21300000, guid: 554f8753867ac4a4abd916a8fd2f5586, type: 3}
+  boss: 1
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -137,6 +140,7 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100

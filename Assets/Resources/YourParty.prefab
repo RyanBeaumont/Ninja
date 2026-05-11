@@ -93,7 +93,7 @@ MonoBehaviour:
     alive: 1
   - memberName: Torch
     modelName: Torch
-    level: 5
+    level: 9
     xp: 0
     hpPercentage: 1
     mainClass: 4

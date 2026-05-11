@@ -26,6 +26,7 @@ public class Menu : MonoBehaviour
     public TMP_Text descriptionText;
     public string currentCharacter = "";
     public Transform locationName;
+    public Transform bossHP;
 
 
     void Start()
@@ -34,6 +35,7 @@ public class Menu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         tutorialUI.gameObject.SetActive(false);
+        bossHP.gameObject.SetActive(false);
         entireMenu.gameObject.SetActive(false);
         universalUI.gameObject.SetActive(false);
         settingsContainer.gameObject.SetActive(false);

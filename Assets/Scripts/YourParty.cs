@@ -255,8 +255,15 @@ public class YourParty : MonoBehaviour
             //spread out combatants centered around spawn point
             combatantObject.transform.localPosition = new Vector3((-0.5f * spacing * enemyPrefabs.Count) + (i * spacing), 0f, 0f);
             combatantObject.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
-            var combatant = combatantObject.GetComponent<Combatant>();
-            var healthbar = Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);
+            var combatant = combatantObject.GetComponent<EnemyCombatant>();
+            if (combatant.boss)
+            {
+                var menu = FindFirstObjectByType<Menu>();
+                if(menu != null){menu.bossHP.gameObject.SetActive(true);
+                    menu.bossHP.GetComponent<Healthbar>().combatant = combatant;
+                }
+        
+            }else{Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);}
             battleManager.AddCombatant(combatant);
             GameManager.Instance.ShowMessage($"{combatant.combatantName} appears!");
             var effect = Instantiate(Resources.Load<GameObject>("Particles/Encounter"), combatantObject.transform);

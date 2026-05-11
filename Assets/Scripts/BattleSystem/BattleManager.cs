@@ -334,7 +334,9 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        AudioManager.Instance.PlayMusic(Resources.Load<AudioClip>("Sound/Music/Win"), 0.2f);
+        //disable boss hp overlay
+        var menu = FindFirstObjectByType<Menu>();
+        menu.bossHP.gameObject.SetActive(false);
         DialogBox d = FindFirstObjectByType<DialogBox>();
         d.StartDialog(dialog);
         d.OnDialogFinished += OnDialogFinished;
@@ -348,6 +350,9 @@ public class BattleManager : MonoBehaviour
     {
         AudioManager.Instance.PlayMusic(Resources.Load<AudioClip>("Sound/Music/Defeat"), 0.2f);
         DialogBox d = FindFirstObjectByType<DialogBox>();
+        //disable boss hp overlay
+        var menu = FindFirstObjectByType<Menu>();
+        menu.bossHP.gameObject.SetActive(false);
         d.StartDialog(new List<Dialog>()
         {
             new Dialog()

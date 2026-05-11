@@ -45,6 +45,9 @@ EditorBuildSettings:
     path: Assets/Scenes/JackHouse2.unity
     guid: eec2fda4e8436ce49a1c93ff331bf68a
   - enabled: 1
+    path: Assets/Scenes/Library.unity
+    guid: 51af10fbf8b29444b9b5ebfa42584f64
+  - enabled: 1
     path: Assets/Scenes/RadioTower.unity
     guid: 7d176d22dc158074ab686d8668115b19
   - enabled: 1

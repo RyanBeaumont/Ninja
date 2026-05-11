@@ -8718,7 +8718,7 @@ MonoBehaviour:
   failBranch: 
   sceneName: Overworld
   spawnPointIndex: 7
-  sceneVariant: 4
+  sceneVariant: 6
   skybox: {fileID: 2100000, guid: 3930fc89a28b29746bde6a2389a513e0, type: 2}
   cameraTarget: {fileID: 0}
 --- !u!114 &758217948
