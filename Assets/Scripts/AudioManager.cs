@@ -7,11 +7,13 @@ public class AudioManager : MonoBehaviour
 
     AudioSource active;
     AudioSource inactive;
-     [SerializeField] AudioSource soundEffectsSource;
+    [SerializeField] AudioSource soundEffectsSource;
 
-     
-    [SerializeField]AudioClip mainTheme;
-    [SerializeField]AudioClip encounterTheme;
+    Coroutine crossfadeCoroutine;
+    AudioClip crossfadeTargetClip;
+
+    [SerializeField] AudioClip mainTheme;
+    [SerializeField] AudioClip encounterTheme;
     [SerializeField] FloatValue musicVolume;
     [SerializeField] FloatValue sfxVolume;
 
@@ -56,9 +58,15 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySoundEffect(string effect, float pitch = 1f)
     {
+        if (soundEffectsSource == null)
+        {
+            Debug.LogWarning("AudioManager: soundEffectsSource is not assigned.");
+            return;
+        }
+
         soundEffectsSource.volume = sfxVolume.value;
         var fx = Resources.Load<AudioClip>($"Sound/SFX/{effect}");
-        if(fx != null)
+        if (fx != null)
             soundEffectsSource.PlayOneShot(fx, pitch);
     }
 
@@ -68,12 +76,22 @@ public class AudioManager : MonoBehaviour
         if (active.clip == newClip)
             return;
 
+        if (crossfadeTargetClip == newClip && crossfadeCoroutine != null)
+            return;
+
+        crossfadeTargetClip = newClip;
+
+        if (crossfadeCoroutine != null)
+        {
+            StopCoroutine(crossfadeCoroutine);
+            crossfadeCoroutine = null;
+        }
+
         inactive.clip = newClip;
         inactive.volume = 0f;
         inactive.Play();
 
-        StopAllCoroutines();
-        StartCoroutine(Crossfade(fadeTime));
+        crossfadeCoroutine = StartCoroutine(Crossfade(fadeTime));
     }
 
     IEnumerator Crossfade(float duration)
@@ -98,9 +116,10 @@ public class AudioManager : MonoBehaviour
         from.Stop();
         to.volume = musicVolume.value;
 
-        //swap AFTER fade completes
+        // swap AFTER fade completes
         active = to;
         inactive = from;
+        crossfadeCoroutine = null;
     }
 
 

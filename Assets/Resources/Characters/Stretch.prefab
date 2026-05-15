@@ -202,6 +202,7 @@ MonoBehaviour:
   combatIdle: IdleStretching
   combatWeapon: {fileID: 6139973996953326225, guid: 9caa3d0f6764dcb41bd66387551bdb34, type: 3}
   color: {r: 1, g: 0.8302624, b: 0, a: 1}
+  heightOffset: -0.25
 --- !u!1 &9049970306333817541
 GameObject:
   m_ObjectHideFlags: 0

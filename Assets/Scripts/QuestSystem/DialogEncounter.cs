@@ -74,10 +74,17 @@ public class DialogEncounter : ChainedInteractable
             var characterController = player.GetComponent<CharacterController>();
             characterController.enabled = false;
             currentlyTurningToFace = false;
+
+            
+            SnapToGround(player);
+            //player.transform.position += player.transform.up * 0.5f;
+
             if (snapPlayerPosition)
             {
                 transform.rotation = originalRotation;
-                player.position = transform.position + transform.forward * 1.5f + transform.up * 0.5f;
+                //change only player x and z
+                var targetPoint = transform.position + transform.forward * 1.5f;
+                player.position = new Vector3(targetPoint.x, player.position.y, targetPoint.z);
             }
             Vector3 direction = transform.position - player.position;
             direction.y = 0f; // ignore vertical
@@ -94,10 +101,12 @@ public class DialogEncounter : ChainedInteractable
                     GameObject thisPartyMember = Instantiate(Resources.Load<GameObject>($"Characters/{modelToSpawn}"));
                     float offsetIndex = startOffset + (i - 1);
 
-                    Vector3 offset =  player.right * offsetIndex * spacing - player.forward * 1.5f + Vector3.down * 0.5f; // slightly behind player
+                    Vector3 offset =  player.right * offsetIndex * spacing - player.forward * 1.5f; // slightly behind player
+                    
 
                     thisPartyMember.transform.position = player.position + offset;
                     thisPartyMember.transform.rotation = player.rotation;
+                    SnapToGround(thisPartyMember.transform);
                     spawnedCharacters.Add(thisPartyMember);
 
                     //Replace dialog by name
@@ -134,6 +143,23 @@ public class DialogEncounter : ChainedInteractable
         CallNext();
         foreach(GameObject g in spawnedCharacters) Destroy(g.gameObject);
         spawnedCharacters.Clear();
+    }
+
+    private void SnapToGround(Transform model)
+    {
+        //Move player up or down to meet the ground
+            CapsuleCollider collider = model.GetComponent<CapsuleCollider>();
+            if (collider != null)
+            {
+                LayerMask groundMask = LayerMask.GetMask("Ground");
+                RaycastHit hit;
+                if (Physics.Raycast(collider.transform.position + Vector3.up * 0.5f, Vector3.down, out hit, 4f, groundMask))
+                {
+                    float halfHeight = collider.height / 2f;
+                    Vector3 newPosition = hit.point + Vector3.up * halfHeight;
+                    model.transform.position = newPosition;
+                }
+            }
     }
 
 }

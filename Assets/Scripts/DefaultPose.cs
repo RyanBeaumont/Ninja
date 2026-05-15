@@ -7,6 +7,7 @@ public class DefaultPose : MonoBehaviour
     public string combatIdle;
     public GameObject combatWeapon;
     public Color color;
+    public float heightOffset = 0f;
 
     void Start()
     {

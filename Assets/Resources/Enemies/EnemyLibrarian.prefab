@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &685576487009101982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5581972000578472701}
+  m_Layer: 10
+  m_Name: WeaponR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5581972000578472701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685576487009101982}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6963643, y: -0.6963643, z: 0.122787856, w: 0.122787856}
+  m_LocalPosition: {x: 0, y: 0.00077, z: -0.00028}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 6638328768691984234}
+  m_LocalEulerAnglesHint: {x: 160, y: 0, z: 90}
 --- !u!1 &1483114475880621696
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,8 +125,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8833767021225393275}
-  - component: {fileID: 7372951704756142816}
   - component: {fileID: -8026483303802534423}
+  - component: {fileID: 2453730252896154336}
   m_Layer: 8
   m_Name: EnemyLibrarian
   m_TagString: Enemy
@@ -121,128 +152,6 @@ Transform:
   - {fileID: 5425721957475478484}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7372951704756142816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8346498964973016767}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09c78ab84227baf4f8c5f656cf47a2f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 1
-  maxHp: 275
-  hp: 275
-  attack: 10
-  defense: 1
-  speed: 15
-  psychic: 15
-  surprise: 0
-  mp: 0
-  maxMp: 0
-  startPosition: {x: 0, y: 0, z: 0}
-  alive: 1
-  resistances: 
-  weaknesses: 01000000
-  discoveredResistances: 
-  discoveredWeaknesses: 
-  combatantName: Ninja Acolyte
-  initiative: 0
-  statusEffects: []
-  attackPatterns:
-  - attackPattern: SwordThrust
-    attackName: Discarding Strike
-    damage: 30
-    damageType: 0
-    targetType: 1
-    statusEffect:
-      name: Discard
-      stat: 
-      sprite: {fileID: 0}
-      amount: 1
-      description: 
-      additive: 1
-      duration: 1
-      removeOnHit: 0
-      caller: {fileID: 0}
-      statusUpdate: 0
-    hits: 1
-    mpCost: 0
-    healthThreshold: 100
-    altFunction: 
-  - attackPattern: Burst
-    attackName: Speed Up
-    damage: 10
-    damageType: 1
-    targetType: 4
-    statusEffect:
-      name: Speed Up
-      stat: 
-      sprite: {fileID: 0}
-      amount: 0.25
-      description: 
-      additive: 1
-      duration: 1
-      removeOnHit: 0
-      caller: {fileID: 0}
-      statusUpdate: 0
-    hits: 1
-    mpCost: 0
-    healthThreshold: 100
-    altFunction: BuffAlly
-  - attackPattern: SwordThrust
-    attackName: Discarding Strike
-    damage: 30
-    damageType: 0
-    targetType: 1
-    statusEffect:
-      name: Discard
-      stat: 
-      sprite: {fileID: 0}
-      amount: 1
-      description: 
-      additive: 1
-      duration: 1
-      removeOnHit: 0
-      caller: {fileID: 0}
-      statusUpdate: 0
-    hits: 1
-    mpCost: 0
-    healthThreshold: 100
-    altFunction: 
-  lootDrops:
-  - itemID: Coca-Cola Keg
-    dropChance: 25
-  - itemID: Coke
-    dropChance: 50
-  xpReward: 20
-  goldReward: 20
-  attackSpeed: 0.75
-  portrait: {fileID: 21300000, guid: 4eb34c1fdaaa2584fbf6502556111180, type: 3}
-  tempAttackData:
-    attackPattern: 
-    attackName: 
-    damage: 
-    damageType: 0
-    targetType: 0
-    statusEffect:
-      name: 
-      stat: 
-      sprite: {fileID: 0}
-      amount: 0
-      description: 
-      additive: 1
-      duration: -1
-      removeOnHit: 0
-      caller: {fileID: 0}
-      statusUpdate: 0
-    hits: 1
-    mpCost: 0
-    healthThreshold: 100
-    altFunction: 
 --- !u!136 &-8026483303802534423
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -266,6 +175,133 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2453730252896154336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346498964973016767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f1e240e08349d4ca9ba5ba50670345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 10
+  maxHp: 1300
+  hp: 1300
+  attack: 20
+  defense: 1
+  speed: 30
+  psychic: 50
+  surprise: 0
+  mp: 0
+  maxMp: 150
+  startPosition: {x: 0, y: 0, z: 0}
+  alive: 1
+  resistances: 
+  weaknesses: 0100000002000000
+  discoveredResistances: 
+  discoveredWeaknesses: 
+  combatantName: Librarian
+  initiative: 0
+  statusEffects: []
+  attackPatterns:
+  - attackPattern: SwordBackhand, Slash, SwordBackhand
+    attackName: Shredder
+    damage: 20
+    damageType: 0
+    targetType: 3
+    statusEffect:
+      name: 
+      stat: 
+      sprite: {fileID: 0}
+      amount: 1
+      description: 
+      additive: 0
+      duration: 1
+      removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
+    hits: 1
+    mpCost: 0
+    healthThreshold: 100
+    altFunction: 
+  - attackPattern: Slash, SwordBackhand, Sweep, Slash
+    attackName: Kung Fu For Dummies
+    damage: 30
+    damageType: 0
+    targetType: 1
+    statusEffect:
+      name: 
+      stat: 
+      sprite: {fileID: 0}
+      amount: 0
+      description: 
+      additive: 0
+      duration: 0
+      removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
+    hits: 1
+    mpCost: 0
+    healthThreshold: 100
+    altFunction: 
+  - attackPattern: Slash, SwordThrust, Slash, SwordThrust, LongswordBlast
+    attackName: This Ain't the Kids Section
+    damage: 30
+    damageType: 0
+    targetType: 1
+    statusEffect:
+      name: 
+      stat: 
+      sprite: {fileID: 0}
+      amount: 0
+      description: 
+      additive: 0
+      duration: 0
+      removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
+    hits: 1
+    mpCost: 0
+    healthThreshold: 50
+    altFunction: 
+  lootDrops:
+  - itemID: Jockstrap
+    dropChance: 100
+  - itemID: Suit of Armor
+    dropChance: 100
+  xpReward: 200
+  goldReward: 200
+  attackSpeed: 0.5
+  portrait: {fileID: 21300082, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  boss: 1
+  tempAttackData:
+    attackPattern: 
+    attackName: 
+    damage: 
+    damageType: 0
+    targetType: 0
+    statusEffect:
+      name: 
+      stat: 
+      sprite: {fileID: 0}
+      amount: 0
+      description: 
+      additive: 1
+      duration: -1
+      removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
+    hits: 1
+    mpCost: 0
+    healthThreshold: 100
+    altFunction: 
 --- !u!1001 &224500113225208119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -444,6 +480,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8833767021225393275}
     m_Modifications:
+    - target: {fileID: 1791792879841740852, guid: 70a07ba5a8d3ed5448ef363ff8d68384, type: 3}
+      propertyPath: combatWeapon
+      value: 
+      objectReference: {fileID: 5739906397670561822}
     - target: {fileID: 3080790324867169506, guid: 70a07ba5a8d3ed5448ef363ff8d68384, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -490,12 +530,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 9133104568828129720, guid: 70a07ba5a8d3ed5448ef363ff8d68384, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5581972000578472701}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a07ba5a8d3ed5448ef363ff8d68384, type: 3}
 --- !u!4 &603043185843886640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3080790324867169506, guid: 70a07ba5a8d3ed5448ef363ff8d68384, type: 3}
+  m_PrefabInstance: {fileID: 2494812702495155922}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6638328768691984234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9133104568828129720, guid: 70a07ba5a8d3ed5448ef363ff8d68384, type: 3}
   m_PrefabInstance: {fileID: 2494812702495155922}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2882435757047308894
@@ -690,6 +738,11 @@ PrefabInstance:
 --- !u!4 &4964073832476639908 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd501448429e63d4990b13ac895818b9, type: 3}
+  m_PrefabInstance: {fileID: 4857510039028000079}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5739906397670561822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bd501448429e63d4990b13ac895818b9, type: 3}
   m_PrefabInstance: {fileID: 4857510039028000079}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8317143035146219120

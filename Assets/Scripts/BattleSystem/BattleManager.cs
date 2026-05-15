@@ -792,7 +792,8 @@ public class BattleManager : MonoBehaviour
             animation = "Throw",
             damageType = DamageType.Psychic,
             damage = "25",
-            hits = 1
+            hits = 1,
+            bonusActions = 1
         };
         var targetAction = new ChooseTargetsAction()
         {
@@ -877,6 +878,12 @@ public class BattleManager : MonoBehaviour
                     if (activeCombatant.HasStatusEffect("Poisoner") != null)
                     {
                         t.ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Poisoned",1,1));
+                    }
+                    if (t.HasStatusEffect("Bounty") != null)
+                    {
+                        attacksRemaining += 1;
+                        activePlayer.GainMP(30);
+                        GameManager.Instance.ShowMessage("Bounty claimed! Bonus action");
                     }
                 }
             }

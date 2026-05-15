@@ -9967,6 +9967,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 8346498964973016767, guid: d23ec155faf49b34296cb74a46422490, type: 3}
   - {fileID: 9134773197608302933, guid: 2692803cda0a9794ea986c6ba1b1735d, type: 3}
+  - {fileID: 8346498964973016767, guid: 471389ca332ff9345b9172651d8a2569, type: 3}
   hideObjects: []
   battleMusic: {fileID: 8300000, guid: bbbc1fc114e2ded4bbf301255e648906, type: 3}
 --- !u!1001 &794815443
@@ -10826,8 +10827,9 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   enemies:
-  - {fileID: 8346498964973016767, guid: d23ec155faf49b34296cb74a46422490, type: 3}
+  - {fileID: 8346498964973016767, guid: 471389ca332ff9345b9172651d8a2569, type: 3}
   - {fileID: 8346498964973016767, guid: 625f093e75cb26f44ac0e6f527498d7a, type: 3}
+  - {fileID: 8346498964973016767, guid: dc99b561c5aa6bd4c966bba0afa809a3, type: 3}
   hideObjects: []
   battleMusic: {fileID: 8300000, guid: bbbc1fc114e2ded4bbf301255e648906, type: 3}
 --- !u!1001 &892951097
@@ -19103,8 +19105,9 @@ MonoBehaviour:
   failBranch: 
   enemies:
   - {fileID: 9134773197608302933, guid: 2692803cda0a9794ea986c6ba1b1735d, type: 3}
-  - {fileID: 8346498964973016767, guid: be430e32a809b7b43a10975cfc8d9e65, type: 3}
+  - {fileID: 8346498964973016767, guid: 471389ca332ff9345b9172651d8a2569, type: 3}
   - {fileID: 9134773197608302933, guid: 2692803cda0a9794ea986c6ba1b1735d, type: 3}
+  - {fileID: 8346498964973016767, guid: dc99b561c5aa6bd4c966bba0afa809a3, type: 3}
   hideObjects: []
   battleMusic: {fileID: 0}
 --- !u!1001 &1483476979

@@ -8579,6 +8579,72 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef5abfaa21e6ee1468bed9c8bb1f71dd, type: 3}
+--- !u!1001 &147867492
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 845594251}
+    m_Modifications:
+    - target: {fileID: 497136262740711490, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: face
+      value: Mad
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.062
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.438
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.63873297
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.76942855
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -100.605
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629889987127832614, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+      propertyPath: m_Name
+      value: Storm (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+--- !u!4 &147867493 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8610776357335420716, guid: e65782f1295db9a4b812124dd98b448e, type: 3}
+  m_PrefabInstance: {fileID: 147867492}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &152674146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51017,6 +51083,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!95 &839371170
 Animator:
   serializedVersion: 7
@@ -51251,6 +51318,41 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59db014136037dd45a2dd299df8f3a6e, type: 3}
+--- !u!1 &845594250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 845594251}
+  m_Layer: 0
+  m_Name: SceneVariant_7
+  m_TagString: SceneVariant
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &845594251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845594250}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1419964435}
+  - {fileID: 147867493}
+  - {fileID: 1524020893}
+  - {fileID: 1181644940}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &845603718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60580,6 +60682,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!1001 &988343559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63473,6 +63576,7 @@ Transform:
   - {fileID: 1997279346}
   - {fileID: 2097083294}
   - {fileID: 825004146}
+  - {fileID: 1582561303}
   - {fileID: 657697832}
   - {fileID: 464674812}
   - {fileID: 909673989}
@@ -63983,6 +64087,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!95 &1049823883
 Animator:
   serializedVersion: 7
@@ -70123,6 +70228,317 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef5abfaa21e6ee1468bed9c8bb1f71dd, type: 3}
+--- !u!1 &1181644939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1181644940}
+  - component: {fileID: 1181644949}
+  - component: {fileID: 1181644948}
+  - component: {fileID: 1181644947}
+  - component: {fileID: 1181644946}
+  - component: {fileID: 1181644945}
+  - component: {fileID: 1181644944}
+  - component: {fileID: 1181644943}
+  - component: {fileID: 1181644942}
+  - component: {fileID: 1181644941}
+  m_Layer: 0
+  m_Name: Encounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1181644940
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181644939}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.70710564, z: -0, w: 0.70710796}
+  m_LocalPosition: {x: -13.47, y: -10.757, z: 9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 845594251}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1181644941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181644939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
+--- !u!114 &1181644942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181644939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: Stop! Get off me!
+    name: Storm
+    character: {fileID: 147867493}
+    pose: Defeated
+    cameraAngle: 13
+    face: Mad
+  - text: "If you disappear on us before the final fight\u2026 That\u2019s a death
+      sentence, Jack"
+    name: Stretch
+    character: {fileID: 1524020893}
+    pose: Defeated
+    cameraAngle: 13
+    face: Mad
+  - text: "Do you hear what Thad is saying right now? He\u2019s unstable - If he
+      stays with us in the final battle, he\u2019s gonna backstab us to get in that
+      vault, and jeopardize everything in the process, and worst of all he thinks
+      he\u2019s doing it for you!"
+    name: Stretch
+    character: {fileID: 1524020893}
+    pose: Defeated
+    cameraAngle: 13
+    face: Mad
+  - text: "If you REALLY wanna keep your friends safe - if you want to stop Jade
+      and throw a wrench in Agent R\u2019s schemes, you know the weak links need
+      to be dealt with. The sword needs to stay locked away. And Big Sam, who\u2019s
+      side are you even on?\r\n"
+    name: Storm
+    character: {fileID: 147867493}
+    pose: Defeated
+    cameraAngle: 13
+    face: Mad
+  - text: "I\u2019m just the man with the can, man"
+    name: Big Sam
+    character: {fileID: 0}
+    pose: Unsheath
+    cameraAngle: 3
+    face: Confused
+  - text: "Ugh. I\u2019m sick of all this wishy-washy side swapping"
+    name: Storm
+    character: {fileID: 147867493}
+    pose: Backflip
+    cameraAngle: 3
+    face: Confused
+  - text: Jack, make your choice, we settle this now. What party will you take to
+      the end?
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 3
+    face: Confused
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &1181644943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181644939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaac1eb462cde5f4b9938f6cffc964af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  combatBeats:
+  - attacker: {fileID: 0}
+    defender: {fileID: 147867493}
+    animation: SwordCounter
+    hitPose: Knockdown
+    delay: 0.25
+    attackSound: s_dbz_jump
+    sound: s_punch
+    reversed: 0
+  - attacker: {fileID: 0}
+    defender: {fileID: 1524020893}
+    animation: Sweep
+    hitPose: Knockdown
+    delay: 0
+    attackSound: s_whoosh
+    sound: s_punch
+    reversed: 0
+  cameraSource: {fileID: 1181644940}
+--- !u!114 &1181644944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181644939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: "Thad, Sam, Spartan, I was listening the whole time\u2026"
+    name: Storm
+    character: {fileID: 147867493}
+    pose: Sass
+    cameraAngle: 6
+    face: Confused
+  - text: 'Crap!
+
+      Look over there, what''s that?'
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Objection
+    cameraAngle: 6
+    face: Angry
+  - text: Where?
+    name: Storm
+    character: {fileID: 147867493}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Surprised
+  turnToFace: 0
+  snapPlayerPosition: 1
+--- !u!114 &1181644945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181644939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc188127f6a42c46a49d02911cf03b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  encounterMusic: {fileID: 8300000, guid: 0841476bb5b8d3c449dc700a50730a6d, type: 3}
+  fadeTime: 1.5
+  sfx: Alert
+--- !u!114 &1181644946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181644939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c98763bde1e894f9c5f6a304ca39dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+--- !u!65 &1181644947
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181644939}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1181644948
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181644939}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1181644949
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181644939}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1182719259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78970,6 +79386,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!4 &1321626069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3289031782561742516, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
@@ -79296,6 +79713,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!114 &1324303871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85393,6 +85811,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 889c2fc9d1aba3a4d9f279fb8ac2cad8, type: 3}
   m_PrefabInstance: {fileID: 1419312024}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1419964434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1419964435}
+  - component: {fileID: 1419964436}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1419964435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419964434}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.3826777, z: -0, w: -0.923882}
+  m_LocalPosition: {x: -20.722, y: -10.848, z: 0.97}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2139203364}
+  m_Father: {fileID: 845594251}
+  m_LocalEulerAnglesHint: {x: 0, y: -44.999, z: 0}
+--- !u!114 &1419964436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419964434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43380566ebb04274f83352d0e5e2ebbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 9
 --- !u!1001 &1420497717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85672,6 +86136,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!95 &1421444826
 Animator:
   serializedVersion: 7
@@ -92250,6 +92715,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3503871415192851515, guid: 00b2a4d6234479b48affd810a1258daa, type: 3}
   m_PrefabInstance: {fileID: 1522498341}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1524020892
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 845594251}
+    m_Modifications:
+    - target: {fileID: 6061218905984369798, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_Name
+      value: Stretch (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.6510377
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.029
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.486048
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8034716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5953432
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -73.074
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348990587756189354, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: face
+      value: Blank
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348990587756189354, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: pose
+      value: HandsOnHips
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+--- !u!4 &1524020893 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+  m_PrefabInstance: {fileID: 1524020892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1524555278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94938,6 +95473,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!4 &1561350469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3503871415192851515, guid: 00b2a4d6234479b48affd810a1258daa, type: 3}
@@ -96229,6 +96765,97 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59db014136037dd45a2dd299df8f3a6e, type: 3}
+--- !u!1001 &1582561302
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1045528485}
+    m_Modifications:
+    - target: {fileID: 1839908885931748526, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+      propertyPath: m_Name
+      value: Skip to End
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.063
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071079
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710576
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1839908885931748526, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1582561305}
+  m_SourcePrefab: {fileID: 100100000, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+--- !u!4 &1582561303 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+  m_PrefabInstance: {fileID: 1582561302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1582561304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1839908885931748526, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
+  m_PrefabInstance: {fileID: 1582561302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1582561305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582561304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b4ef69776623b4f92b74bdf634fb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  sceneName: DojoInterior
+  spawnPointIndex: 9
+  sceneVariant: 7
+  skybox: {fileID: 0}
+  cameraTarget: {fileID: 0}
 --- !u!1 &1582918629
 GameObject:
   m_ObjectHideFlags: 0
@@ -105440,6 +106067,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!95 &1739906327
 Animator:
   serializedVersion: 7
@@ -116399,6 +117027,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!1 &1950221764
 GameObject:
   m_ObjectHideFlags: 0
@@ -122427,6 +123056,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!136 &2034459486
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -123629,6 +124259,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!1 &2052303802 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 889c2fc9d1aba3a4d9f279fb8ac2cad8, type: 3}
@@ -128893,6 +129524,343 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6231278477969313993, guid: 78532bd5430b50f4889efc2c1c7c661f, type: 3}
   m_PrefabInstance: {fileID: 2137632730}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2139203363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2139203364}
+  - component: {fileID: 2139203369}
+  - component: {fileID: 2139203368}
+  - component: {fileID: 2139203367}
+  - component: {fileID: 2139203370}
+  - component: {fileID: 2139203371}
+  - component: {fileID: 2139203366}
+  - component: {fileID: 2139203365}
+  m_Layer: 0
+  m_Name: StartEncounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2139203364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139203363}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.229, y: 1.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1419964435}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2139203365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139203363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: This is it, Spartan Jack. Finally we have the power to uncover the secret
+      the ninjas have tried so hard to hide from us. Jack, do you have the homemade
+      explosives?
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: Yes sir! Primed and ready to detonate!
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Happy
+  - text: Sam, do you have the can of Axe Body S- I mean Tactical Smoke And Odor
+      Screen?
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: Affirmative
+    name: Big Sam
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: "Where\u2019s Torch?"
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 0
+    face: Confused
+  - text: "Umm, I haven\u2019t heard from him all night. Maybe he chickened out?
+      Let\u2019s hope he\u2019s not with Storm and Stretch"
+    name: Big Sam
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: "Oh well, the plan must go on\u2026 Be silent now. We might think we\u2019re
+      the only ones here, but if there\u2019s one thing I know about the ninjas,
+      it's that they\u2019re masters at sneaking up on you\u2026"
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: Are you sure we want to do this, Thad? We might be walking right into a
+      radioactive death trap
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Confused
+  - text: "Yeah, yeah, and you\u2019re gonna cause the end of the world. I\u2019ve
+      heard it all, and do you know how much I believe?"
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: Umm.. What would the ninjas be doing with a radioactive sword anyway?
+    name: Big Sam
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: Umm, protecting it? From people like Jade and Chrome Dome.. And.. Us?
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: Are you going back on me now? In our moment of glory?
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: Storm called me about the whole radioactive thing... She sounded urgent,
+      so it might be true. At least - I know for a fact that she believes it. They
+      might hate our guts, but I know the girls care about us, Thad.
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Confused
+  - text: "And you heard that walkie talkie we stole.. Agent R, whoever she is, WANTS
+      me to open the vault. She organized this whole thing, because she thinks she
+      has me figured out. And we have no idea how strong she is - Now you\u2019re
+      asking me to play into her hand?"
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: HandsOnHips
+    cameraAngle: 2
+    face: Confused
+  - text: "This town is filled with so many jerks. But these particular jerks are
+      doing half the work for us - hear me out\u2026"
+    name: Thad
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 2
+    face: Confused
+  - text: "We stick to the shadows and disappear. Without our help, the ninjas will
+      be no match for Jade. She will put those self-righteous pieces of trash in
+      their place, and they\u2019ll weaken Jade in the process. Once she opens the
+      vault: BOOM! We strike. And then we are the only ones left\r\n"
+    name: Thad
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 2
+    face: Happy
+  - text: "But what if we\u2019re not\u2026 strong enough?"
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Confused
+  - text: Then we die like men
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: Prepare for war, my dude. The dojo girls are coming at midnight. What time
+      is it now?
+    name: Big Sam
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: Umm.. 12:03
+    name: Spartan Jack
+    character: {fileID: 0}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Confused
+  - text: "\u2026"
+    name: Thad
+    character: {fileID: 0}
+    pose: Idle
+    cameraAngle: 2
+    face: Blank
+  - text: I hear footsteps! Quick, Jack Hide!
+    name: Thad
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 6
+    face: Mad
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &2139203366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139203363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac35fd4abf8e9e146a1aad31e368a113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  overwrite: 1
+  partyMembers:
+  - Spartan Jack
+  - Thad
+  - Big Sam
+--- !u!65 &2139203367
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139203363}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2139203368
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139203363}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2139203369
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139203363}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2139203370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139203363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c98763bde1e894f9c5f6a304ca39dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+--- !u!114 &2139203371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139203363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc188127f6a42c46a49d02911cf03b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  encounterMusic: {fileID: 8300000, guid: fa2846f1e36a15f4f9f4224df6279a0b, type: 3}
+  fadeTime: 0.5
+  sfx: 
 --- !u!1001 &2141804692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131603,6 +132571,7 @@ SceneRoots:
   - {fileID: 998957583}
   - {fileID: 1835307369}
   - {fileID: 143365247}
+  - {fileID: 845594251}
   - {fileID: 1824221020}
   - {fileID: 184500106}
   - {fileID: 1583786153}

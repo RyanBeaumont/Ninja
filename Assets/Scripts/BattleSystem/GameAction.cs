@@ -166,6 +166,7 @@ public class NullifyDamageAction2 : DamageAction
         foreach(var t in battleManager.currentTargets)
         {
             t.RemoveStatusEffect("");
+            t.Heal(25f);
         }
     }
 }
@@ -451,7 +452,7 @@ public class LockInAction : StatusEffectAction
             {
                 name = "Weakened",
                 stat = "DEF",
-                amount = 1.5f,
+                amount = 1.75f,
                 additive = true,
                 duration = 3,
 
@@ -498,7 +499,7 @@ public class ExploitWeaknessAction : DamageAction
         if(battleManager.currentTargets[0] != null && battleManager.currentTargets[0].statusEffects.Count > 0)
         {
             GameManager.Instance.ShowMessage("Exploiting weakness! Bonus action gained!");
-            bonusActions += 1;
+            BattleManager.Instance.attacksRemaining += 1;
         }
     }
 }

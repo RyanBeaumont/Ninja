@@ -19,7 +19,7 @@ MonoBehaviour:
     amount: 1
     description: Takes [duration*10] PSY damage per turn
     additive: 1
-    duration: 1
+    duration: -1
     removeOnHit: 0
     caller: {fileID: 0}
     statusUpdate: 1

@@ -105,6 +105,7 @@ MonoBehaviour:
   combatIdle: IdlePushup
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0.44793797, b: 1, a: 1}
+  heightOffset: -0.1
 --- !u!1001 &1032842142866152052
 PrefabInstance:
   m_ObjectHideFlags: 0

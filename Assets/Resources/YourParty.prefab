@@ -48,7 +48,7 @@ MonoBehaviour:
   reserve:
   - memberName: Spartan Jack
     modelName: SpartanJack
-    level: 1
+    level: 7
     xp: 0
     hpPercentage: 1
     mainClass: 1
@@ -57,7 +57,7 @@ MonoBehaviour:
     alive: 1
   - memberName: Stretch
     modelName: Stretch
-    level: 4
+    level: 7
     xp: 0
     hpPercentage: 1
     mainClass: 2
@@ -66,7 +66,7 @@ MonoBehaviour:
     alive: 1
   - memberName: Thad
     modelName: Thad
-    level: 4
+    level: 7
     xp: 0
     hpPercentage: 1
     mainClass: 4
@@ -75,7 +75,7 @@ MonoBehaviour:
     alive: 1
   - memberName: Storm
     modelName: Storm
-    level: 5
+    level: 7
     xp: 0
     hpPercentage: 1
     mainClass: 3
@@ -84,7 +84,7 @@ MonoBehaviour:
     alive: 1
   - memberName: Big Sam
     modelName: BigSam
-    level: 5
+    level: 7
     xp: 0
     hpPercentage: 1
     mainClass: 1

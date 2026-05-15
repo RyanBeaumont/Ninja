@@ -179,6 +179,7 @@ MonoBehaviour:
   combatIdle: IdlePunchingBag
   combatWeapon: {fileID: 5222867599178813536, guid: 39912fac00195c942ba30a264cda9d37, type: 3}
   color: {r: 0.6698113, g: 0, b: 0, a: 1}
+  heightOffset: 0.15
 --- !u!136 &9194131544939107985
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -656,9 +657,6 @@ PrefabInstance:
       addedObject: {fileID: 3047830801265344913}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 08786807272a57646b576080fa5f6640, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2563093601306805331}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 08786807272a57646b576080fa5f6640, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2734093933141383188}
   m_SourcePrefab: {fileID: 100100000, guid: 08786807272a57646b576080fa5f6640, type: 3}
 --- !u!1 &3644433243113847615 stripped
@@ -688,23 +686,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2563093601306805331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3644433243113847615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e114ab93b5066be4c80a680534745c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: ArmsCrossed
-  face: Happy
-  combatIdle: 
-  combatWeapon: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &2734093933141383188
 MonoBehaviour:
   m_ObjectHideFlags: 0

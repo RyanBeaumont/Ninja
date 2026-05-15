@@ -152,6 +152,11 @@ public class DialogBox : MonoBehaviour
         cameraRig.transform.parent = target;
         cameraRig.transform.localRotation = Quaternion.identity;
         cameraRig.transform.localPosition = new Vector3(0f,0f,0f);
+        if(target.GetComponentInChildren<DefaultPose>() != null)
+        {
+            cameraRig.transform.localPosition = new Vector3(0f, target.GetComponentInChildren<DefaultPose>().heightOffset, 0f);
+        }
+        
         if(target.tag == "Player")
         {
             cameraRig.transform.localPosition += new Vector3(0f,-0.4f,0f);
