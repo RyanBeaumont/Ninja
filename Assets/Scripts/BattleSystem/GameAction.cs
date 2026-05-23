@@ -415,10 +415,33 @@ public class StatusEffectAction : GameAction
     }
 }
 
+public class SoulSuplexAction : EnemyAttackAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        base.Execute(battleManager);
+        if(specialTarget != null)
+        {
+            var myName = specialTarget.combatantName;
+            var summonAction = new SummonAction()
+            {
+                enemy = true,
+                summon = Resources.Load<GameObject>($"Enemies/EnemySoulContainer"),
+                name = myName
+            };
+            battleManager.actionQueue.Add(summonAction);
+            battleManager.RemoveCombatant(specialTarget);
+            GameObject.Destroy(specialTarget,2f);
+        }
+    }
+}
+
+
 public class SummonAction : GameAction
 {
     public bool enemy = true;
     public GameObject summon;
+    public string name = "";
 
     public override void Execute(BattleManager battleManager)
     {
@@ -440,6 +463,7 @@ public class SummonAction : GameAction
         var combatant = combatantObject.GetComponent<Combatant>();
         combatant.initiative = 50f;
         combatant.surprise = true;
+        combatant.combatantName = name != "" ? name : combatant.combatantName;
         var healthbar = Object.Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);
         BattleManager.Instance.AddCombatant(combatant);
         GameManager.Instance.ShowMessage($"<color=red>{combatant.combatantName} appears!</color>");

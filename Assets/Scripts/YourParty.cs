@@ -131,6 +131,7 @@ public class YourParty : MonoBehaviour
             GameManager.Instance.AddInventoryItem(data.items[i], data.itemQuantities[i]);
         }
         gold = data.gold;
+        day = data.day;
         GameManager.Instance.finishedEncounters = data.finishedEncounters;
         foreach(var quest in data.quests)
         {

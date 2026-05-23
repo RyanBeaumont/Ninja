@@ -34,7 +34,7 @@ public class EnemyCombatant : Combatant
     public bool boss = false;
     [HideInInspector] public EnemyAttackData tempAttackData;
 
-    public void OnHit(string direction)
+    public virtual void OnHit(string direction)
     {
         BattleManager.Instance.EnemyHit(direction);
     }

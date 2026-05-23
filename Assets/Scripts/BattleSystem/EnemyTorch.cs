@@ -14,29 +14,33 @@ public class EnemyTorch : EnemyCombatant
     public override void DefaultAttack()
     {
         base.DefaultAttack();
-        //for each player
-        foreach(var playerCombatant in BattleManager.Instance.combatants.OfType<PlayerCombatant>())
-        {
-            if (playerCombatant.alive)
-            {
-                var se = playerCombatant.HasStatusEffect("Suplex");
-                if(se.amount >= 5)
-                {
-                    playerCombatant.RemoveStatusEffect("Suplex");
-                    GameManager.Instance.ShowMessage("Torch uses SOUL SUPLEX!!!");
-                    var summonAction = new EnemyAttackAction()
-                    {
-                        caller = this,
-                        specialTarget = playerCombatant,
-                        animation = "SlamAttacker",
-                        receivingAnimation = "SlamVictim",
-                        damage = "10",
-                    };
-                    BattleManager.Instance.actionQueue.Add(summonAction);
-                }
-            }
-        }
+    }
 
+    public override void OnHit(string direction)
+    {
+  
+        var playerCombatant = BattleManager.Instance.currentTargets[0];
+        var se = playerCombatant.HasStatusEffect("Suplex");
+            if(se != null && se.amount >= 5)
+            {
+                playerCombatant.RemoveStatusEffect("Suplex");
+                GameManager.Instance.ShowMessage("Torch uses SOUL SUPLEX!!!");
+                BattleManager.Instance.actionQueue.Clear();
+                BattleManager.Instance.EndAction();
+                BattleManager.Instance.clock = 0;
+                PlayAnimation("Idle");
+                var attackAction = new SoulSuplexAction()
+                {
+                    caller = this,
+                    specialTarget = playerCombatant,
+                    animation = "SlamAttacker",
+                    receivingAnimation = "SlamVictim",
+                    damage = "10",
+                };
+                BattleManager.Instance.actionQueue.Add(attackAction);
+                return;
+            }
+            base.OnHit(direction);
     }
 
     public override float TakeDamage(Combatant caller, float baseDamage, DamageType damageType)

@@ -35,7 +35,7 @@ public class Combatant : MonoBehaviour
     Transform model;
     RectTransform statusCanvas;
     Animator animator;
-    void Start()
+    public virtual void Start()
     {
         CapsuleCollider collider = GetComponentInChildren<CapsuleCollider>();
         if (collider != null)

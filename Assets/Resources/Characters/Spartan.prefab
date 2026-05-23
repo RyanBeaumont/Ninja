@@ -104,6 +104,8 @@ MonoBehaviour:
   face: Happy
   combatIdle: 
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!1001 &3886240319430046707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -488,6 +490,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: 52fa88688c333b04981ed3ef197dc674, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 443657acd18e41841a512df4963c0cc0, type: 2}
     - target: {fileID: 1726527512867401859, guid: 52fa88688c333b04981ed3ef197dc674, type: 3}
       propertyPath: m_Layer
       value: 10

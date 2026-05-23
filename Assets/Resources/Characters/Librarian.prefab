@@ -1196,7 +1196,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2f860647bf6a06449ba1bfd9529b27d0, type: 2}
+  - {fileID: 2100000, guid: 79bf00ad1ef42504ea696a037da5784e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1698,6 +1698,7 @@ MonoBehaviour:
   combatIdle: LibrarianIdle
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!1 &3950607794992007608
 GameObject:
   m_ObjectHideFlags: 0
