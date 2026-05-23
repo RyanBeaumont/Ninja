@@ -104,6 +104,8 @@ MonoBehaviour:
   face: Happy
   combatIdle: HandsOnHips
   combatWeapon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!1001 &667638247964175747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -376,6 +378,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: b5a32fab339788c4a9308f7b466cef5e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 70d6fe7c8dfe29e4b8ec36606611c15b, type: 2}
     - target: {fileID: 1726527512867401859, guid: b5a32fab339788c4a9308f7b466cef5e, type: 3}
       propertyPath: m_Layer
       value: 10
