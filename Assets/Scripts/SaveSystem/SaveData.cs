@@ -10,6 +10,7 @@ public class SaveData
     public string locationName;
     public float playTime;
     public float gold;
+    public int day;
     public List<string> playersInParty;
     public List<SavePartyMember> reserve;
     public List<string> items = new List<string>();
@@ -42,6 +43,7 @@ public static class SaveDataBuilder
         data.quests = GameManager.Instance.quests;
         data.playTime = GameManager.Instance.playTime;
         data.gold = YourParty.instance.gold;
+        data.day = YourParty.instance.day;
         data.sceneVariant = GameManager.Instance.sceneVariant;
         data.spawnPoint = GameManager.Instance.currentSpawnPointIndex;
         data.sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;

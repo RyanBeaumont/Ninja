@@ -202,7 +202,7 @@ MonoBehaviour:
   combatIdle: IdleStretching
   combatWeapon: {fileID: 6139973996953326225, guid: 9caa3d0f6764dcb41bd66387551bdb34, type: 3}
   color: {r: 1, g: 0.8302624, b: 0, a: 1}
-  heightOffset: -0.25
+  heightOffset: -0.1
 --- !u!1 &9049970306333817541
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +502,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1797856486294104890, guid: 9808788dc8173b14dba6fbacbaec72c7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5e804e9ae0c12d7418c5632e3aaec175, type: 2}
     - target: {fileID: 1830959882068189617, guid: 9808788dc8173b14dba6fbacbaec72c7, type: 3}
       propertyPath: m_Layer
       value: 10

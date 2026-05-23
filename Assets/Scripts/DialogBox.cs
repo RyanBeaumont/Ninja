@@ -32,6 +32,7 @@ public class DialogBox : MonoBehaviour
     public string choice = "";
     bool canAdvance = true;
     [SerializeField] TMP_Text nameText;
+    [SerializeField] RectTransform nameBox;
     [SerializeField] RectTransform yesButton;
     [SerializeField] RectTransform noButton;
     int sfxTimer = 0;
@@ -212,6 +213,9 @@ public class DialogBox : MonoBehaviour
 
     private IEnumerator TypeLine()
     {
+        
+        if(dialog[0].name != "") nameBox.gameObject.SetActive(true);
+        else nameBox.gameObject.SetActive(false);
         nameText.text = dialog[0].name;
         SetPose(dialog[0].character,dialog[0].pose, dialog[0].cameraAngle, dialog[0].face);
         foreach (char c in dialog[0].text.ToCharArray())

@@ -105,6 +105,7 @@ MonoBehaviour:
   combatIdle: IdlePunchingBag
   combatWeapon: {fileID: 5222867599178813536, guid: 39912fac00195c942ba30a264cda9d37, type: 3}
   color: {r: 1, g: 0.28749478, b: 0, a: 1}
+  heightOffset: 0
 --- !u!1001 &4579963811008479931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -377,6 +378,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: ef2c73202746913419aa8fc0cc9e5a4a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a08fb49d191c3214d87017d278792b4e, type: 2}
     - target: {fileID: 1726527512867401859, guid: ef2c73202746913419aa8fc0cc9e5a4a, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -445,6 +450,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4800545675622748477, guid: ef2c73202746913419aa8fc0cc9e5a4a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4bd8cc4e98c704c499526de374c796b5, type: 2}
     - target: {fileID: 5136908730744217784, guid: ef2c73202746913419aa8fc0cc9e5a4a, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -473,6 +482,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6761708314861323176, guid: ef2c73202746913419aa8fc0cc9e5a4a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4bd8cc4e98c704c499526de374c796b5, type: 2}
     - target: {fileID: 6950137226260877016, guid: ef2c73202746913419aa8fc0cc9e5a4a, type: 3}
       propertyPath: m_Layer
       value: 10

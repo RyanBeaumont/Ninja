@@ -74,6 +74,7 @@ MonoBehaviour:
   combatIdle: IdleDrunk
   combatWeapon: {fileID: 3549127547371844865, guid: f50788517110e5c47995a523e031e329, type: 3}
   color: {r: 1, g: 0.5091263, b: 0, a: 1}
+  heightOffset: 0
 --- !u!1 &4167524766770564074
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,6 +500,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: fd1ab85b78b17534b8d3590e6776f4bc, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: dc69008b5356e3f4db096c3a937bb29e, type: 2}
     - target: {fileID: 1726527512867401859, guid: fd1ab85b78b17534b8d3590e6776f4bc, type: 3}
       propertyPath: m_Layer
       value: 10

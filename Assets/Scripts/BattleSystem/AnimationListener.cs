@@ -18,6 +18,7 @@ public class AnimationListener : MonoBehaviour
 
     void SpawnWeapon(string weapon)
     {
+        if(GetComponent<CopyAnimator>() != null) return;
         //find WeaponR in skeleton (searches deep hierarchy)
         //if the parent or child has a DefaultPose component, get its weapon game model
         var defaultPose = GetComponentInParent<DefaultPose>();
@@ -61,6 +62,7 @@ public class AnimationListener : MonoBehaviour
 
     void SpawnProjectile(string prefab)
     {
+        if(GetComponent<CopyAnimator>() != null) return;
         var c = GetComponentInParent<Combatant>();
         if(c != null)
             BattleManager.Instance.SpawnProjectile(c, prefab);
@@ -68,6 +70,7 @@ public class AnimationListener : MonoBehaviour
 
     void Hit(string direction)
     {
+        if(GetComponent<CopyAnimator>() != null) return;
         if(GetComponentInParent<EnemyCombatant>() != null)
         {
             GetComponentInParent<EnemyCombatant>().OnHit(direction);

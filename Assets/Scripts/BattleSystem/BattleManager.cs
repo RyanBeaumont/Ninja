@@ -65,6 +65,7 @@ public class BattleManager : MonoBehaviour
 
     public LayerMask normalMask;
     public LayerMask characterMask;
+    [HideInInspector] public bool multiDamageType = false;
 
     void Awake()
     {
@@ -886,6 +887,9 @@ public class BattleManager : MonoBehaviour
                         GameManager.Instance.ShowMessage("Bounty claimed! Bonus action");
                     }
                 }
+                if(multiDamageType){if(pendingDamageType == DamageType.Slashing) pendingDamageType = DamageType.Bludgeoning;
+                else if(pendingDamageType == DamageType.Bludgeoning) pendingDamageType = DamageType.Psychic;
+                else if(pendingDamageType == DamageType.Psychic) pendingDamageType = DamageType.Slashing;}
             }
             
         }

@@ -30,19 +30,25 @@ public abstract class ChainedInteractable : PersistentObject, IInteractable
 
     public void Fail()
     {
-        foreach(Branch branch in GetComponents<Branch>())
+        // Get all interactables in the chain and find current position
+        var interactables = GetComponents<IInteractable>();
+        int thisIndex = System.Array.IndexOf(interactables, this);
+        
+        // Only look at branches that come after this one in the chain
+        for (int i = thisIndex + 1; i < interactables.Length; i++)
         {
-            if (branch.branchName.Equals(failBranch))
+            Branch branch = interactables[i] as Branch;
+            if (branch != null && branch.branchName.Equals(failBranch))
             {
                 branch.CallNext();
                 return;
             }
         }
+        
         //No branch found
         GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
         if(this is not Door)
             GameManager.Instance.DestroyCamera();
-        
     }
 
     protected override void Awake()

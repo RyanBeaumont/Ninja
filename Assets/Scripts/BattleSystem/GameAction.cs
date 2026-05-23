@@ -106,7 +106,7 @@ public class EnemyAttackAction : GameAction
     public StatusEffect statusEffect = null;
     public float timeScale = 0.25f;
     public bool loopAnimation = true;
-
+    public string receivingAnimation = "";
     public override void Execute(BattleManager battleManager)
     {
         AudioManager.Instance.PlaySoundEffect("s_dbz_jump",UnityEngine.Random.Range(0.8f,1.2f));
@@ -124,15 +124,20 @@ public class EnemyAttackAction : GameAction
         caller.PlayAnimation(animation);
         battleManager.hitsRemaining = hits;
         battleManager.pendingDamage = caller.EvaluateStatFormula(damage);
-        Time.timeScale = timeScale; //slow down time for dramatic effect
+        
         battleManager.pendingDamageType = damageType;
         if(statusEffect != null && statusEffect.name != "")
             battleManager.pendingStatusEffect = CardDatabase.Instance.getStatusEffect(statusEffect.name,statusEffect.amount,statusEffect.duration);
-        battleManager.canDodge = true;
+        
+        if(receivingAnimation != ""){foreach(Combatant c in battleManager.currentTargets) c.PlayAnimation(receivingAnimation); timeScale = 1f;}
+        else{battleManager.canDodge = true;}
+
+        Time.timeScale = timeScale; //slow down time for dramatic effect
         battleManager.loopAnimation = loopAnimation;
         
     }
 }
+
 
 public class StabbyStabAction: DamageAction
 {
@@ -179,6 +184,7 @@ public class DamageAction : GameAction
     public DamageType damageType;
     public StatusEffect statusEffect = null;
     public bool loopAnimation = false;
+    public bool multiDamageType = false;
 
     public override void Execute(BattleManager battleManager)
     {
@@ -192,10 +198,12 @@ public class DamageAction : GameAction
             statusEffect.caller = caller;
          battleManager.pendingStatusEffect = statusEffect;
         battleManager.loopAnimation = loopAnimation;
+        battleManager.multiDamageType = multiDamageType;
         caller.PlayAnimation(animation);
         if(receivingAnimation != ""){foreach(Combatant c in battleManager.currentTargets) c.PlayAnimation(receivingAnimation);}
     }
 }
+
 
 public class CounterDamageAction : DamageAction
 {

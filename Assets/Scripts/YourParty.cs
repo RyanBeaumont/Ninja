@@ -27,6 +27,7 @@ public class YourParty : MonoBehaviour
     public string currentSaveFileName = "savefile_1";
     public float gold;
     public float spacing = 1f;
+    public int day = 10;
     void Awake()
     {
         if (instance == null)

@@ -105,6 +105,7 @@ MonoBehaviour:
   combatIdle: IdleOffensive
   combatWeapon: {fileID: 7770521537806205000, guid: 34ac1d37729c6a4488bd7e8128b5acfe, type: 3}
   color: {r: 1, g: 0, b: 0.5318794, a: 1}
+  heightOffset: 0
 --- !u!1001 &3861310417951817879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -491,6 +492,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: e280f0bf5053a7f4fbeaa241fae9c283, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4cbf3120599b868428f4fb1b9a5459d7, type: 2}
+    - target: {fileID: 1630794972795428178, guid: e280f0bf5053a7f4fbeaa241fae9c283, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b8be787c24770fb4c96d462f29f3143e, type: 2}
     - target: {fileID: 1726527512867401859, guid: e280f0bf5053a7f4fbeaa241fae9c283, type: 3}
       propertyPath: m_Layer
       value: 10

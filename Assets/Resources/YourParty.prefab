@@ -48,7 +48,7 @@ MonoBehaviour:
   reserve:
   - memberName: Spartan Jack
     modelName: SpartanJack
-    level: 7
+    level: 1
     xp: 0
     hpPercentage: 1
     mainClass: 1
@@ -102,13 +102,13 @@ MonoBehaviour:
     alive: 1
   partyMembers:
   - Spartan Jack
-  - Storm
   - Stretch
   gameDifficulty: {fileID: 11400000, guid: dc74c96ad530c7849ac75dbae876e553, type: 2}
   devTools: 0
   currentSaveFileName: savefile_1
   gold: 0
   spacing: 1
+  day: 10
 --- !u!114 &4165134398127773951
 MonoBehaviour:
   m_ObjectHideFlags: 0
