@@ -42,7 +42,7 @@ public class ConditionalEncounter : ChainedInteractable
         if(defaultPose != null) defaultPose.PlayDefault();
         if(CheckConditions() == false)
         {
-            if(hideObject){
+            if(hideObject || active == false){
                 gameObject.SetActive(false);
                 foreach(ChainedInteractable i in transform.GetComponents<ChainedInteractable>()) i.active = false;
             }

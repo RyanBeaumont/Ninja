@@ -12752,7 +12752,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   levelGate: -1
-  allowedSceneVariants: 0000000001000000
+  allowedSceneVariants: 000000000100000003000000
   needsPartyMember: 
   excludePartyMember: 
   hideObject: 1
@@ -25978,7 +25978,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   levelGate: -1
-  allowedSceneVariants: 0000000001000000
+  allowedSceneVariants: 000000000100000003000000
   needsPartyMember: 
   excludePartyMember: 
   hideObject: 1
@@ -32027,7 +32027,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   levelGate: -1
-  allowedSceneVariants: 0000000001000000
+  allowedSceneVariants: 000000000100000003000000
   needsPartyMember: 
   excludePartyMember: 
   hideObject: 1
@@ -35514,7 +35514,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   levelGate: -1
-  allowedSceneVariants: 0000000001000000
+  allowedSceneVariants: 000000000100000003000000
   needsPartyMember: 
   excludePartyMember: 
   hideObject: 1
@@ -43987,7 +43987,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   levelGate: -1
-  allowedSceneVariants: 0000000001000000
+  allowedSceneVariants: 000000000100000003000000
   needsPartyMember: 
   excludePartyMember: 
   hideObject: 1
@@ -48863,6 +48863,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!4 &3664759742876539949
 Transform:
   m_ObjectHideFlags: 0

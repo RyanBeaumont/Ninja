@@ -536,6 +536,21 @@ public class ExploitWeaknessAction : DamageAction
     }
 }
 
+public class SpeedBoostAction : GameAction
+{
+    //Forces the target to go next in the turn order
+    public override void Execute(BattleManager battleManager)
+    {
+        base.Execute(battleManager);
+        foreach(var t in battleManager.currentTargets)
+        {
+            t.initiative = battleManager.combatants.Max(c => c.initiative) + 1f;
+            t.surprise = true;
+            GameManager.Instance.ShowMessage($"{t.combatantName} is super fast now!");
+        }
+    }
+}
+
 public class ScryAction : GameAction
 {
     public int scryAmount = 3;

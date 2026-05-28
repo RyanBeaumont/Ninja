@@ -17,7 +17,7 @@ MonoBehaviour:
     stat: 
     sprite: {fileID: 21300000, guid: 1d2d344f5a0784d4d91ce19372406baf, type: 3}
     amount: 1
-    description: '[amount] : After 5 hits you will be Suplexed'
+    description: '[amount] : After 4 hits you will be Suplexed'
     additive: 1
     duration: -1
     removeOnHit: 0

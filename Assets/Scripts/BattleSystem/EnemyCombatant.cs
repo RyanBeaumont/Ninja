@@ -39,6 +39,11 @@ public class EnemyCombatant : Combatant
         BattleManager.Instance.EnemyHit(direction);
     }
 
+    public virtual void OnHitSuccess()
+    {
+        
+    }
+
     public override bool StartTurn()
     {
         if(base.StartTurn()){

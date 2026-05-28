@@ -496,7 +496,7 @@ public class CardDatabase : MonoBehaviour
          allCards.Add(new Card()
         {
             cardName = "Get Poison'd",
-            description = "Your teammates apply Poison for as long as they take no damage",
+            description = "Your hits apply Poison until the end of your next turn",
             cost = 20,
             level = 4,
             artwork = "IconDeath",
@@ -507,7 +507,7 @@ public class CardDatabase : MonoBehaviour
                 {
                     animation = "Unsheath",
                     targetType = TargetType.AllAllies,
-                    statusEffect = getStatusEffect("Poisoner", 1, -1)
+                    statusEffect = getStatusEffect("Poisoner", 1, 2)
                 }
             }
         });
@@ -554,17 +554,17 @@ public class CardDatabase : MonoBehaviour
         
         allCards.Add(new Card()
         {
-            cardName = "Disappear",
-            description = "Vanish. Re-enter on anyone's turn by pressing E",
+            cardName = "Speed Boost",
+            description = "Choose an ally to play immediately",
             cost = 30,
             level = 7,
-            artwork = "IconDeath",
+            artwork = "IconNinja",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
-                new VanishAction()
+                new SpeedBoostAction()
                 {
-                    animation = "ArmsCrossed"
+                    animation = "Objection"
                 }
             }
         });
@@ -990,7 +990,7 @@ public class CardDatabase : MonoBehaviour
                 },
                 new DamageAction()
                 {
-                    damage = "70 + 70*HIGH",
+                    damage = "70 + 70*MED",
                     animation = "Kick",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
@@ -1113,6 +1113,7 @@ public class CardDatabase : MonoBehaviour
                 new CloserAction()
                 {
                     animation = "FlyingAxeKick",
+                    targetType = TargetType.SingleEnemy,
                     pattern = "2 2 2"
                 }
             }

@@ -15,11 +15,12 @@ MonoBehaviour:
   statusEffect:
     name: Poisoner
     stat: 
-    sprite: {fileID: 21300000, guid: 350bf2a82c0596448985a18e88df667e, type: 3}
+    sprite: {fileID: 21300000, guid: 067561ed9cc30b847ac18bf958028780, type: 3}
     amount: 1
     description: Each of your hits applies [amount] Poison
     additive: 1
-    duration: -1
+    duration: 2
     removeOnHit: 1
     caller: {fileID: 0}
     statusUpdate: 1
+    particleEffect: {fileID: 0}

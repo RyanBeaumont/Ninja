@@ -56,7 +56,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AmbientIntensity: 0
-    - _LightCutoff: 0.99
+    - _LightCutoff: 1.13
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RimLightPower: 6.37

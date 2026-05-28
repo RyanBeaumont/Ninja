@@ -107,7 +107,9 @@ public class CombatCutscene : ChainedInteractable
             if(currentIndex >= combatBeats.Length){
                 cutsceneActive = false; 
                 var player = GameObject.FindGameObjectWithTag("Player").transform;
-                player.position = originalPosition; player.rotation = originalRotation;
+                //player.GetComponent<CharacterController>().enabled = false;
+                //player.position = originalPosition; player.rotation = originalRotation;
+                //player.GetComponent<CharacterController>().enabled = true;
                 cutsceneCamera.transform.localRotation = Quaternion.identity;
                 GameManager.Instance.DestroyCamera();
                 CallNext(); 

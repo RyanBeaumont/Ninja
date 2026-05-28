@@ -12,6 +12,7 @@ public class Door : ChainedInteractable
         if(!active) return;
         if(spawnPointIndex == -1) spawnPointIndex = GameManager.Instance.currentSpawnPointIndex;
         if(sceneVariant == -1) sceneVariant = GameManager.Instance.sceneVariant;
+        GameManager.Instance.SetGameplayState(GameplayState.FreeMovement);
         GameManager.Instance.StartSceneTransition(sceneName, spawnPointIndex, sceneVariant, cameraTarget, skybox);
         CallNext();
     }

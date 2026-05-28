@@ -149,7 +149,7 @@ public class Combatant : MonoBehaviour
             BattleManager.Instance.RemoveCombatant(this);
             GameManager.Instance.ShowMessage($"<color=red>{combatantName} has been defeated!</color>");
             AudioManager.Instance.PlaySoundEffect("Explosion");
-            animator.Play("Launcher");
+            if(animator != null) animator.Play("Launcher");
             alive = false;
             if(caller != null && caller != this){
             StatusEffect rocket = caller.HasStatusEffect("Rocket Fist");
@@ -335,7 +335,7 @@ public class Combatant : MonoBehaviour
         {
             var effect = statusEffects[i];
             if(effect.statusUpdate != statusUpdate) continue; //Only update the correct type
-            if(effect.name == "Poisoned")
+            if(effect.name == "Poisoned") // || effect.name == "Suplex
             {
                 effect.amount --;
                 if(effect.amount <= 0) statusEffects.Remove(effect);

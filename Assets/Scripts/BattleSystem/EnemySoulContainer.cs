@@ -22,12 +22,6 @@ public class EnemySoulContainer : EnemyCombatant
         }
     }
 
-    public override void OnHit(string direction)
-    {
-        base.OnHit(direction);
-        if(HasStatusEffect("Stunned") != null) {OnDeath();}
-    }
-
     public override void OnDeath()
     {
         base.OnDeath();
@@ -71,7 +65,7 @@ public class EnemySoulContainer : EnemyCombatant
             }
                 
             combatant.attack = attack; combatant.maxHp = maxHp; combatant.speed = speed; combatant.psychic = psychic;
-            combatant.hp = Mathf.Max(hp,1);
+            combatant.hp = 50;
             combatant.maxMp = combatant.psychic * 4;
             combatant.level = partyMember.level;
             combatant.defense = 1f;

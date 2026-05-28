@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using System.Linq;
 
 public class EnemyTorch : EnemyCombatant
@@ -16,19 +15,20 @@ public class EnemyTorch : EnemyCombatant
         base.DefaultAttack();
     }
 
-    public override void OnHit(string direction)
+    public override void OnHitSuccess()
     {
   
         var playerCombatant = BattleManager.Instance.currentTargets[0];
+        if(playerCombatant == null)
+        {
+            print("Player combatant is null");
+            return;
+        }
         var se = playerCombatant.HasStatusEffect("Suplex");
-            if(se != null && se.amount >= 5)
+            if(se != null && se.amount >= 4)
             {
                 playerCombatant.RemoveStatusEffect("Suplex");
                 GameManager.Instance.ShowMessage("Torch uses SOUL SUPLEX!!!");
-                BattleManager.Instance.actionQueue.Clear();
-                BattleManager.Instance.EndAction();
-                BattleManager.Instance.clock = 0;
-                PlayAnimation("Idle");
                 var attackAction = new SoulSuplexAction()
                 {
                     caller = this,
@@ -38,9 +38,8 @@ public class EnemyTorch : EnemyCombatant
                     damage = "10",
                 };
                 BattleManager.Instance.actionQueue.Add(attackAction);
-                return;
             }
-            base.OnHit(direction);
+            base.OnHitSuccess();
     }
 
     public override float TakeDamage(Combatant caller, float baseDamage, DamageType damageType)

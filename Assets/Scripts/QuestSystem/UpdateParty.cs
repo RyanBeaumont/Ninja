@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class UpdateParty : ChainedInteractable
 {
     public bool overwrite = true;
+    public bool exceedLimit = false;
     public string[] partyMembers;
     public override void Interact()
     {
@@ -14,7 +15,7 @@ public class UpdateParty : ChainedInteractable
             }
             foreach(var member in partyMembers)
             {
-                if(YourParty.instance.partyMembers.Count < 3){
+                if(YourParty.instance.partyMembers.Count < 3 || exceedLimit){
                     if(!YourParty.instance.partyMembers.Contains(member))
                         YourParty.instance.AddPartyMember(member);
                     else

@@ -942,6 +942,10 @@ public class BattleManager : MonoBehaviour
         else{
             perfectDodge = false;
             CameraShake(1f,0.4f);
+            if(activeCombatant is EnemyCombatant e)
+            {
+                e.OnHitSuccess();
+            }
             foreach(var t in currentTargets)
             {
                 if(t.alive){

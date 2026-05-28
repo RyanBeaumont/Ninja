@@ -71,11 +71,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 10
-  maxHp: 2000
-  hp: 2000
+  maxHp: 2500
+  hp: 2500
   attack: 15
   defense: 1
-  speed: 30
+  speed: 60
   psychic: 30
   surprise: 0
   mp: 0
