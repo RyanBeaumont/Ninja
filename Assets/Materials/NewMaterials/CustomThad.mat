@@ -56,16 +56,16 @@ Material:
     m_Ints: []
     m_Floats:
     - _AmbientIntensity: 0
-    - _LightCutoff: 0.9
+    - _LightCutoff: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RimLightPower: 6.37
-    - _ShadowCutoff: -0.56
+    - _ShadowCutoff: 0.75
     m_Colors:
     - _HighlightColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
-    - _MainColor: {r: 0.5566038, g: 0.50671947, b: 0.50671947, a: 1}
+    - _MainColor: {r: 1.4142135, g: 1.4142135, b: 1.4142135, a: 1}
     - _RimLightColor: {r: 0.9018288, g: 2.670157, b: 0, a: 1}
-    - _ShadowColor: {r: 0.4716981, g: 0.33152366, b: 0.35532686, a: 1}
+    - _ShadowColor: {r: 0.70710677, g: 0.70710677, b: 0.70710677, a: 1}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
