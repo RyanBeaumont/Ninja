@@ -2838,35 +2838,35 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2096795319}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 51.743
       objectReference: {fileID: 0}
     - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 4.247
       objectReference: {fileID: 0}
     - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 54.196
       objectReference: {fileID: 0}
     - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9102076
       objectReference: {fileID: 0}
     - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.41415226
       objectReference: {fileID: 0}
     - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2882,18 +2882,209 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4258848384577057107, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
       propertyPath: m_Name
-      value: Kristina 1
+      value: ???
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987819847085555387, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      propertyPath: pose
+      value: JadeIdle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4258848384577057107, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 842910222}
+    - targetCorrespondingSourceObject: {fileID: 4258848384577057107, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 842910221}
+    - targetCorrespondingSourceObject: {fileID: 4258848384577057107, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 842910220}
   m_SourcePrefab: {fileID: 100100000, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
 --- !u!4 &842910218 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 359257359588252824, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
   m_PrefabInstance: {fileID: 842910217}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &842910219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4258848384577057107, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+  m_PrefabInstance: {fileID: 842910217}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &842910220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842910219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: 'oh,
+
+      the name''s Nova by the way.
+
+      maybe we''ll meet again.
+      or maybe not.'
+    name: Nova
+    character: {fileID: 1642514945}
+    pose: Meditating
+    cameraAngle: 4
+    face: Confused
+  turnToFace: 0
+  snapPlayerPosition: 0
+--- !u!114 &842910221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842910219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421b0f82fef98c9429ddcffdd1ce777c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  items:
+  - item:
+      itemName: Coke
+      quantity: 10
+      description: 
+      function: 
+    cost: 50
+  - item:
+      itemName: Coffee
+      quantity: 10
+      description: 
+      function: 
+    cost: 50
+  - item:
+      itemName: Bang
+      quantity: 5
+      description: 
+      function: 
+    cost: 50
+  - item:
+      itemName: Coca-Cola Keg
+      quantity: 2
+      description: 
+      function: 
+    cost: 100
+  - item:
+      itemName: DrPepper
+      quantity: 2
+      description: 
+      function: 
+    cost: 150
+--- !u!114 &842910222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842910219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - text: You're not another one of those ninjas that keep attacking us, are you?
+    name: Thad
+    character: {fileID: 0}
+    pose: ArmsCrossed
+    cameraAngle: 0
+    face: 
+  - text: 'who?
+
+      (The mysterious figure looks behind her)
+
+      oh, me?
+
+'
+    name: ???
+    character: {fileID: 842910218}
+    pose: Meditating
+    cameraAngle: 4
+    face: Blank
+  - text: 'i''m just an observer...
+
+      a witness to the great drama about to
+      unfold.
+
+      the ninjas prophesized about this
+
+'
+    name: ???
+    character: {fileID: 842910218}
+    pose: Explaining
+    cameraAngle: 4
+    face: 
+  - text: Does this prophecy have anything to do with... Spartan Jack?
+    name: Thad
+    character: {fileID: 0}
+    pose: Explaining
+    cameraAngle: 2
+    face: Confused
+  - text: 'they told me to keep watch over him,
+
+      and i was like,
+
+      okay
+      sure whatever'
+    name: ???
+    character: {fileID: 842910218}
+    pose: Explaining
+    cameraAngle: 2
+    face: Confused
+  - text: 'and now i''m here,
+
+      and i''m bored,
+
+      and i''m thinking, this
+      forest is pretty nice'
+    name: ???
+    character: {fileID: 842910218}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Happy
+  - text: 'why would i even go back to the ninjas,
+
+      they''re like, okay i guess
+      but do they even care'
+    name: ???
+    character: {fileID: 842910218}
+    pose: ArmsCrossed
+    cameraAngle: 2
+    face: Confused
+  - text: 'anyway you guys seem pretty nice.
+
+      and you''re, like, trying to
+      save the world or whatever'
+    name: ???
+    character: {fileID: 842910218}
+    pose: Embarrassed
+    cameraAngle: 2
+    face: Confused
+  turnToFace: 1
+  snapPlayerPosition: 1
 --- !u!1001 &870655773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5054,6 +5245,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e7f1160f3f3ffb47968b5618bc236b5, type: 3}
+--- !u!4 &1642514945 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1885855232557840526, guid: 1e900c52880401240bf2d47e3cac92e0, type: 3}
+  m_PrefabInstance: {fileID: 842910217}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1645121693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5849,6 +6045,10 @@ PrefabInstance:
       propertyPath: musicClip
       value: 
       objectReference: {fileID: 8300000, guid: 5563344985e47444cb336f0971102dad, type: 3}
+    - target: {fileID: 4607604493686479118, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
+      propertyPath: locationName
+      value: Redcliff Forest
+      objectReference: {fileID: 0}
     - target: {fileID: 4607604493686479118, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
       propertyPath: encounterClip
       value: 
@@ -7328,411 +7528,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ed408fb9a417b740ad0d1aeb9e4ebce, type: 3}
---- !u!1001 &2096795318
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4151748577976030078, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: face
-      value: Blank
-      objectReference: {fileID: 0}
-    - target: {fileID: 4151748577976030078, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: pose
-      value: Meditating
-      objectReference: {fileID: 0}
-    - target: {fileID: 4552535940791351686, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: m_Name
-      value: ???
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: snapPlayerPosition
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[0].name
-      value: Thad
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[0].text
-      value: You're not another one of those ninjas that keep attacking us, are you?
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[1].face
-      value: Blank
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[1].name
-      value: ???
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[1].pose
-      value: Meditating
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[1].text
-      value: 'who?
-
-        (The mysterious figure looks behind her)
-
-        oh,
-        me?
-
-'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[2].name
-      value: ???
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[2].text
-      value: 'i''m just an observer...
-
-        a witness to the great drama about
-        to unfold.
-
-        the ninjas prophesized about this
-
-'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[3].face
-      value: Confused
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[3].name
-      value: Thad
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[3].pose
-      value: Explaining
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[3].text
-      value: Does this prophecy have anything to do with... Spartan Jack?
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[4].face
-      value: Confused
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[4].name
-      value: ???
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[4].pose
-      value: Explaining
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[4].text
-      value: 'they told me to keep watch over him,
-
-        and i was like,
-
-        okay
-        sure whatever'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[5].face
-      value: Happy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[5].name
-      value: ???
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[5].pose
-      value: ArmsCrossed
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[5].text
-      value: 'and now i''m here,
-
-        and i''m bored,
-
-        and i''m thinking,
-        this forest is pretty nice'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[6].face
-      value: Confused
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[6].name
-      value: ???
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[6].pose
-      value: ArmsCrossed
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[6].text
-      value: 'why would i even go back to the ninjas,
-
-        they''re like, okay
-        i guess but do they even care'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[7].face
-      value: Confused
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[7].name
-      value: ???
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[7].pose
-      value: Embarrassed
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[7].text
-      value: 'anyway you guys seem pretty nice.
-
-        and you''re, like, trying
-        to save the world or whatever'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[8].face
-      value: Happy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[8].name
-      value: ???
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[8].pose
-      value: ArmsCrossed
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[8].text
-      value: 'anyway you guys seem pretty nice.
-
-        and you''re, like, trying
-        to save the world or whatever.
-
-        want any of my ninja stuff?'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[0].character
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[1].character
-      value: 
-      objectReference: {fileID: 2096795319}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[2].character
-      value: 
-      objectReference: {fileID: 2096795319}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[3].character
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[4].character
-      value: 
-      objectReference: {fileID: 2096795319}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[5].character
-      value: 
-      objectReference: {fileID: 2096795319}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[6].character
-      value: 
-      objectReference: {fileID: 2096795319}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[7].character
-      value: 
-      objectReference: {fileID: 2096795319}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[8].character
-      value: 
-      objectReference: {fileID: 2096795319}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[0].cameraAngle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[1].cameraAngle
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[2].cameraAngle
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[3].cameraAngle
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[4].cameraAngle
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[5].cameraAngle
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[6].cameraAngle
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[7].cameraAngle
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194020787921709074, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: dialog.Array.data[8].cameraAngle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 51.743
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.129
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 54.196
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9102076
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.41415226
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 48.932
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 6766679181287893784, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 842910218}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4552535940791351686, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2096795327}
-    - targetCorrespondingSourceObject: {fileID: 4552535940791351686, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2096795321}
-  m_SourcePrefab: {fileID: 100100000, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
---- !u!4 &2096795319 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8841678913348955796, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-  m_PrefabInstance: {fileID: 2096795318}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2096795320 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4552535940791351686, guid: 102f050a5c566b245aa3bf0f390dd6f9, type: 3}
-  m_PrefabInstance: {fileID: 2096795318}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2096795321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2096795320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  dialog:
-  - text: 'oh,
-
-      the name''s Kristina by the way.
-
-      maybe we''ll meet again.
-      or maybe not.'
-    name: ???
-    character: {fileID: 0}
-    pose: 
-    cameraAngle: 0
-    face: 
-  turnToFace: 0
-  snapPlayerPosition: 0
---- !u!114 &2096795327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2096795320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 421b0f82fef98c9429ddcffdd1ce777c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  items:
-  - item:
-      itemName: Coke
-      quantity: 10
-      description: 
-      function: 
-    cost: 50
-  - item:
-      itemName: Coffee
-      quantity: 10
-      description: 
-      function: 
-    cost: 50
-  - item:
-      itemName: Bang
-      quantity: 5
-      description: 
-      function: 
-    cost: 50
-  - item:
-      itemName: Coca-Cola Keg
-      quantity: 2
-      description: 
-      function: 
-    cost: 100
-  - item:
-      itemName: DrPepper
-      quantity: 2
-      description: 
-      function: 
-    cost: 150
 --- !u!1 &2115323800
 GameObject:
   m_ObjectHideFlags: 0
@@ -8290,7 +8085,7 @@ SceneRoots:
   - {fileID: 1663497472}
   - {fileID: 974222647}
   - {fileID: 6911325449815021033}
-  - {fileID: 2096795318}
+  - {fileID: 842910217}
   - {fileID: 1854531935}
   - {fileID: 474308937}
   - {fileID: 1736954947}

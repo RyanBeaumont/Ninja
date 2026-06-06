@@ -457,12 +457,12 @@ MonoBehaviour:
   - text: 'hey..
 
       i know you'
-    name: Kristina
+    name: Nova
     character: {fileID: 4909277891471575764}
     pose: SittingDown
     cameraAngle: 0
     face: Confused
-  - text: 'Kristina?
+  - text: 'Nova?
 
       What are you doing here?'
     name: Storm
@@ -471,7 +471,7 @@ MonoBehaviour:
     cameraAngle: 2
     face: Confused
   - text: we don't ask questions we're not prepared to hear the answer to
-    name: Kristina
+    name: Nova
     character: {fileID: 4909277891471575764}
     pose: SittingDown
     cameraAngle: 2
@@ -480,7 +480,7 @@ MonoBehaviour:
 
       are you in or are
       you out?'
-    name: Kristina
+    name: Nova
     character: {fileID: 4909277891471575764}
     pose: SittingDown
     cameraAngle: 0
@@ -507,7 +507,7 @@ MonoBehaviour:
   - text: 'goodbye, old friend.
 
       until we meet again'
-    name: Kristina
+    name: Nova
     character: {fileID: 4909277891471575764}
     pose: ArmsCrossed
     cameraAngle: 0
@@ -48944,7 +48944,7 @@ GameObject:
   - component: {fileID: 11956232}
   - component: {fileID: 11956236}
   m_Layer: 0
-  m_Name: Kristina
+  m_Name: Nova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

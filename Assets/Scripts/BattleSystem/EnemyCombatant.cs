@@ -21,6 +21,7 @@ public class EnemyAttackData
     public float mpCost = 0;
     public float healthThreshold = 100; //The enemy will only use this attack if its health is below this percentage (0-100)
     public string altFunction = ""; //If this is specified, the attack will instead call this function
+    public bool consumeMana = true;
 }
 
 public class EnemyCombatant : Combatant
@@ -103,7 +104,8 @@ public class EnemyCombatant : Combatant
                 highestAttacks.Add(a);
         }
         var selectedAttack = highestAttacks[UnityEngine.Random.Range(0, highestAttacks.Count)];
-        mp -= selectedAttack.mpCost;
+        if(selectedAttack.consumeMana)
+            mp -= selectedAttack.mpCost;
 
 
         GameManager.Instance.ShowMessage($"{combatantName} uses {selectedAttack.attackName}!");

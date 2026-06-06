@@ -496,7 +496,7 @@ PrefabInstance:
     - target: {fileID: 4292078412731677104, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7fc8f2ead473b6142900286f3e3a61d5, type: 2}
+      objectReference: {fileID: 2100000, guid: 36278323bfb8ef44bad44a5091534232, type: 2}
     - target: {fileID: 4358426915205826297, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
       propertyPath: m_Name
       value: Jade
@@ -504,7 +504,7 @@ PrefabInstance:
     - target: {fileID: 6264624846801089945, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7fc8f2ead473b6142900286f3e3a61d5, type: 2}
+      objectReference: {fileID: 2100000, guid: 36278323bfb8ef44bad44a5091534232, type: 2}
     - target: {fileID: 6644522630308483042, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -512,7 +512,7 @@ PrefabInstance:
     - target: {fileID: 6853199903709867938, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7fc8f2ead473b6142900286f3e3a61d5, type: 2}
+      objectReference: {fileID: 2100000, guid: 36278323bfb8ef44bad44a5091534232, type: 2}
     m_RemovedComponents:
     - {fileID: 6644522630308483042, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
     m_RemovedGameObjects: []

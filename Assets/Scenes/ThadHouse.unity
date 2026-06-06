@@ -1548,6 +1548,10 @@ PrefabInstance:
       propertyPath: pose
       value: Meditating
       objectReference: {fileID: 0}
+    - target: {fileID: 8709361895834653659, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
+      propertyPath: heightOffset
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3388,6 +3392,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   overwrite: 1
+  exceedLimit: 0
   partyMembers:
   - Thad
 --- !u!1001 &288856202
@@ -5239,8 +5244,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 0.627451, b: 0.63796335, a: 1}
+  m_Intensity: 0.3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -5670,7 +5675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ef4481f0570540545bef7307a2aae554, type: 3}
       propertyPath: m_Name
-      value: PartyBusExterior (1)
+      value: Party Bus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6033,6 +6038,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8348990587756189354, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: face
+      value: Dissappointed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348990587756189354, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
+      propertyPath: pose
+      value: Defeated
+      objectReference: {fileID: 0}
     - target: {fileID: 8992449917690472824, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       propertyPath: face
       value: Dissapointed
@@ -6048,9 +6061,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6061218905984369798, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 451503669}
-    - targetCorrespondingSourceObject: {fileID: 6061218905984369798, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 451503668}
   m_SourcePrefab: {fileID: 100100000, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
 --- !u!4 &451503666 stripped
 Transform:
@@ -6062,34 +6072,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6061218905984369798, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
   m_PrefabInstance: {fileID: 451503665}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &451503668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451503667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  dialog:
-  - text: 'I''ll catch up to you when you''re ready to face the day...
-
-      Don''t
-      forget to edit your deck whenever you learn new moves!'
-    name: Stretch
-    character: {fileID: 451503666}
-    pose: Meditating
-    cameraAngle: 13
-    face: Happy
-  turnToFace: 0
-  snapPlayerPosition: 0
 --- !u!136 &451503669
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16169,6 +16151,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   overwrite: 1
+  exceedLimit: 0
   partyMembers:
   - Thad
 --- !u!114 &1210492125
@@ -27015,7 +26998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.196
+      value: 1.294
       objectReference: {fileID: 0}
     - target: {fileID: 6869703397220867644, guid: 04005fad803f1174eaaef4bc98192a5c, type: 3}
       propertyPath: m_LocalPosition.z

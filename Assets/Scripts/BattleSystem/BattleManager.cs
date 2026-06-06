@@ -227,7 +227,7 @@ public class BattleManager : MonoBehaviour
         
         List<Combatant> possibleTargets = new List<Combatant>();
         var targetTag = "PlayerCombatant";
-        if(caller is PlayerCombatant) targetTag = "EnemyCombatant";
+        if(caller is PlayerCombatant) targetTag = "Enemy";
         Debug.Log($"Target tag: {targetTag}");
 
         if(caller.HasStatusEffect("E-S-Pow") != null)
@@ -870,6 +870,8 @@ public class BattleManager : MonoBehaviour
                     if(pendingDamageType == DamageType.Bludgeoning)
                         AudioManager.Instance.PlaySoundEffect("s_punch",UnityEngine.Random.Range(0.8f,1.2f));
                     if(pendingDamageType == DamageType.Psychic)
+                        AudioManager.Instance.PlaySoundEffect("Crackle",UnityEngine.Random.Range(0.8f,1.2f));
+                    if(pendingDamageType == DamageType.None)
                         AudioManager.Instance.PlaySoundEffect("Crackle",UnityEngine.Random.Range(0.8f,1.2f));
                     if(lifestrike){lifestrike = false; activeCombatant.Heal(d);}
                     var tpGain = Mathf.Clamp(d/4f,10,30);

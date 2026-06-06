@@ -115,11 +115,17 @@ public class Combatant : MonoBehaviour
                     }
                     if(character.mainClass == CardClass.Ninja)
                     {
-                        if(HasStatusEffect("Ninja Mark") == null){
-                            ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Ninja Mark"));
-                            BattleManager.Instance.attacksRemaining ++;
-                            GameManager.Instance.ShowMessage($"<color=green>NINJA: {p.combatantName} plays again on crit!</color>");
-                        }
+                        //Additional damage action
+                        var action = new DamageAction()
+                        {
+                            caller = p,
+                            damage = "5*LEVEL",
+                            hits = 1,
+                            damageType = DamageType.None,
+                            animation = "SwordBackhand",
+                            text = $"<color=green> NINJA: {p.combatantName} gets an extra attack on crit!</color>"
+                        };
+                        BattleManager.Instance.actionQueue.Add(action);
                     }
                     if(character.mainClass == CardClass.Psychic)
                     {
@@ -360,7 +366,7 @@ public class Combatant : MonoBehaviour
                animation = "IdleDrunk",
                text =  $"<color=magenta>{combatantName} takes {6*poison.amount} damage from poison</color>",
                damage = $"{6*poison.amount}",
-               damageType = DamageType.Psychic,
+               damageType = DamageType.None,
             });
             if(hp <= 0){
                 BattleManager.Instance.actionQueue.Add(new StunAction()

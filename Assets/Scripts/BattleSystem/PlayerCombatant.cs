@@ -166,8 +166,9 @@ public class PlayerCombatant : Combatant
     public void Revive()
     {
         hp = maxHp/2f;
-        BattleManager.Instance.combatants.Add(this);
         alive = true;
+        BattleManager.Instance.combatants.Add(this);
+        YourParty.instance.GetPartyMember(combatantName).alive = true;
         PlayAnimation("Drink");
         GameManager.Instance.ShowMessage($"{combatantName} is risen!");
     }

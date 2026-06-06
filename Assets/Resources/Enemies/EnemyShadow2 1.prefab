@@ -54,12 +54,15 @@ MonoBehaviour:
   defense: 1
   speed: 15
   psychic: 25
+  surprise: 0
   mp: 0
   maxMp: 40
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 00000000
   weaknesses: 01000000
+  discoveredResistances: 
+  discoveredWeaknesses: 
   combatantName: Shadow
   initiative: 0
   statusEffects: []
@@ -72,14 +75,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: 0
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 3
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: Slash, Slash, Slash
     attackName: All Attack
     damage: 25
@@ -88,14 +97,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: 0
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 20
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: Coffee
     dropChance: 50
@@ -105,6 +120,7 @@ MonoBehaviour:
   goldReward: 25
   attackSpeed: 0.5
   portrait: {fileID: 21300000, guid: 376bdaddb3cebc9438d42ccdb1fcd61e, type: 3}
+  boss: 0
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -114,14 +130,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!136 &4431760837445767744
 CapsuleCollider:
   m_ObjectHideFlags: 0

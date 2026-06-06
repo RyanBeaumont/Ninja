@@ -21,7 +21,7 @@ using UnityEngine;
 public enum StatusUpdate{TurnStart,TurnEnd,CallerTurnStart}  
 public enum DamageType
 {
-    Slashing, Bludgeoning, Psychic
+    Slashing, Bludgeoning, Psychic, None
 }
 class TurnPreviewEntry
 {
@@ -38,6 +38,7 @@ public class GameAction
     public string pattern = "";
     public string text;
     public int bonusActions = 0;
+    public bool wildSwing = false;
 
     protected void ResolveInsanityTargets(BattleManager battleManager)
     {
@@ -347,6 +348,10 @@ public class WildSwingAction : GameAction
         if(caller is PlayerCombatant playerCombatant)
         {
             Card newCard  = playerCombatant.Scry(1)[0];
+            foreach(GameAction a in newCard.effects)
+            {
+                a.wildSwing = true;
+            }
             battleManager.ExecuteCard(newCard,caller);
             GameManager.Instance.ShowMessage($"{caller.combatantName} wild swings into {newCard.cardName}!");
             playerCombatant.deck.RemoveAt(0);
@@ -601,7 +606,7 @@ public class DrawCardsAction : GameAction
         if (caller is PlayerCombatant player)
         {
             player.DrawCards(cardCount);
-            GameManager.Instance.ShowMessage($"<color=cyan>{caller.combatantName} draws {cardCount} cards!</color>");
+            GameManager.Instance.ShowMessage($"{caller.combatantName} draws {cardCount} cards!");
         }
     }
 }
@@ -615,7 +620,7 @@ public class CardExchangeAction : GameAction
         if (caller is PlayerCombatant player)
         {
             player.DrawCards(battleManager.discardPower + 1);
-            GameManager.Instance.ShowMessage($"<color=cyan>{caller.combatantName} draws {battleManager.discardPower + 1} cards!</color>");
+            GameManager.Instance.ShowMessage($"{caller.combatantName} draws {battleManager.discardPower + 1} cards!");
         }
     }
 }
@@ -643,7 +648,7 @@ public class DrawUntilAction : DrawCardsAction
                 GameObject.Destroy(card.gameObject);
             }
             player.DrawCards(cardCount);
-            GameManager.Instance.ShowMessage($"<color=cyan>Drawing {cardCount} cards</color>");
+            GameManager.Instance.ShowMessage($"Drawing {cardCount} cards");
         }
     }
 }
@@ -656,6 +661,8 @@ public class GainMPAction : GameAction
     {
         caller.PlayAnimation(animation);
         caller.GainMP(caller.EvaluateStatFormula(mpAmount));
+        base.Execute(battleManager);
+    
     }
 }
 
@@ -670,6 +677,10 @@ public class ChainOfPainAction : GameAction
             {
                 var card = player.discard[player.discard.Count-2];
                 GameManager.Instance.ShowMessage($"{player.combatantName} uses {card.cardName} AGAIN!!!");
+                foreach(GameAction a in card.effects)
+                {
+                    a.wildSwing = true;
+                }
                 battleManager.ExecuteCard(card,caller);
                  
             }
@@ -714,14 +725,14 @@ public class EnergySuckAction : GameAction
         if(battleManager.currentTargets[0] is PlayerCombatant p)
         {
             p.GainMP(caller.EvaluateStatFormula(mpAmount));
-            GameManager.Instance.ShowMessage($"<color=cyan>{caller.combatantName} winks at {p.combatantName}. You got this, girl! +{caller.EvaluateStatFormula(mpAmount)} MP</color>");
+            GameManager.Instance.ShowMessage($"{caller.combatantName} winks at {p.combatantName}. You got this, girl! +{caller.EvaluateStatFormula(mpAmount)} MP");
         }
         else
         {
             float suckAmount = caller.EvaluateStatFormula(mpAmount);
             battleManager.currentTargets[0].GainMP(-caller.EvaluateStatFormula(mpAmount));
             caller.GainMP(suckAmount);
-            GameManager.Instance.ShowMessage($"<color=cyan>{caller.combatantName} winks at {battleManager.currentTargets[0].combatantName}, stealing their heart and {suckAmount} MP</color>");
+            GameManager.Instance.ShowMessage($"{caller.combatantName} winks at {battleManager.currentTargets[0].combatantName}, stealing their heart and {suckAmount} MP");
 
         }
         caller.PlayAnimation(animation);

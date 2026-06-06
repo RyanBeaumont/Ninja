@@ -8,7 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: JadeMaterial
-    second: {fileID: 2100000, guid: 881248d27948e464185c4e8145ada3a0, type: 2}
+    second: {fileID: 2100000, guid: cebc037abc7b28941924ba5315bcf802, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Outline
+    second: {fileID: 2100000, guid: 6c1623fa6755ecb42ae75cd51e5097e8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

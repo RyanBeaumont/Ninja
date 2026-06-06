@@ -4486,8 +4486,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 0.990566, g: 0.6868548, b: 0.6868548, a: 1}
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4531,7 +4531,7 @@ Light:
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 5000
-  m_UseColorTemperature: 1
+  m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
@@ -7797,6 +7797,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!1001 &684548082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8682,9 +8683,6 @@ PrefabInstance:
       addedObject: {fileID: 758217949}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 71a1b9ecd1a7e554ebb3d117fb78968c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 758217948}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 71a1b9ecd1a7e554ebb3d117fb78968c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 758217950}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 71a1b9ecd1a7e554ebb3d117fb78968c, type: 3}
       insertIndex: -1
@@ -8721,38 +8719,6 @@ MonoBehaviour:
   sceneVariant: 6
   skybox: {fileID: 2100000, guid: 3930fc89a28b29746bde6a2389a513e0, type: 2}
   cameraTarget: {fileID: 0}
---- !u!114 &758217948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 758217946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89b5bf5e381673248b03fce9dbf3fef0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  questName: Get to the Roof
-  consume: 1
-  xpReward: 0
-  goldReward: 0
-  giveQuestIfMissing: 0
-  completeEvenIfMissing: 0
-  hideIfMissing: 0
-  incompleteDialog:
-  - text: 'You shouldn''t leave just yet...
-
-      You have clues to find'
-    name: 
-    character: {fileID: 0}
-    pose: 
-    cameraAngle: 5
-    face: 
 --- !u!65 &758217949
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13916,6 +13882,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!95 &1221794329
 Animator:
   serializedVersion: 7
@@ -18443,6 +18410,7 @@ MonoBehaviour:
   combatIdle: 
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!1001 &1591520551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24832,6 +24800,9 @@ PrefabInstance:
       addedObject: {fileID: 847659034166141996}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 71a1b9ecd1a7e554ebb3d117fb78968c, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 847659034166141997}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 71a1b9ecd1a7e554ebb3d117fb78968c, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 847659034166141995}
   m_SourcePrefab: {fileID: 100100000, guid: 71a1b9ecd1a7e554ebb3d117fb78968c, type: 3}
 --- !u!4 &847659034166141993 stripped
@@ -24885,6 +24856,41 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6000005, y: 2.8000002, z: 0.5460618}
   m_Center: {x: -0.7999999, y: 1.4000001, z: -0.0000009983775}
+--- !u!114 &847659034166141997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847659034166141994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b5bf5e381673248b03fce9dbf3fef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  questName: Get to the Roof
+  consume: 1
+  xpReward: 0
+  goldReward: 0
+  giveQuestIfMissing: 0
+  completeEvenIfMissing: 0
+  hideIfMissing: 0
+  incompleteDialog:
+  - text: 'This door exits to the roof.
+
+      You shouldn''t leave just yet...
+
+      You
+      have clues to find'
+    name: 
+    character: {fileID: 0}
+    pose: 
+    cameraAngle: 5
+    face: 
 --- !u!1001 &2233469508876199559
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -210,13 +210,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47856091}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09129858, y: -0.5472024, z: 0.21788965, w: 0.80296844}
+  m_LocalRotation: {x: 0.20507486, y: -0.922941, z: 0.11728445, w: 0.3039221}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 22.649, y: -65.38, z: 15.717}
+  m_LocalEulerAnglesHint: {x: 19.947, y: -146.932, z: -19.078}
 --- !u!114 &47856094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1096,6 +1096,63 @@ MonoBehaviour:
   active: 1
   blockInteraction: 0
   failBranch: 
+--- !u!1001 &583492493
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1435794792575484009, guid: 351762785cf2cd041a4e95827a7eab6e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.790862
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435794792575484009, guid: 351762785cf2cd041a4e95827a7eab6e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.887
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435794792575484009, guid: 351762785cf2cd041a4e95827a7eab6e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.778596
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435794792575484009, guid: 351762785cf2cd041a4e95827a7eab6e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435794792575484009, guid: 351762785cf2cd041a4e95827a7eab6e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435794792575484009, guid: 351762785cf2cd041a4e95827a7eab6e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435794792575484009, guid: 351762785cf2cd041a4e95827a7eab6e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435794792575484009, guid: 351762785cf2cd041a4e95827a7eab6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435794792575484009, guid: 351762785cf2cd041a4e95827a7eab6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435794792575484009, guid: 351762785cf2cd041a4e95827a7eab6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776431927920761555, guid: 351762785cf2cd041a4e95827a7eab6e, type: 3}
+      propertyPath: m_Name
+      value: Spirit Jade Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 351762785cf2cd041a4e95827a7eab6e, type: 3}
 --- !u!1001 &650041876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1488,7 +1545,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   enemies:
-  - {fileID: 8346498964973016767, guid: c6fe8b631dc88524aa8928bb91be45e0, type: 3}
+  - {fileID: 6882711519849729283, guid: 7b030ee73d814bf498c1a2adc036b4c1, type: 3}
   hideObjects: []
   battleMusic: {fileID: 8300000, guid: b5b3142626e681d469109f18dcca0e8c, type: 3}
 --- !u!136 &812761113
@@ -1586,6 +1643,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   overwrite: 1
+  exceedLimit: 0
   partyMembers:
   - Spartan Jack
   - Thad
@@ -3298,3 +3356,4 @@ SceneRoots:
   - {fileID: 957726022}
   - {fileID: 284712053}
   - {fileID: 87357830}
+  - {fileID: 583492493}

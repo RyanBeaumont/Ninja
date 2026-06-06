@@ -410,7 +410,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   enemies:
-  - {fileID: 8346498964973016767, guid: bf624347d4f3a4641846aae466b7870b, type: 3}
+  - {fileID: 6747246486879308294, guid: ebe662f601d1ccf4d874b958899624ec, type: 3}
   hideObjects:
   - {fileID: 9559053}
   battleMusic: {fileID: 8300000, guid: d9a8935931bc36a468b36fe921130a6a, type: 3}
@@ -30030,6 +30030,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   overwrite: 1
+  exceedLimit: 0
   partyMembers:
   - Torch
 --- !u!114 &1073857544
@@ -52410,6 +52411,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   overwrite: 1
+  exceedLimit: 0
   partyMembers:
   - Torch
 --- !u!65 &1928421893

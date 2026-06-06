@@ -80,7 +80,7 @@ MonoBehaviour:
   pose: Idle
   face: Happy
   combatIdle: IdleNinja
-  combatWeapon: {fileID: 0}
+  combatWeapon: {fileID: 9107351735734676244, guid: 82e1cf3ee3d340c4fa10faa3ffa8957a, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}
   heightOffset: 0
 --- !u!136 &6644522630308483042

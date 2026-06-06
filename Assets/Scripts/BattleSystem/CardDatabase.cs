@@ -261,6 +261,7 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
+                    multiDamageType = true,
                     damage = "10 + 10*LOW",
                     animation = "Jab",
                     damageType = DamageType.Bludgeoning,
@@ -340,7 +341,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "Sugar Rush",
             description = "Snort raw sugar. Play again TWICE",
             cost = 15,
-            cardClass = CardClass.None,
+            cardClass = CardClass.Ninja,
             artwork = "IconSuperSaiyan",
             level = 7,
             effects = new List<GameAction>()

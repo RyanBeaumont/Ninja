@@ -31,7 +31,7 @@ public class Targeter : MonoBehaviour
         initialized = true;
         this.action = action;
         this.targetDead = targetDead;
-        if(this.action is GrappleDamageAction || this.action is SuplexDamageAction) grapple = true;
+        if((this.action is GrappleDamageAction || this.action is SuplexDamageAction) && this.action.wildSwing == false) grapple = true;
     }
 
     void Start()

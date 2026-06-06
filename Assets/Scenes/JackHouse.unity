@@ -8814,6 +8814,9 @@ PrefabInstance:
       addedObject: {fileID: 668733819}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d291ef1d31d802b4a876eb709e62f00d, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 668733830}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d291ef1d31d802b4a876eb709e62f00d, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 668733818}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d291ef1d31d802b4a876eb709e62f00d, type: 3}
       insertIndex: -1
@@ -9048,6 +9051,22 @@ MonoBehaviour:
   completeEvenIfMissing: 1
   hideIfMissing: 0
   incompleteDialog: []
+--- !u!114 &668733830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668733816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a0affe508a3704499e97b9e921b1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
 --- !u!1001 &673239204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20480,6 +20499,9 @@ PrefabInstance:
       addedObject: {fileID: 1638810718}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d291ef1d31d802b4a876eb709e62f00d, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1638810726}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d291ef1d31d802b4a876eb709e62f00d, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1638810717}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d291ef1d31d802b4a876eb709e62f00d, type: 3}
       insertIndex: -1
@@ -20718,6 +20740,22 @@ MonoBehaviour:
   encounterMusic: {fileID: 8300000, guid: 5563344985e47444cb336f0971102dad, type: 3}
   fadeTime: 1.5
   sfx: 
+--- !u!114 &1638810726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638810710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a0affe508a3704499e97b9e921b1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
 --- !u!1001 &1639096735
 PrefabInstance:
   m_ObjectHideFlags: 0
