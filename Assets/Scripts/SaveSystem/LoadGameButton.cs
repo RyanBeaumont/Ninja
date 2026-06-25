@@ -11,8 +11,11 @@ public class LoadGameButton : MonoBehaviour
     {
         saveData = data;
         save = saveInsteadOfLoad;
-        //Show playtime in hours and minutes rounded
-        GetComponentInChildren<TMPro.TMP_Text>().text = $"{data.locationName} - {Mathf.Round(data.playTime / 3600f)}h {Mathf.Round(data.playTime % 3600 / 60f)}m";
+        // Show playtime in hours and minutes correctly
+        int totalSeconds = Mathf.RoundToInt(data.playTime);
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        GetComponentInChildren<TMPro.TMP_Text>().text = $"{data.locationName} - {hours}h {minutes}m";
         foreach(var partyMember in data.playersInParty)
         {
            var portrait = Resources.Load<Sprite>($"Sprites/{partyMember}");

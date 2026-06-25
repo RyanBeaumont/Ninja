@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class CustomPlayerInput : MonoBehaviour
 {
     public Transform cameraTransform;   // Assign Main Camera here
     Character character;
@@ -29,7 +29,7 @@ public class PlayerInput : MonoBehaviour
         else
             cameraTransform = Camera.main.transform;
 
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(Input.GetButtonDown("Jump")){
             var controller = GetComponent<CharacterController>();
             // Allow jumping from a hanging state — treat Space as Jump when hanging
             if(character != null && character.state == State.Hanging)

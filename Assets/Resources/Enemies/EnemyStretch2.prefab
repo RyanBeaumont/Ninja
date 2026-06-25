@@ -71,8 +71,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 8
-  maxHp: 600
-  hp: 600
+  maxHp: 1200
+  hp: 1200
   attack: 15
   defense: 1
   speed: 15
@@ -80,32 +80,39 @@ MonoBehaviour:
   surprise: 0
   mp: 0
   maxMp: 60
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
-  resistances: 
+  resistances: 01000000
   weaknesses: 0000000002000000
+  discoveredResistances: 
+  discoveredWeaknesses: 
   combatantName: Stretch
   initiative: 0
   statusEffects: []
   attackPatterns:
   - attackPattern: KnifeTripleStab
     attackName: Stabby Stab
-    damage: 30
+    damage: 45
     damageType: 0
     targetType: 1
     statusEffect:
       name: Poisoned
       stat: 
+      sprite: {fileID: 0}
       amount: 1
+      description: 
       additive: 0
       duration: 1
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 3
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: ThrowKnife
     attackName: Poison Knives
     damage: 40
@@ -114,34 +121,42 @@ MonoBehaviour:
     statusEffect:
       name: Poisoned
       stat: 
+      sprite: {fileID: 0}
       amount: 1
+      description: 
       additive: 0
       duration: 1
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 4
     mpCost: 60
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: Slash, SwordBackhand, SwordThrust
     attackName: C-C-Combo
-    damage: 40
+    damage: 80
     damageType: 0
     targetType: 1
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 0
       duration: 1
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: Ninja Headband
     dropChance: 100
@@ -153,6 +168,7 @@ MonoBehaviour:
   goldReward: 80
   attackSpeed: 0.5
   portrait: {fileID: 21300000, guid: 376bdaddb3cebc9438d42ccdb1fcd61e, type: 3}
+  boss: 0
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -162,16 +178,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!1001 &224500113225208119
 PrefabInstance:
   m_ObjectHideFlags: 0

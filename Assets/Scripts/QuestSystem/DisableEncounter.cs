@@ -6,10 +6,27 @@ public class DisableEncounter : ChainedInteractable
     public GameObject[] additionalObjects;
     [SerializeField] string endingPose = "";
     [SerializeField] string endingFace = "";
+    Vector3 originalPosition;
+
+    protected override void Awake()
+    {
+        originalPosition = transform.position;
+        base.Awake();
+    }
     public override void Interact()
     {
-        GameManager.Instance.AddEncounter($"{gameObject.scene.name}_{transform.position}");
-        
+        GameManager.Instance.AddEncounter($"{gameObject.scene.name}_{originalPosition}");
+        foreach(ChainedInteractable ci in transform.GetComponentsInChildren<ChainedInteractable>())
+        {
+            if (ci != this){ci.active = false;}
+            if(ci is Cutscene cutscene)
+            {
+                cutscene.SkipToEndOfCutscene();
+                Debug.Log($"Skipped cutscene {cutscene.name}");
+            }
+        }
+
+
         if(hideObject){
             Destroy(gameObject);
             foreach(GameObject obj in additionalObjects){
@@ -33,10 +50,9 @@ public class DisableEncounter : ChainedInteractable
                     defaultPose.PlayDefault();
                 }
             }
-              foreach(ChainedInteractable ci in transform.GetComponentsInChildren<ChainedInteractable>())
-                {
-                    if (ci != this){ci.active = false;}
-                }
+              
         }
+
+        
     }
 }

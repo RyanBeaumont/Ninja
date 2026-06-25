@@ -7,8 +7,38 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Black
+    second: {fileID: 2100000, guid: 6c76901fd0674f54bb6e379d131c5def, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black.001
+    second: {fileID: 2100000, guid: 6c76901fd0674f54bb6e379d131c5def, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: d94a81515ef27054b9bc32c49c5c3d41, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: d94a81515ef27054b9bc32c49c5c3d41, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: secretary_mat
-    second: {fileID: 2100000, guid: 84cae5d223373f94390fab19f4bd702a, type: 2}
+    second: {fileID: 2100000, guid: 5e804e9ae0c12d7418c5632e3aaec175, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: secretary_mat.001
+    second: {fileID: 2100000, guid: 5e804e9ae0c12d7418c5632e3aaec175, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: secretary_mat.002
+    second: {fileID: 2100000, guid: 5e804e9ae0c12d7418c5632e3aaec175, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

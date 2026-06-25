@@ -36,7 +36,7 @@ public class GameAction
     public TargetType targetType;
     public string animation;
     public string pattern = "";
-    public string text;
+    public string text = "";
     public int bonusActions = 0;
     public bool wildSwing = false;
 
@@ -54,6 +54,7 @@ public class GameAction
 
     public virtual void Execute(BattleManager battleManager)
     {
+        if (caller != null && !caller.alive) return;
         ResolveInsanityTargets(battleManager);
         caller.PlayAnimation(animation);
         if(text != ""){GameManager.Instance.ShowMessage(text);}
@@ -64,6 +65,7 @@ public class UltimateAction : GameAction
 {
     public override void Execute(BattleManager battleManager)
     {
+        base.Execute(battleManager);
         AudioManager.Instance.PlaySoundEffect("Thunder");
         battleManager.clock = 1f;
         battleManager.SetPose(caller.transform, "", CameraAngle.super, "Mad");
@@ -75,6 +77,7 @@ public class CutAction : GameAction
 {
     public override void Execute(BattleManager battleManager)
     {
+        base.Execute(battleManager);
         AudioManager.Instance.PlaySoundEffect("Battle");
         battleManager.clock = 1.5f;
         battleManager.SetPose(caller.transform, "", CameraAngle.highAngle, "Mad");
@@ -110,6 +113,7 @@ public class EnemyAttackAction : GameAction
     public string receivingAnimation = "";
     public override void Execute(BattleManager battleManager)
     {
+        base.Execute(battleManager);
         AudioManager.Instance.PlaySoundEffect("s_dbz_jump",UnityEngine.Random.Range(0.8f,1.2f));
         if(specialTarget != null){
             battleManager.SelectTargets(new List<Combatant>(){specialTarget});
@@ -189,6 +193,8 @@ public class DamageAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
+         battleManager.SetPose(caller.transform, "", CameraAngle.behind, "Mad");
+        base.Execute(battleManager);
         AudioManager.Instance.PlaySoundEffect("s_dbz_jump",UnityEngine.Random.Range(0.8f,1.2f));
         battleManager.waitingForInput = true; //wait for animation input
         battleManager.hitsRemaining = hits;
@@ -200,7 +206,6 @@ public class DamageAction : GameAction
          battleManager.pendingStatusEffect = statusEffect;
         battleManager.loopAnimation = loopAnimation;
         battleManager.multiDamageType = multiDamageType;
-        caller.PlayAnimation(animation);
         if(receivingAnimation != ""){foreach(Combatant c in battleManager.currentTargets) c.PlayAnimation(receivingAnimation);}
     }
 }
@@ -222,7 +227,7 @@ public class SelfDamageAction : GameAction
     public DamageType damageType;
      public override void Execute(BattleManager battleManager)
     {
-        caller.PlayAnimation(animation);
+        base.Execute(battleManager);
         battleManager.clock = 2.1f;
         caller.TakeDamage(caller,caller.EvaluateStatFormula(damage),damageType);
     }
@@ -288,6 +293,7 @@ public class GrappleDamageAction : DamageAction
     public bool lifesteal = false;
     public override void Execute(BattleManager battleManager)
     {
+        base.Execute(battleManager);
         if(battleManager.currentTargets.Count == 1 && (battleManager.currentTargets[0].HasStatusEffect("Off-Balance")!=null || battleManager.currentTargets[0].HasStatusEffect("Prone") != null) || lifesteal)
         {
             battleManager.currentTargets[0].RemoveStatusEffect("Off-Balance");
@@ -316,7 +322,7 @@ public class GrappleDamageAction : DamageAction
             duration = -1,
             removeOnHit = true
         });
-        base.Execute(battleManager);
+        
     }
 }
 
@@ -370,7 +376,7 @@ public class HealAction : GameAction
         foreach(var t in battleManager.currentTargets)
         {
             t.Heal(caller.EvaluateStatFormula(healAmount));
-            GameManager.Instance.ShowMessage($"{t.combatantName} drinks coke! +{caller.EvaluateStatFormula(healAmount)} HP");
+            GameManager.Instance.ShowMessage($"{t.combatantName} heals +{caller.EvaluateStatFormula(healAmount)} HP");
         }
     }
 }
@@ -450,6 +456,7 @@ public class SummonAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
+        //base.Execute(battleManager);
         GameObject combatantObject = null;
         if(enemy)
             combatantObject = Object.Instantiate(summon, GameObject.Find("BattleSetup/EnemySpawn").transform);
@@ -470,6 +477,10 @@ public class SummonAction : GameAction
         combatant.surprise = true;
         combatant.combatantName = name != "" ? name : combatant.combatantName;
         var healthbar = Object.Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);
+        if (combatant is PlayerCombatant playerCombatant)
+        {
+            playerCombatant.hpBar = healthbar;
+        }
         BattleManager.Instance.AddCombatant(combatant);
         GameManager.Instance.ShowMessage($"<color=red>{combatant.combatantName} appears!</color>");
         var effect = Object.Instantiate(Resources.Load<GameObject>("Particles/Encounter"), combatantObject.transform);
@@ -629,25 +640,32 @@ public class CloserAction : DamageAction
 {
     public override void Execute(BattleManager battleManager)
     {
-        damage = $"30 + {30*battleManager.discardPower}*MED";
+        damage = $"30 + {25*battleManager.discardPower}*MED";
         base.Execute(battleManager);
     }
 }
 
 public class DrawUntilAction : DrawCardsAction
+//This should be renamed eventually to "DiscardAndDraw"
 {
     public override void Execute(BattleManager battleManager)
     {
-        caller.PlayAnimation(animation);
         if (caller is PlayerCombatant player)
         {
+            var handManager = GameObject.FindFirstObjectByType<HandManager>();
             cardCount = (int)caller.EvaluateStatFormula("PSY/4");
-           foreach(var card in GameObject.FindFirstObjectByType<HandManager>().cardsInHand)
+
+            for (int i = handManager.cardsInHand.Count - 1; i >= 0; i--)
             {
-                player.DiscardCard(card.GetComponent<CardDisplay>().card);
-                GameObject.Destroy(card.gameObject);
+                var cardGO = handManager.cardsInHand[i];
+                var card = cardGO.GetComponent<CardDisplay>().card;
+                player.DiscardCard(card);
+                handManager.cardsInHand.RemoveAt(i);
+                GameObject.Destroy(cardGO);
             }
+
             player.DrawCards(cardCount);
+            handManager.InitializeHand(player.hand);
             GameManager.Instance.ShowMessage($"Drawing {cardCount} cards");
         }
     }
@@ -721,7 +739,7 @@ public class EnergySuckAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
-        ResolveInsanityTargets(battleManager);
+        base.Execute(battleManager);
         if(battleManager.currentTargets[0] is PlayerCombatant p)
         {
             p.GainMP(caller.EvaluateStatFormula(mpAmount));
@@ -735,6 +753,32 @@ public class EnergySuckAction : GameAction
             GameManager.Instance.ShowMessage($"{caller.combatantName} winks at {battleManager.currentTargets[0].combatantName}, stealing their heart and {suckAmount} MP");
 
         }
+        caller.PlayAnimation(animation);
+    }
+}
+
+public class EnemyDrainAction : GameAction
+{
+    public int mpAmount;
+
+    public override void Execute(BattleManager battleManager)
+    {
+        base.Execute(battleManager);
+        if (caller is EnemyCombatant)
+        {
+            battleManager.SelectRandomTargets(caller, targetType);
+        }
+        var totalManaDrained = 0f;
+        foreach(Combatant c in battleManager.currentTargets)        {
+            if(c is PlayerCombatant p)
+            {
+                var manaStolen = Mathf.Min(p.mp, mpAmount);
+                p.GainMP(-manaStolen);
+                caller.GainMP(manaStolen);
+                totalManaDrained += manaStolen;
+            }
+        }
+        GameManager.Instance.ShowMessage($"{caller.combatantName} sucks {totalManaDrained} MP from your party!");
         caller.PlayAnimation(animation);
     }
 }

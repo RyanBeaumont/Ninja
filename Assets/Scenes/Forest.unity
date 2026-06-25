@@ -6047,7 +6047,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 5563344985e47444cb336f0971102dad, type: 3}
     - target: {fileID: 4607604493686479118, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
       propertyPath: locationName
-      value: Redcliff Forest
+      value: Stonewell Forest
       objectReference: {fileID: 0}
     - target: {fileID: 4607604493686479118, guid: baee556c48fb47b4e9ad1b188b6cd38a, type: 3}
       propertyPath: encounterClip

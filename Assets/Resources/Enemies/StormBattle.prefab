@@ -48,18 +48,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  maxHp: 400
-  hp: 400
+  maxHp: 500
+  hp: 500
   attack: 10
   defense: 1
   speed: 13
   psychic: 15
+  surprise: 0
   mp: 0
   maxMp: 30
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 01000000
   weaknesses: 02000000
+  discoveredResistances: 
+  discoveredWeaknesses: 
   combatantName: Storm
   initiative: 0
   statusEffects: []
@@ -72,14 +75,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: Sweep, SwordWhirlwind, Sweep
     attackName: Go To Sweep
     damage: 20
@@ -88,14 +97,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: SwordHeavy, Slash, SwordWhirlwind
     attackName: Dance With Me
     damage: 15
@@ -104,14 +119,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: SwordHeavy, Slash, SwordWhirlwind
     attackName: Dance With Me
     damage: 15
@@ -120,14 +141,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: Punch, Uppercut, Slap, Uppercut, LongswordBlast
     attackName: Ultimate Attack
     damage: 15
@@ -136,14 +163,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 30
     healthThreshold: 50
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: Coke
     dropChance: 100
@@ -155,6 +188,7 @@ MonoBehaviour:
   goldReward: 150
   attackSpeed: 0.4
   portrait: {fileID: 21300000, guid: 60116e9f44982614ab655ab46ad45c81, type: 3}
+  boss: 1
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -164,14 +198,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!136 &3472871779482487007
 CapsuleCollider:
   m_ObjectHideFlags: 0

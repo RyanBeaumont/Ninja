@@ -105,15 +105,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  maxHp: 60
-  hp: 60
+  maxHp: 120
+  hp: 120
   attack: 10
   defense: 1
-  speed: 10
+  speed: 15
   psychic: 15
   surprise: 0
   mp: 0
   maxMp: 45
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 
@@ -145,6 +146,7 @@ MonoBehaviour:
     mpCost: 0
     healthThreshold: 100
     altFunction: BuffAlly
+    consumeMana: 1
   - attackPattern: BookAttack
     attackName: Crash Out
     damage: 0
@@ -166,6 +168,7 @@ MonoBehaviour:
     mpCost: 45
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: Mind Helmet
     dropChance: 25
@@ -198,6 +201,7 @@ MonoBehaviour:
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!136 &-8026483303802534423
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -238,6 +242,7 @@ MonoBehaviour:
   combatIdle: Idle
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!114 &-819338540782300200
 MonoBehaviour:
   m_ObjectHideFlags: 0

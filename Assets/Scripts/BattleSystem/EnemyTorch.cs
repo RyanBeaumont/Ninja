@@ -17,7 +17,7 @@ public class EnemyTorch : EnemyCombatant
 
     public override void OnHitSuccess()
     {
-  
+        if(BattleManager.Instance.currentTargets.Count == 0) return;
         var playerCombatant = BattleManager.Instance.currentTargets[0];
         if(playerCombatant == null)
         {
@@ -25,7 +25,7 @@ public class EnemyTorch : EnemyCombatant
             return;
         }
         var se = playerCombatant.HasStatusEffect("Suplex");
-            if(se != null && se.amount >= 4)
+            if(se != null && se.amount == 4)
             {
                 playerCombatant.RemoveStatusEffect("Suplex");
                 GameManager.Instance.ShowMessage("Torch uses SOUL SUPLEX!!!");

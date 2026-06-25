@@ -44,6 +44,10 @@ public class SaveEncounter : ChainedInteractable
         button.onClick.AddListener(() => OnSaveFinished(capturedSlot));
     }
 
+    //Select the first button in the save panel
+    var firstButton = content.GetChild(0).GetComponent<Button>();
+    firstButton.Select();
+
     Time.timeScale = 0f;
     Cursor.lockState = CursorLockMode.None;
     Cursor.visible = true;

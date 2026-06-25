@@ -255,7 +255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000938
+      value: 0.001086
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -263,31 +263,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6088075
+      value: 0.567427
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.41784
+      value: -0.47250542
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.36774606
+      value: -0.41859072
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.5652663
+      value: -0.52872205
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -67.596
+      value: -78.198
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 3.702
+      value: 6.911
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -88.231
+      value: -91.574
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -300,7 +300,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9db519702b86d18409d6373dd028291e, type: 2}
+      objectReference: {fileID: 2100000, guid: 2de73de349f728d49b79d6bcadf6d453, type: 2}
     - target: {fileID: 919132149155446097, guid: c5c73c10150eb894991e145643d2d3a2, type: 3}
       propertyPath: m_Name
       value: FaceMask
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 2100000, guid: 9db519702b86d18409d6373dd028291e, type: 2}
+  - {fileID: 2100000, guid: a33f7b45e19328b45b8605044a23558d, type: 2}
   - {fileID: 2100000, guid: 7320494bb11800c409ceb9861acf90a8, type: 2}
 --- !u!1001 &8700306492004123268
 PrefabInstance:

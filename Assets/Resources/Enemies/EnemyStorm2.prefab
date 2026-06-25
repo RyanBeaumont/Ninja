@@ -48,19 +48,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  maxHp: 700
-  hp: 700
+  maxHp: 1400
+  hp: 1400
   attack: 20
   defense: 1
-  speed: 20
+  speed: 40
   psychic: 20
   surprise: 0
   mp: 0
   maxMp: 60
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 00000000
   weaknesses: 0100000002000000
+  discoveredResistances: 
+  discoveredWeaknesses: 
   combatantName: Storm
   initiative: 0
   statusEffects: []
@@ -73,78 +76,86 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
-      amount: 0
+      sprite: {fileID: 0}
+      amount: 1
+      description: 
       additive: 1
-      duration: -1
+      duration: 1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
-  - attackPattern: Sweep, SwordWhirlwind, Sweep
+    consumeMana: 1
+  - attackPattern: SwordDash, SwordWhirlwind, Sweep
     attackName: Go To Sweep
-    damage: 20
+    damage: 50
     damageType: 1
     targetType: 1
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: SwordHeavy, Slash, SwordWhirlwind
     attackName: Dance With Me
-    damage: 15
+    damage: 80
     damageType: 1
     targetType: 1
     statusEffect:
       name: 
       stat: 
-      amount: 0
+      sprite: {fileID: 0}
+      amount: 1
+      description: 
       additive: 1
-      duration: -1
+      duration: 1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
-  - attackPattern: SwordHeavy, Slash, SwordWhirlwind
-    attackName: Dance With Me
-    damage: 15
-    damageType: 1
-    targetType: 1
-    statusEffect:
-      name: 
-      stat: 
-      amount: 0
-      additive: 1
-      duration: -1
-      removeOnHit: 0
-    hits: 1
-    mpCost: 0
-    healthThreshold: 100
-    altFunction: 
+    consumeMana: 1
   - attackPattern: Punch, Uppercut, Slap, Uppercut, LongswordBlast
     attackName: Ultimate Attack
-    damage: 15
+    damage: 40
     damageType: 1
     targetType: 1
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
-    mpCost: 30
+    mpCost: 40
     healthThreshold: 50
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: Shirt of Ab Visibility
     dropChance: 100
@@ -156,6 +167,7 @@ MonoBehaviour:
   goldReward: 150
   attackSpeed: 0.6
   portrait: {fileID: 21300000, guid: 60116e9f44982614ab655ab46ad45c81, type: 3}
+  boss: 0
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -165,14 +177,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!136 &3472871779482487007
 CapsuleCollider:
   m_ObjectHideFlags: 0

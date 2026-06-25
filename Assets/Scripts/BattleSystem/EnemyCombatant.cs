@@ -58,11 +58,13 @@ public class EnemyCombatant : Combatant
 
     public virtual void DefaultAttack()
     {
+        if (!alive) return;
         Attack(null);
     }
 
     public void Attack(List<EnemyAttackData> attacksToUse = null, Combatant specialTarget = null)
     {
+        if (!alive) return;
         var speed = attackSpeed;
         
         if(HasStatusEffect("Speed Up") != null)

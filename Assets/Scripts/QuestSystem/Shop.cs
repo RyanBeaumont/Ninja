@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using System.Collections;
 
 [System.Serializable] public class ShopItem
 {
@@ -37,6 +40,20 @@ public class Shop : ChainedInteractable
 
         //Clear container
         foreach(Transform child in container.transform){Destroy(child.gameObject);}
+        int selectedIndex = 0;
+        if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null)
+        {
+            var currentSelected = EventSystem.current.currentSelectedGameObject.transform;
+            while (currentSelected != null && currentSelected.parent != container.transform)
+            {
+                currentSelected = currentSelected.parent;
+            }
+            if (currentSelected != null && currentSelected.parent == container.transform)
+            {
+                selectedIndex = currentSelected.GetSiblingIndex();
+            }
+        }
+
         foreach(ShopItem item in items)
         {
             var realItem = GameManager.Instance.GetInventoryItemByName(item.item.itemName);
@@ -66,6 +83,27 @@ public class Shop : ChainedInteractable
 
             hover.onEnter = () =>{ShowItemDescription(item.item);};
         }
+
+        if (container.transform.childCount > 0 && EventSystem.current != null)
+        {
+            StartCoroutine(RestoreShopSelection(selectedIndex));
+        }
+    }
+
+    private IEnumerator RestoreShopSelection(int selectedIndex)
+    {
+        yield return new WaitForEndOfFrame();
+        Canvas.ForceUpdateCanvases();
+
+        if (container == null || container.transform.childCount == 0 || EventSystem.current == null)
+            yield break;
+
+        selectedIndex = Mathf.Clamp(selectedIndex, 0, container.transform.childCount - 1);
+        var selectedItem = container.transform.GetChild(selectedIndex).gameObject;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(selectedItem);
+        var selectable = selectedItem.GetComponent<Selectable>();
+        selectable?.Select();
     }
 
     void ShowItemDescription(InventoryItem item)
@@ -93,7 +131,7 @@ public class Shop : ChainedInteractable
 
     void Update()
     {
-        if(shopActive && Input.GetKeyDown(KeyCode.Escape))
+        if(shopActive && Input.GetButtonDown("Cancel"))
         {
             //set cursor locked
                 Cursor.lockState = CursorLockMode.Locked;

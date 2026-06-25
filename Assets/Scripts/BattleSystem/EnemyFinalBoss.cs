@@ -65,12 +65,12 @@ public class EnemyFinalBoss : EnemyCombatant
 
     public void ManaDrain()
     {
-        BattleManager.Instance.actionQueue.Add(new EnergySuckAction()
+        BattleManager.Instance.actionQueue.Add(new EnemyDrainAction()
         {
             caller = this,
             animation = "GatherChi",
             targetType = TargetType.AllEnemies,
-            mpAmount = "80",
+            mpAmount = 80,
         });
     }
 
@@ -81,7 +81,7 @@ public class EnemyFinalBoss : EnemyCombatant
             Resources.Load<GameObject>("Enemies/EnemyShadow"),
             Resources.Load<GameObject>("Enemies/EnemyShadow2"),
         };
-        for (int i = 0; i < enemyPrefabs.Count; i++)
+        for (int i = 0; i <= enemyPrefabs.Count; i++)
         {
             var summonAction = new SummonAction()
             {

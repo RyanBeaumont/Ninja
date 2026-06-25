@@ -5,6 +5,7 @@ using System.Collections;
 using System;
 using Unity.Cinemachine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 [Serializable] public enum CameraAngle{standard, none, closeup, lowAngle, highAngle, behind, zoom, tilt, dodgeLeft, dodgeRight, jump, duck, wideBehind, ground, super, lockOn, counter};
 [Serializable] public class Dialog
@@ -55,7 +56,7 @@ public class DialogBox : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E)) && canvas.enabled)
+        if ((Input.GetButtonDown("Interact") || Input.GetButtonDown("Jump")) && canvas.enabled)
         {
             if(dialog.Count == 0) return;
             if (textComponent.text == dialog[0].text)
@@ -108,6 +109,9 @@ public class DialogBox : MonoBehaviour
     public void ShowChoiceButtons(string option1 = "Yes", string option2 = "No")
     {
         yesButton.gameObject.SetActive(true);
+        yesButton.GetComponent<Button>().Select();
+        yesButton.GetComponent<Button>().interactable = true;
+        noButton.GetComponent<Button>().interactable = true;
         noButton.gameObject.SetActive(true);
         yesButton.GetComponentInChildren<TMP_Text>().text = option1;
         noButton.GetComponentInChildren<TMP_Text>().text = option2;
@@ -119,11 +123,15 @@ public class DialogBox : MonoBehaviour
         choice = "Yes";
         canAdvance = true;
         AdvanceDialog();
+        yesButton.GetComponent<Button>().interactable = false;
+        noButton.GetComponent<Button>().interactable = false;
     }
 
     public void NoClicked()
     {
         choice = "No";
+        yesButton.GetComponent<Button>().interactable = false;
+        noButton.GetComponent<Button>().interactable = false;
         canAdvance = true;
         AdvanceDialog();
     }

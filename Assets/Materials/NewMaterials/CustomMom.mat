@@ -60,7 +60,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RimLightPower: 6.37
-    - _ShadowCutoff: -0.31
+    - _ShadowCutoff: 0.5
     m_Colors:
     - _HighlightColor: {r: 1, g: 1, b: 1, a: 1}
     - _MainColor: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}

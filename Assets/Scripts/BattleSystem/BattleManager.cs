@@ -5,7 +5,8 @@ using UnityEngine;
 using System.Linq;
 using System;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 
 public class BattleManager : MonoBehaviour
@@ -16,6 +17,16 @@ public class BattleManager : MonoBehaviour
     public bool loopAnimation = false;
     public float clock = 0f;
     public bool waitingForInput = false;
+    public InputActionAsset inputActions;
+    private InputAction cancelAction;
+    private InputAction jumpAction;
+    private InputAction horizontalAction;
+    private InputAction verticalAction;
+    private InputAction dpadLeftAction;
+    private InputAction dpadRightAction;
+    private InputAction dpadUpAction;
+    private InputAction dpadDownAction;
+    private bool inputActionsEnabled = false;
     float waitTime = 1f;
     public float pendingDamage = 0f;
     public DamageType pendingDamageType;
@@ -89,6 +100,7 @@ public class BattleManager : MonoBehaviour
         Invoke("NextTurn", 0.1f);
         handManager = FindFirstObjectByType<HandManager>();
         handManager.SetHandActive(false);
+        InitializeInputActions();
         quickTimeEvent.gameObject.SetActive(false);
         discardText.gameObject.SetActive(false);
         foreach(var c in combatants)
@@ -104,6 +116,41 @@ public class BattleManager : MonoBehaviour
         Cursor.visible = true;
         scryPanel.gameObject.SetActive(false);
         itemContainer.gameObject.SetActive(false);
+    }
+
+    private void InitializeInputActions()
+    {
+        if (inputActions == null || inputActionsEnabled)
+            return;
+
+        cancelAction = inputActions.FindAction("Cancel", false);
+        jumpAction = inputActions.FindAction("Jump", false);
+        horizontalAction = inputActions.FindAction("Horizontal", false);
+        verticalAction = inputActions.FindAction("Vertical", false);
+        dpadLeftAction = inputActions.FindAction("DpadLeft", false);
+        dpadRightAction = inputActions.FindAction("DpadRight", false);
+        dpadUpAction = inputActions.FindAction("DpadUp", false);
+        dpadDownAction = inputActions.FindAction("DpadDown", false);
+
+        var actions = new[]
+        {
+            cancelAction,
+            jumpAction,
+            horizontalAction,
+            verticalAction,
+            dpadLeftAction,
+            dpadRightAction,
+            dpadUpAction,
+            dpadDownAction
+        };
+
+        foreach (var action in actions)
+        {
+            if (action != null)
+                action.Enable();
+        }
+
+        inputActionsEnabled = true;
     }
 
     public void ShowQuickTimeEvent()
@@ -420,9 +467,15 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        var cancelPressed = Input.GetKeyDown(KeyCode.Escape);
+        if (!cancelPressed && cancelAction != null)
+            cancelPressed = cancelAction.triggered;
+
+        if (cancelPressed)
         {
-           HideInventory();
+            HideInventory();
+            //select "Use Item" button
+            EventSystem.current.SetSelectedGameObject(buttonContainer.Find("Item").gameObject);
         }
         //Check for win
         var enemies = combatants.Where(c => c.tag == "Enemy" && c.alive).ToList();
@@ -448,12 +501,31 @@ public class BattleManager : MonoBehaviour
         //Dodge system
         if(canDodge)
         {
+            float horizontal = 0f;
+            float vertical = 0f;
+            if (horizontalAction != null)
+                horizontal += horizontalAction.ReadValue<float>();
+            if (verticalAction != null)
+                vertical += verticalAction.ReadValue<float>();
+            if (dpadLeftAction != null)
+                horizontal -= dpadLeftAction.ReadValue<float>();
+            if (dpadRightAction != null)
+                horizontal += dpadRightAction.ReadValue<float>();
+            if (dpadUpAction != null)
+                vertical += dpadUpAction.ReadValue<float>();
+            if (dpadDownAction != null)
+                vertical -= dpadDownAction.ReadValue<float>();
+            if (Mathf.Abs(horizontal) > 1f)
+                horizontal = Mathf.Sign(horizontal);
+            if (Mathf.Abs(vertical) > 1f)
+                vertical = Mathf.Sign(vertical);
+
             if(dodgeCooldown <= 0f)
             {
-                if (Input.GetKeyDown(KeyCode.A)){ dodgeInput = "Left";}
-                if (Input.GetKeyDown(KeyCode.D)) dodgeInput = "Right";
-                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) dodgeInput = "Jump";
-                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.LeftShift)) dodgeInput = "Duck";
+                if (horizontal < -0.5f){ dodgeInput = "Left";}
+                if (horizontal > 0.5f) dodgeInput = "Right";
+                if (vertical > 0.5f || (jumpAction != null && jumpAction.triggered)) dodgeInput = "Jump";
+                if (vertical < -0.5f || Input.GetKeyDown(KeyCode.LeftShift)) dodgeInput = "Duck";
                 //if(Input.GetKeyDown(KeyCode.Mouse1)) dodgeInput = "Block";
 
                 if(dodgeInput != "")
@@ -725,6 +797,7 @@ public class BattleManager : MonoBehaviour
         buttonContainer.gameObject.SetActive(false);
     }
 
+
     public void UseCokeKeg()
     {
         var action = new HealAction()
@@ -803,7 +876,7 @@ public class BattleManager : MonoBehaviour
             gameAction = action,
             caller = activePlayer
         };
-        GameManager.Instance.ShowMessage("Who Will Drink the Coke?");
+        GameManager.Instance.ShowMessage("Throw Bang");
         actionQueue.Add(targetAction);
         attacksRemaining ++;
         itemContainer.gameObject.SetActive(false);
@@ -884,9 +957,11 @@ public class BattleManager : MonoBehaviour
                     }
                     if (t.HasStatusEffect("Bounty") != null)
                     {
-                        attacksRemaining += 1;
-                        activePlayer.GainMP(30);
-                        GameManager.Instance.ShowMessage("Bounty claimed! Bonus action");
+                        if(activePlayer != null){
+                            attacksRemaining += 1;
+                            activePlayer.GainMP(30);
+                            GameManager.Instance.ShowMessage("Bounty claimed! Bonus action");
+                        }
                     }
                 }
                 if(multiDamageType){if(pendingDamageType == DamageType.Slashing) pendingDamageType = DamageType.Bludgeoning;
@@ -908,7 +983,6 @@ public class BattleManager : MonoBehaviour
     }
     public void EnemyHit(string direction)
     {
-       
         if(direction == dodgeInput || (direction == "Dodge" && dodgeInput == "Left") || (direction == "Dodge" && dodgeInput == "Right"))
         {
             //successful dodge
@@ -924,25 +998,9 @@ public class BattleManager : MonoBehaviour
                 var effect = Instantiate(Resources.Load<GameObject>("Particles/Block"), t.transform);
                 }
             }
-        }
-        else if(dodgeInput == "Block")
-        {
-            pendingDamage *= 0.5f; //Take half damage on block
-            dodgeCooldown = 0;
-            dodgeInput = "";
-            perfectDodge = false;
-            AudioManager.Instance.PlaySoundEffect("Anvil",UnityEngine.Random.Range(0.8f,1.2f));
-            foreach(var t in currentTargets)
-            {
-                if(t.alive){
-                    var effect = Instantiate(Resources.Load<GameObject>("Particles/Block"), t.transform);
-                    t.PlayAnimation("BlockSuccess");
-                    t.TakeDamage(activeCombatant,(int)pendingDamage, pendingDamageType);
-                }
-            }
-        }
-        else{
-            perfectDodge = false;
+            
+        }else{
+            
             CameraShake(1f,0.4f);
             if(activeCombatant is EnemyCombatant e)
             {
@@ -951,38 +1009,42 @@ public class BattleManager : MonoBehaviour
             foreach(var t in currentTargets)
             {
                 if(t.alive){
-                     var invincible = t.HasStatusEffect("Block"); 
-                    if(invincible != null)
+                    var block = t.HasStatusEffect("Block");
+                    if(block != null)
                     {
                         t.PlayAnimation("BlockSuccess");
                         AudioManager.Instance.PlaySoundEffect("Parry");
-                        invincible.amount -= 1;
-                        if(invincible.amount <= 0) t.RemoveStatusEffect("Block");
-                    }else{
-                        var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
-                        CameraShake(1f,0.2f);
-                        t.TakeDamage(activeCombatant,(int)pendingDamage, pendingDamageType);
-                        if(currentTargets.Count > 0 && currentTargets[0] == activeCombatant)
-                        {
-                            activeCombatant.RemoveStatusEffect("E-S-Pow");
-                            GameManager.Instance.ShowMessage($"{activeCombatant.combatantName} hits themself!");
-                        }
-                        else{
-                            if(hitsRemaining == 0) t.PlayAnimation("Knockdown");
-                            else t.PlayAnimation("Stunned");
-                        }
-                        if(pendingDamageType == DamageType.Slashing)
-                        AudioManager.Instance.PlaySoundEffect("HitSlash",UnityEngine.Random.Range(0.8f,1.2f));
-                        if(pendingDamageType == DamageType.Bludgeoning)
-                            AudioManager.Instance.PlaySoundEffect("s_punch",UnityEngine.Random.Range(0.8f,1.2f));
-                        if(pendingDamageType == DamageType.Psychic)
-                            AudioManager.Instance.PlaySoundEffect("Crackle",UnityEngine.Random.Range(0.8f,1.2f));
-                        if(pendingStatusEffect != null && pendingStatusEffect.name != "")
-                        {
-                            if(t.alive)
-                            t.ApplyStatusEffect(pendingStatusEffect);
-                        }
+                        block.amount -= 1;
+                        if(block.amount <= 0) t.RemoveStatusEffect("Block");
                     }
+                    else
+                    {
+                        perfectDodge = false;
+                    }
+                    var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
+                    CameraShake(1f,0.2f);
+                    t.TakeDamage(activeCombatant,(int)pendingDamage, pendingDamageType);
+                    if(currentTargets.Count > 0 && currentTargets[0] == activeCombatant)
+                    {
+                        activeCombatant.RemoveStatusEffect("E-S-Pow");
+                        GameManager.Instance.ShowMessage($"{activeCombatant.combatantName} hits themself!");
+                    }
+                    else{
+                        if(hitsRemaining == 0) t.PlayAnimation("Knockdown");
+                        else t.PlayAnimation("Stunned");
+                    }
+                    if(pendingDamageType == DamageType.Slashing)
+                    AudioManager.Instance.PlaySoundEffect("HitSlash",UnityEngine.Random.Range(0.8f,1.2f));
+                    if(pendingDamageType == DamageType.Bludgeoning)
+                        AudioManager.Instance.PlaySoundEffect("s_punch",UnityEngine.Random.Range(0.8f,1.2f));
+                    if(pendingDamageType == DamageType.Psychic)
+                        AudioManager.Instance.PlaySoundEffect("Crackle",UnityEngine.Random.Range(0.8f,1.2f));
+                    if(pendingStatusEffect != null && pendingStatusEffect.name != "")
+                    {
+                        if(t.alive)
+                        t.ApplyStatusEffect(pendingStatusEffect);
+                    }
+    
                 }
             }
         }

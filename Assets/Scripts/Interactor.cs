@@ -5,7 +5,7 @@ using UnityEngine.UI;  // if using UI Text
 public class PlayerInteractor : MonoBehaviour
 {
     public float interactRange = 2f;
-    public KeyCode interactKey = KeyCode.E;
+    //public KeyCode interactKey = KeyCode.E;
     public GameObject promptPrefab;  // assign a prefab in Inspector
     public LayerMask lineOfSightMask;
 
@@ -26,7 +26,7 @@ public class PlayerInteractor : MonoBehaviour
     {
         FindInteractable();
 
-        if (currentTarget != null && CanInteract())
+        if (currentTarget != null && CanInteract() && (GameManager.Instance.GetGameplayState() == GameplayState.FreeMovement))
         {
             // Update prompt position & text
             promptInstance.SetActive(true);
@@ -35,9 +35,10 @@ public class PlayerInteractor : MonoBehaviour
             promptText.text = $"[E] {currentTarget.GetPromptMessage()}";
 
             // Interaction
-            if (Input.GetKeyDown(interactKey))
+            if (Input.GetButtonDown("Interact"))
             {
                 currentTarget.Interact();
+                promptInstance.SetActive(false);
             }
         }
         else

@@ -71,18 +71,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 10
-  maxHp: 800
-  hp: 800
+  maxHp: 900
+  hp: 900
   attack: 20
   defense: 1
-  speed: 20
+  speed: 30
   psychic: 20
+  surprise: 0
   mp: 0
   maxMp: 60
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 000000000100000002000000
   weaknesses: 
+  discoveredResistances: 
+  discoveredWeaknesses: 
   combatantName: Chrome Dome
   initiative: 0
   statusEffects: []
@@ -95,14 +98,20 @@ MonoBehaviour:
     statusEffect:
       name: Stunned
       stat: 
+      sprite: {fileID: 0}
       amount: 1
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: KnifeTripleStab
     attackName: Strike FAST
     damage: 20
@@ -111,14 +120,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 0
       duration: 0
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 3
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: 
     attackName: NO MERCY!!!
     damage: 
@@ -127,19 +142,26 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 0
       duration: 0
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 0
     mpCost: 60
     healthThreshold: 100
     altFunction: UltimateAttack
+    consumeMana: 1
   lootDrops: []
   xpReward: 100
   goldReward: 100
   attackSpeed: 0.5
   portrait: {fileID: 21300000, guid: 69d54cb3188b1aa44a7ed3cde532dcca, type: 3}
+  boss: 1
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -149,14 +171,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   reinforcements: 0
 --- !u!1001 &163347522155637041
 PrefabInstance:

@@ -153,5 +153,19 @@ IEnumerator AlignRotation(Quaternion targetRotation)
     model.rotation = Quaternion.Euler(0f, targetYaw, 0f);
 }
 
+public void SkipToEndOfCutscene()
+    {
+        StopAllCoroutines();
+        if (waypoints.Length > 0)
+        {
+            model.position = waypoints[waypoints.Length - 1].waypointTransform.position;
+            model.rotation = waypoints[waypoints.Length - 1].waypointTransform.rotation;
+        }
+        var anim = model.GetComponentInChildren<Animator>();
+        if (anim != null)
+        {
+            anim.Play(waypoints.Length > 0 ? waypoints[waypoints.Length - 1].animation : "Idle", 0, 1f);
+        }
+    }
 
 }

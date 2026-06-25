@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Dark
+    second: {fileID: 2100000, guid: 6c76901fd0674f54bb6e379d131c5def, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: WitchMaterial
     second: {fileID: 2100000, guid: b31a9e06a7a2d6241a1d7f76cc97aadc, type: 2}
   materials:

@@ -17,10 +17,12 @@ public class MenuCardDisplay : CardDisplay
     {
         onPointerDown?.Invoke();
     }
+
     void Update()
     {
         
     }
+
     public override void OnPointerEnter(PointerEventData eventData)
     {
         AudioManager.Instance.PlaySoundEffect("MenuHover");

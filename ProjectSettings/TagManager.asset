@@ -12,6 +12,7 @@ TagManager:
   - PlayerCombatant
   - BattleArea
   - Background
+  - DefaultButton
   layers:
   - Default
   - TransparentFX

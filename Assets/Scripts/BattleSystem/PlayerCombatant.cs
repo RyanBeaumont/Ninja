@@ -109,6 +109,7 @@ public class PlayerCombatant : Combatant
             discard.Add(card);
             mp -= cost;
             tp -= card.tpCost;
+            BattleManager.Instance.activePlayer.ShowStats();
             BattleManager.Instance.UpdateDiscardPower(BattleManager.Instance.discardPower - card.discardCost);
             BattleManager.Instance.ExecuteCard(card, this);
             return true;
@@ -229,5 +230,6 @@ public class PlayerCombatant : Combatant
         battleManager.playerStats.Find("Level").GetComponent<TMP_Text>().text = $"Level {level}";
         battleManager.playerStats.Find("MP").GetComponent<TMP_Text>().text = $"MP {mp}/{maxMp}";
         battleManager.playerStats.Find("TP").GetComponent<TMP_Text>().text = $"TP {tp}";
+        battleManager.playerStats.Find("HP").GetComponent<TMP_Text>().text = $"HP {hp}/{maxHp}";
     }
 }

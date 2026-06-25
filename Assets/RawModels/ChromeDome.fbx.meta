@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Black
+    second: {fileID: 2100000, guid: 6c76901fd0674f54bb6e379d131c5def, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: WitchMaterial
     second: {fileID: 2100000, guid: 92e413f56d2bb424c8abca325f724dd7, type: 2}
   materials:

@@ -21,7 +21,18 @@ public class ShowStats : MonoBehaviour
    void Update()
     {
         List<GameObject> candidates = new List<GameObject>();
-        if(BattleManager.Instance.actionQueue.Count > 0) {statsPanel.gameObject.SetActive(false); return;}
+        var targeter = FindFirstObjectByType<Targeter>();
+        if (targeter != null)
+        {
+            var target = targeter.ActiveTarget;
+            if (target != null)
+            {
+                UpdateUI(target);
+                return;
+            }
+        }
+
+        if (BattleManager.Instance.actionQueue.Count > 0) { statsPanel.gameObject.SetActive(false); return; }
 
         candidates = BattleManager.Instance.combatants
             .Select(c => c.gameObject)

@@ -436,7 +436,7 @@ MonoBehaviour:
       quantity: 1
       description: 
       function: 
-    cost: 150
+    cost: 400
 --- !u!114 &11956233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7408,7 +7408,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 0.6746813, b: 0, a: 1}
-  m_Intensity: 200.09
+  m_Intensity: 30
   m_Range: 66.18
   m_SpotAngle: 101.6
   m_InnerSpotAngle: 21.80208
@@ -8664,8 +8664,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 1, g: 0.84749305, b: 0.7783019, a: 1}
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -8709,7 +8709,7 @@ Light:
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 5000
-  m_UseColorTemperature: 1
+  m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
@@ -8847,6 +8847,9 @@ PrefabInstance:
       addedObject: {fileID: 412163309}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 412163316}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 412163308}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
       insertIndex: -1
@@ -8854,6 +8857,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 412163306}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 412163315}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11b4910b1a19ae34295decdf2fcc14cb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 412163305}
@@ -9341,6 +9347,45 @@ MonoBehaviour:
   active: 1
   blockInteraction: 0
   failBranch: 
+--- !u!114 &412163315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412163303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c878f22abfffcb44b490cf6a3e20262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  questName: Get a SQUAD together at the dojo
+--- !u!114 &412163316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412163303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac35fd4abf8e9e146a1aad31e368a113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  overwrite: 1
+  exceedLimit: 0
+  partyMembers:
+  - Spartan Jack
+  - Thad
+  - Stretch
 --- !u!1001 &417981945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18583,13 +18628,42 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f29f340aae37d14582a7e81aa559a18, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 794462757}
   m_SourcePrefab: {fileID: 100100000, guid: 0f29f340aae37d14582a7e81aa559a18, type: 3}
 --- !u!4 &794462755 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0f29f340aae37d14582a7e81aa559a18, type: 3}
   m_PrefabInstance: {fileID: 794462754}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &794462756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f29f340aae37d14582a7e81aa559a18, type: 3}
+  m_PrefabInstance: {fileID: 794462754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &794462757
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794462756}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02, y: 0.020000007, z: 0.024000006}
+  m_Center: {x: -0.000000007450581, y: 0, z: 0.012000003}
 --- !u!1001 &796211930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31561,7 +31635,7 @@ MonoBehaviour:
   failBranch: 
   sceneName: Overworld
   spawnPointIndex: 2
-  sceneVariant: 6
+  sceneVariant: 7
   skybox: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
   cameraTarget: {fileID: 0}
 --- !u!114 &1309376331
@@ -42240,13 +42314,42 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f29f340aae37d14582a7e81aa559a18, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1830717683}
   m_SourcePrefab: {fileID: 100100000, guid: 0f29f340aae37d14582a7e81aa559a18, type: 3}
 --- !u!4 &1830717681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0f29f340aae37d14582a7e81aa559a18, type: 3}
   m_PrefabInstance: {fileID: 1830717680}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1830717682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f29f340aae37d14582a7e81aa559a18, type: 3}
+  m_PrefabInstance: {fileID: 1830717680}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1830717683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830717682}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02, y: 0.020000007, z: 0.024000006}
+  m_Center: {x: 0, y: -0.000000059604645, z: 0.012000003}
 --- !u!1001 &1843445970
 PrefabInstance:
   m_ObjectHideFlags: 0

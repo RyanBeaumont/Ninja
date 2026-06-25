@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Menu : MonoBehaviour
 {
@@ -69,8 +70,19 @@ public class Menu : MonoBehaviour
 
     public void ShowSettingsMenu()
     {
-        settingsContainer.gameObject.SetActive(true);
-        characterContainer.gameObject.SetActive(false);
+        if(settingsContainer.gameObject.activeInHierarchy)
+        {
+            settingsContainer.gameObject.SetActive(false);
+            characterContainer.gameObject.SetActive(true);
+            SelectFirstCharacterEntry();
+        }
+        else
+        {
+            settingsContainer.gameObject.SetActive(true);
+            //set first setting selected
+            StartCoroutine(GameManager.Instance.SelectDefault());
+            characterContainer.gameObject.SetActive(false);
+        }
     }
 
     public void QuitToMainMenu()
@@ -143,6 +155,13 @@ public class Menu : MonoBehaviour
                 hover.onEnter = () =>{ShowItemDescription(item);};
             }
         }
+        if(deckContainer.childCount > 0 && EventSystem.current != null)
+        {
+            var firstCard = deckContainer.GetChild(0).gameObject;
+            EventSystem.current.SetSelectedGameObject(firstCard);
+            var firstSelectable = firstCard.GetComponent<Selectable>();
+            firstSelectable?.Select();
+        }
     }
 
     public bool EquipItem(InventoryItem item)
@@ -192,6 +211,12 @@ public class Menu : MonoBehaviour
         descriptionText.text = item.description;
 
     }
+
+    private void SelectFirstCharacterEntry()
+    {
+        StartCoroutine(GameManager.Instance.SelectDefault());
+    }
+
 
     public void ShowTutorialMessage(string tutorialMessage){
         if(tutorialMessage != "" && tutorialMessage != null)
@@ -261,7 +286,7 @@ public class Menu : MonoBehaviour
                 thisCharacter.transform.Find("Health/HP").GetComponent<TMP_Text>().text = $"{partyMember.hpPercentage * tempHP}/{tempHP}";
                 thisCharacter.transform.Find("Health").GetComponent<Slider>().value = partyMember.hpPercentage;
                 thisCharacter.transform.Find("Portrait").GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/{partyMember.memberName}");
-                int xpThreshold = 100 + partyMember.level * 10;
+                int xpThreshold = 100 + partyMember.level * 25;
                 thisCharacter.transform.Find("XP").GetComponent<Slider>().value = (float)partyMember.xp / xpThreshold;
                 thisCharacter.transform.Find("XP/XP").GetComponent<TMP_Text>().text = $"{partyMember.xp}/{xpThreshold} XP";
                 }
@@ -270,7 +295,7 @@ public class Menu : MonoBehaviour
                     thisCharacter.transform.Find("Health/HP").GetComponent<TMP_Text>().text = $"DEAD";
                     thisCharacter.transform.Find("Health").GetComponent<Slider>().value = 0;
                     thisCharacter.transform.Find("XP").GetComponent<Slider>().value = 0;
-                    thisCharacter.transform.Find("Portrait").GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/Cards/IconDeath");
+                    thisCharacter.transform.Find("Portrait").GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/MarkedForDeath");
                 }
                 
                 thisCharacter.GetComponentInChildren<Button>().onClick.AddListener(() => ShowCharacterMenu(p));
@@ -292,7 +317,7 @@ public class Menu : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.GetGameplayState() == GameplayState.FreeMovement)
+        if (Input.GetButtonDown("Cancel") && GameManager.Instance.GetGameplayState() == GameplayState.FreeMovement)
         {
             AudioManager.Instance.PlaySoundEffect("MenuClose");
             if(entireMenu.gameObject.activeInHierarchy){
@@ -300,11 +325,13 @@ public class Menu : MonoBehaviour
                     deckContainer.gameObject.SetActive(false);
                     characterContainer.gameObject.SetActive(true);
                     currentCharacter = "";
+                    SelectFirstCharacterEntry();
                 }
                 else if (settingsContainer.gameObject.activeInHierarchy)
                 {
                     settingsContainer.gameObject.SetActive(false);
                 characterContainer.gameObject.SetActive(true);
+                SelectFirstCharacterEntry();
                 }
                 else
                 {
@@ -320,14 +347,17 @@ public class Menu : MonoBehaviour
                 entireMenu.gameObject.SetActive(true);
                 universalUI.gameObject.SetActive(true);
                 UpdateParty();
+                SelectFirstCharacterEntry();
                 itemContainer.GetComponent<Inventory>().UpdateInventoryImages(GameManager.Instance.inventory);
+
+                
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 Time.timeScale = 0f;
             }
 
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) && FindFirstObjectByType<BattleManager>() != null)
+        else if(Input.GetButtonDown("Cancel") && FindFirstObjectByType<BattleManager>() != null)
         {
             if(universalUI.gameObject.activeInHierarchy)
                 {
@@ -338,6 +368,7 @@ public class Menu : MonoBehaviour
             else
             {
                 universalUI.gameObject.SetActive(true);
+                SelectFirstCharacterEntry();
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 Time.timeScale = 0f;

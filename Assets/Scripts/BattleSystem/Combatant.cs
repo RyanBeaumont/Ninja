@@ -18,6 +18,7 @@ public class Combatant : MonoBehaviour
     public bool surprise = false;
     public float mp;
     public float maxMp;
+    [HideInInspector] public GameObject hpBar;
     [HideInInspector] public Vector3 startPosition;
     public bool alive = true;
     Vector3 targetPosition;
@@ -30,6 +31,7 @@ public class Combatant : MonoBehaviour
     public string combatantName;
     [HideInInspector] public float initiative = 0f;
     public List<StatusEffect> statusEffects = new List<StatusEffect>();
+    public Animator copyAnimator = null;
 
     //Animation properties
     Transform model;
@@ -93,7 +95,7 @@ public class Combatant : MonoBehaviour
             damageText.color = color;
             if(!discoveredResistances.Contains(damageType)) discoveredResistances.Add(damageType);
         }
-        if((weaknesses != null && System.Array.Exists(weaknesses, element => element == damageType)) || HasStatusEffect("Weak") != null)
+        if((weaknesses != null && System.Array.Exists(weaknesses, element => element == damageType)) || (HasStatusEffect("Weak") != null && damageType != DamageType.None)) //The ninja can't get infinite extra attacks
         {
             baseDamage *= 1.5f; //Take 1.5x damage
             damageText.text += "STRONG!";
@@ -125,7 +127,7 @@ public class Combatant : MonoBehaviour
                             animation = "SwordBackhand",
                             text = $"<color=green> NINJA: {p.combatantName} gets an extra attack on crit!</color>"
                         };
-                        BattleManager.Instance.actionQueue.Add(action);
+                        BattleManager.Instance.actionQueue.Insert(0,action);
                     }
                     if(character.mainClass == CardClass.Psychic)
                     {
@@ -168,12 +170,18 @@ public class Combatant : MonoBehaviour
             OnDeath();
         }
 
+        var statusesToRemove = new List<string>();
         for (int i = statusEffects.Count - 1; i >= 0; i--)
         {
             if (statusEffects[i].removeOnHit && damageType != DamageType.Psychic)
             {
-                RemoveStatusEffect(statusEffects[i].name);
+                statusesToRemove.Add(statusEffects[i].name);
             }
+        }
+
+        foreach (var effectName in statusesToRemove)
+        {
+            RemoveStatusEffect(effectName);
         }
 
         if (strong) //Check for exposed
@@ -275,6 +283,11 @@ public class Combatant : MonoBehaviour
     {
         if(animator == null || string.IsNullOrEmpty(animationName) || alive == false) return 0.1f;
         animator.Play(animationName,0,0f);
+        
+        if(copyAnimator != null)
+        {
+            copyAnimator.Play(animationName,0,0f);
+        }
         return animator.GetCurrentAnimatorStateInfo(0).length;
     }
 
@@ -364,8 +377,8 @@ public class Combatant : MonoBehaviour
             {
                caller = this,
                animation = "IdleDrunk",
-               text =  $"<color=magenta>{combatantName} takes {6*poison.amount} damage from poison</color>",
-               damage = $"{6*poison.amount}",
+               text =  $"{combatantName} takes {Mathf.Abs(6*poison.amount)} damage from poison",
+               damage = $"{Mathf.Abs(6*poison.amount)}",
                damageType = DamageType.None,
             });
             if(hp <= 0){
@@ -384,7 +397,7 @@ public class Combatant : MonoBehaviour
                 caller = this,
                 animation = "Defeated",
             });
-            GameManager.Instance.ShowMessage($"<color=magenta>{combatantName} is stunned and cannot move!</color>");
+            GameManager.Instance.ShowMessage($"<color=red>{combatantName} is stunned and cannot move!</red>");
             success = false;
         }
 

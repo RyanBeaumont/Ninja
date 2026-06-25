@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine;
-using Unity.VisualScripting;
 
 public enum Arrow{Left, Right, Up, Down}
 
@@ -18,6 +18,11 @@ public class QuickTimeEvent : MonoBehaviour
     float accuracy = 0;
     float endTimer = 0.5f;
     float accuracyPerNote;
+    private InputAction dpadLeftAction;
+    private InputAction dpadRightAction;
+    private InputAction dpadUpAction;
+    private InputAction dpadDownAction;
+    private bool actionsInitialized = false;
     public float beatLength = 0.5f; //each beat is 0.5s
     int currentIndex = 0;
     float clock = 0.5f;
@@ -60,6 +65,30 @@ public class QuickTimeEvent : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        InitializeInputActions();
+    }
+
+    private void InitializeInputActions()
+    {
+        if (actionsInitialized || BattleManager.Instance?.inputActions == null)
+            return;
+
+        var asset = BattleManager.Instance.inputActions;
+        dpadLeftAction = asset.FindAction("DpadLeft", false);
+        dpadRightAction = asset.FindAction("DpadRight", false);
+        dpadUpAction = asset.FindAction("DpadUp", false);
+        dpadDownAction = asset.FindAction("DpadDown", false);
+
+        dpadLeftAction?.Enable();
+        dpadRightAction?.Enable();
+        dpadUpAction?.Enable();
+        dpadDownAction?.Enable();
+
+        actionsInitialized = true;
+    }
+
     void Update()
     {
         if(!active) return;
@@ -90,81 +119,98 @@ public class QuickTimeEvent : MonoBehaviour
 
         if(nextArrow.Count > 0){
 
-            //Destroy the arrow if it's 100 past the hit zone
-            var currentArrow = nextArrow[0];
-            if (currentArrow != null) // Check if object still exists
-            {
-                
-                var arrowPosition = currentArrow.transform.position;
-                if(arrowPosition.x < hitZone.position.x - 200f){ //100f is arbitrary large number to ensure the note is well past the hit zone
-                    Destroy(currentArrow);
-                    nextArrow.RemoveAt(0);
-                }
-                
-            }
-            else
-            {
-                // Object was destroyed elsewhere, remove from list
+        //Destroy the arrow if it's 100 past the hit zone
+        var currentArrow = nextArrow[0];
+        if (currentArrow != null) // Check if object still exists
+        {
+            
+            var arrowPosition = currentArrow.transform.position;
+            if(arrowPosition.x < hitZone.position.x - 200f){ //100f is arbitrary large number to ensure the note is well past the hit zone
+                Destroy(currentArrow);
                 nextArrow.RemoveAt(0);
             }
+            
+        }
+        else
+        {
+            // Object was destroyed elsewhere, remove from list
+            nextArrow.RemoveAt(0);
+        }
 
-            // Only process input if we still have arrows after cleanup
-            if (nextArrow.Count > 0)
+        // Only process input if we still have arrows after cleanup
+        if (nextArrow.Count > 0)
+        {
+            bool pressed = false;
+            float result = 100f;
+            var firstArrow = nextArrow[0];
+            
+            if (firstArrow != null) // Double-check the object exists
             {
-                bool pressed = false;
-                float result = 100f;
-                var firstArrow = nextArrow[0];
-                
-                if (firstArrow != null) // Double-check the object exists
+                ArrowMovement thisArrow = firstArrow.GetComponent<ArrowMovement>();
+                if (thisArrow != null) // Check component exists
                 {
-                    ArrowMovement thisArrow = firstArrow.GetComponent<ArrowMovement>();
-                    if (thisArrow != null) // Check component exists
-                    {
-                        if(Input.GetKeyDown(KeyCode.W)){ result = thisArrow.ProcessHit(Arrow.Up); pressed = true;}
-                        if(Input.GetKeyDown(KeyCode.A)){ result = thisArrow.ProcessHit(Arrow.Left); pressed = true;}
-                        if(Input.GetKeyDown(KeyCode.S)){ result = thisArrow.ProcessHit(Arrow.Down); pressed = true;}
-                        if(Input.GetKeyDown(KeyCode.D)){ result = thisArrow.ProcessHit(Arrow.Right); pressed = true;}
-                        if(Input.GetKeyDown(KeyCode.UpArrow)){ result = thisArrow.ProcessHit(Arrow.Up); pressed = true;}
-                        if(Input.GetKeyDown(KeyCode.LeftArrow)){ result = thisArrow.ProcessHit(Arrow.Left); pressed = true;}
-                        if(Input.GetKeyDown(KeyCode.RightArrow)){ result = thisArrow.ProcessHit(Arrow.Right); pressed = true;}
-                        if(Input.GetKeyDown(KeyCode.DownArrow)){ result = thisArrow.ProcessHit(Arrow.Down); pressed = true;}
+                    bool upPressed = (dpadUpAction != null && dpadUpAction.triggered);
+                    bool downPressed = (dpadDownAction != null && dpadDownAction.triggered);
+                    bool leftPressed = (dpadLeftAction != null && dpadLeftAction.triggered);
+                    bool rightPressed = (dpadRightAction != null && dpadRightAction.triggered);
 
-                        if(pressed){
-                            if(result <= perfectWindow){
-                                accuracy += accuracyPerNote;
-                                AudioManager.Instance.PlaySoundEffect("StrongPunch",pitch);
-                                AudioManager.Instance.PlaySoundEffect("Energy",pitch);
-                                pitch += 0.1f;
-                                var effect = Instantiate(Resources.Load<GameObject>("BadArrow"), thisArrow.transform.position, Quaternion.identity);
-                                effect.transform.parent = transform;
-                                effect.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/ArrowTorn");
-                                effect = Instantiate(Resources.Load<GameObject>("BadArrow"), thisArrow.transform.position, Quaternion.identity);
-                                effect.transform.parent = transform;
-                                effect.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/ArrowTorn2");
-                            }else if(result <= goodWindow){
-                                accuracy += accuracyPerNote/2f;
-                                AudioManager.Instance.PlaySoundEffect("SynthHit");
-                                var effect = Instantiate(Resources.Load<GameObject>("BadArrow"), thisArrow.transform.position, Quaternion.identity);
-                                effect.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/ArrowTorn");
-                                effect.transform.parent = transform;
-                                effect = Instantiate(Resources.Load<GameObject>("BadArrow"), thisArrow.transform.position, Quaternion.identity);
-                                effect.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/ArrowTorn2");
-                                effect.transform.parent = transform;
-                            }
-                            else
-                            {
-                                AudioManager.Instance.PlaySoundEffect("Negative");
-                                GetComponent<UIShake>().Shake(10);
-                                var effect = Instantiate(Resources.Load<GameObject>("BadArrow"), thisArrow.transform.position, Quaternion.identity);
-                                effect.transform.parent = transform;
-                            }
-                            Destroy(thisArrow.gameObject);
-                            nextArrow.RemoveAt(0);
+                    if (upPressed)
+                    {
+                        result = thisArrow.ProcessHit(Arrow.Up);
+                        pressed = true;
+                    }
+                    else if (downPressed)
+                    {
+                        result = thisArrow.ProcessHit(Arrow.Down);
+                        pressed = true;
+                    }
+                    else if (leftPressed)
+                    {
+                        result = thisArrow.ProcessHit(Arrow.Left);
+                        pressed = true;
+                    }
+                    else if (rightPressed)
+                    {
+                        result = thisArrow.ProcessHit(Arrow.Right);
+                        pressed = true;
+                    }
+
+                    if (pressed){
+                        if(result <= perfectWindow){
+                            accuracy += accuracyPerNote;
+                            AudioManager.Instance.PlaySoundEffect("StrongPunch",pitch);
+                            AudioManager.Instance.PlaySoundEffect("Energy",pitch);
+                            pitch += 0.1f;
+                            var effect = Instantiate(Resources.Load<GameObject>("BadArrow"), thisArrow.transform.position, Quaternion.identity);
+                            effect.transform.parent = transform;
+                            effect.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/ArrowTorn");
+                            effect = Instantiate(Resources.Load<GameObject>("BadArrow"), thisArrow.transform.position, Quaternion.identity);
+                            effect.transform.parent = transform;
+                            effect.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/ArrowTorn2");
+                        }else if(result <= goodWindow){
+                            accuracy += accuracyPerNote/2f;
+                            AudioManager.Instance.PlaySoundEffect("SynthHit");
+                            var effect = Instantiate(Resources.Load<GameObject>("BadArrow"), thisArrow.transform.position, Quaternion.identity);
+                            effect.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/ArrowTorn");
+                            effect.transform.parent = transform;
+                            effect = Instantiate(Resources.Load<GameObject>("BadArrow"), thisArrow.transform.position, Quaternion.identity);
+                            effect.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/ArrowTorn2");
+                            effect.transform.parent = transform;
                         }
+                        else
+                        {
+                            AudioManager.Instance.PlaySoundEffect("Negative");
+                            GetComponent<UIShake>().Shake(10);
+                            var effect = Instantiate(Resources.Load<GameObject>("BadArrow"), thisArrow.transform.position, Quaternion.identity);
+                            effect.transform.parent = transform;
+                        }
+                        Destroy(thisArrow.gameObject);
+                        nextArrow.RemoveAt(0);
                     }
                 }
             }
         }
+    }
         
         //check if we are done with the pattern and have no more arrows on screen, then calculate final accuracy and apply multiplier
         if(currentIndex >= pattern.Length && nextArrow.Count == 0)

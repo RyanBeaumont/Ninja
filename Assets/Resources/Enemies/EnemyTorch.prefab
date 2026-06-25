@@ -80,6 +80,7 @@ MonoBehaviour:
   surprise: 0
   mp: 0
   maxMp: 90
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 
@@ -89,6 +90,7 @@ MonoBehaviour:
   combatantName: Torch?
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 3532377157586905699}
   attackPatterns:
   - attackPattern: KnifeTripleStab
     attackName: Stabby Stab
@@ -111,6 +113,7 @@ MonoBehaviour:
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: SwordWhirlwind,SwordBackhand,LongswordBlast,SwordWhirlwind
     attackName: C-C-Combo
     damage: 10
@@ -132,6 +135,7 @@ MonoBehaviour:
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: SwordTripleCombo
     attackName: Craaazy Slash
     damage: 10
@@ -153,6 +157,7 @@ MonoBehaviour:
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   lootDrops: []
   xpReward: 10
   goldReward: 10
@@ -181,6 +186,7 @@ MonoBehaviour:
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!1001 &224500113225208119
 PrefabInstance:
   m_ObjectHideFlags: 0

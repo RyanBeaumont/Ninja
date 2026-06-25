@@ -4,13 +4,19 @@ using UnityEngine.EventSystems;
 using System;
 using TMPro;
 using System.Linq;
+using UnityEngine.UI;
+using System.Collections;
 
 public class PointerHoverHandler : MonoBehaviour,
     IPointerEnterHandler,
-    IPointerExitHandler
+    IPointerExitHandler,
+    ISelectHandler,
+    IDeselectHandler
 {
     public Action onEnter;
     public Action onExit;
+    public Action onSelect;
+    public Action onDeselect;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -22,6 +28,16 @@ public class PointerHoverHandler : MonoBehaviour,
     {
         onExit?.Invoke();
     }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        onSelect?.Invoke();
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        onDeselect?.Invoke();
+    }
 }
 
 public class Inventory : MonoBehaviour
@@ -30,6 +46,23 @@ public class Inventory : MonoBehaviour
     public TMP_Text itemDescriptionText;
     public void UpdateInventoryImages(List<InventoryItem> inventory)
     {
+        if(gameObject.activeInHierarchy){
+        StartCoroutine(GameManager.Instance.SelectDefault());
+        }
+        int selectedIndex = 0;
+        if (GameManager.Instance.controllerMode && EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null)
+        {
+            var currentSelected = EventSystem.current.currentSelectedGameObject.transform;
+            while (currentSelected != null && currentSelected.parent != itemContainer)
+            {
+                currentSelected = currentSelected.parent;
+            }
+            if (currentSelected != null && currentSelected.parent == itemContainer)
+            {
+                selectedIndex = currentSelected.GetSiblingIndex();
+            }
+        }
+
         foreach(Transform child in itemContainer){Destroy(child.gameObject);}
         //If in battle, only show items with gameActions. Out of battle, show all items.
         var inventory2 = inventory;
@@ -59,15 +92,13 @@ public class Inventory : MonoBehaviour
             itemButton.onClick.AddListener(() => {
                 UseItem(item);
             });
-            //mouse enter to show description
+
             var hover = itemGO.AddComponent<PointerHoverHandler>();
-
-            hover.onEnter = () =>{ShowItemDescription(item);};
-
-            hover.onExit = () =>{HideItemDescription(item);};
+            hover.onEnter = () => { ShowItemDescription(item); };
+            hover.onExit = () => { HideItemDescription(item); };
+            hover.onSelect = () => { ShowItemDescription(item); };
+            hover.onDeselect = () => { HideItemDescription(item); };
         }
-
-        
 
         void UseItem(InventoryItem item)
         {
@@ -81,6 +112,7 @@ public class Inventory : MonoBehaviour
                 try
                 {
                     menu.EquipItem(item);
+                    menu.ShowCharacterMenu(menu.currentCharacter);
                     success = true;  // EquipItem handles consumption internally
                 }
                 catch(System.Exception ex)

@@ -255,7 +255,8 @@ public class CardDatabase : MonoBehaviour
             cardName = "Unholy Trinity",
             description = "Deal 1 hit of each damage type",
             cost = 0,
-            level = 5,
+            level = 7,
+            cardClass = CardClass.Ninja,
             artwork = "IconMultiFist",
             effects = new List<GameAction>()
             {
@@ -302,7 +303,7 @@ public class CardDatabase : MonoBehaviour
             artwork = "IconHeal",
             
             cardClass = CardClass.None,
-            level = 4,
+            level = 5,
             cost = 10,
             effects = new List<GameAction>()
             {
@@ -343,7 +344,7 @@ public class CardDatabase : MonoBehaviour
             cost = 15,
             cardClass = CardClass.Ninja,
             artwork = "IconSuperSaiyan",
-            level = 7,
+            level = 6,
             effects = new List<GameAction>()
             {
                 new GameAction()
@@ -383,6 +384,7 @@ public class CardDatabase : MonoBehaviour
             description = "Stun the opponent",
             artwork = "IconFist",
             cost = 30,
+            cardClass = CardClass.Grappler,
             level = 9,
             effects = new List<GameAction>()
             {
@@ -497,7 +499,7 @@ public class CardDatabase : MonoBehaviour
          allCards.Add(new Card()
         {
             cardName = "Get Poison'd",
-            description = "Your hits apply Poison until the end of your next turn",
+            description = "Your hits apply Poison for 2 turns",
             cost = 20,
             level = 4,
             artwork = "IconDeath",
@@ -507,7 +509,7 @@ public class CardDatabase : MonoBehaviour
                 new StatusEffectAction()
                 {
                     animation = "Unsheath",
-                    targetType = TargetType.AllAllies,
+                    targetType = TargetType.Self,
                     statusEffect = getStatusEffect("Poisoner", 1, 2)
                 }
             }
@@ -556,17 +558,19 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "Speed Boost",
-            description = "Choose an ally to play immediately",
+            description = "Choose an ally to gain increased speed",
             cost = 30,
             level = 7,
             artwork = "IconNinja",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
-                new SpeedBoostAction()
+                new StatusEffectAction()
                 {
-                    animation = "Objection"
-                }
+                    animation = "NinjaIdle",
+                    targetType = TargetType.SingleAlly,
+                    statusEffect = getStatusEffect("Speed Boost", 20, 3)
+                },
             }
         });
 
@@ -610,7 +614,7 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "It Was HIM!",
-            description = "Enemies can only target the chosen ally until your next turn",
+            description = "Enemies can only target the chosen ally. Play again",
             cost = 15,
             level = 3,
             artwork = "IconTarget",
@@ -621,7 +625,8 @@ public class CardDatabase : MonoBehaviour
                 {
                     animation = "Objection",
                     targetType = TargetType.SingleAlly,
-                    statusEffect = getStatusEffect("Taunt", 1, -1)
+                    statusEffect = getStatusEffect("Taunt", 1, -1),
+                    bonusActions = 1
                 }
             }
         });
@@ -629,10 +634,10 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "Seven Knives",
-            description = "Costs 50 TP. Throw 7 poisoned knives at random",
+            description = "Costs 50 TP. Throw 7 knives at random",
             cost = 0,
             tpCost = 50,
-            level = 8,
+            level = 9,
             artwork = "IconDoubleKnife",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
@@ -645,11 +650,10 @@ public class CardDatabase : MonoBehaviour
                 },
                 new DamageAction()
                 {
-                    damage = "6",
+                    damage = "20 + 10*LOW",
                     animation = "ThrowKnife",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.None,
-                    statusEffect = getStatusEffect("Poisoned", 1, -1),
                     hits = 7,
                     loopAnimation = true,
                     pattern = "1 111 111"
@@ -709,7 +713,7 @@ public class CardDatabase : MonoBehaviour
             
             cardClass = CardClass.Psychic,
             artwork = "IconSuperSaiyan",
-            level = 4,
+            level = 9,
             effects = new List<GameAction>()
             {
                 new UltimateAction()
@@ -734,7 +738,7 @@ public class CardDatabase : MonoBehaviour
             tpCost = 50,
             cardClass = CardClass.Psychic,
             artwork = "IconPsychic",
-            level = 9,
+            level = 4,
             effects = new List<GameAction>()
             {
                 new CutAction(){},
@@ -745,7 +749,7 @@ public class CardDatabase : MonoBehaviour
                 },
                 new StatusEffectAction()
                 {
-                    animation = "ArmsCrossed",
+                    animation = "Objection",
                     targetType = TargetType.SingleEnemy,
                     statusEffect = getStatusEffect("E-S-Pow", 1, 2),
                 }
@@ -759,13 +763,13 @@ public class CardDatabase : MonoBehaviour
             artwork = "IconSlash",
             cardClass = CardClass.Psychic,
 
-            level = 3,
+            level = 5,
             cost = 0,
             effects = new List<GameAction>()
             {
                 new ChiBladeAction()
                 {
-                    damage = "MP + MP*HIGH",
+                    damage = "MP + MP*MED",
                     animation = "Slash",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
@@ -786,7 +790,7 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "60 + 60*MED",
+                    damage = "50 + 50*MED",
                     animation = "CombatBurst",
                     damageType = DamageType.Psychic,
                     targetType = TargetType.AllEnemies,
@@ -802,7 +806,7 @@ public class CardDatabase : MonoBehaviour
             description = "Target shares status effects with their team for 3 turns",
             artwork = "IconPsychic",
             cardClass = CardClass.Psychic,
-            level = 5,
+            level = 6,
             cost = 30,
             effects = new List<GameAction>()
             {
@@ -823,7 +827,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "Slap Some Sense",
             description = "Slap any target to heal them and remove stun or status effects",
             cost = 10,
-            level = 6,
+            level = 7,
             cardClass = CardClass.Psychic,
             artwork = "IconSlap",
             effects = new List<GameAction>()
@@ -846,7 +850,7 @@ public class CardDatabase : MonoBehaviour
             description = "Affected ally doubles their PSY but weakens their DEF. Play again",
             artwork = "IconPsychic",
             cardClass = CardClass.Psychic,
-            level = 6,
+            level = 8,
             cost = 30,
             effects = new List<GameAction>()
             {
@@ -888,8 +892,8 @@ public class CardDatabase : MonoBehaviour
             description = "Choose an enemy. The first person to hit them gains 30 MP and an extra action",
             artwork = "IconSuperSaiyan",
             cost = 0,
-            cardClass = CardClass.Psychic,
-            level = 8,
+            cardClass = CardClass.Ninja,
+            level = 9,
             effects = new List<GameAction>()
             {
                 new StatusEffectAction()
@@ -908,7 +912,7 @@ public class CardDatabase : MonoBehaviour
             artwork = "IconHeal",
             
             cardClass = CardClass.Psychic,
-            level = 8,
+            level = 9,
             cost = 15,
             effects = new List<GameAction>()
             {
@@ -1055,7 +1059,7 @@ public class CardDatabase : MonoBehaviour
             {
                 new DamageAction()
                 {
-                    damage = "50 + 50*HIGH",
+                    damage = "50 + 50*MED",
                     animation = "LongswordBlast",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
@@ -1125,7 +1129,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "Here It Comes!",
             description = "Double your STRENGTH for your next turn",
             cost = 20,
-            level = 8,
+            level = 9,
             artwork = "IconSuperSaiyan",
             cardClass = CardClass.Warrior,
             effects = new List<GameAction>()
@@ -1354,7 +1358,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "Nardbuster",
             description = "Stun the enemy, knock them prone, and enable party lifesteal",
             tpCost = 50,
-            level = 8,
+            level = 10,
             cardClass = CardClass.Grappler,
             artwork = "IconGroin",
             effects = new List<GameAction>()

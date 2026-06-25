@@ -80,6 +80,7 @@ MonoBehaviour:
   surprise: 0
   mp: 0
   maxMp: 150
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 
@@ -108,7 +109,7 @@ MonoBehaviour:
       statusUpdate: 0
       particleEffect: {fileID: 0}
     hits: 0
-    mpCost: 0
+    mpCost: 50
     healthThreshold: 75
     altFunction: ManaDrain
     consumeMana: 0
@@ -130,7 +131,7 @@ MonoBehaviour:
       statusUpdate: 0
       particleEffect: {fileID: 0}
     hits: 1
-    mpCost: 0
+    mpCost: 50
     healthThreshold: 100
     altFunction: 
     consumeMana: 0
@@ -152,17 +153,17 @@ MonoBehaviour:
       statusUpdate: 0
       particleEffect: {fileID: 0}
     hits: 1
-    mpCost: 0
+    mpCost: 50
     healthThreshold: 50
     altFunction: SummonMinions
     consumeMana: 0
-  - attackPattern: KnifeTripleStab, SwordBackhand, KnifeTripleStab
-    attackName: Poison Sting
+  - attackPattern: CrescentKick, SpinKick
+    attackName: Poison Kicks
     damage: 25
-    damageType: 0
-    targetType: 1
+    damageType: 1
+    targetType: 3
     statusEffect:
-      name: Poison
+      name: Poisoned
       stat: 
       sprite: {fileID: 0}
       amount: 1
@@ -248,7 +249,7 @@ PrefabInstance:
     - target: {fileID: -8999482112388767979, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
       propertyPath: combatWeapon
       value: 
-      objectReference: {fileID: 9107351735734676244, guid: 82e1cf3ee3d340c4fa10faa3ffa8957a, type: 3}
+      objectReference: {fileID: 1090219297700557087, guid: 0a59b11b99c814a49a9bc22dda8e9f7b, type: 3}
     - target: {fileID: -8999482112388767979, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}
       propertyPath: heightOffset
       value: 0.25

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 public class EnemySoulContainer : EnemyCombatant
 {
     public string trappedCharacter;
@@ -34,6 +35,11 @@ public class EnemySoulContainer : EnemyCombatant
             var model = Instantiate(Resources.Load<GameObject>($"Characters/{partyMember.modelName}"), combatantObject.transform);
 
             var healthbar = Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);
+            var playerCombatant = combatantObject.GetComponent<PlayerCombatant>();
+            if (playerCombatant != null)
+            {
+                playerCombatant.hpBar = healthbar;
+            }
 
             //give cards
             var doubleDeck = new List<Card>(partyMember.deck);
@@ -43,10 +49,20 @@ public class EnemySoulContainer : EnemyCombatant
             combatantObject.GetComponent<PlayerCombatant>().DrawCards(4);
 
             //spread out combatants centered around spawn point
-            var spacing = 1.5f;
-            combatantObject.transform.localPosition = new Vector3((-0.5f*spacing*(BattleManager.Instance.combatants.Count+1)) + ((BattleManager.Instance.combatants.Count+1) * spacing), 0f, 0f);
+            var spacing = YourParty.instance.spacing;
             var combatant = combatantObject.GetComponent<Combatant>();
             BattleManager.Instance.AddCombatant(combatant);
+
+            var activePlayers = BattleManager.Instance.combatants
+                .Where(c => c is PlayerCombatant && c.alive)
+                .ToList();
+
+            for (int i = 0; i < activePlayers.Count; i++)
+            {
+                var player = activePlayers[i];
+                player.transform.localPosition = new Vector3((-0.5f * spacing * activePlayers.Count) + (i * spacing), 0f, 0f);
+                player.startPosition = player.transform.position;
+            }
 
             combatant.combatantName = partyMember.memberName;
 

@@ -7,6 +7,8 @@ using Unity.VisualScripting;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public enum GameplayState{FreeMovement, RestrictedMovement, Dialog, Combat}
 [System.Serializable] public class InventoryItem
 {
@@ -53,10 +55,15 @@ public class GameManager : MonoBehaviour
     float messageTimer = 0f;
     GameObject cameraRig;
     RectTransform inventoryUI;
+    GameObject lastSelected;
+    PlayerInput playerInput;
     public float playTime = 0f;
+    public bool controllerMode = false;
     Menu menu;
 
     public List<string> finishedEncounters = new List<string>();
+
+
 
     public InventoryItem GetInventoryItemByName(string name){
         InventoryItem newItem = new InventoryItem(name,1);
@@ -147,6 +154,18 @@ public class GameManager : MonoBehaviour
                     targetType = TargetType.SingleAlly,
                     animation = "Drink",
                 };
+                newItem.outOfBattleAction = (menu) => {
+                    var pm = YourParty.instance.GetPartyMember(menu.currentCharacter);
+                    if(pm != null && pm.alive == false)
+                    {
+                        pm.alive = true;
+                        pm.hpPercentage = 0.5f;
+                    }
+                    else
+                    {
+                        ShowMessage("This item can only be used if you're dead!");
+                    }
+                };
             break;
             case "Coca-Cola Keg":
                 newItem = new InventoryItem(name,1);
@@ -190,14 +209,14 @@ public class GameManager : MonoBehaviour
             case "Jockstrap":
                 newItem = new Equipment(name,1)
                 {
-                    description = "Protection for the Crown Jewels, +15 Max HP",
+                    description = "Protection for the Crown Jewels, +50 Max HP",
                     statusEffects = new StatusEffect[]
                     {
                         new StatusEffect()
                         {
                             name = "Jockstrap",
                             stat = "MAXHP",
-                            amount = 15,
+                            amount = 50,
                             duration = -1
                         }
                     },
@@ -409,6 +428,58 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        playerInput.onControlsChanged += OnControlsChanged;
+    }
+
+    private void OnDisable()
+    {
+        playerInput.onControlsChanged -= OnControlsChanged;
+    }
+
+    private void OnControlsChanged(PlayerInput input)
+    {
+        controllerMode = input.currentControlScheme == "Gamepad";
+        if(controllerMode)
+        {
+            Debug.Log("Controller detected");
+            StartCoroutine(SelectDefault());
+        }
+        else
+        {
+            Debug.Log("Keyboard/Mouse detected");
+        }
+    }
+
+
+    public IEnumerator SelectDefault()
+    {
+        if(controllerMode == false) yield break;
+        yield return new WaitForEndOfFrame();
+        if(EventSystem.current == null || EventSystem.current.currentSelectedGameObject != null) yield break;
+
+        // First check for buttons tagged "DefaultButton" and visible + interactable
+        var defaultSelectable = GameObject.FindGameObjectsWithTag("DefaultButton")
+            .Select(go => go.GetComponent<Selectable>())
+            .FirstOrDefault(s => s != null && s.IsActive() && s.interactable);
+        if(defaultSelectable != null)
+        {
+            EventSystem.current.SetSelectedGameObject(defaultSelectable.gameObject);
+            defaultSelectable.Select();
+            yield break;
+        }
+
+        // Fallback: first selectable that is visible and interactable
+        var firstSelectable = FindObjectsByType<Selectable>(FindObjectsInactive.Include, FindObjectsSortMode.None)
+            .FirstOrDefault(s => s != null && s.IsActive() && s.interactable);
+        if(firstSelectable != null)
+        {
+            EventSystem.current.SetSelectedGameObject(firstSelectable.gameObject);
+            firstSelectable.Select();
+        }
+    }
+
     public void Freeze(float t){freeze = t;}
     public bool IsFrozen(){return (freeze > 0f);}
 
@@ -422,12 +493,14 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        playerInput = GetComponent<PlayerInput>();
 
         // Set the singleton reference
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
-             Object.Instantiate(Resources.Load<GameObject>("AudioManager"));
+        Object.Instantiate(Resources.Load<GameObject>("AudioManager"));
     }
+
 
     void Start()
     {
@@ -517,6 +590,16 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
+        //Debug selected
+        var current = EventSystem.current.currentSelectedGameObject;
+
+        if (current != lastSelected)
+        {
+            Debug.Log("Selected: " +
+                (current ? current.name : "NULL"));
+
+            lastSelected = current;
+        }
 
         if(messageTimer > 0f)
         {
@@ -533,9 +616,9 @@ public class GameManager : MonoBehaviour
 
     public void ShowMessage(string msg)
     {
-        if(message == null) return;
-        message.text += msg + "\n";
-        messageTimer = 3f;
+        if(message == null || msg == "") return;
+        var messageInstance = Instantiate(Resources.Load<GameObject>("MessagePopup"), message.transform);
+        messageInstance.GetComponent<PopupMessage>().SetMessage(msg, Color.white);
     }
 
     public void StartSceneTransition(string sceneName, int spawnPointIndex, int sceneVariant, Transform cameraTarget = null, Material skyboxMaterial = null)
@@ -572,6 +655,12 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
     {
+        if(scene.name == "TitleScene"){
+            Time.timeScale = 1f;
+            Destroy(gameObject);
+            if(YourParty.instance != null){Destroy(YourParty.instance);}
+            return;
+        }
         DisableFinishedEncounters();
         sceneVariants = GameObject.FindGameObjectsWithTag("SceneVariant");
         ChangeSceneVariant();
@@ -616,19 +705,23 @@ public class GameManager : MonoBehaviour
     {
         var player = Object.Instantiate(Resources.Load<GameObject>("Player"));
         var cam = Object.Instantiate(Resources.Load<GameObject>("MainCamera"));
-        PlayerInput playerInput = player.GetComponent<PlayerInput>();
-        playerInput.cameraTransform = cam.transform;
-        playerInput.enabled = true;
+        CustomPlayerInput customPlayerInput = player.GetComponent<CustomPlayerInput>();
+        customPlayerInput.cameraTransform = cam.transform;
+        customPlayerInput.enabled = true;
         var thirdPersonCam = Object.Instantiate(Resources.Load<GameObject>("ThirdPersonCamera"));
         var vcam = thirdPersonCam.GetComponent<CinemachineCamera>();
         //vcam.enabled = false;
         vcam.Follow = player.transform;
         vcam.LookAt = player.transform;
         vcam.enabled = true;
-        var eventsystem = Object.Instantiate(Resources.Load<GameObject>("EventSystem"));
+        //check if no event system
+        if(FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>() == null)
+        {
+            Object.Instantiate(Resources.Load<GameObject>("EventSystem"));
+        }
         ui = Object.Instantiate(Resources.Load<GameObject>("MainCanvas"));
         ui.name = "MainCanvas";
-        message = ui.transform.Find("OtherHUD/Message").GetComponent<TMP_Text>();
+        message = ui.transform.Find("OtherHUD/MessageOrigin").GetComponent<TMP_Text>();
         inventoryUI = ui.transform.Find("QuestHUD").GetComponent<RectTransform>();
         inventoryUI.gameObject.SetActive(false);
         UpdateQuests();

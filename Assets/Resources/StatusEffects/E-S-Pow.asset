@@ -19,7 +19,8 @@ MonoBehaviour:
     amount: 1
     description: Will attack their teammates or themself
     additive: 1
-    duration: 1
+    duration: 2
     removeOnHit: 0
     caller: {fileID: 0}
     statusUpdate: 1
+    particleEffect: {fileID: 0}

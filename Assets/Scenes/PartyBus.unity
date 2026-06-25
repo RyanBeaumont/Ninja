@@ -238,7 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 385790147}
   m_Layer: 0
-  m_Name: SceneVariant_0
+  m_Name: SceneVariant_09
   m_TagString: SceneVariant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1285,13 +1285,10 @@ PrefabInstance:
       addedObject: {fileID: 1303904719}
     - targetCorrespondingSourceObject: {fileID: 2805509842704245774, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1303904728}
+    - targetCorrespondingSourceObject: {fileID: 2805509842704245774, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1303904725}
-    - targetCorrespondingSourceObject: {fileID: 2805509842704245774, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1303904727}
-    - targetCorrespondingSourceObject: {fileID: 2805509842704245774, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1303904726}
   m_SourcePrefab: {fileID: 100100000, guid: b25700f1aabea844e93bda98a36c4c08, type: 3}
 --- !u!4 &1303904716 stripped
 Transform:
@@ -1489,34 +1486,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1303904717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a22cf3f2be276b74e86b599d61e9adce, type: 3}
+  m_Script: {fileID: 11500000, guid: bde0ce9c64a4323439b54c5647d25142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   encounterID: 
   active: 1
   blockInteraction: 0
   failBranch: 
-  toBlack: 1
-  cameraTarget: {fileID: 0}
---- !u!114 &1303904726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303904717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c530a24ea0ef8d34990d94afbefe7c3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  dialog:
-  - THE END!
---- !u!114 &1303904727
+--- !u!114 &1303904728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1533,7 +1510,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   toBlack: 1
-  cameraTarget: {fileID: 0}
+  cameraTarget: {fileID: 1646508686}
 --- !u!1001 &1319330904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3003,7 +2980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2144165170}
   m_Layer: 0
-  m_Name: SceneVariant_3
+  m_Name: SceneVariant_0
   m_TagString: SceneVariant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 10
   m_Name: KhanSword
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4678290121229568694}
+  - {fileID: 2934315010660115697}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5030254997078761643
@@ -52,15 +52,47 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.18169308, y: 1.3003407, z: 0.072444916}
-  m_Center: {x: 0.07005119, y: 0.4715538, z: 0.0114040375}
+  m_Size: {x: 0.22418213, y: 0.10694313, z: 1.7031364}
+  m_Center: {x: 0.09129572, y: -0.013516426, z: -0.7156277}
+--- !u!1 &4606599266702311459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2934315010660115697}
+  m_Layer: 10
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2934315010660115697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4606599266702311459}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.70710707, y: -0, z: -0, w: 0.70710653}
+  m_LocalPosition: {x: -0.065, y: 0, z: 0.255}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4678290121229568694}
+  m_Father: {fileID: 5244565790821027541}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1001 &5144827564667628893
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 5244565790821027541}
+    m_TransformParent: {fileID: 2934315010660115697}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: eb11d0a9bd260da42b499b29582c9455, type: 3}
       propertyPath: m_LocalScale.x
@@ -80,7 +112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eb11d0a9bd260da42b499b29582c9455, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.37
+      value: -0.3699999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eb11d0a9bd260da42b499b29582c9455, type: 3}
       propertyPath: m_LocalPosition.z

@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine.InputSystem;
 
@@ -36,9 +38,36 @@ public class HandManager : MonoBehaviour
         //UpdateHandVisuals();
     }
 
+    GameObject ResolveHpBar(PlayerCombatant playerCombatant)
+    {
+        if (playerCombatant.hpBar != null) return playerCombatant.hpBar;
+        var hpBarTransform = playerCombatant.transform.Find("Healthbar") ?? playerCombatant.transform.Find("Health");
+        if (hpBarTransform == null) return null;
+        playerCombatant.hpBar = hpBarTransform.gameObject;
+        return playerCombatant.hpBar;
+    }
+
     public void SetHandActive(bool isActive)
     {
         handTransform.gameObject.SetActive(isActive);
+        foreach (var playerCombatant in BattleManager.Instance.combatants.OfType<PlayerCombatant>())
+        {
+            var hpBar = ResolveHpBar(playerCombatant);
+            if (hpBar == null) continue;
+            hpBar.SetActive(!isActive);
+        }
+
+        //Select the first card in hand for controller navigation if hand is active
+        if (isActive && cardsInHand.Count > 0)
+        {
+            EventSystem.current.SetSelectedGameObject(cardsInHand[0]);
+        }
+        if(cardsInHand.Count == 0)
+        {
+            //Find "Skip Turn" button and select it
+            var skipTurnButton = GameObject.Find("Pass");
+            EventSystem.current.SetSelectedGameObject(skipTurnButton);
+        }
     }
 
     public void UpdateHandVisuals()

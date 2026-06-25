@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85afc1b1367c7a14da4ee484f3497e44, type: 3}
+  m_Name: Speed Boost
+  m_EditorClassIdentifier: 
+  statusEffect:
+    name: Speed Boost
+    stat: SPD
+    sprite: {fileID: 21300000, guid: 40e6bcf93b09e0e45b4c5038515cca90, type: 3}
+    amount: 20
+    description: 'Speed increased by [amount]'
+    additive: 1
+    duration: 3
+    removeOnHit: 0
+    caller: {fileID: 0}
+    statusUpdate: 0
+    particleEffect: {fileID: 4208484295450631797, guid: b8ad6a4f2febde644a7e59faf5d6e647, type: 3}

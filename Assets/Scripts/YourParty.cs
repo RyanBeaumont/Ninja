@@ -27,7 +27,7 @@ public class YourParty : MonoBehaviour
     public string currentSaveFileName = "savefile_1";
     public float gold;
     public float spacing = 1f;
-    public int day = 10;
+    public int day = 12;
     void Awake()
     {
         if (instance == null)
@@ -203,7 +203,7 @@ public class YourParty : MonoBehaviour
             var model = Instantiate(Resources.Load<GameObject>($"Characters/{partyMember.modelName}"), combatantObject.transform);
 
             var healthbar = Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);
-
+            combatantObject.GetComponent<PlayerCombatant>().hpBar = healthbar;
             //give cards
             var doubleDeck = new List<Card>(partyMember.deck);
             doubleDeck.AddRange(partyMember.deck);
@@ -233,17 +233,23 @@ public class YourParty : MonoBehaviour
             }
                 
             combatant.attack = attack; combatant.maxHp = maxHp; combatant.speed = speed; combatant.psychic = psychic;
-            combatant.hp = combatant.maxHp * partyMember.hpPercentage ;
+            combatant.hp = combatant.maxHp * partyMember.hpPercentage;
             combatant.maxMp = combatant.psychic * 4;
             combatant.level = partyMember.level;
             combatant.defense = 1f;
             if(gameDifficulty.value == 2) combatant.defense = 0.8f;
             if(gameDifficulty.value == 0) combatant.defense = 1.2f;
             
-            
             combatant.enabled = true;
-            if(partyMember.alive == false){combatant.alive = false; combatant.PlayAnimation("Knockdown");}
-            combatant.GetComponentInChildren<Animator>().enabled = true;    
+            var animator = combatant.GetComponentInChildren<Animator>();
+            if(animator != null) animator.enabled = true;
+            if(partyMember.alive == false)
+            {
+                partyMember.hpPercentage = 0f;
+                combatant.hp = 0f;
+                combatant.PlayAnimation("Knockdown");
+                combatant.alive = false;
+            }
 
         }
 
@@ -368,13 +374,13 @@ public class YourParty : MonoBehaviour
             var partyMember = GetPartyMember(player);
             partyMember.xp += xpAmount;
             //Level up if xp exceeds threshold
-            int xpThreshold = 100 + partyMember.level * 10;
+            int xpThreshold = 100 + partyMember.level * 25;
             bool levelUp = false;
             while(partyMember.xp >= xpThreshold)
             {
                 partyMember.xp -= xpThreshold;
                 partyMember.level += 1;
-                xpThreshold = 100 + partyMember.level * 10;
+                xpThreshold = 100 + partyMember.level * 25;
                 levelUp = true;
             }
 

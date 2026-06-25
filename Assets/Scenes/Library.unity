@@ -5124,9 +5124,9 @@ MonoBehaviour:
   active: 1
   blockInteraction: 0
   failBranch: 
-  sceneName: TorchHouse
+  sceneName: Library
   spawnPointIndex: 0
-  sceneVariant: 1
+  sceneVariant: 0
   skybox: {fileID: 0}
   cameraTarget: {fileID: 520141413}
 --- !u!114 &399412744
@@ -24456,6 +24456,7 @@ GameObject:
   - component: {fileID: 1841830742}
   - component: {fileID: 1841830747}
   - component: {fileID: 1841830748}
+  - component: {fileID: 1841830751}
   - component: {fileID: 1841830750}
   - component: {fileID: 1841830749}
   m_Layer: 7
@@ -25039,11 +25040,27 @@ MonoBehaviour:
   active: 1
   blockInteraction: 0
   failBranch: 
-  sceneName: Library
-  spawnPointIndex: 0
-  sceneVariant: 0
+  sceneName: DojoInterior
+  spawnPointIndex: 1
+  sceneVariant: 8
   skybox: {fileID: 0}
   cameraTarget: {fileID: 401832728}
+--- !u!114 &1841830751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841830732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a0affe508a3704499e97b9e921b1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
 --- !u!1001 &1848678163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29183,6 +29200,22 @@ MonoBehaviour:
   needsPartyMember: 
   excludePartyMember: 
   hideObject: 1
+--- !u!114 &7095386176128879883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3342594783103442814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679e7d6cbd6ea234daa49f6a576b7c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
 --- !u!4 &7620324096060793904
 Transform:
   m_ObjectHideFlags: 0
@@ -29277,6 +29310,9 @@ PrefabInstance:
       addedObject: {fileID: 7095386176128879874}
     - targetCorrespondingSourceObject: {fileID: 3867433396447540958, guid: 70a07ba5a8d3ed5448ef363ff8d68384, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 7095386176128879883}
+    - targetCorrespondingSourceObject: {fileID: 3867433396447540958, guid: 70a07ba5a8d3ed5448ef363ff8d68384, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 7095386176128879873}
   m_SourcePrefab: {fileID: 100100000, guid: 70a07ba5a8d3ed5448ef363ff8d68384, type: 3}
 --- !u!4 &8992729448768075539
@@ -29365,9 +29401,9 @@ MonoBehaviour:
   active: 1
   blockInteraction: 0
   failBranch: 
-  sceneName: DojoInterior
+  sceneName: TorchHouse
   spawnPointIndex: 0
-  sceneVariant: 6
+  sceneVariant: 1
   skybox: {fileID: 0}
   cameraTarget: {fileID: 0}
 --- !u!114 &9191006210182872554

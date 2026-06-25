@@ -10263,7 +10263,19 @@ PrefabInstance:
       addedObject: {fileID: 548502797}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 835967d21c88bd04283709038ac67e02, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 548502798}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 835967d21c88bd04283709038ac67e02, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 548502801}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 835967d21c88bd04283709038ac67e02, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 548502792}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 835967d21c88bd04283709038ac67e02, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 548502800}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 835967d21c88bd04283709038ac67e02, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 548502799}
   m_SourcePrefab: {fileID: 100100000, guid: 835967d21c88bd04283709038ac67e02, type: 3}
 --- !u!1 &548502791 stripped
 GameObject:
@@ -10286,10 +10298,10 @@ MonoBehaviour:
   active: 1
   blockInteraction: 0
   failBranch: 
-  sceneName: DojoTunnels
-  spawnPointIndex: 10
-  sceneVariant: 5
-  skybox: {fileID: 0}
+  sceneName: DojoInterior
+  spawnPointIndex: 1
+  sceneVariant: 6
+  skybox: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
   cameraTarget: {fileID: 0}
 --- !u!65 &548502793
 BoxCollider:
@@ -10353,6 +10365,81 @@ MonoBehaviour:
     face: 
   turnToFace: 0
   snapPlayerPosition: 0
+--- !u!114 &548502798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548502791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a0affe508a3704499e97b9e921b1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+--- !u!114 &548502799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548502791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b4ef69776623b4f92b74bdf634fb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  sceneName: TorchHouse
+  spawnPointIndex: 0
+  sceneVariant: 1
+  skybox: {fileID: 0}
+  cameraTarget: {fileID: 0}
+--- !u!114 &548502800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548502791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31441617c7f832e43b2308e10814aa79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  branchName: 
+--- !u!114 &548502801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548502791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39dbe71c188417348bd6d12fd2a31004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  questsToComplete:
+  - Go to Jade and Storm's House
+  - Take the Party Bus and interrogate Chrome Dome
+  - Learn about the Spartans at the Library
+  - Take the Porta-Comm to Torch
 --- !u!1001 &548654873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17694,6 +17781,7 @@ GameObject:
   - component: {fileID: 963713550}
   - component: {fileID: 963713549}
   - component: {fileID: 963713548}
+  - component: {fileID: 963713551}
   - component: {fileID: 963713547}
   m_Layer: 0
   m_Name: StartEncounter
@@ -18014,6 +18102,22 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   itemName: Chrome Dome's Porta-Comm
+--- !u!114 &963713551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963713539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a0affe508a3704499e97b9e921b1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
 --- !u!1001 &967152591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31798,6 +31902,30 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 3abc41eec966a3c4e8d17c3da720b079, type: 2}
+    - target: {fileID: 885454424763968685, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.321078
+      objectReference: {fileID: 0}
+    - target: {fileID: 885454424763968685, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.322892
+      objectReference: {fileID: 0}
+    - target: {fileID: 885454424763968685, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6.4215593
+      objectReference: {fileID: 0}
+    - target: {fileID: 885454424763968685, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.254
+      objectReference: {fileID: 0}
+    - target: {fileID: 885454424763968685, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 885454424763968685, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 6044087082982615358, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
       propertyPath: m_Name
       value: The Wild
