@@ -15,6 +15,7 @@ public class Shop : ChainedInteractable
 {
     public List<ShopItem> items;
     bool shopActive = false;
+    public Image cancel;
     GameObject shopUI;
     TMP_Text descriptionText;
     GameObject container;
@@ -29,6 +30,7 @@ public class Shop : ChainedInteractable
         //unlock cursor
         AudioManager.Instance.PlaySoundEffect("ChaChing");
         Time.timeScale = 0f;
+        GameManager.Instance.SetGameplayState(GameplayState.Dialog);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         UpdateShop();

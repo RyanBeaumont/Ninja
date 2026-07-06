@@ -28991,7 +28991,7 @@ MonoBehaviour:
   xpReward: 0
   goldReward: 0
   giveQuestIfMissing: 0
-  completeEvenIfMissing: 1
+  completeEvenIfMissing: 0
   hideIfMissing: 0
   incompleteDialog:
   - text: Heh, *I* say, why read a book when you can punch a face!!
@@ -47045,7 +47045,7 @@ GameObject:
   - component: {fileID: 387058522}
   - component: {fileID: 387058524}
   - component: {fileID: 387058523}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64075,7 +64075,7 @@ GameObject:
   - component: {fileID: 557603208}
   - component: {fileID: 557603210}
   - component: {fileID: 557603209}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71723,7 +71723,7 @@ GameObject:
   - component: {fileID: 617143447}
   - component: {fileID: 617143446}
   - component: {fileID: 617143445}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84319,7 +84319,7 @@ GameObject:
   - component: {fileID: 729660594}
   - component: {fileID: 729660593}
   - component: {fileID: 729660592}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107926,7 +107926,7 @@ GameObject:
   - component: {fileID: 954957308}
   - component: {fileID: 954957310}
   - component: {fileID: 954957309}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118120,7 +118120,7 @@ GameObject:
   - component: {fileID: 1028743537}
   - component: {fileID: 1028743536}
   - component: {fileID: 1028743535}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141941,7 +141941,7 @@ GameObject:
   - component: {fileID: 1211037656}
   - component: {fileID: 1211037658}
   - component: {fileID: 1211037657}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Text (TMP) (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148487,7 +148487,7 @@ GameObject:
   - component: {fileID: 1267589834}
   - component: {fileID: 1267589836}
   - component: {fileID: 1267589835}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157383,7 +157383,7 @@ GameObject:
   - component: {fileID: 1354847825}
   - component: {fileID: 1354847824}
   - component: {fileID: 1354847823}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246689,7 +246689,7 @@ GameObject:
   - component: {fileID: 2084906423}
   - component: {fileID: 2084906425}
   - component: {fileID: 2084906424}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

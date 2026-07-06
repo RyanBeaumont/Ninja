@@ -7,8 +7,11 @@ using Unity.VisualScripting;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using System;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XInput;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 public enum GameplayState{FreeMovement, RestrictedMovement, Dialog, Combat}
 [System.Serializable] public class InventoryItem
 {
@@ -57,6 +60,8 @@ public class GameManager : MonoBehaviour
     RectTransform inventoryUI;
     GameObject lastSelected;
     PlayerInput playerInput;
+    public string inputIconsPath = "Sprites/Icons_Keyboard";
+    public event Action inputIconsChanged;
     public float playTime = 0f;
     public bool controllerMode = false;
     Menu menu;
@@ -441,6 +446,24 @@ public class GameManager : MonoBehaviour
     private void OnControlsChanged(PlayerInput input)
     {
         controllerMode = input.currentControlScheme == "Gamepad";
+        //Detect xbox vs playstation
+        if(controllerMode)
+        {
+            var gamepad = Gamepad.current;
+            if(gamepad != null)
+            {
+                if(gamepad is XInputController)
+                {
+                    Debug.Log("Xbox controller detected");
+                    inputIconsPath = "Sprites/Icons_Xbox";
+                }
+                else
+                {
+                    Debug.Log("Other controller detected");
+                    inputIconsPath = "Sprites/Icons_PS";
+                }
+            }
+        }
         if(controllerMode)
         {
             Debug.Log("Controller detected");
@@ -449,7 +472,10 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("Keyboard/Mouse detected");
+            inputIconsPath = "Sprites/Icons_Keyboard";
         }
+
+        inputIconsChanged?.Invoke();
     }
 
 
@@ -457,7 +483,7 @@ public class GameManager : MonoBehaviour
     {
         if(controllerMode == false) yield break;
         yield return new WaitForEndOfFrame();
-        if(EventSystem.current == null || EventSystem.current.currentSelectedGameObject != null) yield break;
+        if(EventSystem.current == null) yield break;
 
         // First check for buttons tagged "DefaultButton" and visible + interactable
         var defaultSelectable = GameObject.FindGameObjectsWithTag("DefaultButton")
@@ -547,7 +573,7 @@ public class GameManager : MonoBehaviour
         cameraRig.transform.localPosition = Vector3.zero;
         cameraRig.transform.localRotation = Quaternion.identity;
         //set main camera culling mask to "everything"
-        Camera.main.cullingMask = -1;
+        //Camera.main.cullingMask = -1;
         var bg = cameraRig.transform.Find("CameraPosition/CutsceneCamera/Background").GetComponent<SpriteRenderer>();
         bg.enabled = false;
     }

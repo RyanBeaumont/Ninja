@@ -186,7 +186,7 @@ public class DamageAction : GameAction
     public string damage;
     public int hits;
     public string receivingAnimation = "";
-    public DamageType damageType;
+    public DamageType damageType = DamageType.None;
     public StatusEffect statusEffect = null;
     public bool loopAnimation = false;
     public bool multiDamageType = false;

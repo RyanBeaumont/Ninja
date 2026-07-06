@@ -110,8 +110,11 @@ public class Menu : MonoBehaviour
             {
                 var thisCardPrefab = Instantiate(cardPrefab,deck);
                 thisCardPrefab.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
-                thisCardPrefab.GetComponent<MenuCardDisplay>().SetData(card);
-                thisCardPrefab.GetComponentInChildren<MenuCardDisplay>().onPointerDown = () => RemoveCardFromDeck(card);
+                var cardDisplay = thisCardPrefab.GetComponent<CardDisplay>();
+                cardDisplay.displayMode = true;
+                cardDisplay.SetData(card);
+                cardDisplay.onSubmitAction = () => RemoveCardFromDeck(card);
+                cardDisplay.onCancelAction = () => RemoveCardFromDeck(card);
             }
             var allCards = CardDatabase.Instance.BuildDeckByClass(p.mainClass, p.subClass, p.level);
             foreach(Card card in allCards)
@@ -119,8 +122,11 @@ public class Menu : MonoBehaviour
                 if(p.deck.Contains(card)) continue; //Don't show cards already in deck
                 var thisCardPrefab = Instantiate(cardPrefab,cardReserve);
                 thisCardPrefab.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
-                thisCardPrefab.GetComponent<MenuCardDisplay>().SetData(card);
-                thisCardPrefab.GetComponentInChildren<MenuCardDisplay>().onPointerDown = () => MoveCardToDeck(card);
+                var cardDisplay = thisCardPrefab.GetComponent<CardDisplay>();
+                cardDisplay.displayMode = true;
+                cardDisplay.SetData(card);
+                cardDisplay.onSubmitAction = () => MoveCardToDeck(card);
+                cardDisplay.onCancelAction = () => MoveCardToDeck(card);
             }
             deckText.text = $"Your Deck ({p.deck.Count}/{CardDatabase.Instance.deckMax})                                 Available Cards";
 
@@ -155,13 +161,13 @@ public class Menu : MonoBehaviour
                 hover.onEnter = () =>{ShowItemDescription(item);};
             }
         }
-        if(deckContainer.childCount > 0 && EventSystem.current != null)
+
+        if (EventSystem.current != null)
         {
-            var firstCard = deckContainer.GetChild(0).gameObject;
-            EventSystem.current.SetSelectedGameObject(firstCard);
-            var firstSelectable = firstCard.GetComponent<Selectable>();
-            firstSelectable?.Select();
+            EventSystem.current.SetSelectedGameObject(null);
         }
+
+        StartCoroutine(GameManager.Instance.SelectDefault());
     }
 
     public bool EquipItem(InventoryItem item)
@@ -214,7 +220,16 @@ public class Menu : MonoBehaviour
 
     private void SelectFirstCharacterEntry()
     {
+        ClearSelection();
         StartCoroutine(GameManager.Instance.SelectDefault());
+    }
+
+    private void ClearSelection()
+    {
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 
 
@@ -330,11 +345,12 @@ public class Menu : MonoBehaviour
                 else if (settingsContainer.gameObject.activeInHierarchy)
                 {
                     settingsContainer.gameObject.SetActive(false);
-                characterContainer.gameObject.SetActive(true);
-                SelectFirstCharacterEntry();
+                    characterContainer.gameObject.SetActive(true);
+                    SelectFirstCharacterEntry();
                 }
                 else
                 {
+                    ClearSelection();
                     entireMenu.gameObject.SetActive(false);
                     universalUI.gameObject.SetActive(false);
                     Cursor.lockState = CursorLockMode.Locked;
@@ -344,6 +360,7 @@ public class Menu : MonoBehaviour
             }
             else
             {
+                ClearSelection();
                 entireMenu.gameObject.SetActive(true);
                 universalUI.gameObject.SetActive(true);
                 UpdateParty();

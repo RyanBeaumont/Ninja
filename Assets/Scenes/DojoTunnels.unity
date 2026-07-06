@@ -8023,7 +8023,7 @@ GameObject:
   - component: {fileID: 207300566}
   - component: {fileID: 207300565}
   - component: {fileID: 207300564}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19094,6 +19094,7 @@ MonoBehaviour:
       description: 
       function: 
     cost: 500
+  cancel: {fileID: 0}
 --- !u!114 &436431331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22164,7 +22165,7 @@ GameObject:
   - component: {fileID: 508260401}
   - component: {fileID: 508260400}
   - component: {fileID: 508260399}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31120,7 +31121,7 @@ GameObject:
   - component: {fileID: 752002222}
   - component: {fileID: 752002221}
   - component: {fileID: 752002220}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44193,7 +44194,7 @@ GameObject:
   - component: {fileID: 1055030680}
   - component: {fileID: 1055030679}
   - component: {fileID: 1055030678}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52881,7 +52882,7 @@ GameObject:
   - component: {fileID: 1259678746}
   - component: {fileID: 1259678748}
   - component: {fileID: 1259678747}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ScrollText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53092,7 +53093,7 @@ GameObject:
   - component: {fileID: 1260672935}
   - component: {fileID: 1260672934}
   - component: {fileID: 1260672933}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67496,7 +67497,7 @@ GameObject:
   - component: {fileID: 1583589418}
   - component: {fileID: 1583589420}
   - component: {fileID: 1583589419}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ScrollText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69036,7 +69037,7 @@ GameObject:
   - component: {fileID: 1628251518}
   - component: {fileID: 1628251520}
   - component: {fileID: 1628251519}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ScrollText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79937,7 +79938,7 @@ GameObject:
   - component: {fileID: 1912524586}
   - component: {fileID: 1912524588}
   - component: {fileID: 1912524587}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ScrollText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80465,7 +80466,7 @@ GameObject:
   - component: {fileID: 1918067931}
   - component: {fileID: 1918067933}
   - component: {fileID: 1918067932}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ScrollText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85538,6 +85539,7 @@ MonoBehaviour:
       description: 
       function: 
     cost: 100
+  cancel: {fileID: 0}
 --- !u!114 &2034459491
 MonoBehaviour:
   m_ObjectHideFlags: 0

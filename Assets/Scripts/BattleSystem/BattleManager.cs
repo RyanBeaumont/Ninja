@@ -891,6 +891,7 @@ public class BattleManager : MonoBehaviour
         var activeCardDisplays = FindObjectsByType<CardDisplay>(FindObjectsSortMode.None);
         buttonContainer.gameObject.SetActive(false);
         handManager.SetHandActive(false);
+        GameManager.Instance.SelectDefault();
     }
 
     public void HideInventory()
@@ -900,6 +901,7 @@ public class BattleManager : MonoBehaviour
                 itemContainer.gameObject.SetActive(false);
                 buttonContainer.gameObject.SetActive(true);
                 activePlayer.BonusTurn();
+                GameManager.Instance.SelectDefault();
             }
     }
 

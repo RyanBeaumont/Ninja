@@ -53,14 +53,22 @@ MonoBehaviour:
   defense: 0
   speed: 0
   psychic: 0
+  surprise: 0
   mp: 0
   maxMp: 0
+  hpBar: {fileID: 0}
+  startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 
   weaknesses: 
+  discoveredResistances: 
+  discoveredWeaknesses: 
   combatantName: 
   initiative: 0
+  statusEffects: []
+  copyAnimator: {fileID: 0}
   tp: 0
+  hidden: 0
 --- !u!136 &1432681453547175367
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -115,6 +123,10 @@ PrefabInstance:
     - target: {fileID: 5503742805307457794, guid: 7e9d023fa1186ec49af4942c19d6fafb, type: 3}
       propertyPath: m_Name
       value: StatusCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5599208240953815740, guid: 7e9d023fa1186ec49af4942c19d6fafb, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2034311945
       objectReference: {fileID: 0}
     - target: {fileID: 5981674364477819340, guid: 7e9d023fa1186ec49af4942c19d6fafb, type: 3}
       propertyPath: m_AnchorMax.y

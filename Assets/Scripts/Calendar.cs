@@ -59,7 +59,7 @@ public class Calendar : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !dayAdvanced)
+        if (Input.GetButton("Interact") && !dayAdvanced)
         {
             if (YourParty.instance == null || panel == null) return;
             dayAdvanced = true;

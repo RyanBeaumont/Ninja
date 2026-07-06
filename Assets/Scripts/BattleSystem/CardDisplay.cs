@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.EventSystems;
@@ -24,6 +25,10 @@ public class CardDisplay : Selectable,
     public Image discardImage;
     public Image tpImage;
     public TMP_Text discardCost;
+    public bool displayMode;
+    public float displaySelectedScale = 1.05f;
+    public Color displaySelectedColor = new Color(1f, 0.95f, 0.6f, 1f);
+    public Color displayNormalColor = Color.white;
     public Vector3 targetLocalPos;
     public Transform damageTypeOverlay;
     public Quaternion targetLocalRot;
@@ -35,6 +40,8 @@ public class CardDisplay : Selectable,
     bool isHighlighted;
 
     public Card card;
+    public Action onSubmitAction;
+    public Action onCancelAction;
 
     public virtual void SetData(Card card)
     {
@@ -88,11 +95,12 @@ public class CardDisplay : Selectable,
         {
             if (d.damageType == DamageType.Slashing)
             {
+                
                 var s = Resources.Load<Sprite>("Sprites/Cards/SlashingDamage");
                 damageTypeImage.sprite = s;
-
                 if (damageTypeOverlay != null)
                 {
+                    
                     damageTypeOverlay.GetComponent<Image>().sprite = s;
                     damageTypeOverlay.GetComponentInChildren<TMP_Text>().text = "Slashing Damage";
                 }
@@ -100,11 +108,12 @@ public class CardDisplay : Selectable,
 
             if (d.damageType == DamageType.Bludgeoning)
             {
+                
                 var s = Resources.Load<Sprite>("Sprites/Cards/BludgeoningDamage");
                 damageTypeImage.sprite = s;
-
                 if (damageTypeOverlay != null)
                 {
+                    
                     damageTypeOverlay.GetComponent<Image>().sprite = s;
                     damageTypeOverlay.GetComponentInChildren<TMP_Text>().text = "Bludgeoning Damage";
                 }
@@ -112,15 +121,38 @@ public class CardDisplay : Selectable,
 
             if (d.damageType == DamageType.Psychic)
             {
+               
                 var s = Resources.Load<Sprite>("Sprites/Cards/PsychicDamage");
                 damageTypeImage.sprite = s;
-
                 if (damageTypeOverlay != null)
                 {
+                    
                     damageTypeOverlay.GetComponent<Image>().sprite = s;
                     damageTypeOverlay.GetComponentInChildren<TMP_Text>().text = "Psychic Damage";
                 }
             }
+
+            if(d.damageType == DamageType.None)
+            {
+                var s = Resources.Load<Sprite>("Sprites/Cards/NoDamage");
+                    damageTypeImage.sprite = s;
+                if (damageTypeOverlay != null)
+                {
+                    
+                    damageTypeOverlay.GetComponent<Image>().sprite = s;
+                    damageTypeOverlay.GetComponentInChildren<TMP_Text>().text = "Raw Damage";
+                }
+            }
+        }else{
+            //Disable damageTypeImage for non-damage cards
+            var s = Resources.Load<Sprite>("Sprites/Cards/NoDamage");
+            damageTypeImage.sprite = s;
+            if (damageTypeOverlay != null)
+                {
+            
+            damageTypeOverlay.GetComponent<Image>().sprite = s;
+            damageTypeOverlay.GetComponentInChildren<TMP_Text>().text = "";
+                }
         }
 
         if (damageTypeOverlay != null)
@@ -135,6 +167,12 @@ public class CardDisplay : Selectable,
             return;
 
         isHighlighted = true;
+
+        if (displayMode)
+        {
+            ApplyDisplaySelectionVisual(true);
+            return;
+        }
 
         if (BattleManager.Instance == null)
             return;
@@ -171,6 +209,12 @@ public class CardDisplay : Selectable,
 
         isHighlighted = false;
 
+        if (displayMode)
+        {
+            ApplyDisplaySelectionVisual(false);
+            return;
+        }
+
         selectedBorder.enabled = false;
 
         targetLocalPos -= new Vector3(0f, 20f, 0f);
@@ -181,8 +225,39 @@ public class CardDisplay : Selectable,
             damageTypeOverlay.gameObject.SetActive(false);
     }
 
+    private void ApplyDisplaySelectionVisual(bool selected)
+    {
+        if (cardImage != null)
+        {
+            cardImage.color = selected ? displaySelectedColor : displayNormalColor;
+        }
+
+        if (borderImage != null)
+        {
+            borderImage.color = selected ? displaySelectedColor : displayNormalColor;
+        }
+
+        if (selectedBorder != null)
+        {
+            selectedBorder.enabled = selected;
+        }
+
+        if (Application.isPlaying)
+        {
+            var targetScale = new Vector3(0.8f,0.8f,1f);
+            transform.localScale = selected ? targetScale * displaySelectedScale : targetScale;
+        }
+    }
+
     public override void OnPointerEnter(PointerEventData eventData)
     {
+        if (displayMode)
+        {
+            Highlight();
+            EventSystem.current?.SetSelectedGameObject(gameObject);
+            return;
+        }
+
         AudioManager.Instance.PlaySoundEffect("MenuHover");
 
         if (FindFirstObjectByType<BattleManager>() == null)
@@ -195,6 +270,12 @@ public class CardDisplay : Selectable,
 
     public override void OnPointerExit(PointerEventData eventData)
     {
+        if (displayMode)
+        {
+            Unhighlight();
+            return;
+        }
+
         if (EventSystem.current.currentSelectedGameObject != gameObject)
         {
             Unhighlight();
@@ -213,6 +294,15 @@ public class CardDisplay : Selectable,
 
     public override void OnPointerDown(PointerEventData eventData)
     {
+        if (displayMode)
+        {
+            if (eventData.button == PointerEventData.InputButton.Left && onSubmitAction != null)
+            {
+                onSubmitAction.Invoke();
+            }
+            return;
+        }
+
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             PlayCard();
@@ -223,13 +313,25 @@ public class CardDisplay : Selectable,
         }
     }
 
-    public void OnSubmit(BaseEventData eventData)
+    public virtual void OnSubmit(BaseEventData eventData)
     {
+        if (displayMode)
+        {
+            onSubmitAction?.Invoke();
+            return;
+        }
+
         PlayCard();
     }
 
     public void OnCancel(BaseEventData eventData)
     {
+        if (displayMode)
+        {
+            onCancelAction?.Invoke();
+            return;
+        }
+
         DiscardCard();
     }
 
@@ -240,6 +342,7 @@ public class CardDisplay : Selectable,
         if (activePlayer != null)
         {
             activePlayer.DiscardCard(card);
+            GameManager.Instance.SelectDefault();
             Destroy(gameObject);
         }
     }
@@ -265,13 +368,14 @@ public class CardDisplay : Selectable,
         if (EventSystem.current == null || EventSystem.current.currentSelectedGameObject != gameObject)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.JoystickButton1))
+        if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.JoystickButton3))
         {
             var activePlayer = BattleManager.Instance.activePlayer;
 
             if (activePlayer != null)
             {
                 activePlayer.DiscardCard(card);
+                GameManager.Instance.SelectDefault();
                 Destroy(gameObject);
             }
         }
@@ -279,6 +383,11 @@ public class CardDisplay : Selectable,
 
     void Update()
     {
+        if (displayMode)
+        {
+            return;
+        }
+
         CheckControllerRightClick();
 
         transform.localPosition = Vector3.Lerp(

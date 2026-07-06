@@ -61,7 +61,7 @@ public class Healthbar : MonoBehaviour {
             if (nameText != null) nameText.text = $"{combatant.combatantName} (HP: {Mathf.Round(combatant.hp)}/{Mathf.Round(combatant.maxHp)})";
             if (combatant.mp >= combatant.maxMp)
             {
-                ultReady.gameObject.SetActive(true);
+                //ultReady.gameObject.SetActive(true);
             }
             else
             {
