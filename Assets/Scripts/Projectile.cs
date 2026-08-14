@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
 using TMPro;
 
 public class Projectile : MonoBehaviour
@@ -36,6 +35,7 @@ public class Projectile : MonoBehaviour
             for(int i=0; i<list.Count; i++)
             {
                 var prompt = Instantiate(Resources.Load<GameObject>("DodgePrompt"), list[i].transform);
+                prompt.transform.localPosition = new Vector3(0, 0, 0);
                 string text = "";
                 if(directions[i] == "Jump") text = "W";
                 if(directions[i] == "Duck") text = "S";

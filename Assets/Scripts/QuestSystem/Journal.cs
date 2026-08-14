@@ -27,14 +27,14 @@ public class Journal : ChainedInteractable
                     journalText.text += dialog[0][journalText.text.Length];
                     charTimer = 0.03f;
                 }
-                if(Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0))
+                if(Input.GetButtonDown("Interact") || Input.GetButtonDown("Submit"))
                 {
                     journalText.text = dialog[0];
                 }
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0))
+                if (Input.GetButtonDown("Interact")|| Input.GetButtonDown("Submit"))
                 {
                     dialog.RemoveAt(0);
                     journalText.text = "";

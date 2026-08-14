@@ -124,6 +124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StatusCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5503742805307457794, guid: 7e9d023fa1186ec49af4942c19d6fafb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5599208240953815740, guid: 7e9d023fa1186ec49af4942c19d6fafb, type: 3}
       propertyPath: m_SortingLayerID
       value: -2034311945

@@ -67,6 +67,7 @@ MonoBehaviour:
   combatantName: Shadow
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: ThrowKnife
     attackName: Knives
@@ -108,7 +109,7 @@ MonoBehaviour:
       statusUpdate: 0
       particleEffect: {fileID: 0}
     hits: 1
-    mpCost: 20
+    mpCost: 40
     healthThreshold: 100
     altFunction: 
     consumeMana: 1

@@ -95,6 +95,13 @@ public class HandManager : MonoBehaviour
 
         // keep draw order left→right
         cardsInHand[i].transform.SetSiblingIndex(i);
+
+        var cardDisplay = cardsInHand[i].GetComponent<CardDisplay>();
+        if (cardDisplay != null)
+        {
+            cardDisplay.handManager = this;
+            cardDisplay.handIndex = i;
+        }
     }
 }
 }

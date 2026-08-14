@@ -143,6 +143,11 @@ public class DialogEncounter : ChainedInteractable
         CallNext();
         foreach(GameObject g in spawnedCharacters) Destroy(g.gameObject);
         spawnedCharacters.Clear();
+        var allAnimationListeners = GameObject.FindObjectsByType<AnimationListener>(FindObjectsSortMode.None);
+        foreach(AnimationListener a in allAnimationListeners)
+        {
+            a.ClearWeapon();
+        }
     }
 
     private void SnapToGround(Transform model)

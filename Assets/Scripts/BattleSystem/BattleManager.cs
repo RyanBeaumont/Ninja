@@ -7,6 +7,7 @@ using System;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 
 public class BattleManager : MonoBehaviour
@@ -27,6 +28,7 @@ public class BattleManager : MonoBehaviour
     private InputAction dpadUpAction;
     private InputAction dpadDownAction;
     private bool inputActionsEnabled = false;
+    public bool discardMode = false;
     float waitTime = 1f;
     public float pendingDamage = 0f;
     public DamageType pendingDamageType;
@@ -37,6 +39,7 @@ public class BattleManager : MonoBehaviour
     public RectTransform playerStats;
     public Transform itemContainer;
     public Transform buttonContainer;
+    public Transform discardPrompt;
     public int attacksRemaining = 1;
     public int hitsRemaining = 0;
     public bool canDodge = false;
@@ -45,9 +48,12 @@ public class BattleManager : MonoBehaviour
     public int discardPower = 0;
     public FloatValue gameDifficulty;
     bool gainTP = true;
+    public bool dontPause = false;
     bool executingActions = false;
     bool canWin = true;
     public bool waitingForQuickTime = false;
+    [HideInInspector] public GameObject pendingCardObject;
+    [HideInInspector] public Card pendingCard;
     float pitch = 1f;
     [HideInInspector] public string pattern = "";
     GameObject cameraRig;
@@ -83,6 +89,7 @@ public class BattleManager : MonoBehaviour
         cameraRig = Instantiate(Resources.Load<GameObject>("CameraRig"));
         cameraRig.GetComponentInChildren<CinemachineCamera>().Priority = 8;
         cameraAnimator = cameraRig.GetComponentInChildren<Animator>();
+        discardPrompt.gameObject.SetActive(false);
         //singeton pattern
         if (Instance == null)
         {
@@ -230,20 +237,30 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    public void DiscardCard()
+    {
+        discardPrompt.GetComponent<TMP_Text>().text = $"PAY THE DISCARD COST";
+        if(discardPower >= pendingCard.discardCost){
+            discardMode = false;
+            discardPrompt.gameObject.SetActive(false);
+            ExecuteCard(pendingCard,activePlayer);
+        }
+
+    }
+
 
     public void ExecuteCard(Card card, Combatant caller)
     {
         print("Executing card: " + card.cardName);
-        if(card.tpCost > 0) gainTP = false; else gainTP = true;
-        if(activePlayer != null && gainTP) activePlayer.tp += 5; //Gain TERROR points
+        
         foreach(var action in card.effects)
         {
             action.caller = caller;
             pattern = action.pattern;
-            if(action.targetType == TargetType.AllEnemies){SelectTargets(GameObject.FindGameObjectsWithTag("Enemy").ToList().Select(go => go.GetComponent<Combatant>()).ToList());actionQueue.Add(action); ShowQuickTimeEvent();} 
-            else if(action.targetType == TargetType.AllAllies){SelectTargets(GameObject.FindGameObjectsWithTag("PlayerCombatant").ToList().Select(go => go.GetComponent<Combatant>()).ToList());actionQueue.Add(action); ShowQuickTimeEvent();}
-            else if(action.targetType == TargetType.Self){SelectTargets(new List<Combatant>(){caller});actionQueue.Add(action); ShowQuickTimeEvent();}
-            else if(action.targetType == TargetType.None){SelectTargets(new List<Combatant>());actionQueue.Add(action); ShowQuickTimeEvent();}
+            if(action.targetType == TargetType.AllEnemies){SelectTargets(GameObject.FindGameObjectsWithTag("Enemy").ToList().Select(go => go.GetComponent<Combatant>()).ToList());actionQueue.Add(action); ShowQuickTimeEvent(); ConsumeCard(card);} 
+            else if(action.targetType == TargetType.AllAllies){SelectTargets(GameObject.FindGameObjectsWithTag("PlayerCombatant").ToList().Select(go => go.GetComponent<Combatant>()).ToList());actionQueue.Add(action); ShowQuickTimeEvent();ConsumeCard(card);}
+            else if(action.targetType == TargetType.Self){SelectTargets(new List<Combatant>(){caller});actionQueue.Add(action); ShowQuickTimeEvent();ConsumeCard(card);}
+            else if(action.targetType == TargetType.None){SelectTargets(new List<Combatant>());actionQueue.Add(action); ShowQuickTimeEvent();ConsumeCard(card);}
             
             else{
                 if (caller.HasStatusEffect("Insanity") != null)
@@ -251,6 +268,7 @@ public class BattleManager : MonoBehaviour
                     Debug.Log($"Caller: {action.caller}");
                     actionQueue.Add(action);
                     actionQueue.Add(action);
+                    ConsumeCard(card);
                 }
                 else
                 {
@@ -259,13 +277,33 @@ public class BattleManager : MonoBehaviour
                         targetType = action.targetType,
                         prompt = "Choose your target",
                         gameAction = action,
-                        caller = caller
+                        caller = caller,
+                        card = card
                     };
                     GameManager.Instance.ShowMessage("Choose your target for " + card.cardName);
                     actionQueue.Add(targetAction);
                 }
             }
             
+        }
+    }
+
+    public void ConsumeCard(Card card)
+    {
+        if(activePlayer != null && card != null){
+            activePlayer.hand.Remove(card);
+            activePlayer.discard.Add(card);
+            activePlayer.mp = Mathf.Max(0, activePlayer.mp - card.cost);
+            activePlayer.tp = Mathf.Max(0, activePlayer.tp - card.tpCost);
+            if(card.tpCost > 0) gainTP = false; else gainTP = true;
+            if(gainTP) activePlayer.tp += 5; //Gain TERROR points
+            BattleManager.Instance.activePlayer.ShowStats();
+            BattleManager.Instance.UpdateDiscardPower(BattleManager.Instance.discardPower - card.discardCost);
+            ShowQuickTimeEvent();
+            if(pendingCardObject != null)
+            {
+                Destroy(pendingCardObject);
+            }
         }
     }
 
@@ -355,6 +393,8 @@ public class BattleManager : MonoBehaviour
     void Win()
     {
         AudioManager.Instance.PlayMusic(Resources.Load<AudioClip>("Sound/Music/Victory"), 0.2f);
+        Camera.main.cullingMask = normalMask;
+       cameraRig.transform.Find("CameraPosition/CutsceneCamera/Background").GetComponent<SpriteRenderer>().enabled = false;
         foreach(var c in combatants)
         {
             if(c is PlayerCombatant pc)
@@ -396,6 +436,8 @@ public class BattleManager : MonoBehaviour
 
     void Lose()
     {
+        Camera.main.cullingMask = normalMask;
+       cameraRig.transform.Find("CameraPosition/CutsceneCamera/Background").GetComponent<SpriteRenderer>().enabled = false;
         AudioManager.Instance.PlayMusic(Resources.Load<AudioClip>("Sound/Music/Defeat"), 0.2f);
         DialogBox d = FindFirstObjectByType<DialogBox>();
         //disable boss hp overlay
@@ -892,10 +934,12 @@ public class BattleManager : MonoBehaviour
         buttonContainer.gameObject.SetActive(false);
         handManager.SetHandActive(false);
         GameManager.Instance.SelectDefault();
+        dontPause = true;
     }
 
     public void HideInventory()
     {
+        dontPause = false;
          if(itemContainer.gameObject.activeInHierarchy)
             {
                 itemContainer.gameObject.SetActive(false);
@@ -911,7 +955,16 @@ public class BattleManager : MonoBehaviour
         if(prefab != "") projectileInstance = Resources.Load<GameObject>(prefab); else projectileInstance = Resources.Load<GameObject>("Projectile");
         var p = Instantiate(projectileInstance,caller.gameObject.transform.position,Quaternion.identity);
         var projectile = p.GetComponent<Projectile>();
-        if(caller is PlayerCombatant) projectile.Initialize("Enemy"); else projectile.Initialize("PlayerCombatant");
+       
+         //Check for E-S-Pow status effect
+        if(caller.HasStatusEffect("E-S-Pow") != null)
+        {
+             if(caller is PlayerCombatant) projectile.Initialize("PlayerCombatant"); else projectile.Initialize("Enemy");
+        }
+        else
+        {
+             if(caller is PlayerCombatant) projectile.Initialize("Enemy"); else projectile.Initialize("PlayerCombatant");
+        }
     }
 
     public void PlayerHit()
@@ -1159,5 +1212,6 @@ public class BattleManager : MonoBehaviour
         else if(cameraAngle == CameraAngle.super) cameraAnimator.Play("Camera_Super");
         else if(cameraAngle == CameraAngle.lockOn) cameraAnimator.Play("Camera_LockOn");
         else if(cameraAngle == CameraAngle.counter) cameraAnimator.Play("Camera_Counter");
+        else if(cameraAngle == CameraAngle.knifeView) cameraAnimator.Play("Camera_KnifeView");
     }
 }

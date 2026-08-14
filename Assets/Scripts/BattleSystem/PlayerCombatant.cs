@@ -84,6 +84,7 @@ public class PlayerCombatant : Combatant
 
     public bool PlayCard(Card card)
     {
+        
         var cost = card.cost;
         if(card.tempCost != 0){cost = card.tempCost; card.tempCost = 0;}
         if (hand.Contains(card) && mp >= cost && tp >= card.tpCost && BattleManager.Instance.discardPower >= card.discardCost)
@@ -105,12 +106,7 @@ public class PlayerCombatant : Combatant
                     return false;
                 } 
             }
-            hand.Remove(card);
-            discard.Add(card);
-            mp -= cost;
-            tp -= card.tpCost;
-            BattleManager.Instance.activePlayer.ShowStats();
-            BattleManager.Instance.UpdateDiscardPower(BattleManager.Instance.discardPower - card.discardCost);
+            
             BattleManager.Instance.ExecuteCard(card, this);
             return true;
         }
@@ -121,8 +117,21 @@ public class PlayerCombatant : Combatant
                 GameManager.Instance.ShowMessage("Not enough MP!");
             else if(tp < card.tpCost)
                 GameManager.Instance.ShowMessage("Not enough TP!");
-            else if(BattleManager.Instance.discardPower < card.discardCost)
-                GameManager.Instance.ShowMessage($"You must first discard { card.discardCost-BattleManager.Instance.discardPower} more cards with right-click");
+            else if(BattleManager.Instance.discardPower < card.discardCost){
+                if(hand.Count >= card.discardCost - BattleManager.Instance.discardPower){
+                    GameManager.Instance.ShowMessage("Discard cards to pay the discard cost first.");
+                    BattleManager.Instance.pendingCard = card;
+                    BattleManager.Instance.discardMode = true;
+                    BattleManager.Instance.discardPrompt.GetComponent<TMP_Text>().text = $"PAY THE DISCARD COST: {BattleManager.Instance.discardPower}/{card.discardCost}";
+                    BattleManager.Instance.discardPrompt.gameObject.SetActive(true);
+                    Destroy(BattleManager.Instance.pendingCardObject);
+                }
+                else
+                {
+                    GameManager.Instance.ShowMessage("Can't discard enough cards");
+                }
+            }
+                
         }
         return false;
     }
@@ -221,7 +230,7 @@ public class PlayerCombatant : Combatant
         ShowStats();
     }
 
-    void ShowStats()
+    public void ShowStats()
     {
         //show player stats UI
         var battleManager = FindFirstObjectByType<BattleManager>();

@@ -90,7 +90,7 @@ public class Combatant : MonoBehaviour
         if(resistances != null && System.Array.Exists(resistances, element => element == damageType) && HasStatusEffect("Weak")==null)
         {
             baseDamage *= 0.5f; //Take half damage
-            damageText.text += "Weak!";
+            damageText.text += "Ineffective!";
             AudioManager.Instance.PlaySoundEffect("Anvil",Random.Range(0.9f,1.1f));
             damageText.color = color;
             if(!discoveredResistances.Contains(damageType)) discoveredResistances.Add(damageType);
@@ -98,7 +98,7 @@ public class Combatant : MonoBehaviour
         if((weaknesses != null && System.Array.Exists(weaknesses, element => element == damageType)) || (HasStatusEffect("Weak") != null && damageType != DamageType.None)) //The ninja can't get infinite extra attacks
         {
             baseDamage *= 1.5f; //Take 1.5x damage
-            damageText.text += "STRONG!";
+            damageText.text += "EFFECTIVE!";
             //spawn blood fx
             var blood = Instantiate(Resources.Load<GameObject>("Particles/Blood"),transform);
             if(!discoveredWeaknesses.Contains(damageType)&& System.Array.Exists(weaknesses, element => element == damageType)) discoveredWeaknesses.Add(damageType);

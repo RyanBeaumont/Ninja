@@ -35,13 +35,16 @@ public class Targeter : MonoBehaviour
     private InputAction dpadDownAction;
     private InputAction submitAction;
     private bool actionsInitialized = false;
+    private Card card;
 
-    public void Initialize(TargetType type, string prompt, GameAction action, bool targetDead = false)
+    public void Initialize(TargetType type, string prompt, GameAction action, bool targetDead = false, Card card = null)
     {
         targetType = type;
         initialized = true;
         this.action = action;
         this.targetDead = targetDead;
+        this.card = card;
+
         if((this.action is GrappleDamageAction || this.action is SuplexDamageAction) && this.action.wildSwing == false) grapple = true;
     }
 
@@ -99,6 +102,11 @@ public class Targeter : MonoBehaviour
     void Update()
 {
     if (!initialized) return;
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Cancel();
+        }
 
     List<GameObject> candidates = new List<GameObject>();
 
@@ -262,6 +270,17 @@ public class Targeter : MonoBehaviour
         }
     }
 
+    void Cancel()
+        {
+            
+            //Go back to default camera angle
+            BattleManager.Instance.SetPose(BattleManager.Instance.activeCombatant.transform, "", CameraAngle.behind, "");
+            BattleManager.Instance.attacksRemaining += 1;
+            BattleManager.Instance.clock = 0f;
+            BattleManager.Instance.EndAction();
+            Destroy(gameObject);
+        }
+
     void EndSelection()
     {
         if (action != null)
@@ -292,8 +311,10 @@ public class Targeter : MonoBehaviour
             }
         }
 
-        Destroy(gameObject);
+        
+        BattleManager.Instance.ConsumeCard(card);
         BattleManager.Instance.ShowQuickTimeEvent();
+        Destroy(gameObject);
     }
 }
 }

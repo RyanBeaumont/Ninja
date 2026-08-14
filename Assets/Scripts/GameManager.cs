@@ -511,6 +511,32 @@ public class GameManager : MonoBehaviour
 
     public GameplayState GetGameplayState(){return gameplayState;}
 
+    /// <summary>
+    /// Cleanly resets the game by destroying all persistent singletons and loading the TitleScene.
+    /// Call this from anywhere to reset the game state.
+    /// </summary>
+    public static void Reset()
+    {
+        Time.timeScale = 1f;
+        
+        // Clean up GameManager
+        if (Instance != null)
+        {
+            Object.Destroy(Instance.gameObject);
+            Instance = null;
+        }
+        
+        // Clean up YourParty
+        if (YourParty.instance != null)
+        {
+            Object.Destroy(YourParty.instance.gameObject);
+            YourParty.instance = null;
+        }
+        
+        // Load TitleScene
+        SceneManager.LoadScene("TitleScene");
+    }
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -683,11 +709,26 @@ public class GameManager : MonoBehaviour
     {
         if(scene.name == "TitleScene"){
             Time.timeScale = 1f;
+            // Unregister the callback before destroying to prevent it from firing again
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
             Destroy(gameObject);
-            if(YourParty.instance != null){Destroy(YourParty.instance);}
+            if(YourParty.instance != null)
+            {
+                Destroy(YourParty.instance.gameObject);
+            }
             return;
         }
+        
+        // Safety check to ensure this GameManager instance is still valid
+        if(Instance != this)
+        {
+            return;
+        }
+        
         DisableFinishedEncounters();
+        DestroyCamera();
+        Time.timeScale = 1f;
+        
         sceneVariants = GameObject.FindGameObjectsWithTag("SceneVariant");
         ChangeSceneVariant();
         

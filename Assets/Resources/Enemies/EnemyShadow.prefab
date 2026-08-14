@@ -54,15 +54,20 @@ MonoBehaviour:
   defense: 1
   speed: 15
   psychic: 25
+  surprise: 0
   mp: 0
   maxMp: 30
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
-  resistances: 00000000
-  weaknesses: 01000000
+  resistances: 01000000
+  weaknesses: 00000000
+  discoveredResistances: 
+  discoveredWeaknesses: 
   combatantName: Shadow
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: headbutt
     attackName: Headbutt
@@ -72,14 +77,20 @@ MonoBehaviour:
     statusEffect:
       name: Off-Balance
       stat: DEF
+      sprite: {fileID: 0}
       amount: -8
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 1
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: Uppercut
     attackName: Pound Town
     damage: 40
@@ -88,14 +99,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: 0
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
-    mpCost: 10
+    mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: Coffee
     dropChance: 50
@@ -105,6 +122,7 @@ MonoBehaviour:
   goldReward: 25
   attackSpeed: 0.25
   portrait: {fileID: 21300000, guid: e74c4812ecb26ae489f0a328d1efd156, type: 3}
+  boss: 0
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -114,14 +132,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!136 &4431760837445767744
 CapsuleCollider:
   m_ObjectHideFlags: 0

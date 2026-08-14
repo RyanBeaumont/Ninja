@@ -91,12 +91,13 @@ public class ChooseTargetsAction : GameAction
     public string prompt;
     public GameAction gameAction; //action to perform after targeting
     public bool targetDead = false;
+    public Card card;
 
     public override void Execute(BattleManager battleManager)
     {
         if(gameAction is ReviveAction) targetDead = true;
         Targeter targeter = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Targeter")).GetComponent<Targeter>();
-        targeter.Initialize(targetType, prompt, gameAction, targetDead);
+        targeter.Initialize(targetType, prompt, gameAction, targetDead, card);
         battleManager.waitingForInput = true;
     }
 }
@@ -114,11 +115,13 @@ public class EnemyAttackAction : GameAction
     public override void Execute(BattleManager battleManager)
     {
         base.Execute(battleManager);
+        
         AudioManager.Instance.PlaySoundEffect("s_dbz_jump",UnityEngine.Random.Range(0.8f,1.2f));
         if(specialTarget != null){
             battleManager.SelectTargets(new List<Combatant>(){specialTarget});
             Transform spawnPoint = GameObject.Find("BattleSetup/PlayerSpawn").transform;
             battleManager.SetPose(specialTarget.transform, "", CameraAngle.behind, "");
+            
         }
         else
         {
@@ -139,6 +142,13 @@ public class EnemyAttackAction : GameAction
 
         Time.timeScale = timeScale; //slow down time for dramatic effect
         battleManager.loopAnimation = loopAnimation;
+
+        //Knife view for knife attacks
+            if(animation == "ThrowKnife" || animation == "ThrowKnifeFast" || animation == "ThrowBook")
+            {
+                Debug.Log("Knife view!");
+                battleManager.SetPose(specialTarget.transform, "", CameraAngle.knifeView, "");
+            }
         
     }
 }

@@ -26680,13 +26680,13 @@ MonoBehaviour:
 '
     name: Thad
     character: {fileID: 0}
-    pose: Embarrassed
+    pose: Phone
     cameraAngle: 2
     face: Confused
   - text: "\"This is Stretch. You need to meet up with me right away!\"\r"
     name: Stretch
     character: {fileID: 0}
-    pose: Embarrassed
+    pose: Phone
     cameraAngle: 5
     face: Confused
   - text: 'But.. It''s like...
@@ -26696,7 +26696,7 @@ MonoBehaviour:
 '
     name: Thad
     character: {fileID: 0}
-    pose: Embarrassed
+    pose: Phone
     cameraAngle: 2
     face: Confused
   - text: "(She sounded serious. Well, you\u2019re up. Might be worth checking out.)\r\n"

@@ -238,7 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 385790147}
   m_Layer: 0
-  m_Name: SceneVariant_09
+  m_Name: SceneVariant_0
   m_TagString: SceneVariant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2980,7 +2980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2144165170}
   m_Layer: 0
-  m_Name: SceneVariant_0
+  m_Name: SceneVariant_3
   m_TagString: SceneVariant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

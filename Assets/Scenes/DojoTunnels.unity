@@ -28025,6 +28025,7 @@ MonoBehaviour:
   failBranch: 
   enemies:
   - {fileID: 8346498964973016767, guid: 790e06b1820895b4d94dffb0e3b70c45, type: 3}
+  - {fileID: 8346498964973016767, guid: 7fceb99045594574fa3136d0dfbc80ba, type: 3}
   hideObjects:
   - {fileID: 646025354}
   - {fileID: 1738093794}

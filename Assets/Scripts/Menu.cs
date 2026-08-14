@@ -28,6 +28,9 @@ public class Menu : MonoBehaviour
     public string currentCharacter = "";
     public Transform locationName;
     public Transform bossHP;
+    public GameObject paused;
+
+    public float lastMenuOpenTime = -10f;
 
 
     void Start()
@@ -40,6 +43,7 @@ public class Menu : MonoBehaviour
         entireMenu.gameObject.SetActive(false);
         universalUI.gameObject.SetActive(false);
         settingsContainer.gameObject.SetActive(false);
+        paused.SetActive(false);
         var audioStart = GameObject.FindAnyObjectByType<StartMusic>();
         if(audioStart != null)
         {
@@ -87,11 +91,15 @@ public class Menu : MonoBehaviour
 
     public void QuitToMainMenu()
     {
-        SceneManager.LoadScene("TitleScene");
+        GameManager.Reset();
     }
 
     public void ShowCharacterMenu(string character)
     {
+
+        // record when the menu is opened so quick clicks can be ignored
+        lastMenuOpenTime = Time.unscaledTime;
+
         currentCharacter = character;
         PartyMember p = YourParty.instance.GetPartyMember(character);
         if(p != null)
@@ -114,7 +122,7 @@ public class Menu : MonoBehaviour
                 cardDisplay.displayMode = true;
                 cardDisplay.SetData(card);
                 cardDisplay.onSubmitAction = () => RemoveCardFromDeck(card);
-                cardDisplay.onCancelAction = () => RemoveCardFromDeck(card);
+                //cardDisplay.onCancelAction = () => RemoveCardFromDeck(card);
             }
             var allCards = CardDatabase.Instance.BuildDeckByClass(p.mainClass, p.subClass, p.level);
             foreach(Card card in allCards)
@@ -126,7 +134,7 @@ public class Menu : MonoBehaviour
                 cardDisplay.displayMode = true;
                 cardDisplay.SetData(card);
                 cardDisplay.onSubmitAction = () => MoveCardToDeck(card);
-                cardDisplay.onCancelAction = () => MoveCardToDeck(card);
+                //cardDisplay.onCancelAction = () => MoveCardToDeck(card);
             }
             deckText.text = $"Your Deck ({p.deck.Count}/{CardDatabase.Instance.deckMax})                                 Available Cards";
 
@@ -244,7 +252,10 @@ public class Menu : MonoBehaviour
 
     public void MoveCardToDeck(Card card)
     {
-        
+        // ignore clicks that occur immediately after opening the menu
+        float grace = 0.15f;
+        if (Time.unscaledTime - lastMenuOpenTime < grace)
+            return;
         print("Clicked");
         var p = YourParty.instance.GetPartyMember(currentCharacter);
         if(p != null)
@@ -321,13 +332,14 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         if(tutorialUI.gameObject.activeInHierarchy && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift)))
+        //Detect WASD or controller input
+         if(tutorialUI.gameObject.activeInHierarchy && (Input.GetButtonDown("Jump") || Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
         {
             tutorialUI.gameObject.SetActive(false);
             Time.timeScale = 1f;
         }
 
-        if(GameObject.Find("ShopUI") != null || GameObject.Find("Saves(Clone)") != null)
+        if(GameObject.Find("ShopUI") != null || GameObject.Find("Saves(Clone)") != null || GameManager.Instance.GetGameplayState() == GameplayState.Dialog)
         {
             return;
         }
@@ -374,21 +386,28 @@ public class Menu : MonoBehaviour
             }
 
         }
-        else if(Input.GetButtonDown("Cancel") && FindFirstObjectByType<BattleManager>() != null)
+        else if(Input.GetButtonDown("Cancel") && FindFirstObjectByType<BattleManager>() != null && BattleManager.Instance.dontPause == false)
         {
             if(universalUI.gameObject.activeInHierarchy)
                 {
+                    paused.SetActive(false);
                     universalUI.gameObject.SetActive(false);
                     settingsContainer.gameObject.SetActive(false);
                     Time.timeScale = 1f;
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    //Make this GUI layer in front of everything
+                    GetComponent<Canvas>().sortingOrder = -100;
                 }
-            else
+            else if(GameObject.FindFirstObjectByType<Targeter>() == null)
             {
                 universalUI.gameObject.SetActive(true);
+                paused.SetActive(true);
                 SelectFirstCharacterEntry();
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 Time.timeScale = 0f;
+                GetComponent<Canvas>().sortingOrder = 100;
             }
         }   
 

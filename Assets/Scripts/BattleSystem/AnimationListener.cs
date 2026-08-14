@@ -22,26 +22,44 @@ public class AnimationListener : MonoBehaviour
         //find WeaponR in skeleton (searches deep hierarchy)
         //if the parent or child has a DefaultPose component, get its weapon game model
         var defaultPose = GetComponentInParent<DefaultPose>();
+        var weaponHolder = FindTransformRecursive(transform, "WeaponR");
         GameObject weaponGO = null;
-        if(defaultPose != null && defaultPose.combatWeapon != null && weapon != "")
+        if(defaultPose != null && defaultPose.combatWeapon != null && weapon != "" && weapon != "portocom_phone")
         {
             weaponGO = defaultPose.combatWeapon;
         }
         else
         {
+            if(weapon == "portocom_phone")
+            {
+                weaponHolder = FindTransformRecursive(transform, "WeaponL");
+            }
             weaponGO = Resources.Load<GameObject>($"Weapons/{weapon}");
         }
         if(weapon == "Soda"){weaponGO = Resources.Load<GameObject>($"Weapons/Soda");}
-        var weaponHolder = FindTransformRecursive(transform, "WeaponR");
-        if(weaponHolder == null){print("WeaponR not found in skeleton");return;}
-        foreach(Transform child in weaponHolder)
-        {
-            Destroy(child.gameObject);
-        }
+        
+        ClearWeapon();
+
         if(weaponGO == null){print("Weapon model not found");return;}
         var i = Instantiate(weaponGO, weaponHolder);
         i.transform.localPosition = Vector3.zero;
         i.transform.localRotation = Quaternion.identity;
+    }
+
+    public void ClearWeapon()
+    {
+        var weaponHolder = FindTransformRecursive(transform, "WeaponL");
+         if(weaponHolder == null){print("WeaponL not found in skeleton");return;}
+        foreach(Transform child in weaponHolder)
+        {
+            Destroy(child.gameObject);
+        }
+        weaponHolder = FindTransformRecursive(transform, "WeaponR");
+         if(weaponHolder == null){print("WeaponR not found in skeleton");return;}
+        foreach(Transform child in weaponHolder)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
 

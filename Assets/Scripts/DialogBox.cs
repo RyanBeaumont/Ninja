@@ -7,7 +7,7 @@ using Unity.Cinemachine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-[Serializable] public enum CameraAngle{standard, none, closeup, lowAngle, highAngle, behind, zoom, tilt, dodgeLeft, dodgeRight, jump, duck, wideBehind, ground, super, lockOn, counter};
+[Serializable] public enum CameraAngle{standard, none, closeup, lowAngle, highAngle, behind, zoom, tilt, dodgeLeft, dodgeRight, jump, duck, wideBehind, ground, super, lockOn, counter, knifeView};
 [Serializable] public class Dialog
 {
     [TextArea] public string text;

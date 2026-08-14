@@ -13,9 +13,11 @@ public class PlayerInteractor : MonoBehaviour
     private TMP_Text promptText;
     private Image promptIconImage;
     private string currentIconsPath;
+    private Menu menu;
 
     void Start()
     {
+        menu = FindFirstObjectByType<Menu>();
         promptInstance = Instantiate(promptPrefab);
         promptText = promptInstance.GetComponentInChildren<TMP_Text>();
 
@@ -97,10 +99,20 @@ public class PlayerInteractor : MonoBehaviour
 
     bool CanInteract()
     {
+        if (IsMenuOpen())
+        {
+            return false;
+        }
+
         DialogBox d = FindFirstObjectByType<DialogBox>();
         if (GameManager.Instance.GetGameplayState() != GameplayState.FreeMovement) return false;
         if (d != null && d.GetComponent<Canvas>().enabled) return false;
         return true;
+    }
+
+    private bool IsMenuOpen()
+    {
+        return menu != null && menu.entireMenu != null && menu.entireMenu.gameObject.activeInHierarchy;
     }
 
     void FindInteractable()

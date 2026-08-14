@@ -2,8 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections;
 using UnityEngine.EventSystems;
 
 public class CardDisplay : Selectable,
@@ -35,9 +34,13 @@ public class CardDisplay : Selectable,
     public float smoothFactor = 0.125f;
     public float horOffset = 2f;
     public float vertOffset = 0.5f;
+    public bool initialized = false;
 
     int originalSiblingIndex;
     bool isHighlighted;
+
+    [HideInInspector] public HandManager handManager;
+    [HideInInspector] public int handIndex = -1;
 
     public Card card;
     public Action onSubmitAction;
@@ -46,7 +49,6 @@ public class CardDisplay : Selectable,
     public virtual void SetData(Card card)
     {
         this.card = card;
-
         cardImage.sprite = Resources.Load<Sprite>($"Sprites/Cards/{card.artwork}");
         nameText.text = card.cardName;
         descriptionText.text = card.description;
@@ -159,6 +161,8 @@ public class CardDisplay : Selectable,
             damageTypeOverlay.gameObject.SetActive(false);
 
         selectedBorder.enabled = false;
+
+        
     }
 
     private void Highlight()
@@ -249,6 +253,50 @@ public class CardDisplay : Selectable,
         }
     }
 
+    public override void OnMove(AxisEventData eventData)
+    {
+        if (!displayMode && handManager != null && handManager.cardsInHand.Count > 1)
+        {
+            if (eventData.moveDir == MoveDirection.Left || eventData.moveDir == MoveDirection.Right)
+            {
+                int direction = eventData.moveDir == MoveDirection.Right ? 1 : -1;
+                int targetIndex = handIndex + direction;
+
+                if (targetIndex >= 0 && targetIndex < handManager.cardsInHand.Count)
+                {
+                    var nextCard = handManager.cardsInHand[targetIndex];
+                    var nextSelectable = nextCard != null ? nextCard.GetComponent<Selectable>() : null;
+
+                    if (nextSelectable != null)
+                    {
+                        EventSystem.current?.SetSelectedGameObject(nextCard);
+                        nextSelectable.Select();
+                        eventData.Use();
+                        return;
+                    }
+                }
+                if(targetIndex >= handManager.cardsInHand.Count)
+                {
+                    //Select the "Pass" button
+                    var passButton = GameObject.Find("Pass");
+                    if(passButton != null)
+                    {
+                        EventSystem.current?.SetSelectedGameObject(passButton);
+                        var selectable = passButton.GetComponent<Selectable>();
+                        if(selectable != null)
+                        {
+                            selectable.Select();
+                            eventData.Use();
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        base.OnMove(eventData);
+    }
+
     public override void OnPointerEnter(PointerEventData eventData)
     {
         if (displayMode)
@@ -303,14 +351,8 @@ public class CardDisplay : Selectable,
             return;
         }
 
-        if (eventData.button == PointerEventData.InputButton.Left)
-        {
-            PlayCard();
-        }
-        else
-        {
-            DiscardCard();
-        }
+        PlayCard();
+
     }
 
     public virtual void OnSubmit(BaseEventData eventData)
@@ -332,20 +374,9 @@ public class CardDisplay : Selectable,
             return;
         }
 
-        DiscardCard();
+        //DiscardCard();
     }
 
-    private void DiscardCard()
-    {
-        var activePlayer = BattleManager.Instance.activePlayer;
-
-        if (activePlayer != null)
-        {
-            activePlayer.DiscardCard(card);
-            GameManager.Instance.SelectDefault();
-            Destroy(gameObject);
-        }
-    }
 
     private void PlayCard()
     {
@@ -353,33 +384,20 @@ public class CardDisplay : Selectable,
 
         if (activePlayer != null)
         {
-            if (activePlayer.PlayCard(card))
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
-
-    private void CheckControllerRightClick()
-    {
-        if (!isHighlighted)
-            return;
-
-        if (EventSystem.current == null || EventSystem.current.currentSelectedGameObject != gameObject)
-            return;
-
-        if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.JoystickButton3))
-        {
-            var activePlayer = BattleManager.Instance.activePlayer;
-
-            if (activePlayer != null)
-            {
+            if(BattleManager.Instance.discardMode){
                 activePlayer.DiscardCard(card);
                 GameManager.Instance.SelectDefault();
+                BattleManager.Instance.DiscardCard();
                 Destroy(gameObject);
+          
+            }else{
+                BattleManager.Instance.pendingCardObject = gameObject;
+                activePlayer.PlayCard(card);
             }
+            
         }
     }
+
 
     void Update()
     {
@@ -388,7 +406,6 @@ public class CardDisplay : Selectable,
             return;
         }
 
-        CheckControllerRightClick();
 
         transform.localPosition = Vector3.Lerp(
             transform.localPosition,
