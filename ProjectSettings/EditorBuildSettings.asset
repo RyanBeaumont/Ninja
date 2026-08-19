@@ -65,6 +65,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nightmare.unity
     guid: 1d6f3aa5b55ce6d4e8aab76ab919af22
+  - enabled: 1
+    path: Assets/Scenes/Mausoleum.unity
+    guid: 5dda4a0ca0d00ad4aad0c6d99f14f043
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
