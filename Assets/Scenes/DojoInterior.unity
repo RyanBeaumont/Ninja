@@ -45836,8 +45836,8 @@ MonoBehaviour:
   consume: 1
   xpReward: 0
   goldReward: 0
-  giveQuestIfMissing: 0
-  completeEvenIfMissing: 0
+  giveQuestIfMissing: 1
+  completeEvenIfMissing: 1
   hideIfMissing: 0
   incompleteDialog:
   - text: 'You''re not done here yet...
@@ -51135,6 +51135,7 @@ GameObject:
   - component: {fileID: 1455897483}
   - component: {fileID: 1455897482}
   - component: {fileID: 1455897486}
+  - component: {fileID: 1455897487}
   - component: {fileID: 1455897481}
   - component: {fileID: 1455897480}
   - component: {fileID: 1455897479}
@@ -51313,6 +51314,22 @@ MonoBehaviour:
   encounterMusic: {fileID: 0}
   fadeTime: 1.5
   sfx: 
+--- !u!114 &1455897487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455897477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4ee8ee2f2a0564c85ed59d8b687ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
 --- !u!1001 &1456744746
 PrefabInstance:
   m_ObjectHideFlags: 0

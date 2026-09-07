@@ -57,13 +57,17 @@ MonoBehaviour:
   surprise: 0
   mp: 0
   maxMp: 40
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 01000000
   weaknesses: 02000000
+  discoveredResistances: 
+  discoveredWeaknesses: 
   combatantName: Spartan Green Belt
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: ThrowKnifeFast
     attackName: Knives
@@ -73,16 +77,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: 0
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 4
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: SwordWhirlwind, SwordBackhand, SwordWhirlwind
     attackName: All Attack
     damage: 30
@@ -91,16 +99,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: 0
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 20
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: ThrustNSlash
     attackName: Discarding Strike
     damage: 30
@@ -109,25 +121,32 @@ MonoBehaviour:
     statusEffect:
       name: Discard
       stat: 
+      sprite: {fileID: 0}
       amount: 1
+      description: 
       additive: 1
       duration: 2
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 2
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: DrPepper
     dropChance: 50
   - itemID: Coke
     dropChance: 50
+  - itemID: Bang
+    dropChance: 100
   xpReward: 30
   goldReward: 30
   attackSpeed: 0.5
   portrait: {fileID: 21300000, guid: e3f90c644a8dbd04f92caec214d05266, type: 3}
+  boss: 0
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -137,16 +156,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!136 &4431760837445767744
 CapsuleCollider:
   m_ObjectHideFlags: 0

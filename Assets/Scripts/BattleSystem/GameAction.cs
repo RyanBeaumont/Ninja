@@ -92,12 +92,13 @@ public class ChooseTargetsAction : GameAction
     public GameAction gameAction; //action to perform after targeting
     public bool targetDead = false;
     public Card card;
+    public string inventoryItemName = "";
 
     public override void Execute(BattleManager battleManager)
     {
         if(gameAction is ReviveAction) targetDead = true;
         Targeter targeter = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Targeter")).GetComponent<Targeter>();
-        targeter.Initialize(targetType, prompt, gameAction, targetDead, card);
+        targeter.Initialize(targetType, prompt, gameAction, targetDead, card, inventoryItemName);
         battleManager.waitingForInput = true;
     }
 }
@@ -143,12 +144,7 @@ public class EnemyAttackAction : GameAction
         Time.timeScale = timeScale; //slow down time for dramatic effect
         battleManager.loopAnimation = loopAnimation;
 
-        //Knife view for knife attacks
-            if(animation == "ThrowKnife" || animation == "ThrowKnifeFast" || animation == "ThrowBook")
-            {
-                Debug.Log("Knife view!");
-                battleManager.SetPose(specialTarget.transform, "", CameraAngle.knifeView, "");
-            }
+        
         
     }
 }
@@ -295,6 +291,24 @@ public class OmnisweepDamageAction : DamageAction
             }
         }
         base.Execute(battleManager);
+    }
+}
+
+public class ReconcussDamageAction : DamageAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        base.Execute(battleManager);
+        if(battleManager.currentTargets.Count == 1 && (battleManager.currentTargets[0].HasStatusEffect("Off-Balance")!=null || battleManager.currentTargets[0].HasStatusEffect("Prone") != null))
+        {
+            battleManager.currentTargets[0].RemoveStatusEffect("Off-Balance");
+            battleManager.currentTargets[0].ApplyStatusEffect(new StatusEffect
+            {
+                name = "Prone",
+                amount = 1,
+                duration = 2,
+            });
+        }
     }
 }
 

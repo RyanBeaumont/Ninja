@@ -298,8 +298,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4ce95d6c8a67f0849a1f56204c2b262b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3826616}
   m_SourcePrefab: {fileID: 100100000, guid: 4ce95d6c8a67f0849a1f56204c2b262b, type: 3}
+--- !u!1 &3826615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4ce95d6c8a67f0849a1f56204c2b262b, type: 3}
+  m_PrefabInstance: {fileID: 3826614}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3826616
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3826615}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0000005, y: 1, z: 1.0015589}
+  m_Center: {x: -2.840149e-15, y: 0.5, z: 0.0007792713}
 --- !u!1001 &4093043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1217,8 +1246,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4ce95d6c8a67f0849a1f56204c2b262b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 59176069}
   m_SourcePrefab: {fileID: 100100000, guid: 4ce95d6c8a67f0849a1f56204c2b262b, type: 3}
+--- !u!1 &59176068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4ce95d6c8a67f0849a1f56204c2b262b, type: 3}
+  m_PrefabInstance: {fileID: 59176067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &59176069
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59176068}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0000005, y: 1, z: 1.0015589}
+  m_Center: {x: -2.840149e-15, y: 0.5, z: 0.00077974814}
 --- !u!1 &66852508
 GameObject:
   m_ObjectHideFlags: 0
@@ -16966,6 +17024,7 @@ MonoBehaviour:
       description: 
       function: 
     cost: 150
+  cancel: {fileID: 0}
 --- !u!1 &1325454587 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6925821425404048146, guid: 9f96b957b787a1145b0adcea4fcbc640, type: 3}
@@ -24973,7 +25032,7 @@ MonoBehaviour:
       Tomorrow
       we settle this THAD STYLE'
     name: Thad
-    character: {fileID: 401832728}
+    character: {fileID: 583000417}
     pose: CasualLean
     cameraAngle: 3
     face: Happy
@@ -28572,7 +28631,7 @@ MonoBehaviour:
   blockInteraction: 0
   failBranch: 
   sceneName: Overworld
-  spawnPointIndex: 0
+  spawnPointIndex: 33
   sceneVariant: 7
   skybox: {fileID: 0}
   cameraTarget: {fileID: 0}

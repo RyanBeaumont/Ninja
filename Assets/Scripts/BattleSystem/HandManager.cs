@@ -72,6 +72,14 @@ public class HandManager : MonoBehaviour
 
     public void UpdateHandVisuals()
 {
+        for (int i = cardsInHand.Count - 1; i >= 0; i--)
+        {
+            if (cardsInHand[i] == null)
+            {
+                cardsInHand.RemoveAt(i);
+            }
+        }
+
     int cardCount = cardsInHand.Count;
     if (cardCount == 0) return;
 
@@ -95,6 +103,9 @@ public class HandManager : MonoBehaviour
 
         // keep draw order left→right
         cardsInHand[i].transform.SetSiblingIndex(i);
+
+        //update temp cost if it exists
+        cd.UpdateTempCost();
 
         var cardDisplay = cardsInHand[i].GetComponent<CardDisplay>();
         if (cardDisplay != null)

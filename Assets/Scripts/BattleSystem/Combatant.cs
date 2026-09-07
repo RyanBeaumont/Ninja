@@ -151,6 +151,7 @@ public class Combatant : MonoBehaviour
         }
         damageText.text += Mathf.RoundToInt(baseDamage).ToString();
         hp -= baseDamage;
+        hp = Mathf.Round(hp);
         if(hp <= 0)
         {
             var skull = Instantiate(Resources.Load<GameObject>("Particles/Skull"), transform.position, Quaternion.identity);

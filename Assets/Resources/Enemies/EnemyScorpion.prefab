@@ -57,6 +57,7 @@ MonoBehaviour:
   surprise: 0
   mp: 0
   maxMp: 30
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 02000000
@@ -66,6 +67,7 @@ MonoBehaviour:
   combatantName: Scorpion
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: Sword
     attackName: Ankle Slash
@@ -83,10 +85,12 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 2
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: SwordSlow
     attackName: Confusing Slash
     damage: 10
@@ -103,10 +107,12 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: Whip
     attackName: Tail Whip
     damage: 50
@@ -123,19 +129,24 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: Coca-Cola Keg
     dropChance: 25
   - itemID: Coke
     dropChance: 50
+  - itemID: Bang
+    dropChance: 50
   xpReward: 20
   goldReward: 20
   attackSpeed: 0.75
   portrait: {fileID: 21300000, guid: 115ed6f6645682c4a99b2e8fb2d707f3, type: 2}
+  boss: 0
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -153,10 +164,12 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!136 &-8026483303802534423
 CapsuleCollider:
   m_ObjectHideFlags: 0

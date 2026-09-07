@@ -169,6 +169,8 @@ public class YourParty : MonoBehaviour
         foreach(Equipment e in partyMember.equipment)
             foreach(StatusEffect se in e.statusEffects)
                 if(se.stat == "PSY") psychic += se.amount;
+        //Round
+        attack = Mathf.Round(attack); maxHp = Mathf.Round(maxHp); speed = Mathf.Round(speed); psychic = Mathf.Round(psychic);
     }
 
 
@@ -321,22 +323,15 @@ public class YourParty : MonoBehaviour
         if(devTools){
         if (Input.GetKeyDown(KeyCode.L))
         {
+            
+            var currentParty = partyMembers;
+            partyMembers = new List<string>{"Spartan Jack"};
             var dialog = LevelUp(150,150);
+            partyMembers = currentParty;
             GameManager.Instance.AddInventoryItem("Coke", 1);
             GameManager.Instance.AddInventoryItem("Bang", 1);
             var dialogBox = FindFirstObjectByType<DialogBox>();
             dialogBox.StartDialog(dialog);
-        }
-
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                GameManager.Instance.StartSceneTransition(SceneManager.GetActiveScene().name,GameManager.Instance.currentSpawnPointIndex,GameManager.Instance.sceneVariant + 1,null);
-            }
-
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            SaveSystem.SaveGame(currentSaveFileName);
-            GameManager.Instance.ShowMessage("Game Saved!");
         }
         }
 
@@ -398,18 +393,33 @@ public class YourParty : MonoBehaviour
 
                 //Get new cards for level up
                 var newCards = CardDatabase.Instance.GetNewCardsForLevel(partyMember.mainClass, partyMember.subClass, partyMember.level);
+                var text = $"{player} learned: ";
+                var bonusText = "";
                 foreach(var card in newCards)
                 {
-                    var text = $"{player} learned: {card.cardName}!";
+                    text  += $"{card.cardName}!\n";
                     if(partyMember.deck.Count < CardDatabase.Instance.deckMax){
                         partyMember.deck.Add(card);
-                        text += " (Deck maximum reached - You can swap out cards in the [ESC] menu)";
+                        bonusText = "(Deck maximum reached - You can swap out cards in the [ESC] menu)";
                     }
 
+                   
+                }
+                dialog.Add(new Dialog()
+                {
+                    name = player,
+                    text = text,
+                    cameraAngle = CameraAngle.standard,
+                    face = "Happy",
+                    pose = "ArmsCrossed",
+                    character = null,
+                });
+                if(bonusText != "")
+                {
                     dialog.Add(new Dialog()
                     {
                         name = player,
-                        text = $"{player} learned: {card.cardName}!",
+                        text = bonusText,
                         cameraAngle = CameraAngle.standard,
                         face = "Happy",
                         pose = "ArmsCrossed",

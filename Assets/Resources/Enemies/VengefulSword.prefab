@@ -270,6 +270,7 @@ MonoBehaviour:
   combatIdle: Idle
   combatWeapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  heightOffset: 0
 --- !u!114 &6357692675278205548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +293,7 @@ MonoBehaviour:
   surprise: 0
   mp: 0
   maxMp: 30
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 01000000
@@ -301,6 +303,7 @@ MonoBehaviour:
   combatantName: Vengeful Ghost
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: FloatingSwordAttack1
     attackName: Slice N Dice
@@ -318,10 +321,12 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 3
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: FloatingSwordAttack2
     attackName: Chop Suey
     damage: 40
@@ -338,19 +343,22 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 4
     mpCost: 20
     healthThreshold: 50
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: Bang
-    dropChance: 50
+    dropChance: 100
   - itemID: Viking Helmet
     dropChance: 50
   xpReward: 50
   goldReward: 50
   attackSpeed: 1
   portrait: {fileID: 21300000, guid: 50384aca54741bc4c9a75c2e276afdfb, type: 2}
+  boss: 0
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -368,10 +376,12 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!1001 &5961025215719045565
 PrefabInstance:
   m_ObjectHideFlags: 0

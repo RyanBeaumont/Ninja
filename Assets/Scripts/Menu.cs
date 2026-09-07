@@ -29,6 +29,7 @@ public class Menu : MonoBehaviour
     public Transform locationName;
     public Transform bossHP;
     public GameObject paused;
+    public TMP_Text cashText;
 
     public float lastMenuOpenTime = -10f;
 
@@ -298,6 +299,7 @@ public class Menu : MonoBehaviour
 
     public void UpdateParty()
     {
+        cashText.text = $"Cash Money: {YourParty.instance.gold}";
         foreach(Transform child in characterList) Destroy(child.gameObject);
         foreach(string p in YourParty.instance.partyMembers)
         {

@@ -252,6 +252,7 @@ public class BattleManager : MonoBehaviour
     public void ExecuteCard(Card card, Combatant caller)
     {
         print("Executing card: " + card.cardName);
+        handManager.SetHandActive(false);
         
         foreach(var action in card.effects)
         {
@@ -302,7 +303,9 @@ public class BattleManager : MonoBehaviour
             ShowQuickTimeEvent();
             if(pendingCardObject != null)
             {
+                handManager.cardsInHand.Remove(pendingCardObject);
                 Destroy(pendingCardObject);
+                pendingCardObject = null;
             }
         }
     }
@@ -515,9 +518,12 @@ public class BattleManager : MonoBehaviour
 
         if (cancelPressed)
         {
-            HideInventory();
-            //select "Use Item" button
-            EventSystem.current.SetSelectedGameObject(buttonContainer.Find("Item").gameObject);
+            if (FindFirstObjectByType<Targeter>() == null)
+            {
+                HideInventory();
+                //select "Use Item" button
+                EventSystem.current.SetSelectedGameObject(buttonContainer.Find("Item").gameObject);
+            }
         }
         //Check for win
         var enemies = combatants.Where(c => c.tag == "Enemy" && c.alive).ToList();
@@ -564,14 +570,19 @@ public class BattleManager : MonoBehaviour
 
             if(dodgeCooldown <= 0f)
             {
-                if (horizontal < -0.5f){ dodgeInput = "Left";}
-                if (horizontal > 0.5f) dodgeInput = "Right";
-                if (vertical > 0.5f || (jumpAction != null && jumpAction.triggered)) dodgeInput = "Jump";
-                if (vertical < -0.5f || Input.GetKeyDown(KeyCode.LeftShift)) dodgeInput = "Duck";
-                //if(Input.GetKeyDown(KeyCode.Mouse1)) dodgeInput = "Block";
+                var newDodgeInput = "";
+                if (Input.GetKeyDown(KeyCode.A) || (dpadLeftAction != null && dpadLeftAction.WasPressedThisFrame()))
+                    newDodgeInput = "Left";
+                else if (Input.GetKeyDown(KeyCode.D) || (dpadRightAction != null && dpadRightAction.WasPressedThisFrame()))
+                    newDodgeInput = "Right";
+                else if (Input.GetKeyDown(KeyCode.W) || (dpadUpAction != null && dpadUpAction.WasPressedThisFrame()))
+                    newDodgeInput = "Jump";
+                else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.LeftShift) || (dpadDownAction != null && dpadDownAction.WasPressedThisFrame()))
+                    newDodgeInput = "Duck";
 
-                if(dodgeInput != "")
+                if(newDodgeInput != "")
                 {
+                    dodgeInput = newDodgeInput;
                     /*
                     if(currentTargets.Count == 1)
                     {
@@ -598,7 +609,7 @@ public class BattleManager : MonoBehaviour
                     if(gameDifficulty.value == 0) dodgeWindow = dodgeInputWindow * 1.5f;
                     if(gameDifficulty.value == 2) dodgeWindow = dodgeInputWindow * 0.75f; 
                     dodgeCooldown = 0.5f;
-                    if(gameDifficulty.value == 0) dodgeCooldown = 0.25f;
+                    if(gameDifficulty.value == 0) dodgeCooldown = 0.35f;
                     if(gameDifficulty.value == 2) dodgeCooldown = 1f;
                     foreach(var t in currentTargets) t.PlayAnimation(dodgeInput);
                 }
@@ -817,114 +828,6 @@ public class BattleManager : MonoBehaviour
     }
 
 
-    public void UseCoke()
-    {
-        var action = new HealAction()
-        {
-            caller = activePlayer,
-            targetType = TargetType.SingleAlly,
-            animation = "Drink",
-            healAmount = "50"
-        };
-        var targetAction = new ChooseTargetsAction()
-        {
-            targetType = action.targetType,
-            prompt = "Who Will Drink the Coke?",
-            gameAction = action,
-            caller = activePlayer
-        };
-        GameManager.Instance.ShowMessage("Who Will Drink the Coke?");
-        actionQueue.Add(targetAction);
-        itemContainer.gameObject.SetActive(false);
-        buttonContainer.gameObject.SetActive(false);
-    }
-
-
-    public void UseCokeKeg()
-    {
-        var action = new HealAction()
-        {
-            caller = activePlayer,
-            targetType = TargetType.AllAllies,
-            animation = "Drink",
-            healAmount = "50"
-        };
-        GameManager.Instance.ShowMessage("Party: Started. Bass: Bumpin'. Health: Restored");
-        actionQueue.Add(action);
-        itemContainer.gameObject.SetActive(false);
-        buttonContainer.gameObject.SetActive(false);
-    }
-
-    public void UseDrPepper()
-    {
-        var action = new ReviveAction()
-        {
-            caller = activePlayer,
-            targetType = TargetType.SingleAlly,
-            animation = "Drink",
-        };
-        var targetAction = new ChooseTargetsAction()
-        {
-            targetType = action.targetType,
-            prompt = "Revive Who?",
-            targetDead = true,
-            gameAction = action,
-            caller = activePlayer
-        };
-        GameManager.Instance.ShowMessage("Who Will Revive?");
-        actionQueue.Add(targetAction);
-        itemContainer.gameObject.SetActive(false);
-        buttonContainer.gameObject.SetActive(false);
-    }
-
-    public void UseCoffee()
-    {
-        var action = new GainMPAction()
-        {
-            caller = activePlayer,
-            targetType = TargetType.SingleAlly,
-            animation = "Drink",
-            mpAmount = "30"
-        };
-        var targetAction = new ChooseTargetsAction()
-        {
-            targetType = action.targetType,
-            prompt = "Who Will Drink the Coffee?",
-            gameAction = action,
-            caller = activePlayer
-        };
-        GameManager.Instance.ShowMessage("Who Will Drink the Coffee?");
-        actionQueue.Add(targetAction);
-        itemContainer.gameObject.SetActive(false);
-        buttonContainer.gameObject.SetActive(false);
-    }
-
-    public void UseBang()
-    {
-        var action = new DamageAction()
-        {
-            caller = activePlayer,
-            targetType = TargetType.SingleEnemy,
-            animation = "Throw",
-            damageType = DamageType.Psychic,
-            damage = "25",
-            hits = 1,
-            bonusActions = 1
-        };
-        var targetAction = new ChooseTargetsAction()
-        {
-            targetType = action.targetType,
-            prompt = "Throw the Bang",
-            gameAction = action,
-            caller = activePlayer
-        };
-        GameManager.Instance.ShowMessage("Throw Bang");
-        actionQueue.Add(targetAction);
-        attacksRemaining ++;
-        itemContainer.gameObject.SetActive(false);
-        buttonContainer.gameObject.SetActive(false);
-    }
-
     public void ShowItemDisplay()
     {
         itemContainer.gameObject.SetActive(true);
@@ -985,6 +888,16 @@ public class BattleManager : MonoBehaviour
                     AudioManager.Instance.PlaySoundEffect("Parry");
                     if(invincible.amount <= 0) t.RemoveStatusEffect("Block");
                 }else{
+                    //Check bounty before hit
+                    if (t.HasStatusEffect("Bounty") != null)
+                    {
+                        if(activePlayer != null){
+                            attacksRemaining += 1;
+                            activePlayer.GainMP(30);
+                            GameManager.Instance.ShowMessage("Bounty claimed! Bonus action");
+                        }
+                    }
+                    //Take damage
                     var d = t.TakeDamage(activeCombatant,(int)pendingDamage * quickTimeMultiplier, pendingDamageType);
                     var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
                     
@@ -1010,14 +923,7 @@ public class BattleManager : MonoBehaviour
                     {
                         t.ApplyStatusEffect(CardDatabase.Instance.getStatusEffect("Poisoned",1,1));
                     }
-                    if (t.HasStatusEffect("Bounty") != null)
-                    {
-                        if(activePlayer != null){
-                            attacksRemaining += 1;
-                            activePlayer.GainMP(30);
-                            GameManager.Instance.ShowMessage("Bounty claimed! Bonus action");
-                        }
-                    }
+                 
                 }
                 if(multiDamageType){if(pendingDamageType == DamageType.Slashing) pendingDamageType = DamageType.Bludgeoning;
                 else if(pendingDamageType == DamageType.Bludgeoning) pendingDamageType = DamageType.Psychic;

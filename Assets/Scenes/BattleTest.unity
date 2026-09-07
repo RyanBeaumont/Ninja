@@ -437,6 +437,12 @@ MonoBehaviour:
       function: 
     cost: 0
   - item:
+      itemName: Coca-Cola Keg
+      quantity: 2
+      description: 
+      function: 
+    cost: 0
+  - item:
       itemName: Dark Black Clothes
       quantity: 1
       description: 
@@ -640,10 +646,8 @@ GameObject:
   - component: {fileID: 447041406}
   - component: {fileID: 447041405}
   - component: {fileID: 447041404}
-  - component: {fileID: 447041410}
-  - component: {fileID: 447041403}
-  - component: {fileID: 447041409}
   - component: {fileID: 447041408}
+  - component: {fileID: 447041403}
   m_Layer: 0
   m_Name: QuestTest
   m_TagString: Untagged
@@ -780,58 +784,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 447041402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
+  m_Script: {fileID: 11500000, guid: ad4ee8ee2f2a0564c85ed59d8b687ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   encounterID: 
   active: 1
   blockInteraction: 0
   failBranch: 
-  dialog:
-  - text: FAIL
-    name: 
-    character: {fileID: 0}
-    pose: 
-    cameraAngle: 0
-    face: 
-  turnToFace: 0
-  snapPlayerPosition: 0
---- !u!114 &447041409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447041402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31441617c7f832e43b2308e10814aa79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  branchName: 
---- !u!114 &447041410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447041402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39dbe71c188417348bd6d12fd2a31004, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  questsToComplete:
-  - Investigate the Rival Dojo
-  - Test Quest
 --- !u!1 &517501132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,9 +1505,9 @@ GameObject:
   - component: {fileID: 825097498}
   - component: {fileID: 825097497}
   - component: {fileID: 825097496}
-  - component: {fileID: 825097500}
   - component: {fileID: 825097495}
   - component: {fileID: 825097501}
+  - component: {fileID: 825097502}
   m_Layer: 0
   m_Name: Update Party
   m_TagString: Untagged
@@ -1575,9 +1534,9 @@ MonoBehaviour:
   overwrite: 1
   exceedLimit: 0
   partyMembers:
-  - Spartan Jack
-  - Storm
   - Thad
+  - Torch
+  - Storm
 --- !u!65 &825097496
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1667,30 +1626,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &825097500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 825097494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89b5bf5e381673248b03fce9dbf3fef0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  questName: qwer
-  consume: 1
-  xpReward: 2000
-  goldReward: 0
-  giveQuestIfMissing: 1
-  completeEvenIfMissing: 1
-  hideIfMissing: 0
-  incompleteDialog: []
 --- !u!114 &825097501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1715,6 +1650,23 @@ MonoBehaviour:
   completeEvenIfMissing: 1
   hideIfMissing: 0
   incompleteDialog: []
+--- !u!114 &825097502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825097494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d41163fd824a3d4a9d419b43f07b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  itemName: Bang
 --- !u!1 &904350578 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4358426915205826297, guid: 0c76144449242fc41ba1d85537f91f08, type: 3}

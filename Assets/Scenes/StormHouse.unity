@@ -3154,6 +3154,7 @@ GameObject:
   - component: {fileID: 183227234}
   - component: {fileID: 183227233}
   - component: {fileID: 183227242}
+  - component: {fileID: 183227243}
   - component: {fileID: 183227232}
   - component: {fileID: 183227241}
   - component: {fileID: 183227240}
@@ -3402,6 +3403,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6a0affe508a3704499e97b9e921b1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+--- !u!114 &183227243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183227231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4ee8ee2f2a0564c85ed59d8b687ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   encounterID: 
@@ -11408,46 +11425,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 99b97f0b25dbffd4881b08ee9d7fa366, type: 3}
       insertIndex: -1
       addedObject: {fileID: 610638560}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 99b97f0b25dbffd4881b08ee9d7fa366, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 610638559}
   m_SourcePrefab: {fileID: 100100000, guid: 99b97f0b25dbffd4881b08ee9d7fa366, type: 3}
 --- !u!1 &610638558 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 99b97f0b25dbffd4881b08ee9d7fa366, type: 3}
   m_PrefabInstance: {fileID: 610638557}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &610638559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610638558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce5c596a29e284c91b0e2209200b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterID: 
-  active: 1
-  blockInteraction: 0
-  failBranch: 
-  dialog:
-  - text: No FOOOOOOOODDDD????
-    name: Thad
-    character: {fileID: 0}
-    pose: Explaining
-    cameraAngle: 5
-    face: 
-  - text: This IS a nightmare!
-    name: Thad
-    character: {fileID: 0}
-    pose: Explaining
-    cameraAngle: 2
-    face: Angry
-  turnToFace: 0
-  snapPlayerPosition: 0
 --- !u!65 &610638560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21206,6 +21189,30 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 3abc41eec966a3c4e8d17c3da720b079, type: 2}
+    - target: {fileID: 885454424763968685, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.321078
+      objectReference: {fileID: 0}
+    - target: {fileID: 885454424763968685, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.322892
+      objectReference: {fileID: 0}
+    - target: {fileID: 885454424763968685, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6.4215593
+      objectReference: {fileID: 0}
+    - target: {fileID: 885454424763968685, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.276
+      objectReference: {fileID: 0}
+    - target: {fileID: 885454424763968685, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 885454424763968685, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 6044087082982615358, guid: f91ab28d937b5744e885a0a76a2917e4, type: 3}
       propertyPath: m_Name
       value: The Wild

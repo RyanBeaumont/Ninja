@@ -71,8 +71,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 8
-  maxHp: 1200
-  hp: 1200
+  maxHp: 1000
+  hp: 1000
   attack: 15
   defense: 1
   speed: 15
@@ -90,10 +90,11 @@ MonoBehaviour:
   combatantName: Stretch
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: KnifeTripleStab
     attackName: Stabby Stab
-    damage: 45
+    damage: 30
     damageType: 0
     targetType: 1
     statusEffect:
@@ -115,7 +116,7 @@ MonoBehaviour:
     consumeMana: 1
   - attackPattern: ThrowKnife
     attackName: Poison Knives
-    damage: 40
+    damage: 30
     damageType: 0
     targetType: 0
     statusEffect:
@@ -137,7 +138,7 @@ MonoBehaviour:
     consumeMana: 1
   - attackPattern: Slash, SwordBackhand, SwordThrust
     attackName: C-C-Combo
-    damage: 80
+    damage: 40
     damageType: 0
     targetType: 1
     statusEffect:

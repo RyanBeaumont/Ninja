@@ -11,7 +11,14 @@ public abstract class ChainedInteractable : PersistentObject, IInteractable
     public virtual string GetPromptMessage()
     {
         // Default: return GameObject name
-        return $"{FormatName(gameObject.name)}";
+        var name1 = FormatName(gameObject.name);
+        //Take out (1) or any number if it exists
+        int index = name1.LastIndexOf('(');
+        if (index > 0)
+        {
+            name1 = name.Substring(0, index).Trim();
+        }
+        return $"{FormatName(name1)}";
     }
 
     public void CallNext()

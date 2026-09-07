@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  maxHp: 1400
-  hp: 1400
+  maxHp: 1200
+  hp: 1200
   attack: 20
   defense: 1
   speed: 40
@@ -67,6 +67,7 @@ MonoBehaviour:
   combatantName: Storm
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: Slash, SwordBackhand, Slash
     attackName: C-C-Combo
@@ -92,7 +93,7 @@ MonoBehaviour:
     consumeMana: 1
   - attackPattern: SwordDash, SwordWhirlwind, Sweep
     attackName: Go To Sweep
-    damage: 50
+    damage: 30
     damageType: 1
     targetType: 1
     statusEffect:
@@ -114,7 +115,7 @@ MonoBehaviour:
     consumeMana: 1
   - attackPattern: SwordHeavy, Slash, SwordWhirlwind
     attackName: Dance With Me
-    damage: 80
+    damage: 50
     damageType: 1
     targetType: 1
     statusEffect:
@@ -136,7 +137,7 @@ MonoBehaviour:
     consumeMana: 1
   - attackPattern: Punch, Uppercut, Slap, Uppercut, LongswordBlast
     attackName: Ultimate Attack
-    damage: 40
+    damage: 30
     damageType: 1
     targetType: 1
     statusEffect:

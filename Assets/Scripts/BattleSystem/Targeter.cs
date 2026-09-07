@@ -36,16 +36,18 @@ public class Targeter : MonoBehaviour
     private InputAction submitAction;
     private bool actionsInitialized = false;
     private Card card;
+    private string inventoryItemName = "";
 
-    public void Initialize(TargetType type, string prompt, GameAction action, bool targetDead = false, Card card = null)
+    public void Initialize(TargetType type, string prompt, GameAction action, bool targetDead = false, Card card = null, string inventoryItemName = "")
     {
         targetType = type;
         initialized = true;
         this.action = action;
         this.targetDead = targetDead;
         this.card = card;
+        this.inventoryItemName = inventoryItemName;
 
-        if((this.action is GrappleDamageAction || this.action is SuplexDamageAction) && this.action.wildSwing == false) grapple = true;
+        if((this.action is GrappleDamageAction || this.action is SuplexDamageAction || this.action is ReconcussDamageAction) && this.action.wildSwing == false) grapple = true;
     }
 
     void Start()
@@ -272,13 +274,23 @@ public class Targeter : MonoBehaviour
 
     void Cancel()
         {
-            
             //Go back to default camera angle
             BattleManager.Instance.SetPose(BattleManager.Instance.activeCombatant.transform, "", CameraAngle.behind, "");
             BattleManager.Instance.attacksRemaining += 1;
-            BattleManager.Instance.clock = 0f;
             BattleManager.Instance.EndAction();
+            BattleManager.Instance.clock = 0f;
             Destroy(gameObject);
+
+            if (card != null)
+            {
+                FindFirstObjectByType<HandManager>()?.SetHandActive(true);
+            }
+            else
+            {
+                BattleManager.Instance.ShowItemDisplay();
+            }
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
     void EndSelection()
@@ -312,7 +324,15 @@ public class Targeter : MonoBehaviour
         }
 
         
-        BattleManager.Instance.ConsumeCard(card);
+        if (card != null)
+        {
+            BattleManager.Instance.ConsumeCard(card);
+        }
+        else if (inventoryItemName != "")
+        {
+            GameManager.Instance.ConsumeInventoryItem(inventoryItemName, true, 1);
+            FindFirstObjectByType<Inventory>()?.UpdateInventoryImages(GameManager.Instance.inventory);
+        }
         BattleManager.Instance.ShowQuickTimeEvent();
         Destroy(gameObject);
     }

@@ -89,7 +89,7 @@ public class PlayerCombatant : Combatant
         if(card.tempCost != 0){cost = card.tempCost; card.tempCost = 0;}
         if (hand.Contains(card) && mp >= cost && tp >= card.tpCost && BattleManager.Instance.discardPower >= card.discardCost)
         {
-            if (card.effects.Any(e => e is SuplexDamageAction || e is GrappleDamageAction))
+            if (card.effects.Any(e => e is SuplexDamageAction || e is GrappleDamageAction || e is ReconcussDamageAction))
             {
                 var success = false;
                 foreach(EnemyCombatant e in FindObjectsByType<EnemyCombatant>(FindObjectsSortMode.None))

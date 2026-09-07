@@ -118,6 +118,8 @@ MonoBehaviour:
     dropChance: 50
   - itemID: Coke
     dropChance: 50
+  - itemID: Bang
+    dropChance: 100
   xpReward: 25
   goldReward: 25
   attackSpeed: 0.25

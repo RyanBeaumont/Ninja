@@ -16010,6 +16010,7 @@ GameObject:
   - component: {fileID: 1210492126}
   - component: {fileID: 1210492124}
   - component: {fileID: 1210492131}
+  - component: {fileID: 1210492132}
   - component: {fileID: 1210492123}
   - component: {fileID: 1210492122}
   - component: {fileID: 1210492130}
@@ -16297,6 +16298,22 @@ MonoBehaviour:
   failBranch: 
   pose: SittingDown
   face: Confused
+--- !u!114 &1210492132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210492119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4ee8ee2f2a0564c85ed59d8b687ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
 --- !u!1 &1221794326
 GameObject:
   m_ObjectHideFlags: 0
@@ -29594,7 +29611,7 @@ MonoBehaviour:
   failBranch: 
   dialog:
   - text: Okay, what am I thinking?
-    name: Torch
+    name: Stretch
     character: {fileID: 1448012937513763991}
     pose: Meditating
     cameraAngle: 13

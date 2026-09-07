@@ -127,6 +127,7 @@ public class Inventory : MonoBehaviour
                {
                 Debug.Log("Trying to use item in battle");
                 item.gameAction.caller = battleManager.activeCombatant;
+                battleManager.pattern = item.gameAction.pattern;
                    // If it's a targeting action, queue it for targeting
                    if(item.gameAction.targetType == TargetType.SingleAlly || 
                       item.gameAction.targetType == TargetType.SingleEnemy ||
@@ -137,17 +138,19 @@ public class Inventory : MonoBehaviour
                            targetType = item.gameAction.targetType,
                            prompt = $"Choose target for {item.itemName}",
                            gameAction = item.gameAction,
-                           caller = item.gameAction.caller
+                           caller = item.gameAction.caller,
+                           inventoryItemName = item.itemName
                        };
                        battleManager.actionQueue.Add(targetAction);
-                       GameManager.Instance.ConsumeInventoryItem(item.itemName, true, 1);
-                       UpdateInventoryImages(GameManager.Instance.inventory);
                        battleManager.HideInventory();
                    }
                    else
                    {
                        // Direct execution for non-targeted actions
                        battleManager.actionQueue.Add(item.gameAction);
+                       GameManager.Instance.ConsumeInventoryItem(item.itemName, true, 1);
+                       UpdateInventoryImages(GameManager.Instance.inventory);
+                       battleManager.HideInventory();
                    }
                    success = true;
                }
@@ -175,6 +178,11 @@ public class Inventory : MonoBehaviour
             if(success)
             {
                 menu.UpdateParty();
+                if(menu.deckContainer.gameObject.activeInHierarchy && !(item is Equipment)){
+                    menu.deckContainer.gameObject.SetActive(false);
+                    menu.characterContainer.gameObject.SetActive(true);
+                    menu.currentCharacter = "";
+                }
                 AudioManager.Instance.PlaySoundEffect("Save",1);
                 UpdateInventoryImages(GameManager.Instance.inventory);
             }

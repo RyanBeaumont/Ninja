@@ -323,7 +323,7 @@ public class CardDatabase : MonoBehaviour
             cost = 0,
             cardClass = CardClass.None,
             artwork = "IconShield",
-            level = 3,
+            level = 99,
             effects = new List<GameAction>()
             {
                 new StatusEffectAction()
@@ -1163,6 +1163,29 @@ public class CardDatabase : MonoBehaviour
                 new DamageAction()
                 {
                     damage = "15 + 15*MED",
+                    animation = "headbutt",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    statusEffect = getStatusEffect("Prone"),
+                    hits = 1,
+                    pattern = "2"
+                }
+            }
+        });
+
+                allCards.Add(new Card()
+        {
+            cardName = "Re-Concuss",
+            description = "Hit a prone or off-balance enemy to knock them prone again",
+            cost = 10,
+            level = 5,
+            cardClass = CardClass.Grappler,
+            artwork = "IconFist",
+            effects = new List<GameAction>()
+            {
+                new ReconcussDamageAction()
+                {
+                    damage = "15 + 20*MED",
                     animation = "headbutt",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,

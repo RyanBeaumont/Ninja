@@ -124,7 +124,8 @@ public class GameManager : MonoBehaviour
                     animation = "Throw",
                     damageType = DamageType.Psychic,
                     damage = "25",
-                    hits = 1
+                    hits = 1,
+                    bonusActions = 1
                 };
             break;
             case "Lockpick":
@@ -138,7 +139,8 @@ public class GameManager : MonoBehaviour
                 {
                     targetType = TargetType.SingleAlly,
                     animation = "Drink",
-                    mpAmount = "30"
+                    mpAmount = "30",
+                    bonusActions = 1
                 };
             break;
             case "Beer":
@@ -191,7 +193,8 @@ public class GameManager : MonoBehaviour
                 {
                     targetType = TargetType.AllAllies,
                     animation = "Drink",
-                    healAmount = "50"
+                    healAmount = "50",
+                    text = "Party: Started. Bass: Bumpin'. Health: Restored"
                 };
             break;
             case "Leather Vest":
@@ -834,7 +837,7 @@ public class GameManager : MonoBehaviour
             {
                 if(consume){
                     item.quantity -= quantity;
-                    if(item.quantity < 0) inventory.Remove(item);
+                    if(item.quantity <= 0) inventory.Remove(item);
                     ShowMessage($"Consumed: {itemName}");
                 }
                 return true;
@@ -865,6 +868,13 @@ public class GameManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void ClearQuests()
+    {
+        quests.Clear();
+        ShowMessage("All Quests Completed");
+        UpdateQuests();
     }
 
     void UpdateQuests()

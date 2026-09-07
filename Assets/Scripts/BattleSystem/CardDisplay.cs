@@ -165,6 +165,18 @@ public class CardDisplay : Selectable,
         
     }
 
+    public void UpdateTempCost()
+    {
+        if (card.tempCost != 0)
+        {
+            costText.text = card.tempCost.ToString();
+        }
+        else
+        {
+            costText.text = card.cost.ToString();
+        }
+    }
+
     private void Highlight()
     {
         if (isHighlighted)
@@ -388,6 +400,7 @@ public class CardDisplay : Selectable,
                 activePlayer.DiscardCard(card);
                 GameManager.Instance.SelectDefault();
                 BattleManager.Instance.DiscardCard();
+                handManager.cardsInHand.Remove(gameObject);
                 Destroy(gameObject);
           
             }else{

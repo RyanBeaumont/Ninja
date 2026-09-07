@@ -142,13 +142,14 @@ public class DialogBox : MonoBehaviour
         if(target == null) target = player;
         cameraRig = GameManager.Instance.GetCamera(out cameraAnimator,out cutsceneCamera);
         Animator anim = target.GetComponentInChildren<Animator>();
-        if(anim != null && pose != ""){
+        if(anim != null)
+        {
+            if(pose == "" || pose == null){pose = "ArmsCrossed";} //Set a default pose if none specified
             if(!anim.GetCurrentAnimatorStateInfo(0).IsName(pose)){
                 anim.CrossFade(pose, 0.05f);
                 var pulse = target.GetComponentInChildren<PulseToTheBeat>();
                 if(pulse != null) pulse.Pulse();
             }
-           
         }
         if(face != "")
         {
