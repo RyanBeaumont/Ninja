@@ -94,6 +94,13 @@ public class AudioManager : MonoBehaviour
         crossfadeCoroutine = StartCoroutine(Crossfade(fadeTime));
     }
 
+    public void StopAllAudio()
+    {
+        active.Stop();
+        inactive.Stop();
+        soundEffectsSource.Stop();
+    }
+
     IEnumerator Crossfade(float duration)
     {
         float t = 0f;

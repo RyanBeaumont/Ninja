@@ -167,7 +167,11 @@ public class CardDisplay : Selectable,
 
     public void UpdateTempCost()
     {
-        if (card.tempCost != 0)
+        if (card.tpCost > 0)
+        {
+            costText.text = card.tpCost.ToString();
+        }
+        else if (card.tempCost != 0)
         {
             costText.text = card.tempCost.ToString();
         }

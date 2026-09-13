@@ -92,6 +92,8 @@ public class Menu : MonoBehaviour
 
     public void QuitToMainMenu()
     {
+        //Stop audio
+        AudioManager.Instance.StopAllAudio();
         GameManager.Reset();
     }
 

@@ -4441,6 +4441,9 @@ GameObject:
   - component: {fileID: 357850595}
   - component: {fileID: 357850603}
   - component: {fileID: 357850602}
+  - component: {fileID: 357850605}
+  - component: {fileID: 357850604}
+  - component: {fileID: 357850606}
   - component: {fileID: 357850601}
   m_Layer: 0
   m_Name: Stretch
@@ -4666,6 +4669,62 @@ MonoBehaviour:
   failBranch: 
   toBlack: 1
   cameraTarget: {fileID: 0}
+--- !u!114 &357850604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357850593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc188127f6a42c46a49d02911cf03b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  encounterMusic: {fileID: 0}
+  fadeTime: 1.5
+  sfx: 
+--- !u!114 &357850605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357850593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c530a24ea0ef8d34990d94afbefe7c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  dialog:
+  - CONGRATULATIONS! You have beat the demo - the first act of 4. Thanks for playing!
+  - 'Coming soon: Swap perspectives! Build a party of 3! Collect 100+ cards!'
+  - If you liked the game (you've made it this far), support a solo dev and give
+    me a wishlist on Steam!
+--- !u!114 &357850606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357850593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1315f8dfa9a1acb4c8d1cda437bd0446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
 --- !u!1001 &371898109
 PrefabInstance:
   m_ObjectHideFlags: 0
