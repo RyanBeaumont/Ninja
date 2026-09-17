@@ -122,10 +122,10 @@ MonoBehaviour:
   attack: 10
   defense: 1
   speed: 15
-  psychic: 15
+  psychic: 1
   surprise: 0
   mp: 0
-  maxMp: 45
+  maxMp: 3
   hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
@@ -136,6 +136,7 @@ MonoBehaviour:
   combatantName: Book of Protection
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: BookBuff
     attackName: Shield Allies
@@ -177,7 +178,7 @@ MonoBehaviour:
       statusUpdate: 0
       particleEffect: {fileID: 0}
     hits: 2
-    mpCost: 30
+    mpCost: 3
     healthThreshold: 100
     altFunction: 
     consumeMana: 1
@@ -186,6 +187,7 @@ MonoBehaviour:
     dropChance: 25
   - itemID: Coke
     dropChance: 50
+  cardLootDrops: []
   xpReward: 20
   goldReward: 20
   attackSpeed: 0.75

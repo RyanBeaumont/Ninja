@@ -1,3 +1,4 @@
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
@@ -39,6 +40,7 @@ public class GameAction
     public string text = "";
     public int bonusActions = 0;
     public bool wildSwing = false;
+    public bool allowDeadCaller = false;
 
     protected void ResolveInsanityTargets(BattleManager battleManager)
     {
@@ -54,7 +56,8 @@ public class GameAction
 
     public virtual void Execute(BattleManager battleManager)
     {
-        if (caller != null && !caller.alive) return;
+        battleManager.activeActionCaller = caller;
+        if (caller != null && !caller.alive && !allowDeadCaller) return;
         ResolveInsanityTargets(battleManager);
         caller.PlayAnimation(animation);
         if(text != ""){GameManager.Instance.ShowMessage(text);}
@@ -86,6 +89,21 @@ public class CutAction : GameAction
     }
 }
 
+public class ExecuteAction : DamageAction
+{
+    //A damage action that scales with missing HP percentage
+    public override void Execute(BattleManager battleManager)
+    {
+        if(battleManager.currentTargets.Count > 0)
+        {
+            var target = battleManager.currentTargets[0];
+            var missingHPPercent = 1f - (target.hp / target.maxHp);
+            damage = $"{missingHPPercent * 100f} + {missingHPPercent * 50f}*MED";
+        }
+        base.Execute(battleManager);
+    }
+}
+
 public class ChooseTargetsAction : GameAction
 {
     public string prompt;
@@ -93,12 +111,13 @@ public class ChooseTargetsAction : GameAction
     public bool targetDead = false;
     public Card card;
     public string inventoryItemName = "";
+    public int inventoryItemMPCost = 0;
 
     public override void Execute(BattleManager battleManager)
     {
         if(gameAction is ReviveAction) targetDead = true;
         Targeter targeter = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Targeter")).GetComponent<Targeter>();
-        targeter.Initialize(targetType, prompt, gameAction, targetDead, card, inventoryItemName);
+        targeter.Initialize(targetType, prompt, gameAction, targetDead, card, inventoryItemName, inventoryItemMPCost);
         battleManager.waitingForInput = true;
     }
 }
@@ -199,7 +218,7 @@ public class DamageAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
-         battleManager.SetPose(caller.transform, "", CameraAngle.behind, "Mad");
+        if(caller.alive) battleManager.SetPose(caller.transform, "", CameraAngle.behind, "Mad");
         base.Execute(battleManager);
         AudioManager.Instance.PlaySoundEffect("s_dbz_jump",UnityEngine.Random.Range(0.8f,1.2f));
         battleManager.waitingForInput = true; //wait for animation input
@@ -532,10 +551,9 @@ public class LockInAction : StatusEffectAction
             t.ApplyStatusEffect(new StatusEffect()
             {
                 name = "Locked In",
-                stat = "PSY",
-                amount = 2,
-                additive = false,
                 duration = 3,
+                additive = true,
+                amount = 1,
 
             });
         }
@@ -570,8 +588,7 @@ public class ExploitWeaknessAction : DamageAction
         base.Execute(battleManager);
         if(battleManager.currentTargets[0] != null && battleManager.currentTargets[0].statusEffects.Count > 0)
         {
-            GameManager.Instance.ShowMessage("Exploiting weakness! Bonus action gained!");
-            BattleManager.Instance.attacksRemaining += 1;
+            BattleManager.Instance.actionQueue.Add(new GainMPAction(){mpAmount = "2"});
         }
     }
 }
@@ -664,7 +681,13 @@ public class CloserAction : DamageAction
 {
     public override void Execute(BattleManager battleManager)
     {
-        damage = $"30 + {25*battleManager.discardPower}*MED";
+        var cards = 0;
+        foreach(Card card in battleManager.activePlayer.hand)
+        {
+            battleManager.activePlayer.DiscardCard(card);
+            cards += 1;
+        }
+        damage = $"30 + {30*cards}*MED";
         base.Execute(battleManager);
     }
 }
@@ -701,12 +724,31 @@ public class GainMPAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
-        caller.PlayAnimation(animation);
-        caller.GainMP(caller.EvaluateStatFormula(mpAmount));
-        base.Execute(battleManager);
-    
+        if(caller != null && caller.alive)
+        {
+            caller.PlayAnimation(animation);
+            caller.GainMP(caller.EvaluateStatFormula(mpAmount));
+            GameManager.Instance.ShowMessage($"{caller.combatantName} gains {caller.EvaluateStatFormula(mpAmount)} MP");
+        }
     }
 }
+
+public class DeathBombAction : DamageAction
+{
+    public override void Execute(BattleManager battleManager)
+    {
+        base.Execute(battleManager);
+        battleManager.PlayerHit();
+        if(caller is PlayerCombatant){
+            YourParty.instance.GetPartyMember(caller.combatantName).alive = false;
+        }
+        else
+        {
+            caller.Invoke("DieForReal", 3f);
+        }
+    }
+}
+
 
 public class ChainOfPainAction : GameAction
 {
@@ -746,9 +788,9 @@ public class ReduceCostAction : DamageAction
             foreach(Card card in p.hand)
             {
                 if(card.tempCost != 0)
-                card.tempCost = Mathf.Max(0,card.tempCost - 20);
+                card.tempCost = Mathf.Max(0,card.tempCost - 1);
                 else
-                card.tempCost = Mathf.Max(0,card.cost - 20);
+                card.tempCost = Mathf.Max(0,card.cost - 1);
             }
             GameObject.FindFirstObjectByType<HandManager>().UpdateHandVisuals();
             GameManager.Instance.ShowMessage("Card cost reduced!");

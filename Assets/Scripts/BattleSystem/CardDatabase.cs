@@ -57,8 +57,8 @@ public class CardDatabase : MonoBehaviour
 {
     public static CardDatabase Instance;
     public List<Card> allCards = new List<Card>();
-        public int deckMin = 5;
-    public int deckMax = 12;
+    public int deckMin = 12;
+    public int deckMax = 40;
 
     public StatusEffect getStatusEffect(string name, float amount = 0, int duration = 0)
     {
@@ -102,7 +102,8 @@ public class CardDatabase : MonoBehaviour
         List<Card> deck = new List<Card>();
         deck.AddRange(GetCardsByClass(mainClass, level));
         deck.AddRange(GetCardsByClass(subClass, level - 4));
-        deck.AddRange(GetCardsByClass(CardClass.None, level)); //neutral cards
+        //Double main-class cards
+        deck.AddRange(GetCardsByClass(mainClass, level));
 
         return deck;
     }
@@ -112,7 +113,6 @@ public class CardDatabase : MonoBehaviour
         List<Card> newCards = new List<Card>();
         newCards.AddRange(allCards.FindAll(card => card.cardClass == mainClass && card.level == level));
         newCards.AddRange(allCards.FindAll(card => card.cardClass == subClass && card.level == level-4));
-        newCards.AddRange(allCards.FindAll(card => card.cardClass == CardClass.None && card.level == level));
 
         return newCards;
     }
@@ -134,8 +134,8 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "Basic Strike",
-            description = "A basic physical attack.",
-            cost = 0,
+            description = "A basic bludgeoning attack.",
+            cost = 2,
             level = 0,
             artwork = "IconFist",
             effects = new List<GameAction>()
@@ -152,13 +152,74 @@ public class CardDatabase : MonoBehaviour
             }
         });
 
+        allCards.Add(new Card()
+        {
+            cardName = "Basic Slice",
+            description = "A basic slashing attack.",
+            cost = 2,
+            level = 0,
+            artwork = "IconKnife",
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "15 + 15*LOW",
+                    animation = "SwordBackhand",
+                    damageType = DamageType.Slashing,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1,
+                    pattern = "1"
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "B. Slap",
+            description = "The AUDACITY!",
+            cost = 1,
+            level = 1,
+            artwork = "IconSlap",
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "8 + 8*MED",
+                    animation = "Slap",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1,
+                    pattern = "1"
+                }
+            }
+        });
+
+                allCards.Add(new Card()
+        {
+            cardName = "Critical Hit",
+            description = "Gain 2 MP",
+            cost = 1,
+            level = 100,
+            artwork = "IconSuperSaiyan",
+            effects = new List<GameAction>()
+            {
+                new GainMPAction()
+                {
+                    mpAmount = "2",
+                    animation = "GatherChi",
+                    targetType = TargetType.None,
+                    pattern = ""
+                }
+            }
+        });
+
         
 
          allCards.Add(new Card()
         {
             cardName = "Powerslash",
             description = "A powerful slash attack.",
-            cost = 20,
+            cost = 3,
             level = 1,
             artwork = "IconSlash",
             effects = new List<GameAction>()
@@ -175,13 +236,184 @@ public class CardDatabase : MonoBehaviour
             }
         });
 
+
         allCards.Add(new Card()
+        {
+            cardName = "Tornado Butt Kick",
+            description = "Damages all opponents",
+            artwork = "IconKick",
+            cost = 3,
+            level = 1,
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "25 + 25*LOW",
+                    animation = "SpinKick",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.AllEnemies,
+                    hits = 1,
+                    pattern = "1 1 1"
+                }
+            }
+        });
+
+         allCards.Add(new Card()
+        {
+            cardName = "Gather Chi",
+            description = "Draw 2 cards",
+            artwork = "IconCard",
+            cost = 2,
+            level = 1,
+            effects = new List<GameAction>()
+            {
+            new DrawCardsAction()
+                {
+                    cardCount = 2,
+                    animation = "GatherChi",
+                    targetType = TargetType.Self
+                }
+            }
+        });
+        
+
+        //---------------MONSTER LOOT----------------
+
+
+        allCards.Add(new Card()
+        {
+            cardName = "Poison Vial",
+            description = "Apply 2 poison",
+            cost = 2,
+            level = 2,
+            artwork = "IconDeath2",
+            cardClass = CardClass.None,
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "10*LOW",
+                    animation = "Throw",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    statusEffect = getStatusEffect("Poisoned", 2, -1),
+                    hits = 1,
+                    pattern = "22"
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Band-Aid",
+            description = "Heal an ally based on your PSY",
+            artwork = "IconHeal",
+            
+            cardClass = CardClass.None,
+            level = 5,
+            cost = 1,
+            effects = new List<GameAction>()
+            {
+                new HealAction()
+                {
+                    targetType = TargetType.SingleAlly,
+                    healAmount = "PSY",
+                    pattern = "11",
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "M-M-Mystery Block",
+            description = "Take half incoming damage",
+            cost = 1,
+            cardClass = CardClass.None,
+            artwork = "IconShield",
+            level = 2,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "BlockSuccess",
+                    targetType = TargetType.Self,
+
+                    statusEffect = getStatusEffect("M-M-Mystery Block")
+                },
+
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Combat E-S-Pow",
+            description = "3 turns: Draw a card when hitting a weakness",
+            cost = 4,
+            cardClass = CardClass.None,
+            artwork = "IconCard",
+            level = 2,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "Levitate",
+                    targetType = TargetType.Self,
+
+                    statusEffect = getStatusEffect("DrawOnCrit")
+                },
+
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Open Chakra",
+            description = "3 turns: Gain 1 MP when hitting a weakness",
+            cost = 4,
+            cardClass = CardClass.None,
+            artwork = "IconCard",
+            level = 2,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "Levitate",
+                    targetType = TargetType.Self,
+
+                    statusEffect = getStatusEffect("GainMPOnCrit")
+                },
+
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Intro to ESP",
+            description = "Mental attack scaled heavily by your PSY power",
+            cost = 3,
+            level = 4,
+            artwork = "IconPsychic",
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "10 + 10*HIGHPSY",
+                    animation = "PsychicLift",
+                    damageType = DamageType.Psychic,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1,
+                    pattern = "3"
+                }
+            }
+        });
+
+         allCards.Add(new Card()
         {
             cardName = "Smart Strike",
             description = "Draw a card",
-            cost = 10,
+            cost = 2,
             artwork = "IconFist",
-            cardClass = CardClass.Ninja,
+            cardClass = CardClass.None,
             level = 3,
             effects = new List<GameAction>()
             {
@@ -203,83 +435,12 @@ public class CardDatabase : MonoBehaviour
             }
         });
 
-        allCards.Add(new Card()
-        {
-            cardName = "Tornado Butt Kick",
-            description = "Damages all opponents",
-            artwork = "IconKick",
-            cost = 15,
-            level = 1,
-            effects = new List<GameAction>()
-            {
-                new DamageAction()
-                {
-                    damage = "25 + 25*LOW",
-                    animation = "SpinKick",
-                    damageType = DamageType.Bludgeoning,
-                    targetType = TargetType.AllEnemies,
-                    hits = 1,
-                    pattern = "1 1 1"
-                }
-            }
-        });
-
-         allCards.Add(new Card()
-        {
-            cardName = "Gather Chi",
-            description = "Gain MP and draw 1 card",
-            artwork = "IconCard",
-            cost = 0,
-            level = 1,
-            effects = new List<GameAction>()
-            {
-                new GainMPAction()
-                {
-                    mpAmount = "PSY",
-                    animation = "GatherChi",
-                    targetType = TargetType.Self
-                }
-                ,new DrawCardsAction()
-                {
-                    cardCount = 1,
-                    animation = "",
-                    targetType = TargetType.Self
-                }
-            }
-        });
-
-        
-
-        allCards.Add(new Card()
-        {
-            cardName = "Unholy Trinity",
-            description = "Deal 1 hit of each damage type",
-            cost = 0,
-            level = 7,
-            cardClass = CardClass.Ninja,
-            artwork = "IconMultiFist",
-            effects = new List<GameAction>()
-            {
-                new DamageAction()
-                {
-                    multiDamageType = true,
-                    damage = "10 + 10*LOW",
-                    animation = "Jab",
-                    damageType = DamageType.Bludgeoning,
-                    targetType = TargetType.SingleEnemy,
-                    hits = 3,
-                    loopAnimation = true,
-                    pattern = "22"
-                },
-
-            }
-        });
 
         allCards.Add(new Card()
         {
             cardName = "Psychoslash",
             description = "A powerful slash attack.",
-            cost = 60,
+            cost = 4,
             level = 6,
             artwork = "IconSlash",
             effects = new List<GameAction>()
@@ -296,72 +457,13 @@ public class CardDatabase : MonoBehaviour
             }
         });
 
-        allCards.Add(new Card()
-        {
-            cardName = "Band-Aid",
-            description = "Heal an ally based on your PSY",
-            artwork = "IconHeal",
-            
-            cardClass = CardClass.None,
-            level = 5,
-            cost = 10,
-            effects = new List<GameAction>()
-            {
-                new HealAction()
-                {
-                    targetType = TargetType.SingleAlly,
-                    healAmount = "PSY",
-                    pattern = "11",
-                }
-            }
-        });
-
-        allCards.Add(new Card()
-        {
-            cardName = "M-M-Mystery Block",
-            description = "Take half incoming damage",
-            cost = 0,
-            cardClass = CardClass.None,
-            artwork = "IconShield",
-            level = 99,
-            effects = new List<GameAction>()
-            {
-                new StatusEffectAction()
-                {
-                    animation = "BlockSuccess",
-                    targetType = TargetType.Self,
-
-                    statusEffect = getStatusEffect("M-M-Mystery Block")
-                },
-
-            }
-        });
-
-        allCards.Add(new Card()
-        {
-            cardName = "Sugar Rush",
-            description = "Snort raw sugar. Play again TWICE",
-            cost = 15,
-            cardClass = CardClass.Ninja,
-            artwork = "IconSuperSaiyan",
-            level = 6,
-            effects = new List<GameAction>()
-            {
-                new GameAction()
-                {
-                    animation = "Burst",
-                    bonusActions = 2,
-                },
-
-            }
-        });
 
         allCards.Add(new Card()
         {
             cardName = "Go to Sweep",
             description = "Knock ALL opponents off-balance",
             artwork = "IconKick",
-            cost = 30,
+            cost = 3,
             level = 8,
             effects = new List<GameAction>()
             {
@@ -383,7 +485,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "America Punch",
             description = "Stun the opponent",
             artwork = "IconFist",
-            cost = 30,
+            cost = 4,
             cardClass = CardClass.Grappler,
             level = 9,
             effects = new List<GameAction>()
@@ -405,12 +507,32 @@ public class CardDatabase : MonoBehaviour
         ---------------------NINJA--------------------------------------------------------------------------------
         */
 
+
+        
         allCards.Add(new Card()
         {
+            cardName = "Sugar Rush",
+            description = "Snort raw sugar. Gain 1 MP",
+            cost = 0,
+            cardClass = CardClass.Ninja,
+            artwork = "IconSuperSaiyan",
+            level = 6,
+            effects = new List<GameAction>()
+            {
+                new GainMPAction()
+                {
+                    animation = "Burst",
+                    mpAmount = "1"
+                },
+
+            }
+        });
+         allCards.Add(new Card()
+        {
             cardName = "Quick Strike",
-            description = "Apply 2 poison and play again",
-            cost = 10,
-            level = 1,
+            description = "Gain 2 MP",
+            cost = 2,
+            level = 3,
             artwork = "IconFist",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
@@ -419,20 +541,71 @@ public class CardDatabase : MonoBehaviour
                 {
                     damage = "10+10*LOW",
                     animation = "KnifeBackhand",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1,
+                    bonusActions = 1,
+                    pattern = "22"
+                },
+                new GainMPAction()
+                {
+                    mpAmount = "2",
+                    animation = "GatherChi",
+                    targetType = TargetType.None
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Poison Strike",
+            description = "Apply 3 poison",
+            cost = 1,
+            level = 1,
+            artwork = "IconDeath",
+            cardClass = CardClass.Ninja,
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    damage = "10*LOW",
+                    animation = "KnifeBackhand",
                     damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
-                    statusEffect = getStatusEffect("Poisoned", 2, -1),
+                    statusEffect = getStatusEffect("Poisoned", 3, -1),
                     hits = 1,
                     bonusActions = 1,
                     pattern = "22"
                 }
             }
         });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Flurry of Blows",
+            description = "3 turns: Strike again for each hit against a weakness",
+            cost = 4,
+            cardClass = CardClass.Ninja,
+            artwork = "IconNinja",
+            level = 4,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "BoTwirl",
+                    targetType = TargetType.Self,
+
+                    statusEffect = getStatusEffect("Flurry")
+                },
+
+            }
+        });
+
         allCards.Add(new Card()
         {
             cardName = "Dual Blades",
             description = "Throw 2 poisoned knives at random",
-            cost = 0,
+            cost = 3,
             level = 2,
             artwork = "IconDoubleKnife",
             cardClass = CardClass.Ninja,
@@ -454,8 +627,8 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "Stabby Stab",
-            description = "Poisoned blade strikes for each hit you've dealt including items",
-            cost = 15,
+            description = "Strikes for each hit you've dealt including items",
+            cost = 2,
             level = 3,
             artwork = "IconKnife",
             cardClass = CardClass.Ninja,
@@ -479,6 +652,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "It Begins",
             description = "Open a wound for one turn that makes the enemy weak to all damage",
             tpCost = 50,
+            cost = 1,
             level = 4,
             artwork = "IconSuperSaiyan",
             cardClass = CardClass.Ninja,
@@ -500,9 +674,9 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Get Poison'd",
             description = "Your hits apply Poison for 2 turns",
-            cost = 20,
+            cost = 2,
             level = 4,
-            artwork = "IconDeath",
+            artwork = "IconDeath2",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
             {
@@ -520,7 +694,7 @@ public class CardDatabase : MonoBehaviour
             cardClass = CardClass.Ninja,
             description = "Discard your hand and draw cards based on your PSY",
             artwork = "IconCard",
-            cost = 15,
+            cost = 3,
             level = 5,
             effects = new List<GameAction>()
             {
@@ -536,7 +710,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Death Bomb",
             description = "Attach a sticky bomb. When they Die, they Explode",
-            cost = 20,
+            cost = 3,
             level = 6,
             artwork = "IconBomb",
             cardClass = CardClass.Ninja,
@@ -554,13 +728,35 @@ public class CardDatabase : MonoBehaviour
                 }
             }
         });
-        
+
+        allCards.Add(new Card()
+        {
+            cardName = "Shopping Spree",
+            description = "An attack that reduces the cost of all cards in hand.",
+            artwork = "IconSuperSaiyan",
+            cardClass = CardClass.Ninja,
+            level = 10,
+            cost = 4,
+            effects = new List<GameAction>()
+            {
+                new ReduceCostAction
+                {
+                    animation = "Slash",
+                    damage = "15 + 15*MEDPSY",
+                    damageType = DamageType.Slashing,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1,
+                    pattern = "1 3"
+                }
+            }
+        });
+        /*
         allCards.Add(new Card()
         {
             cardName = "Speed Boost",
             description = "Choose an ally to gain increased speed",
-            cost = 30,
-            level = 7,
+            cost = 3,
+            level = 99,
             artwork = "IconNinja",
             cardClass = CardClass.Ninja,
             effects = new List<GameAction>()
@@ -574,24 +770,6 @@ public class CardDatabase : MonoBehaviour
             }
         });
 
-        allCards.Add(new Card()
-        {
-            cardName = "The Perfect Tool",
-            description = "Look at an ally's top 3 cards. You may discard any of them",
-            cost = 10,
-            level = 6,
-            artwork = "IconCard",
-            cardClass = CardClass.Ninja,
-            effects = new List<GameAction>()
-            {
-                new ScryAction()
-                 {
-                    animation = "GatherChi",
-                    targetType = TargetType.SingleAlly,
-                    scryAmount = 3
-                }
-            }
-        });
 
         allCards.Add(new Card()
         {
@@ -610,12 +788,13 @@ public class CardDatabase : MonoBehaviour
                 }
             }
         });
+        */
 
         allCards.Add(new Card()
         {
             cardName = "It Was HIM!",
             description = "Enemies can only target the chosen ally. Play again",
-            cost = 15,
+            cost = 1,
             level = 3,
             artwork = "IconTarget",
             cardClass = CardClass.Ninja,
@@ -635,7 +814,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Seven Knives",
             description = "Costs 50 TP. Throw 7 knives at random",
-            cost = 0,
+            cost = 1,
             tpCost = 50,
             level = 9,
             artwork = "IconDoubleKnife",
@@ -671,12 +850,12 @@ public class CardDatabase : MonoBehaviour
             artwork = "IconPsychic",
             cardClass = CardClass.Psychic,
             level = 1,
-            cost = 20,
+            cost = 3,
             effects = new List<GameAction>()
             {
                 new DamageAction()
                 {
-                    damage = "30 + 30*HIGH",
+                    damage = "30 + 30*HIGHPSY",
                     animation = "PsychicLift",
                     damageType = DamageType.Psychic,
                     targetType = TargetType.SingleEnemy,
@@ -688,18 +867,81 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
+            cardName = "See the Future",
+            description = "Look at an ally's top 3 cards. You may discard any of them",
+            cost = 2,
+            level = 6,
+            artwork = "IconCard",
+            cardClass = CardClass.Psychic,
+            effects = new List<GameAction>()
+            {
+                new ScryAction()
+                 {
+                    animation = "GatherChi",
+                    targetType = TargetType.SingleAlly,
+                    scryAmount = 3
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Gather Intel",
+            description = "Deal 1 hit of each damage type",
+            cost = 2,
+            level = 7,
+            cardClass = CardClass.Psychic,
+            artwork = "IconMultiFist",
+            effects = new List<GameAction>()
+            {
+                new DamageAction()
+                {
+                    multiDamageType = true,
+                    damage = "10 + 10*LOW",
+                    animation = "Jab",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 3,
+                    loopAnimation = true,
+                    pattern = "22"
+                },
+
+            }
+        });
+
+        allCards.Add(new Card()
+        {
             cardName = "Flirty Wink",
-            description = "Steal MP from an enemy or give it to an ally",
+            description = "Give 2 MP to an ally",
             artwork = "IconWink",
             cardClass = CardClass.Psychic,
             level = 2,
-            cost = 0,
+            cost = 2,
             effects = new List<GameAction>()
             {
                 new EnergySuckAction()
                 {
-                    targetType = TargetType.Any,
-                    mpAmount = "PSY",
+                    targetType = TargetType.SingleAlly,
+                    mpAmount = "2",
+                    animation = "Sass"
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Vampire Energy Suck",
+            description = "Steal MP from an enemy equal to your PSY",
+            artwork = "IconPsychic",
+            cardClass = CardClass.Psychic,
+            level = 4,
+            cost = 2,
+            effects = new List<GameAction>()
+            {
+                new EnergySuckAction()
+                {
+                    targetType = TargetType.SingleEnemy,
+                    mpAmount = "PSY/10",
                     animation = "Sass"
                 }
             }
@@ -713,7 +955,8 @@ public class CardDatabase : MonoBehaviour
             
             cardClass = CardClass.Psychic,
             artwork = "IconSuperSaiyan",
-            level = 9,
+            level = 4,
+            cost = 1,
             effects = new List<GameAction>()
             {
                 new UltimateAction()
@@ -733,12 +976,32 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
+            cardName = "Lightning",
+            description = "Attack all enemies each turn until you take damage",
+            cost = 3,
+            level = 10,
+            artwork = "IconShield",
+            cardClass = CardClass.Grappler,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "Rage",
+                    targetType = TargetType.Self,
+                    statusEffect = getStatusEffect("Lightning", 1, -1)
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
             cardName = "E-S-Pow",
-            description = "Your opponent questions everything and attacks an ally or themselves",
+            description = "Make the enemy loco. They hit themselves or an ally",
             tpCost = 50,
+            cost = 1,
             cardClass = CardClass.Psychic,
             artwork = "IconPsychic",
-            level = 4,
+            level = 9,
             effects = new List<GameAction>()
             {
                 new CutAction(){},
@@ -758,9 +1021,9 @@ public class CardDatabase : MonoBehaviour
         
         allCards.Add(new Card()
         {
-            cardName = "Chi Blade",
-            description = "Drain your MP to deal equivalent slashing damage",
-            artwork = "IconSlash",
+            cardName = "Mind War",
+            description = "Drain your MP to deal equivalent psychic damage",
+            artwork = "IconPsychic",
             cardClass = CardClass.Psychic,
 
             level = 5,
@@ -769,15 +1032,16 @@ public class CardDatabase : MonoBehaviour
             {
                 new ChiBladeAction()
                 {
-                    damage = "MP + MP*MED",
+                    damage = "MP*10 + MP*10*MEDPSY",
                     animation = "Slash",
-                    damageType = DamageType.Slashing,
+                    damageType = DamageType.Psychic,
                     targetType = TargetType.SingleEnemy,
                     hits = 1,
                     pattern = "2111"
                 }
             }
         });
+
         allCards.Add(new Card()
         {
             cardName = "Rage Storm",
@@ -785,12 +1049,12 @@ public class CardDatabase : MonoBehaviour
             artwork = "IconSuperSaiyan",
             cardClass = CardClass.Psychic,
             level = 4,
-            cost = 80,
+            cost = 6,
             effects = new List<GameAction>()
             {
                 new DamageAction()
                 {
-                    damage = "50 + 50*MED",
+                    damage = "50 + 50*MEDPSY",
                     animation = "CombatBurst",
                     damageType = DamageType.Psychic,
                     targetType = TargetType.AllEnemies,
@@ -807,14 +1071,14 @@ public class CardDatabase : MonoBehaviour
             artwork = "IconPsychic",
             cardClass = CardClass.Psychic,
             level = 6,
-            cost = 30,
+            cost = 3,
             effects = new List<GameAction>()
             {
                 new DamageAction
                 {
                     targetType = TargetType.SingleEnemy,
                     animation = "KnifeBackhand",
-                    damage = "40 + 40*LOW",
+                    damage = "40 + 40*LOWPSY",
                     damageType = DamageType.Psychic,
                     statusEffect = getStatusEffect("Linked", 0, 2),
                     pattern = "3 3"
@@ -826,7 +1090,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Slap Some Sense",
             description = "Slap any target to heal them and remove stun or status effects",
-            cost = 10,
+            cost = 1,
             level = 7,
             cardClass = CardClass.Psychic,
             artwork = "IconSlap",
@@ -847,51 +1111,29 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "Lock In",
-            description = "Affected ally doubles their PSY but weakens their DEF. Play again",
+            description = "Affected ally gains an additional MP each turn but weakens their DEF. Play again",
             artwork = "IconPsychic",
             cardClass = CardClass.Psychic,
             level = 8,
-            cost = 30,
+            cost = 3,
             effects = new List<GameAction>()
             {
                 new LockInAction
                 {
                     targetType = TargetType.SingleAlly,
                     animation = "GatherChi",
-                    bonusActions = 1,
                 }
             }
         });
 
-        allCards.Add(new Card()
-        {
-            cardName = "Shopping Spree",
-            description = "An attack that reduces the cost of all cards in hand. Play again",
-            artwork = "IconSuperSaiyan",
-            cardClass = CardClass.Psychic,
-            level = 7,
-            cost = 15,
-            effects = new List<GameAction>()
-            {
-                new ReduceCostAction
-                {
-                    animation = "Slash",
-                    damage = "15 + 15*MED",
-                    damageType = DamageType.Slashing,
-                    targetType = TargetType.SingleEnemy,
-                    hits = 1,
-                    bonusActions = 1,
-                    pattern = "1 3"
-                }
-            }
-        });
+        
 
         allCards.Add(new Card()
         {
             cardName = "Bounty",
-            description = "Choose an enemy. The first person to hit them gains 30 MP and an extra action",
+            description = "Choose an enemy. The first person to hit them gains 2 MP",
             artwork = "IconSuperSaiyan",
-            cost = 0,
+            cost = 3,
             cardClass = CardClass.Ninja,
             level = 9,
             effects = new List<GameAction>()
@@ -908,19 +1150,18 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "Advanced Band-Aid",
-            description = "Heal an ally and play again",
+            description = "Heal an ally",
             artwork = "IconHeal",
             
             cardClass = CardClass.Psychic,
             level = 9,
-            cost = 15,
+            cost = 2,
             effects = new List<GameAction>()
             {
                 new HealAction()
                 {
                     targetType = TargetType.SingleAlly,
-                    healAmount = "PSY*2",
-                    bonusActions = 1,
+                    healAmount = "PSY*3",
                     pattern = "111",
                 }
             }
@@ -934,7 +1175,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Uppercut",
             description = "Knock the enemy off-balance, weakening their DEF",
-            cost = 10,
+            cost = 2,
             level = 1,
             cardClass = CardClass.Warrior,
             artwork = "IconFist",
@@ -958,7 +1199,7 @@ public class CardDatabase : MonoBehaviour
             cardName = "C-C-Combo",
             cardClass = CardClass.Warrior,
             description = "3 Hits",
-            cost = 25,
+            cost = 3,
             level = 2,
             artwork = "IconMultiFist",
             effects = new List<GameAction>()
@@ -975,12 +1216,55 @@ public class CardDatabase : MonoBehaviour
             }
         });
 
+        allCards.Add(new Card()
+        {
+            cardName = "Dropkick",
+            description = "Deal heavy damage based on your MP and use it up",
+            artwork = "IconSpartaKick",
+            cardClass = CardClass.Warrior,
+
+            level = 5,
+            cost = 0,
+            effects = new List<GameAction>()
+            {
+                new ChiBladeAction()
+                {
+                    damage = "15 + MP*15*MED",
+                    animation = "FlyingAxeKick",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1,
+                    pattern = "222"
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Adrenaline",
+            cardClass = CardClass.Warrior,
+            description = "Gain 2 MP. Must discard 2 cards",
+            cost = 0,
+            discardCost = 2,
+            level = 6,
+            artwork = "IconSuperSaiyan",
+            effects = new List<GameAction>()
+            {
+                new GainMPAction()
+                {
+                    animation = "Burst",
+                    mpAmount = "2"
+                }
+            }
+        });
+
 
         allCards.Add(new Card()
         {
             cardName = "SPARTA! KICK",
             description = "Ultimate attack deals massive damage. Must discard 2 cards",
             tpCost = 50,
+            cost = 1,
             discardCost = 2,
             cardClass = CardClass.Warrior,
             artwork = "IconSpartaKick",
@@ -1007,12 +1291,35 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
+            cardName = "Berzerk!",
+            description = "Wild Swing 3 times",
+            tpCost = 50,
+            cost = 1,
+            cardClass = CardClass.Warrior,
+            artwork = "IconBomb",
+            level = 8,
+            effects = new List<GameAction>()
+            {
+                new CutAction(){},
+                new UltimateAction()
+                {
+                    animation = "CraneKick", 
+                    targetType = TargetType.None, 
+                },
+                new WildSwingAction(),
+                new WildSwingAction(),
+                new WildSwingAction()
+            }
+        });
+
+        allCards.Add(new Card()
+        {
             cardName = "Lifestrike",
             description = "Heals equal to damage dealt",
             cardClass = CardClass.Warrior,
             artwork = "IconHeal",
-            level = 3,
-            cost = 30,
+            level = 1,
+            cost = 3,
             effects = new List<GameAction>()
             {
                 new LifestrikeAction()
@@ -1031,10 +1338,10 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Channel Rage",
             description = "A small permanent attack boost",
-            cost = 20,
+            cost = 1,
             cardClass = CardClass.Warrior,
             artwork = "IconSuperSaiyan",
-            level = 4,
+            level = 3,
             effects = new List<GameAction>()
             {
                 new StatusEffectAction()
@@ -1046,11 +1353,13 @@ public class CardDatabase : MonoBehaviour
             }
         });
 
+        
+
         allCards.Add(new Card()
         {
             cardName = "Uberslash",
             description = "A powerful slash attack.",
-            cost = 40,
+            cost = 4,
             level = 5,
             discardCost = 1,
             cardClass = CardClass.Warrior,
@@ -1071,9 +1380,37 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
+            cardName = "Heavy Blow",
+            description = "Deal heavy damage. Gain 2 fewer MP next turn",
+            cost = 2,
+            level = 6,
+            artwork = "IconSlash",
+            effects = new List<GameAction>()
+            {
+                
+                new StatusEffectAction()
+                {
+                    statusEffect = getStatusEffect("Exhausted",2,2),
+                    targetType = TargetType.Self,
+                    animation = "IdleDrunk"
+                },
+                new DamageAction()
+                {
+                    damage = "40 + 40*MED",
+                    animation = "SwordHeavy",
+                    damageType = DamageType.Slashing,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1,
+                    pattern = "1  222"
+                },
+            }
+        });
+
+        allCards.Add(new Card()
+        {
             cardName = "Wild Swing",
             description = "Play the top card of your deck for free",
-            cost = 0,
+            cost = 2,
             level = 6,
             artwork = "IconBomb",
             cardClass = CardClass.Warrior,
@@ -1086,10 +1423,10 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "One Two Punch",
-            description = "Play again if the opponent is debuffed",
+            description = "Gain 2 MP if the opponent is debuffed",
             artwork = "IconMultiFist",
-            cost = 20,
-            level = 6,
+            cost = 2,
+            level = 2,
             effects = new List<GameAction>()
             {
                 new ExploitWeaknessAction()
@@ -1106,21 +1443,52 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
-            cardName = "The Closer",
-            description = "Discard cards to this attack for extra damage",
-            cost = 20,
-            level = 7,
-            discardCost = 0,
+            cardName = "Whirlwind",
             cardClass = CardClass.Warrior,
-            artwork = "IconKick",
+            description = "Deal 3 hits to all enemies. Gain 1 less MP next turn",
+            cost = 3,
+            level = 7,
+            artwork = "IconTornadoKick",
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    statusEffect = getStatusEffect("Exhausted",1,2),
+                    targetType = TargetType.Self,
+                    animation = "IdleDrunk"
+                },
+               new DamageAction()
+                {
+                    damage = "25 + 25*LOW",
+                    animation = "SpinKick",
+                    loopAnimation = true,
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.AllEnemies,
+                    hits = 3,
+                    pattern = "2 2 2"
+                },
+                
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "The Closer",
+            description = "Discard your hand to deal damage per card",
+            cost = 4,
+            level = 8,
+            cardClass = CardClass.Warrior,
+            artwork = "IconDeath2",
             effects = new List<GameAction>()
             {
                 new CloserAction()
                 {
-                    animation = "FlyingAxeKick",
+                    animation = "LongswordBlast",
+                    damageType = DamageType.Slashing,
                     targetType = TargetType.SingleEnemy,
-                    pattern = "2 2 2"
-                }
+                    hits = 1,
+                    pattern = "22222"
+                },
             }
         });
 
@@ -1128,7 +1496,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Here It Comes!",
             description = "Double your STRENGTH for your next turn",
-            cost = 20,
+            cost = 4,
             level = 9,
             artwork = "IconSuperSaiyan",
             cardClass = CardClass.Warrior,
@@ -1143,6 +1511,48 @@ public class CardDatabase : MonoBehaviour
             }
         });
 
+         allCards.Add(new Card()
+        {
+            cardName = "Execution",
+            description = "Deal damage based on missing HP",
+            cost = 3,
+            discardCost = 1,
+            level = 10,
+            artwork = "IconDeath",
+            effects = new List<GameAction>()
+            {
+                new ExecuteAction()
+                {
+                    animation = "LongswordBlast",
+                    damageType = DamageType.Slashing,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1,
+                    pattern = "1  222"
+                },
+            }
+        });
+
+        allCards.Add(new Card()
+        {
+            cardName = "Double Draw",
+            description = "Draw an extra card each turn",
+            cost = 3,
+            cardClass = CardClass.Warrior,
+            artwork = "IconDraw",
+            level = 11,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "Levitate",
+                    targetType = TargetType.Self,
+
+                    statusEffect = getStatusEffect("Draw")
+                },
+
+            }
+        });
+
         
         
 
@@ -1154,7 +1564,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Headbutt",
             description = "Deal damage WITH YOUR HEAD. Knock the enemy Prone",
-            cost = 0,
+            cost = 2,
             level = 1,
             cardClass = CardClass.Grappler,
             artwork = "IconHeadbutt",
@@ -1177,7 +1587,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Re-Concuss",
             description = "Hit a prone or off-balance enemy to knock them prone again",
-            cost = 10,
+            cost = 3,
             level = 5,
             cardClass = CardClass.Grappler,
             artwork = "IconFist",
@@ -1196,12 +1606,41 @@ public class CardDatabase : MonoBehaviour
             }
         });
 
+        allCards.Add(new Card()
+        {
+            cardName = "Shoulder Charge",
+            cardClass = CardClass.Grappler,
+            description = "Stun the opponent and yourself",
+            cost = 2,
+            level = 4,
+            artwork = "IconSuperSaiyan",
+            effects = new List<GameAction>()
+            {
+                 new StatusEffectAction()
+                {
+                    statusEffect = getStatusEffect("Stunned",1,1),
+                    targetType = TargetType.Self,
+                    animation = "IdleDrunk"
+                },
+               new DamageAction()
+                {
+                    damage = "40 + 20*MED",
+                    animation = "headbutt",
+                    damageType = DamageType.Bludgeoning,
+                    targetType = TargetType.SingleEnemy,
+                    hits = 1,
+                    pattern = "2 2 2"
+                }
+               
+            }
+        });
+
 
         allCards.Add(new Card()
         {
             cardName = "Rock Solid",
             description = "Increase your team's DEF. Counterattacks trigger Off-Balance",
-            cost = 10,
+            cost = 3,
             level = 3,
             artwork = "IconShield",
             cardClass = CardClass.Grappler,
@@ -1218,9 +1657,28 @@ public class CardDatabase : MonoBehaviour
 
         allCards.Add(new Card()
         {
+            cardName = "Back Stance",
+            description = "3 turns: Increase your counter damage",
+            cost = 2,
+            level = 6,
+            artwork = "IconShield",
+            cardClass = CardClass.Grappler,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "Rage",
+                    targetType = TargetType.AllAllies,
+                    statusEffect = getStatusEffect("IncreasedCounter", 0, 2)
+                }
+            }
+        });
+
+        allCards.Add(new Card()
+        {
             cardName = "Y.E.E.T.",
             description = "Throw an off-balance or prone enemy for massive damage",
-            cost = 25,
+            cost = 3,
             level = 2,
             cardClass = CardClass.Grappler,
             artwork = "IconGrab",
@@ -1243,7 +1701,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Untouchable",
             description = "You or an ally will automatically block 1 hit",
-            cost = 10,
+            cost = 2,
             cardClass = CardClass.Grappler,
             artwork = "IconShield",
             level = 3,
@@ -1259,6 +1717,32 @@ public class CardDatabase : MonoBehaviour
             }
         });
 
+        allCards.Add(new Card()
+        {
+            cardName = "Un-Untouchable",
+            description = "All allies will automatically block 2 hits",
+            cost = 5,
+            cardClass = CardClass.Grappler,
+            artwork = "IconShield",
+            level = 11,
+            effects = new List<GameAction>()
+            {
+                new StatusEffectAction()
+                {
+                    animation = "Rage",
+                    targetType = TargetType.AllAllies,
+                    statusEffect = getStatusEffect("Block"),
+                },
+                new StatusEffectAction()
+                {
+                    animation = "Rage",
+                    targetType = TargetType.AllAllies,
+                    statusEffect = getStatusEffect("Block"),
+                },
+
+            }
+        });
+
             allCards.Add(new Card()
         {
             cardName = "Chain of Pain",
@@ -1266,7 +1750,7 @@ public class CardDatabase : MonoBehaviour
             artwork = "IconGrab",
             cardClass = CardClass.Grappler,
             level = 6,
-            cost = 25,
+            cost = 3,
             effects = new List<GameAction>()
             {
                 new ChainOfPainAction()
@@ -1280,8 +1764,8 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "Identify Weakness",
-            description = "Hitting the enemy's weakness inflicts Off-Balance",
-            cost = 10,
+            description = "3 turns: Hitting the enemy's weakness inflicts Off-Balance",
+            cost = 2,
             level = 4,
             cardClass = CardClass.Grappler,
             artwork = "IconTarget",
@@ -1302,6 +1786,7 @@ public class CardDatabase : MonoBehaviour
             description = "Stun an off-balance or prone enemy. Knock yourself off balance",
             tpCost = 50,
             level = 5,
+            cost = 1,
             cardClass = CardClass.Grappler,
             artwork = "IconGrab",
             effects = new List<GameAction>()
@@ -1331,7 +1816,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Omnisweep",
             description = "All off-balance or prone enemies take heavy damage",
-            cost = 20,
+            cost = 2,
             level = 7,
             cardClass = CardClass.Grappler,
             artwork = "IconKick",
@@ -1354,7 +1839,7 @@ public class CardDatabase : MonoBehaviour
         {
             cardName = "Quick Slap",
             description = "Knock the enemy Off-Balance and play again",
-            cost = 10,
+            cost = 1,
             level = 8,
             cardClass = CardClass.Grappler,
             artwork = "IconSlap",

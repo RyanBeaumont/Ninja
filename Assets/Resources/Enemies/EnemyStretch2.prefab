@@ -76,10 +76,10 @@ MonoBehaviour:
   attack: 15
   defense: 1
   speed: 15
-  psychic: 20
+  psychic: 2
   surprise: 0
   mp: 0
-  maxMp: 60
+  maxMp: 6
   hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
@@ -132,7 +132,7 @@ MonoBehaviour:
       statusUpdate: 0
       particleEffect: {fileID: 0}
     hits: 4
-    mpCost: 60
+    mpCost: 5
     healthThreshold: 100
     altFunction: 
     consumeMana: 1
@@ -165,6 +165,7 @@ MonoBehaviour:
     dropChance: 100
   - itemID: DrPepper
     dropChance: 100
+  cardLootDrops: []
   xpReward: 80
   goldReward: 80
   attackSpeed: 0.5

@@ -74,7 +74,12 @@ public class Inventory : MonoBehaviour
         {
             if(item.quantity == 0)continue;
             var itemGO = Instantiate(Resources.Load<GameObject>("InventoryItem"), itemContainer);
-            var itemText = itemGO.GetComponentInChildren<TMPro.TMP_Text>();
+            var rootImage = itemGO.GetComponent<Image>();
+            if (rootImage != null && item is Equipment)
+            {
+                rootImage.color = new Color(0.75f, 0.88f, 1f, 1f);
+            }
+            var itemText = itemGO.transform.Find("Count").GetComponent<TMP_Text>();
             if(itemText != null)
             {
                 itemText.text = $"{item.itemName} x{item.quantity}";
@@ -87,6 +92,11 @@ public class Inventory : MonoBehaviour
                 {
                     itemImage.sprite = sprite;
                 }
+            }
+            var extraInfo = itemGO.transform.Find("ExtraInfo").GetComponent<TMP_Text>();
+            if(item.mpCost > 0){extraInfo.text = $"{item.mpCost}mp";}
+            if(item is Equipment e){
+                extraInfo.text = e.type;
             }
             var itemButton = itemGO.GetComponent<UnityEngine.UI.Button>();
             itemButton.onClick.AddListener(() => {
@@ -105,7 +115,7 @@ public class Inventory : MonoBehaviour
             var menu = FindFirstObjectByType<Menu>();
             var battleManager = FindFirstObjectByType<BattleManager>();
             bool success = false;
-            
+
             // Equipment handling (out-of-battle only)
             if(item is Equipment equipment && menu != null)
             {
@@ -125,6 +135,12 @@ public class Inventory : MonoBehaviour
             {
                try
                {
+                if (battleManager.activePlayer == null || battleManager.activePlayer.mp < item.mpCost)
+                {
+                    GameManager.Instance.ShowMessage("Not enough MP!");
+                    AudioManager.Instance.PlaySoundEffect("Negative");
+                    return;
+                }
                 Debug.Log("Trying to use item in battle");
                 item.gameAction.caller = battleManager.activeCombatant;
                 battleManager.pattern = item.gameAction.pattern;
@@ -139,7 +155,8 @@ public class Inventory : MonoBehaviour
                            prompt = $"Choose target for {item.itemName}",
                            gameAction = item.gameAction,
                            caller = item.gameAction.caller,
-                           inventoryItemName = item.itemName
+                           inventoryItemName = item.itemName,
+                           inventoryItemMPCost = item.mpCost
                        };
                        battleManager.actionQueue.Add(targetAction);
                        battleManager.HideInventory();
@@ -149,6 +166,7 @@ public class Inventory : MonoBehaviour
                        // Direct execution for non-targeted actions
                        battleManager.actionQueue.Add(item.gameAction);
                        GameManager.Instance.ConsumeInventoryItem(item.itemName, true, 1);
+                       battleManager.activePlayer.GainMP(-item.mpCost);
                        UpdateInventoryImages(GameManager.Instance.inventory);
                        battleManager.HideInventory();
                    }

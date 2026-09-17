@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85afc1b1367c7a14da4ee484f3497e44, type: 3}
+  m_Name: Storm
+  m_EditorClassIdentifier: 
+  statusEffect:
+    name: Flurry
+    stat: 
+    sprite: {fileID: 21300000, guid: 50384aca54741bc4c9a75c2e276afdfb, type: 2}
+    amount: 1
+    description: Attack an extra time whenever you hit a weakness
+    additive: 1
+    duration: 3
+    removeOnHit: 0
+    caller: {fileID: 0}
+    statusUpdate: 0
+    particleEffect: {fileID: 0}

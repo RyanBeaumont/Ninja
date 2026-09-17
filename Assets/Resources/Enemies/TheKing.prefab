@@ -53,17 +53,21 @@ MonoBehaviour:
   attack: 10
   defense: 1
   speed: 30
-  psychic: 25
+  psychic: 2
   surprise: 0
   mp: 0
-  maxMp: 100
+  maxMp: 6
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 
   weaknesses: 0100000002000000
+  discoveredResistances: 
+  discoveredWeaknesses: 
   combatantName: The King
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: ThrustNSlash
     attackName: Double Stunner
@@ -73,16 +77,20 @@ MonoBehaviour:
     statusEffect:
       name: Stunned
       stat: 1
+      sprite: {fileID: 0}
       amount: 1
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 2
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: FlyingAxeKick
     attackName: You Shall Not Pass
     damage: 100
@@ -91,16 +99,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: 0
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: SwordHeavy, Sweep
     attackName: All Attack
     damage: 20
@@ -109,25 +121,34 @@ MonoBehaviour:
     statusEffect:
       name: Off-Balance
       stat: DEF
+      sprite: {fileID: 0}
       amount: 0.25
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 1
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
-    mpCost: 75
+    mpCost: 6
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: DrPepper
     dropChance: 100
   - itemID: Lockpick
     dropChance: 100
+  cardLootDrops:
+  - cardName: Psychoslash
+    dropChance: 100
+    quantity: 1
   xpReward: 100
   goldReward: 300
   attackSpeed: 0.5
   portrait: {fileID: 21300000, guid: e3f90c644a8dbd04f92caec214d05266, type: 3}
+  boss: 0
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -137,16 +158,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!136 &4431760837445767744
 CapsuleCollider:
   m_ObjectHideFlags: 0

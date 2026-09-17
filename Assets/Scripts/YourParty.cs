@@ -20,6 +20,7 @@ public class YourParty : MonoBehaviour
     
     public static YourParty instance;
     public List<PartyMember> reserve;
+    public List<string> earnedClasslessCards = new List<string>();
     public List<string> partyMembers;
     public FloatValue gameDifficulty;
 
@@ -27,7 +28,7 @@ public class YourParty : MonoBehaviour
     public string currentSaveFileName = "savefile_1";
     public float gold;
     public float spacing = 1f;
-    public int day = 12;
+    public int day = 18;
     void Awake()
     {
         if (instance == null)
@@ -43,16 +44,49 @@ public class YourParty : MonoBehaviour
 
     public void BuildStartingDeck()
     {
+        var startingClasslessCards = CardDatabase.Instance.allCards.FindAll(card =>
+            card.cardClass == CardClass.None && card.level == 1);
+        earnedClasslessCards.Clear();
+
+        foreach (Card card in startingClasslessCards)
+        {
+            earnedClasslessCards.Add(card.cardName);
+            earnedClasslessCards.Add(card.cardName);
+        }
+
         //Give starting decks
         foreach(var member in reserve)
         {
             member.deck = CardDatabase.Instance.BuildDeckByClass(member.mainClass, member.subClass, member.level);
+            member.deck.AddRange(GetEarnedClasslessCards());
         }
     }
 
     public PartyMember GetPartyMember(string memberName)
     {
         return reserve.Find(member => member.memberName == memberName);
+    }
+
+    public void AddClasslessCard(string cardName, int quantity = 1)
+    {
+        for (int i = 0; i < quantity; i++)
+        {
+            earnedClasslessCards.Add(cardName);
+        }
+    }
+
+    public List<Card> GetEarnedClasslessCards()
+    {
+        List<Card> cards = new List<Card>();
+        foreach (string cardName in earnedClasslessCards)
+        {
+            Card card = CardDatabase.Instance.GetCardByName(cardName);
+            if (card != null && card.cardClass == CardClass.None)
+            {
+                cards.Add(card);
+            }
+        }
+        return cards;
     }
 
     public SavePartyMember ConvertToSavePartyMember(PartyMember member)
@@ -85,6 +119,14 @@ public class YourParty : MonoBehaviour
             member.level = saveMember.level;
             member.xp = saveMember.xp;
             member.hpPercentage = saveMember.hpPercentage;
+            if (member.equipment == null)
+            {
+                member.equipment = new List<InventoryItem>();
+            }
+            else
+            {
+                member.equipment.Clear();
+            }
             foreach(string equipmentName in saveMember.equipment)
             {
                 var equipment = GameManager.Instance.GetInventoryItemByName(equipmentName);
@@ -121,6 +163,7 @@ public class YourParty : MonoBehaviour
     public void LoadGame(SaveData data)
     {
         partyMembers = data.playersInParty;
+        earnedClasslessCards = data.earnedClasslessCards ?? new List<string>();
         foreach(var saveMember in data.reserve)
         {
             var member = ConvertFromSavePartyMember(saveMember);
@@ -165,7 +208,7 @@ public class YourParty : MonoBehaviour
                         maxHp *= se.amount;
                 }
         multiplier = 1f; if(partyMember.subClass == CardClass.Psychic) multiplier = 1.25f; if(partyMember.mainClass == CardClass.Psychic) multiplier = 1.5f;
-        psychic = partyMember.level * multiplier + 15f;
+        psychic = 20f + (partyMember.level - 1) * 20f / 14f * multiplier;
         foreach(Equipment e in partyMember.equipment)
             foreach(StatusEffect se in e.statusEffects)
                 if(se.stat == "PSY") psychic += se.amount;
@@ -207,9 +250,7 @@ public class YourParty : MonoBehaviour
             var healthbar = Instantiate(Resources.Load<GameObject>("Health"), combatantObject.transform);
             combatantObject.GetComponent<PlayerCombatant>().hpBar = healthbar;
             //give cards
-            var doubleDeck = new List<Card>(partyMember.deck);
-            doubleDeck.AddRange(partyMember.deck);
-            combatantObject.GetComponent<PlayerCombatant>().deck = doubleDeck;
+            combatantObject.GetComponent<PlayerCombatant>().deck = new List<Card>(partyMember.deck);
             combatantObject.GetComponent<PlayerCombatant>().ShuffleDeck();
             combatantObject.GetComponent<PlayerCombatant>().DrawCards(4);
 
@@ -400,6 +441,9 @@ public class YourParty : MonoBehaviour
                     text  += $"{card.cardName}!\n";
                     if(partyMember.deck.Count < CardDatabase.Instance.deckMax){
                         partyMember.deck.Add(card);
+                    }
+                    else
+                    {
                         bonusText = "(Deck maximum reached - You can swap out cards in the [ESC] menu)";
                     }
 

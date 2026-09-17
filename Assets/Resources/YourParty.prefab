@@ -100,6 +100,7 @@ MonoBehaviour:
     subClass: 3
     equipment: []
     alive: 1
+  earnedClasslessCards: []
   partyMembers:
   - Spartan Jack
   gameDifficulty: {fileID: 11400000, guid: dc74c96ad530c7849ac75dbae876e553, type: 2}
@@ -120,5 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28c6b6ce22f6c2449d992dc35f46c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deckMin: 6
-  deckMax: 18
+  deckMin: 12
+  deckMax: 40

@@ -15,6 +15,9 @@ public class VengefulSword : EnemyCombatant
 
     public override void DefaultAttack()
     {
-        Attack(null,target);
+        if(target.alive)
+            Attack(null,target);
+        else
+            Attack(null,null);
     }
 }

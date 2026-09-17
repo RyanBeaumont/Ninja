@@ -53,10 +53,10 @@ MonoBehaviour:
   attack: 10
   defense: 1
   speed: 15
-  psychic: 10
+  psychic: 1
   surprise: 0
   mp: 0
-  maxMp: 40
+  maxMp: 2
   hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
@@ -109,7 +109,7 @@ MonoBehaviour:
       statusUpdate: 0
       particleEffect: {fileID: 0}
     hits: 1
-    mpCost: 20
+    mpCost: 2
     healthThreshold: 100
     altFunction: 
     consumeMana: 1
@@ -142,6 +142,10 @@ MonoBehaviour:
     dropChance: 50
   - itemID: Bang
     dropChance: 100
+  cardLootDrops:
+  - cardName: Psychoslash
+    dropChance: 100
+    quantity: 1
   xpReward: 30
   goldReward: 30
   attackSpeed: 0.5

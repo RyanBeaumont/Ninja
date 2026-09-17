@@ -61,7 +61,7 @@ public class Combatant : MonoBehaviour
         
     }
 
-    public void EndTurn()
+    public virtual void EndTurn()
     {
         decreaseStatusEffects(statusUpdate: StatusUpdate.TurnEnd);
     }
@@ -75,9 +75,12 @@ public class Combatant : MonoBehaviour
         baseDamage = Mathf.Abs(baseDamage *EvaluateStatFormula("DEF")); 
         var damageNumber = Instantiate(Resources.Load<GameObject>("DamageNumber"), transform.position, Quaternion.identity);
         var damageText = damageNumber.GetComponentInChildren<TMP_Text>();
+        var armorEffect = HasStatusEffect("Armor");
+        if(armorEffect != null){baseDamage -= armorEffect.amount;}
         var color = Color.yellow;
         if(damageType == DamageType.Bludgeoning) color = Color.red;
         if(damageType == DamageType.Psychic) color = Color.magenta;
+        damageText.color = color;
         damageText.text = "";
         //1 in 20 chance to crit
         /*if(UnityEngine.Random.Range(1,21) == 1)
@@ -90,15 +93,14 @@ public class Combatant : MonoBehaviour
         if(resistances != null && System.Array.Exists(resistances, element => element == damageType) && HasStatusEffect("Weak")==null)
         {
             baseDamage *= 0.5f; //Take half damage
-            damageText.text += "Ineffective!";
+            damageText.text += " Ineffective! ";
             AudioManager.Instance.PlaySoundEffect("Anvil",Random.Range(0.9f,1.1f));
-            damageText.color = color;
             if(!discoveredResistances.Contains(damageType)) discoveredResistances.Add(damageType);
         }
         if((weaknesses != null && System.Array.Exists(weaknesses, element => element == damageType)) || (HasStatusEffect("Weak") != null && damageType != DamageType.None)) //The ninja can't get infinite extra attacks
         {
-            baseDamage *= 1.5f; //Take 1.5x damage
-            damageText.text += "EFFECTIVE!";
+            baseDamage *= 1.2f; //Take 1.5x damage
+            damageText.text += " EFFECTIVE! ";
             //spawn blood fx
             var blood = Instantiate(Resources.Load<GameObject>("Particles/Blood"),transform);
             if(!discoveredWeaknesses.Contains(damageType)&& System.Array.Exists(weaknesses, element => element == damageType)) discoveredWeaknesses.Add(damageType);
@@ -107,6 +109,54 @@ public class Combatant : MonoBehaviour
             //Crit bonus
             if(caller is PlayerCombatant p)
             {
+                //Make character draw a CRITICAL HIT card
+                var character = YourParty.instance.GetPartyMember(p.combatantName);
+                if(character != null)
+                {
+                    Card criticalCard = CardDatabase.Instance.GetCardByName("Critical Hit");
+                    if(criticalCard != null && this is EnemyCombatant && !p.criticalHitTargetsThisTurn.Contains(this))
+                    {
+                        p.hand.Add(criticalCard);
+                        p.criticalHitTargetsThisTurn.Add(this);
+                        GameManager.Instance.ShowMessage($"<color=green>{p.combatantName} draws a CRITICAL HIT card!</color>");
+                    }
+                }
+
+                var se = caller.HasStatusEffect("Flurry");
+                if(se != null)
+                {
+                   //Additional damage action
+                    var action = new DamageAction()
+                    {
+                        caller = p,
+                        damage = "5*LEVEL",
+                        hits = 1,
+                        damageType = DamageType.None,
+                        animation = "SwordBackhand",
+                        text = $"{p.combatantName} gets an extra attack on crit!"
+                    };
+                    BattleManager.Instance.actionQueue.Insert(0,action);
+                }
+                se = caller.HasStatusEffect("DrawOnCrit");
+                if(se != null)
+                {
+                    if(caller is PlayerCombatant playerCombatant)
+                    {
+                        playerCombatant.DrawCards((int)se.amount);
+                        GameManager.Instance.ShowMessage($"{p.combatantName} draws {se.amount} on crit!");
+                    }
+                }
+                se = caller.HasStatusEffect("GainMPOnCrit");
+                if(se != null)
+                {
+                    if(caller is PlayerCombatant playerCombatant)
+                    {
+                        playerCombatant.GainMP((int)se.amount);
+                         GameManager.Instance.ShowMessage($"{p.combatantName} gains {se.amount} MP on crit!");
+                    }
+                }
+
+                /* OLD CRIT LOGIC
                 var character = YourParty.instance.GetPartyMember(p.combatantName);
                 if(character != null)
                 {
@@ -143,6 +193,7 @@ public class Combatant : MonoBehaviour
                     }
                     
                 }
+                */
             }
 
             AudioManager.Instance.PlaySoundEffect("OrchestraHit",Random.Range(0.9f,1.1f));
@@ -212,21 +263,37 @@ public class Combatant : MonoBehaviour
 
     public virtual void OnDeath()
     {
-        if(this is PlayerCombatant){
+       
+        if(HasStatusEffect("Choked") != null)
+        {
+            foreach(Combatant c in BattleManager.Instance.combatants) c.RemoveStatusEffect("Choking");
+        }
+        if(HasStatusEffect("Death Bomb") != null)
+        {
+            GameManager.Instance.ShowMessage($"{combatantName} EXPLODES!");
+            BattleManager.Instance.SelectTargets(
+                BattleManager.Instance.combatants
+                    .Where(c => c is EnemyCombatant && c.alive)
+                    .ToList());
+            BattleManager.Instance.actionQueue.Insert(0, new DeathBombAction()
+            {
+                caller = this,
+                damage = "50",
+                damageType = DamageType.Bludgeoning,
+                hits = 1,
+                allowDeadCaller = true,
+                text = "The DEATH BOMB explodes!"
+            });
+        }
+        else
+        {
+             if(this is PlayerCombatant){
             YourParty.instance.GetPartyMember(combatantName).alive = false;
         }
         else
         {
             Invoke("DieForReal", 3f);
         }
-        if(HasStatusEffect("Choked") != null)
-        {
-            foreach(Combatant c in BattleManager.Instance.combatants) c.RemoveStatusEffect("Choking");
-        }
-        if(HasStatusEffect("DeathBomb") != null)
-        {
-            GameManager.Instance.ShowMessage($"{combatantName} EXPLODES!");
-            foreach(Combatant c in BattleManager.Instance.combatants.Where(c => c is EnemyCombatant)) c.TakeDamage(c,50,DamageType.Bludgeoning);
         }
     }
 
@@ -449,6 +516,9 @@ public class Combatant : MonoBehaviour
             "LOW" => attack*0.05f,
             "MED" => attack*0.107f,
             "HIGH" => attack*0.214f,
+            "LOWPSY" => psychic*0.05f,
+            "MEDPSY" => psychic*0.107f,
+            "HIGHPSY" => psychic*0.214f,
 
             _ => throw new System.Exception($"Unknown stat: {statName}")
         };

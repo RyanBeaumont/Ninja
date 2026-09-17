@@ -53,17 +53,21 @@ MonoBehaviour:
   attack: 10
   defense: 1
   speed: 10
-  psychic: 10
+  psychic: 1
   surprise: 0
   mp: 0
-  maxMp: 20
+  maxMp: 0
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 00000000
   weaknesses: 02000000
+  discoveredResistances: 
+  discoveredWeaknesses: 
   combatantName: Big Sam
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: SwordHeavy, Sweep
     attackName: Heavy Combo
@@ -73,16 +77,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
-    mpCost: 10
+    mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: Uppercut
     attackName: Uppercut
     damage: 15
@@ -91,21 +99,30 @@ MonoBehaviour:
     statusEffect:
       name: Concussed
       stat: DEF
+      sprite: {fileID: 0}
       amount: -4
+      description: 
       additive: 1
       duration: 2
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   lootDrops: []
+  cardLootDrops:
+  - cardName: Smart Strike
+    dropChance: 100
+    quantity: 1
   xpReward: 10
   goldReward: 10
   attackSpeed: 0.25
   portrait: {fileID: 21300000, guid: 9a870f440528b874989026778b4beb6c, type: 3}
+  boss: 0
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -115,16 +132,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!136 &394189880784954682
 CapsuleCollider:
   m_ObjectHideFlags: 0

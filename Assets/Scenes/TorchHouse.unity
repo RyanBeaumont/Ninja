@@ -7986,14 +7986,17 @@ MonoBehaviour:
       itemName: Keg Backpack
       quantity: 1
       description: 
+      mpCost: 0
       function: 
     cost: 0
   - item:
       itemName: Coke
       quantity: 2
       description: 
+      mpCost: 0
       function: 
     cost: 0
+  cancel: {fileID: 0}
 --- !u!4 &245593790 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 606c0fe516645b04abff2aeb9052ae26, type: 3}
@@ -8068,6 +8071,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ba16702821ced3b40a32cfa3f01cf5ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 247311436}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ba16702821ced3b40a32cfa3f01cf5ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 247311437}
   m_SourcePrefab: {fileID: 100100000, guid: ba16702821ced3b40a32cfa3f01cf5ef, type: 3}
 --- !u!1 &247311430 stripped
 GameObject:
@@ -8148,6 +8154,26 @@ MonoBehaviour:
   sceneVariant: 4
   skybox: {fileID: 0}
   cameraTarget: {fileID: 0}
+--- !u!114 &247311437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247311430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4945c5368fd6444bb073ea86d422e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterID: 
+  active: 1
+  blockInteraction: 0
+  failBranch: 
+  hideObject: 1
+  additionalObjects: []
+  endingPose: 
+  endingFace: 
 --- !u!1001 &247824093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14696,8 +14722,8 @@ Transform:
   m_GameObject: {fileID: 511093141}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31.9708, y: 3.872, z: 7.8821}
-  m_LocalScale: {x: 1.9416, y: 0.2, z: 3.76425}
+  m_LocalPosition: {x: -31.9708, y: 3.872, z: 6.3821006}
+  m_LocalScale: {x: 1.9416, y: 0.2, z: 6.7643576}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1870404941}
@@ -29522,14 +29548,17 @@ MonoBehaviour:
       itemName: Lockpick
       quantity: 1
       description: 
+      mpCost: 0
       function: 
     cost: 0
   - item:
       itemName: Rocket Fist
       quantity: 1
       description: 
+      mpCost: 0
       function: 
     cost: 0
+  cancel: {fileID: 0}
 --- !u!4 &1018652417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 55a27ab4c339366429685bb3c30ba1d9, type: 3}

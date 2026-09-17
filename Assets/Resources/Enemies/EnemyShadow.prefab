@@ -53,10 +53,10 @@ MonoBehaviour:
   attack: 10
   defense: 1
   speed: 15
-  psychic: 25
+  psychic: 1
   surprise: 0
-  mp: 0
-  maxMp: 30
+  mp: 1
+  maxMp: 2
   hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
@@ -113,6 +113,28 @@ MonoBehaviour:
     healthThreshold: 100
     altFunction: 
     consumeMana: 1
+  - attackPattern: Sweep, Sweep
+    attackName: Double Sweep
+    damage: 40
+    damageType: 1
+    targetType: 1
+    statusEffect:
+      name: 
+      stat: 
+      sprite: {fileID: 0}
+      amount: 0
+      description: 
+      additive: 1
+      duration: 0
+      removeOnHit: 0
+      caller: {fileID: 0}
+      statusUpdate: 0
+      particleEffect: {fileID: 0}
+    hits: 1
+    mpCost: 2
+    healthThreshold: 100
+    altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: Coffee
     dropChance: 50
@@ -120,6 +142,10 @@ MonoBehaviour:
     dropChance: 50
   - itemID: Bang
     dropChance: 100
+  cardLootDrops:
+  - cardName: Intro to ESP
+    dropChance: 100
+    quantity: 1
   xpReward: 25
   goldReward: 25
   attackSpeed: 0.25

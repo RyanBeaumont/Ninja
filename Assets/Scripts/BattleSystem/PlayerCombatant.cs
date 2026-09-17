@@ -8,6 +8,7 @@ public class PlayerCombatant : Combatant
     public List<Card> deck = new List<Card>();
     public List<Card> hand = new List<Card>();
     public List<Card> discard = new List<Card>();
+    [HideInInspector] public HashSet<Combatant> criticalHitTargetsThisTurn = new HashSet<Combatant>();
     [HideInInspector] public int tp; //TERROR points
     [HideInInspector] public bool hidden = false;
 
@@ -33,6 +34,7 @@ public class PlayerCombatant : Combatant
             Card drawnCard = deck[0];
             deck.RemoveAt(0);
             hand.Add(drawnCard);
+            BattleManager.Instance.UpdateDeckSize();
         }
     }
 
@@ -85,10 +87,10 @@ public class PlayerCombatant : Combatant
     public bool PlayCard(Card card)
     {
         
-        var cost = card.cost;
-        if(card.tempCost != 0){cost = card.tempCost; card.tempCost = 0;}
+        var cost = GetCardCost(card);
         if (hand.Contains(card) && mp >= cost && tp >= card.tpCost && BattleManager.Instance.discardPower >= card.discardCost)
         {
+            card.tempCost = 0;
             if (card.effects.Any(e => e is SuplexDamageAction || e is GrappleDamageAction || e is ReconcussDamageAction))
             {
                 var success = false;
@@ -136,11 +138,27 @@ public class PlayerCombatant : Combatant
         return false;
     }
 
+    public bool HasAffordableCard()
+    {
+        return hand.Any(card =>
+            mp >= GetCardCost(card) &&
+            tp >= card.tpCost &&
+            BattleManager.Instance.discardPower >= card.discardCost);
+    }
+
+    private int GetCardCost(Card card)
+    {
+        return card.tempCost != 0 ? card.tempCost : card.cost;
+    }
+
     public void DiscardCard(Card card)
     {
         hand.Remove(card);
-        discard.Add(card);
+        if(card.cardName != "Critcal Hit"){ //Critical Hit card is not discarded, it is removed from the game
+            discard.Add(card);
+        }
         BattleManager.Instance.UpdateDiscardPower(BattleManager.Instance.discardPower + 1);
+        BattleManager.Instance.UpdateDeckSize();
     }
 
     public void OnHit()
@@ -171,6 +189,7 @@ public class PlayerCombatant : Combatant
             deck[j] = deck[randomIndex];
             deck[randomIndex] = temp;
         }
+        BattleManager.Instance.UpdateDeckSize();
     }
 
     public void Revive()
@@ -185,6 +204,7 @@ public class PlayerCombatant : Combatant
 
     public override bool StartTurn()
     {
+        criticalHitTargetsThisTurn.Clear();
         var se = HasStatusEffect("Discard");
         if(HasStatusEffect("Discard") != null)
         {
@@ -203,22 +223,48 @@ public class PlayerCombatant : Combatant
             GameManager.Instance.ShowMessage($"{combatantName} drank from the Coca-Cola Keg restoring 10HP");
             Heal(10);
         }
+        se = HasStatusEffect("Draw");
+        if(se != null)
+        {
+            DrawCards((int)se.amount);
+            GameManager.Instance.ShowMessage($"Buff: {combatantName} draws {se.amount}!");
+        }
+        se = HasStatusEffect("Lightning");
+        if(se != null)
+        {
+            //Additional damage action
+            var action = new DamageAction()
+            {
+                caller = this,
+                damage = "25*MED",
+                hits = 1,
+                damageType = DamageType.Psychic,
+                animation = "Burst",
+                text = $"{combatantName} begins their turn with LIGHTNING"
+            };
+            BattleManager.Instance.actionQueue.Insert(0,action);
+        }
        
         
         RemoveStatusEffect("Discard");
         if (base.StartTurn())
         {
             DrawCards(1);
-            maxMp = (int)(psychic * 4);
-            mp += EvaluateStatFormula("PSY");
-            if (mp > maxMp) mp = maxMp;
+            maxMp = 10;
+            var lockedIn = HasStatusEffect("Locked In");
+            if(lockedIn != null){mp += lockedIn.amount;}
+            mp += Mathf.Round(psychic/10);
+            var exhausted = HasStatusEffect("Exhausted");
+            if(exhausted != null){mp -= exhausted.amount; GameManager.Instance.ShowMessage($"{combatantName} is exhausted and loses {exhausted.amount} MP");}
+            RemoveStatusEffect("Exhausted");
             var HandManager = FindFirstObjectByType<HandManager>();
             HandManager.InitializeHand(hand);
             HandManager.SetHandActive(true);
             ShowStats();
         }
-
+        BattleManager.Instance.UpdateDeckSize();
         return true;
+        
     }
 
     public void BonusTurn()
@@ -237,7 +283,7 @@ public class PlayerCombatant : Combatant
         battleManager.playerStats.gameObject.SetActive(true);
         battleManager.playerStats.Find("Name").GetComponent<TMP_Text>().text = combatantName;
         battleManager.playerStats.Find("Level").GetComponent<TMP_Text>().text = $"Level {level}";
-        battleManager.playerStats.Find("MP").GetComponent<TMP_Text>().text = $"MP {mp}/{maxMp}";
+        battleManager.playerStats.Find("MP").GetComponent<TMP_Text>().text = $"MP {mp}";
         battleManager.playerStats.Find("TP").GetComponent<TMP_Text>().text = $"TP {tp}";
         battleManager.playerStats.Find("HP").GetComponent<TMP_Text>().text = $"HP {hp}/{maxHp}";
     }

@@ -38,6 +38,28 @@ public class MainMenu : MonoBehaviour
         gameManagerComponent.ChangeScene("Overworld", 99, 9);
     }
 
+    public void StartSandbox()
+    {
+        // Clean up any existing instances from previous sessions
+        if (GameManager.Instance != null)
+        {
+            Object.Destroy(GameManager.Instance.gameObject);
+            GameManager.Instance = null;
+        }
+        if (YourParty.instance != null)
+        {
+            Object.Destroy(YourParty.instance.gameObject);
+            YourParty.instance = null;
+        }
+
+        var gameManagerObj = Object.Instantiate(Resources.Load<GameObject>("GameManager"));
+        var yourPartyObj = Object.Instantiate(Resources.Load<GameObject>("YourParty"));
+        yourPartyObj.GetComponent<YourParty>().BuildStartingDeck();
+        var gm = gameManagerObj.GetComponent<GameManager>();
+        gm.AddInventoryItem("Coke",4);
+        gm.AddInventoryItem("Bang",1);
+        gm.ChangeScene("BattleTest",0,0);
+    }
     public void StartChapter2()
     {
         // Clean up any existing instances from previous sessions

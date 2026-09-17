@@ -76,10 +76,10 @@ MonoBehaviour:
   attack: 30
   defense: 1
   speed: 60
-  psychic: 10
+  psychic: 2
   surprise: 0
   mp: 0
-  maxMp: 150
+  maxMp: 10
   hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
@@ -90,6 +90,7 @@ MonoBehaviour:
   combatantName: Jade and Khan
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: GatherChi
     attackName: Vampire Energy Suck
@@ -153,7 +154,7 @@ MonoBehaviour:
       statusUpdate: 0
       particleEffect: {fileID: 0}
     hits: 1
-    mpCost: 50
+    mpCost: 5
     healthThreshold: 50
     altFunction: SummonMinions
     consumeMana: 0
@@ -163,7 +164,7 @@ MonoBehaviour:
     damageType: 1
     targetType: 3
     statusEffect:
-      name: Poisoned
+      name: Exhausted
       stat: 
       sprite: {fileID: 0}
       amount: 1
@@ -197,11 +198,12 @@ MonoBehaviour:
       statusUpdate: 0
       particleEffect: {fileID: 0}
     hits: 1
-    mpCost: 120
+    mpCost: 9
     healthThreshold: 100
     altFunction: 
     consumeMana: 1
   lootDrops: []
+  cardLootDrops: []
   xpReward: 500
   goldReward: 500
   attackSpeed: 0.75

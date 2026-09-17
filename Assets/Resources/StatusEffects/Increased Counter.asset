@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Increased Counter
   m_EditorClassIdentifier: 
   statusEffect:
-    name: Increased Counter
+    name: Counter Buff
     stat: 
-    sprite: {fileID: 21300000, guid: 1b66371c31f3b0b459a3197c80e16a56, type: 3}
-    amount: 10
-    description: Countering this turn will deal +[amount] damage
+    sprite: {fileID: 2097332894, guid: 69d583eef7dd38c41aff97acd5a2a1e8, type: 3}
+    amount: 20
+    description: Your Counters gain [amount] damage
     additive: 1
-    duration: 1
+    duration: 3
     removeOnHit: 0
     caller: {fileID: 0}
     statusUpdate: 0
-    particleEffect: {fileID: 4208484295450631797, guid: b8ad6a4f2febde644a7e59faf5d6e647, type: 3}
+    particleEffect: {fileID: 0}

@@ -53,10 +53,10 @@ MonoBehaviour:
   attack: 10
   defense: 1
   speed: 50
-  psychic: 10
+  psychic: 1
   surprise: 0
   mp: 0
-  maxMp: 30
+  maxMp: 2
   hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
@@ -131,7 +131,7 @@ MonoBehaviour:
       statusUpdate: 0
       particleEffect: {fileID: 0}
     hits: 1
-    mpCost: 0
+    mpCost: 2
     healthThreshold: 100
     altFunction: 
     consumeMana: 1
@@ -142,6 +142,10 @@ MonoBehaviour:
     dropChance: 50
   - itemID: Bang
     dropChance: 50
+  cardLootDrops:
+  - cardName: Go to Sweep
+    dropChance: 50
+    quantity: 1
   xpReward: 20
   goldReward: 20
   attackSpeed: 0.75

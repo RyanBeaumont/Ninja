@@ -128,10 +128,11 @@ MonoBehaviour:
   attack: 1
   defense: 1
   speed: 1
-  psychic: 1
+  psychic: 0
   surprise: 0
   mp: 0
   maxMp: 0
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 
@@ -141,8 +142,10 @@ MonoBehaviour:
   combatantName: 
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns: []
   lootDrops: []
+  cardLootDrops: []
   xpReward: 10
   goldReward: 10
   attackSpeed: 0.25
@@ -170,6 +173,7 @@ MonoBehaviour:
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   trappedCharacter: 
 --- !u!1001 &2298815489174839516
 PrefabInstance:

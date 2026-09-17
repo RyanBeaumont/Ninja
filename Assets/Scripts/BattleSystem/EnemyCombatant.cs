@@ -8,6 +8,13 @@ using UnityEngine;
     public float dropChance; //Percentage chance (0-100) of this item dropping
 }
 
+[Serializable] public class CardLootDrop
+{
+    public string cardName;
+    public float dropChance; //Percentage chance (0-100) of this card dropping
+    public int quantity = 1;
+}
+
 [Serializable]
 public class EnemyAttackData
 {
@@ -28,6 +35,7 @@ public class EnemyCombatant : Combatant
 {
     [SerializeField] List<EnemyAttackData> attackPatterns = new List<EnemyAttackData>();
     public List<LootDrop> lootDrops = new List<LootDrop>();
+    public List<CardLootDrop> cardLootDrops = new List<CardLootDrop>();
     public float xpReward = 10f;
     public float goldReward = 10f;
     public float attackSpeed = 0.25f;
@@ -45,11 +53,16 @@ public class EnemyCombatant : Combatant
         
     }
 
+    public override void EndTurn()
+    {
+        base.EndTurn();
+        mp += psychic;
+        if(mp > maxMp) mp = maxMp;
+    }
+
     public override bool StartTurn()
     {
         if(base.StartTurn()){
-            mp += psychic;
-            if(mp > maxMp) mp = maxMp;
             GameManager.Instance.ShowMessage($"{combatantName}'s turn!");
             Invoke("DefaultAttack", 2f);
         }

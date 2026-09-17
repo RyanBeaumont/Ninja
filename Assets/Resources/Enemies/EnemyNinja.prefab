@@ -53,10 +53,11 @@ MonoBehaviour:
   attack: 10
   defense: 1
   speed: 15
-  psychic: 15
+  psychic: 0
   surprise: 0
   mp: 0
   maxMp: 0
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 
@@ -66,6 +67,7 @@ MonoBehaviour:
   combatantName: Ninja Acolyte
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: SwordThrust
     attackName: Discarding Strike
@@ -83,10 +85,12 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: Burst
     attackName: Speed Up
     damage: 10
@@ -103,10 +107,12 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: BuffAlly
+    consumeMana: 1
   - attackPattern: SwordThrust
     attackName: Discarding Strike
     damage: 30
@@ -123,19 +129,26 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: Coca-Cola Keg
     dropChance: 25
   - itemID: Coke
     dropChance: 50
+  cardLootDrops:
+  - cardName: Intro to ESP
+    dropChance: 75
+    quantity: 1
   xpReward: 20
   goldReward: 20
   attackSpeed: 0.75
   portrait: {fileID: 21300000, guid: 4eb34c1fdaaa2584fbf6502556111180, type: 3}
+  boss: 0
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -153,10 +166,12 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!136 &-8026483303802534423
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -53,10 +53,11 @@ MonoBehaviour:
   attack: 10
   defense: 1
   speed: 19
-  psychic: 17
+  psychic: 0
   surprise: 0
   mp: 0
-  maxMp: 30
+  maxMp: 0
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 
@@ -66,6 +67,7 @@ MonoBehaviour:
   combatantName: Stretch
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: SwordThrust
     attackName: Side Dodge This!
@@ -83,10 +85,12 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: Slash, SwordBackhand, Slash
     attackName: I'll Show You Karate
     damage: 20
@@ -103,17 +107,24 @@ MonoBehaviour:
       removeOnHit: 1
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: Coke
     dropChance: 100
+  cardLootDrops:
+  - cardName: Smart Strike
+    dropChance: 100
+    quantity: 1
   xpReward: 50
   goldReward: 30
   attackSpeed: 0.5
   portrait: {fileID: 21300000, guid: 376bdaddb3cebc9438d42ccdb1fcd61e, type: 3}
+  boss: 0
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -131,10 +142,12 @@ MonoBehaviour:
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!136 &4391375641135646199
 CapsuleCollider:
   m_ObjectHideFlags: 0

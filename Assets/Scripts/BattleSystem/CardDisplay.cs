@@ -24,6 +24,7 @@ public class CardDisplay : Selectable,
     public Image discardImage;
     public Image tpImage;
     public TMP_Text discardCost;
+    public TMP_Text count;
     public bool displayMode;
     public float displaySelectedScale = 1.05f;
     public Color displaySelectedColor = new Color(1f, 0.95f, 0.6f, 1f);
@@ -92,6 +93,9 @@ public class CardDisplay : Selectable,
 
         if (card.tpCost > 0)
             borderImage.sprite = Resources.Load<Sprite>("Sprites/Cards/UltimateBorder");
+
+        if (card.cardName == "Critical Hit")
+            borderImage.sprite = Resources.Load<Sprite>("Sprites/Cards/SpecialBorder");
 
         if (card.effects.Count > 0 && card.effects[0] is DamageAction d)
         {
@@ -311,6 +315,11 @@ public class CardDisplay : Selectable,
         }
 
         base.OnMove(eventData);
+    }
+
+    public void UpdateCount(int newCount)
+    {
+        if(count != null) count.text = newCount.ToString();
     }
 
     public override void OnPointerEnter(PointerEventData eventData)

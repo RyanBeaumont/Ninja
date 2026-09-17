@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class Menu : MonoBehaviour
 {
@@ -101,7 +102,11 @@ public class Menu : MonoBehaviour
     {
 
         // record when the menu is opened so quick clicks can be ignored
-        lastMenuOpenTime = Time.unscaledTime;
+        bool openingDeckView = !deckContainer.gameObject.activeInHierarchy;
+        if (openingDeckView)
+        {
+            lastMenuOpenTime = Time.unscaledTime;
+        }
 
         currentCharacter = character;
         PartyMember p = YourParty.instance.GetPartyMember(character);
@@ -110,66 +115,84 @@ public class Menu : MonoBehaviour
             nameText.text = p.memberName;
             YourParty.instance.GetStats(p,out float attack, out float maxHp, out float speed, out float psychic);
             portrait.sprite = Resources.Load<Sprite>($"Sprites/{p.memberName}");
-            statsText.text = $"Attack: {attack}  \n HP: {p.hpPercentage * maxHp}/{maxHp}  \n MP/Turn: {psychic}  \n Speed: {speed}";
+            statsText.text = $"Attack: {attack}  \n HP: {p.hpPercentage * maxHp}/{maxHp}  \n PSY: {psychic} ({Mathf.Round(psychic/10)}MP)  \n Speed: {speed}";
             print("Party member deck contains " + p.deck.Count + " cards.");
             deckContainer.gameObject.SetActive(true);
             characterContainer.gameObject.SetActive(false);
             //remove existing card prefabs
             foreach(Transform child in cardReserve){Destroy(child.gameObject);}
             foreach(Transform child in deck){Destroy(child.gameObject);}
-            foreach(Card card in p.deck)
+            foreach (var cardGroup in GroupCards(p.deck))
             {
-                var thisCardPrefab = Instantiate(cardPrefab,deck);
-                thisCardPrefab.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
-                var cardDisplay = thisCardPrefab.GetComponent<CardDisplay>();
-                cardDisplay.displayMode = true;
-                cardDisplay.SetData(card);
-                cardDisplay.onSubmitAction = () => RemoveCardFromDeck(card);
-                //cardDisplay.onCancelAction = () => RemoveCardFromDeck(card);
+                CreateMenuCard(deck, cardGroup.Value.card, cardGroup.Value.count, () => RemoveCardFromDeck(cardGroup.Value.card));
             }
             var allCards = CardDatabase.Instance.BuildDeckByClass(p.mainClass, p.subClass, p.level);
-            foreach(Card card in allCards)
+            allCards.AddRange(YourParty.instance.GetEarnedClasslessCards());
+            foreach (Card card in p.deck)
             {
-                if(p.deck.Contains(card)) continue; //Don't show cards already in deck
-                var thisCardPrefab = Instantiate(cardPrefab,cardReserve);
-                thisCardPrefab.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
-                var cardDisplay = thisCardPrefab.GetComponent<CardDisplay>();
-                cardDisplay.displayMode = true;
-                cardDisplay.SetData(card);
-                cardDisplay.onSubmitAction = () => MoveCardToDeck(card);
-                //cardDisplay.onCancelAction = () => MoveCardToDeck(card);
+                allCards.Remove(card);
             }
-            deckText.text = $"Your Deck ({p.deck.Count}/{CardDatabase.Instance.deckMax})                                 Available Cards";
+            foreach (var cardGroup in GroupCards(allCards))
+            {
+                CreateMenuCard(cardReserve, cardGroup.Value.card, cardGroup.Value.count, () => MoveCardToDeck(cardGroup.Value.card));
+            }
+            deckText.text = $"Your Deck ({p.deck.Count})";
+            if(p.deck.Count == CardDatabase.Instance.deckMin)
+            deckText.text = $"Your Deck: MINIMUM SIZE {CardDatabase.Instance.deckMin}";
+            if(p.deck.Count == CardDatabase.Instance.deckMax)
+            deckText.text = $"Your Deck: MINIMUM SIZE {CardDatabase.Instance.deckMax}";
+            
 
             //Equipment container
             //clear
             foreach(Transform child in equipmentContainer) Destroy(child.gameObject);
             //populate
-            foreach(InventoryItem item in p.equipment)
+            string[] equipmentTypes = { "Head", "Body", "Accessory" };
+            foreach(string equipmentType in equipmentTypes)
             {
+                var item = p.equipment.Find(equipment =>
+                    equipment is Equipment equipped && equipped.type == equipmentType);
                 var itemGO = Instantiate(Resources.Load<GameObject>("InventoryItem"), equipmentContainer);
+                var rootImage = itemGO.GetComponent<Image>();
+                if (rootImage != null && item is Equipment)
+                {
+                    rootImage.color = new Color(0.75f, 0.88f, 1f, 1f);
+                }
                 var itemText = itemGO.GetComponentInChildren<TMPro.TMP_Text>();
+                
                 if(itemText != null)
                 {
-                    itemText.text = $"{item.itemName}";
+                    itemText.text = item != null ? item.itemName : $"None ({equipmentType})";
+                    var itemImage = itemGO.transform.Find("Image").GetComponent<UnityEngine.UI.Image>();
+                    //Disable the item image
+                    itemImage.enabled = false;
                 }
-                var itemImage = itemGO.transform.Find("Image").GetComponent<UnityEngine.UI.Image>();
-                if(itemImage != null)
+                if(item != null)
                 {
-                    var sprite = Resources.Load<Sprite>($"Items/{item.itemName}");
-                    if(sprite != null)
+                    var itemImage = itemGO.transform.Find("Image").GetComponent<UnityEngine.UI.Image>();
+                    if(itemImage != null)
                     {
-                        itemImage.sprite = sprite;
+                        itemImage.enabled = true;
+                        var sprite = Resources.Load<Sprite>($"Items/{item.itemName}");
+                        if(sprite != null)
+                        {
+                            itemImage.sprite = sprite;
+                        }
+                        var extraInfo = itemGO.transform.Find("ExtraInfo").GetComponent<TMP_Text>();
+                        if(item is Equipment e){
+                            extraInfo.text = e.type;
+                        }
+                        
                     }
-                }
-                var itemButton = itemGO.GetComponent<UnityEngine.UI.Button>();
-                itemButton.onClick.AddListener(() => {
-                    UnequipItem(item);
-                });
-                //mouse enter to show description
-                var hover = itemGO.AddComponent<PointerHoverHandler>();
 
-                hover.onEnter = () =>{ShowItemDescription(item);};
+                    var itemButton = itemGO.GetComponent<UnityEngine.UI.Button>();
+                    itemButton.onClick.AddListener(() => {
+                        UnequipItem(item);
+                    });
+                    //mouse enter to show description
+                    var hover = itemGO.AddComponent<PointerHoverHandler>();
+                    hover.onEnter = () =>{ShowItemDescription(item);};
+                }
             }
         }
 
@@ -179,6 +202,55 @@ public class Menu : MonoBehaviour
         }
 
         StartCoroutine(GameManager.Instance.SelectDefault());
+    }
+
+    Dictionary<string, (Card card, int count)> GroupCards(List<Card> cards)
+    {
+        var groupedCards = new Dictionary<string, (Card card, int count)>();
+        foreach (Card card in cards)
+        {
+            if (groupedCards.TryGetValue(card.cardName, out var cardGroup))
+            {
+                groupedCards[card.cardName] = (cardGroup.card, cardGroup.count + 1);
+            }
+            else
+            {
+                groupedCards.Add(card.cardName, (card, 1));
+            }
+        }
+
+        var orderedCards = new Dictionary<string, (Card card, int count)>();
+        foreach (Card card in CardDatabase.Instance.allCards)
+        {
+            if (groupedCards.TryGetValue(card.cardName, out var cardGroup))
+            {
+                orderedCards.Add(card.cardName, cardGroup);
+            }
+        }
+
+        foreach (var cardGroup in groupedCards)
+        {
+            if (!orderedCards.ContainsKey(cardGroup.Key))
+            {
+                orderedCards.Add(cardGroup.Key, cardGroup.Value);
+            }
+        }
+
+        return orderedCards;
+    }
+
+    void CreateMenuCard(Transform parent, Card card, int count, System.Action onSubmit)
+    {
+        var cardObject = Instantiate(cardPrefab, parent);
+        cardObject.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+        var cardDisplay = cardObject.GetComponent<CardDisplay>();
+        cardDisplay.displayMode = true;
+        cardDisplay.SetData(card);
+        if (cardDisplay.count != null)
+        {
+            cardDisplay.count.text = count > 1 ? $"x{count}" : "";
+        }
+        cardDisplay.onSubmitAction = onSubmit;
     }
 
     public bool EquipItem(InventoryItem item)

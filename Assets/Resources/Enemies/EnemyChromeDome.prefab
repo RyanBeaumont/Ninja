@@ -76,10 +76,11 @@ MonoBehaviour:
   attack: 20
   defense: 1
   speed: 30
-  psychic: 20
+  psychic: 2
   surprise: 0
   mp: 0
-  maxMp: 60
+  maxMp: 6
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 000000000100000002000000
@@ -89,6 +90,7 @@ MonoBehaviour:
   combatantName: Chrome Dome
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: SwordHeavy, SwordHeavy
     attackName: Strike HARD
@@ -152,11 +154,12 @@ MonoBehaviour:
       statusUpdate: 0
       particleEffect: {fileID: 0}
     hits: 0
-    mpCost: 60
+    mpCost: 6
     healthThreshold: 100
     altFunction: UltimateAttack
     consumeMana: 1
   lootDrops: []
+  cardLootDrops: []
   xpReward: 100
   goldReward: 100
   attackSpeed: 0.5

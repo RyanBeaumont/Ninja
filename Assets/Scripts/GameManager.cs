@@ -18,6 +18,7 @@ public enum GameplayState{FreeMovement, RestrictedMovement, Dialog, Combat}
     public string itemName;
     public int quantity;
     public string description;
+    public int mpCost = 2;
 
     public string function = "EquipItem";
     public InventoryItem(string name, int qty)
@@ -101,6 +102,7 @@ public class GameManager : MonoBehaviour
             case "Ramen":
                 newItem = new InventoryItem(name,1);
                 newItem.description = "Restores Full HP";
+                newItem.mpCost = 3;
                 newItem.outOfBattleAction = (menu) => {
                     var pm = YourParty.instance.GetPartyMember(menu.currentCharacter);
                     if(pm != null)
@@ -117,7 +119,8 @@ public class GameManager : MonoBehaviour
             break;
             case "Bang":
                 newItem = new InventoryItem(name,1);
-                newItem.description = "Throw at an enemy to deal damage. Does not consume a turn";
+                newItem.description = "Throw at an enemy to deal psychic damage.";
+                newItem.mpCost = 0;
                 newItem.gameAction = new DamageAction()
                 {
                     targetType = TargetType.SingleEnemy,
@@ -134,13 +137,13 @@ public class GameManager : MonoBehaviour
             break;
             case "Coffee":
                 newItem = new InventoryItem(name,1);
-                newItem.description = "Gives you the jitters, the craps, and 30 MP. You drink it BLACK, because you are A REAL MAN";
+                newItem.mpCost = 0;
+                newItem.description = "Gives you the jitters, the craps, and 3 MP. You drink it BLACK, because you are A REAL MAN";
                 newItem.gameAction = new GainMPAction()
                 {
                     targetType = TargetType.SingleAlly,
                     animation = "Drink",
-                    mpAmount = "30",
-                    bonusActions = 1
+                    mpAmount = "3",
                 };
             break;
             case "Beer":
@@ -155,6 +158,7 @@ public class GameManager : MonoBehaviour
             break;
             case "DrPepper":
                 newItem = new InventoryItem(name,1);
+                newItem.mpCost = 3;
                 newItem.description = "The Dr is In! Instantly revives an ally and restores 50% HP";
                 newItem.gameAction = new ReviveAction()
                 {
@@ -176,6 +180,7 @@ public class GameManager : MonoBehaviour
             break;
             case "Coca-Cola Keg":
                 newItem = new InventoryItem(name,1);
+                newItem.mpCost = 3;
                 newItem.description = "Now with 3000 calories! Enough health for the whole party to drink at once!";
                 newItem.outOfBattleAction = (menu) => {
                     foreach(PartyMember pm in YourParty.instance.reserve)
@@ -285,14 +290,14 @@ public class GameManager : MonoBehaviour
             case "Mind Helmet":
                 newItem = new Equipment(name,1)
                 {
-                    description = "Protects against UFO's and rogue airwaves. No protection against judgement. +5 MP/turn",
+                    description = "Protects against tinfoil swords. +3 PSY",
                     statusEffects = new StatusEffect[]
                     {
                         new StatusEffect()
                         {
                             name = "Mind Helmet",
                             stat = "PSY",
-                            amount = 5,
+                            amount = 3,
                             duration = -1
                         }
                     },

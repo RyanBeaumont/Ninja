@@ -53,10 +53,11 @@ MonoBehaviour:
   attack: 10
   defense: 1
   speed: 40
-  psychic: 10
+  psychic: 1
   surprise: 0
   mp: 0
-  maxMp: 30
+  maxMp: 0
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 0000000001000000
@@ -66,6 +67,7 @@ MonoBehaviour:
   combatantName: Big Sam
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: SwordHeavy, Sweep
     attackName: Heavy Combo
@@ -134,6 +136,7 @@ MonoBehaviour:
     altFunction: BuffAlly
     consumeMana: 1
   lootDrops: []
+  cardLootDrops: []
   xpReward: 100
   goldReward: 100
   attackSpeed: 0.5

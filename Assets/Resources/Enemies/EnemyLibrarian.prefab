@@ -193,10 +193,11 @@ MonoBehaviour:
   attack: 20
   defense: 1
   speed: 30
-  psychic: 50
+  psychic: 1
   surprise: 0
   mp: 0
-  maxMp: 150
+  maxMp: 3
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 
@@ -206,6 +207,7 @@ MonoBehaviour:
   combatantName: Librarian
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: SwordBackhand, Slash, SwordBackhand
     attackName: Shredder
@@ -228,6 +230,7 @@ MonoBehaviour:
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: Slash, SwordBackhand, Sweep, Slash
     attackName: Kung Fu For Dummies
     damage: 30
@@ -249,6 +252,7 @@ MonoBehaviour:
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: Slash, SwordThrust, Slash, SwordThrust, LongswordBlast
     attackName: This Ain't the Kids Section
     damage: 30
@@ -270,11 +274,16 @@ MonoBehaviour:
     mpCost: 0
     healthThreshold: 50
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: Jockstrap
     dropChance: 100
   - itemID: Suit of Armor
     dropChance: 100
+  cardLootDrops:
+  - cardName: America Punch
+    dropChance: 100
+    quantity: 2
   xpReward: 200
   goldReward: 200
   attackSpeed: 0.5
@@ -302,6 +311,7 @@ MonoBehaviour:
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!1001 &224500113225208119
 PrefabInstance:
   m_ObjectHideFlags: 0

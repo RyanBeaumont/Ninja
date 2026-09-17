@@ -35,6 +35,7 @@ public class BattleManager : MonoBehaviour
     public StatusEffect pendingStatusEffect;
     public PlayerCombatant activePlayer = null;
     public Combatant activeCombatant = null;
+    public Combatant activeActionCaller = null;
     public RectTransform TurnOrderUI;
     public RectTransform playerStats;
     public Transform itemContainer;
@@ -79,10 +80,14 @@ public class BattleManager : MonoBehaviour
     float xpReward;
     GameObject player;
     List<LootDrop> lootRewards = new List<LootDrop>();
+    List<CardLootDrop> cardLootRewards = new List<CardLootDrop>();
 
     public LayerMask normalMask;
     public LayerMask characterMask;
     [HideInInspector] public bool multiDamageType = false;
+
+    public TMP_Text deckSize;
+    public TMP_Text discardSize;
 
     void Awake()
     {
@@ -117,6 +122,7 @@ public class BattleManager : MonoBehaviour
                 goldReward += enemy.goldReward;
                 xpReward += enemy.xpReward;
                 lootRewards.AddRange(enemy.lootDrops);
+                cardLootRewards.AddRange(enemy.cardLootDrops);
             }
         }
         Cursor.lockState = CursorLockMode.None;
@@ -179,12 +185,13 @@ public class BattleManager : MonoBehaviour
         scryPanel.gameObject.SetActive(true);
         waitingForInput = true;
         var cards = player.Scry(scryAmount);
+        if (cards == null) return;
         foreach(Card c in cards)
         {
             var cardDisplay = Instantiate(Resources.Load<GameObject>("DisplayCardPrefab"), scryPanel.Find("Panel")).GetComponent<CardDisplay>();
             cardDisplay.SetData(c);
-            //add onclick listener
-            cardDisplay.GetComponentInChildren<MenuCardDisplay>().onPointerDown = () => {
+            cardDisplay.displayMode = true;
+            cardDisplay.onSubmitAction = () => {
                     player.deck.Remove(cardDisplay.card);
                     player.discard.Add(cardDisplay.card);
                     Destroy(cardDisplay.gameObject);
@@ -252,6 +259,7 @@ public class BattleManager : MonoBehaviour
     public void ExecuteCard(Card card, Combatant caller)
     {
         print("Executing card: " + card.cardName);
+        
         handManager.SetHandActive(false);
         
         foreach(var action in card.effects)
@@ -285,8 +293,17 @@ public class BattleManager : MonoBehaviour
                     actionQueue.Add(targetAction);
                 }
             }
-            
+            UpdateDeckSize();
         }
+    }
+
+    public void UpdateDeckSize(){
+        if(activePlayer != null)
+        {
+            deckSize.text = $"{activePlayer.deck.Count}";
+            discardSize.text = $"{activePlayer.discard.Count}";
+        }
+        
     }
 
     public void ConsumeCard(Card card)
@@ -308,6 +325,7 @@ public class BattleManager : MonoBehaviour
                 pendingCardObject = null;
             }
         }
+        UpdateDeckSize();
     }
 
     public void SelectRandomTargets(Combatant caller, TargetType targetType)
@@ -417,6 +435,24 @@ public class BattleManager : MonoBehaviour
                 {
                     name = "",
                     text = $"{loot.itemID} found!",
+                    cameraAngle = CameraAngle.closeup,
+                    face = "Happy",
+                    pose = "ArmsCrossed",
+                    character = null
+                });
+            }
+        }
+        foreach(var loot in cardLootRewards)
+        {
+            float roll = UnityEngine.Random.Range(0f, 100f);
+            Card card = CardDatabase.Instance.GetCardByName(loot.cardName);
+            if(roll <= loot.dropChance && card != null && card.cardClass == CardClass.None)
+            {
+                YourParty.instance.AddClasslessCard(loot.cardName, loot.quantity);
+                dialog.Add(new Dialog()
+                {
+                    name = "",
+                    text = $"New card looted: {loot.cardName} (x{loot.quantity})!",
                     cameraAngle = CameraAngle.closeup,
                     face = "Happy",
                     pose = "ArmsCrossed",
@@ -547,7 +583,7 @@ public class BattleManager : MonoBehaviour
         if(dodgeWindow > 0f) dodgeWindow -= Time.unscaledDeltaTime; else {dodgeInput = "";}
 
         //Dodge system
-        if(canDodge)
+        if(canDodge && currentTargets.Any(target => target is PlayerCombatant && target.alive))
         {
             float horizontal = 0f;
             float vertical = 0f;
@@ -638,7 +674,12 @@ public class BattleManager : MonoBehaviour
                 {
                     executingActions = false;
                     attacksRemaining --;
-                    if(attacksRemaining <= 0 || activeCombatant.alive == false)
+                    var attackFullyResolved = actionQueue.Count == 0 && hitsRemaining <= 0;
+                    var playerCannotContinue = activePlayer != null && attackFullyResolved &&
+                        (!activePlayer.HasAffordableCard());
+                    if(activeCombatant.alive == false ||
+                        (activePlayer == null && attacksRemaining <= 0) ||
+                        (activePlayer != null && playerCannotContinue))
                     {
                         NextTurn();
                         attacksRemaining = 1;
@@ -777,6 +818,10 @@ public class BattleManager : MonoBehaviour
         }
         perfectDodge = true;
         playerStats.gameObject.SetActive(false);
+        if (activeCombatant is PlayerCombatant outgoingPlayer)
+        {
+            outgoingPlayer.mp = 0;
+        }
         if(activeCombatant != null && activeCombatant.alive){activeCombatant.EndTurn();}
         if (combatants.Count == 0) return;
         Combatant current = SimulateNextTurns(1).FirstOrDefault();
@@ -804,6 +849,11 @@ public class BattleManager : MonoBehaviour
         }
         
         UpdateTurnOrderUI();
+        if (activePlayer != null && (activePlayer.mp <= 0 || !activePlayer.HasAffordableCard()))
+        {
+            Invoke(nameof(NextTurn), 0.1f);
+        }
+        BattleManager.Instance.UpdateDeckSize();
     }
 
     public void SkipTurn()
@@ -893,12 +943,13 @@ public class BattleManager : MonoBehaviour
                     {
                         if(activePlayer != null){
                             attacksRemaining += 1;
-                            activePlayer.GainMP(30);
-                            GameManager.Instance.ShowMessage("Bounty claimed! Bonus action");
+                            activePlayer.GainMP(2);
+                            GameManager.Instance.ShowMessage("Bounty claimed! +2 MP");
                         }
                     }
                     //Take damage
-                    var d = t.TakeDamage(activeCombatant,(int)pendingDamage * quickTimeMultiplier, pendingDamageType);
+                    var damageCaller = activeActionCaller != null ? activeActionCaller : activeCombatant;
+                    var d = t.TakeDamage(damageCaller,(int)pendingDamage * quickTimeMultiplier, pendingDamageType);
                     var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
                     
                         {
@@ -914,7 +965,7 @@ public class BattleManager : MonoBehaviour
                         AudioManager.Instance.PlaySoundEffect("Crackle",UnityEngine.Random.Range(0.8f,1.2f));
                     if(pendingDamageType == DamageType.None)
                         AudioManager.Instance.PlaySoundEffect("Crackle",UnityEngine.Random.Range(0.8f,1.2f));
-                    if(lifestrike){lifestrike = false; activeCombatant.Heal(d);}
+                    if(lifestrike){lifestrike = false; damageCaller.Heal(d);}
                     var tpGain = Mathf.Clamp(d/4f,10,30);
                     if(activePlayer != null && gainTP) activePlayer.tp += (int)(tpGain); //Gain TERROR points based on damage dealt
 
@@ -984,10 +1035,10 @@ public class BattleManager : MonoBehaviour
                     }
                     var effect = Instantiate(Resources.Load<GameObject>("Particles/Hit"), t.transform);
                     CameraShake(1f,0.2f);
-                    t.TakeDamage(activeCombatant,(int)pendingDamage, pendingDamageType);
+                    var damageCaller = activeActionCaller != null ? activeActionCaller : activeCombatant;
+                    t.TakeDamage(damageCaller,(int)pendingDamage, pendingDamageType);
                     if(currentTargets.Count > 0 && currentTargets[0] == activeCombatant)
                     {
-                        activeCombatant.RemoveStatusEffect("E-S-Pow");
                         GameManager.Instance.ShowMessage($"{activeCombatant.combatantName} hits themself!");
                     }
                     else{

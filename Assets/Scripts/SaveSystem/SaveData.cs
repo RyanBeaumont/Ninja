@@ -13,6 +13,7 @@ public class SaveData
     public int day;
     public List<string> playersInParty;
     public List<SavePartyMember> reserve;
+    public List<string> earnedClasslessCards = new List<string>();
     public List<string> items = new List<string>();
     public List<int> itemQuantities = new List<int>();
     public List<string> finishedEncounters = new List<string>();
@@ -28,6 +29,7 @@ public static class SaveDataBuilder
     {
         SaveData data = new SaveData();
         data.playersInParty = YourParty.instance.partyMembers;
+        data.earnedClasslessCards = new List<string>(YourParty.instance.earnedClasslessCards);
         data.reserve = new List<SavePartyMember>();
         foreach (var member in YourParty.instance.reserve)
         {

@@ -393,50 +393,59 @@ MonoBehaviour:
       itemName: Ninja Headband
       quantity: 1
       description: 
+      mpCost: 0
       function: 
     cost: 50
   - item:
       itemName: Bicycle Helmet
       quantity: 1
       description: 
+      mpCost: 0
       function: 
     cost: 50
   - item:
       itemName: Viking Helmet
       quantity: 1
       description: 
+      mpCost: 0
       function: 
     cost: 50
   - item:
       itemName: Mind Helmet
       quantity: 1
       description: 
+      mpCost: 0
       function: 
     cost: 50
   - item:
       itemName: Coke
       quantity: 10
       description: 
+      mpCost: 0
       function: 
     cost: 50
   - item:
       itemName: DrPepper
       quantity: 2
       description: 
+      mpCost: 0
       function: 
     cost: 100
   - item:
       itemName: Lockpick
       quantity: 1
       description: 
+      mpCost: 0
       function: 
     cost: 100
   - item:
       itemName: Dark Black Clothes
       quantity: 1
       description: 
+      mpCost: 0
       function: 
     cost: 400
+  cancel: {fileID: 0}
 --- !u!114 &11956233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31413,7 +31422,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 684623941448871463, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
       propertyPath: sceneVariant
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 684623941448871463, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
       propertyPath: spawnPointIndex

@@ -53,17 +53,21 @@ MonoBehaviour:
   attack: 10
   defense: 1
   speed: 10
-  psychic: 10
+  psychic: 0
   surprise: 0
   mp: 0
   maxMp: 0
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 
-  weaknesses: 
+  weaknesses: 02000000
+  discoveredResistances: 
+  discoveredWeaknesses: 
   combatantName: Spartan White Belt
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: Slash
     attackName: Slap
@@ -73,16 +77,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   - attackPattern: Sweep
     attackName: Sweep
     damage: 10
@@ -91,25 +99,34 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
   lootDrops:
   - itemID: Coke
     dropChance: 25
   - itemID: Bang
     dropChance: 25
+  cardLootDrops:
+  - cardName: Band-Aid
+    dropChance: 25
+    quantity: 1
   xpReward: 15
   goldReward: 15
   attackSpeed: 0.25
   portrait: {fileID: 21300000, guid: e3f90c644a8dbd04f92caec214d05266, type: 3}
+  boss: 0
   tempAttackData:
     attackPattern: 
     attackName: 
@@ -119,16 +136,20 @@ MonoBehaviour:
     statusEffect:
       name: 
       stat: 
+      sprite: {fileID: 0}
       amount: 0
+      description: 
       additive: 1
       duration: -1
       removeOnHit: 0
       caller: {fileID: 0}
       statusUpdate: 0
+      particleEffect: {fileID: 0}
     hits: 1
     mpCost: 0
     healthThreshold: 100
     altFunction: 
+    consumeMana: 1
 --- !u!136 &8632286187417813752
 CapsuleCollider:
   m_ObjectHideFlags: 0

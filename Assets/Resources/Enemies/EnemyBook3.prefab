@@ -110,10 +110,10 @@ MonoBehaviour:
   attack: 10
   defense: 1
   speed: 15
-  psychic: 15
+  psychic: 0
   surprise: 0
   mp: 0
-  maxMp: 45
+  maxMp: 0
   hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
@@ -153,6 +153,7 @@ MonoBehaviour:
     dropChance: 25
   - itemID: Bang
     dropChance: 50
+  cardLootDrops: []
   xpReward: 20
   goldReward: 20
   attackSpeed: 0.75

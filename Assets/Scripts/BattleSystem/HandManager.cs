@@ -23,6 +23,7 @@ public class HandManager : MonoBehaviour
         {
             AddCardToHand(card);
         }
+        BattleManager.Instance.UpdateDeckSize();
     }
 
     public void AddCardToHand(Card card)
@@ -31,6 +32,7 @@ public class HandManager : MonoBehaviour
         cardsInHand.Add(newCard);
         newCard.GetComponent<CardDisplay>().SetData(card);
         UpdateHandVisuals();
+        BattleManager.Instance.UpdateDeckSize();
     }
 
     void Update()
@@ -68,6 +70,7 @@ public class HandManager : MonoBehaviour
             var skipTurnButton = GameObject.Find("Pass");
             EventSystem.current.SetSelectedGameObject(skipTurnButton);
         }
+        BattleManager.Instance.UpdateDeckSize();
     }
 
     public void UpdateHandVisuals()

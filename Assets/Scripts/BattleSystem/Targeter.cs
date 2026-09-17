@@ -37,8 +37,9 @@ public class Targeter : MonoBehaviour
     private bool actionsInitialized = false;
     private Card card;
     private string inventoryItemName = "";
+    private int inventoryItemMPCost = 0;
 
-    public void Initialize(TargetType type, string prompt, GameAction action, bool targetDead = false, Card card = null, string inventoryItemName = "")
+    public void Initialize(TargetType type, string prompt, GameAction action, bool targetDead = false, Card card = null, string inventoryItemName = "", int inventoryItemMPCost = 0)
     {
         targetType = type;
         initialized = true;
@@ -46,6 +47,7 @@ public class Targeter : MonoBehaviour
         this.targetDead = targetDead;
         this.card = card;
         this.inventoryItemName = inventoryItemName;
+        this.inventoryItemMPCost = inventoryItemMPCost;
 
         if((this.action is GrappleDamageAction || this.action is SuplexDamageAction || this.action is ReconcussDamageAction) && this.action.wildSwing == false) grapple = true;
     }
@@ -330,6 +332,7 @@ public class Targeter : MonoBehaviour
         }
         else if (inventoryItemName != "")
         {
+            BattleManager.Instance.activePlayer.GainMP(-inventoryItemMPCost);
             GameManager.Instance.ConsumeInventoryItem(inventoryItemName, true, 1);
             FindFirstObjectByType<Inventory>()?.UpdateInventoryImages(GameManager.Instance.inventory);
         }

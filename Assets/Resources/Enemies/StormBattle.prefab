@@ -53,10 +53,11 @@ MonoBehaviour:
   attack: 10
   defense: 1
   speed: 13
-  psychic: 15
+  psychic: 1
   surprise: 0
   mp: 0
-  maxMp: 30
+  maxMp: 3
+  hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
   resistances: 01000000
@@ -66,6 +67,7 @@ MonoBehaviour:
   combatantName: Storm
   initiative: 0
   statusEffects: []
+  copyAnimator: {fileID: 0}
   attackPatterns:
   - attackPattern: Slash, SwordBackhand, Slash
     attackName: C-C-Combo
@@ -173,7 +175,7 @@ MonoBehaviour:
       statusUpdate: 0
       particleEffect: {fileID: 0}
     hits: 1
-    mpCost: 30
+    mpCost: 3
     healthThreshold: 50
     altFunction: 
     consumeMana: 1
@@ -184,6 +186,7 @@ MonoBehaviour:
     dropChance: 100
   - itemID: Bang
     dropChance: 100
+  cardLootDrops: []
   xpReward: 150
   goldReward: 150
   attackSpeed: 0.4

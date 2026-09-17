@@ -289,10 +289,10 @@ MonoBehaviour:
   attack: 20
   defense: 1
   speed: 30
-  psychic: 10
+  psychic: 1
   surprise: 0
   mp: 0
-  maxMp: 30
+  maxMp: 3
   hpBar: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   alive: 1
@@ -345,7 +345,7 @@ MonoBehaviour:
       statusUpdate: 0
       particleEffect: {fileID: 0}
     hits: 4
-    mpCost: 20
+    mpCost: 2
     healthThreshold: 50
     altFunction: 
     consumeMana: 1
@@ -354,6 +354,10 @@ MonoBehaviour:
     dropChance: 100
   - itemID: Viking Helmet
     dropChance: 50
+  cardLootDrops:
+  - cardName: Smart Strike
+    dropChance: 75
+    quantity: 1
   xpReward: 50
   goldReward: 50
   attackSpeed: 1
