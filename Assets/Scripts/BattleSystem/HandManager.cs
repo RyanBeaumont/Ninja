@@ -118,4 +118,13 @@ public class HandManager : MonoBehaviour
         }
     }
 }
+
+    public void RestoreCardHierarchy()
+    {
+        for (int i = 0; i < cardsInHand.Count; i++)
+        {
+            if (cardsInHand[i] != null)
+                cardsInHand[i].transform.SetSiblingIndex(i);
+        }
+    }
 }

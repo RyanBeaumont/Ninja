@@ -33,6 +33,7 @@ public class Card
     public int tpCost = 0;
     public int level = 0;
     public int discardCost = 0;
+    public bool exile = false;
     //public string pattern = "";
 
     [Header("Effects")]
@@ -200,6 +201,7 @@ public class CardDatabase : MonoBehaviour
             description = "Gain 2 MP",
             cost = 1,
             level = 100,
+            exile = true,
             artwork = "IconSuperSaiyan",
             effects = new List<GameAction>()
             {
@@ -1096,13 +1098,10 @@ public class CardDatabase : MonoBehaviour
             artwork = "IconSlap",
             effects = new List<GameAction>()
             {
-                new NullifyDamageAction2()
+                new PurgeDebuffsAction()
                 {
-                    damage = "1",
                     animation = "Slap",
-                    damageType = DamageType.Bludgeoning,
-                    targetType = TargetType.Any,
-                    hits = 1,
+                    targetType = TargetType.SingleAlly,
                     pattern = "1"
                 }
             }
@@ -1229,7 +1228,7 @@ public class CardDatabase : MonoBehaviour
             {
                 new ChiBladeAction()
                 {
-                    damage = "15 + MP*15*MED",
+                    damage = "8 + MP*15*MED",
                     animation = "FlyingAxeKick",
                     damageType = DamageType.Bludgeoning,
                     targetType = TargetType.SingleEnemy,
@@ -1292,9 +1291,10 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "Berzerk!",
-            description = "Wild Swing 3 times",
+            description = "Wild Swing 3 times. Exile this card",
             tpCost = 50,
             cost = 1,
+            exile = true,
             cardClass = CardClass.Warrior,
             artwork = "IconBomb",
             level = 8,
@@ -1409,9 +1409,10 @@ public class CardDatabase : MonoBehaviour
         allCards.Add(new Card()
         {
             cardName = "Wild Swing",
-            description = "Play the top card of your deck for free",
+            description = "Play the top card of your deck for free. Exile this card",
             cost = 2,
             level = 6,
+            exile = true,
             artwork = "IconBomb",
             cardClass = CardClass.Warrior,
             effects = new List<GameAction>()
@@ -1448,7 +1449,7 @@ public class CardDatabase : MonoBehaviour
             description = "Deal 3 hits to all enemies. Gain 1 less MP next turn",
             cost = 3,
             level = 7,
-            artwork = "IconTornadoKick",
+            artwork = "IconKick",
             effects = new List<GameAction>()
             {
                 new StatusEffectAction()
@@ -1538,8 +1539,8 @@ public class CardDatabase : MonoBehaviour
             description = "Draw an extra card each turn",
             cost = 3,
             cardClass = CardClass.Warrior,
-            artwork = "IconDraw",
-            level = 11,
+            artwork = "IconCard",
+            level = 10,
             effects = new List<GameAction>()
             {
                 new StatusEffectAction()

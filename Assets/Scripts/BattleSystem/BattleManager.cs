@@ -279,6 +279,11 @@ public class BattleManager : MonoBehaviour
                     actionQueue.Add(action);
                     ConsumeCard(card);
                 }
+                else if (action.wildSwing)
+                {
+                    actionQueue.Add(action);
+                    ConsumeCard(card,true);
+                }
                 else
                 {
                     var targetAction = new ChooseTargetsAction()
@@ -306,13 +311,17 @@ public class BattleManager : MonoBehaviour
         
     }
 
-    public void ConsumeCard(Card card)
+    public void ConsumeCard(Card card, bool ignoreCost = false)
     {
         if(activePlayer != null && card != null){
             activePlayer.hand.Remove(card);
-            activePlayer.discard.Add(card);
-            activePlayer.mp = Mathf.Max(0, activePlayer.mp - card.cost);
-            activePlayer.tp = Mathf.Max(0, activePlayer.tp - card.tpCost);
+            if(card.exile == false) //Exiled cards aren't added to discard
+                activePlayer.discard.Add(card);
+
+            if(ignoreCost == false){
+                activePlayer.mp = Mathf.Max(0, activePlayer.mp - card.cost);
+                activePlayer.tp = Mathf.Max(0, activePlayer.tp - card.tpCost);
+            }
             if(card.tpCost > 0) gainTP = false; else gainTP = true;
             if(gainTP) activePlayer.tp += 5; //Gain TERROR points
             BattleManager.Instance.activePlayer.ShowStats();

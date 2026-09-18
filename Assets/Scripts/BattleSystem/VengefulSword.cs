@@ -18,6 +18,6 @@ public class VengefulSword : EnemyCombatant
         if(target.alive)
             Attack(null,target);
         else
-            Attack(null,null);
+            base.DefaultAttack();
     }
 }

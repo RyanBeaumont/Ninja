@@ -99,6 +99,15 @@ public class GameManager : MonoBehaviour
                     healAmount = "50"
                 };
             break;
+            case "Water":
+                newItem = new InventoryItem(name,1);
+                newItem.description = "Purge all debuffs and heal slightly";
+                newItem.gameAction = new PurgeDebuffsAction()
+                {
+                    targetType = TargetType.SingleAlly,
+                    animation = "Drink",
+                };
+                break;
             case "Ramen":
                 newItem = new InventoryItem(name,1);
                 newItem.description = "Restores Full HP";
@@ -233,7 +242,7 @@ public class GameManager : MonoBehaviour
                             duration = -1
                         }
                     },
-                    type = "Accessory"
+                    type = "Drip"
                 };
             break;
             case "Viking Helmet":
@@ -267,7 +276,7 @@ public class GameManager : MonoBehaviour
                             duration = -1
                         }
                     },
-                    type = "Accessory"
+                    type = "Drip"
                 };
             break;
             case "Bicycle Helmet":
@@ -382,7 +391,7 @@ public class GameManager : MonoBehaviour
                     {
                         CardDatabase.Instance.getStatusEffect("Keg Backpack")
                     },
-                    type = "Accessory"
+                    type = "Drip"
                 };
             break;
             case "Hair Mace":
@@ -406,7 +415,7 @@ public class GameManager : MonoBehaviour
                             duration = -1
                         }
                     },
-                    type = "Accessory"
+                    type = "Drip"
                 };
             break;
             case "Rocket Fist":
@@ -417,7 +426,7 @@ public class GameManager : MonoBehaviour
                     {
                         CardDatabase.Instance.getStatusEffect("Rocket Fist")
                     },
-                    type = "Accessory"
+                    type = "Drip"
                 };
             break;
             

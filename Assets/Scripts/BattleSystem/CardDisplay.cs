@@ -37,7 +37,6 @@ public class CardDisplay : Selectable,
     public float vertOffset = 0.5f;
     public bool initialized = false;
 
-    int originalSiblingIndex;
     bool isHighlighted;
 
     [HideInInspector] public HandManager handManager;
@@ -218,8 +217,6 @@ public class CardDisplay : Selectable,
 
         targetLocalPos += new Vector3(0f, 20f, 0f);
 
-        originalSiblingIndex = transform.GetSiblingIndex();
-
         transform.SetAsLastSibling();
 
         if (damageTypeOverlay != null)
@@ -243,7 +240,7 @@ public class CardDisplay : Selectable,
 
         targetLocalPos -= new Vector3(0f, 20f, 0f);
 
-        transform.SetSiblingIndex(originalSiblingIndex);
+        handManager?.RestoreCardHierarchy();
 
         if (damageTypeOverlay != null)
             damageTypeOverlay.gameObject.SetActive(false);

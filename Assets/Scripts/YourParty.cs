@@ -212,6 +212,7 @@ public class YourParty : MonoBehaviour
         foreach(Equipment e in partyMember.equipment)
             foreach(StatusEffect se in e.statusEffects)
                 if(se.stat == "PSY") psychic += se.amount;
+
         //Round
         attack = Mathf.Round(attack); maxHp = Mathf.Round(maxHp); speed = Mathf.Round(speed); psychic = Mathf.Round(psychic);
     }

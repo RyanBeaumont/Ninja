@@ -513,12 +513,12 @@ public class Combatant : MonoBehaviour
             "LEVEL" => level,
             "MP" => mp,
             "MAXMP" => maxMp,
-            "LOW" => attack*0.05f,
-            "MED" => attack*0.107f,
-            "HIGH" => attack*0.214f,
-            "LOWPSY" => psychic*0.05f,
-            "MEDPSY" => psychic*0.107f,
-            "HIGHPSY" => psychic*0.214f,
+            "LOW" => GetStat("ATK")*0.05f,
+            "MED" => GetStat("ATK")*0.107f,
+            "HIGH" => GetStat("ATK")*0.214f,
+            "LOWPSY" => GetStat("PSY")*0.05f,
+            "MEDPSY" => GetStat("PSY")*0.107f,
+            "HIGHPSY" => GetStat("PSY")*0.214f,
 
             _ => throw new System.Exception($"Unknown stat: {statName}")
         };
@@ -528,9 +528,10 @@ public class Combatant : MonoBehaviour
         {
             if(effect.stat == statName)
             {
-                if(effect.additive)
+                if(effect.additive){
                     baseValue += effect.amount;
-                else
+                    Debug.Log($"Applying additive effect {effect.name} to {statName}: +{effect.amount}, new value: {baseValue}");
+                }else
                     baseValue *= effect.amount;
             }
         }

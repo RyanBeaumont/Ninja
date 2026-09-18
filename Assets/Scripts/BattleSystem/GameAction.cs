@@ -14,6 +14,7 @@ using UnityEngine;
     public bool additive = true; //true = additive, false = multiplicative
     public int duration = -1; //-1 = permanent
     public bool removeOnHit = false;
+    public bool buff = true;
     public Combatant caller;
     public StatusUpdate statusUpdate = StatusUpdate.TurnStart;
     public GameObject particleEffect = null;
@@ -45,7 +46,7 @@ public class GameAction
     protected void ResolveInsanityTargets(BattleManager battleManager)
     {
         
-        if (caller != null && (caller.HasStatusEffect("Insanity") != null || caller.HasStatusEffect("Drunk") != null ) &&
+        if (caller != null && (caller.HasStatusEffect("Insanity") != null || caller.HasStatusEffect("Drunk") != null || wildSwing) &&
             targetType != TargetType.None && targetType != TargetType.Self &&
             !(this is ChooseTargetsAction))
         {
@@ -193,14 +194,19 @@ public class NullifyDamageAction : DamageAction
     }
 }
 
-public class NullifyDamageAction2 : DamageAction
+public class PurgeDebuffsAction : GameAction
 {
     public override void Execute(BattleManager battleManager)
     {
         base.Execute(battleManager);
         foreach(var t in battleManager.currentTargets)
         {
-            t.RemoveStatusEffect("");
+            foreach(StatusEffect se in t.statusEffects){
+                if(se.buff == false)
+                {
+                    t.statusEffects.Remove(se);
+                }
+            }
             t.Heal(25f);
         }
     }
@@ -218,7 +224,7 @@ public class DamageAction : GameAction
 
     public override void Execute(BattleManager battleManager)
     {
-        if(caller.alive) battleManager.SetPose(caller.transform, "", CameraAngle.behind, "Mad");
+        if(caller.alive) battleManager.SetPose(caller.transform, "", CameraAngle.standard, "Mad");
         base.Execute(battleManager);
         AudioManager.Instance.PlaySoundEffect("s_dbz_jump",UnityEngine.Random.Range(0.8f,1.2f));
         battleManager.waitingForInput = true; //wait for animation input
@@ -396,15 +402,22 @@ public class WildSwingAction : GameAction
         base.Execute(battleManager);
         if(caller is PlayerCombatant playerCombatant)
         {
+            if(playerCombatant.deck.Count > 0 || playerCombatant.discard.Count > 0){
             Card newCard  = playerCombatant.Scry(1)[0];
             foreach(GameAction a in newCard.effects)
             {
                 a.wildSwing = true;
+                a.caller = caller;
             }
             battleManager.ExecuteCard(newCard,caller);
             GameManager.Instance.ShowMessage($"{caller.combatantName} wild swings into {newCard.cardName}!");
             playerCombatant.deck.RemoveAt(0);
             playerCombatant.discard.Add(newCard);
+            }
+            else
+            {
+                GameManager.Instance.ShowMessage($"Wild Swing cancelled - deck is empty!");
+            }
         }
     }
 }
@@ -586,9 +599,14 @@ public class ExploitWeaknessAction : DamageAction
     public override void Execute(BattleManager battleManager)
     {
         base.Execute(battleManager);
-        if(battleManager.currentTargets[0] != null && battleManager.currentTargets[0].statusEffects.Count > 0)
-        {
-            BattleManager.Instance.actionQueue.Add(new GainMPAction(){mpAmount = "2"});
+        if(battleManager.currentTargets[0] != null && battleManager.currentTargets[0].statusEffects.Count > 0){
+            foreach(StatusEffect se in battleManager.currentTargets[0].statusEffects)
+            {
+                if(se.buff == false){
+                    BattleManager.Instance.actionQueue.Add(new GainMPAction(){mpAmount = "2"});
+                    return;
+                }
+            }
         }
     }
 }

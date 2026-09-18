@@ -41420,7 +41420,7 @@ MonoBehaviour:
   consume: 1
   xpReward: 100
   goldReward: 100
-  giveQuestIfMissing: 0
+  giveQuestIfMissing: 1
   completeEvenIfMissing: 1
   hideIfMissing: 0
   incompleteDialog:
@@ -147389,7 +147389,7 @@ Transform:
   m_GameObject: {fileID: 1226367414}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.13052616, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: -6.6849976, y: -0.21000051, z: 56}
+  m_LocalPosition: {x: -6.6849976, y: 0.8, z: 56}
   m_LocalScale: {x: 0.2045, y: 0.2045, z: 0.2045}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -168936,7 +168936,8 @@ PrefabInstance:
     - {fileID: 684623941448871463, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
     - {fileID: 9191006209437268723, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
     - {fileID: 6649098481773803516, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1202973532642157809, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7456399332241316039, guid: af99c4916e80fd44aa5a52648222fb62, type: 3}
@@ -227308,7 +227309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.717
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6326372194262603775, guid: 9b97db3df58bf2c45b0703f94d6426cb, type: 3}
       propertyPath: m_LocalPosition.z

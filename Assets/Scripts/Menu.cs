@@ -147,7 +147,7 @@ public class Menu : MonoBehaviour
             //clear
             foreach(Transform child in equipmentContainer) Destroy(child.gameObject);
             //populate
-            string[] equipmentTypes = { "Head", "Body", "Accessory" };
+            string[] equipmentTypes = { "Head", "Body", "Drip" };
             foreach(string equipmentType in equipmentTypes)
             {
                 var item = p.equipment.Find(equipment =>

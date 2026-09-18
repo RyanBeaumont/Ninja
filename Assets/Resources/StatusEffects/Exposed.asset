@@ -21,5 +21,7 @@ MonoBehaviour:
     additive: 1
     duration: 3
     removeOnHit: 0
+    buff: 0
     caller: {fileID: 0}
     statusUpdate: 2
+    particleEffect: {fileID: 0}
